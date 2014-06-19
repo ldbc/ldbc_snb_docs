@@ -1,2 +1,2 @@
-LDBC Social Network Benchmark Documentation
+LDBC SNB Documentation
 =============
