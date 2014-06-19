@@ -1,2 +1,2 @@
-ldbc_snb_docs
+LDBC Social Network Benchmark Documentation
 =============
