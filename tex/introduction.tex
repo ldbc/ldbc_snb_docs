@@ -1,0 +1,258 @@
+%%% INTRODUCTION %%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Motivation for the Benchmark}
+
+The new era of data economy, based on large, distributed and complexly
+structured data sets, has brought on new and complex challenges in the field of
+data management and analytics. These data sets, usually modeled as large
+graphs, have attracted both the industry and academia, due to the new
+opportunities in research and innovation they offer.  This situation has also
+opened the door for new companies to emerge, offering new non-relational and
+graph-like technologies that are called to play a significant role in upcoming
+years.
+
+The change in the data paradigm, calls for new benchmarks to test the  new
+emerging technologies, as they set a framework where different systems can
+compete and compare in a fair way, they let technology providers to identify
+the bottlenecks and gaps of their systems and, in general, drive the research
+and development of new information technology solutions. Without them, the
+uptake of these technologies is at risk by not providing the industry with
+clear, user-driven targets for performance and functionality.
+
+The LDBC Social Network Benchmark (LDBC-SNB) aims at being comprehensive
+benchmark setting the rules for the evaluation of graph-like data management
+technologies.  LDBC-SNB is designed to be a plausible look-alike of all the
+aspects of operating a social network site, as one of the most representative
+and relevant use case of modern graph-like applications. LDBC-SNB is a work in
+progress, and initially, it only includes a read only Interactive Workloads,
+but two more workloads will be introduced in the future: the Business
+Intelligence and the Analytics.  All three workloads will support update
+queries in future releases. By designing three separate workloads, LDBC-SNB
+targets a broader range of systems with different nature and characteristics.
+LDBC-SNB aims at capturing the essential features of these usage scenarios
+while abstracting away details of specific business deployments. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Relevance to Industry}
+
+LDBC-SNB is intended to provide the following value to different stakeholders:
+
+\begin{itemize}
+ \item For \textbf{end users} facing graph processing tasks, LDBC-SNB provides
+     a recognizable scenario against which it is possible to compare merits of
+     different products and technologies.  By covering a wide variety of scales
+     and price points, LDBC-SNB can serve as an aid to technology selection.
+ \item For \textbf{vendors} of graph database technology, LDBC-SNB provides a
+     checklist of features and performance characteristics that helps in
+     product positioning and can serve to guide new development.
+ \item For \textbf{researchers}, both industrial and academic, the LDBC-SNB
+     dataset and workload provide interesting challenges in multiple
+     choke-point areas, such as query optimization, (distributed) graph
+     analysis, transactional throughput, and provides a way to objectively
+     compare the effectiveness and efficiency of new and existing technology in
+     these areas.
+\end{itemize}
+
+The technological scope of the LDBC-SNB comprises all systems that one might
+conceivably use to perform social network data management tasks:
+
+\begin{itemize}
+ \item \textbf{Graph database systems} (e.g. Neo4j, InfiniteGraph, Sparksee,
+     Titan) are novel technologies aimed at storing directed and labeled
+     graphs. They support graph traverals, typically by means of APIs, though
+     some of them also support some sort of graph oriented query language (e.g.
+     Neo4j's Cypher). These systems' internal structures are typically designed
+     to store dynamic graphs that change over time.  They oftern support
+     transactional queries with some degree of consistency, and value-based
+     indexes to quicly locate nodes and edges. Finally, their architecture is
+     typically single-machine (non-cluster). These systems can 
+     potentially implement the three workloads, though Interactive and Business Intelligence
+     workloads are where they will presumably be more competitive.
+ \item \textbf{Graph programming frameworks} (e.g. Giraph, Signal/Collect,
+     Graphlab, Green Marl) are designed to perform global graph queries
+     computations, executed in parallel or lockstep. These computations are typically
+     long latency, involving many nodes and edges and often consist of approximation
+     answers to NP-complete problems. These systems expose an API, sometimes following
+     a vertex centric paradigm, and their architecture targets both single-,machine and
+     cluster systems. Though these systems will likely implement the Graph Analytics workload.
+ \item \textbf{RDF database systems} (e.g. OWLIM, Virtuoso, BigData, Jena TDB,
+     Stardog, Allegrograph) are systems that implement the SPARQL1.1 query
+     language, similar in complexity to SQL1992, which allows for structured
+     queries, and simple traversals. RDF database system often come with
+     additional support for simple reasoning (sameAs,subClass), text search and
+     geospatial predicates.  RDF database systems generally support
+     transactions, but not always with full concurrency and serializability and
+     their supposed strength is integrating multiple data sources (e.g.
+     DBpedia). Their architecture is both single-machine and clustered, and
+     they will likely target Interactive and Business Intelligence workloads.
+ \item \textbf{Relational database systems} (e.g. Postgres, MySQL, Oracle, DB2,
+     SQLserver, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
+     Impala) treat data as relational, and queries are formulated in SQL and/or
+     PL/SQL. Both single-machine and cluster systems exist.  They  do not
+     normally support recursion, or stateful recursive algorithms, which makes
+     them not at home in the Graph Analytics workloads
+ \item \textbf{noSQL database systems} (e.g. key-value stores such as HBase,
+     REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig).
+     are cluster-vbased and scalable. Key-value stores could possibly implement
+     the Interactive Workload, though its navigational aspects would pose some
+     problems as potentially many key-value lookups are needed. MapReduce
+     systems could be suited for the Graph Analytics workload.  but their query
+     latency would presumably be so high that the Business Intelligence
+     workload would not make sense, though we note that some of the key-value
+     stores (e.g. MongoDB) provide a MapReduce query functionality on the data
+     that it stores which could make it suited for the Business Intelligence workload.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{General Benchmark Overview}
+
+LDBC-SNB aims at being a complete benchmark, designed with the following goals in mind:
+
+\begin{itemize}
+ \item \textbf{Rich coverage}. LDBC-SNB is intended to cover most demands
+     encountered in the management of complexly structured data. 
+ \item \textbf{Modularity}. LDBC-SNB is broken into parts that can be
+     individually addressed. In this manner LDBC-SNB
+     stimulates innovation without imposing an overly high threshold for
+     participation.
+ \item \textbf{Reasonable implementation cost}. For a product offering relevant
+     functionality, the effort for obtaining initial results with SNB should be
+     small, on the order of days.
+ \item \textbf{Relevant selection of challenges}. Benchmarks are known to
+     direct product development in certain directions. LDBC-SNB is informed by
+     the state of the art in database research so as to offer optimization
+     challenges for years to come while not having a prohibitively high
+     threshold for entry.
+ \item \textbf{Reproducibility and documentation of results}. LDBC-SNB
+     will specify the rules for full disclosure of benchmark execution and for
+     auditing of benchmark runs. The workloads may be run on any equipment
+     but the exact configuration and price of the hardware and software must be
+     disclosed.
+\end{itemize}
+
+LDBC-SNB benchmark is modeled around the operation of a real social network
+site. A social network site represents a relevant use case for the following
+reasons:
+
+\begin{itemize}
+    \item It is simple to understand for a large audience, as it is 
+        arguably present to our every-day life in different shapes and forms.  
+    \item It allows testing a complete range of interesting
+        challenges, by means of different workloads targeting systems of
+        different nature and characteristics.
+    \item A social network can be scaled, allowing the design of a
+        scalable benchmark targeting systems of different sizes and budgets.
+\end{itemize}
+
+In Section~\ref{section:data}, LDBC-SNB defines the schema of the data used in
+the benchmark. The schema, represents a realistic social network, including
+people and their activity in the social network during a period of time.
+Personal information of each person, such as the name, the birth day, interests
+or the places where people work or study, is included. Persons' activity is
+represented in the form of friendhisp relationships and content sharing (i.e
+messages and pictures). LDBC-SNB provides a scalable synthetic data generator
+based on the MapReduce parallel paradigm, that produces networks with the
+described schema with distributions and correlations similar to those expected
+in a real social network. Furthermore, the data generator is designed to be
+user friendly. The proposed data schema is shared by all the different proposed
+workloads, those we currently have, and those that will be proposed in the future.
+
+In Section~\ref{section:workloads}, the Interactive Workload is proposed. Currently
+it only defines read queries, but will be updated in the near future to support
+updates. Two more workloads are planned:  Business Intelligence Workload and
+Analytical workload. Workloads are designed to mimic the different usage
+scenarios found in operating a real social network site, and each of them
+targets one or more types of systems.  Each workload defines a set of queries
+and query mixes, designed to stress the SUTs in different choke-point areas,
+while being credible and realistic. Interactive workload reproduces the
+interaction between the users of the social network by including lookups and
+transactions that update small portions of the data base.  These queries are
+designed to be interactive and target systems capable of responding such
+queries with low latency for multiple concurrent users. Business Intelligence
+workload, will represent those business intelligence analytics a social
+network company would like to perform in the social network, in order to take
+advantage of the data to discover new business opportunities. This workload
+will explore moderate portions of data from different entities, and performing more
+resource intensive operations. Finally, the graph analytics workload will aim at
+exploring the characteristics of the underlying structure of the network. Shortest
+paths, community detection or centrality, are representative queries of this workload,
+and will imply touching a vast amount of the dataset.
+ 
+
+LDBC-SNB provides an execution test driver, which is responsible of executing
+the workloads and gathering the results. The driver is designed with simplicity
+and portability in mind, to ease the implementation on systems with different
+nature and characteristics, at a low implementation cost. Furthermore, it will
+automatically handle the validation of the queries in the near future.  The
+overall philosophy of LDBC-SNB is to provide all the necessary software tools
+to run the benchmark, and therefore to reduce the benchmark's entry point as
+much as possible.
+
+%A complete benchmark needs to define a set of performance metrics
+%for each workload, to allow a fair comparison of systems of different sizes and
+%budgets. We understand that different workloads require different performance
+%metrics, and that these have to capture not only the pure performance of the
+%SUT, but also its performance per price. LDBC-SNB is aware of that and will provide
+%performance metrics for each of the workloads proposed.
+%
+%
+%Similarly to performance metrics, LDBC-SNB will define the rules for executing
+%the benchmark. Rules will include the different steps to follow in order to
+%have a valid benchmark execution, as well as those things that are prohibited.
+%The goal is to ensure, as much as possible, that the reported SUT's performance
+%can be extrapolated to any production system of a similar scale and
+%applications.  Also, LDBC-SNB will give guidelines for a full disclosure report.
+%The required information will ease the comparison of results between different
+%systems, and ensure that these can be reproduced given the appropriate
+%documentation and products. Last but not least, LDBC-SNB will require the
+%results to be audited to be official. LDBC-SNB will define the necessary steps
+%to follow during the audit process.
+
+Detailed instructions to generate the required datasets and to run Interactive
+Workload of the benchmark, are described in Chapter~\ref{chapter:instructions}.
+Finally, in the Appendix, Interactive Workload query implementation examples in
+Virtuoso's SQL, Virtuoso's SPARQL and Neo4j Cypher are shown.
+
+
+\section{Participation of Industry and Academia}
+
+The list of institutions that take part in the definition and development
+of LDBC-SNB is formed by relevant actors from both the industry and academia in
+the field of linked data management. All the participants have contributed with
+their experience and expertise in the field, making a credible and relevant
+benchmark that meets all the desired needs. The list of participants is the
+following:
+
+\begin{itemize}
+    \item FOUNDATION FOR RESEARCH AND TECHNOLOGY HELLAS
+    \item NEO4J
+    \item ONTOTEXT
+    \item OPENLINK
+    \item TECHNISCHE UNIVERSITAET MUENCHEN
+    \item UNIVERSITAET INNSBRUCK
+    \item UNIVERSITAT POLITECNICA DE CATALUNYA
+    \item VRIJE UNIVERSITEIT AMSTERDAM
+\end{itemize}
+
+\begin{figure}
+\end{figure}
+
+Besides the aforementioned institutions, during the development of the
+benchmark several meetings with the technical and users community have been
+conducted, receiving an invaluable feedback that has contributed to the whole
+development of the benchmark in every of its aspects.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

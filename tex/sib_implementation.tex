@@ -1,0 +1,1213 @@
+%%% INTERACTIVE QUERY SET IMPLEMENTATION %%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Virtuoso SPARQL 1.1}
+
+\subsection{Query 1} 
+
+\begin{verbatim}
+ sparql select ?fr ?last min(?dist) as ?mindist  ?bday ?since ?gen ?browser ?locationIP 
+    ((select group_concat (?email, ", ")
+        where {
+            ?frr snvoc:email ?email .
+        filter (?frr = ?fr) .
+        }
+        group by ?frr)) as ?email
+    ((select group_concat (?lng, ", ")
+        where {
+            ?frr snvoc:speaks ?lng .
+        filter (?frr = ?fr) .
+        }
+        group by ?frr)) as ?lng
+    ?based
+    ((select group_concat ( bif:concat (?o_name, " ", ?year, " ", ?o_country), ", ")
+        where {
+        ?frr snvoc:studyAt ?w .
+        ?w snvoc:classYear ?year .
+            ?w snvoc:hasOrganisation ?org .
+            ?org snvoc:isLocatedIn ?o_countryURI .
+        ?o_countryURI foaf:name ?o_country .
+            ?org foaf:name ?o_name .
+        filter (?frr = ?fr) .
+        }
+        group by ?frr)) as ?studyAt
+    ((select group_concat ( bif:concat (?o_name, " ", ?year, " ", ?o_country), ", ")
+        where {
+        ?frr snvoc:workAt ?w .
+        ?w snvoc:workFrom ?year .
+            ?w snvoc:hasOrganisation ?org .
+            ?org snvoc:isLocatedIn ?o_countryURI .
+        ?o_countryURI foaf:name ?o_country .
+            ?org foaf:name ?o_name .
+        filter (?frr = ?fr) .
+        }
+        group by ?frr)) as ?workAt
+    {
+        ?fr a snvoc:Person .
+        ?fr snvoc:firstName "%Name%" .
+    ?fr snvoc:lastName ?last .
+        ?fr snvoc:birthday ?bday .
+        ?fr snvoc:isLocatedIn ?basedURI .
+    ?basedURI foaf:name ?based .
+        ?fr snvoc:creationDate ?since .
+        ?fr snvoc:gender ?gen .
+    ?fr snvoc:locationIP ?locationIP .
+    ?fr snvoc:browserUsed ?browser .
+
+        {
+          { select distinct ?fr (1 as ?dist)
+            where {
+              sn:pers%Person% snvoc:knows ?fr.
+            }
+          }
+      union
+          { select distinct ?fr (2 as ?dist)
+            where {
+              sn:pers%Person% snvoc:knows ?fr2. 
+                              ?fr2 snvoc:knows ?fr.
+                              filter (?fr != sn:pers%Person%).
+            }
+          }
+      union
+          { select distinct ?fr (3 as ?dist)
+            where {
+              sn:pers%Person% snvoc:knows ?fr2. 
+                              ?fr2 snvoc:knows ?fr3. 
+                              ?fr3 snvoc:knows ?fr. 
+                              filter (?fr != sn:pers%Person%).
+            }
+          } .
+        }
+    }
+    group by ?fr ?last ?bday ?since ?gen ?browser ?locationIP ?based
+    order by ?mindist ?last ?fr
+    limit 20
+\end{verbatim}
+
+
+ 
+
+\subsection{Query 2}
+
+\begin{verbatim}
+ sparql select ?fr ?first ?last ?post ?content ?date 
+from <sib>
+where {
+  sn:pers%Person% snvoc:knows ?fr.
+  ?fr snvoc:firstName ?first. ?fr snvoc:lastName ?last .
+  ?post snvoc:hasCreator ?fr.
+  { {?post snvoc:content ?content } union { ?post snvoc:imageFile ?content }} .
+  ?post snvoc:creationDate ?date.
+  filter (?date <= "%Date0%"^^xsd:date).
+}
+order by desc (?date) ?post
+limit 20
+\end{verbatim}
+
+
+\subsection{Query 3}
+
+\begin{verbatim}
+ sparql select ?fr ?first ?last ?ct1 ?ct2 (?ct1 + ?ct2) as ?sum 
+from <sib>  
+where { 
+    {select distinct ?fr ?first ?last
+        (((select count (*)
+        where {
+            ?post snvoc:hasCreator ?fr .
+            ?post snvoc:creationDate ?date .
+            filter (?date >= "%Date0%"^^xsd:date && 
+                    ?date < bif:dateadd ("day", %Duration%, "%Date0%"^^xsd:date)) .
+            ?post snvoc:isLocatedIn dbpedia:%Country1%
+        }))
+        as ?ct1)
+        ((select count (*)
+        where {
+            ?post2 snvoc:hasCreator ?fr .
+            ?post2 snvoc:creationDate ?date2 . 
+            filter (?date2 >= "%Date0%"^^xsd:date && 
+                    ?date2 < bif:dateadd ("day", %Duration%, "%Date0%"^^xsd:date)) .
+            ?post2 snvoc:isLocatedIn dbpedia:%Country2%
+        })
+        as ?ct2)
+    where {
+        {sn:pers%Person% snvoc:knows ?fr.} union { sn:pers%Person% snvoc:knows ?fr2.
+                                                    ?fr2 snvoc:knows ?fr.
+                                                    filter (?fr != sn:pers%Person%)
+                                                }.
+        ?fr snvoc:firstName ?first . ?fr snvoc:lastName ?last .
+        ?fr snvoc:isLocatedIn ?city .
+    filter(!exists {?city snvoc:isPartOf dbpedia:%Country1%}).
+    filter(!exists {?city snvoc:isPartOf dbpedia:%Country2%}).
+    }
+    }.
+    filter (?ct1 > 0 && ?ct2 > 0) .
+}
+order by desc(6) ?fr
+limit 20
+\end{verbatim}
+
+ 
+
+\subsection{Query 4}
+\begin{verbatim}
+sparql select ?tagname count (*) #Q4
+from <sib>
+where {
+    ?post a snvoc:Post .
+    ?post snvoc:hasCreator ?fr .
+    ?post snvoc:hasTag ?tag .
+    ?tag foaf:name ?tagname .
+    ?post snvoc:creationDate ?date . 
+    sn:pers%Person% snvoc:knows ?fr .
+    filter (?date >= "%Date0%"^^xsd:date && 
+            ?date <= bif:dateadd ("day", %Duration%, "%Date0%"^^xsd:date) ) .
+    filter (!exists {
+        sn:pers%Person% snvoc:knows ?fr2 .
+        ?post2 snvoc:hasCreator ?fr2 .
+        ?post2 snvoc:hasTag ?tag .
+        ?post2 snvoc:creationDate ?date2 .
+        filter (?date2 < "%Date0%"^^xsd:date)}) 
+    }
+group by ?tagname
+order by desc(2) ?tagname
+limit 10
+\end{verbatim}
+
+
+\subsection{Query 5}
+\begin{verbatim}
+sparql select ?tagname count (*) #Q6
+from <sib>
+where {  
+    {  select distinct ?fr
+       from <sib>
+       where {
+           {sn:pers%Person% snvoc:knows ?fr.} 
+            union {sn:pers%Person% snvoc:knows ?fr2. 
+                    ?fr2 snvoc:knows ?fr. 
+                    filter (?fr != sn:pers%Person%)}
+       }
+    } .
+    ?post a snvoc:Post .
+    ?post snvoc:hasCreator ?fr .
+    ?post snvoc:hasTag ?tag1 .
+    ?tag1 foaf:name ?tagname1 .
+    filter (?tagname1 != '%Tag%') .
+    ?post snvoc:hasTag ?tag .
+    ?tag foaf:name ?tagname .
+}
+group by ?tagname
+order by desc(2) ?tagname
+limit 10
+\end{verbatim}
+ 
+
+\subsection{Query 6}
+\begin{verbatim}
+sparql select ?tagname count (*) 
+from <sib>
+where {  
+    {  select distinct ?fr
+       from <sib>
+       where {
+           {sn:pers%Person% snvoc:knows ?fr.} union { sn:pers%Person% snvoc:knows ?fr2.
+                                                      ?fr2 snvoc:knows ?fr.
+                                                      filter (?fr != sn:pers%Person%) }
+       }
+    } .
+    ?post snvoc:hasCreator ?fr .
+    ?post snvoc:hasTag ?tag1 .
+    ?tag1 foaf:name ?tagname1 .
+    filter (?tagname1 != '%Tag%') .
+    ?post snvoc:hasTag ?tag .
+    ?tag foaf:name ?tagname .
+}
+group by ?tagname
+order by desc(2) ?tagname
+limit 10
+\end{verbatim}
+
+
+
+
+\subsection{Query 7}
+\begin{verbatim}
+ sparql select ?liker ?first ?last ?ldt 
+       (if ((exists {  sn:pers%Person% snvoc:knows ?liker}), 0, 1) as ?is_new)
+       ?post ?content (bif:datediff ("minute", ?dt, ?ldt) as ?lag) 
+from <sib>
+where {
+  ?post snvoc:hasCreator sn:pers%Person% .
+  {{ ?post snvoc:content ?content } union {?post snvoc:imageFile ?content}} .
+  ?lk snvoc:hasPost ?post .
+  ?liker snvoc:likes ?lk . ?liker  snvoc:firstName ?first . ?liker snvoc:lastName ?last . 
+  ?post snvoc:creationDate ?dt . ?lk snvoc:creationDate ?ldt .
+}
+order by desc (?ldt) ?liker
+limit 20
+\end{verbatim}
+
+ 
+
+\subsection{Query 8}
+\begin{verbatim}
+sparql select ?from ?first ?last ?dt ?rep ?content 
+where {
+  { select ?rep ?dt
+    where {
+        ?post snvoc:hasCreator sn:pers%Person% .
+        ?rep snvoc:replyOf ?post . ?rep snvoc:creationDate ?dt .
+    }
+    order by desc (?dt)
+    limit 20
+  } .
+  ?rep snvoc:hasCreator ?from .
+  ?from snvoc:firstName ?first . ?from snvoc:lastName ?last . 
+  ?rep snvoc:content ?content.
+}
+order by desc(?dt) ?rep
+\end{verbatim}
+
+\subsection{Query 9}
+
+\begin{verbatim}
+sparql select ?fr ?first ?last ?post ?content ?date 
+from <sib>
+where {
+  {select distinct ?fr
+   from <sib>
+   where {
+       {sn:pers%Person% snvoc:knows ?fr.} union { sn:pers%Person% snvoc:knows ?fr2.
+                                                  ?fr2 snvoc:knows ?fr.
+                                                  filter (?fr != sn:pers%Person%) }
+   }
+  }
+  ?fr snvoc:firstName ?first . ?fr snvoc:lastName ?last .
+  ?post snvoc:hasCreator ?fr.
+  ?post snvoc:creationDate ?date.
+  filter (?date < "%Date0%"^^xsd:date).
+  {{?post snvoc:content ?content} union {?post snvoc:imageFile ?content}} .
+}
+order by desc (?date) ?post
+limit 20
+\end{verbatim}
+
+\subsection{Query 10}
+\begin{verbatim}
+ sparql select ?first ?last 
+    ((( select  count (distinct ?post)
+        where {
+            ?post snvoc:hasCreator ?fof .
+            ?post snvoc:hasTag ?tag .
+            sn:pers%Person% snvoc:hasInterest ?tag
+        }
+    ))
+    -
+    ((  select  count (distinct ?post)
+        where {
+            ?post snvoc:hasCreator ?fof .
+            ?post snvoc:hasTag ?tag .
+            filter (!exists {sn:pers%Person% snvoc:hasInterest ?tag})
+        }
+    )) as ?score)
+    ?fof  ?gender ?locationname
+from <sib>
+where {
+   {select distinct ?fof
+    where {
+        sn:pers%Person% snvoc:knows ?fr .
+        ?fr snvoc:knows ?fof .
+    filter (?fof != sn:pers%Person%)
+        minus { sn:pers%Person% snvoc:knows ?fof } .
+    }
+   } .
+   ?fof snvoc:firstName ?first .
+   ?fof snvoc:lastName ?last .
+   ?fof snvoc:gender ?gender .
+   ?fof snvoc:birthday ?bday .
+   ?fof snvoc:isLocatedIn ?based .
+   ?based foaf:name ?locationname .
+   filter (1 = if (bif:month (?bday) = %HS0%, if (bif:dayofmonth (?bday) > 21, 1, 0),
+               if (bif:month (?bday) = %HS1%, if (bif:dayofmonth(?bday) < 22, 1, 0), 0)))
+}
+order by desc(3) ?fof
+limit 10
+\end{verbatim}
+
+ 
+
+\subsection{Query 11}
+\begin{verbatim}
+ sparql select ?first ?last ?startdate ?orgname ?fr 
+where {
+    ?w snvoc:hasOrganisation ?org .
+    ?org foaf:name ?orgname .
+    ?org snvoc:isLocatedIn ?country.
+    ?country foaf:name '%Country%' .
+    ?fr snvoc:workAt ?w .
+    ?w snvoc:workFrom ?startdate .
+    filter (?startdate < %Date0%) .
+    {  select distinct ?fr
+       from <sib>
+       where {
+           {sn:pers%Person% snvoc:knows ?fr.} union { sn:pers%Person% snvoc:knows ?fr2.
+                                                      ?fr2 snvoc:knows ?fr.
+                                                      filter (?fr != sn:pers%Person%) }
+       }
+    } .
+    ?fr snvoc:firstName ?first .
+    ?fr snvoc:lastName ?last .
+}
+order by ?startdate ?fr ?orgname
+limit 10
+\end{verbatim}
+
+
+\subsection{Query 12}
+\begin{verbatim}
+sparql select ?exp ?first ?last sql:group_concat_distinct(?tagname) count (*) #Q12
+where {
+    sn:pers%Person% snvoc:knows ?exp .
+    ?exp snvoc:firstName ?first . ?exp snvoc:lastName ?last .
+    ?reply snvoc:hasCreator ?exp .
+    ?reply snvoc:replyOf  ?org_post .
+    filter (!exists {?org_post snvoc:replyOf ?xx}) .
+    ?org_post snvoc:hasTag ?tag .
+    ?tag foaf:name ?tagname .
+    ?tag a ?type.
+    ?type rdfs:subClassOf* ?type1 .
+    ?type1 rdfs:label %TagType% .
+}
+group by ?exp ?first ?last
+order by desc(5) ?exp
+limit 20
+\end{verbatim}
+
+
+\subsection{Query 13} 
+\begin{verbatim}
+sparql select count(*) 
+where
+  {
+    {
+      select ?s ?o
+      where
+        {
+          ?s snvoc:knows ?o.
+        }
+    }
+    option ( transitive,
+             t_distinct,
+             t_in(?s),
+             t_out(?o),
+             t_shortest_only,
+             t_direction 3,
+             t_step ('path_id') as ?path_no) .
+    filter ( ?s = sn:pers%Person1% ).
+    filter ( ?o = sn:pers%Person2% ).
+    filter (?path_no = 0).
+  }
+\end{verbatim}
+
+\subsection{Query 14}
+\begin{verbatim}
+create procedure path_str_sparql (in path any)
+{
+  declare str any;
+  declare inx int;
+  str := '';
+  foreach (any  st  in path) do
+    str := str || sprintf (' %d->%d (%d) ',
+                            cast (substring(st[0], 48, 20) as int), 
+                            coalesce(cast (substring(st[1], 48, 20) as int), 0),
+                            coalesce (st[2], 0));
+  return str;
+}
+
+create procedure c_weight_sparql (in p1 varchar, in p2 varchar)
+{
+  vectored;
+  if (p1 is null or p2 is null)
+     return 0;
+  return 0.5 + 
+       ( sparql select count(*) from <sib> where {?post1 snvoc:hasCreator ?:p1.
+                                                  ?post1 snvoc:replyOf ?post2.
+                                                  ?post2 snvoc:hasCreator ?:p2.
+                                                  ?post2 a snvoc:Post} ) +
+       ( sparql select count(*) from <sib> where {?post1 snvoc:hasCreator ?:p2.
+                                                  ?post1 snvoc:replyOf ?post2.
+                                                  ?post2 snvoc:hasCreator ?:p1.
+                                                  ?post2 a snvoc:Post} ) +
+       ( sparql select 0.5 * count(*) from <sib> where {?post1 snvoc:hasCreator ?:p1.
+                                                        ?post1 snvoc:replyOf ?post2. 
+                                                        ?post2 snvoc:hasCreator ?:p2.
+                                                        ?post2 a snvoc:Comment} ) +
+       ( sparql select 0.5 * count(*) from <sib> where {?post1 snvoc:hasCreator ?:p2.
+                                                        ?post1 snvoc:replyOf ?post2.
+                                                        ?post2 snvoc:hasCreator ?:p1.
+                                                        ?post2 a snvoc:Comment} );
+}
+
+select sql:path_str_sparql(?path), ?sc
+where
+{
+  select ?path_no, sql:vector_agg (bif:vector (?via1, ?via2, ?cweight))
+                                    as ?path, sum (?cweight) 
+                                    as ?sc
+  where
+  {
+    select ?via1 ?via2 ?path_no ?step_no sql:c_weight_sparql(?via1, ?via2) as ?cweight
+    where
+    {
+      {
+        select ?s bif:idn(?s) as ?via2 ?o
+        where
+        {
+          ?s snvoc:knows ?o1.
+      ?o1 snvoc:hasPerson ?o .
+        }
+      }
+      option ( transitive,
+             t_distinct,
+             t_in(?s),
+             t_out(?o),
+         t_shortest_only,
+         t_direction 3,
+         t_step (?s) as ?via1,
+         t_step ('path_id') as ?path_no,
+             t_step ('step_no') as ?step_no ) .
+      filter ( ?s = %Person1% ).
+      filter ( ?o = %Person2% ).
+    }
+  }
+  group by ?path_no
+}
+order by desc(?sc)
+limit 10
+\end{verbatim}
+
+
+\section{Virtuoso SQL}
+Important: Virtuoso SQL implementation assumes that both Post and Comment entities share the same table.
+\subsection{Query 1}
+\begin{verbatim}
+select top 20 id, p_lastname, min (dist) as dist,
+       p_birthday, p_creationdate, p_gender, p_browserused,
+       bit_shift(bit_and(p_locationip, 4278190080), -24) || '.' ||
+       bit_shift(bit_and(p_locationip, 16711680), -16) || '.' ||
+       bit_shift(bit_and(p_locationip, 65280), -8) || '.' ||
+       bit_and(p_locationip, 255) as ip,
+       (select group_concat (pe_email, ', ') 
+            from person_email 
+            where pe_personid = id 
+            group by pe_personid) as emails,
+       (select group_concat (plang_language, ', ') 
+            from person_language
+            where plang_personid = id
+            group by plang_personid) as languages,
+       p1.pl_name,
+       (select group_concat (o2.o_name || ' ' || pu_classyear || ' ' || p2.pl_name, ', ') 
+                from person_university, organisation o2, place p2  
+                where pu_personid = id and 
+                      pu_organisationid = o2.o_organisationid and
+                      o2.o_placeid = p2.pl_placeid 
+                group by pu_personid) as university,
+       (select group_concat (o3.o_name || ' ' || pc_workfrom || ' ' || p3.pl_name, ', ') 
+                from person_company, organisation o3, place p3
+                where pc_personid = id and 
+                      pc_organisationid = o3.o_organisationid and 
+                      o3.o_placeid = p3.pl_placeid 
+                group by pc_personid) as company
+from
+    (
+    select k_person2id as id, 1 as dist from knows, person 
+                                        where k_person1id = @Person@ and 
+                                              p_personid = k_person2id and 
+                                              p_firstname = '@Name@'
+    union all
+    select b.k_person2id as id, 2 as dist from knows a, knows b, person
+    where
+      a.k_person1id = @Person@ and 
+      b.k_person1id = a.k_person2id and 
+      p_personid = b.k_person2id and 
+      p_firstname = '@Name@'
+    union all
+    select c.k_person2id as id, 3 as dist from knows a, knows b, knows c, person
+    where
+      a.k_person1id = @Person@ and 
+      b.k_person1id = a.k_person2id and 
+      b.k_person2id = c.k_person1id and 
+      p_personid = c.k_person2id and
+      p_firstname = '@Name@'
+    ) tmp, person, place p1
+  where
+    p_personid = id and
+    p_placeid = p1.pl_placeid
+  group by id, p_lastname
+  order by dist, p_lastname, id
+\end{verbatim}
+ 
+
+\subsection{Query 2}
+\begin{verbatim}
+select top 20 p_personid as personid, p_firstname as firstname, p_lastname as lastname,
+       ps_postid as id, ps_content || ps_imagefile as content, ps_creationdate as creationdate
+from person, post, knows
+where
+    p_personid = ps_creatorid and
+    ps_creationdate <= stringdate('@Date0@') and
+    k_person1id = @Person@ and
+    k_person2id = p_personid
+order by creationdate desc, id
+\end{verbatim}
+
+\subsection{Query 3}
+
+\begin{verbatim}
+select top 20 p_personid, p_firstname, p_lastname, ct1, ct2, total
+from
+ ( select k_person2id
+   from knows
+   where
+   k_person1id = @Person@
+   union
+   select k2.k_person2id
+   from knows k1, knows k2
+   where
+   k1.k_person1id = @Person@ and 
+   k1.k_person2id = k2.k_person1id and 
+   k2.k_person2id <> @Person@
+ ) f,  person, place p1, place p2,
+ (
+  select chn.ps_c_creatorid, ct1, ct2, ct1 + ct2 as total
+  from
+   (
+      select ps_creatorid as ps_c_creatorid, count(*) as ct1 from post, place
+      where
+        ps_locationid = pl_placeid and 
+        pl_name = '@Country1@' and
+        ps_creationdate between 
+            stringdate('@Date0@') and dateadd ('day', @Duration@, stringdate('@Date0@'))
+      group by ps_c_creatorid
+   ) chn,
+   (
+      select ps_creatorid as ps_c_creatorid, count(*) as ct2 from post, place
+      where
+        ps_locationid = pl_placeid and 
+        pl_name = '@Country2@' and
+        ps_creationdate between 
+            stringdate('@Date0@') and 
+            dateadd ('day', @Duration@, stringdate('@Date0@'))
+      group by ps_c_creatorid
+   ) ind
+  where CHN.ps_c_creatorid = IND.ps_c_creatorid
+ ) cpc
+where
+f.k_person2id = p_personid and p_placeid = p1.pl_placeid and
+p1.pl_containerplaceid = p2.pl_placeid and 
+p2.pl_name <> '@Country1@' and 
+p2.pl_name <> '@Country2@' and
+f.k_person2id = cpc.ps_c_creatorid
+order by 6 desc, 1
+\end{verbatim}
+ 
+
+\subsection{Query 4}
+\begin{verbatim}
+select top 10 t_name, count(*)
+from tag, post, post_tag, knows
+where
+    ps_postid = pst_postid and
+    pst_tagid = t_tagid and
+    ps_creatorid = k_person2id and
+    k_person1id = @Person@ and
+    ps_creationdate between stringdate('@Date0@') and 
+                            dateadd ('day', @Duration@, stringdate('@Date0@')) and
+                            isnull(ps_replyof) and
+    not exists (
+        select * from post, post_tag, knows
+        where
+        k_person1id = @Person@ and
+        k_person2id = ps_creatorid and
+        pst_postid = ps_postid and
+        pst_tagid = t_tagid and
+        ps_creationdate < '@Date0@'
+    )
+group by t_name
+order by 2 desc, t_name
+\end{verbatim}
+
+
+\subsection{Query 5}
+\begin{verbatim}
+select top 20 f_title, count(*)
+from forum, post, forum_person,
+ ( select k_person2id
+   from knows
+   where
+   k_person1id = @Person@
+   union
+   select k2.k_person2id
+   from knows k1, knows k2
+   where
+   k1.k_person1id = @Person@ and 
+   k1.k_person2id = k2.k_person1id and
+   k2.k_person2id <> @Person@
+ ) f
+where f_forumid = ps_forumid and 
+      f_forumid = fp_forumid and 
+      fp_personid = f.k_person2id and 
+      ps_creatorid = f.k_person2id and
+      fp_creationdate >= stringdate('@Date0@')
+group by f_title
+order by 2 desc, f_title
+\end{verbatim}
+
+\subsection{Query 6}
+\begin{verbatim}
+select top 10 t_name, count(*)
+from tag, post_tag, post,
+ ( select k_person2id
+   from knows
+   where
+   k_person1id = @Person@
+   union
+   select k2.k_person2id
+   from knows k1, knows k2
+   where
+   k1.k_person1id = @Person@ and 
+   k1.k_person2id = k2.k_person1id and 
+   k2.k_person2id <> @Person@
+ ) f
+where
+        isnull(ps_replyof) and
+ps_creatorid = f.k_person2id and
+ps_postid = pst_postid and
+pst_tagid = t_tagid and
+t_name <> '@Tag@' and
+exists (select * from tag, post_tag where pst_postid = ps_postid and 
+                                          pst_tagid = t_tagid and 
+                                          t_name = '@Tag@')
+group by t_name
+order by 2 desc, t_name
+\end{verbatim}
+
+
+\subsection{Query 7}
+\begin{verbatim}
+select top 20 p_personid , p_firstname, p_lastname, l_creationdate,
+              (case when k_person2id is null then 1 else 0 end) as is_new,
+              ps_postid, content, lag
+from
+(select p_personid, p_firstname, p_lastname, l_creationdate,
+        ps_postid, ps_content || ps_imagefile as content,
+    datediff('minute', ps_creationdate, l_creationdate) as lag
+from likes, post, person
+where
+    p_personid = l_personid and
+    ps_postid = l_postid and
+    ps_creatorid = @Person@
+) p
+left join
+(select * from knows where k_person1id = @Person@) k
+on k.k_person2id = p.p_personid
+order by l_creationdate desc, 1
+\end{verbatim}
+ 
+
+\subsection{Query 8}
+\begin{verbatim}
+select top 20 p1.ps_creatorid, 
+              p_firstname, 
+              p_lastname, 
+              p1.ps_creationdate, 
+              p1.ps_postid, 
+              p1.ps_content
+  from post p1, post p2, person
+  where
+      p1.ps_replyof = p2.ps_postid and
+      p2.ps_creatorid = @Person@ and
+      p_personid = p1.ps_creatorid
+order by p1.ps_creationdate desc, 5
+\end{verbatim}
+
+
+
+\subsection{Query 9}
+\begin{verbatim}
+select top 20 p_personid, p_firstname, p_lastname,
+       ps_postid, ps_content || ps_imagefile, ps_creationdate
+from person, post,
+  ( select k_person2id
+    from knows
+    where
+    k_person1id = @Person@
+    union
+    select k2.k_person2id
+    from knows k1, knows k2
+    where k1.k_person1id = @Person@ and
+          k1.k_person2id = k2.k_person1id and 
+          k2.k_person2id <> @Person@
+  ) f
+where
+  p_personid = ps_creatorid and p_personid = f.k_person2id and
+  ps_creationdate < stringdate('@Date0@')
+order by ps_creationdate desc, 4
+\end{verbatim}
+ 
+
+\subsection{Query 10}
+\begin{verbatim}
+select top 10 p_firstname, p_lastname,
+       ( select count(distinct ps_postid)
+         from post, post_tag pt1
+         where ps_creatorid = p_personid and
+               ps_postid = pst_postid and
+     exists (select * from person_tag
+                      where pt_personid = @Person@ and 
+                            pt_tagid = pt1.pst_tagid)
+       ) -
+       ( select count(distinct ps_postid)
+         from post, post_tag pt1
+         where ps_creatorid = p_personid and 
+               ps_postid = pst_postid and
+     not exists (select * from person_tag 
+                          where pt_personid = @Person@ and 
+                                pt_tagid = pt1.pst_tagid)
+       ) as score,
+       p_personid, p_gender, pl_name
+from person, place,
+ ( select distinct k2.k_person2id
+   from knows k1, knows k2
+   where k1.k_person1id = @Person@ and 
+         k1.k_person2id = k2.k_person1id and 
+         k2.k_person2id <> @Person@ and
+   not exists (select * from knows 
+                        where k_person1id = @Person@ and 
+                              k_person2id = k2.k_person2id)
+ ) f
+where
+p_placeid = pl_placeid and
+p_personid = f.k_person2id and
+case month(p_birthday) 
+    when @HS0@ then (case when dayofmonth(p_birthday) > 21 then 1 else 0 end)
+    when @HS1@ then (case when dayofmonth(p_birthday) < 22 then 1 else 0 end)
+    else 0
+end
+order by 3 desc, 4
+\end{verbatim}
+
+
+ 
+
+\subsection{Query 11}
+\begin{verbatim}
+select top 10 p_firstname, p_lastname, pc_workfrom, o_name, p_personid
+from person, person_company, organisation, place,
+ ( select k_person2id
+   from knows
+   where
+   k_person1id = @Person@
+   union
+   select k2.k_person2id
+   from knows k1, knows k2
+   where k1.k_person1id = @Person@ and 
+         k1.k_person2id = k2.k_person1id and 
+         k2.k_person2id <> @Person@
+ ) f
+where
+    p_personid = f.k_person2id and
+    p_personid = pc_personid and
+    pc_organisationid = o_organisationid and
+    pc_workfrom < @Date0@ and
+    o_placeid = pl_placeid and
+    pl_name = '@Country@'
+order by pc_workfrom, 5, o_name
+\end{verbatim}
+
+
+\subsection{Query 12}
+\begin{verbatim}
+select top 20 p_personid, 
+              p_firstname, 
+              p_lastname, 
+              group_concat_distinct(t_name, ', '), count(*)
+from person, post p1, 
+             knows, 
+             post p2, 
+             post_tag, 
+             tag, 
+             tag_tagclass
+where
+  k_person1id = @Person@ and
+  k_person2id = p_personid and
+  p_personid = p1.ps_creatorid and
+  p1.ps_replyof = p2.ps_postid and
+  p2.ps_replyof is null and
+  p2.ps_postid = pst_postid and
+  pst_tagid = t_tagid and
+  t_tagid = ttc_tagid and
+  (ttc_tagclassid in (
+           select s_subtagclassid from
+             (select transitive t_in (1) 
+                                t_out (2) 
+                                t_distinct 
+                                s_subtagclassid, s_supertagclassid
+             from subclass) k, tagclass
+         where tc_tagclassid = k.s_supertagclassid and tc_name = '@TagType@'
+         )
+   or
+   ttc_tagclassid = (select tc_tagclassid from tagclass where tc_name = '@TagType@')
+   )
+group by 1, p_firstname, p_lastname
+order by 5 desc, 1
+
+\end{verbatim}
+
+
+\subsection{Query 13}
+\begin{verbatim}
+select count(*)
+from
+  (select transitive t_in (1) 
+                     t_out (2) 
+                     t_distinct 
+                     t_shortest_only 
+                     t_direction 3
+   k_person1id as p1, k_person2id as p2, t_step ('path_id') as path_no from knows) kt
+where
+  p1 = @Person1@ and
+  p2 = @Person2@ and
+  path_no = 0
+\end{verbatim}
+
+
+\subsection{Query 14}
+\begin{verbatim}
+create procedure path_str (in path any)
+{
+  declare str any;
+  declare inx int;
+  str := '';
+  foreach (any  st  in path) do
+    str := str || sprintf (' %d->%d (%d) ', st[0], coalesce (st[1], 0), coalesce (st[2], 0));
+  return str;
+} 
+create procedure c_weight (in p1 bigint, in p2 bigint)
+{
+  vectored;
+  if (p1 is null or p2 is null)
+     return 0;
+  return 0.5 +
+       (select count (*) 
+            from post ps1, post ps2
+            where ps1.ps_creatorid = p1 and 
+                  ps1.ps_replyof = ps2.ps_postid and
+                  ps2.ps_creatorid = p2 and 
+                  ps2.ps_replyof is null) +
+       (select count (*) from post ps1, post ps2
+            where ps1.ps_creatorid = p2 and 
+                  ps1.ps_replyof = ps2.ps_postid and
+                  ps2.ps_creatorid = p1 and 
+                  ps2.ps_replyof is null) +
+       (select 0.5 * count (*) 
+            from post c1, post c2
+            where c1.ps_creatorid = p1 and
+                  c1.ps_replyof = c2.ps_postid and
+                  c2.ps_creatorid = p2 and 
+                  c2.ps_replyof is not null) +
+       (select 0.5 * count (*) 
+            from post c1, post c2
+            where c1.ps_creatorid = p2 and 
+                  c1.ps_replyof = c2.ps_postid and 
+                  c2.ps_creatorid = p1 and 
+                  c2.ps_replyof is not null);
+} 
+select top 10 path_str (path), sc
+from
+  (select path_no, vector_agg (vector (via1, via2, cweight)) as path, sum (cweight) as sc
+   from
+       (select path_no, step_no, via1, via2, c_weight (via1, via2) as cweight
+        from
+          (select transitive t_in (1) 
+                             t_out (2) 
+                             t_distinct 
+                             t_shortest_only 
+                             t_direction 3
+                  k_person1id as p1, 
+                  k_person2id as p2, 
+                  t_step (1) as via1, idn (k_person1id) as via2,
+                  t_step ('path_id') as path_no, t_step ('step_no') as step_no from knows) kt
+        where p1 = @Person1@ and p2 = @Person2@) w
+   group by path_no) paths
+order by sc desc
+\end{verbatim}
+
+\section{Neo Cypher}
+
+\subsection{Query 1}
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})-[path:KNOWS*]-(friend:Person)
+WHERE friend.firstName = {friend_first_name}
+WITH friend, min(length(path)) AS distance
+ORDER BY distance ASC, friend.lastName ASC
+LIMIT {limit}
+OPTIONAL MATCH (friend)-[:IS_LOCATED_IN]->(friendCity:City)
+OPTIONAL MATCH (friend)-[studyAt:STUDY_AT]->
+               (uni:University)-[:IS_LOCATED_IN]->
+               (uniCity:City)
+WITH friend, collect(uni.name + 
+                     ',' + 
+                     uniCity.name + 
+                     ',' + 
+                     studyAt.classYear) AS unis, 
+                                           friendCity,
+                                           distance
+OPTIONAL MATCH (friend)-[worksAt:WORKS_AT]->
+               (company:Company)-[:IS_LOCATED_IN]->
+               (companyCountry:Place:Country)
+WITH friend, 
+     collect(company.name + 
+             ',' + 
+             companyCountry.name + 
+             ',' + 
+             worksAt.workFrom) 
+AS companies,
+   unis, 
+   friendCity, 
+   distance
+
+RETURN friend.id AS id, 
+       friend.lastName AS lastName, 
+       distance, 
+       friend.birthday AS birthday, 
+       friend.creationDate AS creationDate, 
+       friend.gender AS gender, 
+       friend.browserUsed AS browser, 
+       friend.locationIP AS locationIp, 
+       friend.email AS emails, 
+       friend.languages AS languages, 
+       friendCity.name AS cityName, 
+       unis, 
+       companies
+ORDER BY distance ASC, friend.lastName ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 2}
+
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})-[:KNOWS]-(friend:Person)<-[:HAS_CREATOR]-(post:Post)
+WHERE post.creationDate <= {max_date}
+RETURN friend.id AS personId, 
+       friend.firstName AS personFirstName, 
+       friend.lastName AS personLastName, 
+       post.id AS postId, 
+       post.content AS postContent, 
+       post.creationDate AS postDate
+ORDER BY postDate DESC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 3}
+
+\begin{verbatim}
+MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
+                         (friend:Person)<-[:HAS_CREATOR]-
+                         (postX:Post)-[:IS_LOCATED_IN]->
+                         (countryX:Country)
+WHERE countryX.name={country_x} AND 
+      postX.creationDate>={min_date} AND
+      postX.creationDate<={max_date}
+WITH friend, count(DISTINCT postX) AS xCount
+MATCH (friend)<-[:HAS_CREATOR]-(postY:Post)-[:IS_LOCATED_IN]->
+      (countryY:Country {name:{country_y}})
+WHERE postY.creationDate>={min_date} AND postY.creationDate<={max_date}
+WITH friend.firstName + ' ' + friend.lastName AS friendName ,
+     xCount, count(DISTINCT postY) AS yCount
+RETURN friendName, xCount, yCount, xCount + yCount AS xyCount
+ORDER BY xyCount DESC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 4}
+
+\begin{verbatim}
+MATCH (person:Person {id:{person_id}})-[:KNOWS]-
+      (friend:Person)<-[:HAS_CREATOR]-
+      (post:Post)-[HAS_TAG]->(tag:Tag)
+WHERE post.creationDate >= {min_date} AND post.creationDate <= {max_date}
+WITH DISTINCT tag, collect(tag) AS tags
+RETURN tag.name AS tagName, length(tags) AS tagCount
+ORDER BY tagCount DESC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 5}
+
+\begin{verbatim}
+MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
+      (friend:Person)<-[membership:HAS_MEMBER]-(forum:Forum)
+WHERE membership.joinDate>{join_date}
+MATCH (friend)<-[:HAS_CREATOR]-(post:Post)<-[:CONTAINER_OF]-(forum)
+RETURN forum.title AS forum, count(post) AS postCount
+ORDER BY postCount DESC
+\end{verbatim}
+
+\subsection{Query 6}
+
+\begin{verbatim}
+MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
+      (:Person)<-[:HAS_CREATOR]-
+      (post:Post)-[:HAS_TAG]->(:Tag {name:{tag_name}})
+WITH DISTINCT post
+MATCH (post)-[:HAS_TAG]->(tag:Tag)
+WHERE NOT(tag.name={tag_name})
+RETURN tag.name AS tagName, count(tag) AS tagCount
+ORDER BY tagCount DESC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 7}
+
+\begin{verbatim}
+MATCH (start:Person {id:{person_id}})<-[:HAS_CREATOR]-
+      (post:Post)<-[like:LIKES]-(person:Person)
+RETURN person.id AS personId, 
+       person.firstName AS personFirstName, 
+       person.lastName AS personLastName, 
+       like.creationDate AS likeDate, 
+       NOT((person)-[:KNOWS]-(start)) AS isNew, 
+       post.id AS postId, 
+  post.content AS postContent, like.creationDate - post.creationDate AS latency
+ORDER BY like.creationDate DESC, personId ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 8}
+
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})<-[:HAS_CREATOR]-(post:Post)
+MATCH (post)<-[:REPLY_OF*]-(comment:Comment)-[:HAS_CREATOR]->(person:Person)
+RETURN person.id AS personId, 
+       person.firstName AS personFirstName,
+       person.lastName AS personLastName, 
+       comment.id AS commentId, 
+       comment.creationDate AS commentCreationDate, 
+       comment.content AS commentContent
+ORDER BY commentCreationDate DESC, commentId ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 9}
+
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})-[:KNOWS*1..2]-(friend:Person)
+MATCH (friend)<-[:HAS_CREATOR]-(activity) WHERE activity.creationDate < {latest_date}
+RETURN DISTINCT activity.id AS activityId, 
+                activity.content AS activityContent,
+                activity.creationDate AS activityCreationDate, 
+                friend.id AS personId, 
+                friend.firstName AS personFirstName,
+                friend.lastName AS personLastName
+ORDER BY activity.creationDate DESC, activity.id ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 10}
+
+\begin{verbatim}
+MATCH (person:Person {id:{person_id}})
+MATCH (person)-[:KNOWS*2..2]-(friend:Person)-[:IS_LOCATED_IN]->(city:City)
+WHERE friend.birthday_month >= {horoscope_month_min} AND 
+      friend.birthday_month < {horoscope_month_max}
+OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)
+WITH friend, city.name AS personCityName, count(post) AS allPostCount, person
+OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)
+WHERE (post)-[:HAS_TAG]->(:Tag)<-[:HAS_INTEREST]-(person)
+WITH friend, personCityName, allPostCount, count(post) AS commonPostCount
+RETURN friend.id AS personId, 
+       friend.firstName AS personFirstName, 
+       friend.lastName AS personLastName, 
+       friend.gender AS personGender, 
+       personCityName,
+  CASE allPostCount
+    WHEN 0 THEN 0.0
+    ELSE commonPostCount / (allPostCount + 0.0)
+  END AS commonInterestScore
+ORDER BY commonInterestScore DESC, personId ASC
+LIMIT {limit} 
+\end{verbatim}
+
+\subsection{Query 11}
+
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})-[:KNOWS*1..2]-(friend:Person)
+WITH DISTINCT friend
+MATCH (friend)-[worksAt:WORKS_AT]->(company:Company)
+WHERE worksAt.workFrom <= {work_from_year} AND 
+     (company)-[:IS_LOCATED_IN]->(:Country {name:{country_name}})
+RETURN friend.id AS friendId, 
+       friend.firstName AS friendFirstName, 
+       friend.lastName AS friendLastName, 
+       worksAt.workFrom AS workFromYear, 
+       company.name AS companyName
+ORDER BY workFromYear ASC, friendId ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 12}
+
+\begin{verbatim}
+MATCH (:Person {id:{person_id}})-[:KNOWS]-(friend:Person)
+OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-
+               (comment:Comment)-[:REPLY_OF*]->
+               ()-[:HAS_TAG]->(tag:Tag)-[:HAS_TYPE]->
+               (tagClass:TagClass)-[:IS_SUBCLASS_OF*0..]->(baseTagClass:TagClass)
+WHERE tagClass.uri = {tag_class_id} OR baseTagClass.uri = {tag_class_id}
+RETURN friend.id AS friendId, 
+       friend.firstName AS friendFirstName, 
+       friend.lastName AS friendLastName, 
+       collect(DISTINCT tag.name) AS tagNames,
+       count(DISTINCT comment) AS count
+ORDER BY count DESC, friendId ASC
+LIMIT {limit}
+\end{verbatim}
+
+\subsection{Query 13}
+
+\begin{verbatim}
+MATCH path = shortestPath((person1:Person {id:{person_id_1}})-[:KNOWS]-
+                         (person2:Person {id:{person_id_2}}))
+RETURN length(path) AS pathLength
+\end{verbatim}
+
+\subsection{Query 14}
+
+\begin{verbatim}
+MATCH path = (person1:Person {id:{person_id_1}})<-[:HAS_CREATOR]-
+             ()-[r:REPLY_OF*0..]-
+             ()-[:HAS_CREATOR]->(person2:Person {id:{person_id_2}})
+WHERE all(message IN [n IN nodes(path) 
+WHERE not(n:Person)] 
+WHERE (message)-[:HAS_CREATOR]->(person1) OR (message)-[:HAS_CREATOR]->(person2))
+RETURN
+  [n IN nodes(path) | [labels(n)[0], n.id]] AS pathNodes,
+  reduce(weight = -0.5, n IN nodes(path) | 
+    CASE labels(n)[0]
+      WHEN 'Post' THEN weight + 1.0
+      WHEN 'Comment' THEN weight + 0.5
+      ELSE weight
+    END) AS weight
+ORDER BY length(pathNodes) ASC, weight DESC
+LIMIT {limit}
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

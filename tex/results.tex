@@ -1,0 +1,56 @@
+\section{ Gathering the results }
+
+Gathering the results for a benchmark run is a simple matter of referring to the results JSON file emitted by the driver.
+The format of that file is as follows:
+
+{\footnotesize
+	\begin{verbatim}
+	{
+	  "unit": "MILLISECONDS",
+	  "start_time": 1400750662691,
+	  "finish_time": 1400750667691,
+	  "total_duration": 5000,
+	  "total_count": 50,
+	  "all_metrics": [
+	    {
+	      "name": "Query1",
+	      "count": 50,
+	      "unit": "MILLISECONDS",
+	      "run_time": {
+	        "name": "Runtime",
+	        "unit": "MILLISECONDS",
+	        "count": 50,
+	        "mean": 100,
+	        "min": 2,
+	        "max": 450,
+	        "50th_percentile": 98,
+	        "90th_percentile": 129,
+	        "95th_percentile": 432,
+	        "99th_percentile": 444
+	      },
+	      "start_time_delay": {
+	        "name": "Start Time Delay",
+	        "unit": "MILLISECONDS",
+	        "count": 7,
+	        "mean": 3.5714285714285716,
+	        "min": 0,
+	        "max": 25,
+	        "50th_percentile": 0,
+	        "90th_percentile": 0,
+	        "95th_percentile": 25,
+	        "99th_percentile": 25
+	      },
+	      "result_code": {
+	        "name": "Result Code",
+	        "unit": "Result Code",
+	        "count": 50,
+	        "all_values": {
+	          "0": 42,
+	          "1": 8
+	        }
+	      }
+	    }
+	  ]
+	}
+	\end{verbatim}
+}

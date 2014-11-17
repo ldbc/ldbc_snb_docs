@@ -1,0 +1,247 @@
+\section{Data generation}\label{section:data_generation}
+
+DATAGEN uses Hadoop to implement the data generation. Detailed instructions
+to configure hadoop for running DATAGEN can be found at the DATAGEN project
+software repository\footnote{ DATAGEN repository:
+https://github.com/ldbc/ldbc\_snb\_datagen}. 
+
+\subsection{DATAGEN Configuration, Compilation and Execution}
+
+DATAGEN is designed to be as easy to configure, compile and execute as
+possible. With this objective in mind, a \textit{run.sh} script is provided,
+which handles all the compilation and execution processes.  \textit{run.sh}
+is found in the DATAGEN root folder. DATAGEN uses Apache Maven to download any
+required dependencies and compile the sources.  \textit{run.sh} needs to be
+configured with two variables pointing to the proper folders. The following is
+the list of variables to set:
+
+\begin{itemize}
+    \item \textbf{HADOOP\_HOME}: Points to your hadoop root folder.
+    \item \textbf{LDBC\_SOCIALNET\_DATAGEN\_HOME}: Points to your DATAGEN root folder.
+\end{itemize}
+
+Once these variables are properly set, by typing:
+
+\begin{lstlisting}[backgroundcolor=\color{gray}, frame=single, language=bash]
+$ sh run.sh
+\end{lstlisting}
+
+DATAGEN is compiled and executed, and a dataset with the default options is
+generated in the current folder.
+
+A file \textit{params.ini} is used to change the characteristics of the
+generated network, as well as to set other options. Table~\ref{table:sndg_options}
+summarizes the different available options and their default values:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{10.5cm}|}
+    \hline
+    \textbf{Option} & \textbf{Default} & \textbf{Description} \\
+    \hline
+    scaleFactor & 1 & The scale factor of the data to generate. Possible values are: 1, 3, 10, 30, 100, 300 and 1000 \\
+    \hline
+    serializer & csv & The format of the output data. Options are: csv, csv\_merge\_foreign, ttl \\
+    \hline
+    compressed & false & Specifies to compress the output data in gzip. \\
+    \hline
+    outputDir & ./ & Specifies the folder to output the data. \\
+    \hline
+    numThreads & 1 & Sets the number of threads to use. Only works for pseudo-distributed mode \\
+    \hline
+\end{tabular}
+\caption{Description of the data types.}
+\label{table:sndg_options}
+\end{table}
+
+An example of \textit{params.ini} for scale factor 30, ttl serializer, 4 threads,
+compressed output and a custom output dir, should look like:
+
+\begin{lstlisting}[backgroundcolor=\color{gray},frame=single]
+scaleFactor:30
+serializer:ttl
+compressed:true
+outputDir:/home/user/output
+numThreads:4
+\end{lstlisting}
+
+DATAGEN outputs data into HDFS. The outputDir directory specified in
+\textit{params.ini} file, will be automatically created in HDFS if it does not
+exist. If there is not an HDFS file system mounted, then data is output to your local
+file system. 
+
+\subsection{Serializers}\label{section:serializers}
+
+LDBC-SNB supports three different output formats: TTL, CSV and
+CSV\_MERGE\_FOREIGN. Besides the serializers' specific files, other files
+are generated: updateStream.csv files, which contains the update queries
+and is used by the test driver to issue the workload, and the substitution parameters
+files described in Section~\ref{section:substitution}.
+
+
+\subsubsection{TTL}
+
+This is the standard Turtle\footnote{Description of
+the Turtle RDF format http://www.w3.org/TR/turtle/} format. DATAGEN outputs
+two files: 0\_ldbc\_socialnet\_static\_dbp.ttl and  0\_ldbc\_socialnet.ttl.
+
+
+
+\subsubsection{CSV}
+
+This is a comma separated format. Each entity, relation and properties with a
+cardinality larger than one, are output in a separate file. Generated files are
+summarized at Table~\ref{table:csv}.  Depending on the number of threads used
+for generating the dataset, the number of files varies, since there is a file
+generated per thread. The * in the file names indicates a number between 0 and
+$NumberOfThreads-1$.
+
+\begin{landscape}
+    \begin{table}[t]
+        \footnotesize
+        \centering
+        \begin{tabular}{|p{5cm}|p{19cm}|}
+            \hline
+            \textbf{File} & \textbf{Content} \\
+            \hline
+            comment\_*.csv & id | creationDate | locationIP | browserUsed | content | length |\\
+            \hline
+            comment\_hasCreator\_person\_*.csv & Comment.id | Person.id |\\
+            \hline
+            comment\_isLocatedIn\_place\_*.csv & Comment.id | Place.id |\\
+            \hline
+            comment\_replyOf\_comment\_*.csv & Comment.id | Comment.id |\\
+            \hline
+            comment\_replyOf\_post\_*.csv &  Comment.id | Post.id |\\ 
+            \hline
+            forum\_*.csv & id | title | creationDate |\\
+            \hline
+            forum\_containerOf\_post\_*.csv & Forum.id | Post.id |\\    
+            \hline
+            forum\_hasMember\_person\_*.csv & Forum.id | Person.id | joinDate |\\
+            \hline
+            forum\_hasModerator\_person\_*.csv & Forum.id | Person.id |\\
+            \hline
+            forum\_hasTag\_tag\_*.csv & Forum.id | Tag.id |\\
+            \hline
+            organization\_*.csv & id(Long) | type({"university", "company"}) | name | url |\\
+            \hline
+            organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id |\\
+            \hline
+            person\_*.csv & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed |\\ 
+            \hline
+            person\_email\_emailaddress\_*.csv & Person.id | email |\\
+            \hline
+            person\_hasInterest\_tag\_*.csv &  Person.id | Tag.id |\\
+            \hline
+            person\_isLocatedIn\_place\_*.csv & Person.id | Place.id |\\
+            \hline
+            person\_knows\_person\_*.csv & Person.id | Person.id | creationDate |\\
+            \hline
+            person\_likes\_comment\_*.csv & Person.id | Post.id | creationDate |\\
+            \hline
+            person\_likes\_post\_*.csv & Person.id | Post.id | creationDate |\\
+            \hline
+            person\_speaks\_language\_*.csv & Person.id | language |\\
+            \hline
+            person\_studyAt\_organisation\_*.csv & Person.id | Organisation.id | classYear |\\  
+            \hline
+            person\_workAt\_organisation\_*.csv &  Person.id | Organisation.id | workFrom |\\ 
+            \hline
+            place\_*.csv & id | name | url | type({"city", "country", "continent"}) |\\
+            \hline
+            place\_isPartOf\_place\_*.csv & Place.id | Place.id |\\
+            \hline
+            post\_*.csv & id | imageFile | creationDate | locationIP | browserUsed | language | content | length |\\
+            \hline
+            post\_hasCreator\_person\_*.csv & Post.id | Person.id |\\
+            \hline
+            post\_hasTag\_tag\_*.csv & Post.id | Tag.id |\\
+            \hline
+            post\_isLocatedIn\_place.csv & Post.id | Place.id |\\
+            \hline
+            tag\_*.csv & id | name | url | \\
+            \hline
+            tag\_hasType\_tagclass\_*.csv & Tag.id | TagClass.id |\\
+            \hline
+            tagclass\_*.csv & id | name | url | \\
+            \hline
+            tagclass\_isSubclassOf\_tagclass\_*.csv & TagClass.id|TagClass.id |\\
+            \hline
+        \end{tabular}
+        \caption{Files output by CSV serializer}
+        \label{table:csv}
+\end{table}
+\end{landscape}
+
+
+
+\subsubsection{CSV\_MERGE\_FOREIGN}
+
+This is a comma separated format. It is similar to CSV, but those relations
+connecting two entities A and B, where an entity A has a cardinality of one, A
+is output as a column of entity B. Generated files are summarized at
+Table~\ref{table:csv_merge_foreign}. Depending on the number of threads used for generating
+the dataset, the number of files varies, since there is a file generated per
+thread. The * in the file names indicates a number between 0 and
+
+\begin{landscape}
+    \begin{table}[t]
+        \footnotesize
+        \centering
+        \begin{tabular}{|p{5cm}|p{19cm}|}
+            \hline
+            \textbf{File} & \textbf{Content} \\
+            \hline
+            comment\_*.csv & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment |\\
+            \hline
+            forum\_*.csv & id | title | creationDate | moderator |\\
+            \hline
+            forum\_hasMember\_person\_*.csv & Forum.id | Person.id | joinDate |\\
+            \hline
+            forum\_hasTag\_tag\_*.csv & Forum.id | Tag.id |\\
+            \hline
+            organization\_*.csv & id | type({"university", "company"}) | name | url |\\
+            \hline
+            organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id |\\
+            \hline
+            person\_*.csv & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed | place |\\ 
+            \hline
+            person\_email\_emailaddress\_*.csv & Person.id | email |\\
+            \hline
+            person\_hasInterest\_tag\_*.csv &  Person.id(Long) | Tag.id |\\
+            \hline
+            person\_knows\_person\_*.csv & Person.id | Person.id  | creationDate |\\
+            \hline
+            person\_likes\_comment\_*.csv & Person.id | Post.id | creationDate |\\
+            \hline
+            person\_likes\_post\_*.csv & Person.id | Post.id | creationDate |\\
+            \hline
+            person\_speaks\_language\_*.csv & Person.id | language |\\
+            \hline
+            person\_studyAt\_organisation\_*.csv & Person.id | Organisation.id | classYear |\\  
+            \hline
+            person\_workAt\_organisation\_*.csv &  Person.id | Organisation.id | workFrom |\\ 
+            \hline
+            place\_*.csv & id | name | url | type({"city", "country", "continent"}) |\\
+            \hline
+            place\_isPartOf\_place\_*.csv & Place.id | Place.id |\\
+            \hline
+            post\_*.csv & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place |\\
+            \hline
+            post\_hasTag\_tag\_*.csv & Post.id | Tag.id |\\
+            \hline
+            tag\_*.csv & id | name | url | \\
+            \hline
+            tag\_hasType\_tagclass\_*.csv & Tag.id | TagClass.id |\\
+            \hline
+            tagclass\_*.csv & id | name | url | \\
+            \hline
+            tagclass\_isSubclassOf\_tagclass\_*.csv & TagClass.id | TagClass.id |\\
+            \hline
+        \end{tabular}
+        \caption{Files output by CSV\_MERGE\_FOREIGN serializer}
+        \label{table:csv_merge_foreign}
+\end{table}
+\end{landscape}
+

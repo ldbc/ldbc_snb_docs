@@ -1,0 +1,166 @@
+\documentclass{ldbc}
+
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{bbding}
+\usepackage{xcolor}
+\usepackage{rotating}
+\usepackage{pifont} 
+\usepackage{rotating}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{listings}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\yes}{\color{green}\ding{51}\color{black}}
+\newcommand{\no}{\color{red}\ding{55}\color{black}}
+
+\newcommand{\cref}[1]{Chapter~\ref{#1}}
+\newcommand{\sref}[1]{Section~\ref{#1}}
+\newcommand{\tref}[1]{Table~\ref{#1}}
+\newcommand{\fref}[1]{Figure~\ref{#1}}
+\newcommand{\eref}[1]{Equation~\ref{#1}}
+\newcommand{\aref}[1]{Appendix~\ref{#1}}
+
+% Alex Averbuch: used internally only, to make missing/erroneous sections stand out
+\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}  
+
+% todo change the following information as appropriate
+%\WP{N/A}
+\renewcommand{\wpIDText}{N/A}
+\WPTitle{Social Network Benchmark Task Force}
+
+%\delID{}
+\renewcommand{\delIDText}{}
+\delName{LDBC Social Network Benchmark (SNB) - v0.1.3 First Public Draft Release v0.1.3}
+
+\dueDate{M12}
+\submissionDate{M13}
+
+%dissemination level
+\dissPU % Public
+%\dissRE % Restricted to group
+%\dissPP % Restricted to programme
+%\dissCO % Consortium-only
+
+%nature
+\natR % Report
+%\natP % Prototype
+%\natD % Demonstrator
+%\natO % Other
+
+\author{[Arnau Prat (UPC)]}
+\authorPartner{Arnau Prat (UPC)}
+\responsibleAuthor{Arnau Prat}
+\responsiblePartner{UPC}
+\responsiblePhone{+34934054032}
+\responsibleEmail{aprat@ac.upc.edu}
+
+% comment the following out if there are no contributors beside the main authors
+\contributor{[Peter Boncz (VUA), Josep Llu\'is Larriba (UPC), Renzo
+Angles (TALCA), Alex Averbuch (NEO), Orri Erling (OGL), Andrey
+Gubichev (TUM), Mirko Spasi\'c (OGL)], Minh-Duc Pham (VUA), Norbert Mart\'inez (SPARSITY)}
+
+\reviewerOne{\alert{???}}
+\reviewerTwo{\alert{???}}
+
+\keywords{benchmark, choke points, dataset generator, graph database, query set, RDF, workload, auditing rules, publication rules, scale factors}
+
+% for version numbers, use 2 digits separated by a dot (First digit is
+% 0 for ``draft'', 1 for ``project approved'', 2 for ``further revisions''
+% such as when the EC rejected version 1
+\versionLog{
+    \versionLogEntry{19/05/2014}{0.1}{Arnau Prat}{First draft}
+}
+\lastVersion{0.1}
+
+% uncomment the following for final version
+%\final
+
+\documentUrl{\url{https://svn.sti2.at/ldbc/trunk/sib_spec/sib_spec.tex/}}
+
+\abstract{
+LDBC's Social Network Benchmark (LDBC-SNB) is an effort intended to test
+various functionalities of systems used for graph-like data management. For this,
+LDBC-SNB uses the recognizable scenario of operating a social network, characterized by
+its graph-shaped data.
+
+LDBC-SNB consists of three sub-benchmarks, or workloads, that focus on different
+functionalities. In this document, a preliminary version of the Interactive
+Workload, which contains lookup queries, is presented. The other
+workloads, still in development, are the Business
+Intelligence Workloads (with analytical queries), and the Graph Analytics
+Workload (with graph algorithms).
+
+This document contains a detailed explanation of the data used in the
+whole LDBC-SNB benchmark, a detailed description for all the Interactive Workload
+lookup queries, and instructions on how to generate the data and run the benchmark
+with the provided software.
+}
+
+\execSummary{
+
+The new data economy era, based on complexly structured, distributed and large
+datasets, has brought on new demands on data management and analytics.  As a
+consequence, new industry actors have appeared, offering technologies specially
+build for the management of graph-like data. Also, traditional database
+technologies, such as relational databases, are being adapted to the new
+demands to remain competitive. 
+
+LDBC's Social Network Benchmark (LDBC-SNB) is an industry and academia
+initiative, formed by principal actors in the field of graph-like data
+management. His goal is to define a framework where different graph based
+technologies can be fairly tested and compared, that can drive the
+identification of systems' bottlenecks and required functionalities, and can
+help researchers to open new research lines. 
+
+The philosophy around which LDBC-SNB is being designed is to be easy to
+understand, to be felxible and to be cheap to adopt. For all these reasons,
+LDBC-SNB will propose different workloads representing all the usage scenarios
+of graph-like database technologies, hence, targeting systems of different
+nature and characteristics.  In order increase its adoption by industry and
+reasearch institutions, LDBC-SNB provides all the necessary software, which are 
+designed to be easy to use and deploy at a small cost.
+
+This preliminary version of the LDBC-SNB specification, contains a detailed
+explanation of the data used in the whole LDBC-SNB benchmark, a detailed
+description for all the Interactive Workload lookup queries, and instructions
+on how to generate the data and run the benchmark with the provided software.
+}
+
+\begin{document}
+
+\maketitle
+
+%\include{glossary}
+
+\listoffigures
+\listoftables
+\chapter*{Definitions}
+\input{defs}
+
+\chapter{Introduction}
+\input{introduction}
+
+\chapter{Formal Definition}
+\input{definition}
+
+\chapter{Implementation Instructions}\label{chapter:instructions}
+\input{instructions}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\appendix
+
+\chapter{Interactive Query Set Implementations}
+\input{sib_implementation}
+
+\chapter{Scale Factor Statistics}
+\input{sf_statistics}
+
+\end{document}
