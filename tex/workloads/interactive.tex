@@ -13,71 +13,71 @@ The choke points can be summarized in the following list:
 \begin{itemize}
     \item \textbf{Aggregation Performance.}
 
-The queries generally have a top k order by and often a group by in
-addition to this.  These offer multiple optimization opportunities.
-The queries also often have distinct operators, i.e. distinct friends
-within two steps.  Collectively these are all set operations that may
-be implemented with some combination of hash and sorting, possibly
-exploiting ordering in the data itself.  The aggregates are not
-limited to counts and sums.  For example string concatenation occurs
-as an aggregate, testing possible user defined aggregate support.
-There is a wide range of cardinalities in grouping, from low, e.g. country, to high, e.g. post.
+        The queries generally have a top k order by and often a group by in
+        addition to this.  These offer multiple optimization opportunities.
+        The queries also often have distinct operators, i.e. distinct friends
+        within two steps.  Collectively these are all set operations that may
+        be implemented with some combination of hash and sorting, possibly
+        exploiting ordering in the data itself.  The aggregates are not
+        limited to counts and sums.  For example string concatenation occurs
+        as an aggregate, testing possible user defined aggregate support.
+        There is a wide range of cardinalities in grouping, from low, e.g. country, to high, e.g. post.
 
     \item \textbf{Join Performance.}
 
-Each graph traversal step is in principle a join.  The join patterns are
-diverse, exercising both index and hash based operators.   Queries are designed
-so as to reward judicious use of hash join by having patterns starting with one
-entity, fetching many related entities and then testing how these are related
-to a third entity, e.g. posts of a user with a tag of a given type. 
+        Each graph traversal step is in principle a join.  The join patterns are
+        diverse, exercising both index and hash based operators.   Queries are designed
+        so as to reward judicious use of hash join by having patterns starting with one
+        entity, fetching many related entities and then testing how these are related
+        to a third entity, e.g. posts of a user with a tag of a given type. 
 
     \item \textbf{Data Access Locality.}
 
-Graph problems are notoriously non-local.  However, when queries touch
-any non-trivial fraction of a dataset, locality will emerge and can be
-exploited, for example by vectored index access or by ordering data so
-that that a merge join is possible.
+        Graph problems are notoriously non-local.  However, when queries touch
+        any non-trivial fraction of a dataset, locality will emerge and can be
+        exploited, for example by vectored index access or by ordering data so
+        that that a merge join is possible.
 
     \item \textbf{Expression Calculation.}
 
-Queries often have expressions, including conditional expressions.
-This provides opportunities for vectoring and tests efficient
-management of intermediate results.
+        Queries often have expressions, including conditional expressions.
+        This provides opportunities for vectoring and tests efficient
+        management of intermediate results.
 
     \item \textbf{Correlated Subqueries.}
 
-The workload has many correlated subqueries, for example constructts
-like x within two steps but not in one step, which would typically be
-a correlated subquery with NOT EXISTS.  There are also scalar
-subqueries with aggregation, for example returning the count of posts
-satisfying a certain criteria.
+        The workload has many correlated subqueries, for example constructts
+        like x within two steps but not in one step, which would typically be
+        a correlated subquery with NOT EXISTS.  There are also scalar
+        subqueries with aggregation, for example returning the count of posts
+        satisfying a certain criteria.
 
 
     \item \textbf{Parallelism and Concurrency.}
 
-All queries offer opportunities for parallelism.  This tests a wide
-range of constructs, for example partitioned parallel variants of
-group by and distinct.  An interactive workload will typically avoid
-trivially parallelizable table scans.  Thus the opportunities that
-exist must be captured by index based, navigational query plans.  The
-choice of whether to parallelize or not is often left to run time and
-will have to depend on the actual data seen in the execution, as
-starting a parallel thread with too little to do is
-counter-productive.
+        All queries offer opportunities for parallelism.  This tests a wide
+        range of constructs, for example partitioned parallel variants of
+        group by and distinct.  An interactive workload will typically avoid
+        trivially parallelizable table scans.  Thus the opportunities that
+        exist must be captured by index based, navigational query plans.  The
+        choice of whether to parallelize or not is often left to run time and
+        will have to depend on the actual data seen in the execution, as
+        starting a parallel thread with too little to do is
+        counter-productive.
 
 
     \item \textbf{Graph Specifics.}
 
-Graph problems are generally characterized by transitive properties
-and the fact that neighboring vertices often have a large overlap in
-their environments.  This makes cardinality estimation harder.  For
-example, a query optimizer needs to recognize whether a relationship
-has a tree or graph shape in order to make correct cardinality
-estimations.  Further, there are problems aggregating properties over
-a set of consecutive edges.  The workload contains business questions
-dealing with paths and aggregates across paths, as well as the easier
-case of determining a membership in a hierarchy with a transitive
-part-of relation.
+        Graph problems are generally characterized by transitive properties
+        and the fact that neighboring vertices often have a large overlap in
+        their environments.  This makes cardinality estimation harder.  For
+        example, a query optimizer needs to recognize whether a relationship
+        has a tree or graph shape in order to make correct cardinality
+        estimations.  Further, there are problems aggregating properties over
+        a set of consecutive edges.  The workload contains business questions
+        dealing with paths and aggregates across paths, as well as the easier
+        case of determining a membership in a hierarchy with a transitive
+        part-of relation.
 \end{itemize}
 
 
@@ -90,30 +90,30 @@ and \textit{results}, a list of expected results and their types.
 The syntax used in \textit{parameters} and \textit{results} sections is as follows:
 
 {\small
-\begin{itemize}
-	\item \textbf{Entity}: entity type in the dataset.\\
-		One word, possibly constructed by appending multiple words together, starting with uppercase character and following the camel case notation,
-		e.g. \texttt{TagClass} represents an entity of type ``TagClass''.
-	\item \textbf{Relationship}: relationship type in the dataset.\\	
-		One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-		and surrounded by arrow to communicate direction, 
-		e.g. \texttt{-worksAt->} represents a directed relationship of type ``worksAt''.
-	\item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
-		One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-		and prefixed by a ``.'' to dereference the entity/relationship, 
-		e.g. \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity, 
-		and \texttt{-studyAt->.classYear} refers to ``classYear'' attribute on the ``studyAt'' relationship.
-	\item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
-		Surrounded by \{ and \} braces, with the element type between them,
-		e.g. \texttt{\{String\}} refers to a set of strings.
-	\item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.\\
-		Surrounded by [ and ] braces, with the element type between them,
-		e.g. \texttt{[String]} refers to a list of strings.
-	\item \textbf{Ordered Tuple}: a fixed length, fixed order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
-		Surrounded by < and > braces, with the element types between them in a specific order
-		e.g. \texttt{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
-		and \texttt{[<String, Boolean>]} is an ordered list of those 2-tuples.
-\end{itemize}
+    \begin{itemize}
+        \item \textbf{Entity}: entity type in the dataset.\\
+            One word, possibly constructed by appending multiple words together, starting with uppercase character and following the camel case notation,
+            e.g. \texttt{TagClass} represents an entity of type ``TagClass''.
+        \item \textbf{Relationship}: relationship type in the dataset.\\	
+            One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
+            and surrounded by arrow to communicate direction, 
+            e.g. \texttt{-worksAt->} represents a directed relationship of type ``worksAt''.
+        \item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
+            One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
+            and prefixed by a ``.'' to dereference the entity/relationship, 
+            e.g. \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity, 
+            and \texttt{-studyAt->.classYear} refers to ``classYear'' attribute on the ``studyAt'' relationship.
+        \item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
+            Surrounded by \{ and \} braces, with the element type between them,
+            e.g. \texttt{\{String\}} refers to a set of strings.
+        \item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.\\
+            Surrounded by [ and ] braces, with the element type between them,
+            e.g. \texttt{[String]} refers to a list of strings.
+        \item \textbf{Ordered Tuple}: a fixed length, fixed order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
+            Surrounded by < and > braces, with the element types between them in a specific order
+            e.g. \texttt{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
+            and \texttt{[<String, Boolean>]} is an ordered list of those 2-tuples.
+    \end{itemize}
 }
 
 \subsubsection{Lookup Query Descriptions}
@@ -121,387 +121,387 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
 
 Notes:
 \begin{itemize}
-\item Some queries require returning the content of a post. As stated in the
-    schema, posts have content or imageFile, but not both. An empty string in
-    content represents the post not having content, therefore, it must have a
-    non empty string in imageFile and the other way around.
+    \item Some queries require returning the content of a post. As stated in the
+        schema, posts have content or imageFile, but not both. An empty string in
+        content represents the post not having content, therefore, it must have a
+        non empty string in imageFile and the other way around.
 \end{itemize}
 
 {\small
-\begin{enumerate}
-	\item Friends with certain name
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find up to 20 Persons with a given first name
-            that the start Person is connected to (excluding start Person) by
-            at most 3 steps via Knows relationships. Return Persons, including
-            summaries of the Persons workplaces and places of study.  Sort
-            results ascending by their distance from the start Person, for
-            Persons within the same distance sort ascending by their last name,
-            and for Persons with same last name ascending by their identifier
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{ll}
-				Person.id 										& ID \\
-				Person.firstName								& String \\
-			\end{tabular}
-		\item \textbf{Results:} \\
-			\begin{tabular}{ll}
-				Person.id 										& ID \\
-				Person.lastName									& String \\
-				Person.birthday 								& Date \\
-				Person.creationDate 							& DateTime  \\
-				Person.gender 									& String \\
-				Person.browserUsed 								& String \\
-				Person.locationIP 								& String \\
-				\{Person.emails\} 								& \{String\} \\
-				\{Person.language\}  							& \{String\} \\
-				Person-isLocatedIn->Place.name 				& String \\
-				\{Person-studyAt->University.name, \\
-				Person-studyAt->.classYear,  \\
-				Person-studyAt->University-isLocatedIn->City.name\}	& \{<String, 32-bit Integer, String>\} \\
-				\{Person-workAt->Company.name, \\
-				Person-workAt->.workFrom, \\
-				Person-workAt->Company-isLocatedIn->Country.name\} & \{<String, 32-bit Integer, String>\} \\
-			\end{tabular}
-	\end{itemize}
-
-	\item Recent posts and comments by your friends
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find (most recent) Posts and Comments from
-            all of that Person's friends, that were created before (and
-            including) a given date.  Return the top 20 Posts/Comments, and the
-            Person that created each of them.  Sort results descending by
-            creation date, and then ascending by Post identifier.			
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{ll}
-				Person.id 										& ID \\
-				date 											& DateTime \\
-			\end{tabular}
-		\item \textbf{Results:} \\
-			\begin{tabular}{ll}
-				Person.id 										& ID \\
-				Person.firstName								& String \\
-				Person.lastName									& String \\
-				Post.id/Comment.id 								& ID \\
-				Post.content/Post.imageFile/Comment.content 	& String \\
-				Post.creationDate/Comment.creationDate			& DateTime \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item Friends and friends of friends that have been to countries X and Y
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find Persons that are their friends and
-            friends of friends (excluding start Person) that have made
-            Posts/Comments in both of the given Countries, X and Y, within a
-            given period.  Only Persons that are foreign to Countries X and Y
-            are considered, that is Persons whose Location is not Country X or
-            Country Y.  Return top 20 Persons, and their Post/Comment counts,
-            in the given countries and period.  Sort results descending by
-            total number of Posts/Comments, and then ascending by Person
-            identifier.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 										& ID & \\
-				CountryX.name									& String & \\
-				CountryY.name									& String & \\
-				startDate										& Date 	& // beginning of requested period \\
-				duration										& 32-bit Integer 					& // duration of requested period, in days \\
-                                                                &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 										& ID 	& \\
-				Person.firstName 								& String 			& \\
-				Person.lastName 								& String 			& \\
-				countx 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country X made by Person \par 
-																					within the given time\strut} \\
-				county 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country Y made by Person \par 
-																					within the given time\strut} \\
-				count 											& 32-bit Integer 	& // countx + county \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item New topics
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find Tags that are attached to Posts that
-            were created by that Person's friends.  Only include Tags that were
-            attached to Posts created within a given time interval, and that
-            were never attached to Posts created before this interval.  Return
-            top 10 Tags, and the count of Posts, which were created within the
-            given time interval, that this Tag was attached to.  Sort results
-            descending by Post count, and then ascending by Tag name.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 										& ID 	& \\
-				startDate 										& Date & \\
-				duration										& 32-bit Integer 					& // duration of requested period, in days \\
-                                                                &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
-			\end{tabular} 
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Tag.name 										& String 	& \\
-				count 											& 32-bit Integer & // number of Posts made within the given time interval that have this Tag \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item New groups
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find the Forums which that Person's friends
-            and friends of friends (excluding start Person) became Members of
-            after a given date.  Return top 20 Forums, and the number of Posts
-            in each Forum that was Created by any of these Persons.  For each
-            Forum consider only those Persons which joined that particular
-            Forum after the given date.  Sort results descending by the count
-            of Posts, and then ascending by Forum identifier
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 										& ID & \\
-				date 											& Date & \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Forum.title 										& String & \\
-				count 	 											& 32-bit Integer & \parbox[t]{20cm}{// number of Posts made in Forum that were created 																							by friends \par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item Tag co-occurrence
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person and some Tag, find the other Tags that occur
-            together with this Tag on Posts that were created by start Person's
-            friends and friends of friends (excluding start Person).  Return
-            top 10 Tags, and the count of Posts that were created by these
-            Persons, which contain both this Tag and the given Tag. Sort
-            results descending by count, and then ascending by Tag name.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 										& ID & \\
-				Tag.name 	 									& String & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Tag.name 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-				count 								& 32-bit Integer & \parbox[t]{20cm}{// number of Posts that were created by friends and friends of friends, \par 
-																							which contain this Tag\strut} \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item Recent likes
-	\begin{itemize}
-		\item \textbf{Description:}
-             Given a start Person, find (most recent) Likes on any of start
-             Person's Posts/Comments.  Return top 20 Persons that Liked any of
-             start Person's Posts/Comments, the Post/Comment they liked most
-             recently, creation date of that Like, and the latency (in minutes)
-             between creation of Post/Comment and Like.  Additionally, return a
-             flag indicating whether the liker is a friend of start Person.  In
-             the case that a Person Liked multiple Posts/Comments at the same
-             time, return the Post/Comment with lowest identifier.  Sort
-             results descending by creation time of Like, then ascending by
-             Person identifier of liker.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& 64-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 							& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-				Like.creationDate 	 						& DateTime & \parbox[t]{20cm}{\par \strut} \\
-				Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
-				latency 	 								& 32-bit Integer & \parbox[t]{20cm}{// duration between creation of\par Post/Comment and Like, in minutes\strut} \\
-				isNew										& Boolean & \parbox[t]{20cm}{// false if liker Person is friend of\par start Person, true otherwise \strut} \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item Recent replies
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find (most recent) Comments that are replies
-            to Posts/Comments of the start Person. Only consider immediate
-            (1-hop) replies, not the transitive (multi-hop) case.  Return the
-            top 20 reply Comments, and the Person that created each reply
-            Comment.  Sort results descending by creation date of reply
-            Comment, and then ascending by identifier of reply Comment.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
-				Comment.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
-				Comment.content 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item Recent posts and comments by friends or friends of friends
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find the (most recent) Posts/Comments created
-            by that Person's friends or friends of friends (excluding start
-            Person). Only consider the Posts/Comments created before a given
-            date (excluding that date). Return the top 20 Posts/Comments, and
-            the Person that created each of those Posts/Comments. Sort results
-            descending by creation date of Post/Comment, and then ascending by
-            Post/Comment identifier.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				date 		 						& Date & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-				Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
-				Post.creationDate/Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-
-	\item Friend recommendation
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find that Person's friends of friends
-            (excluding start Person, and immediate friends), who were born on
-            or after the 21st of a given month (in any year) and before the
-            22nd of the following month.  Calculate the similarity between each
-            of these Persons and start Person, where similarity for any Person
-            is defined as follows: 
-			\begin{itemize}
-				\item common = number of Posts created by that Person, such that the Post has a Tag that start Person is Interested in
-				\item uncommon = number of Posts created by that Person, such that the Post has no Tag that start Person is Interested in
-				\item similarity = common - uncommon
-			\end{itemize}
-			Return top 10 Persons, their Place, and their similarity score.
-			Sort results descending by similarity score, and then ascending by Person identifier
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				month 		 						& 32-bit Integer & \parbox[t]{20cm}{// between 1-12\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
-				similarity 	 						& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-				Person.gender 	 					& String & \parbox[t]{20cm}{\par \strut} \\
-				Person-isLocatedIn->Place.name 	    & Sting & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item Job referral
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find that Person's friends and friends of
-            friends (excluding start Person) who started Working in some
-            Company in a given Country, before a given date (year).  Return top
-            10 Persons, the Company they worked at, and the year they started
-            working at that Company.  Sort results ascending by the start date,
-            then ascending by Person identifier, and lastly by Organization
-            name descending.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
-				Country.name 	 			& String & \parbox[t]{20cm}{\par \strut} \\
-				year 		 				& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
-				Person-worksAt->Organization.name 	& String & \parbox[t]{20cm}{\par \strut} \\
-				Person-worksAt->.worksFrom 	 		& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item Expert search
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given a start Person, find the Comments that this Person's friends
-            made in reply to Posts, considering only those Comments that are
-            immediate (1-hop) replies to Posts, not the transitive (multi-hop) case.
-            Only consider Posts with a Tag in a given TagClass or in a
-            descendent of that TagClass.  Count the number of these reply
-            Comments, and collect the Tags that were attached to the Posts they
-            replied to.  Return top 20 Persons, the reply count, and the
-            collection of Tags.  Sort results descending by Comment count, and
-            then ascending by Person identifier
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 					& ID & \parbox[t]{20cm}{\par \strut} \\
-				TagClass.name	 				& String & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 	 	& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 	 	& String & \parbox[t]{20cm}{\par \strut} \\
-				\{Tag.name\} 	 			& \{String\} & \parbox[t]{20cm}{\par \strut} \\
-				count 	 				& 32-bit Integer & \parbox[t]{20cm}{// number of reply Comments\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item Single shortest path
-	\begin{itemize}
-		\item \textbf{Description:}
-			Given two Persons, find the shortest path between these two Persons in the subgraph induced by the Knows relationships.
-			Return the length of this path. 
+    \begin{enumerate}
+        \item Friends with certain name
             \begin{itemize}
-                \item -1 : no path found
-                \item 0: start person = end person
-                \item > 0: regular case
+                \item \textbf{Description:}
+                    Given a start Person, find up to 20 Persons with a given first name
+                    that the start Person is connected to (excluding start Person) by
+                    at most 3 steps via Knows relationships. Return Persons, including
+                    summaries of the Persons workplaces and places of study.  Sort
+                    results ascending by their distance from the start Person, for
+                    Persons within the same distance sort ascending by their last name,
+                    and for Persons with same last name ascending by their identifier
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                        Person.id 										& ID \\
+                        Person.firstName								& String \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                    \begin{tabular}{ll}
+                        Person.id 										& ID \\
+                        Person.lastName									& String \\
+                        Person.birthday 								& Date \\
+                        Person.creationDate 							& DateTime  \\
+                        Person.gender 									& String \\
+                        Person.browserUsed 								& String \\
+                        Person.locationIP 								& String \\
+                        \{Person.emails\} 								& \{String\} \\
+                        \{Person.language\}  							& \{String\} \\
+                        Person-isLocatedIn->Place.name 				& String \\
+                        \{Person-studyAt->University.name, \\
+                            Person-studyAt->.classYear,  \\
+                        Person-studyAt->University-isLocatedIn->City.name\}	& \{<String, 32-bit Integer, String>\} \\
+                            \{Person-workAt->Company.name, \\
+                                Person-workAt->.workFrom, \\
+                            Person-workAt->Company-isLocatedIn->Country.name\} & \{<String, 32-bit Integer, String>\} \\
+                            \end{tabular}
+                    \end{itemize}
+
+                \item Recent posts and comments by your friends
+                    \begin{itemize}
+                        \item \textbf{Description:}
+                            Given a start Person, find (most recent) Posts and Comments from
+                            all of that Person's friends, that were created before (and
+                            including) a given date.  Return the top 20 Posts/Comments, and the
+                            Person that created each of them.  Sort results descending by
+                            creation date, and then ascending by Post identifier.			
+                        \item \textbf{Parameters:} \\
+                            \begin{tabular}{ll}
+                                Person.id 										& ID \\
+                                date 											& DateTime \\
+                            \end{tabular}
+                        \item \textbf{Results:} \\
+                            \begin{tabular}{ll}
+                                Person.id 										& ID \\
+                                Person.firstName								& String \\
+                                Person.lastName									& String \\
+                                Post.id/Comment.id 								& ID \\
+                                Post.content/Post.imageFile/Comment.content 	& String \\
+                                Post.creationDate/Comment.creationDate			& DateTime \\
+                            \end{tabular}		
+                    \end{itemize}
+
+                \item Friends and friends of friends that have been to countries X and Y
+                    \begin{itemize}
+                        \item \textbf{Description:}
+                            Given a start Person, find Persons that are their friends and
+                            friends of friends (excluding start Person) that have made
+                            Posts/Comments in both of the given Countries, X and Y, within a
+                            given period.  Only Persons that are foreign to Countries X and Y
+                            are considered, that is Persons whose Location is not Country X or
+                            Country Y.  Return top 20 Persons, and their Post/Comment counts,
+                            in the given countries and period.  Sort results descending by
+                            total number of Posts/Comments, and then ascending by Person
+                            identifier.
+                        \item \textbf{Parameters:} \\
+                            \begin{tabular}{lll}
+                                Person.id 										& ID & \\
+                                CountryX.name									& String & \\
+                                CountryY.name									& String & \\
+                                startDate										& Date 	& // beginning of requested period \\
+                                duration										& 32-bit Integer 					& // duration of requested period, in days \\
+                                                  &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
+                            \end{tabular}		
+                        \item \textbf{Results:} \\
+                            \begin{tabular}{lll}
+                                Person.id 										& ID 	& \\
+                                Person.firstName 								& String 			& \\
+                                Person.lastName 								& String 			& \\
+                                countx 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country X made by Person \par 
+                            within the given time\strut} \\
+                            county 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country Y made by Person \par 
+                        within the given time\strut} \\
+                        count 											& 32-bit Integer 	& // countx + county \\
+                    \end{tabular}		
             \end{itemize}
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				length 	 			& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-			\end{tabular}		
-	\end{itemize}
-		
-	\item Weighted/unweighted paths
-	\begin{itemize}
-		\item \textbf{Description:}
-            Given two Persons, find all (unweighted) shortest paths between
-            these two Persons, in the subgraph induced by the Knows
-            relationship. Then, for each path calculate a weight.  The nodes in
-            the path are Persons, and the weight of a path is the sum of
-            weights between every pair of consecutive Person nodes in the path.
-            The weight for a pair of Persons is calculated such that every
-            reply (by one of the Persons) to a Post (by the other Person)
-            contributes 1.0, and every reply (by ones of the Persons) to a
-            Comment (by the other Person) contributes 0.5. Return all the
-            paths with shortest length, and their weights. Sort results
-            descending by path weight. The order of paths with the same weight is unspecified.
-		\item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
-			\end{tabular}		
-		\item \textbf{Results:} \\
-			\begin{tabular}{lll}
-				[Person.id] 	& [ID] & \parbox[t]{20cm}{// Identifiers representing an ordered sequence of the Persons in the path \strut} \\
-				weight 	 					& 64-bit Float & \parbox[t]{20cm}{\strut} \\
-			\end{tabular}		
-	\end{itemize}
+
+        \item New topics
+            \begin{itemize}
+                \item \textbf{Description:}
+                    Given a start Person, find Tags that are attached to Posts that
+                    were created by that Person's friends.  Only include Tags that were
+                    attached to Posts created within a given time interval, and that
+                    were never attached to Posts created before this interval.  Return
+                    top 10 Tags, and the count of Posts, which were created within the
+                    given time interval, that this Tag was attached to.  Sort results
+                    descending by Post count, and then ascending by Tag name.
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{lll}
+                        Person.id 										& ID 	& \\
+                        startDate 										& Date & \\
+                        duration										& 32-bit Integer 					& // duration of requested period, in days \\
+                                          &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
+                    \end{tabular} 
+                \item \textbf{Results:} \\
+                    \begin{tabular}{lll}
+                        Tag.name 										& String 	& \\
+                        count 											& 32-bit Integer & // number of Posts made within the given time interval that have this Tag \\
+                    \end{tabular}		
+            \end{itemize}
+
+        \item New groups
+            \begin{itemize}
+                \item \textbf{Description:}
+                    Given a start Person, find the Forums which that Person's friends
+                    and friends of friends (excluding start Person) became Members of
+                    after a given date.  Return top 20 Forums, and the number of Posts
+                    in each Forum that was Created by any of these Persons.  For each
+                    Forum consider only those Persons which joined that particular
+                    Forum after the given date.  Sort results descending by the count
+                    of Posts, and then ascending by Forum identifier
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{lll}
+                        Person.id 										& ID & \\
+                        date 											& Date & \\
+                    \end{tabular}		
+                \item \textbf{Results:} \\
+                    \begin{tabular}{lll}
+                        Forum.title 										& String & \\
+                        count 	 											& 32-bit Integer & \parbox[t]{20cm}{// number of Posts made in Forum that were created 																							by friends \par \strut} \\
+                    \end{tabular}		
+            \end{itemize}
+
+        \item Tag co-occurrence
+            \begin{itemize}
+                \item \textbf{Description:}
+                    Given a start Person and some Tag, find the other Tags that occur
+                    together with this Tag on Posts that were created by start Person's
+                    friends and friends of friends (excluding start Person).  Return
+                    top 10 Tags, and the count of Posts that were created by these
+                    Persons, which contain both this Tag and the given Tag. Sort
+                    results descending by count, and then ascending by Tag name.
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{lll}
+                        Person.id 										& ID & \\
+                        Tag.name 	 									& String & \parbox[t]{20cm}{\par \strut} \\
+                    \end{tabular}		
+                \item \textbf{Results:} \\
+                    \begin{tabular}{lll}
+                        Tag.name 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                        count 								& 32-bit Integer & \parbox[t]{20cm}{// number of Posts that were created by friends and friends of friends, \par 
+                    which contain this Tag\strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Recent likes
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find (most recent) Likes on any of start
+                Person's Posts/Comments.  Return top 20 Persons that Liked any of
+                start Person's Posts/Comments, the Post/Comment they liked most
+                recently, creation date of that Like, and the latency (in minutes)
+                between creation of Post/Comment and Like.  Additionally, return a
+                flag indicating whether the liker is a friend of start Person.  In
+                the case that a Person Liked multiple Posts/Comments at the same
+                time, return the Post/Comment with lowest identifier.  Sort
+                results descending by creation time of Like, then ascending by
+                Person identifier of liker.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& 64-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 							& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                    Like.creationDate 	 						& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                    Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
+                    latency 	 								& 32-bit Integer & \parbox[t]{20cm}{// duration between creation of\par Post/Comment and Like, in minutes\strut} \\
+                    isNew										& Boolean & \parbox[t]{20cm}{// false if liker Person is friend of\par start Person, true otherwise \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Recent replies
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find (most recent) Comments that are replies
+                to Posts/Comments of the start Person. Only consider immediate
+                (1-hop) replies, not the transitive (multi-hop) case.  Return the
+                top 20 reply Comments, and the Person that created each reply
+                Comment.  Sort results descending by creation date of reply
+                Comment, and then ascending by identifier of reply Comment.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                    Comment.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Comment.content 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Recent posts and comments by friends or friends of friends
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find the (most recent) Posts/Comments created
+                by that Person's friends or friends of friends (excluding start
+                Person). Only consider the Posts/Comments created before a given
+                date (excluding that date). Return the top 20 Posts/Comments, and
+                the Person that created each of those Posts/Comments. Sort results
+                descending by creation date of Post/Comment, and then ascending by
+                Post/Comment identifier.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    date 		 						& Date & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                    Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Post.creationDate/Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Friend recommendation
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find that Person's friends of friends
+                (excluding start Person, and immediate friends), who were born on
+                or after the 21st of a given month (in any year) and before the
+                22nd of the following month.  Calculate the similarity between each
+                of these Persons and start Person, where similarity for any Person
+                is defined as follows: 
+                \begin{itemize}
+                    \item common = number of Posts created by that Person, such that the Post has a Tag that start Person is Interested in
+                    \item uncommon = number of Posts created by that Person, such that the Post has no Tag that start Person is Interested in
+                    \item similarity = common - uncommon
+                \end{itemize}
+                Return top 10 Persons, their Place, and their similarity score.
+                Sort results descending by similarity score, and then ascending by Person identifier
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    month 		 						& 32-bit Integer & \parbox[t]{20cm}{// between 1-12\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
+                    similarity 	 						& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                    Person.gender 	 					& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-isLocatedIn->Place.name 	    & Sting & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Job referral
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find that Person's friends and friends of
+                friends (excluding start Person) who started Working in some
+                Company in a given Country, before a given date (year).  Return top
+                10 Persons, the Company they worked at, and the year they started
+                working at that Company.  Sort results ascending by the start date,
+                then ascending by Person identifier, and lastly by Organization
+                name descending.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Country.name 	 			& String & \parbox[t]{20cm}{\par \strut} \\
+                    year 		 				& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-worksAt->Organization.name 	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-worksAt->.worksFrom 	 		& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Expert search
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given a start Person, find the Comments that this Person's friends
+                made in reply to Posts, considering only those Comments that are
+                immediate (1-hop) replies to Posts, not the transitive (multi-hop) case.
+                Only consider Posts with a Tag in a given TagClass or in a
+                descendent of that TagClass.  Count the number of these reply
+                Comments, and collect the Tags that were attached to the Posts they
+                replied to.  Return top 20 Persons, the reply count, and the
+                collection of Tags.  Sort results descending by Comment count, and
+                then ascending by Person identifier
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 					& ID & \parbox[t]{20cm}{\par \strut} \\
+                    TagClass.name	 				& String & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 	 	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 	 	& String & \parbox[t]{20cm}{\par \strut} \\
+                    \{Tag.name\} 	 			& \{String\} & \parbox[t]{20cm}{\par \strut} \\
+                    count 	 				& 32-bit Integer & \parbox[t]{20cm}{// number of reply Comments\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Single shortest path
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given two Persons, find the shortest path between these two Persons in the subgraph induced by the Knows relationships.
+                Return the length of this path. 
+                \begin{itemize}
+                    \item -1 : no path found
+                    \item 0: start person = end person
+                    \item > 0: regular case
+                \end{itemize}
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                    Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    length 	 			& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                \end{tabular}		
+        \end{itemize}
+
+    \item Weighted/unweighted paths
+        \begin{itemize}
+            \item \textbf{Description:}
+                Given two Persons, find all (unweighted) shortest paths between
+                these two Persons, in the subgraph induced by the Knows
+                relationship. Then, for each path calculate a weight.  The nodes in
+                the path are Persons, and the weight of a path is the sum of
+                weights between every pair of consecutive Person nodes in the path.
+                The weight for a pair of Persons is calculated such that every
+                reply (by one of the Persons) to a Post (by the other Person)
+                contributes 1.0, and every reply (by ones of the Persons) to a
+                Comment (by the other Person) contributes 0.5. Return all the
+                paths with shortest length, and their weights. Sort results
+                descending by path weight. The order of paths with the same weight is unspecified.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                    Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
+                \end{tabular}		
+            \item \textbf{Results:} \\
+                \begin{tabular}{lll}
+                    [Person.id] 	& [ID] & \parbox[t]{20cm}{// Identifiers representing an ordered sequence of the Persons in the path \strut} \\
+                    weight 	 					& 64-bit Float & \parbox[t]{20cm}{\strut} \\
+                \end{tabular}		
+        \end{itemize}
 \end{enumerate}
 }
 
@@ -509,120 +509,120 @@ Notes:
 \begin{enumerate}
     \item Add Person 
         \begin{itemize}
-        \item \textbf{Description:} Add a Person to the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person.firstName 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.lastName 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.gender 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Person.birthDay 		& Date & \parbox[t]{20cm}{\par \strut} \\
-				Person.creationDate     & DateTime & \parbox[t]{20cm}{\par \strut} \\
-				Person.locationIp     & String & \parbox[t]{20cm}{\par \strut} \\
-				Person.browserUsed     & String & \parbox[t]{20cm}{\par \strut} \\
-				Person-isLocatedIn->City.id 	& ID & \parbox[t]{20cm}{\par \strut} \\
-                Person.speaks 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
-                Person.emails 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
-                Person-hasInterest->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
-                \{ Person-studyAt->University.id, \\
-                Person-studyAt->.classYear \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
-                \{ Person-workAt->Company.id, \\
-                Person-workAt->.workFrom \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Friendship
-        \begin{itemize}
-        \item \textbf{Description:} Add a friendship relation to the social network
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
-				Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
-				Person-knows->.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Forum
-        \begin{itemize}
-            \item \textbf{Description:} Add a Forum to the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Forum.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
-				Forum.title 	 			& String & \parbox[t]{20cm}{// person 2\strut} \\
-				Forum.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
-                Forum-hasModerator->Person.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
-                Forum-hasTag->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Forum Membership
-        \begin{itemize}
-        \item \textbf{Description:} Add a Forum membership to the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person-hasMember->Forum.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person-hasMember->.joinDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Post
-        \begin{itemize}
-        \item \textbf{Description:} Add a Post to the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-                Post.imageFile 	 			& String & \parbox[t]{20cm}{\par \strut} \\
-				Post.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-				Post.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Post.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Post.language 	 		    & String & \parbox[t]{20cm}{\par \strut} \\
-				Post.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
-				Post.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                Post-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
-                Forum-containerOf->Post.id & ID & \parbox[t]{20cm}{\par \strut} \\
-                Post-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
-                     \{Post-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Like Post
-        \begin{itemize}
-            \item \textbf{Description:} Add a Like to a Post of the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-                Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Comment
-        \begin{itemize}
-        \item \textbf{Description:} Add a Comment replying to a Post/Comment to the social network.
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Comment.creationDate 			& DateTime & \parbox[t]{20cm}{\par \strut} \\
-				Comment.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Comment.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-				Comment.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
-				Comment.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                Comment-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
-                Comment-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
-                Comment-replyOf->Post.id & ID & \parbox[t]{20cm}{ // -1 if the comment is a reply of a comment. \strut} \\
-                Comment-replyOf->Comment.id & ID & \parbox[t]{20cm}{// -1 if the comment is a reply of a post. \strut} \\
-                     \{Comment-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-    \item Add Like Comment
-        \begin{itemize}
-		\item \textbf{Description: Add a Like to a Comment of the social network.}
-        \item \textbf{Parameters:} \\
-			\begin{tabular}{lll}
-				Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-                Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
-				Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-            \end{tabular}		
-    \end{itemize}
-\end{enumerate}
+            \item \textbf{Description:} Add a Person to the social network.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.gender 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.birthDay 		& Date & \parbox[t]{20cm}{\par \strut} \\
+                    Person.creationDate     & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                    Person.locationIp     & String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.browserUsed     & String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-isLocatedIn->City.id 	& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.speaks 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
+                    Person.emails 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
+                    Person-hasInterest->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                    \{ Person-studyAt->University.id, \\
+                    Person-studyAt->.classYear \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
+                        \{ Person-workAt->Company.id, \\
+                        Person-workAt->.workFrom \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Post Like
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Like to a Post of the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Comment Like
+                \begin{itemize}
+                    \item \textbf{Description: Add a Like to a Comment of the social network.}
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Forum
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Forum to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Forum.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                            Forum.title 	 			& String & \parbox[t]{20cm}{// person 2\strut} \\
+                            Forum.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-hasModerator->Person.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-hasTag->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Forum Membership
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Forum membership to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-hasMember->Forum.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-hasMember->.joinDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Post
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Post to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post.imageFile 	 			& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Post.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.language 	 		    & String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
+                            Post.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                            Post-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-containerOf->Post.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            \{Post-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Comment
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Comment replying to a Post/Comment to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.creationDate 			& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-replyOf->Post.id & ID & \parbox[t]{20cm}{ // -1 if the comment is a reply of a comment. \strut} \\
+                            Comment-replyOf->Comment.id & ID & \parbox[t]{20cm}{// -1 if the comment is a reply of a post. \strut} \\
+                            \{Comment-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+            \item Add Friendship
+                \begin{itemize}
+                    \item \textbf{Description:} Add a friendship relation to the social network
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                            Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
+                            Person-knows->.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}		
+                \end{itemize}
+        \end{enumerate}
 
-\subsubsection{Substitution parameters}\label{section:substitution}
-\input{workloads/parameters}
+        \subsubsection{Substitution parameters}\label{section:substitution}
+        \input{workloads/parameters}
 
-\subsubsection{Load Definition}\label{section:workload}
-\input{workloads/workload}
+        \subsubsection{Load Definition}\label{section:workload}
+        \input{workloads/workload}
