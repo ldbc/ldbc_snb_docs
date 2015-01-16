@@ -1,25 +1,20 @@
-%%% INTERACTIVE QUERY SET IMPLEMENTATION %%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Virtuoso SPARQL 1.1}
 
 \subsection{Query 1} 
-
+{\footnotesize
 \begin{verbatim}
  sparql select ?fr ?last min(?dist) as ?mindist  ?bday ?since ?gen ?browser ?locationIP 
     ((select group_concat (?email, ", ")
         where {
             ?frr snvoc:email ?email .
-        filter (?frr = ?fr) .
+            filter (?frr = ?fr) .
         }
         group by ?frr)) as ?email
     ((select group_concat (?lng, ", ")
         where {
             ?frr snvoc:speaks ?lng .
-        filter (?frr = ?fr) .
+            filter (?frr = ?fr) .
         }
         group by ?frr)) as ?lng
     ?based
@@ -36,26 +31,26 @@
         group by ?frr)) as ?studyAt
     ((select group_concat ( bif:concat (?o_name, " ", ?year, " ", ?o_country), ", ")
         where {
-        ?frr snvoc:workAt ?w .
-        ?w snvoc:workFrom ?year .
+            ?frr snvoc:workAt ?w .
+            ?w snvoc:workFrom ?year .
             ?w snvoc:hasOrganisation ?org .
             ?org snvoc:isLocatedIn ?o_countryURI .
-        ?o_countryURI foaf:name ?o_country .
+            ?o_countryURI foaf:name ?o_country .
             ?org foaf:name ?o_name .
-        filter (?frr = ?fr) .
+            filter (?frr = ?fr) .
         }
         group by ?frr)) as ?workAt
     {
         ?fr a snvoc:Person .
         ?fr snvoc:firstName "%Name%" .
-    ?fr snvoc:lastName ?last .
+        ?fr snvoc:lastName ?last .
         ?fr snvoc:birthday ?bday .
         ?fr snvoc:isLocatedIn ?basedURI .
-    ?basedURI foaf:name ?based .
+        ?basedURI foaf:name ?based .
         ?fr snvoc:creationDate ?since .
         ?fr snvoc:gender ?gen .
-    ?fr snvoc:locationIP ?locationIP .
-    ?fr snvoc:browserUsed ?browser .
+        ?fr snvoc:locationIP ?locationIP .
+        ?fr snvoc:browserUsed ?browser .
 
         {
           { select distinct ?fr (1 as ?dist)
@@ -86,12 +81,12 @@
     order by ?mindist ?last ?fr
     limit 20
 \end{verbatim}
-
-
+}
  
 
 \subsection{Query 2}
 
+{\footnotesize
 \begin{verbatim}
  sparql select ?fr ?first ?last ?post ?content ?date 
 from <sib>
@@ -106,10 +101,12 @@ where {
 order by desc (?date) ?post
 limit 20
 \end{verbatim}
+}
 
 
 \subsection{Query 3}
 
+{\footnotesize
 \begin{verbatim}
  sparql select ?fr ?first ?last ?ct1 ?ct2 (?ct1 + ?ct2) as ?sum 
 from <sib>  
@@ -149,10 +146,12 @@ where {
 order by desc(6) ?fr
 limit 20
 \end{verbatim}
+}
 
  
 
 \subsection{Query 4}
+{\footnotesize
 \begin{verbatim}
 sparql select ?tagname count (*) #Q4
 from <sib>
@@ -176,37 +175,41 @@ group by ?tagname
 order by desc(2) ?tagname
 limit 10
 \end{verbatim}
+}
 
 
 \subsection{Query 5}
+{\footnotesize
 \begin{verbatim}
-sparql select ?tagname count (*) #Q6
+sparql select ?title count (*) #Q5
 from <sib>
-where {  
-    {  select distinct ?fr
-       from <sib>
-       where {
-           {sn:pers%Person% snvoc:knows ?fr.} 
+where {
+    {select distinct ?fr
+        from <sib>
+        where {
+            {sn:pers%Person% snvoc:knows ?fr.} 
             union {sn:pers%Person% snvoc:knows ?fr2. 
-                    ?fr2 snvoc:knows ?fr. 
-                    filter (?fr != sn:pers%Person%)}
-       }
+                   ?fr2 snvoc:knows ?fr. 
+                   filter (?fr != sn:pers%Person%)}
+        }
     } .
-    ?post a snvoc:Post .
+    ?group snvoc:hasMember ?mem .
+    ?mem snvoc:hasPerson ?fr .
+    ?mem snvoc:joinDate ?date .
+    filter (?date >= "%Date0%"^^xsd:date) .
     ?post snvoc:hasCreator ?fr .
-    ?post snvoc:hasTag ?tag1 .
-    ?tag1 foaf:name ?tagname1 .
-    filter (?tagname1 != '%Tag%') .
-    ?post snvoc:hasTag ?tag .
-    ?tag foaf:name ?tagname .
+    ?group snvoc:containerOf ?post .
+    ?group snvoc:title ?title.
 }
-group by ?tagname
-order by desc(2) ?tagname
-limit 10
+group by ?title
+order by desc(2) ?title
+limit 20
 \end{verbatim}
+}
  
 
 \subsection{Query 6}
+{\footnotesize
 \begin{verbatim}
 sparql select ?tagname count (*) 
 from <sib>
@@ -230,11 +233,13 @@ group by ?tagname
 order by desc(2) ?tagname
 limit 10
 \end{verbatim}
+}
 
 
 
 
 \subsection{Query 7}
+{\footnotesize
 \begin{verbatim}
  sparql select ?liker ?first ?last ?ldt 
        (if ((exists {  sn:pers%Person% snvoc:knows ?liker}), 0, 1) as ?is_new)
@@ -250,10 +255,13 @@ where {
 order by desc (?ldt) ?liker
 limit 20
 \end{verbatim}
+}
 
  
 
 \subsection{Query 8}
+
+{\footnotesize
 \begin{verbatim}
 sparql select ?from ?first ?last ?dt ?rep ?content 
 where {
@@ -271,9 +279,11 @@ where {
 }
 order by desc(?dt) ?rep
 \end{verbatim}
+}
 
 \subsection{Query 9}
 
+{\footnotesize
 \begin{verbatim}
 sparql select ?fr ?first ?last ?post ?content ?date 
 from <sib>
@@ -295,8 +305,10 @@ where {
 order by desc (?date) ?post
 limit 20
 \end{verbatim}
+}
 
 \subsection{Query 10}
+{\footnotesize
 \begin{verbatim}
  sparql select ?first ?last 
     ((( select  count (distinct ?post)
@@ -337,10 +349,12 @@ where {
 order by desc(3) ?fof
 limit 10
 \end{verbatim}
+}
 
  
 
 \subsection{Query 11}
+{\footnotesize
 \begin{verbatim}
  sparql select ?first ?last ?startdate ?orgname ?fr 
 where {
@@ -365,9 +379,11 @@ where {
 order by ?startdate ?fr ?orgname
 limit 10
 \end{verbatim}
+}
 
 
 \subsection{Query 12}
+{\footnotesize
 \begin{verbatim}
 sparql select ?exp ?first ?last sql:group_concat_distinct(?tagname) count (*) #Q12
 where {
@@ -386,9 +402,11 @@ group by ?exp ?first ?last
 order by desc(5) ?exp
 limit 20
 \end{verbatim}
+}
 
 
 \subsection{Query 13} 
+{\footnotesize
 \begin{verbatim}
 sparql select count(*) 
 where
@@ -412,8 +430,10 @@ where
     filter (?path_no = 0).
   }
 \end{verbatim}
+}
 
 \subsection{Query 14}
+{\footnotesize
 \begin{verbatim}
 create procedure path_str_sparql (in path any)
 {
@@ -489,11 +509,14 @@ where
 order by desc(?sc)
 limit 10
 \end{verbatim}
+}
 
 
 \section{Virtuoso SQL}
 Important: Virtuoso SQL implementation assumes that both Post and Comment entities share the same table.
 \subsection{Query 1}
+
+{\footnotesize
 \begin{verbatim}
 select top 20 id, p_lastname, min (dist) as dist,
        p_birthday, p_creationdate, p_gender, p_browserused,
@@ -550,9 +573,11 @@ from
   group by id, p_lastname
   order by dist, p_lastname, id
 \end{verbatim}
+}
  
 
 \subsection{Query 2}
+{\footnotesize
 \begin{verbatim}
 select top 20 p_personid as personid, p_firstname as firstname, p_lastname as lastname,
        ps_postid as id, ps_content || ps_imagefile as content, ps_creationdate as creationdate
@@ -564,9 +589,11 @@ where
     k_person2id = p_personid
 order by creationdate desc, id
 \end{verbatim}
+}
 
 \subsection{Query 3}
 
+{\footnotesize
 \begin{verbatim}
 select top 20 p_personid, p_firstname, p_lastname, ct1, ct2, total
 from
@@ -614,9 +641,11 @@ p2.pl_name <> '@Country2@' and
 f.k_person2id = cpc.ps_c_creatorid
 order by 6 desc, 1
 \end{verbatim}
+}
  
 
 \subsection{Query 4}
+{\footnotesize
 \begin{verbatim}
 select top 10 t_name, count(*)
 from tag, post, post_tag, knows
@@ -640,9 +669,11 @@ where
 group by t_name
 order by 2 desc, t_name
 \end{verbatim}
+}
 
 
 \subsection{Query 5}
+{\footnotesize
 \begin{verbatim}
 select top 20 f_title, count(*)
 from forum, post, forum_person,
@@ -666,8 +697,10 @@ where f_forumid = ps_forumid and
 group by f_title
 order by 2 desc, f_title
 \end{verbatim}
+}
 
 \subsection{Query 6}
+{\footnotesize
 \begin{verbatim}
 select top 10 t_name, count(*)
 from tag, post_tag, post,
@@ -695,9 +728,11 @@ exists (select * from tag, post_tag where pst_postid = ps_postid and
 group by t_name
 order by 2 desc, t_name
 \end{verbatim}
+}
 
 
 \subsection{Query 7}
+{\footnotesize
 \begin{verbatim}
 select top 20 p_personid , p_firstname, p_lastname, l_creationdate,
               (case when k_person2id is null then 1 else 0 end) as is_new,
@@ -717,9 +752,11 @@ left join
 on k.k_person2id = p.p_personid
 order by l_creationdate desc, 1
 \end{verbatim}
+}
  
 
 \subsection{Query 8}
+{\footnotesize
 \begin{verbatim}
 select top 20 p1.ps_creatorid, 
               p_firstname, 
@@ -734,10 +771,12 @@ select top 20 p1.ps_creatorid,
       p_personid = p1.ps_creatorid
 order by p1.ps_creationdate desc, 5
 \end{verbatim}
+}
 
 
 
 \subsection{Query 9}
+{\footnotesize
 \begin{verbatim}
 select top 20 p_personid, p_firstname, p_lastname,
        ps_postid, ps_content || ps_imagefile, ps_creationdate
@@ -758,9 +797,11 @@ where
   ps_creationdate < stringdate('@Date0@')
 order by ps_creationdate desc, 4
 \end{verbatim}
+}
  
 
 \subsection{Query 10}
+{\footnotesize
 \begin{verbatim}
 select top 10 p_firstname, p_lastname,
        ( select count(distinct ps_postid)
@@ -800,11 +841,14 @@ case month(p_birthday)
 end
 order by 3 desc, 4
 \end{verbatim}
+}
 
 
  
 
 \subsection{Query 11}
+
+{\footnotesize
 \begin{verbatim}
 select top 10 p_firstname, p_lastname, pc_workfrom, o_name, p_personid
 from person, person_company, organisation, place,
@@ -828,9 +872,11 @@ where
     pl_name = '@Country@'
 order by pc_workfrom, 5, o_name
 \end{verbatim}
+}
 
 
 \subsection{Query 12}
+{\footnotesize
 \begin{verbatim}
 select top 20 p_personid, 
               p_firstname, 
@@ -867,9 +913,11 @@ group by 1, p_firstname, p_lastname
 order by 5 desc, 1
 
 \end{verbatim}
+}
 
 
 \subsection{Query 13}
+{\footnotesize
 \begin{verbatim}
 select count(*)
 from
@@ -884,9 +932,11 @@ where
   p2 = @Person2@ and
   path_no = 0
 \end{verbatim}
+}
 
 
 \subsection{Query 14}
+{\footnotesize
 \begin{verbatim}
 create procedure path_str (in path any)
 {
@@ -946,266 +996,1853 @@ from
    group by path_no) paths
 order by sc desc
 \end{verbatim}
+}
+
+
+\section{Neo API}
+
+Due to the verbosity of the Neo4j API implementations, they are not included here but uploaded into the
+following repository~\cite{neo-api}.
 
 \section{Neo Cypher}
 
 \subsection{Query 1}
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})-[path:KNOWS*]-(friend:Person)
-WHERE friend.firstName = {friend_first_name}
+MATCH (:Person {id:{1}})-[path:KNOWS*1..3]-(friend:Person)
+WHERE friend.firstName = {2}
 WITH friend, min(length(path)) AS distance
-ORDER BY distance ASC, friend.lastName ASC
-LIMIT {limit}
-OPTIONAL MATCH (friend)-[:IS_LOCATED_IN]->(friendCity:City)
-OPTIONAL MATCH (friend)-[studyAt:STUDY_AT]->
-               (uni:University)-[:IS_LOCATED_IN]->
-               (uniCity:City)
-WITH friend, collect(uni.name + 
-                     ',' + 
-                     uniCity.name + 
-                     ',' + 
-                     studyAt.classYear) AS unis, 
-                                           friendCity,
-                                           distance
-OPTIONAL MATCH (friend)-[worksAt:WORKS_AT]->
-               (company:Company)-[:IS_LOCATED_IN]->
-               (companyCountry:Place:Country)
+ORDER BY distance ASC, friend.lastName ASC, friend.id ASC
+LIMIT {3}
+MATCH (friend)-[:IS_LOCATED_IN]->(friendCity:City)
+OPTIONAL MATCH (friend)-[studyAt:STUDY_AT]->(uni:University)-[:IS_LOCATED_IN]->(uniCity:City)
 WITH friend, 
-     collect(company.name + 
-             ',' + 
-             companyCountry.name + 
-             ',' + 
-             worksAt.workFrom) 
-AS companies,
-   unis, 
-   friendCity, 
-   distance
-
-RETURN friend.id AS id, 
-       friend.lastName AS lastName, 
-       distance, 
-       friend.birthday AS birthday, 
-       friend.creationDate AS creationDate, 
-       friend.gender AS gender, 
-       friend.browserUsed AS browser, 
-       friend.locationIP AS locationIp, 
-       friend.email AS emails, 
-       friend.languages AS languages, 
-       friendCity.name AS cityName, 
-       unis, 
-       companies
-ORDER BY distance ASC, friend.lastName ASC
-LIMIT {limit}
+  collect(CASE uni.name 
+            WHEN null THEN null 
+            ELSE [uni.name, studyAt.classYear, uniCity.name] 
+          END) AS unis, 
+  friendCity, 
+  distance
+OPTIONAL MATCH (friend)-[worksAt:WORKS_AT]->(company:Company)-[:IS_LOCATED_IN]->(companyCountry:Country)
+WITH friend, 
+  collect(CASE company.name 
+            WHEN null THEN null 
+            ELSE [company.name, worksAt.workFrom, companyCountry.name] 
+          END) AS companies, 
+  unis, 
+  friendCity, 
+  distance
+RETURN 
+  friend.id AS id, 
+  friend.lastName AS lastName, 
+  distance, 
+  friend.birthday AS birthday, 
+  friend.creationDate AS creationDate, 
+  friend.gender AS gender, 
+  friend.browserUsed AS browser, 
+  friend.locationIP AS locationIp, 
+  friend.email AS emails, 
+  friend.languages AS languages, 
+  friendCity.name AS cityName, 
+  unis, 
+  companies
+ORDER BY distance ASC, friend.lastName ASC, friend.id ASC
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 2}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})-[:KNOWS]-(friend:Person)<-[:HAS_CREATOR]-(post:Post)
-WHERE post.creationDate <= {max_date}
-RETURN friend.id AS personId, 
-       friend.firstName AS personFirstName, 
-       friend.lastName AS personLastName, 
-       post.id AS postId, 
-       post.content AS postContent, 
-       post.creationDate AS postDate
-ORDER BY postDate DESC
-LIMIT {limit}
+MATCH (:Person {id:{1}})-[:KNOWS]-(friend:Person)<-[:HAS_CREATOR]-(message)
+WHERE message.creationDate <= {2} AND (message:Post OR message:Comment)
+RETURN 
+  friend.id AS personId, 
+  friend.firstName AS personFirstName, 
+  friend.lastName AS personLastName, 
+  message.id AS messageId, 
+  CASE has(message.content) 
+    WHEN true THEN message.content 
+    ELSE message.imageFile 
+  END AS messageContent,
+  message.creationDate AS messageDate
+ORDER BY messageDate DESC, messageId ASC
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 3}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
-                         (friend:Person)<-[:HAS_CREATOR]-
-                         (postX:Post)-[:IS_LOCATED_IN]->
-                         (countryX:Country)
-WHERE countryX.name={country_x} AND 
-      postX.creationDate>={min_date} AND
-      postX.creationDate<={max_date}
-WITH friend, count(DISTINCT postX) AS xCount
-MATCH (friend)<-[:HAS_CREATOR]-(postY:Post)-[:IS_LOCATED_IN]->
-      (countryY:Country {name:{country_y}})
-WHERE postY.creationDate>={min_date} AND postY.creationDate<={max_date}
-WITH friend.firstName + ' ' + friend.lastName AS friendName ,
-     xCount, count(DISTINCT postY) AS yCount
-RETURN friendName, xCount, yCount, xCount + yCount AS xyCount
-ORDER BY xyCount DESC
-LIMIT {limit}
+MATCH (person:Person {id:{1}})-[:KNOWS*1..2]-(friend:Person)<-[:HAS_CREATOR]-(messageX),
+      (messageX)-[:IS_LOCATED_IN]->(countryX:Country)
+WHERE not(person=friend) AND 
+  not((friend)-[:IS_LOCATED_IN]->()-[:IS_PART_OF]->(countryX)) 
+  AND countryX.name={2} 
+  AND messageX.creationDate>={4} 
+  AND messageX.creationDate<{5}
+WITH friend, count(DISTINCT messageX) AS xCount
+MATCH (friend)<-[:HAS_CREATOR]-(messageY)-[:IS_LOCATED_IN]->(countryY:Country)
+WHERE countryY.name={3} 
+  AND not((friend)-[:IS_LOCATED_IN]->()-[:IS_PART_OF]->(countryY)) 
+  AND messageY.creationDate>={4} 
+  AND messageY.creationDate<{5}
+WITH friend.id AS friendId, 
+  friend.firstName AS friendFirstName, 
+  friend.lastName AS friendLastName, 
+  xCount, 
+  count(DISTINCT messageY) AS yCount
+RETURN 
+  friendId, 
+  friendFirstName, 
+  friendLastName, 
+  xCount, 
+  yCount, 
+  xCount + yCount AS xyCount
+ORDER BY xyCount DESC, friendId ASC
+LIMIT {6}
 \end{verbatim}
+}
 
 \subsection{Query 4}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (person:Person {id:{person_id}})-[:KNOWS]-
-      (friend:Person)<-[:HAS_CREATOR]-
-      (post:Post)-[HAS_TAG]->(tag:Tag)
-WHERE post.creationDate >= {min_date} AND post.creationDate <= {max_date}
-WITH DISTINCT tag, collect(tag) AS tags
-RETURN tag.name AS tagName, length(tags) AS tagCount
-ORDER BY tagCount DESC
-LIMIT {limit}
+MATCH (person:Person {id:{1}})-[:KNOWS]-(:Person)<-[:HAS_CREATOR]-(post:Post)-[HAS_TAG]->(tag:Tag)
+WHERE post.creationDate >= {2} AND post.creationDate < {3}
+OPTIONAL MATCH (tag)<-[:HAS_TAG]-(oldPost:Post)
+WHERE oldPost.creationDate < {2}
+WITH tag, post, length(collect(oldPost)) AS oldPostCount
+WHERE oldPostCount=0
+RETURN 
+  tag.name AS tagName, 
+  length(collect(post)) AS postCount
+ORDER BY postCount DESC, tagName ASC
+LIMIT {4}
 \end{verbatim}
+}
 
 \subsection{Query 5}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
-      (friend:Person)<-[membership:HAS_MEMBER]-(forum:Forum)
-WHERE membership.joinDate>{join_date}
-MATCH (friend)<-[:HAS_CREATOR]-(post:Post)<-[:CONTAINER_OF]-(forum)
-RETURN forum.title AS forum, count(post) AS postCount
-ORDER BY postCount DESC
+MATCH (person:Person {id:{1}})-[:KNOWS*1..2]-(friend:Person)<-[membership:HAS_MEMBER]-(forum:Forum)
+WHERE membership.joinDate>{2} AND not(person=friend)
+WITH DISTINCT friend, forum
+OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)<-[:CONTAINER_OF]-(forum)
+WITH forum, count(post) AS postCount
+RETURN 
+  forum.title AS forumName, 
+  postCount
+ORDER BY postCount DESC, forum.id ASC
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 6}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (person:Person {id:{person_id}})-[:KNOWS*1..2]-
-      (:Person)<-[:HAS_CREATOR]-
-      (post:Post)-[:HAS_TAG]->(:Tag {name:{tag_name}})
-WITH DISTINCT post
-MATCH (post)-[:HAS_TAG]->(tag:Tag)
-WHERE NOT(tag.name={tag_name})
-RETURN tag.name AS tagName, count(tag) AS tagCount
-ORDER BY tagCount DESC
-LIMIT {limit}
+MATCH (person:Person {id:{1}})-[:KNOWS*1..2]-(friend:Person),
+      (friend)<-[:HAS_CREATOR]-(friendPost:Post)-[:HAS_TAG]->(knownTag:Tag {name:{2}})
+WHERE not(person=friend)
+MATCH (friendPost)-[:HAS_TAG]->(commonTag:Tag)
+WHERE not(commonTag=knownTag)
+WITH DISTINCT commonTag, knownTag, friend
+MATCH (commonTag)<-[:HAS_TAG]-(commonPost:Post)-[:HAS_TAG]->(knownTag)
+WHERE (commonPost)-[:HAS_CREATOR]->(friend)
+RETURN 
+  commonTag.name AS tagName, 
+  count(commonPost) AS postCount
+ORDER BY postCount DESC, tagName ASC
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 7}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (start:Person {id:{person_id}})<-[:HAS_CREATOR]-
-      (post:Post)<-[like:LIKES]-(person:Person)
-RETURN person.id AS personId, 
-       person.firstName AS personFirstName, 
-       person.lastName AS personLastName, 
-       like.creationDate AS likeDate, 
-       NOT((person)-[:KNOWS]-(start)) AS isNew, 
-       post.id AS postId, 
-  post.content AS postContent, like.creationDate - post.creationDate AS latency
-ORDER BY like.creationDate DESC, personId ASC
-LIMIT {limit}
+MATCH (person:Person {id:{1}})<-[:HAS_CREATOR]-(message)<-[like:LIKES]-(liker:Person)
+WITH liker, message, like.creationDate AS likeTime, person
+ORDER BY likeTime DESC, message.id ASC
+WITH liker, head(collect({msg: message, likeTime: likeTime})) AS latestLike, person
+RETURN 
+  liker.id AS personId, 
+  liker.firstName AS personFirstName, 
+  liker.lastName AS personLastName, 
+  latestLike.likeTime AS likeTime, 
+  not((liker)-[:KNOWS]-(person)) AS isNew, 
+  latestLike.msg.id AS messageId, 
+  latestLike.msg.content AS messageContent, 
+  latestLike.likeTime - latestLike.msg.creationDate AS latencyAsMilli
+ORDER BY likeTime DESC, personId ASC
+LIMIT {2}
 \end{verbatim}
+}
 
 \subsection{Query 8}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})<-[:HAS_CREATOR]-(post:Post)
-MATCH (post)<-[:REPLY_OF*]-(comment:Comment)-[:HAS_CREATOR]->(person:Person)
-RETURN person.id AS personId, 
-       person.firstName AS personFirstName,
-       person.lastName AS personLastName, 
-       comment.id AS commentId, 
-       comment.creationDate AS commentCreationDate, 
-       comment.content AS commentContent
+MATCH (start:Person {id:{1}})<-[:HAS_CREATOR]-()<-[:REPLY_OF]-(comment:Comment)-[:HAS_CREATOR]->(person:Person)
+RETURN 
+  person.id AS personId, 
+  person.firstName AS personFirstName, 
+  person.lastName AS personLastName, 
+  comment.id AS commentId, 
+  comment.creationDate AS commentCreationDate, 
+  comment.content AS commentContent
 ORDER BY commentCreationDate DESC, commentId ASC
-LIMIT {limit}
+LIMIT {2}
 \end{verbatim}
+}
 
 \subsection{Query 9}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})-[:KNOWS*1..2]-(friend:Person)
-MATCH (friend)<-[:HAS_CREATOR]-(activity) WHERE activity.creationDate < {latest_date}
-RETURN DISTINCT activity.id AS activityId, 
-                activity.content AS activityContent,
-                activity.creationDate AS activityCreationDate, 
-                friend.id AS personId, 
-                friend.firstName AS personFirstName,
-                friend.lastName AS personLastName
-ORDER BY activity.creationDate DESC, activity.id ASC
-LIMIT {limit}
+MATCH (:Person {id:{1}})-[:KNOWS*1..2]-(friend:Person)<-[:HAS_CREATOR]-(message)
+WHERE message.creationDate < {2}
+RETURN DISTINCT 
+  message.id AS messageId, 
+  CASE has(message.content) 
+    WHEN true THEN message.content 
+    ELSE message.imageFile 
+  END AS messageContent,
+  message.creationDate AS messageCreationDate, 
+  friend.id AS personId, 
+  friend.firstName AS personFirstName, 
+  friend.lastName AS personLastName
+ORDER BY message.creationDate DESC, message.id ASC
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 10}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (person:Person {id:{person_id}})
-MATCH (person)-[:KNOWS*2..2]-(friend:Person)-[:IS_LOCATED_IN]->(city:City)
-WHERE friend.birthday_month >= {horoscope_month_min} AND 
-      friend.birthday_month < {horoscope_month_max}
+MATCH (person:Person {id:{1}})-[:KNOWS*2..2]-(friend:Person)-[:IS_LOCATED_IN]->(city:City)
+WHERE ((friend.birthday_month = {2} AND friend.birthday_day >= 21) 
+      OR (friend.birthday_month = ({2}+1)%12 AND friend.birthday_day < 22)) 
+      AND not(friend=person) 
+      AND not((friend)-[:KNOWS]-(person))
+WITH DISTINCT friend, city, person
 OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)
-WITH friend, city.name AS personCityName, count(post) AS allPostCount, person
-OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(post:Post)
-WHERE (post)-[:HAS_TAG]->(:Tag)<-[:HAS_INTEREST]-(person)
-WITH friend, personCityName, allPostCount, count(post) AS commonPostCount
-RETURN friend.id AS personId, 
-       friend.firstName AS personFirstName, 
-       friend.lastName AS personLastName, 
-       friend.gender AS personGender, 
-       personCityName,
-  CASE allPostCount
-    WHEN 0 THEN 0.0
-    ELSE commonPostCount / (allPostCount + 0.0)
-  END AS commonInterestScore
+WITH friend, city, collect(post) AS posts, person
+WITH 
+  friend, 
+  city, 
+  length(posts) AS postCount, 
+  length([p IN posts WHERE (p)-[:HAS_TAG]->(:Tag)<-[:HAS_INTEREST]-(person)]) AS commonPostCount
+RETURN 
+  friend.id AS personId, 
+  friend.firstName AS personFirstName, 
+  friend.lastName AS personLastName, 
+  friend.gender AS personGender, 
+  city.name AS personCityName, 
+  commonPostCount - (postCount - commonPostCount) AS commonInterestScore
 ORDER BY commonInterestScore DESC, personId ASC
-LIMIT {limit} 
+LIMIT {4}
 \end{verbatim}
+}
 
 \subsection{Query 11}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})-[:KNOWS*1..2]-(friend:Person)
+MATCH (person:Person {id:{1}})-[:KNOWS*1..2]-(friend:Person)
+WHERE not(person=friend)
 WITH DISTINCT friend
-MATCH (friend)-[worksAt:WORKS_AT]->(company:Company)
-WHERE worksAt.workFrom <= {work_from_year} AND 
-     (company)-[:IS_LOCATED_IN]->(:Country {name:{country_name}})
-RETURN friend.id AS friendId, 
-       friend.firstName AS friendFirstName, 
-       friend.lastName AS friendLastName, 
-       worksAt.workFrom AS workFromYear, 
-       company.name AS companyName
-ORDER BY workFromYear ASC, friendId ASC
-LIMIT {limit}
+MATCH (friend)-[worksAt:WORKS_AT]->(company:Company)-[:IS_LOCATED_IN]->(:Country {name:{3}})
+WHERE worksAt.workFrom < {2}
+RETURN 
+  friend.id AS friendId, 
+  friend.firstName AS friendFirstName, 
+  friend.lastName AS friendLastName, 
+  worksAt.workFrom AS workFromYear, 
+  company.name AS companyName
+ORDER BY workFromYear ASC, friendId ASC, companyName DESC
+LIMIT {4}
 \end{verbatim}
+}
 
 \subsection{Query 12}
 
+{\footnotesize
 \begin{verbatim}
-MATCH (:Person {id:{person_id}})-[:KNOWS]-(friend:Person)
-OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-
-               (comment:Comment)-[:REPLY_OF*]->
-               ()-[:HAS_TAG]->(tag:Tag)-[:HAS_TYPE]->
-               (tagClass:TagClass)-[:IS_SUBCLASS_OF*0..]->(baseTagClass:TagClass)
-WHERE tagClass.uri = {tag_class_id} OR baseTagClass.uri = {tag_class_id}
-RETURN friend.id AS friendId, 
-       friend.firstName AS friendFirstName, 
-       friend.lastName AS friendLastName, 
-       collect(DISTINCT tag.name) AS tagNames,
-       count(DISTINCT comment) AS count
+MATCH (:Person {id:{1}})-[:KNOWS]-(friend:Person)
+OPTIONAL MATCH (friend)<-[:HAS_CREATOR]-(comment:Comment)-[:REPLY_OF]->(:Post)-[:HAS_TAG]->(tag:Tag),
+               (tag)-[:HAS_TYPE]->(tagClass:TagClass)-[:IS_SUBCLASS_OF*0..]->(baseTagClass:TagClass)
+WHERE tagClass.name = {2} OR baseTagClass.name = {2}
+RETURN 
+  friend.id AS friendId, 
+  friend.firstName AS friendFirstName, 
+  friend.lastName AS friendLastName, 
+  collect(DISTINCT tag.name) AS tagNames, 
+  count(DISTINCT comment) AS count
 ORDER BY count DESC, friendId ASC
-LIMIT {limit}
+LIMIT {3}
 \end{verbatim}
+}
 
 \subsection{Query 13}
 
+{\footnotesize
 \begin{verbatim}
-MATCH path = shortestPath((person1:Person {id:{person_id_1}})-[:KNOWS]-
-                         (person2:Person {id:{person_id_2}}))
-RETURN length(path) AS pathLength
+MATCH (person1:Person {id:{1}}), (person2:Person {id:{2}})
+OPTIONAL MATCH path = shortestPath((person1)-[:KNOWS]-(person2))
+RETURN CASE path IS NULL
+         WHEN true THEN -1 
+         ELSE length(path) 
+       END AS pathLength
 \end{verbatim}
+}
 
 \subsection{Query 14}
 
+{\footnotesize
 \begin{verbatim}
-MATCH path = (person1:Person {id:{person_id_1}})<-[:HAS_CREATOR]-
-             ()-[r:REPLY_OF*0..]-
-             ()-[:HAS_CREATOR]->(person2:Person {id:{person_id_2}})
-WHERE all(message IN [n IN nodes(path) 
-WHERE not(n:Person)] 
-WHERE (message)-[:HAS_CREATOR]->(person1) OR (message)-[:HAS_CREATOR]->(person2))
+MATCH path = allShortestPaths((person1:Person {id:{1}})-[:KNOWS]-(person2:Person {id:{2}}))
+WITH nodes(path) AS pathNodes
 RETURN
-  [n IN nodes(path) | [labels(n)[0], n.id]] AS pathNodes,
-  reduce(weight = -0.5, n IN nodes(path) | 
-    CASE labels(n)[0]
-      WHEN 'Post' THEN weight + 1.0
-      WHEN 'Comment' THEN weight + 0.5
-      ELSE weight
-    END) AS weight
-ORDER BY length(pathNodes) ASC, weight DESC
-LIMIT {limit}
+ extract(n IN pathNodes | n.id) AS pathNodeIds,
+ reduce(weight=0.0, idx IN range(1,size(pathNodes)-1) |
+    extract(prev IN [pathNodes[idx-1]] |
+        extract(curr IN [pathNodes[idx]] |
+            weight +
+            length((curr)<-[:HAS_CREATOR]-(:Comment)-[:REPLY_OF]->(:Post)-[:HAS_CREATOR]->(prev))*1.0 +
+            length((prev)<-[:HAS_CREATOR]-(:Comment)-[:REPLY_OF]->(:Post)-[:HAS_CREATOR]->(curr))*1.0 +
+            length((prev)-[:HAS_CREATOR]-(:Comment)-[:REPLY_OF]-(:Comment)-[:HAS_CREATOR]-(curr))*0.5
+        )
+    )[0][0]
+ ) AS weight
+ORDER BY weight DESC
 \end{verbatim}
+}
+
+\section{Sparksee API}
+
+\subsection{Query 1}
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery1Result> result = new ArrayList<LdbcQuery1Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType       = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int organisationType = SparkseeUtils.getType(SparkseeUtils.ORGANISATION);
+int isLocatedInType  = SparkseeUtils.getType(SparkseeUtils.IS_LOCATED_IN);
+int workAtType       = SparkseeUtils.getType(SparkseeUtils.WORK_AT);
+int studyAtType      = SparkseeUtils.getType(SparkseeUtils.STUDY_AT);
+int speaksType       = SparkseeUtils.getType(SparkseeUtils.SPEAKS);
+int emailType        = SparkseeUtils.getType(SparkseeUtils.EMAIL);
+int placeType        = SparkseeUtils.getType(SparkseeUtils.PLACE);
+int emailaddressType = SparkseeUtils.getType(SparkseeUtils.EMAILADDRESS_TYPE);
+int languageType     = SparkseeUtils.getType(SparkseeUtils.LANGUAGE_TYPE);
+int knowsType        = SparkseeUtils.getType(SparkseeUtils.KNOWS);
+
+int workFromAttr     = SparkseeUtils.getAttribute(workAtType,  SparkseeUtils.WORK_FROM);
+int classYearAttr    = SparkseeUtils.getAttribute(studyAtType, SparkseeUtils.CLASS_YEAR);
+int placeNameAttr    = SparkseeUtils.getAttribute(placeType,  SparkseeUtils.NAME);
+int personIdAttr     = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr    = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr     = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int birthdayAttr     = SparkseeUtils.getAttribute(personType, SparkseeUtils.BIRTHDAY);
+int locationIPAttr   = SparkseeUtils.getAttribute(personType, SparkseeUtils.LOCATION_IP);
+int browserUsedAttr  = SparkseeUtils.getAttribute(personType, SparkseeUtils.BROWSER_USED);
+int creationDateAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.CREATION_DATE);
+int genderAttr       = SparkseeUtils.getAttribute(personType, SparkseeUtils.GENDER);
+int emailAttr        = SparkseeUtils.getAttribute(emailaddressType, 
+                                                  SparkseeUtils.EMAILADDRESS_ATTR);
+int languageAttr     = SparkseeUtils.getAttribute(languageType,
+                                                  SparkseeUtils.LANGUAGE_ATTR);
+int organisationNameAttr = SparkseeUtils.getAttribute(organisationType, 
+                                                      SparkseeUtils.NAME);
+int distanceAttr = graph.newSessionAttribute(personType, DataType.Integer, 
+                                             AttributeKind.Indexed);
+
+v.setStringVoid(firstName); 
+Value nullValue = new Value(); 
+Value distanceValue = new Value(); 
+for (int i = 0; i < 3 && result.size() < limit; i++) { 
+distanceValue.setInteger(i+1); 
+Objects tmp = graph.neighbors(knownPeople, knowsType, EdgesDirection.Outgoing); 
+knownPeople.close(); 
+knownPeople = tmp; 
+Objects knownPeopleSharedName = graph.select(firstNameAttr, Condition.Equal, v, knownPeople); 
+knownPeopleSharedName.remove(personOID); 
+Objects knownPeopleSharedNameNotVisitedYet = graph.select(distanceAttr, 
+                                                          Condition.Equal, 
+                                                          nullValue, 
+                                                          knownPeopleSharedName); 
+knownPeopleSharedName.close(); 
+
+int distanceFromPerson = i + 1; 
+SimpleDateFormat dateFormat = new SimpleDateFormat(SparkseeUtils.DATE_FORMAT); 
+ObjectsIterator iterator = knownPeopleSharedNameNotVisitedYet.iterator(); 
+while (iterator.hasNext()) { 
+    long oid = iterator.next(); 
+    graph.setAttribute(oid, distanceAttr, distanceValue); 
+
+    graph.getAttribute(oid, personIdAttr, v); 
+    long friendId = v.getLong();  
+    graph.getAttribute(oid, lastNameAttr, v); 
+    String friendLastName = v.getString(); 
+
+    graph.getAttribute(oid, birthdayAttr, v); 
+    Date date = new Date(); 
+    try { 
+        date = dateFormat.parse(v.getString()); 
+    } catch (ParseException ex) { 
+    } 
+    long friendBirthday = date.getTime(); 
+
+    graph.getAttribute(oid, creationDateAttr, v); 
+    long friendCreationDate = v.getTimestamp(); 
+
+    graph.getAttribute(oid, genderAttr, v); 
+    String friendGender = v.getString(); 
+
+    graph.getAttribute(oid, browserUsedAttr, v); 
+    String friendBrowserUsed = v.getString(); 
+
+    graph.getAttribute(oid, locationIPAttr, v); 
+    String friendLocationIp = v.getString(); 
+
+    List<String> friendEmails = new ArrayList<String>(); 
+    Objects emails = graph.neighbors(oid, emailType, EdgesDirection.Outgoing); 
+    ObjectsIterator emailIt = emails.iterator(); 
+    while (emailIt.hasNext()) {
+        long emailOid = emailIt.next();
+        graph.getAttribute(emailOid, emailAttr, v);
+        friendEmails.add(v.getString());
+    }
+    emailIt.close();
+    emails.close();
+
+    List<String> friendLanguages = new ArrayList<String>();
+    Objects languages = graph.neighbors(oid, speaksType, EdgesDirection.Outgoing);
+    ObjectsIterator languagesIt = languages.iterator();
+    while (languagesIt.hasNext()) {
+        long languageOid = languagesIt.next();
+        graph.getAttribute(languageOid, languageAttr, v);
+        friendLanguages.add(v.getString());
+    }
+    languagesIt.close();
+    languages.close();
+
+    Objects locations = graph.neighbors(oid, isLocatedInType, EdgesDirection.Outgoing);
+    long friendCity = locations.any();
+    locations.close();
+    graph.getAttribute(friendCity, placeNameAttr, v);
+    String friendCityName = v.getString();
+
+    List<List<Object>> friendUniversities = new ArrayList<List<Object>>();
+    Objects studiedAt = graph.explode(oid, studyAtType, EdgesDirection.Outgoing);
+    ObjectsIterator studiedAtIt = studiedAt.iterator();
+    while (studiedAtIt.hasNext()) {
+        long studiedAtOid = studiedAtIt.next();
+        long universityOid = graph.getEdgeData(studiedAtOid).getHead();
+        List<Object> studyAtData = new ArrayList<Object>();
+
+        graph.getAttribute(universityOid, organisationNameAttr, v);
+        studyAtData.add(v.getString());
+
+        graph.getAttribute(studiedAtOid, classYearAttr, v);
+        studyAtData.add(v.getInteger());
+
+        locations = graph.neighbors(universityOid, 
+                                    isLocatedInType, 
+                                    EdgesDirection.Outgoing);
+        long universityPlace = locations.any();
+        locations.close();
+        locations.close();
+        graph.getAttribute(universityPlace, placeNameAttr, v);
+        studyAtData.add(v.getString());
+        friendUniversities.add(studyAtData);
+    }
+    studiedAtIt.close();
+    studiedAt.close();
+
+    List<List<Object>> friendCompanies = new ArrayList<List<Object>>();
+    Objects workedAt = graph.explode(oid, workAtType, EdgesDirection.Outgoing);
+    ObjectsIterator workedAtIt = workedAt.iterator();
+    while (workedAtIt.hasNext()) {
+        long workedAtOid = workedAtIt.next();
+        long companyOid = graph.getEdgeData(workedAtOid).getHead();
+        List<Object> workAtData = new ArrayList<Object>();
+
+        graph.getAttribute(companyOid, organisationNameAttr, v);
+        workAtData.add(v.getString());
+
+        graph.getAttribute(workedAtOid, workFromAttr, v);
+        workAtData.add(v.getInteger());
+
+        locations = graph.neighbors(companyOid, isLocatedInType, EdgesDirection.Outgoing);
+        long  companyPlace = locations.any();
+        locations.close();
+        graph.getAttribute(companyPlace, placeNameAttr, v);
+        workAtData.add(v.getString());
+        friendCompanies.add(workAtData);
+    }
+    workedAtIt.close();
+    workedAt.close();
+
+    result.add(new LdbcQuery1Result(
+    friendId,
+    friendLastName,
+    distanceFromPerson,
+    friendBirthday,
+    friendCreationDate,
+    friendGender,
+    friendBrowserUsed,
+    friendLocationIp,
+    friendEmails,
+    friendLanguages,
+    friendCityName,
+    friendUniversities,
+    friendCompanies));
+}
+iterator.close();
+knownPeopleSharedNameNotVisitedYet.close();
+}
+knownPeople.close();
+
+Collections.sort(result, new Comparator<LdbcQuery1Result>() {
+    public int compare(LdbcQuery1Result r1, LdbcQuery1Result r2) {
+        Integer distance = r1.distanceFromPerson();
+        // ascending by their distance from the start Person
+        int rc = distance.compareTo(r2.distanceFromPerson()); 
+        if (rc == 0) {
+            // sort ascending by their last name
+            rc = r1.friendLastName().compareTo(r2.friendLastName()); 
+            if (rc == 0) {
+                Long id = r1.friendId();
+                // ascending by their identifier
+                rc = id.compareTo(r2.friendId()); 
+            }
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+}
+
+\end{verbatim}
+}
+
+\subsection{Query 2}
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery2Result> result = new ArrayList<LdbcQuery2Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType     = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType       = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType    = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+
+int personIdAttr   = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr  = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr   = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int postIdAttr     = SparkseeUtils.getAttribute(postType, SparkseeUtils.ID);
+int creationDateAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.CREATION_DATE);
+int postContentAttr  = SparkseeUtils.getAttribute(postType, SparkseeUtils.CONTENT);
+int postImageFileAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.IMAGE_FILE);
+int commentIdAttr     = SparkseeUtils.getAttribute(commentType, SparkseeUtils.ID);
+int commentCreationDateAttr = SparkseeUtils.getAttribute(commentType, 
+                                                         SparkseeUtils.CREATION_DATE);
+int commentContentAttr = SparkseeUtils.getAttribute(commentType, 
+                                                    SparkseeUtils.CONTENT);
+
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 1);
+
+v.setTimestamp(maxDate.getTime());
+Objects allPosts = graph.neighbors(friends, hasCreatorType, EdgesDirection.Ingoing);
+Objects posts    = graph.select(creationDateAttr, Condition.LessEqual, v, allPosts);
+Objects comments = graph.select(commentCreationDateAttr, Condition.LessEqual, v, allPosts);
+allPosts.close();
+friends.close();
+
+ObjectsIterator iterator = posts.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, postIdAttr, v);
+    long postId = v.getLong();
+
+    graph.getAttribute(oid, creationDateAttr, v);
+    long creationDate = v.getTimestamp();
+
+    graph.getAttribute(oid, postContentAttr, v);
+    if (v.isNull()) {
+        graph.getAttribute(oid, postImageFileAttr, v);
+    }
+    String content = v.getString();
+
+    Objects creator = graph.neighbors(oid, hasCreatorType, EdgesDirection.Outgoing);
+    long creatorOid = creator.any();
+    creator.close();
+    graph.getAttribute(creatorOid, personIdAttr, v);
+    long creatorId = v.getLong();
+    graph.getAttribute(creatorOid, firstNameAttr, v);
+    String firstName = v.toString();
+    graph.getAttribute(creatorOid, lastNameAttr, v);
+    String lastName = v.toString();
+
+    result.add(new LdbcQuery2Result(creatorId, firstName, lastName,
+    postId, content, creationDate));
+}
+iterator.close();
+posts.close();
+
+iterator = comments.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, commentIdAttr, v);
+    long commentId = v.getLong();
+
+    graph.getAttribute(oid, commentCreationDateAttr, v);
+    long creationDate = v.getTimestamp();
+
+    graph.getAttribute(oid, commentContentAttr, v);
+    String content = v.getString();
+
+    Objects creator = graph.neighbors(oid, hasCreatorType, EdgesDirection.Outgoing);
+    long creatorOid = creator.any();
+    creator.close();
+    graph.getAttribute(creatorOid, personIdAttr, v);
+    long creatorId = v.getLong();
+    graph.getAttribute(creatorOid, firstNameAttr, v);
+    String firstName = v.toString();
+    graph.getAttribute(creatorOid, lastNameAttr, v);
+    String lastName = v.toString();
+
+    result.add(new LdbcQuery2Result(creatorId, firstName, lastName,
+    commentId, content, creationDate));
+}
+iterator.close();
+comments.close();
+Collections.sort(result, new Comparator<LdbcQuery2Result>() {
+    public int compare(LdbcQuery2Result r1, LdbcQuery2Result r2) {
+        Long date = r2.postOrCommentCreationDate();
+        // descending by creation date
+        int rc = date.compareTo(r1.postOrCommentCreationDate()); 
+        if (rc == 0) {
+            Long id = r1.postOrCommentId();
+            // ascending by Post identifier
+            rc = id.compareTo(r2.postOrCommentId()); 
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 3}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery3Result> result = new ArrayList<LdbcQuery3Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+Calendar cal = Calendar.getInstance();
+cal.setTime(startDate);
+cal.add(Calendar.DATE, durationDays);
+Date endDate = cal.getTime();
+
+int personType      = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int placeType       = SparkseeUtils.getType(SparkseeUtils.PLACE);
+int postType        = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType     = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+int isLocatedInType = SparkseeUtils.getType(SparkseeUtils.IS_LOCATED_IN);
+int hasCreatorType  = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int isPartOfType    = SparkseeUtils.getType(SparkseeUtils.IS_PART_OF);
+
+int personIdAttr         = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr        = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr         = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int countryNameAttr      = SparkseeUtils.getAttribute(placeType,  SparkseeUtils.NAME);
+int postCreationDateAttr = SparkseeUtils.getAttribute(postType, 
+                                                         SparkseeUtils.CREATION_DATE);
+int commentCreationDateAttr = SparkseeUtils.getAttribute(commentType,
+                                                         SparkseeUtils.CREATION_DATE);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 2);
+long country1OID = graph.findObject(countryNameAttr, v.setString(countryXName));
+long country2OID = graph.findObject(countryNameAttr, v.setString(countryYName));
+
+Objects postsCountry1 = graph.neighbors(country1OID, isLocatedInType, 
+                                        EdgesDirection.Ingoing);
+Objects postsCountry2 = graph.neighbors(country2OID, isLocatedInType, 
+                                        EdgesDirection.Ingoing);
+
+Value vFrom = new Value();
+vFrom.setTimestampVoid(startDate.getTime());
+Value vTo = new Value();
+vTo.setTimestampVoid(endDate.getTime());
+
+//search matches
+ObjectsIterator iterator = friends.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+    Objects city = graph.neighbors(oid, isLocatedInType, EdgesDirection.Outgoing);
+    long cityOid = city.any();
+    city.close();
+    Objects countries = graph.neighbors(cityOid, isPartOfType, EdgesDirection.Outgoing);
+    long countryOid = countries.any();
+    countries.close();
+    if (countryOid != country1OID && countryOid != country2OID) {
+        Objects posts = graph.neighbors(oid, hasCreatorType, 
+                                        EdgesDirection.Ingoing);
+        Objects filter  = graph.select(postCreationDateAttr, 
+                                       Condition.Between, vFrom, vTo, posts);
+        Objects filter2 = graph.select(commentCreationDateAttr, 
+                                       Condition.Between, vFrom, vTo, posts);
+        filter.union(filter2);
+        Objects fromFirst  = Objects.combineIntersection(filter, 
+                                                         postsCountry1);
+        Objects fromSecond = Objects.combineIntersection(filter, 
+                                                         postsCountry2);
+        filter.close();
+        filter2.close();
+
+        if (fromFirst.size() > 0 && fromSecond.size() > 0) {
+            graph.getAttribute(oid, personIdAttr, v);
+            long friendId = v.getLong();
+            graph.getAttribute(oid, firstNameAttr, v);
+            String personFirstName = v.getString();
+            graph.getAttribute(oid, lastNameAttr, v);
+            String personLastName = v.getString();
+
+            result.add(new LdbcQuery3Result(
+            friendId, personFirstName, personLastName,
+            fromFirst.size(), fromSecond.size(),
+            fromFirst.size() + fromSecond.size()));
+        }
+
+        posts.close();
+        fromFirst.close();
+        fromSecond.close();
+    }
+    city.close();
+    countries.close();
+}
+iterator.close();
+friends.close();
+postsCountry1.close();
+postsCountry2.close();
+
+Collections.sort(result, new Comparator<LdbcQuery3Result>() {
+    public int compare(LdbcQuery3Result r1, LdbcQuery3Result r2) {
+        Long count = r2.count();
+        // descending by total number of Posts/Comments
+        int rc = count.compareTo(r1.count());         
+        if (rc == 0) {
+            Long id = r1.personId();
+            // ascending by Person identifier.
+            rc = id.compareTo(r2.personId());        
+        }
+        return rc;
+    }
+});
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 4}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery4Result> result = new ArrayList<LdbcQuery4Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+Calendar cal = Calendar.getInstance();
+cal.setTime(startDate);
+cal.add(Calendar.DATE, durationDays - 1);
+Date endDate = cal.getTime();
+
+Value vFrom = new Value();
+vFrom.setTimestampVoid(startDate.getTime());
+Value vTo = new Value();
+vTo.setTimestampVoid(endDate.getTime());
+
+int postType       = SparkseeUtils.getType(SparkseeUtils.POST);
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int hasTagType     = SparkseeUtils.getType(SparkseeUtils.HAS_TAG);
+int tagType        = SparkseeUtils.getType(SparkseeUtils.TAG);
+
+int creationDateAttr = SparkseeUtils.getAttribute(postType,   SparkseeUtils.CREATION_DATE);
+int tagNameAttr      = SparkseeUtils.getAttribute(tagType,    SparkseeUtils.NAME);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 1);
+
+Objects postsPreDate  = graph.select(creationDateAttr, Condition.LessThan, vFrom);
+Objects postsPostDate = graph.select(creationDateAttr, Condition.Between,  vFrom, vTo);
+
+Objects posts = graph.neighbors(friends, hasCreatorType, EdgesDirection.Ingoing);
+Objects allPosts = graph.select(postType);
+posts.intersection(allPosts);
+allPosts.close();
+friends.close();
+
+Objects postPosts = Objects.combineIntersection(posts, postsPostDate);
+posts.close();
+
+Objects preTags = graph.neighbors(postsPreDate, hasTagType, EdgesDirection.Outgoing);
+
+Objects postTags = graph.neighbors(postPosts, hasTagType, EdgesDirection.Outgoing);
+postTags.difference(preTags);
+preTags.close();
+
+postsPreDate.close();
+postsPostDate.close();
+ObjectsIterator iterator = postTags.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, tagNameAttr, v);
+    String tagName = v.getString();
+    Objects friendPosts = graph.neighbors(oid, hasTagType, EdgesDirection.Ingoing);
+    friendPosts.intersection(postPosts);
+
+    result.add(new LdbcQuery4Result(tagName, (int) friendPosts.count()));
+    friendPosts.close();
+}
+iterator.close();
+postPosts.close();
+postTags.close();
+
+Collections.sort(result, new Comparator<LdbcQuery4Result>() {
+    public int compare(LdbcQuery4Result r1, LdbcQuery4Result r2) {
+        Integer count = r2.postCount();
+        int rc = count.compareTo(r1.postCount()); // Sort results descending by Post count
+        if (rc == 0) {
+            rc = r1.tagName().compareTo(r2.tagName()); //and then ascending by Tag name.
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 5}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery5Result> result = new ArrayList<LdbcQuery5Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int postType         = SparkseeUtils.getType(SparkseeUtils.POST);
+int hasMemberType    = SparkseeUtils.getType(SparkseeUtils.HAS_MEMBER);
+int containerOfType  = SparkseeUtils.getType(SparkseeUtils.CONTAINER_OF);
+int forumType        = SparkseeUtils.getType(SparkseeUtils.FORUM);
+int hasCreatorType   = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+
+int joinDateAttr   = SparkseeUtils.getAttribute(hasMemberType, SparkseeUtils.JOIN_DATE);
+int forumIdAttr    = SparkseeUtils.getAttribute(forumType, SparkseeUtils.ID);
+int forumTitleAttr = SparkseeUtils.getAttribute(forumType, SparkseeUtils.TITLE);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 2);
+Objects members = graph.explode(friends, hasMemberType, EdgesDirection.Ingoing);
+v.setTimestampVoid(minDate.getTime());
+Objects candidate = graph.select(joinDateAttr, Condition.GreaterThan, v, members);
+members.close();
+Objects posts = graph.neighbors(friends, hasCreatorType, EdgesDirection.Ingoing);
+friends.close();
+Objects allPosts = graph.select(postType);  // Only post
+posts.intersection(allPosts);
+allPosts.close();
+
+Map<Long, Container> forums    = new HashMap<Long, Container>(candidate.size());
+Map<Long, Objects> forumPost   = new HashMap<Long, Objects>(candidate.size());
+Map<Long, Objects> friendPosts = new HashMap<Long, Objects>(candidate.size());
+ObjectsIterator iterator = candidate.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+    EdgeData edata = graph.getEdgeData(oid);
+
+    if (!forumPost.containsKey(edata.getTail())) {
+        forumPost.put(edata.getTail(), 
+        graph.neighbors(edata.getTail(), 
+        containerOfType,  
+        EdgesDirection.Outgoing));
+    }
+    if (!friendPosts.containsKey(edata.getHead())) {
+        friendPosts.put(edata.getHead(), 
+        graph.neighbors(edata.getHead(),
+        hasCreatorType, 
+        EdgesDirection.Ingoing));
+    }
+
+    Objects memberPost = friendPosts.get(edata.getHead());
+    Objects postsGroup = forumPost.get(edata.getTail());
+    Objects friendForumPosts = Objects.combineIntersection(memberPost, postsGroup);
+    friendForumPosts.intersection(posts);
+    Objects friendForumPosts = Objects.combineIntersection(memberPost, postsGroup);
+    friendForumPosts.intersection(posts);
+    int count = friendForumPosts.size();
+    friendForumPosts.close();
+    Container container;
+    if (forums.containsKey(edata.getTail())) {
+        container = forums.get(edata.getTail());
+    } else {
+        graph.getAttribute(edata.getTail(), forumIdAttr, v);
+        container = new Container(edata.getTail(), v.getLong(), 0);
+    }
+    container.add(count);
+    forums.put(edata.getTail(), container);
+}
+iterator.close();
+candidate.close();
+posts.close();
+
+for (Objects objs : forumPost.values()) {
+    objs.close();
+}
+
+for (Objects objs : friendPosts.values()) {
+    objs.close();
+}
+
+List<Container> toSort = new ArrayList<Container>(forums.values());
+Collections.sort(toSort, new Comparator<Container>() {
+    public int compare(Container r1, Container r2) {
+        Integer count = r2.count();
+        int rc = count.compareTo(r1.count()); // descending by the count of Posts
+        if (rc == 0) {
+            rc = r1.id.compareTo(r2.id()); // ascending by Forum title.
+        }
+        return rc;
+    }
+});
+
+for (int i = 0; i < limit && i < toSort.size(); i++) {
+    graph.getAttribute(toSort.get(i).oid(), forumTitleAttr,v);
+    result.add(new LdbcQuery5Result(v.getString(), toSort.get(i).count()));
+}
+sess.close();
+return result;
+\end{verbatim}
+}
+
+\subsection{Query 6}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery6Result> result = new ArrayList<LdbcQuery6Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int tagType    = SparkseeUtils.getType(SparkseeUtils.TAG);
+int postType   = SparkseeUtils.getType(SparkseeUtils.POST);
+int hasTag     = SparkseeUtils.getType(SparkseeUtils.HAS_TAG);
+int hasCreator = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+
+int tagNameAttr = SparkseeUtils.getAttribute(tagType, SparkseeUtils.NAME);
+
+v.setStringVoid(tagName);
+long tagOID = graph.findObject(tagNameAttr, v);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 2);
+Objects posts = graph.neighbors(friends, hasCreator, EdgesDirection.Ingoing);
+Objects allPost = graph.select(postType); // it's restricted to post only
+posts.intersection(allPost);
+allPost.close();
+friends.close();
+Objects postTag = graph.neighbors(tagOID, hasTag, EdgesDirection.Ingoing);
+posts.intersection(postTag);
+postTag.close();
+
+Objects candidate = graph.neighbors(posts, hasTag, EdgesDirection.Outgoing);
+candidate.remove(tagOID);
+
+//search matches
+ObjectsIterator iterator = candidate.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, tagNameAttr, v);
+    Objects tagPosts = graph.neighbors(oid, hasTag, EdgesDirection.Ingoing);
+    tagPosts.intersection(posts);
+
+    result.add(new LdbcQuery6Result(v.getString(), (int)tagPosts.count()));
+    tagPosts.close();
+}
+iterator.close();
+candidate.close();
+posts.close();
+
+Collections.sort(result, new Comparator<LdbcQuery6Result>() {
+    public int compare(LdbcQuery6Result r1, LdbcQuery6Result r2) {
+        Integer count = r2.postCount();
+        int rc = count.compareTo(r1.postCount()) ; // descending by count
+        if (rc == 0) {
+            rc = r1.tagName().compareTo(r2.tagName()); // ascending by Tag name
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 7}
+
+{\footnotesize
+\begin{verbatim}
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int likeType       = SparkseeUtils.getType(SparkseeUtils.LIKES);
+int personType     = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType       = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType    = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+
+int personIdAttr         = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int nameAttr             = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr         = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int likeCreationDateAttr = SparkseeUtils.getAttribute(likeType, SparkseeUtils.CREATION_DATE);
+int postIdAttr           = SparkseeUtils.getAttribute(postType, SparkseeUtils.ID);
+int postCreationDateAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.CREATION_DATE);
+int contentAttr          = SparkseeUtils.getAttribute(postType, SparkseeUtils.CONTENT);
+int imageFileAttr        = SparkseeUtils.getAttribute(postType, SparkseeUtils.IMAGE_FILE);
+int commentIdAttr        = SparkseeUtils.getAttribute(commentType, SparkseeUtils.ID);
+int commentContentAttr   = SparkseeUtils.getAttribute(commentType, SparkseeUtils.CONTENT);
+int commentCreationDateAttr = SparkseeUtils.getAttribute(commentType, 
+                                                         SparkseeUtils.CREATION_DATE);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 1);
+
+long personOID = graph.findObject(personIdAttr, v.setLong(personId));
+Objects posts = graph.neighbors(personOID, hasCreatorType, EdgesDirection.Ingoing);
+Objects likes = graph.explode(posts,       likeType,       EdgesDirection.Ingoing);
+posts.close();
+
+Map<Long, LdbcQuery7Result> likeMap = new HashMap<Long, LdbcQuery7Result>();
+ObjectsIterator iterator = likes.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+    EdgeData edgeData = graph.getEdgeData(oid);
+
+    graph.getAttribute(edgeData.getTail(), personIdAttr, v);
+    long friendId = v.getLong();
+
+    graph.getAttribute(oid, likeCreationDateAttr, v);
+    long likeCreationDate = v.getTimestamp();
+
+    if (!likeMap.containsKey(friendId) || 
+        likeMap.get(friendId).likeCreationDate() > likeCreationDate) {
+        graph.getAttribute(edgeData.getTail(), nameAttr, v);
+        String firstName = v.getString();
+        graph.getAttribute(edgeData.getTail(), lastNameAttr, v);
+        String lastName = v.getString();
+
+        boolean isNew = !friends.exists(edgeData.getTail());
+        boolean isPost = (graph.getObjectType(edgeData.getHead()) == postType);
+        graph.getAttribute(edgeData.getHead(), (isPost) ? postIdAttr : commentIdAttr, v);
+        long commentOrPostId = v.getLong();
+
+        graph.getAttribute(edgeData.getHead(), 
+                          (isPost) ? postCreationDateAttr : commentCreationDateAttr, 
+                           v);
+        long latency = likeCreationDate - v.getTimestamp();
+
+        graph.getAttribute(edgeData.getHead(), 
+                           (isPost) ? contentAttr : commentContentAttr,
+                           v);
+
+        if (isPost && v.isNull()) {
+        graph.getAttribute(edgeData.getHead(), imageFileAttr, v);
+    }
+    String commentOrPostContent = v.getString();
+
+    likeMap.put(friendId, new LdbcQuery7Result(friendId, firstName,
+                lastName, likeCreationDate, commentOrPostId,
+                commentOrPostContent, (int)(latency / (1000L*60L)), isNew));
+    }
+}
+iterator.close();
+likes.close();
+friends.close();
+
+
+List<LdbcQuery7Result> result = new ArrayList<LdbcQuery7Result>(likeMap.values());
+Collections.sort(result, new Comparator<LdbcQuery7Result>() {
+    public int compare(LdbcQuery7Result r1, LdbcQuery7Result r2) {
+        Long date = r2.likeCreationDate();
+        // descending by creation time of Like
+        int rc = date.compareTo(r1.likeCreationDate()); 
+        // ascending by Person identifier of liker
+        if (rc == 0) {
+            Long id = r1.personId();
+            rc = id.compareTo(r2.personId());
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 8}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery8Result> result = new ArrayList<LdbcQuery8Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int replyOfType    = SparkseeUtils.getType(SparkseeUtils.REPLY_OF);
+int personType     = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType       = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType    = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+
+int personIdAttr          = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr         = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr          = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int postIdAttr            = SparkseeUtils.getAttribute(postType, SparkseeUtils.ID);
+int postContentAttr       = SparkseeUtils.getAttribute(postType, SparkseeUtils.CONTENT);
+int postCreationDateAttr  = SparkseeUtils.getAttribute(postType, SparkseeUtils.CREATION_DATE);
+int commentIdAttr         = SparkseeUtils.getAttribute(commentType, 
+                                                       SparkseeUtils.ID);
+int commentContentAttr    = SparkseeUtils.getAttribute(commentType, 
+                                                       SparkseeUtils.CONTENT);
+int commentCreationDateAttr = SparkseeUtils.getAttribute(commentType, 
+                                                         SparkseeUtils.CREATION_DATE);
+
+long personOID  = graph.findObject(personIdAttr, v.setLong(personId));
+Objects posts   = graph.neighbors(personOID, hasCreatorType, EdgesDirection.Ingoing);
+Objects replies = graph.neighbors(posts,     replyOfType,    EdgesDirection.Ingoing);
+posts.close();
+
+ObjectsIterator iterator = replies.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+    boolean isPost = graph.getObjectType(oid) == postType;
+
+    graph.getAttribute(oid, isPost ? postIdAttr : commentIdAttr, v);
+    long messageId = v.getLong();
+
+    graph.getAttribute(oid, isPost ? postCreationDateAttr : commentCreationDateAttr, v);
+    long messageCreationDate = v.getTimestamp();
+
+    graph.getAttribute(oid, isPost ? postContentAttr : commentContentAttr, v);
+    String messageContent = v.getString();
+
+    Objects creator = graph.neighbors(oid, hasCreatorType, EdgesDirection.Outgoing);
+    long creatorOid = creator.any();
+    creator.close();
+    graph.getAttribute(creatorOid, personIdAttr, v);
+    long creatorId = v.getLong();
+    graph.getAttribute(creatorOid, firstNameAttr, v);
+    String firstName = v.getString();
+    graph.getAttribute(creatorOid, lastNameAttr, v);
+    String lastName = v.getString();
+
+    result.add(new LdbcQuery8Result(creatorId, firstName,
+    lastName, messageCreationDate, messageId, messageContent));
+}
+iterator.close();
+replies.close();
+
+Collections.sort(result, new Comparator<LdbcQuery8Result>() {
+    public int compare(LdbcQuery8Result r1, LdbcQuery8Result r2) {
+        Long date = r2.commentCreationDate();
+        // descending by creation date of reply Comment
+        int rc = date.compareTo(r1.commentCreationDate()); 
+        if (rc == 0) {
+            Long id = r1.commentId();
+            //ascending by identifier of reply Comment
+            rc = id.compareTo(r2.commentId()); 
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 9}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery9Result> result = new ArrayList<LdbcQuery9Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+
+int personIdAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int postIdAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.ID);
+int creationDateAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.CREATION_DATE);
+int postContentAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.CONTENT);
+int postImageFileAttr = SparkseeUtils.getAttribute(postType, SparkseeUtils.IMAGE_FILE);
+int commentIdAttr = SparkseeUtils.getAttribute(commentType, SparkseeUtils.ID);
+int commentCreationDateAttr = SparkseeUtils.getAttribute(commentType, 
+                                                         SparkseeUtils.CREATION_DATE);
+int commentContentAttr = SparkseeUtils.getAttribute(commentType, SparkseeUtils.CONTENT);
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 2);
+
+Value upLimit = new Value();
+upLimit.setTimestamp(maxDate.getTime()-1);
+Value downLimit = new Value();
+downLimit.setTimestamp(0);
+Values values = graph.getValues(creationDateAttr);
+ValuesIterator vit = values.iterator();
+if (vit.hasNext()) {
+    downLimit = vit.next();
+}
+vit.close();
+values.close();
+values = graph.getValues(commentCreationDateAttr);
+vit = values.iterator();
+if (vit.hasNext()) {
+    v = vit.next();
+    if (v.getTimestamp() < downLimit.getTimestamp()) {
+        downLimit = vit.next();
+    }
+}
+vit.close();
+values.close();
+
+int partitions = 50;
+long interval = (upLimit.getTimestamp() - downLimit.getTimestamp()) / partitions;
+long base = downLimit.getTimestamp();
+for (int i = 0; i < partitions && result.size() < limit; i++) {
+Objects allPosts = graph.neighbors(friends, hasCreatorType, EdgesDirection.Ingoing);
+Objects posts    = graph.select(creationDateAttr,        Condition.Between,
+downLimit.setTimestamp(base+interval*(partitions-i-1)), 
+                       upLimit.setTimestamp(base+interval*(partitions-i)), allPosts);
+Objects comments = graph.select(commentCreationDateAttr, Condition.Between,
+downLimit.setTimestamp(base+interval*(partitions-i-1)), 
+                       upLimit.setTimestamp(base+interval*(partitions-i)), allPosts);
+allPosts.close();
+
+//search matches
+ObjectsIterator iterator = posts.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, postIdAttr, v);
+    long postId = v.getLong();
+    graph.getAttribute(oid, creationDateAttr, v);
+    long creationDate = v.getTimestamp();
+
+    graph.getAttribute(oid, postContentAttr, v);
+    if (v.isNull()) {
+        graph.getAttribute(oid, postImageFileAttr, v);
+    }
+    String content = v.getString();
+
+    Objects creator = graph.neighbors(oid, 
+                                      hasCreatorType, 
+                                      EdgesDirection.Outgoing);
+    long creatorOid = creator.any();
+    creator.close();
+    graph.getAttribute(creatorOid, personIdAttr, v);
+    Long creatorId = v.getLong();
+    graph.getAttribute(creatorOid, firstNameAttr, v);
+    String firstName = v.getString();
+    graph.getAttribute(creatorOid, lastNameAttr, v);
+    String lastName = v.getString();
+
+    result.add(new LdbcQuery9Result(creatorId, firstName, lastName,
+    postId, content, creationDate));
+}
+iterator.close();
+posts.close();
+
+iterator = comments.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, commentIdAttr, v);
+    long commentId = v.getLong();
+    graph.getAttribute(oid, commentCreationDateAttr, v);
+    long creationDate = v.getTimestamp();
+    graph.getAttribute(oid, commentContentAttr, v);
+    String content = v.getString();
+
+    Objects creator = graph.neighbors(oid, hasCreatorType, 
+                                           EdgesDirection.Outgoing);
+    long creatorOid = creator.any();
+    creator.close();
+    graph.getAttribute(creatorOid, personIdAttr, v);
+    Long creatorId = v.getLong();
+    graph.getAttribute(creatorOid, firstNameAttr, v);
+    String firstName = v.getString();
+    graph.getAttribute(creatorOid, lastNameAttr, v);
+    String lastName = v.getString();
+
+    result.add(new LdbcQuery9Result(creatorId, firstName, lastName,
+    commentId, content, creationDate));
+}
+iterator.close();
+comments.close();
+}
+
+friends.close();
+Collections.sort(result, new Comparator<LdbcQuery9Result>() {
+    public int compare(LdbcQuery9Result r1, LdbcQuery9Result r2) {
+        Long date = r2.commentOrPostCreationDate();
+        // descending by creation date
+        int rc = date.compareTo(r1.commentOrPostCreationDate()); 
+        if (rc == 0) {
+            Long id = r1.commentOrPostId();
+            // ascending by Post identifier
+            rc = id.compareTo(r2.commentOrPostId()); 
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 10}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery10Result> result = new ArrayList<LdbcQuery10Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType      = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType        = SparkseeUtils.getType(SparkseeUtils.POST);
+int hasCreatorType  = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int hasTagType      = SparkseeUtils.getType(SparkseeUtils.HAS_TAG);
+int placeType       = SparkseeUtils.getType(SparkseeUtils.PLACE);
+int hasInterestType = SparkseeUtils.getType(SparkseeUtils.HAS_INTEREST);
+int isLocatedInType = SparkseeUtils.getType(SparkseeUtils.IS_LOCATED_IN);
+
+int personIdAttr  = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int birthdayAttr  = SparkseeUtils.getAttribute(personType, SparkseeUtils.BIRTHDAY);
+int firstNameAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr  = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int genderAttr    = SparkseeUtils.getAttribute(personType, SparkseeUtils.GENDER);
+int placeNameAttr = SparkseeUtils.getAttribute(placeType,  SparkseeUtils.NAME);
+
+
+int secondMonth = month + 1;
+if (secondMonth > 12) {
+    secondMonth = 1;
+}
+
+Objects friends = SparkseeUtils.getLastHopKnownPeople(sess, graph, v, personId, 2);
+
+v.setLongVoid(personId);
+long personOID   = graph.findObject(personIdAttr, v);
+Objects userTags = graph.neighbors(personOID, hasInterestType, EdgesDirection.Outgoing);
+Objects posts    = graph.select(postType);
+
+//search matches
+Date date = new Date();
+Calendar calendar = Calendar.getInstance();
+SimpleDateFormat dateFormat = new SimpleDateFormat(SparkseeUtils.DATE_FORMAT);
+ObjectsIterator iterator = friends.iterator();
+while (iterator.hasNext()) {
+    long oid = iterator.next();
+
+    graph.getAttribute(oid, birthdayAttr, v);
+    try {
+        date = dateFormat.parse(v.toString());
+    } catch (ParseException ex) {
+    }
+    calendar.setTime(date);
+    int birthMonth = calendar.get(Calendar.MONTH) + 1;
+    int day = calendar.get(Calendar.DAY_OF_MONTH);
+    if ((birthMonth == month && day >= 21) || (birthMonth == (secondMonth) && day < 22)) {
+
+        Objects friendPosts = graph.neighbors(oid, hasCreatorType, EdgesDirection.Ingoing);
+        friendPosts.intersection(posts); // Posts only
+
+        int score = 0;
+        ObjectsIterator postIt = friendPosts.iterator();
+        while (postIt.hasNext()) {
+            long postOID = postIt.next();
+
+            Objects postTag = graph.neighbors(postOID, 
+                                              hasTagType, 
+                                              EdgesDirection.Outgoing);
+            boolean sharedInterest = false;
+            ObjectsIterator tagIt = postTag.iterator();
+            while (tagIt.hasNext() && !sharedInterest) {
+                long tagOID = tagIt.next();
+                if (userTags.exists(tagOID)) {
+                    sharedInterest = true;
+                }
+            }
+            score += (sharedInterest) ? 1 : -1;
+            tagIt.close();
+            postTag.close();
+        }
+        postIt.close();
+
+        graph.getAttribute(oid, personIdAttr, v);
+        long friendId = v.getLong();
+        graph.getAttribute(oid, firstNameAttr, v);
+        String firstName = v.getString();
+        graph.getAttribute(oid, lastNameAttr, v);
+        String lastName = v.getString();
+        graph.getAttribute(oid, genderAttr, v);
+        String gender = v.getString();
+        Objects userPlace = graph.neighbors(oid, 
+                                            isLocatedInType, 
+                                            EdgesDirection.Outgoing);
+        long placeOID = userPlace.any();
+        userPlace.close();
+        graph.getAttribute(placeOID, placeNameAttr, v);
+        String placeName = v.getString();
+        
+        result.add(new LdbcQuery10Result(friendId, firstName, lastName,
+        score, gender, placeName));
+        friendPosts.close();
+    }
+}
+iterator.close();
+friends.close();
+userTags.close();
+posts.close();
+Collections.sort(result, new Comparator<LdbcQuery10Result>() {
+    public int compare(LdbcQuery10Result r1, LdbcQuery10Result r2) {
+        Integer score = r2.commonInterestScore();
+        // descending by similarity score
+        int rc = score.compareTo(r1.commonInterestScore()) ; 
+        if (rc == 0) {
+            Long id = r1.personId();
+            // ascending by Person identifier
+            rc = id.compareTo(r2.personId()); 
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 11}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery11Result> result = new ArrayList<LdbcQuery11Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType       = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int locationType     = SparkseeUtils.getType(SparkseeUtils.PLACE);
+int isLocatedInType  = SparkseeUtils.getType(SparkseeUtils.IS_LOCATED_IN);
+int workAtType       = SparkseeUtils.getType(SparkseeUtils.WORK_AT);
+int organisationType = SparkseeUtils.getType(SparkseeUtils.ORGANISATION);
+
+int personIdAttr    = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int firstNameAttr   = SparkseeUtils.getAttribute(personType, SparkseeUtils.FIRST_NAME);
+int lastNameAttr    = SparkseeUtils.getAttribute(personType, SparkseeUtils.LAST_NAME);
+int countryNameAttr = SparkseeUtils.getAttribute(locationType,     SparkseeUtils.NAME);
+int companyNameAttr = SparkseeUtils.getAttribute(organisationType, SparkseeUtils.NAME);
+int workFromAttr    = SparkseeUtils.getAttribute(workAtType,       SparkseeUtils.WORK_FROM);
+
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 2);
+
+v.setStringVoid(countryName);
+long countryOID    = graph.findObject(countryNameAttr, v);
+Objects companies  = graph.neighbors(countryOID, isLocatedInType, EdgesDirection.Ingoing);
+Objects candidates        = graph.explode(friends,   workAtType, EdgesDirection.Outgoing);
+Objects candidatesCompany = graph.explode(companies, workAtType, EdgesDirection.Ingoing);
+companies.close();
+friends.close();
+
+candidates.intersection(candidatesCompany);
+candidatesCompany.close();
+
+v.setInteger(workFromYear);
+Objects candidatesDate = graph.select(workFromAttr, Condition.LessThan, v);
+candidates.intersection(candidatesDate);
+candidatesDate.close();
+
+//search matches
+ObjectsIterator iterator = candidates.iterator();
+while(iterator.hasNext()) {
+    long oid = iterator.next();
+    EdgeData data = graph.getEdgeData(oid);
+
+    graph.getAttribute(data.getTail(), personIdAttr, v);
+    long friendId = v.getLong();
+    graph.getAttribute(data.getTail(), firstNameAttr, v);
+    String firstName = v.getString();
+    graph.getAttribute(data.getTail(), lastNameAttr, v);
+    String lastName = v.getString();
+    graph.getAttribute(data.getHead(), companyNameAttr, v);
+    String organizationName = v.getString();
+    graph.getAttribute(oid, workFromAttr, v);
+    int friendWorkFrom = v.getInteger();
+
+    result.add(new LdbcQuery11Result(friendId, firstName, lastName,
+    organizationName, friendWorkFrom));
+}
+iterator.close();
+candidates.close();
+
+Collections.sort(result, new Comparator<LdbcQuery11Result>() {
+    public int compare(LdbcQuery11Result r1, LdbcQuery11Result r2) {
+        Integer date = r1.organizationWorkFromYear();
+        // ascending by the start date
+        int rc = date.compareTo(r2.organizationWorkFromYear()) ; 
+        if (rc == 0) {
+            Long id = r1.personId();
+            // ascending by Person identifier
+            rc = id.compareTo(r2.personId()); 
+            if (rc == 0) {
+                // Organization name descending
+                rc = r2.organizationName().compareTo(r1.organizationName()); 
+            }
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+
+\end{verbatim}
+}
+
+\subsection{Query 12}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery12Result> result = new ArrayList<LdbcQuery12Result>();
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType       = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int postType         = SparkseeUtils.getType(SparkseeUtils.POST);
+int tagClassType     = SparkseeUtils.getType(SparkseeUtils.TAGCLASS);
+int tagType          = SparkseeUtils.getType(SparkseeUtils.TAG);
+int hasTagType       = SparkseeUtils.getType(SparkseeUtils.HAS_TAG);
+int hasCreatorType   = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+int replyOfType      = SparkseeUtils.getType(SparkseeUtils.REPLY_OF);
+int isSubclassOfType = SparkseeUtils.getType(SparkseeUtils.IS_SUBCLASS_OF);
+int hasTypeType      = SparkseeUtils.getType(SparkseeUtils.HAS_TYPE);
+
+int personIdAttr     = SparkseeUtils.getAttribute(personType,   SparkseeUtils.ID);
+int firstNameAttr    = SparkseeUtils.getAttribute(personType,   SparkseeUtils.FIRST_NAME);
+int lastNameAttr     = SparkseeUtils.getAttribute(personType,   SparkseeUtils.LAST_NAME);
+int tagClassNameAttr = SparkseeUtils.getAttribute(tagClassType, SparkseeUtils.NAME);
+int tagNameAttr      = SparkseeUtils.getAttribute(tagType,      SparkseeUtils.NAME);
+
+
+Objects friends = SparkseeUtils.getKnownPeople(graph, v, personId, 1);
+
+v.setString(tagClassName);
+long classOID = graph.findObject(tagClassNameAttr, v);
+Objects tagClasses  = graph.neighbors(classOID, isSubclassOfType, EdgesDirection.Ingoing);
+
+long size = 0;
+while (size != tagClasses.count()) {
+    size = tagClasses.count();
+    Objects subClasses = graph.neighbors(tagClasses, 
+                                         isSubclassOfType, 
+                                         EdgesDirection.Ingoing);
+    tagClasses.union(subClasses);
+    subClasses.close();
+}
+tagClasses.add(classOID);
+Objects messageTags = graph.neighbors(tagClasses,  hasTypeType, EdgesDirection.Ingoing);
+Objects postOfTags  = graph.neighbors(messageTags, hasTagType,  EdgesDirection.Ingoing);
+Objects posts = graph.select(postType); // Post only
+postOfTags.intersection(posts);
+posts.close();
+tagClasses.close();
+
+
+List<Long> tagList = new ArrayList<Long>();
+Map<Long, String> tagMap = new HashMap<Long, String>();
+ObjectsIterator tagIterator = messageTags.iterator();
+while (tagIterator.hasNext()) {
+    long oid = tagIterator.next();
+    tagList.add(oid);
+    graph.getAttribute(oid, tagNameAttr, v);
+    tagMap.put(oid, v.getString());
+}
+tagIterator.close();
+messageTags.close();
+
+ObjectsIterator iterator = friends.iterator();
+while(iterator.hasNext()) {
+    long oid = iterator.next();
+
+    Objects comments = graph.neighbors(oid, hasCreatorType, EdgesDirection.Ingoing);
+    Objects replies  = graph.explode(comments, replyOfType, EdgesDirection.Ingoing);
+    replies.intersection(postOfTags);
+    comments.close();
+
+    Set<String> tagNames = new HashSet<String>();
+    if (replies.size() != 0) {
+        Objects tagReplies  = graph.neighbors(replies, hasTagType, EdgesDirection.Ingoing);
+        for (long tagOid : tagList) {
+            if (tagReplies.exists(tagOid)) {
+                tagNames.add(tagMap.get(tagOid));
+            }
+        }
+        tagReplies.close();
+    }
+
+    graph.getAttribute(oid, personIdAttr, v);
+    long friendId = v.getLong();
+    graph.getAttribute(oid, firstNameAttr, v);
+    String firstName = v.getString();
+    graph.getAttribute(oid, lastNameAttr, v);
+    String lastName = v.getString();
+
+    result.add(new LdbcQuery12Result(friendId, firstName, lastName,
+    tagNames, (int)replies.size()));
+    replies.close();
+}
+iterator.close();
+friends.close();
+postOfTags.close();
+
+Collections.sort(result, new Comparator<LdbcQuery12Result>() {
+    public int compare(LdbcQuery12Result r1, LdbcQuery12Result r2) {
+        Integer date = r2.replyCount();
+        int rc = date.compareTo(r1.replyCount()); // descending by Comment count
+        if (rc == 0) {
+            Long id = r1.personId();
+            rc = id.compareTo(r2.personId()); // ascending by Person identifier
+        }
+        return rc;
+    }
+});
+
+sess.close();
+return result.subList(0, Math.min(limit, result.size()));
+\end{verbatim}
+}
+
+\subsection{Query 13}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery13Result> result = new ArrayList<LdbcQuery13Result>();
+
+if (person1Id == person2Id) {
+    result.add(new LdbcQuery13Result(0));
+    sess.close();
+    return result;
+} 
+
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType   = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int knowType     = SparkseeUtils.getType(SparkseeUtils.KNOWS);
+int personIdAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+
+long person1OID = graph.findObject(personIdAttr, v.setLong(person1Id));
+long person2OID = graph.findObject(personIdAttr, v.setLong(person2Id));
+
+int length = PATH_NOT_FOUND;
+try {
+    @SuppressWarnings("resource")
+    SinglePairShortestPathBFS shortestPath = new SinglePairShortestPathBFS(sess, person1OID, person2OID);
+    shortestPath.addNodeType(personType);
+    shortestPath.addEdgeType(knowType, EdgesDirection.Outgoing);
+    shortestPath.run();
+
+    length = shortestPath.exists() ? (int) shortestPath.getCost() : PATH_NOT_FOUND;
+} catch (Exception e) {
+}
+result.add(new LdbcQuery13Result(length));
+sess.close();
+return result;
+\end{verbatim}
+}
+
+\subsection{Query 14}
+
+{\footnotesize
+\begin{verbatim}
+List<LdbcQuery14Result> result = new ArrayList<LdbcQuery14Result>();
+
+Graph graph = sess.getGraph();
+Value v = new Value();
+
+int personType     = SparkseeUtils.getType(SparkseeUtils.PERSON);
+int knowsType      = SparkseeUtils.getType(SparkseeUtils.KNOWS);
+int postType       = SparkseeUtils.getType(SparkseeUtils.POST);
+int commentType    = SparkseeUtils.getType(SparkseeUtils.COMMENT);
+int replyOfType    = SparkseeUtils.getType(SparkseeUtils.REPLY_OF);
+int hasCreatorType = SparkseeUtils.getType(SparkseeUtils.HAS_CREATOR);
+
+int personIdAttr = SparkseeUtils.getAttribute(personType, SparkseeUtils.ID);
+int weightAttr = graph.newSessionAttribute(knowsType, DataType.Double, AttributeKind.Basic);
+
+if (person1Id == person2Id) {
+    List<Long> path = new ArrayList<Long>();
+    path.add(person1Id);
+    result.add(new LdbcQuery14Result(path, 0.0));
+    sess.close();
+    return result;
+}
+
+// search all paths
+long person1OID = graph.findObject(personIdAttr, v.setLong(person1Id));
+long person2OID = graph.findObject(personIdAttr, v.setLong(person2Id));
+
+int targetLength = 1;
+Objects people = graph.neighbors(person1OID, knowsType, EdgesDirection.Outgoing);
+int size = 0;
+while (size != people.size() && !people.exists(person2OID)) {
+size =  people.size();
+Objects morePeople = graph.neighbors(people, knowsType, EdgesDirection.Outgoing);
+people.union(morePeople);
+targetLength++;
+morePeople.close();
+}
+
+boolean itExists = people.exists(person2OID);
+people.close();
+if (!itExists) {
+    targetLength = -1;
+    sess.close();
+    return result;
+}
+
+List<Objects> steps = new ArrayList<Objects>(targetLength);
+steps.add(graph.neighbors(person1OID, knowsType, EdgesDirection.Outgoing));
+for (int i = 1; i <= targetLength; i++) {
+    steps.add(graph.neighbors(steps.get(i-1), knowsType, EdgesDirection.Outgoing));
+}
+
+List<Objects> backsteps = new ArrayList<Objects>(targetLength);
+backsteps.add(graph.neighbors(person2OID, knowsType, EdgesDirection.Ingoing));
+for (int i = 1; i <= targetLength; i++) {
+    backsteps.add(graph.neighbors(backsteps.get(i-1), knowsType, EdgesDirection.Ingoing));
+}
+
+for (int i = 0; i < targetLength; i++) {
+    steps.get(i).intersection(backsteps.get(targetLength-i));
+}
+
+for (Objects objs : backsteps) {
+    objs.close();
+}
+
+List<Long> path = new ArrayList<Long>();
+List<List<Long>> paths = new ArrayList<List<Long>>();
+searchPaths(graph, targetLength, 0, person2OID, person1OID, knowsType, path, paths, steps);
+
+for (Objects objs : steps) {
+    objs.close();
+}
+
+Objects posts    = graph.select(postType);
+Objects comments = graph.select(commentType);
+for (int i = 0; i < paths.size(); i++) {
+    List<Long> pathId = new ArrayList<Long>();
+    for (int j = 0; j < paths.get(i).size(); j++) {
+        graph.getAttribute(paths.get(i).get(j), personIdAttr, v);
+        pathId.add(v.getLong());
+    }
+    double weight = 0.0;
+    for (int j = 1; j < paths.get(i).size(); j++) {
+        long tail = paths.get(i).get(j-1);
+        long head = paths.get(i).get(j);
+        long edgeOid = graph.findEdge(knowsType, tail, head);
+        graph.getAttribute(edgeOid, weightAttr, v);
+        if (v.isNull()) {
+
+            Objects messages1 = graph.neighbors(tail, hasCreatorType, 
+                                                EdgesDirection.Ingoing);
+            Objects messages2 = graph.neighbors(head, hasCreatorType, 
+                                                EdgesDirection.Ingoing);
+            Objects replies1  = graph.neighbors(messages1, replyOfType, 
+                                                EdgesDirection.Outgoing);
+            Objects replies2  = graph.neighbors(messages2, replyOfType, 
+                                                EdgesDirection.Outgoing);
+            replies1.intersection(messages2);
+            replies2.intersection(messages1);
+            replies1.union(replies2);
+            messages1.close();
+            messages2.close();
+            replies2.close();
+
+            Objects replyOfPost = Objects.combineIntersection(replies1, posts);
+            replies1.intersection(comments);
+            Double score1 = new Double(replyOfPost.count());
+            Double score2 = new Double(replies1.count() / 2.0);
+            replies1.close();
+            replyOfPost.close();
+
+            graph.setAttribute(edgeOid, weightAttr, v.setDouble(score1 + score2));
+        }
+        weight += v.getDouble();
+    }
+    result.add(new LdbcQuery14Result(pathId, weight));
+}
+posts.close();
+comments.close();
+
+Collections.sort(result, new Comparator<LdbcQuery14Result>() {
+    public int compare(LdbcQuery14Result r1, LdbcQuery14Result r2) {
+        Double weight = r2.pathWeight();
+        // descending by path weight
+        return weight.compareTo(r1.pathWeight()); 
+    }
+});
+
+sess.close();
+return result;
+
+\end{verbatim}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

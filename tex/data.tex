@@ -27,14 +27,19 @@ Table~\ref{table:types} describes the different types used in the whole benchmar
     \hline
     Text &  variable length text of size 2000\\
     \hline
-    Date &  date with a precision of a day\\
+    Date &  date with a precision of a day, encoded as a string with the following format: \textit{yyyy-mm-dd}, where \textit{yyyy} is a four-digit integer representing the year,
+    the year, \textit{mm} is a two-digit integer representing the month and dd is a two-digit integer representing the day. \\
     \hline
-    DateTime &  date with a precision of a second\\
+    DateTime &  date with a precision of miliseconds, encoded as a string with the following format: \textit{yyyy-mm-ddTHH:MM:ss.sss+0000}, where \textit{yyyy} is a four-digit integer representing the year,
+    the year, \textit{mm} is a two-digit integer representing the month and \textit{dd} is a two-digit integer representing the day, \textit{HH} is a two-digit integer representing the hour, \textit{MM} is a two 
+    digit integer representing the minute and \textit{ss.sss} is a five digit fixed point real number representing the seconds up to milisecond precision. Finally, the \textit{+0000} of the end represents the
+    timezone, which in this case is always GMT.\\
     \hline
 \end{tabular}
 \caption{Description of the data types.}
 \label{table:types}
 \end{table}
+
 
 \subsection{Data Schema}
 
@@ -74,23 +79,23 @@ All of them are described in the following sections.
 
 \subsubsection{Entities}
 
-{\flushleft \textbf{City:}} Is a sub-class of a Place, and represents a
+{\flushleft \textbf{City:}} a sub-class of a Place, and represents a
 city of the real world. City entities are used to specify where persons live,
 as well as where universities operate.
 
-{\flushleft \textbf{Comment:}} Is a sub-class of a Message, and represents a
+{\flushleft \textbf{Comment:}} a sub-class of a Message, and represents a
 comment made by a person to an existing message (either a Post or a Comment).
 
-{\flushleft \textbf{Continent:}} Is a sub-class of an Organization, and represents a company where persons work.
+{\flushleft \textbf{Company:}} a sub-class of an Organization, and represents a company where persons work.
 
 
-{\flushleft \textbf{Country:}} Is a sub-class of a Place, and represents a continent of the real world.
+{\flushleft \textbf{Country:}} a sub-class of a Place, and represents a continent of the real world.
 
 
-{\flushleft \textbf{Forum:}} Is forum represents a meeting point where people
+{\flushleft \textbf{Forum:}} a meeting point where people
 post messages. Forums are characterized by the topics (represented as tags)
 people in the forum are talking about. Although from the schema's perspective
-all the forums are equally considered, there exists three different types of
+it is not evident, there exist three different types of
 forums: persons' personal walls, image albums, and groups. They are
 distinguished by their titles. Table~\ref{table:forum} shows the attributes
 of Forum entity.
@@ -111,8 +116,9 @@ of Forum entity.
     \label{table:forum}
 \end{table}
 
-{\flushleft \textbf{Message:}} Is an abstract entity that represents a message created by a person. Table~\ref{table:message}
-shows the attributes of Message abstract entity.
+{\flushleft \textbf{Message:}} an abstract entity that represents a message
+created by a person. Table~\ref{table:message} shows the attributes of Message
+abstract entity.
 
 \begin{table}[H]
     \begin{tabular}{|p{2.5cm}|p{2.5cm}|p{10.5cm}|}
@@ -136,7 +142,7 @@ shows the attributes of Message abstract entity.
     \label{table:message}
 \end{table}
 
-{\flushleft \textbf{Organization:}} Represents an institution of the real
+{\flushleft \textbf{Organization:}} an institution of the real
 world. Table~\ref{table:organization} shows the attributes of Organization
 entity.
 
@@ -154,8 +160,8 @@ entity.
     \label{table:organization}
 \end{table}
 
-{\flushleft \textbf{Person:}} Represents the avatar a real world person creates
-when he/she joins the network, and contains several information about the
+{\flushleft \textbf{Person:}} the avatar a real world person creates
+when he/she joins the network, and contains various information about the
 person as well as network related information. Table~\ref{table:person} shows
 the attributes of Person entity.
 
@@ -190,8 +196,8 @@ the attributes of Person entity.
 \end{table}
 
 
-{\flushleft \textbf{Place:}} Represents a place in the world. Table~\ref{table:place} shows the
-attributes of Place entity.
+{\flushleft \textbf{Place:}} a place in the world.
+Table~\ref{table:place} shows the attributes of Place entity.
 
 \begin{table}[H]
     \begin{tabular}{|p{2.5cm}|p{2.5cm}|p{10.5cm}|}
@@ -207,9 +213,10 @@ attributes of Place entity.
     \label{table:place}
 \end{table}
 
-{\flushleft \textbf{Post:}} Is a sub-class of Message, that is posted in a
-forum. Posts are created by persons into the forums where they belong. Posts
-contain either a textual content, or an image, but never both.
+{\flushleft \textbf{Post:}} a sub-class of Message, that is posted in a
+forum. Posts are created by persons into the forums where they belong. 
+Posts contain either content or imageFile, always one of them but never both.
+The one they do not have is an empty string.
 Table~\ref{table:post} shows the attributes of Post entity.
 
 \begin{table}[H]
@@ -226,9 +233,9 @@ Table~\ref{table:post} shows the attributes of Post entity.
     \label{table:post}
 \end{table}
 
-{\flushleft \textbf{Tag:}} Represents a topic or a concept. Tags are used
-to specify the topics of forums and posts, as well as the topics a person
-is interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
+{\flushleft \textbf{Tag:}} a topic or a concept. Tags are used to
+specify the topics of forums and posts, as well as the topics a person is
+interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
 
 \begin{table}[H]
     \begin{tabular}{|p{2.5cm}|p{2.5cm}|p{10.5cm}|}
@@ -244,7 +251,7 @@ is interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
     \label{table:tag}
 \end{table}
 
-{\flushleft \textbf{TagClass:}} Represents a class or a category used to build
+{\flushleft \textbf{TagClass:}} a class or a category used to build
 a hierarchy of tags. Table~\ref{table:tagclass} shows the attributes of TagClass
 entity.
 
@@ -262,7 +269,7 @@ entity.
     \label{table:tagclass}
 \end{table}
 
-{\flushleft \textbf{University:}} Is a sub-class of Organization,
+{\flushleft \textbf{University:}} a sub-class of Organization,
 and represents an institution where persons study.
 
 \subsubsection{Relations}
@@ -287,7 +294,7 @@ Relations connect entities of different types. Entities are defined by their ''i
         \end{itemize}
         \\
         \hline
-        hasModerator & Forum[0..*] & Person[1] & D & A Forum and his moderator (Person) \\
+        hasModerator & Forum[0..*] & Person[1] & D & A Forum and its moderator (Person) \\
         \hline
         hasTag & Message[0..*] & Tag[0..*] & D & A Message and a Tag representing the message's topic \\
         \hline
@@ -299,7 +306,7 @@ Relations connect entities of different types. Entities are defined by their ''i
         \hline
         isLocatedIn & Message[0..*] & Country[1] & D & A Message and the Country from which it was issued \\
         \hline
-        isLocatedIn & Person[0..*] & City[1] & D & A Person and its home City \\
+        isLocatedIn & Person[0..*] & City[1] & D & A Person and their home City \\
         \hline
         isLocatedIn & University[0..*] & City[1] & D &  A University and the City where the university is \\
         \hline

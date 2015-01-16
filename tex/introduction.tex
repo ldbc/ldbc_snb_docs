@@ -28,10 +28,9 @@ benchmark setting the rules for the evaluation of graph-like data management
 technologies.  LDBC-SNB is designed to be a plausible look-alike of all the
 aspects of operating a social network site, as one of the most representative
 and relevant use case of modern graph-like applications. LDBC-SNB is a work in
-progress, and initially, it only includes a read only Interactive Workloads,
+progress, and initially, it only includes the Interactive Workload,
 but two more workloads will be introduced in the future: the Business
-Intelligence and the Analytics.  All three workloads will support update
-queries in future releases. By designing three separate workloads, LDBC-SNB
+Intelligence and the Analytics. By designing three separate workloads, LDBC-SNB
 targets a broader range of systems with different nature and characteristics.
 LDBC-SNB aims at capturing the essential features of these usage scenarios
 while abstracting away details of specific business deployments. 
@@ -167,9 +166,8 @@ in a real social network. Furthermore, the data generator is designed to be
 user friendly. The proposed data schema is shared by all the different proposed
 workloads, those we currently have, and those that will be proposed in the future.
 
-In Section~\ref{section:workloads}, the Interactive Workload is proposed. Currently
-it only defines read queries, but will be updated in the near future to support
-updates. Two more workloads are planned:  Business Intelligence Workload and
+In Section~\ref{section:workloads}, the Interactive Workload is proposed. 
+Two more workloads are planned:  Business Intelligence Workload and
 Analytical workload. Workloads are designed to mimic the different usage
 scenarios found in operating a real social network site, and each of them
 targets one or more types of systems.  Each workload defines a set of queries
@@ -192,31 +190,11 @@ and will imply touching a vast amount of the dataset.
 LDBC-SNB provides an execution test driver, which is responsible of executing
 the workloads and gathering the results. The driver is designed with simplicity
 and portability in mind, to ease the implementation on systems with different
-nature and characteristics, at a low implementation cost. Furthermore, it will
-automatically handle the validation of the queries in the near future.  The
-overall philosophy of LDBC-SNB is to provide all the necessary software tools
-to run the benchmark, and therefore to reduce the benchmark's entry point as
-much as possible.
-
-%A complete benchmark needs to define a set of performance metrics
-%for each workload, to allow a fair comparison of systems of different sizes and
-%budgets. We understand that different workloads require different performance
-%metrics, and that these have to capture not only the pure performance of the
-%SUT, but also its performance per price. LDBC-SNB is aware of that and will provide
-%performance metrics for each of the workloads proposed.
-%
-%
-%Similarly to performance metrics, LDBC-SNB will define the rules for executing
-%the benchmark. Rules will include the different steps to follow in order to
-%have a valid benchmark execution, as well as those things that are prohibited.
-%The goal is to ensure, as much as possible, that the reported SUT's performance
-%can be extrapolated to any production system of a similar scale and
-%applications.  Also, LDBC-SNB will give guidelines for a full disclosure report.
-%The required information will ease the comparison of results between different
-%systems, and ensure that these can be reproduced given the appropriate
-%documentation and products. Last but not least, LDBC-SNB will require the
-%results to be audited to be official. LDBC-SNB will define the necessary steps
-%to follow during the audit process.
+nature and characteristics, at a low implementation cost. Furthermore, it
+automatically handles the validation of the queries by means of a validation
+dataset provided by LDBC.  The overall philosophy of LDBC-SNB is to provide all
+the necessary software tools to run the benchmark, and therefore to reduce the
+benchmark's entry point as much as possible.
 
 Detailed instructions to generate the required datasets and to run Interactive
 Workload of the benchmark, are described in Chapter~\ref{chapter:instructions}.

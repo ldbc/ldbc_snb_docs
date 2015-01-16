@@ -17,13 +17,13 @@ the list of variables to set:
 
 \begin{itemize}
     \item \textbf{HADOOP\_HOME}: Points to your hadoop root folder.
-    \item \textbf{LDBC\_SOCIALNET\_DATAGEN\_HOME}: Points to your DATAGEN root folder.
+    \item \textbf{LDBC\_SNB\_DATAGEN\_HOME}: Points to your DATAGEN root folder.
 \end{itemize}
 
 Once these variables are properly set, by typing:
 
 \begin{lstlisting}[backgroundcolor=\color{gray}, frame=single, language=bash]
-$ sh run.sh
+$ ./run.sh
 \end{lstlisting}
 
 DATAGEN is compiled and executed, and a dataset with the default options is
@@ -49,6 +49,10 @@ summarizes the different available options and their default values:
     \hline
     numThreads & 1 & Sets the number of threads to use. Only works for pseudo-distributed mode \\
     \hline
+    updateStreams & false & Sets DATAGEN to generate the update streams used by the driver to issue update queries. \\
+    \hline
+    numUpdatePartitions & 1 & The number of update stream partitions per thread. \\
+    \hline
 \end{tabular}
 \caption{Description of the data types.}
 \label{table:sndg_options}
@@ -67,8 +71,17 @@ numThreads:4
 
 DATAGEN outputs data into HDFS. The outputDir directory specified in
 \textit{params.ini} file, will be automatically created in HDFS if it does not
-exist. If there is not an HDFS file system mounted, then data is output to your local
-file system. 
+exist. If there is not an HDFS file system mounted, then data is output to your
+local file system. 
+
+DATAGEN creates two directories in the \textit{outputDir} directory: hadoop and
+social\_network.  The former is used to store temporary files used during the
+data generation process. The later stores the actual dataset created in the
+specified format.
+
+Additionally, DATAGEN creates a third directory in the DATAGEN home folder
+called \textit{substitution\_parameters}.  This folder contains the files with
+the substitution parameters used by the driver to execute the workload.
 
 \subsection{Serializers}\label{section:serializers}
 
