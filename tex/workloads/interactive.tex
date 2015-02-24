@@ -116,7 +116,7 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
     \end{itemize}
 }
 
-\subsubsection{Lookup Query Descriptions}
+\subsubsection{Complex Reads Query Descriptions}
 \label{sub:queries}
 
 Notes:
@@ -183,9 +183,9 @@ Notes:
                                 Person.id 										& ID \\
                                 Person.firstName								& String \\
                                 Person.lastName									& String \\
-                                Post.id/Comment.id 								& ID \\
-                                Post.content/Post.imageFile/Comment.content 	& String \\
-                                Post.creationDate/Comment.creationDate			& DateTime \\
+                                Message.id 								& ID \\
+                                Message.content or Post.imageFile 	& String \\
+                                Message.creationDate	& DateTime \\
                             \end{tabular}		
                     \end{itemize}
 
@@ -314,8 +314,8 @@ Notes:
                     Person.firstName 							& String & \parbox[t]{20cm}{\par \strut} \\
                     Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
                     Like.creationDate 	 						& DateTime & \parbox[t]{20cm}{\par \strut} \\
-                    Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-                    Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Message.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
                     latency 	 								& 32-bit Integer & \parbox[t]{20cm}{// duration between creation of\par Post/Comment and Like, in minutes\strut} \\
                     isNew										& Boolean & \parbox[t]{20cm}{// false if liker Person is friend of\par start Person, true otherwise \strut} \\
                 \end{tabular}		
@@ -365,9 +365,9 @@ Notes:
                     Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
                     Person.firstName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
                     Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-                    Post.id/Comment.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-                    Post.content/Post.imageFile/Comment.content	& String & \parbox[t]{20cm}{\par \strut} \\
-                    Post.creationDate/Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                    Message.id  	 						& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Message.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
         \end{itemize}
 
@@ -504,6 +504,144 @@ Notes:
         \end{itemize}
 \end{enumerate}
 }
+
+\subsubsection{Short Reads Query Descriptions}
+
+\begin{enumerate}
+
+  \item Person Profile
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a start Person, retrieve their first name, last name, birthday, IP address, browser, and city of residence.
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Person.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Person.firstName									& String \\
+          Person.lastName										& String \\
+          Person.birthDay										& Date \\
+          Person.locationIP									& String \\
+          Person.browserUsed								& String \\
+          Person-isLocatedIn->Place.id			& 32-bit Integer \\
+          Person.gender									    & String \\
+          Person.creationDate						    & DateTime \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Person Recent Messages
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a start Person, retrieve the last 10 Messages (Posts or Comments) created by that person.
+        For each message, return that message, the original post in its conversation, and the author of that post.
+        Order results descending by message creation date, then descending by message identifier
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Person.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Message.id     									& 64-bit Integer \\
+          Message.content or Post.imageFile										& String \\
+          Message.creationDate  & DateTime \\
+          Post.id or Comment-replyOf*->Post.id								& ID \\
+          Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id & ID \\
+          Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName & String \\
+          Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName & String \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Person Friends
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a start Person, retrieve all of their friends, and the date at which they became friends.
+        Order results descending by friendship creation date, then ascending by friend identifier
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Person.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Person.id     									& ID \\
+          Person.firstName     						& String \\
+          Person.lastName    							& String \\
+          Knows.creationDate    					& String \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Message Content 
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a Message (Post or Comment), retrieve its content and creation date.
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Message.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Message.creationDate   									& ID \\
+          Message.content or Post.imageFile           										& String \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Message Creator 
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a Message (Post or Comment), retrieve its author.
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Message.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Message-hasCreator->Person.id     									& ID \\
+          Message-hasCreator->Person.firstName     									& String \\
+          Message-hasCreator->Person.lastName    									& String \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Message Forum 
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a Message (Post or Comment), retrieve the Forum that contains it and the Person that moderates that forum.
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Message.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Message<-containerOf-Forum.id                       & ID \\
+          Message<-containerOf->Forum.title     									& String \\
+          Message<-containerOf->Forum-hasModerator->Person.id     									& ID \\
+          Message<-containerOf->Forum-hasModerator->Person.firstName    									& String \\
+          Message<-containerOf->Forum-hasModerator->Person.lastName    									& String \\
+        \end{tabular}
+    \end{itemize}
+
+  \item Message Replies
+    \begin{itemize}
+      \item \textbf{Description:}
+        Given a Message (Post or Comment), retrieve the (1-hop) Comments that reply to it.
+        In addition, return a boolean flag indicating if the author of the reply knows the author of the original message.
+        If author is same as original author, return false for "knows" flag.
+        Order results descending by comment identifier, then descending by author identifier.
+      \item \textbf{Parameters:} \\
+        \begin{tabular}{lll}
+          Message.id 										& ID \\
+        \end{tabular}
+      \item \textbf{Results:} \\
+        \begin{tabular}{lll}
+          Message<-replyOf-Comment.id                       & ID \\
+          Message<-replyOf-Comment.content                       & String \\
+          Message<-replyOf-Comment.creationDate                       & DateTime \\
+          Message-hasCreator->Person.id     									& ID \\
+          Message-hasCreator->Person.firstName    									& String \\
+          Message-hasCreator->Person.lastName     									& String \\
+        \end{tabular}
+    \end{itemize}
+
+\end{enumerate}
 
 \subsubsection{Update Query Descriptions}
 \begin{enumerate}
