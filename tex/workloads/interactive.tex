@@ -533,8 +533,9 @@ Notes:
   \item Person Recent Messages
     \begin{itemize}
       \item \textbf{Description:}
-        Given a start Person, retrieve the last 10 Messages (Posts or Comments) created by that person.
+        Given a start Person, retrieve the last 10 Messages (Posts or Comments) created by that user.
         For each message, return that message, the original post in its conversation, and the author of that post.
+        If any of the Messages is a Post, then the original Post will be the same Message, i.e., that Message will appear twice in that result.
         Order results descending by message creation date, then descending by message identifier
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
@@ -612,10 +613,10 @@ Notes:
       \item \textbf{Results:} \\
         \begin{tabular}{lll}
           Message<-containerOf-Forum.id                       & ID \\
-          Message<-containerOf->Forum.title     									& String \\
-          Message<-containerOf->Forum-hasModerator->Person.id     									& ID \\
-          Message<-containerOf->Forum-hasModerator->Person.firstName    									& String \\
-          Message<-containerOf->Forum-hasModerator->Person.lastName    									& String \\
+          Message<-containerOf-Forum.title     									& String \\
+          Message<-containerOf-Forum-hasModerator->Person.id     									& ID \\
+          Message<-containerOf-Forum-hasModerator->Person.firstName    									& String \\
+          Message<-containerOf-Forum-hasModerator->Person.lastName    									& String \\
         \end{tabular}
     \end{itemize}
 
