@@ -605,7 +605,10 @@ Notes:
   \item Message Forum 
     \begin{itemize}
       \item \textbf{Description:}
-        Given a Message (Post or Comment), retrieve the Forum that contains it and the Person that moderates that forum.
+        Given a Message (Post or Comment), retrieve the Forum that contains it
+        and the Person that moderates that forum. Since comments are not
+        directly contained in forums, for comments, return the forum containing
+        the original post in the thread which the comment is replying to. 
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
@@ -626,7 +629,7 @@ Notes:
         Given a Message (Post or Comment), retrieve the (1-hop) Comments that reply to it.
         In addition, return a boolean flag indicating if the author of the reply knows the author of the original message.
         If author is same as original author, return false for "knows" flag.
-        Order results descending by comment identifier, then descending by author identifier.
+        Order results descending by creation date, then ascending by author identifier.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
