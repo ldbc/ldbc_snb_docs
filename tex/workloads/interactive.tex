@@ -228,8 +228,8 @@ Notes:
                 \item \textbf{Description:}
                     Given a start Person, find Tags that are attached to Posts that
                     were created by that Person's friends.  Only include Tags that were
-                    attached to Posts created within a given time interval, and that
-                    were never attached to Posts created before this interval.  Return
+                    attached to friends' Posts created within a given time interval, and that
+                    were never attached to friends' Posts created before this interval.  Return
                     top 10 Tags, and the count of Posts, which were created within the
                     given time interval, that this Tag was attached to.  Sort results
                     descending by Post count, and then ascending by Tag name.
@@ -432,15 +432,16 @@ Notes:
     \item Expert search
         \begin{itemize}
             \item \textbf{Description:}
-                Given a start Person, find the Comments that this Person's friends
-                made in reply to Posts, considering only those Comments that are
-                immediate (1-hop) replies to Posts, not the transitive (multi-hop) case.
-                Only consider Posts with a Tag in a given TagClass or in a
-                descendent of that TagClass.  Count the number of these reply
-                Comments, and collect the Tags that were attached to the Posts they
-                replied to.  Return top 20 Persons, the reply count, and the
-                collection of Tags.  Sort results descending by Comment count, and
-                then ascending by Person identifier
+                Given a start Person, find the Comments that this Person's
+                friends made in reply to Posts, considering only those Comments
+                that are immediate (1-hop) replies to Posts, not the transitive
+                (multi-hop) case.  Only consider Posts with a Tag in a given
+                TagClass or in a descendent of that TagClass.  Count the number
+                of these reply Comments, and collect the Tags (with valid tag
+                class) that were attached to the Posts they replied to.  Return
+                top 20 Persons with at least one reply, the reply count, and
+                the collection of Tags.  Sort results descending by Comment
+                count, and then ascending by Person identifier
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 					& ID & \parbox[t]{20cm}{\par \strut} \\
