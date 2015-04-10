@@ -31,7 +31,7 @@ under test. This includes the following items:
 \item Common name of the system, e.g. Dell PowerEdge xxxx.
 \item Type and number of CPU's, cores/threads per CPU, clock frequency and cache hierarchy characteristics (levels, size per level, etc...).
 \item The amount of system's memory, type and frequency.
-\item The Disk controller or motherborad type if disk controller is on motherboard.
+\item The Disk controller or motherboard type if disk controller is on motherboard.
 \item For each distinct type of secondary storage device, the number and characteristics of the device.
 \item The number and type of network controllers.
 \item The number and type of network switches. Wiring must be disclosed.
@@ -52,7 +52,7 @@ Besides hardware characteristics, also software details must be collected:
 \item The DBMS and operating system name and versions.
 \item Installation and configuration information of both the DBMS and operating
 system, which must be provided by the test sponsor.
-\item Price of the software license used, which can be tight to the number of
+\item Price of the software license used, which can be tied to the number of
 concurrent users or size of data.
 \item Date of availability of the software.
 \end{itemize}
@@ -88,7 +88,7 @@ machine in the same way as specified above.
 The test sponsor must provide all the necessary documentation and scripts
 to load the dataset into the database to test. The system under test must
 support the different data types needed by the benchmark for each of the
-attributes at their needed precision. No data can be filtered out, everything
+attributes at their specified precision. No data can be filtered out, everything
 must be loaded.  The test sponsor must provide a tool to perform arbitrary
 checks of the data or a shell to issue queries in a declarative language if the
 system supports it. The auditor will measure the time to load the data, which
@@ -102,7 +102,6 @@ queries are validated by means of the official validation datasets provided by
 LDBC consortium in their official software repositories. The auditor must load
 the provided dataset and run the driver in validation mode, which will test
 that the queries provide the official results.
-
 
 The warmup can be performed either using the LDBC driver or externally, and the
 way it is performed must be disclosed.
@@ -125,12 +124,12 @@ disclosed.
 \section{Recovery}
 
 Once an official run has been validated, the recovery capabilities of the
-systemm must be tested. The system and the driver must be configured in the
+system must be tested. The system and the driver must be configured in the
 same way as in during the benchmark execution. The system will be warmup and an
 execution of the benchmark will be performed under the same terms as in the
 previous measured run.
 
-At an arbitrary point after 2 hours of simulation time execution, the machine
+At an arbitrary point close to 2 hours of simulation execution time, the machine
 will be disconnected.  Then, the auditor will restart the database system and
 will check that the last commited update (in the driver log file) is actually
 in the database. The auditor will measure the time taken by the system to
