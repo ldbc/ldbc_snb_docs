@@ -1,5 +1,146 @@
-\section{Auditing}\label{section:auditing}
-\alert{TODO}
-%\alert{ TODO - Orri, Peter and Larri \\
-%Here we describe the rules for auditing the implementation of the benchmark.
-%}
+
+
+This chapter describes the rules to audit benchmark runs, that is, what
+techniques are allowed and what is not, what must be provided to the auditor
+and guidelines for the auditors to perform the audit. 
+
+\section{Preparation}
+
+The first step when doing an audit is to determine the versions of the
+following items that will be used for the benchmark:
+
+\begin{itemize}
+  \item The Benchmark Specification
+  \item The data generator
+  \item The driver
+\end{itemize}
+
+These must be reported in the full disclosure report to guarantee that the
+benchmark run can be reproduced exactly in the future. Similarly, the test
+sponsor will inform the auditor the scale factor to test. Finally, a clean test
+system with enough space to store the scale factor must be provided, including
+the update streams and substitution parameters. 
+
+
+\subsection{Collect system details}
+
+The next step is to collect the technical and pricing details of the system
+under test. This includes the following items:
+
+\begin{itemize}
+\item Common name of the system, e.g. Dell PowerEdge xxxx.
+\item Type and number of CPU's, cores/threads per CPU, clock frequency and cache hierarchy characteristics (levels, size per level, etc...).
+\item The amount of system's memory, type and frequency.
+\item The Disk controller or motherborad type if disk controller is on motherboard.
+\item For each distinct type of secondary storage device, the number and characteristics of the device.
+\item The number and type of network controllers.
+\item The number and type of network switches. Wiring must be disclosed.
+\item Date of availability of the system.
+\end{itemize}
+
+Only the network switches and interfaces that participate in the run need to be
+reported. If the benchmark execution is entirely contained on a single machine,
+no network need be reported.  The price of the hardware in question must be
+disclosed and should reflect the single quantity list price that any buyer
+could expect when purchasing one system with the given specification. The price
+may be either an item by item price or a package price if the system is sold as
+a package
+
+Besides hardware characteristics, also software details must be collected:
+
+\begin{itemize}
+\item The DBMS and operating system name and versions.
+\item Installation and configuration information of both the DBMS and operating
+system, which must be provided by the test sponsor.
+\item Price of the software license used, which can be tight to the number of
+concurrent users or size of data.
+\item Date of availability of the software.
+\end{itemize}
+
+Also, the test sponsor must provide all the source code relevant to the
+benchmark.
+
+\subsection{Setup the benchmark environment}
+
+Once all the information has been collected, the auditor will setup the
+environment to perform the benchmark run. This setup includes configuring the
+following items:
+
+
+\begin{itemize}
+\item Setup the LDBC Data generator in the test machine if datasets are not
+available from a trusted source.
+\item Setup the LDBC driver with the connectors provided by the test sponsor.
+The test sponsor must provide the configuration parameters to configure the
+driver (tcr, number of threads, etc.).  ldbc.snb.interactive.update\_interleave
+driver parameter must come from the updateStream.properties file, which is
+created by the data generator.That parameter should never be set manually.
+Also, make sure that the -rl/--results\_log is enabled.  Make sure that all
+operations are enabled and the frequencies are those for the selected scale
+factor. These can found in Appendix\ref{appendix:scale_factors}.  If the driver
+will be executed on a separate machine, gather the characteristics of that
+machine in the same way as specified above.
+\end{itemize}
+
+
+\subsection{Load data}
+
+The test sponsor must provide all the necessary documentation and scripts
+to load the dataset into the database to test. The system under test must
+support the different data types needed by the benchmark for each of the
+attributes at their needed precision. No data can be filtered out, everything
+must be loaded.  The test sponsor must provide a tool to perform arbitrary
+checks of the data or a shell to issue queries in a declarative language if the
+system supports it. The auditor will measure the time to load the data, which
+will be disclosed.
+
+\section{Running the benchmark}
+
+Running the benchmark consists of three separate parts: validating the query
+implementations, warming the database and performing the benchmark run. The
+queries are validated by means of the official validation datasets provided by
+LDBC consortium in their official software repositories. The auditor must load
+the provided dataset and run the driver in validation mode, which will test
+that the queries provide the official results.
+
+
+The warmup can be performed either using the LDBC driver or externally, and the
+way it is performed must be disclosed.
+
+A valid benchmark run must last at least 2 hours of simulation time (datagen
+time).  Also, in order to be valid, a benchmark run needs to meet the following
+requirements.  Results\_log.csv contains the actual\_start\_time and
+scheduled\_start\_time of each of the issued queries.  In order to have a valid
+run, 95\% of the queries must meet the following condition: 
+
+\begin{equation*}
+actual\_start\_time - scheduled\_start\_time < 1 \ second
+\end{equation*}
+
+If the execution of the benchmark is valid, the auditor must retrieve all the
+files from directory specified by -rd/--results\_dir which includes
+configuration settings used, results log, results summary, which will be
+disclosed.
+
+\section{Recovery}
+
+Once an official run has been validated, the recovery capabilities of the
+systemm must be tested. The system and the driver must be configured in the
+same way as in during the benchmark execution. The system will be warmup and an
+execution of the benchmark will be performed under the same terms as in the
+previous measured run.
+
+At an arbitrary point after 2 hours of simulation time execution, the machine
+will be disconnected.  Then, the auditor will restart the database system and
+will check that the last commited update (in the driver log file) is actually
+in the database. The auditor will measure the time taken by the system to
+recover from the failure. Also, all the information about how durability is 
+ensured must be disclosed. If checkpoints are used, these must be performed 
+with a period of 10 minutes at most.
+
+
+\section{Serializability}
+
+Optionally, the test sponsor can execute update queries atomically. The auditor
+will verify that serializability is guaranteed. 
+
