@@ -1,0 +1,302 @@
+\subsection{Business Intelligence Workload}
+\subsubsection{Choke Points}
+
+\subsubsection{Business Intelligence Queries}
+
+{\small
+    \begin{enumerate}
+      \item Posting summary 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given a date, find all Messages (Posts and Comments) created before than that date.
+                  Group them by a three level grouping.
+
+                  \begin{itemize}
+                    \item First: by their year of creation.
+                    \item Second: for each year, group them into Posts and Comments.
+                    \item Third: for each year-type (Post or Comment) group, split it into four groups based on the
+                              length of their content: 
+                              \begin{itemize}
+                                \item if length is less than 40, it is 'short'; 
+                                \item else, if length is less than 80, it is 'one liner';
+                                \item else, if length is less than 160, it is 'tweet';
+                                \item otherwise, it is 'long'
+                              \end{itemize}
+                  \end{itemize}
+
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      date 										& DateTime \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For every third-level group, return the the following aggregates:
+                    \begin{tabular}{lll}
+                      year 					& 32-bit Integer & \\
+                      Message.type	& String & \parbox[t]{20cm}{// "Post" or "Comment"  \strut} \\
+                      Message.length & 32-bit Integer & \\
+                      category & 32-bit Integer & \parbox[t]{20cm}{// 0 (short), 1 (one-liner), 2 (tweet), 3 (long) \strut}  \\
+                      count & 32-bit Integer &  \parbox[t]{20cm}{// The number of messages in this group  \strut} \\
+                      average & 32-bit Integer &  \parbox[t]{20cm}{// The average Message length \strut} \\
+                      sum & 32-bit Integer &  \parbox[t]{20cm}{// The sum of the Messages lengths \strut} \\
+                      percentage & 32-bit Floating Point &  \parbox[t]{20cm}{// The percentage of Messages in this group
+                        out of the total number \par of Messages created before the given date  \strut} \\
+                      \end{tabular}
+                    Sort the results first by Year (descending), then by the Message.type (Post 1st, or Comment 2nd) and
+                    finally by the category (ascending)
+                    \end{itemize}
+
+      \item Top Tags from Country, age, gender and time 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Select all Messages created between date1 and date2 (both included) by Persons located in any country
+                  of a provided list of countries Select the creators (Persons) and the Tags of these Messages .  Split
+                  these persons, tags and Messages into a five level grouping:
+                  \begin{itemize}
+                    \item First by the name of the country of the Person
+                    \item  Second, by the month when the Message was created
+                    \item Third, by the gender of the person
+                    \item      Four, by the age group of the Person, which is defined as:
+                      \begin{itemize}
+                        \item The difference in years between the Person's birthday and the end of
+                          simulation ('2013-01-01'), divided by 5, rounded down.
+                      \end{itemize}
+                    \item  Fifth, by the name of the tag attached to the Message
+                  \end{itemize}
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      date1 & Date \\
+                      date2 & Date \\
+                      list of country names & \{String\} \\
+                      endDate & Date \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each of the fifth-level groups return: 
+                    \begin{tabular}{lll}
+                      Country.name & String & \\
+                      month & 32-bit Integer & \\
+                      gender & String & \parbox[t]{20cm}{// "Male" or "Female" \strut}\\
+                      age group & 32-bit Integer & \\
+                      Tag.name & String & \\
+                      count & 32-bit Integer & \parbox[t]{20cm}{// The count of Messages falling in this group \strut}
+                    \end{tabular}
+                    Return top 100 groups where number of Messages is bigger than 100. Sort the groups by the count
+                    (descending), Tag name (ascending), age group (ascending), gender (ascending), month
+                    (ascending) and country name (ascending).
+                    \end{itemize}
+      \item Tag Evolution 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given two date intervals (left-closed, right-open), for each of these intervals find all Tags that
+                  were used in Messages. For each interval, count the number of Messages containing each Tag.
+
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      dateStart1 & Date \\
+                      dateEnd1 & Date \\
+                      dateStart2 & Date \\
+                      dateEnd2 & Date \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each of the tags:
+                    \begin{tabular}{lll}
+                      Tag.name & String & \\
+                      countInterval1 & 32-bit Integer & \parbox[t]{20cm}{// The number of occurrences of this Tag during
+                        interval 1  \strut} \\
+                      countInterval2 & 32-bit Integer & \parbox[t]{20cm}{// The number of occurrences of this Tag during
+                        interval 2 \strut}\\
+                      diff & 32-bit Integer & \parbox[t]{20cm}{ // The absolute difference countInterval1 and
+                        countInterval2 \strut} \\
+                    \end{tabular}
+                    Return top-100 results sorted by the difference (descending) and then the tag name (ascending)
+                    \end{itemize}
+
+      \item Popular topics in a Country 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given a tagCalss and a Country, find all the Forums created in the given Country, containing at least
+                  one Posts with Tags belonging directly to the given tagClass.
+                  The location of a Forum is identified by the location of the Forum’s moderator.
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      TagClass.name & String \\
+                      Country.name & String \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each Forum:
+                    \begin{tabular}{lll}
+                      Forum.id  & ID & \\
+                      Forum.title & String & \\
+                      Forum.creationDate & DateTime & \\
+                      Forum-hasModerator->Person.id & \{ ID \} & \\
+                      count & 32-bit Integer &  \parbox[t]{20cm}{ // The number of Posts in the Forum with at least \par one Tag belonging to
+                        the TagClass \strut} 
+                    \end{tabular}
+                    Return top-20 results sorted by count (descending) and Forum.id (ascending)
+                    \end{itemize}
+
+      \item Top posters in a Country 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Find the most popular Forums for a given Country, where the popularity of a Forum is measured by the
+                  number of members that Forum has from the given Country.  If multiple forums have the same member
+                  count, use forum ID as tie breaker for popularity, where lower ID is more popular.  For each person
+                  that is a member or moderator of any of the 100 most popular Forums, count the number of Posts they
+                  made in any of those (most popular) Forums.
+
+                  Group persons by:
+                  \begin{itemize}
+                      \item First, id
+                      \item Second, first name
+                      \item Third, last name
+                      \item Fourth, creation date
+                  \end{itemize}
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      Country.name & String \\ 
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                   For each group:
+                    \begin{tabular}{lll}
+                      Person.id & ID & \\
+                      Person.firstName & String & \\
+                      Person.lastName & String & \\
+                      Person.creationDate & DateTime & \\
+                      count & 32-bit Integer & \parbox[t]{20cm}{ // Number of Posts created by that Person \par in the top-100
+                        most popular Forums\strut}  \\
+                    \end{tabular}
+                    Return top 100 Persons, sorted by count (descending) and by Person.Id (ascending).
+                    \end{itemize}
+
+      \item Most active posters on a given topic 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Retrieve Persons who have created a Message with given Tag.  For each Person, compute a score as
+                  follows: (the number of Messages they created that have given Tag) PLUS (2 x number of replies to
+                  those Messages) PLUS (10 x number of Likes on those Messages).
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      Tag.name & 32-bit Integer 
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each Person:
+                    \begin{tabular}{lll}
+                      Person.id & ID & \\
+                      replyCount & 32-bit Integer & \parbox[t]{20cm}{ //The number of replies to Messages with
+                        the \par given Tag created by the Person \strut}  \\
+                      likeCount & 32-bit Integer & \parbox[t]{20cm}{ //The number of likes to Messages with
+                        the \par given Tag created by the Person \strut}  \\ 
+                      messageCount & 32-bit Integer & \parbox[t]{20cm}{ //The number of Messages with
+                        the \par given Tag created by the Person \strut}  \\
+                      score & 32-bit Integer & \\
+                    \end{tabular}
+                    Return the top-100 Persons, sorted by score (descending) and Person.id (ascending)
+                    \end{itemize}
+
+      \item Most authorative Person on a given topic 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given a Tag, find all Persons that ever created a Message with the given Tag.
+                  For each of these Persons compute their "authority score".
+                  The "authority score" for a given Person is defined as the sum of "popularity scores" of the Persons
+                  that liked any of that Person's Messages with the given Tag.
+                  A Person's "popularity score" is defined as the total number of likes on all of their Messages.
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      Tag.name & String \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+
+                  For each Person:
+
+                    \begin{tabular}{lll}
+                      Person.Id & ID & \\
+                      authorityScore & 32-bit Integer & \\
+                    \end{tabular}
+
+                    Return the top 100 Persons sorted the authorityScore (descending) and Person.Id (ascending).
+                    \end{itemize}
+
+      \item Related Topics 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Find all Messages that have a given Tag.    
+                  Find the Tags attached to replies of these Messages, but only those replies that do not have the given
+                  Tag. Group the Tags by name, and get the count of replies in each group.
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      Tag.name & String \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each group:
+                    \begin{tabular}{lll}
+                      Tag.name & String & \\
+                      count & 32-bit Integer & \parbox[t]{20cm}{ // The count of replies with the Tag \strut} \\
+                    \end{tabular}
+                    Return the top-100 Tags, sorted by count (descending) and by Tag.name (ascending).
+                    \end{itemize}
+
+      \item Forum with related Tags 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given two tagClasses, find those forums that contain Posts with Tags belonging tagClass1 and contain
+                  Posts with Tags belonging to tagCalss2 (not transitive). Consider the forums with a number of members
+                  greater than a given threshold.
+                  For every such forum, count the number of Posts  that have a Tag from tagclass t1 (count1), and the
+                  number of posts that have a tag  from the tagclass2. 
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      TagClass1.name & String \\ 
+                      TagClass2.name & String \\ 
+                      threshold & 32-bit Integer \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each Forum:
+                    \begin{tabular}{lll}
+                      Forum.id & ID & \\
+                      count1 & 32-bit Integer & \parbox[t]{20cm}{ // The count of Posts with at least one Tag belonging
+                        to TagClass1 \strut} \\
+                      count2 & 32-bit Integer & \parbox[t]{20cm}{ // The count of Posts with at least one Tag belonging
+                        to TagClass2 \strut} \\
+                    \end{tabular}
+                    \end{itemize}
+
+      \item Central Person for a topic 
+            \begin{itemize}
+                \item \textbf{Description:}
+                  Given a Tag, find all Persons that are either interested on the Tag, or have written a Post with the
+                  given Tag. For each Person, compute the score as the sum of the following two aspects:
+
+                  \begin{itemize}
+                    \item 100, if the Person has this tag as their interest, or 0 otherwise
+                    \item number of posts by this person with the given tag
+                  \end{itemize}
+
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                      Tag.name & String \\
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                  For each Person:
+
+                    \begin{tabular}{lll}
+                      Person.Id & ID & \\
+                      score & 32-bit Integer & \\
+                      friendsScore & 32-bit Integer & \parbox[t]{20cm}{ // The sum of the score of the Person's friends\strut} \\
+                    \end{tabular}
+
+                    Return the top-100 Persons, sorted the sum of score and friendsScore (descending), and  Person.id
+                    (ascending) 
+                \end{itemize}
+
+      \item Tag Evolution 
+            \begin{itemize}
+                \item \textbf{Description:}
+                \item \textbf{Parameters:} \\
+                    \begin{tabular}{ll}
+                    \end{tabular}
+                \item \textbf{Results:} \\
+                    \begin{tabular}{lll}
+                    \end{tabular}
+                    \end{itemize}
+\end{enumerate}
+}
