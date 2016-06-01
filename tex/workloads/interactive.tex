@@ -98,10 +98,7 @@ Notes:
                     Given a start Person, find up to 20 Persons with a given first name
                     that the start Person is connected to (excluding start Person) by
                     at most 3 steps via Knows relationships. Return Persons, including
-                    summaries of the Persons workplaces and places of study.  Sort
-                    results ascending by their distance from the start Person, for
-                    Persons within the same distance sort ascending by their last name,
-                    and for Persons with same last name ascending by their identifier
+                    summaries of the Persons workplaces and places of study.  
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
                         Person.id 										& ID \\
@@ -126,16 +123,21 @@ Notes:
                                 Person-workAt->.workFrom, \\
                             Person-workAt->Company-isLocatedIn->Country.name\} & \{<String, 32-bit Integer, String>\} \\
                             \end{tabular}
-                    \end{itemize}
+                          \item \textbf{Sort:}
+                            \begin{itemize}
+                              \item[1st] distance from person (ascending)
+                              \item[2nd] Person.lastName (ascending)
+                              \item[3rd] Person.id (ascending)
+                            \end{itemize}
+                        \end{itemize}
 
                 \item Recent posts and comments by your friends
                     \begin{itemize}
                         \item \textbf{Description:}
-                            Given a start Person, find (most recent) Posts and Comments from
+                          Given a start Person, find (most recent) Messages from
                             all of that Person's friends, that were created before (and
                             including) a given date.  Return the top 20 Posts/Comments, and the
-                            Person that created each of them.  Sort results descending by
-                            creation date, and then ascending by Post identifier.			
+                            Person that created each of them.  			
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{ll}
                                 Person.id 										& ID \\
@@ -150,6 +152,11 @@ Notes:
                                 Message.content or Post.imageFile 	& String \\
                                 Message.creationDate	& DateTime \\
                             \end{tabular}		
+                        \item \textbf{Sort:}
+                          \begin{itemize}
+                            \item[1st] Message.creationDate (descending)
+                            \item[2nd] Message.id (ascending)
+                          \end{itemize}
                     \end{itemize}
 
                 \item Friends and friends of friends that have been to countries X and Y
@@ -160,10 +167,9 @@ Notes:
                             Posts/Comments in both of the given Countries, X and Y, within a
                             given period.  Only Persons that are foreign to Countries X and Y
                             are considered, that is Persons whose Location is not Country X or
-                            Country Y.  Return top 20 Persons, and their Post/Comment counts,
-                            in the given countries and period.  Sort results descending by
-                            total number of Posts/Comments, and then ascending by Person
-                            identifier.
+                            Country Y.  Return top 20 Persons, and their
+                            Messages counts,
+                            in the given countries and period.  
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{lll}
                                 Person.id 										& ID & \\
@@ -178,12 +184,19 @@ Notes:
                                 Person.id 										& ID 	& \\
                                 Person.firstName 								& String 			& \\
                                 Person.lastName 								& String 			& \\
-                                countx 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country X made by Person \par 
+                                countx 											& 32-bit Integer 	&
+                                \parbox[t]{20cm}{// number of Messages from Country X made by Person \par 
                             within the given time\strut} \\
-                            county 											& 32-bit Integer 	& \parbox[t]{20cm}{// number of Posts/Comments from Country Y made by Person \par 
+                            county 											& 32-bit Integer 	&
+                            \parbox[t]{20cm}{// number of Messages from Country Y made by Person \par 
                         within the given time\strut} \\
                         count 											& 32-bit Integer 	& // countx + county \\
                     \end{tabular}		
+                        \item \textbf{Sort:}
+                          \begin{itemize}
+                            \item[1st] countx (descending)
+                            \item[2nd] Person.id (ascending)
+                          \end{itemize}
             \end{itemize}
 
         \item New topics
@@ -194,8 +207,7 @@ Notes:
                     attached to friends' Posts created within a given time interval, and that
                     were never attached to friends' Posts created before this interval.  Return
                     top 10 Tags, and the count of Posts, which were created within the
-                    given time interval, that this Tag was attached to.  Sort results
-                    descending by Post count, and then ascending by Tag name.
+                    given time interval, that this Tag was attached to.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID 	& \\
@@ -208,6 +220,11 @@ Notes:
                         Tag.name 										& String 	& \\
                         count 											& 32-bit Integer & // number of Posts made within the given time interval that have this Tag \\
                     \end{tabular}		
+                \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] count (descending)
+                    \item[2nd] Tag.name (ascending)
+                  \end{itemize}
             \end{itemize}
 
         \item New groups
@@ -218,8 +235,7 @@ Notes:
                     after a given date.  Return top 20 Forums, and the number of Posts
                     in each Forum that was Created by any of these Persons.  For each
                     Forum consider only those Persons which joined that particular
-                    Forum after the given date.  Sort results descending by the count
-                    of Posts, and then ascending by Forum identifier
+                    Forum after the given date.  
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID & \\
@@ -230,6 +246,11 @@ Notes:
                         Forum.title 										& String & \\
                         count 	 											& 32-bit Integer & \parbox[t]{20cm}{// number of Posts made in Forum that were created 																							by friends \par \strut} \\
                     \end{tabular}		
+                \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] count (descending)
+                    \item[2nd] Forum.id (ascending)
+                  \end{itemize}
             \end{itemize}
 
         \item Tag co-occurrence
@@ -239,8 +260,7 @@ Notes:
                     together with this Tag on Posts that were created by start Person's
                     friends and friends of friends (excluding start Person).  Return
                     top 10 Tags, and the count of Posts that were created by these
-                    Persons, which contain both this Tag and the given Tag. Sort
-                    results descending by count, and then ascending by Tag name.
+                    Persons, which contain both this Tag and the given Tag. 
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID & \\
@@ -252,21 +272,24 @@ Notes:
                         count 								& 32-bit Integer & \parbox[t]{20cm}{// number of Posts that were created by friends and friends of friends, \par 
                     which contain this Tag\strut} \\
                 \end{tabular}		
+                \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] count (descending)
+                    \item[2nd] Tag.name (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Recent likes
         \begin{itemize}
             \item \textbf{Description:}
                 Given a start Person, find (most recent) Likes on any of start
-                Person's Posts/Comments.  Return top 20 Persons that Liked any of
-                start Person's Posts/Comments, the Post/Comment they liked most
+                Person's Messages.  Return top 20 Persons that Liked any of
+                start Person's Messages, the Messages they liked most
                 recently, creation date of that Like, and the latency (in minutes)
-                between creation of Post/Comment and Like.  Additionally, return a
+                between creation of Messages and Like.  Additionally, return a
                 flag indicating whether the liker is a friend of start Person.  In
-                the case that a Person Liked multiple Posts/Comments at the same
-                time, return the Post/Comment with lowest identifier.  Sort
-                results descending by creation time of Like, then ascending by
-                Person identifier of liker.
+                the case that a Person Liked multiple Messages at the same
+                time, return the Message with lowest identifier.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& 64-bit Integer & \parbox[t]{20cm}{\par \strut} \\
@@ -279,20 +302,25 @@ Notes:
                     Like.creationDate 	 						& DateTime & \parbox[t]{20cm}{\par \strut} \\
                     Message.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
-                    latency 	 								& 32-bit Integer & \parbox[t]{20cm}{// duration between creation of\par Post/Comment and Like, in minutes\strut} \\
+                    latency 	 								& 32-bit Integer &
+                    \parbox[t]{20cm}{// duration between creation of\par Message and Like, in minutes\strut} \\
                     isNew										& Boolean & \parbox[t]{20cm}{// false if liker Person is friend of\par start Person, true otherwise \strut} \\
                 \end{tabular}		
+             \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] Like.creationDate (descending)
+                    \item[2nd] Person.id (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Recent replies
         \begin{itemize}
             \item \textbf{Description:}
                 Given a start Person, find (most recent) Comments that are replies
-                to Posts/Comments of the start Person. Only consider immediate
+                to Messages of the start Person. Only consider immediate
                 (1-hop) replies, not the transitive (multi-hop) case.  Return the
                 top 20 reply Comments, and the Person that created each reply
-                Comment.  Sort results descending by creation date of reply
-                Comment, and then ascending by identifier of reply Comment.
+                Comment.  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -306,18 +334,21 @@ Notes:
                     Comment.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
                     Comment.content 	 		& String & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
+             \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] Comment.creationDate (descending)
+                    \item[2nd] Comment.id (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Recent posts and comments by friends or friends of friends
         \begin{itemize}
             \item \textbf{Description:}
-                Given a start Person, find the (most recent) Posts/Comments created
+              Given a start Person, find the (most recent) Messages created
                 by that Person's friends or friends of friends (excluding start
-                Person). Only consider the Posts/Comments created before a given
-                date (excluding that date). Return the top 20 Posts/Comments, and
-                the Person that created each of those Posts/Comments. Sort results
-                descending by creation date of Post/Comment, and then ascending by
-                Post/Comment identifier.
+                Person). Only consider the Messages created before a given
+                date (excluding that date). Return the top 20 Messages, and
+                the Person that created each of those Messages. 
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -332,6 +363,11 @@ Notes:
                     Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
                     Message.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
+             \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] Message.creationDate (descending)
+                    \item[2nd] Message.id (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Friend recommendation
@@ -349,7 +385,6 @@ Notes:
                     \item similarity = common - uncommon
                 \end{itemize}
                 Return top 10 Persons, their Place, and their similarity score.
-                Sort results descending by similarity score, and then ascending by Person identifier
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -364,6 +399,11 @@ Notes:
                     Person.gender 	 					& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-isLocatedIn->Place.name 	    & Sting & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] similarity (descending)
+                    \item[2nd] Person.id (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Job referral
@@ -373,9 +413,7 @@ Notes:
                 friends (excluding start Person) who started Working in some
                 Company in a given Country, before a given date (year).  Return top
                 10 Persons, the Company they worked at, and the year they started
-                working at that Company.  Sort results ascending by the start date,
-                then ascending by Person identifier, and lastly by Organization
-                name descending.
+                working at that Company.  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -390,6 +428,12 @@ Notes:
                     Person-worksAt->Organization.name 	& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-worksAt->.worksFrom 	 		& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] Person-worksAt->.worksFrom (ascending)
+                    \item[2nd] Person.id (ascending)
+                    \item[3st] Person-worksAt->Organization.name (descending)
+                  \end{itemize}
         \end{itemize}
 
     \item Expert search
@@ -403,8 +447,7 @@ Notes:
                 of these reply Comments, and collect the Tags (with valid tag
                 class) that were attached to the Posts they replied to.  Return
                 top 20 Persons with at least one reply, the reply count, and
-                the collection of Tags.  Sort results descending by Comment
-                count, and then ascending by Person identifier
+                the collection of Tags.  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 					& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -418,6 +461,11 @@ Notes:
                     \{Tag.name\} 	 			& \{String\} & \parbox[t]{20cm}{\par \strut} \\
                     count 	 				& 32-bit Integer & \parbox[t]{20cm}{// number of reply Comments\par \strut} \\
                 \end{tabular}		
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] count (descending)
+                    \item[2nd] Person.id (ascending)
+                  \end{itemize}
         \end{itemize}
 
     \item Single shortest path
@@ -453,8 +501,7 @@ Notes:
                 reply (by one of the Persons) to a Post (by the other Person)
                 contributes 1.0, and every reply (by ones of the Persons) to a
                 Comment (by the other Person) contributes 0.5. Return all the
-                paths with shortest length, and their weights. Sort results
-                descending by path weight. The order of paths with the same weight is unspecified.
+                paths with shortest length, and their weights. 
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
@@ -465,6 +512,11 @@ Notes:
                     [Person.id] 	& [ID] & \parbox[t]{20cm}{// Identifiers representing an ordered sequence of the Persons in the path \strut} \\
                     weight 	 					& 64-bit Float & \parbox[t]{20cm}{\strut} \\
                 \end{tabular}		
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[1st] weight (descending) // The order of paths with
+                      the same weight is unspecified
+                  \end{itemize}
         \end{itemize}
 \end{enumerate}
 }
@@ -498,10 +550,9 @@ Notes:
   \item Person Recent Messages
     \begin{itemize}
       \item \textbf{Description:}
-        Given a start Person, retrieve the last 10 Messages (Posts or Comments) created by that user.
+        Given a start Person, retrieve the last 10 Messages created by that user.
         For each message, return that message, the original post in its conversation, and the author of that post.
         If any of the Messages is a Post, then the original Post will be the same Message, i.e., that Message will appear twice in that result.
-        Order results descending by message creation date, then descending by message identifier
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Person.id 										& ID \\
@@ -516,13 +567,17 @@ Notes:
           Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName & String \\
           Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName & String \\
         \end{tabular}
+      \item \textbf{Sort:}
+        \begin{itemize}
+          \item[1st] Message.creationDate (descending)
+          \item[2nd] Message.id (descending)
+        \end{itemize}
     \end{itemize}
 
   \item Person Friends
     \begin{itemize}
       \item \textbf{Description:}
         Given a start Person, retrieve all of their friends, and the date at which they became friends.
-        Order results descending by friendship creation date, then ascending by friend identifier
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Person.id 										& ID \\
@@ -534,12 +589,17 @@ Notes:
           Person.lastName    							& String \\
           Knows.creationDate    					& String \\
         \end{tabular}
+      \item \textbf{Sort:}
+        \begin{itemize}
+          \item[1st] Knows.creationDate (descending)
+          \item[2nd] Person.id (ascending)
+        \end{itemize}
     \end{itemize}
 
   \item Message Content 
     \begin{itemize}
       \item \textbf{Description:}
-        Given a Message (Post or Comment), retrieve its content and creation date.
+        Given a Message, retrieve its content and creation date.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
@@ -554,7 +614,7 @@ Notes:
   \item Message Creator 
     \begin{itemize}
       \item \textbf{Description:}
-        Given a Message (Post or Comment), retrieve its author.
+        Given a Message, retrieve its author.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
@@ -570,7 +630,7 @@ Notes:
   \item Message Forum 
     \begin{itemize}
       \item \textbf{Description:}
-        Given a Message (Post or Comment), retrieve the Forum that contains it
+        Given a Message, retrieve the Forum that contains it
         and the Person that moderates that forum. Since comments are not
         directly contained in forums, for comments, return the forum containing
         the original post in the thread which the comment is replying to. 
@@ -591,10 +651,9 @@ Notes:
   \item Message Replies
     \begin{itemize}
       \item \textbf{Description:}
-        Given a Message (Post or Comment), retrieve the (1-hop) Comments that reply to it.
+        Given a Message, retrieve the (1-hop) Comments that reply to it.
         In addition, return a boolean flag indicating if the author of the reply knows the author of the original message.
         If author is same as original author, return false for "knows" flag.
-        Order results descending by creation date, then ascending by author identifier.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
@@ -608,8 +667,12 @@ Notes:
           Message-hasCreator->Person.firstName    									& String \\
           Message-hasCreator->Person.lastName     									& String \\
         \end{tabular}
+      \item \textbf{Sort:}
+        \begin{itemize}
+          \item[1st] Message<-replyOf-Comment.creationDate (descending)
+          \item[2nd] Message-hasCreator->Person.id (ascending)
+        \end{itemize}
     \end{itemize}
-
 \end{enumerate}
 }
 
