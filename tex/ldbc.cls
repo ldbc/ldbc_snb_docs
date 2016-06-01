@@ -143,7 +143,7 @@
 % Header setup
 
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
-\newcommand{\mainmatterheadingl}{\relscale{.92}LDBC Social Network Benchmark (SNB) - v0.1.3 First Public Draft Release}
+\newcommand{\mainmatterheadingl}{\relscale{.92}LDBC Social Network Benchmark (SNB) - v0.2.2 First Public Draft Release}
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[OL,EL]{}
