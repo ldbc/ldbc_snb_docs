@@ -597,6 +597,14 @@ Notes:
           Person.gender									    & String \\
           Person.creationDate						    & DateTime \\
         \end{tabular}
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Person Recent Messages
@@ -624,6 +632,10 @@ Notes:
           \item[1st] Message.creationDate (descending)
           \item[2nd] Message.id (descending)
         \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Person Friends
@@ -646,6 +658,10 @@ Notes:
           \item[1st] Knows.creationDate (descending)
           \item[2nd] Person.id (ascending)
         \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Message Content 
@@ -661,6 +677,14 @@ Notes:
           Message.creationDate   									& ID \\
           Message.content or Post.imageFile           										& String \\
         \end{tabular}
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Message Creator 
@@ -677,6 +701,14 @@ Notes:
           Message-hasCreator->Person.firstName     									& String \\
           Message-hasCreator->Person.lastName    									& String \\
         \end{tabular}
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Message Forum 
@@ -698,6 +730,14 @@ Notes:
           Message<-containerOf-Forum-hasModerator->Person.firstName    									& String \\
           Message<-containerOf-Forum-hasModerator->Person.lastName    									& String \\
         \end{tabular}
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 
   \item Message Replies
@@ -724,6 +764,10 @@ Notes:
           \item[1st] Message<-replyOf-Comment.creationDate (descending)
           \item[2nd] Message-hasCreator->Person.id (ascending)
         \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
     \end{itemize}
 \end{enumerate}
 }
