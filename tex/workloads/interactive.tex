@@ -95,7 +95,7 @@ Notes:
         \item Friends with certain name
             \begin{itemize}
                 \item \textbf{Description:}
-                    Given a start Person, find up to 20 Persons with a given first name
+                    Given a start Person, find Persons with a given first name
                     that the start Person is connected to (excluding start Person) by
                     at most 3 steps via Knows relationships. Return Persons, including
                     summaries of the Persons workplaces and places of study.  
@@ -123,21 +123,24 @@ Notes:
                                 Person-workAt->.workFrom, \\
                             Person-workAt->Company-isLocatedIn->Country.name\} & \{<String, 32-bit Integer, String>\} \\
                             \end{tabular}
-                          \item \textbf{Sort:}
+                \item \textbf{Sort:}
                             \begin{itemize}
                               \item[1st] distance from person (ascending)
                               \item[2nd] Person.lastName (ascending)
                               \item[3rd] Person.id (ascending)
                             \end{itemize}
-                        \end{itemize}
+                \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20 
+                  \end{itemize}
+              \end{itemize}
 
                 \item Recent posts and comments by your friends
                     \begin{itemize}
                         \item \textbf{Description:}
                           Given a start Person, find (most recent) Messages from
                             all of that Person's friends, that were created before (and
-                            including) a given date.  Return the top 20 Posts/Comments, and the
-                            Person that created each of them.  			
+                            including) a given date.    			
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{ll}
                                 Person.id 										& ID \\
@@ -145,9 +148,9 @@ Notes:
                             \end{tabular}
                         \item \textbf{Results:} \\
                             \begin{tabular}{ll}
-                                Person.id 										& ID \\
-                                Person.firstName								& String \\
-                                Person.lastName									& String \\
+                              Message-hasCreator->Person.id 										& ID \\
+                                ssage-hasCreator->Person.firstName								& String \\
+                                ssage-hasCreator->Person.lastName									& String \\
                                 Message.id 								& ID \\
                                 Message.content or Post.imageFile 	& String \\
                                 Message.creationDate	& DateTime \\
@@ -157,6 +160,10 @@ Notes:
                             \item[1st] Message.creationDate (descending)
                             \item[2nd] Message.id (ascending)
                           \end{itemize}
+                \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20 
+                  \end{itemize}
                     \end{itemize}
 
                 \item Friends and friends of friends that have been to countries X and Y
@@ -167,9 +174,7 @@ Notes:
                             Posts/Comments in both of the given Countries, X and Y, within a
                             given period.  Only Persons that are foreign to Countries X and Y
                             are considered, that is Persons whose Location is not Country X or
-                            Country Y.  Return top 20 Persons, and their
-                            Messages counts,
-                            in the given countries and period.  
+                            Country Y.    
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{lll}
                                 Person.id 										& ID & \\
@@ -197,6 +202,10 @@ Notes:
                             \item[1st] countx (descending)
                             \item[2nd] Person.id (ascending)
                           \end{itemize}
+                        \item \textbf{Limit:}
+                          \begin{itemize}
+                            \item[] 20 
+                          \end{itemize}
             \end{itemize}
 
         \item New topics
@@ -205,9 +214,7 @@ Notes:
                     Given a start Person, find Tags that are attached to Posts that
                     were created by that Person's friends.  Only include Tags that were
                     attached to friends' Posts created within a given time interval, and that
-                    were never attached to friends' Posts created before this interval.  Return
-                    top 10 Tags, and the count of Posts, which were created within the
-                    given time interval, that this Tag was attached to.
+                    were never attached to friends' Posts created before this interval.  
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID 	& \\
@@ -225,6 +232,10 @@ Notes:
                     \item[1st] count (descending)
                     \item[2nd] Tag.name (ascending)
                   \end{itemize}
+                        \item \textbf{Limit:}
+                          \begin{itemize}
+                            \item[] 10 
+                          \end{itemize}
             \end{itemize}
 
         \item New groups
@@ -232,9 +243,10 @@ Notes:
                 \item \textbf{Description:}
                     Given a start Person, find the Forums which that Person's friends
                     and friends of friends (excluding start Person) became Members of
-                    after a given date.  Return top 20 Forums, and the number of Posts
-                    in each Forum that was Created by any of these Persons.  For each
-                    Forum consider only those Persons which joined that particular
+                    after a given date.  For each forum find the number of Posts
+                    that were created by any of these Persons. 
+                    For each Forum and consider only
+                    those Persons which joined that particular
                     Forum after the given date.  
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
@@ -251,6 +263,10 @@ Notes:
                     \item[1st] count (descending)
                     \item[2nd] Forum.id (ascending)
                   \end{itemize}
+                \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20 
+                  \end{itemize}
             \end{itemize}
 
         \item Tag co-occurrence
@@ -259,7 +275,7 @@ Notes:
                     Given a start Person and some Tag, find the other Tags that occur
                     together with this Tag on Posts that were created by start Person's
                     friends and friends of friends (excluding start Person).  Return
-                    top 10 Tags, and the count of Posts that were created by these
+                    For each Tag, find the count of Posts that were created by these
                     Persons, which contain both this Tag and the given Tag. 
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
@@ -277,19 +293,23 @@ Notes:
                     \item[1st] count (descending)
                     \item[2nd] Tag.name (ascending)
                   \end{itemize}
+                \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 10 
+                  \end{itemize}
         \end{itemize}
 
     \item Recent likes
         \begin{itemize}
             \item \textbf{Description:}
                 Given a start Person, find (most recent) Likes on any of start
-                Person's Messages.  Return top 20 Persons that Liked any of
-                start Person's Messages, the Messages they liked most
-                recently, creation date of that Like, and the latency (in minutes)
-                between creation of Messages and Like.  Additionally, return a
-                flag indicating whether the liker is a friend of start Person.  In
-                the case that a Person Liked multiple Messages at the same
-                time, return the Message with lowest identifier.
+                Person's Messages.  Find Persons that Liked any of start
+                Person's Messages, the Messages they liked most recently,
+                creation date of that Like, and the latency (in minutes) between
+                creation of Messages and Like.  Additionally, for each Person
+                found return a flag indicating whether the liker is a friend of
+                start Person.  In the case that a Person Liked multiple Messages
+                at the same time, return the Message with lowest identifier.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& 64-bit Integer & \parbox[t]{20cm}{\par \strut} \\
@@ -311,6 +331,10 @@ Notes:
                     \item[1st] Like.creationDate (descending)
                     \item[2nd] Person.id (ascending)
                   \end{itemize}
+                \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20
+                  \end{itemize}
         \end{itemize}
 
     \item Recent replies
@@ -319,7 +343,7 @@ Notes:
                 Given a start Person, find (most recent) Comments that are replies
                 to Messages of the start Person. Only consider immediate
                 (1-hop) replies, not the transitive (multi-hop) case.  Return the
-                top 20 reply Comments, and the Person that created each reply
+                reply Comments, and the Person that created each reply
                 Comment.  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
@@ -339,6 +363,10 @@ Notes:
                     \item[1st] Comment.creationDate (descending)
                     \item[2nd] Comment.id (ascending)
                   \end{itemize}
+              \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20
+                  \end{itemize}
         \end{itemize}
 
     \item Recent posts and comments by friends or friends of friends
@@ -347,8 +375,7 @@ Notes:
               Given a start Person, find the (most recent) Messages created
                 by that Person's friends or friends of friends (excluding start
                 Person). Only consider the Messages created before a given
-                date (excluding that date). Return the top 20 Messages, and
-                the Person that created each of those Messages. 
+                date (excluding that date).  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -356,9 +383,9 @@ Notes:
                 \end{tabular}		
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
-                    Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
-                    Person.firstName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-                    Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                  Message-hasCreator->Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
+                  Message-hasCreator->Person.firstName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
+                  Message-hasCreatr->Person.lastName 	 						& String & \parbox[t]{20cm}{\par \strut} \\
                     Message.id  	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
                     Message.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
@@ -367,6 +394,10 @@ Notes:
                   \begin{itemize}
                     \item[1st] Message.creationDate (descending)
                     \item[2nd] Message.id (ascending)
+                  \end{itemize}
+             \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20
                   \end{itemize}
         \end{itemize}
 
@@ -384,7 +415,6 @@ Notes:
                     \item uncommon = number of Posts created by that Person, such that the Post has no Tag that start Person is Interested in
                     \item similarity = common - uncommon
                 \end{itemize}
-                Return top 10 Persons, their Place, and their similarity score.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -404,6 +434,10 @@ Notes:
                     \item[1st] similarity (descending)
                     \item[2nd] Person.id (ascending)
                   \end{itemize}
+             \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 10
+                  \end{itemize}
         \end{itemize}
 
     \item Job referral
@@ -411,9 +445,7 @@ Notes:
             \item \textbf{Description:}
                 Given a start Person, find that Person's friends and friends of
                 friends (excluding start Person) who started Working in some
-                Company in a given Country, before a given date (year).  Return top
-                10 Persons, the Company they worked at, and the year they started
-                working at that Company.  
+                Company in a given Country, before a given date (year).    
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -434,6 +466,10 @@ Notes:
                     \item[2nd] Person.id (ascending)
                     \item[3st] Person-worksAt->Organization.name (descending)
                   \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 10
+                  \end{itemize}
         \end{itemize}
 
     \item Expert search
@@ -446,7 +482,7 @@ Notes:
                 TagClass or in a descendent of that TagClass.  Count the number
                 of these reply Comments, and collect the Tags (with valid tag
                 class) that were attached to the Posts they replied to.  Return
-                top 20 Persons with at least one reply, the reply count, and
+                Persons with at least one reply, the reply count, and
                 the collection of Tags.  
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
@@ -465,6 +501,10 @@ Notes:
                   \begin{itemize}
                     \item[1st] count (descending)
                     \item[2nd] Person.id (ascending)
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] 20
                   \end{itemize}
         \end{itemize}
 
@@ -488,6 +528,14 @@ Notes:
                     length 	 			& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}		
         \end{itemize}
+            \item \textbf{Sort:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
+                  \end{itemize}
 
     \item Weighted/unweighted paths
         \begin{itemize}
@@ -516,6 +564,10 @@ Notes:
                   \begin{itemize}
                     \item[1st] weight (descending) // The order of paths with
                       the same weight is unspecified
+                  \end{itemize}
+            \item \textbf{Limit:}
+                  \begin{itemize}
+                    \item[] - 
                   \end{itemize}
         \end{itemize}
 \end{enumerate}
