@@ -1,999 +1,122 @@
 \section{Scale Factor Statistics}\label{appendix:scale_factors}
-\subsection{Scale Factor 1}
 
 \begin{table}[H]
 \centering
-    \begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
-    Query Type & freq & Query Type & freq \\ 
+    \textbf{Query Type} & \textbf{SF1} & \textbf{SF3}& \textbf{SF10} & \textbf{SF30} & \textbf{SF100} & \textbf{SF300} & \textbf{SF1000} \\ 
     \hline
     \hline
-    Query 1 & 26 & Query 8 & 45 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 157 \\  
-    \hline        
-    Query 3 & 69 & Query 10 & 30 \\ 
-    \hline        
-    Query 4 & 36 & Query 11 & 16 \\ 
-    \hline        
-    Query 5 & 57 & Query 12 & 44 \\ 
-    \hline        
-    Query 6 & 129 & Query 13 & 19 \\  
-    \hline        
-    Query 7 & 87 & Query 14 & 49 \\ 
+    Query 1 & 26  & 26  & 26  & 26  & 26  & 26  & 26 \\ 
+    \hline                                           
+    Query 2 & 37  & 37  & 37  & 37  & 37  & 37  & 37 \\  
+    \hline                                           
+    Query 3 & 69  & 79  & 92  & 106 & 123 & 142 & 165\\ 
+    \hline                                           
+    Query 4 & 36  & 36  & 36  & 36  & 36  & 36  & 36 \\ 
+    \hline                                           
+    Query 5 & 57  & 61  & 66  & 72  & 78  & 84  & 91 \\ 
+    \hline                                           
+    Query 6 & 129 & 172 & 236 & 316 & 434 & 580 & 796\\  
+    \hline                                           
+    Query 7 & 87 & 72   & 54  & 48  & 38  & 32  & 25 \\ 
+    \hline
+    Query 8 & 45 &  27  & 15  & 9   & 5   & 3   & 1  \\ 
+    \hline                                           
+    Query 9 & 157 & 209 & 287 & 384 & 527 & 705 & 967\\  
+    \hline                                           
+    Query 10 & 30 & 32  & 35  & 37  & 40  & 44  & 47 \\ 
+    \hline                                           
+    Query 11 & 16 & 17  & 19  & 20  & 22  & 24  & 26 \\ 
+    \hline                                           
+    Query 12 & 44 & 44  & 44  & 44  & 44  & 44  & 44 \\ 
+    \hline                                           
+    Query 13 & 19 & 19  & 19  & 19  & 19  & 19  & 19 \\  
+    \hline                                           
+    Query 14 & 49 & 49  & 49  & 49  & 49  & 49  & 49 \\ 
     \hline
     \end{tabular}
-    \caption{Frequenceis for each query type for SF1.}
+    \caption{Frequenceis for each query and SF.}
     \label{table:freqs_sf1}
 \end{table}
 
 \begin{table}[H]
+{
+	\small
     \centering
-    \begin{tabular} {| l | c | c |}
+		\begin{tabular} {| c | c | c | c | c | c | c | c |}
         \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 2343952 & 254723836 \\
-        \hline
-        forum & 110202 & 6548409 \\
-        \hline
-        organisation & 7996 & 813270 \\
-        \hline
-        person & 11000 & 990357 \\
-        \hline
-        place & 1466 & 83667 \\
-        \hline
-        post & 1214766 & 138430549 \\
-        \hline
-        tag & 16080 & 1122429 \\
-        \hline
-        tagclass & 71 & 3946 \\
+        \textbf{File}                   & \textbf{SF1}  & \textbf{SF3}  & \textbf{SF10} & \textbf{SF30} & \textbf{SF100} & \textbf{SF300} & \textbf{SF1000}\\
         \hline
         \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
+				comment                         & 2343952       & 7135636       & 24271888 & 73590941 & 243266898 & 710752235 & 2335637135 \\	
+        \hline                                                                                                                      
+        forum                           & 110202        & 272268        & 729153   & 1842141  & 5002291   & 12561079 	& 36098481 	 \\ 
+        \hline                                                                                                                      
+        organisation                    & 7996          & 7996          & 7996     & 7996     & 7996      & 7996 			& 7996 			 \\ 
+        \hline                                                                                                                     
+        person                          & 11000         & 27000         & 73000    & 184000   & 499000    & 1254000 	& 3600000 	 \\ 
+        \hline                                                                                                                      
+        place                           & 1466          & 1466          & 1466     & 1466     & 1466      & 1466 			& 1466 			 \\ 
+        \hline                                                                                                                       
+        post                            & 1214766       & 3140119       & 8915649  & 23765756 & 68871360  & 182980982 & 555306166  \\ 
+        \hline                                                                                                                       
+        tag                             & 16080         & 16080         & 16080    & 16080    & 16080     & 16080 		& 16080 		 \\ 
+        \hline                                                                                                                       
+        tagclass                        & 71            & 71            & 71       & 71       & 71        & 71 				& 71 				 \\ 
+        \hline                                                                                                                      
+				comment\_hasCreator\_person     & 2343952       & 7135636       & 24271888 & 73590941 & 243266898 & 710752235 & 2335637135 \\	
+        \hline                                                                                                                      
+        comment\_hasTag\_tag            & 3069162       & 17465623      & 605414570& 96053813 & 317369562 & 926124724 & 3042978961 \\	
+        \hline                                                                                                                      
+        comment\_isLocatedIn\_place     & 2343952       & 7135636       & 24271888 & 73590941 & 243266898 & 710752235 & 2335637135 \\	
+        \hline                                                                                                                      
+        comment\_replyOf\_comment       & 1187815       & 3619711       & 12306670 & 37324357 & 123386519 & 360517003 & 1184778982 \\	
+        \hline                                                                                                                      
+        comment\_replyOf\_post          & 1156137       & 3515925       & 11965218 & 36266584 & 119880379 & 350235232 & 1150858153 \\	
+        \hline                                                                                                                      
+        forum\_containerOf\_post        & 1214766       & 3140119       & 8915649  & 23765756 & 68871360  & 182980982 & 555306166  \\ 
+        \hline                                                                                                                      
+        forum\_hasMember\_person        & 3260578       & 9939453       & 33883607 & 103901443& 341232279 & 995330706 & 3277239057 \\	
+        \hline                                                                                                                      
+        forum\_hasModerator\_person     & 110202        & 272268        & 729153   & 1842141  & 5002291   & 12561079 	& 36098481 	 \\ 
+        \hline                                                                                                                      
+        forum\_hasTag\_tag              & 355354        & 16205018      & 2369727  & 5976729  & 16195463 	& 40653342 	& 116727525  \\ 
+        \hline                                                                                                                      
+        organisation\_isLocatedIn\_place& 7996          & 7996          & 7996     & 7996     & 7996 			& 7996 			& 7996 			 \\ 
+        \hline                                                                                                                      
+        person\_isLocatedIn\_place      & 11000         & 27000         & 73000    & 184000   & 499000 		& 1254000 	& 3600000 	 \\ 
+        \hline                                                                                                                      
+        person\_hasInterest\_tag        & 256152        & 628563        & 1713574  & 4318588  & 11692172 	& 29346263 	& 84229044 	 \\ 
+        \hline                                                                                                                      
+        person\_knows\_person           & 452622        & 1370174       & 4654416  & 14212356 & 46598276 	& 136219368 & 447163916  \\ 
+        \hline                                                                                                                      
+        person\_likes\_comment          & 1649394       & 5555074       & 21418614 & 71641419 & 260701994 & 820056009 & 2858070323 \\	
+        \hline                                                                                                                      
+        person\_likes\_post             & 1170372       & 3629288       & 12661782 & 39694513 & 135205141 & 404808353 & 1361722197 \\	
+        \hline                                                                                                                      
+        person\_studyAt\_organisation   & 8820          & 21574         & 58429    & 147005   & 398560 		& 1002380 	& 2878718 	 \\ 
+        \hline                                                                                                                      
+        person\_workAt\_organisation    & 23969         & 58843         & 158961   & 401356   & 1086037 	& 2728559 	& 7829672 	 \\ 
+        \hline                                                                                                                      
+        place\_isPartOf\_place          & 1460          & 1460          & 1460     & 1460     & 1460 			& 1460 			& 1460 			 \\ 
+        \hline                                                                                                                      
+        post\_hasCreator\_person        & 1214766       & 3140119       & 8915649  & 23765756 & 68871360 	& 182980982 & 555306166  \\ 
+        \hline                                                                                                                      
+        post\_hasTag\_tag               & 789735        & 2384629       & 8216364  & 24931521 & 82466083 	& 241151541 & 793254841  \\ 
+        \hline                                                                                                                      
+        post\_isLocatedIn\_place        & 1214766       & 3140119       & 8915649  & 23765756 & 68871360 	& 182980982 & 555306166  \\ 
+        \hline                                                                                                                      
+        tag\_hasType\_tagclass          & 16080         & 16080         & 16080    & 16080    & 16080 		& 16080 		& 16080 		 \\ 
+        \hline                                                                                                                      
+        tagclass\_isSubclassOf\_tagclass& 70            & 70            & 70       & 70       & 70 				& 70 				& 70 				 \\ 
+        \hline                                                                                                                      
+        person\_email\_emailaddress     & 18602         & 45573         & 124555   & 312925   & 850804 		& 2140338 	& 6141306 	 \\ 
+        \hline                                                                                                                      
+        person\_speaks\_language        & 24204         & 59467         & 160779   & 405403   & 1099440 	& 2763075 	& 7932926 	 \\ 
         \hline
         \hline
-        comment\_hasCreator\_person & 2343952 & 63507355 \\
-        \hline
-        comment\_hasTag\_tag & 3069162 & 57501504 \\
-        \hline
-        comment\_isLocatedIn\_place & 2343952 & 39543099 \\
-        \hline
-        comment\_replyOf\_comment & 1187815 & 31674987 \\
-        \hline
-        comment\_replyOf\_post & 1156137 & 30828349 \\
-        \hline
-        forum\_containerOf\_post & 1214766 & 32211087 \\
-        \hline
-        forum\_hasMember\_person & 3260578 & 159205747 \\
-        \hline
-        forum\_hasModerator\_person & 110202 & 3017841 \\
-        \hline
-        forum\_hasTag\_tag & 355354 & 6527532 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79310 \\
-        \hline
-        person\_isLocatedIn\_place & 11000 & 196342 \\
-        \hline
-        person\_hasInterest\_tag & 256152 & 5120644 \\
-        \hline
-        person\_knows\_person & 452622 & 22659548 \\
-        \hline
-        person\_likes\_comment & 1649394 & 80566053 \\
-        \hline
-        person\_likes\_post & 1170372 & 57185940 \\
-        \hline
-        person\_studyAt\_organisation & 8820 & 221093 \\
-        \hline
-        person\_workAt\_organisation & 23969 & 581247 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 11965 \\
-        \hline
-        post\_hasCreator\_person & 1214766 & 33212920 \\
-        \hline
-        post\_hasTag\_tag & 789735 & 14621607 \\
-        \hline
-        post\_isLocatedIn\_place & 1214766 & 20529353 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163348 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 616 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 18602 & 831575 \\
-        \hline
-        person\_speaks\_language & 24204 & 437214 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-        3705533 & 21859120 & 1063152739 \\
-        \hline
-    \end{tabular}
-    \caption{General statistics for SF 1}
+      \end{tabular}
+}
+\caption {The number of entries per file and SF}
 \end{table}
-
-
-\begin{table}[H]
-        \centering
-        \begin{tabular}{|c||r|r|r|r|}
-            \hline    \multicolumn{5}{|c|}{SF = 1 }  \\
-            \hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0484} \\
-            \hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
-            \hline  \textbf{\#comments/user}  &1 &  6002 & 224 & 82 \\
-            \hline  \textbf{\#posts/user}  &1 &  912 & 123 & 66 \\
-            \hline  \textbf{\#friends/user}  &1 &  540 & 41 & 22 \\
-            \hline  \textbf{\#likes/user}  &1 &  2725 & 260 & 171 \\
-            \hline
-        \end{tabular}
-        \caption{Detail statistics for SF 1}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm1}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist1}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist1}}
-  \caption{Data distributions for SF 1}
-  \label{fig:datadistSF1}
-\end{center}
-\end{figure}
-
-
-\subsection{Scale Factor 3}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 27 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 209 \\  
-    \hline        
-    Query 3 & 79 & Query 10 & 32 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 & 17 \\ 
-    \hline        
-    Query 5 & 61 & Query 12 & 44 \\ 
-    \hline        
-    Query 6 & 172 & Query 13 & 19 \\  
-    \hline        
-    Query 7 & 72 & Query 14 & 49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF3.}
-    \label{table:freqs_sf3}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular} {| l | c | c |}
-        \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 7135636 & 776534811 \\
-        \hline
-        forum & 272268 & 16231309 \\
-        \hline
-        organisation & 7996 & 813270 \\
-        \hline
-        person & 27000 & 2431528 \\
-        \hline
-        place & 1466 & 83667 \\
-        \hline
-        post & 3140119 & 374416646 \\
-        \hline
-        tag & 16080 & 1122429 \\
-        \hline
-        tagclass & 71 & 3946 \\
-        \hline
-        \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment\_hasCreator\_person & 7135636 & 194770123 \\
-        \hline
-        comment\_hasTag\_tag & 9264389 & 174656230 \\
-        \hline
-        comment\_isLocatedIn\_place & 7135636 & 121173303 \\
-        \hline
-        comment\_replyOf\_comment & 3619711 & 97338366 \\
-        \hline
-        comment\_replyOf\_post & 3515925 & 94545033 \\
-        \hline
-        forum\_containerOf\_post & 3140119 & 83915474 \\
-        \hline
-        forum\_hasMember\_person & 9939453 & 486936117 \\
-        \hline
-        forum\_hasModerator\_person & 272268 & 7495375 \\
-        \hline
-        forum\_hasTag\_tag & 873831 & 16205018 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79310 \\
-        \hline
-        person\_isLocatedIn\_place & 27000 & 482925 \\
-        \hline
-        person\_hasInterest\_tag & 628563 & 12575921 \\
-        \hline
-        person\_knows\_person & 1370174 & 68746822 \\
-        \hline
-        person\_likes\_comment & 5555074 & 272259351 \\
-        \hline
-        person\_likes\_post & 3629288 & 177882573 \\
-        \hline
-        person\_studyAt\_organisation & 21574 & 541636 \\
-        \hline
-        person\_workAt\_organisation & 58843 & 1428856 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 11965 \\
-        \hline
-        post\_hasCreator\_person & 3140119 & 86258384 \\
-        \hline
-        post\_hasTag\_tag & 2384629 & 44446829 \\
-        \hline
-        post\_isLocatedIn\_place & 3140119 & 53352987 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163348 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 616 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 45573 & 2041123 \\
-        \hline
-        person\_speaks\_language & 59467 & 1076428 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-         10600636 & 64877957 & 3170021719 \\
-        \hline
-    \end{tabular}
-    \caption{General statistics for SF 3}
-\end{table}
-
-\begin{table}[H]
-    \centering
-\begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 3 }  \\
-\hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0456} \\
-\hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
-\hline  \textbf{\#comments/user}  &1 &  6631 & 275 & 102 \\
-\hline  \textbf{\#posts/user}  &1 &  1096 & 128 & 72 \\
-\hline  \textbf{\#friends/user}  &1 &  569 & 51 & 28 \\
-\hline  \textbf{\#likes/user}  &1 &  3057 & 344 & 231 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 3}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm3}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist3}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist3}}
-  \caption{Data distributions for SF 3}
-  \label{fig:datadistSF3}
-\end{center}
-\end{figure}
-
-\subsection{Scale Factor 10}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 15 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 287 \\  
-    \hline        
-    Query 3 & 92 & Query 10 & 35 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 & 19 \\ 
-    \hline        
-    Query 5 & 66 & Query 12 & 44 \\ 
-    \hline        
-    Query 6 & 236 & Query 13 & 19 \\  
-    \hline        
-    Query 7 & 54 & Query 14 & 49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF10.}
-    \label{table:freqs_sf10}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular} {| l | c | c |}
-        \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 24271888 & 2648214861 \\
-        \hline
-        forum & 729153 & 43643724 \\
-        \hline
-        organisation & 7996 & 813324 \\
-        \hline
-        person & 73000 & 6570890 \\
-        \hline
-        place & 1466 & 83721 \\
-        \hline
-        post & 8915649 & 1126585578 \\
-        \hline
-        tag & 16080 & 1122468 \\
-        \hline
-        tagclass & 71 & 3985 \\
-        \hline
-        \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment\_hasCreator\_person & 24271888 & 669164047 \\
-        \hline
-        comment\_hasTag\_tag & 31753457 & 605414570 \\
-        \hline
-        comment\_isLocatedIn\_place & 24271888 & 418145702 \\
-        \hline
-        comment\_replyOf\_comment & 12306670 & 336987410 \\
-        \hline
-        comment\_replyOf\_post & 11965218 & 327636871 \\
-        \hline
-        forum\_containerOf\_post & 8915649 & 242973393 \\
-        \hline
-        forum\_hasMember\_person & 33883607 & 1670125108 \\
-        \hline
-        forum\_hasModerator\_person & 729153 & 20284418 \\
-        \hline
-        forum\_hasTag\_tag & 2369727 & 44544367 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79388 \\
-        \hline
-        person\_isLocatedIn\_place & 73000 & 1305804 \\
-        \hline
-        person\_hasInterest\_tag & 1713574 & 34283207 \\
-        \hline
-        person\_knows\_person & 4654416 & 233569942 \\
-        \hline
-        person\_likes\_comment & 21418614 & 1054924693 \\
-        \hline
-        person\_likes\_post & 12661782 & 623979230 \\
-        \hline
-        person\_studyAt\_organisation & 58429 & 1467151 \\
-        \hline
-        person\_workAt\_organisation & 158961 & 3860488 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 12022 \\
-        \hline
-        post\_hasCreator\_person & 8915649 & 247527557 \\
-        \hline
-        post\_hasTag\_tag & 8216364 & 154770790 \\
-        \hline
-        post\_isLocatedIn\_place & 8915649 & 154055825 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163408 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 691 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 124555 & 5574325 \\
-        \hline
-        person\_speaks\_language & 160779 & 2910238 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-         34015303 & 217279301 & 10680799196 \\
-        \hline
-    \end{tabular}
-    \caption{General statistics for SF 10}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 3 }  \\
-\hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0456} \\
-\hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
-\hline  \textbf{\#comments/user}  &1 &  6631 & 275 & 102 \\
-\hline  \textbf{\#posts/user}  &1 &  1096 & 128 & 72 \\
-\hline  \textbf{\#friends/user}  &1 &  569 & 51 & 28 \\
-\hline  \textbf{\#likes/user}  &1 &  3057 & 344 & 231 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 10}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm10}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist10}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist10}}
-  \caption{Data distributions for SF 10}
-  \label{fig:datadistSF10}
-\end{center}
-\end{figure}
-
-\subsection{Scale Factor 30}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 9 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 384 \\  
-    \hline        
-    Query 3 & 106 & Query 10 & 37 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 & 20 \\ 
-    \hline        
-    Query 5 & 72 & Query 12 & 44 \\ 
-    \hline        
-    Query 6 & 316 & Query 13 & 19 \\  
-    \hline        
-    Query 7 & 48 & Query 14 & 49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF30.}
-    \label{table:freqs_sf30}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular} {| l | c | c |}
-        \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 73590941 & 8083989095 \\
-        \hline
-        forum & 1842141 & 111539981 \\
-        \hline
-        organisation & 7996 & 813396 \\
-        \hline
-        person & 184000 & 16572878 \\
-        \hline
-        place & 1466 & 83793 \\
-        \hline
-        post & 23765756 & 3155561666 \\
-        \hline
-        tag & 16080 & 1122520 \\
-        \hline
-        tagclass & 71 & 4037 \\
-        \hline
-        \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment\_hasCreator\_person & 73590941 & 2088295129 \\
-        \hline
-        comment\_hasTag\_tag & 96053813 & 1903298754 \\
-        \hline
-        comment\_isLocatedIn\_place & 73590941 & 1320854361 \\
-        \hline
-        comment\_replyOf\_comment & 37324357 & 1075860096 \\
-        \hline
-        comment\_replyOf\_post & 36266584 & 1045376200 \\
-        \hline
-        forum\_containerOf\_post & 23765756 & 679608557 \\
-        \hline
-        forum\_hasMember\_person & 103901443 & 5196088120 \\
-        \hline
-        forum\_hasModerator\_person & 1842141 & 52580681 \\
-        \hline
-        forum\_hasTag\_tag & 5976729 & 116509043 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79492 \\
-        \hline
-        person\_isLocatedIn\_place & 184000 & 3297409 \\
-        \hline
-        person\_hasInterest\_tag & 4318588 & 86533802 \\
-        \hline
-        person\_knows\_person & 14212356 & 714378938 \\
-        \hline
-        person\_likes\_comment & 71641419 & 3584484467 \\
-        \hline
-        person\_likes\_post & 39694513 & 1986127459 \\
-        \hline
-        person\_studyAt\_organisation & 147005 & 3695367 \\
-        \hline
-        person\_workAt\_organisation & 401356 & 9761198 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 12098 \\
-        \hline
-        post\_hasCreator\_person & 23765756 & 677464115 \\
-        \hline
-        post\_hasTag\_tag & 24931521 & 488840146 \\
-        \hline
-        post\_isLocatedIn\_place & 23765756 & 426900332 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163488 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 791 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 312925 & 14030700 \\
-        \hline
-        person\_speaks\_language & 405403 & 7353001 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-         99408451 & 655400581 & 32851281110 \\
-        \hline
-    \end{tabular}
-    \caption{General statistics for SF 30}
-\end{table}
-
-\begin{table}[H]
-    \centering
-\begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 30 }  \\
-\hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0439} \\
-                            \hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
- \hline  \textbf{\#comments/user}  &1 &  7592 & 413 & 155 \\
-    \hline  \textbf{\#posts/user}  &1 &  1412 & 139 & 83 \\
-  \hline  \textbf{\#friends/user}  &1 &  625 & 77 & 43 \\
-    \hline  \textbf{\#likes/user}  &1 &  3828 & 610 & 420 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 30}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm30}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist30}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist30}}
-  \caption{Data distributions for SF 30}
-  \label{fig:datadistSF30}
-\end{center}
-\end{figure}
-
-\subsection{Scale Factor 100}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 5 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 527 \\  
-    \hline        
-    Query 3 & 123 & Query 10 & 40 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 & 22  \\ 
-    \hline        
-    Query 5 & 78 & Query 12 & 44  \\ 
-    \hline        
-    Query 6 & 434 & Query 13 & 19  \\  
-    \hline        
-    Query 7 & 38 & Query 14 & 49  \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF100.}
-    \label{table:freqs_sf100}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular} {| l | c | c |}
-        \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 243266898 & 26732787716 \\
-        \hline
-        forum & 5002291 & 303107584 \\
-        \hline
-        organisation & 7996 & 813396 \\
-        \hline
-        person & 499000 & 44950237 \\
-        \hline
-        place & 1466 & 83793 \\
-        \hline
-        post & 68871360 & 9601082178 \\
-        \hline
-        tag & 16080 & 1122520 \\
-        \hline
-        tagclass & 71 & 4037 \\
-        \hline
-        \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment\_hasCreator\_person & 243266898 & 6923334782 \\
-        \hline
-        comment\_hasTag\_tag & 317369562 & 6310390486 \\
-        \hline
-        comment\_isLocatedIn\_place & 243266898 & 4380836100 \\
-        \hline
-        comment\_replyOf\_comment & 123386519 & 3571363911 \\
-        \hline
-        comment\_replyOf\_post & 119880379 & 3469854233 \\
-        \hline
-        forum\_containerOf\_post & 68871360 & 1977411509 \\
-        \hline
-        forum\_hasMember\_person & 341232279 & 17085982726 \\
-        \hline
-        forum\_hasModerator\_person & 5002291 & 143155976 \\
-        \hline
-        forum\_hasTag\_tag & 16195463 & 317441296 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79492 \\
-        \hline
-        person\_isLocatedIn\_place & 499000 & 8948068 \\
-        \hline
-        person\_hasInterest\_tag & 11692172 & 234436590 \\
-        \hline
-        person\_knows\_person & 46598276 & 2343165388 \\
-        \hline
-        person\_likes\_comment & 260701994 & 13062653343 \\
-        \hline
-        person\_likes\_post & 135205141 & 6773886764 \\
-        \hline
-        person\_studyAt\_organisation & 398560 & 10023920 \\
-        \hline
-        person\_workAt\_organisation & 1086037 & 26420132 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 12098 \\
-        \hline
-        post\_hasCreator\_person & 68871360 & 1968125668 \\
-        \hline
-        post\_hasTag\_tag & 82466083 & 1623280287 \\
-        \hline
-        post\_isLocatedIn\_place & 68871360 & 1240297918 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163488 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 791 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 850804 & 38160557 \\
-        \hline
-        person\_speaks\_language & 1099440 & 19951911 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-         317665162 & 2154887238 & 108213328895 \\
-        \hline
-    \end{tabular}
-    \caption{General statistics for SF 100}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 100 }  \\
-\hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0422} \\
-                            \hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
- \hline  \textbf{\#comments/user}  &1 &  7465 & 502 & 190 \\
-    \hline  \textbf{\#posts/user}  &1 &  1509 & 148 & 90 \\
-  \hline  \textbf{\#friends/user}  &1 &  619 & 93 & 53 \\
-    \hline  \textbf{\#likes/user}  &1 &  4312 & 799 & 556 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 100}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm100}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist100}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist100}}
-  \caption{Data distributions for SF 100}
-  \label{fig:datadistSF10}
-\end{center}
-\end{figure}
-
-\subsection{Scale Factor 300}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 3 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 705 \\  
-    \hline        
-    Query 3 & 142 & Query 10 & 44 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 &  24 \\ 
-    \hline        
-    Query 5 & 84 & Query 12 &  44 \\ 
-    \hline        
-    Query 6 & 580 & Query 13 &  19 \\  
-    \hline        
-    Query 7 & 32 & Query 14 &  49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF300.}
-    \label{table:freqs_sf300}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular} {| l | c | c |}
-        \hline
-        \textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment & 710752235 & 78578510866 \\
-        \hline
-        forum & 12561079 & 769736017 \\
-        \hline
-        organisation & 7996 & 813396 \\
-        \hline
-        person & 1254000 & 113011768 \\
-        \hline
-        place & 1466 & 83793 \\
-        \hline
-        post & 182980982 & 26615002745 \\
-        \hline
-        tag & 16080 & 1122520 \\
-        \hline
-        tagclass & 71 & 4037 \\
-        \hline
-        \hline
-        \textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-        \hline
-        \hline
-        comment\_hasCreator\_person & 710752235 & 20740234727 \\
-        \hline
-        comment\_hasTag\_tag & 926124724 & 19010889474 \\
-        \hline
-        comment\_isLocatedIn\_place & 710752235 & 13268389734 \\
-        \hline
-        comment\_replyOf\_comment & 360517003 & 10910496465 \\
-        \hline
-        comment\_replyOf\_post & 350235232 & 10599470746 \\
-        \hline
-        forum\_containerOf\_post & 182980982 & 5473898610 \\
-        \hline
-        forum\_hasMember\_person & 995330706 & 50531158002 \\
-        \hline
-        forum\_hasModerator\_person & 12561079 & 368655691 \\
-        \hline
-        forum\_hasTag\_tag & 40653342 & 819806778 \\
-        \hline
-        organisation\_isLocatedIn\_place & 7996 & 79492 \\
-        \hline
-        person\_isLocatedIn\_place & 1254000 & 22520270 \\
-        \hline
-        person\_hasInterest\_tag & 29346263 & 589162363 \\
-        \hline
-        person\_knows\_person & 136219368 & 6857187354 \\
-        \hline
-        person\_likes\_comment & 820056009 & 41645511118 \\
-        \hline
-        person\_likes\_post & 404808353 & 20560829944 \\
-        \hline
-        person\_studyAt\_organisation & 1002380 & 25237062 \\
-        \hline
-        person\_workAt\_organisation & 2728559 & 66447988 \\
-        \hline
-        place\_isPartOf\_place & 1460 & 12098 \\
-        \hline
-        post\_hasCreator\_person & 182980982 & 5363521573 \\
-        \hline
-        post\_hasTag\_tag & 241151541 & 4898991661 \\
-        \hline
-        post\_isLocatedIn\_place & 182980982 & 3419470093 \\
-        \hline
-        tag\_hasType\_tagclass & 16080 & 163488 \\
-        \hline
-        tagclass\_isSubclassOf\_tagclass & 70 & 791 \\
-        \hline
-        \hline
-        \textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-        \hline
-        \hline
-        person\_email\_emailaddress & 2140338 & 96111129 \\
-        \hline
-        person\_speaks\_language & 2763075 & 50221509 \\
-        \hline
-        \hline
-        \textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-        \hline
-        \hline
-         907573909 & 6292461581 & 321396753302 \\
-        \hline
-    \end{tabular}
-    \caption{ General statistics for SF 300}
-\end{table}
-
-\begin{table}[H]
-    \centering
-\begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 300 }  \\
-\hline   \textbf{Clustering Coef.} &   \multicolumn{4}{|c|}{0.0411} \\
-                            \hline & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Median}   \\
- \hline  \textbf{\#comments/user}  &1 &  8806 & 582 & 224 \\
-    \hline  \textbf{\#posts/user}  &1 &  1501 & 155 & 97 \\
-  \hline  \textbf{\#friends/user}  &1 &  620 & 109 & 63 \\
-    \hline  \textbf{\#likes/user}  &1 &  4686 & 983 & 689 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 300}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm300}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist300}}%\\[1ex]
-  \subfigure[{\small Histogram \#comments per user.}]{\label{numComPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numCommentsUserHist300}}
-  \caption{Data distributions for SF 300}
-  \label{fig:datadistSF300}
-\end{center}
-\end{figure}
-
-\subsection{Scale Factor 1000}
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 1 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 967 \\  
-    \hline        
-    Query 3 & 165 & Query 10 & 47 \\ 
-    \hline       
-    Query 4 & 36 & Query 11 &  26 \\ 
-    \hline        
-    Query 5 & 91 & Query 12 &  44 \\ 
-    \hline        
-    Query 6 & 796 & Query 13 &  19 \\  
-    \hline        
-    Query 7 & 25 & Query 14 &  49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequenceis for each query type for SF1000.}
-    \label{table:freqs_sf1000}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular} {| l | c | c |}
-\hline
-\textbf{Entity} & \textbf{Num Entities} & \textbf{Bytes} \\
-\hline \hline
-comment & 2335637135 & 258944003306 \\
-\hline
-forum & 36098481 & 2222966076 \\
-\hline
-organisation & 7996 & 813396 \\
-\hline
-person & 3600000 & 324485964 \\
-\hline
-place & 1466 & 83793 \\
-\hline
-post & 555306166 & 83647390485 \\
-\hline
-tag & 16080 & 1122520 \\
-\hline
-tagclass & 71 & 4037 \\
-\hline \hline
-\textbf{Relation} & \textbf{Num Relations} & \textbf{Bytes} \\
-\hline \hline
-comment\_hasCreator\_person & 2335637135 & 69009917568 \\
-\hline
-comment\_hasTag\_tag & 3042978961 & 63451008509 \\
-\hline
-comment\_isLocatedIn\_place & 2335637135 & 44333145872 \\
-\hline
-comment\_replyOf\_comment & 1184778982 & 36597884006 \\
-\hline
-comment\_replyOf\_post & 1150858153 & 35549852967 \\
-\hline
-forum\_containerOf\_post & 555306166 & 16985930071 \\
-\hline
-forum\_hasMember\_person & 3277239057 & 167465482785 \\
-\hline
-forum\_hasModerator\_person & 36098481 & 1071895282 \\
-\hline
-forum\_hasTag\_tag & 116727525 & 2398752244 \\
-\hline
-organisation\_isLocatedIn\_place & 7996 & 79492 \\
-\hline
-person\_isLocatedIn\_place & 3600000 & 64736060 \\
-\hline
-person\_hasInterest\_tag & 84229044 & 1692899009 \\
-\hline
-person\_knows\_person & 447163916 & 22530441760 \\
-\hline
-person\_likes\_comment & 2858070323 & 146129764930 \\
-\hline
-person\_likes\_post & 1361722197 & 69623238723 \\
-\hline
-person\_studyAt\_organisation & 2878718 & 72544726 \\
-\hline
-person\_workAt\_organisation & 7829672 & 190876421 \\
-\hline
-place\_isPartOf\_place & 1460 & 12098 \\
-\hline
-post\_hasCreator\_person & 555306166 & 16467663132 \\
-\hline
-post\_hasTag\_tag & 793254841 & 16381717061 \\
-\hline
-post\_isLocatedIn\_place & 555306166 & 10543790321 \\
-\hline
-tag\_hasType\_tagclass & 16080 & 163488 \\
-\hline
-tagclass\_isSubclassOf\_tagclass & 70 & 791 \\
-\hline \hline
-\textbf{Property Files} & \textbf{Num Properties} & \textbf{Bytes} \\
-\hline \hline
-person\_email\_emailaddress & 6141306 & 276081939 \\
-\hline
-person\_speaks\_language & 7932926 & 144358836 \\
-\hline \hline
-\textbf{Total Entities} & \textbf{Total Relations} & \textbf{Total Bytes} \\
-\hline \hline
- 2930667395 & 20704648244 & 1066123107668 \\
-\hline
-\end{tabular}
-\caption{ General statistics for SF 1000}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c||r|r|r|r|}
-\hline    \multicolumn{5}{|c|}{SF = 1000 }  \\
-\hline & Min & Max & Mean & Median   \\
-\hline  \#posts/user  &1 &  1576 & 163 & 103 \\
-\hline  \#friends/user  &1 &  636 & 124 & 73 \\
-\hline
-\end{tabular}
-\caption{Detail statistics for SF 1000}
-\end{table}
-
-\begin{figure}[H]
-\begin{center}
-  \subfigure[{\small Cumulative number of friends.}]{\label{numFriendsCumm}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numFriendsCumm1000}}%
-  \subfigure[{\small Histogram \#posts per user.}]{\label{numPostPerUsers}\includegraphics[width=0.32\textwidth,clip]{figures/scalefactor/numPostsUserHist1000}}%\\[1ex]
-  \caption{Data distributions for SF 1000}
-  \label{fig:datadistSF1000}
-\end{center}
-\end{figure}
