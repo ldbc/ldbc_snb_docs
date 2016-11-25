@@ -72,9 +72,10 @@ graph DBMS.
 The schema specifies different entities, their attributes and their relations.
 All of them are described in the following sections.
 
-\flushleft{\textbf{Textual Restrictions}}
+\flushleft{\textbf{Textual Restrictions and Notes}}
 \begin{itemize}
     \item Posts have content or imageFile. They have one of them but not both. The one they do not have is an empty string.
+    \item Posts in a forum can be created by a non-member person if and only if that person is a modeartor. 
 \end{itemize}
 
 \subsubsection{Entities}
