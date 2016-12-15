@@ -25,6 +25,8 @@ Table~\ref{table:types} describes the different types used in the whole benchmar
     \hline
     String & variable length text of size 40 unicode characters\\
     \hline
+    Long String & variable length text of size 256 unicode characters\\
+    \hline
     Text &  variable length text of size 2000 unicode characters\\
     \hline
     Date &  date with a precision of a day, encoded as a string with the following format: \textit{yyyy-mm-dd}, where \textit{yyyy} is a four-digit integer representing the year,
@@ -108,7 +110,7 @@ of Forum entity.
         \hline
         id & ID  & The identifier of the forum.\\
         \hline
-        title & String  & The title of the forum.\\
+        title & Long String  & The title of the forum.\\
         \hline
         creationDate & DateTime  & The date the forum was created\\
         \hline
@@ -136,7 +138,7 @@ abstract entity.
         \hline
         content & Text[0..1]  & The content of the message.\\
         \hline
-        length & 32bitInteger  & The length of the content.\\
+        length & 32-bit Integer  & The length of the content.\\
         \hline
     \end{tabular}
     \caption{Attributes of Message interface.}
@@ -154,7 +156,7 @@ entity.
         \hline
         id & ID  & The identifier of the organization.\\
         \hline
-        name & String  & The name of the organization.\\
+        name & Long String  & The name of the organization.\\
         \hline
     \end{tabular}
     \caption{Attributes of Organization entity.}
@@ -181,7 +183,7 @@ the attributes of Person entity.
         \hline
         birthDay & Date  & The birthday of the person .\\
         \hline
-        email & String[1..*]  & The set of emails the person has.\\
+        email & Long String[1..*]  & The set of emails the person has.\\
         \hline
         speaks & String[1..*]  & The set of languages the person speaks.\\
         \hline
@@ -207,7 +209,7 @@ Table~\ref{table:place} shows the attributes of Place entity.
         \hline
         id & ID  & The identifier of the place.\\
         \hline
-        name & String  & The name of the place.\\
+        name & Long String  & The name of the place.\\
         \hline
     \end{tabular}
     \caption{Attributes of Place entity.}
@@ -245,7 +247,7 @@ interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
         \hline
         id & ID  & The identifier of the tag.\\
         \hline
-        name & String  &  The name of the tag.\\
+        name & Long String  &  The name of the tag.\\
         \hline
     \end{tabular}
     \caption{Attributes of Tag entity.}
@@ -263,7 +265,7 @@ entity.
         \hline
         id & ID  & The identifier of the tagclass.\\
         \hline
-        name & String  &  The name of the tagclass.\\
+        name & Long String  &  The name of the tagclass.\\
         \hline
     \end{tabular}
     \caption{Attributes of TagClass entity.}
