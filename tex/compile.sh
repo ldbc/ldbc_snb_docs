@@ -1,5 +1,7 @@
 #!/bin/bash
 
-pdflatex sib_spec.tex
-bibtex sib_spec 
-pdflatex sib_spec.tex
+DOCUMENT=snb_doc
+
+pdflatex $DOCUMENT
+bibtex $DOCUMENT
+pdflatex $DOCUMENT

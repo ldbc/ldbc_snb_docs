@@ -1,3 +1,3 @@
 
-tesi: sib_spec.tex
-	latexmk -pdf sib_spec.tex
+tesi: snb_doc.tex
+	latexmk -pdf snb_doc.tex
