@@ -1,5 +1,5 @@
-\subsection{Interactive Workload}
-\subsubsection{Choke Points}
+\section{Interactive Workload}
+\subsection{Choke Points}
 
 The design of the interactive workload queries has been conceived around two
 main aspects: realism and technological relevance.  While realism has been
@@ -79,7 +79,7 @@ The choke points can be summarized in the following list:
         case of determining a membership in a hierarchy with a transitive
         part-of relation.
 \end{itemize}
-\subsubsection{Complex Reads Query Descriptions}
+\subsection{Complex Reads Query Descriptions}
 \label{sub:queries}
 
 Notes:
@@ -87,7 +87,7 @@ Notes:
     \item Some queries require returning the content of a post. As stated in the
         schema, posts have either some content or an imageFile, but not both. An empty string in
         content represents the post not having any content, therefore, it must have a
-        non-empty string in imageFile and the other way around.
+        non-empty string in imageFile or the other way around.
 \end{itemize}
 
 {\small
@@ -573,7 +573,7 @@ Notes:
 \end{enumerate}
 }
 
-\subsubsection{Short Reads Query Descriptions}
+\subsection{Short Reads Query Descriptions}
 
 {\small
 \begin{enumerate}
@@ -772,7 +772,7 @@ Notes:
 \end{enumerate}
 }
 
-\subsubsection{Update Query Descriptions}
+\subsection{Update Query Descriptions}
 {\small
 \begin{enumerate}
     \item Add Person
@@ -890,8 +890,8 @@ Notes:
         \end{enumerate}
       }
 
-        \subsubsection{Substitution parameters}\label{section:substitution}
+        \subsection{Substitution parameters}\label{section:substitution}
         \input{workloads/parameters}
 
-        \subsubsection{Load Definition}\label{section:workload}
+        \subsection{Load Definition}\label{section:workload}
         \input{workloads/workload}
