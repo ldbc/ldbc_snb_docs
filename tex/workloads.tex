@@ -1,10 +1,9 @@
-
-\section{Workloads}\label{section:workloads}
+\chapter{Workloads}\label{section:workloads}
 
 \section{Query Description Format}
 \label{sub:queries_structure}
 Queries are described in natural language using a well-defined structure that consists of three sections:
-\textit{description}, a concise textual description of the query; 
+\textit{description}, a concise textual description of the query;
 \textit{parameters}, a list of input parameters and their types;
 and \textit{results}, a list of expected results and their types.
 The syntax used in \textit{parameters} and \textit{results} sections is as follows:
@@ -13,25 +12,25 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
     \begin{itemize}
         \item \textbf{Entity}: entity type in the dataset.\\
             One word, possibly constructed by appending multiple words together, starting with uppercase character and following the camel case notation,
-            e.g. \texttt{TagClass} represents an entity of type ``TagClass''.
-        \item \textbf{Relationship}: relationship type in the dataset.\\	
+            \eg \texttt{TagClass} represents an entity of type ``TagClass''.
+        \item \textbf{Relationship}: relationship type in the dataset.\\
             One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-            and surrounded by arrow to communicate direction, 
-            e.g. \texttt{-worksAt->} represents a directed relationship of type ``worksAt''.
+            and surrounded by arrow to communicate direction,
+            \eg \texttt{-worksAt->} represents a directed relationship of type ``worksAt''.
         \item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
             One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-            and prefixed by a ``.'' to dereference the entity/relationship, 
-            e.g. \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity, 
+            and prefixed by a ``.'' to dereference the entity/relationship,
+            \eg \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity,
             and \texttt{-studyAt->.classYear} refers to ``classYear'' attribute on the ``studyAt'' relationship.
         \item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
             Surrounded by \{ and \} braces, with the element type between them,
-            e.g. \texttt{\{String\}} refers to a set of strings.
+            \eg \texttt{\{String\}} refers to a set of strings.
         \item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.\\
             Surrounded by [ and ] braces, with the element type between them,
-            e.g. \texttt{[String]} refers to a list of strings.
+            \eg \texttt{[String]} refers to a list of strings.
         \item \textbf{Ordered Tuple}: a fixed length, fixed order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
             Surrounded by < and > braces, with the element types between them in a specific order
-            e.g. \texttt{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
+            \eg \texttt{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
             and \texttt{[<String, Boolean>]} is an ordered list of those 2-tuples.
     \end{itemize}
 }

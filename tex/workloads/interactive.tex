@@ -13,23 +13,23 @@ The choke points can be summarized in the following list:
 \begin{itemize}
     \item \textbf{Aggregation Performance.}
 
-        The queries generally have a top k order by and often a group by in
+        The queries generally have a top-$k$ order by and often a group by in
         addition to this.  These offer multiple optimization opportunities.
-        The queries also often have distinct operators, i.e. distinct friends
+        The queries also often have distinct operators, \ie distinct friends
         within two steps.  Collectively these are all set operations that may
         be implemented with some combination of hash and sorting, possibly
         exploiting ordering in the data itself.  The aggregates are not
         limited to counts and sums.  For example string concatenation occurs
         as an aggregate, testing possible user defined aggregate support.
-        There is a wide range of cardinalities in grouping, from low, e.g. country, to high, e.g. post.
+        There is a wide range of cardinalities in grouping, from low, \eg country, to high, \eg post.
 
     \item \textbf{Join Performance.}
 
         Each graph traversal step is in principle a join.  The join patterns are
-        diverse, exercising both index and hash based operators.   Queries are designed
+        diverse, exercising both index- and hash-based operators.   Queries are designed
         so as to reward judicious use of hash join by having patterns starting with one
         entity, fetching many related entities and then testing how these are related
-        to a third entity, e.g. posts of a user with a tag of a given type. 
+        to a third entity, \eg posts of a user with a tag of a given type.
 
     \item \textbf{Data Access Locality.}
 
@@ -85,9 +85,9 @@ The choke points can be summarized in the following list:
 Notes:
 \begin{itemize}
     \item Some queries require returning the content of a post. As stated in the
-        schema, posts have content or imageFile, but not both. An empty string in
-        content represents the post not having content, therefore, it must have a
-        non empty string in imageFile and the other way around.
+        schema, posts have either some content or an imageFile, but not both. An empty string in
+        content represents the post not having any content, therefore, it must have a
+        non-empty string in imageFile and the other way around.
 \end{itemize}
 
 {\small
@@ -98,7 +98,7 @@ Notes:
                     Given a start Person, find Persons with a given first name
                     that the start Person is connected to (excluding start Person) by
                     at most 3 steps via Knows relationships. Return Persons, including
-                    summaries of the Persons workplaces and places of study.  
+                    summaries of the Persons workplaces and places of study.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
                         Person.id 										& ID \\
@@ -131,7 +131,7 @@ Notes:
                             \end{itemize}
                 \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] 20 
+                    \item[] 20
                   \end{itemize}
               \end{itemize}
 
@@ -140,7 +140,7 @@ Notes:
                         \item \textbf{Description:}
                           Given a start Person, find (most recent) Messages from
                             all of that Person's friends, that were created before (and
-                            including) a given date.    			
+                            including) a given date.
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{ll}
                                 Person.id 										& ID \\
@@ -154,7 +154,7 @@ Notes:
                                 Message.id 								& ID \\
                                 Message.content or Post.imageFile 	& String \\
                                 Message.creationDate	& DateTime \\
-                            \end{tabular}		
+                            \end{tabular}
                         \item \textbf{Sort:}
                           \begin{itemize}
                             \item[1st] Message.creationDate (descending)
@@ -162,7 +162,7 @@ Notes:
                           \end{itemize}
                 \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] 20 
+                    \item[] 20
                   \end{itemize}
                     \end{itemize}
 
@@ -174,7 +174,7 @@ Notes:
                             Posts/Comments in both of the given Countries, X and Y, within a
                             given period.  Only Persons that are foreign to Countries X and Y
                             are considered, that is Persons whose Location is not Country X or
-                            Country Y.    
+                            Country Y.
                         \item \textbf{Parameters:} \\
                             \begin{tabular}{lll}
                                 Person.id 										& ID & \\
@@ -183,20 +183,20 @@ Notes:
                                 startDate										& Date 	& // beginning of requested period \\
                                 duration										& 32-bit Integer 					& // duration of requested period, in days \\
                                                   &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
-                            \end{tabular}		
+                            \end{tabular}
                         \item \textbf{Results:} \\
                             \begin{tabular}{lll}
                                 Person.id 										& ID 	& \\
                                 Person.firstName 								& String 			& \\
                                 Person.lastName 								& String 			& \\
                                 countx 											& 32-bit Integer 	&
-                                \parbox[t]{20cm}{// number of Messages from Country X made by Person \par 
+                                \parbox[t]{20cm}{// number of Messages from Country X made by Person \par
                             within the given time\strut} \\
                             county 											& 32-bit Integer 	&
-                            \parbox[t]{20cm}{// number of Messages from Country Y made by Person \par 
+                            \parbox[t]{20cm}{// number of Messages from Country Y made by Person \par
                         within the given time\strut} \\
                         count 											& 32-bit Integer 	& // countx + county \\
-                    \end{tabular}		
+                    \end{tabular}
                         \item \textbf{Sort:}
                           \begin{itemize}
                             \item[1st] countx (descending)
@@ -204,7 +204,7 @@ Notes:
                           \end{itemize}
                         \item \textbf{Limit:}
                           \begin{itemize}
-                            \item[] 20 
+                            \item[] 20
                           \end{itemize}
             \end{itemize}
 
@@ -214,19 +214,19 @@ Notes:
                     Given a start Person, find Tags that are attached to Posts that
                     were created by that Person's friends.  Only include Tags that were
                     attached to friends' Posts created within a given time interval, and that
-                    were never attached to friends' Posts created before this interval.  
+                    were never attached to friends' Posts created before this interval.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID 	& \\
                         startDate 										& Date & \\
                         duration										& 32-bit Integer 					& // duration of requested period, in days \\
                                           &                                   & // the interval [startDate, startDate + Duration) is closed-open\\
-                    \end{tabular} 
+                    \end{tabular}
                 \item \textbf{Results:} \\
                     \begin{tabular}{lll}
                         Tag.name 										& String 	& \\
                         count 											& 32-bit Integer & // number of Posts made within the given time interval that have this Tag \\
-                    \end{tabular}		
+                    \end{tabular}
                 \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] count (descending)
@@ -234,7 +234,7 @@ Notes:
                   \end{itemize}
                         \item \textbf{Limit:}
                           \begin{itemize}
-                            \item[] 10 
+                            \item[] 10
                           \end{itemize}
             \end{itemize}
 
@@ -244,20 +244,20 @@ Notes:
                     Given a start Person, find the Forums which that Person's friends
                     and friends of friends (excluding start Person) became Members of
                     after a given date.  For each forum find the number of Posts
-                    that were created by any of these Persons. 
+                    that were created by any of these Persons.
                     For each Forum and consider only
                     those Persons which joined that particular
-                    Forum after the given date.  
+                    Forum after the given date.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID & \\
                         date 											& Date & \\
-                    \end{tabular}		
+                    \end{tabular}
                 \item \textbf{Results:} \\
                     \begin{tabular}{lll}
                         Forum.title 										& String & \\
                         count 	 											& 32-bit Integer & \parbox[t]{20cm}{// number of Posts made in Forum that were created 																							by friends \par \strut} \\
-                    \end{tabular}		
+                    \end{tabular}
                 \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] count (descending)
@@ -265,7 +265,7 @@ Notes:
                   \end{itemize}
                 \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] 20 
+                    \item[] 20
                   \end{itemize}
             \end{itemize}
 
@@ -276,18 +276,18 @@ Notes:
                     together with this Tag on Posts that were created by start Person's
                     friends and friends of friends (excluding start Person).  Return
                     For each Tag, find the count of Posts that were created by these
-                    Persons, which contain both this Tag and the given Tag. 
+                    Persons, which contain both this Tag and the given Tag.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{lll}
                         Person.id 										& ID & \\
                         Tag.name 	 									& String & \parbox[t]{20cm}{\par \strut} \\
-                    \end{tabular}		
+                    \end{tabular}
                 \item \textbf{Results:} \\
                     \begin{tabular}{lll}
                         Tag.name 	 						& String & \parbox[t]{20cm}{\par \strut} \\
-                        count 								& 32-bit Integer & \parbox[t]{20cm}{// number of Posts that were created by friends and friends of friends, \par 
+                        count 								& 32-bit Integer & \parbox[t]{20cm}{// number of Posts that were created by friends and friends of friends, \par
                     which contain this Tag\strut} \\
-                \end{tabular}		
+                \end{tabular}
                 \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] count (descending)
@@ -295,7 +295,7 @@ Notes:
                   \end{itemize}
                 \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] 10 
+                    \item[] 10
                   \end{itemize}
         \end{itemize}
 
@@ -313,7 +313,7 @@ Notes:
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& 64-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -325,7 +325,7 @@ Notes:
                     latency 	 								& 32-bit Integer &
                     \parbox[t]{20cm}{// duration between creation of\par Message and Like, in minutes\strut} \\
                     isNew										& Boolean & \parbox[t]{20cm}{// false if liker Person is friend of\par start Person, true otherwise \strut} \\
-                \end{tabular}		
+                \end{tabular}
              \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] Like.creationDate (descending)
@@ -344,11 +344,11 @@ Notes:
                 to Messages of the start Person. Only consider immediate
                 (1-hop) replies, not the transitive (multi-hop) case.  Return the
                 reply Comments, and the Person that created each reply
-                Comment.  
+                Comment.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -357,7 +357,7 @@ Notes:
                     Comment.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
                     Comment.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
                     Comment.content 	 		& String & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
              \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] Comment.creationDate (descending)
@@ -375,12 +375,12 @@ Notes:
               Given a start Person, find the (most recent) Messages created
                 by that Person's friends or friends of friends (excluding start
                 Person). Only consider the Messages created before a given
-                date (excluding that date).  
+                date (excluding that date).
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     date 		 						& Date & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                   Message-hasCreator->Person.id 	 								& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -389,7 +389,7 @@ Notes:
                     Message.id  	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     Message.content or Post.imageFile	& String & \parbox[t]{20cm}{\par \strut} \\
                     Message.creationDate 	 	& DateTime & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
              \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] Message.creationDate (descending)
@@ -409,7 +409,7 @@ Notes:
                 or after the 21st of a given month (in any year) and before the
                 22nd of the following month.  Calculate the similarity between each
                 of these Persons and start Person, where similarity for any Person
-                is defined as follows: 
+                is defined as follows:
                 \begin{itemize}
                     \item common = number of Posts created by that Person, such that the Post has a Tag that start Person is Interested in
                     \item uncommon = number of Posts created by that Person, such that the Post has no Tag that start Person is Interested in
@@ -419,7 +419,7 @@ Notes:
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     month 		 						& 32-bit Integer & \parbox[t]{20cm}{// between 1-12\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -428,7 +428,7 @@ Notes:
                     similarity 	 						& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
                     Person.gender 	 					& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-isLocatedIn->Place.name 	    & Sting & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] similarity (descending)
@@ -445,13 +445,13 @@ Notes:
             \item \textbf{Description:}
                 Given a start Person, find that Person's friends and friends of
                 friends (excluding start Person) who started Working in some
-                Company in a given Country, before a given date (year).    
+                Company in a given Country, before a given date (year).
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 				& ID & \parbox[t]{20cm}{\par \strut} \\
                     Country.name 	 			& String & \parbox[t]{20cm}{\par \strut} \\
                     year 		 				& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -459,7 +459,7 @@ Notes:
                     Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-worksAt->Organization.name 	& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-worksAt->.worksFrom 	 		& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] Person-worksAt->.worksFrom (ascending)
@@ -483,12 +483,12 @@ Notes:
                 of these reply Comments, and collect the Tags (with valid tag
                 class) that were attached to the Posts they replied to.  Return
                 Persons with at least one reply, the reply count, and
-                the collection of Tags.  
+                the collection of Tags.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 					& ID & \parbox[t]{20cm}{\par \strut} \\
                     TagClass.name	 				& String & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
@@ -496,7 +496,7 @@ Notes:
                     Person.lastName 	 	& String & \parbox[t]{20cm}{\par \strut} \\
                     \{Tag.name\} 	 			& \{String\} & \parbox[t]{20cm}{\par \strut} \\
                     count 	 				& 32-bit Integer & \parbox[t]{20cm}{// number of reply Comments\par \strut}
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] count (descending)
@@ -512,7 +512,7 @@ Notes:
         \begin{itemize}
             \item \textbf{Description:}
                 Given two Persons, find the shortest path between these two Persons in the subgraph induced by the Knows relationships.
-                Return the length of this path. 
+                Return the length of this path.
                 \begin{itemize}
                     \item -1 : no path found
                     \item 0: start person = end person
@@ -522,18 +522,18 @@ Notes:
                 \begin{tabular}{lll}
                     Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
                     Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     length 	 			& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
         \end{itemize}
 
@@ -549,17 +549,17 @@ Notes:
                 reply (by one of the Persons) to a Post (by the other Person)
                 contributes 1.0, and every reply (by ones of the Persons) to a
                 Comment (by the other Person) contributes 0.5. Return all the
-                paths with shortest length, and their weights. 
+                paths with shortest length, and their weights.
             \item \textbf{Parameters:} \\
                 \begin{tabular}{lll}
                     Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
                     Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Results:} \\
                 \begin{tabular}{lll}
                     [Person.id] 	& [ID] & \parbox[t]{20cm}{// Identifiers representing an ordered sequence of the Persons in the path \strut} \\
                     weight 	 					& 64-bit Float & \parbox[t]{20cm}{\strut} \\
-                \end{tabular}		
+                \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] weight (descending) // The order of paths with
@@ -567,7 +567,7 @@ Notes:
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
         \end{itemize}
 \end{enumerate}
@@ -575,7 +575,7 @@ Notes:
 
 \subsubsection{Short Reads Query Descriptions}
 
-{\small 
+{\small
 \begin{enumerate}
 
   \item Person Profile
@@ -599,11 +599,11 @@ Notes:
         \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
@@ -612,7 +612,7 @@ Notes:
       \item \textbf{Description:}
         Given a start Person, retrieve the last 10 Messages created by that user.
         For each message, return that message, the original post in its conversation, and the author of that post.
-        If any of the Messages is a Post, then the original Post will be the same Message, i.e., that Message will appear twice in that result.
+        If any of the Messages is a Post, then the original Post will be the same Message, \ie that Message will appear twice in that result.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Person.id 										& ID \\
@@ -634,7 +634,7 @@ Notes:
         \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
@@ -660,11 +660,11 @@ Notes:
         \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
-  \item Message Content 
+  \item Message Content
     \begin{itemize}
       \item \textbf{Description:}
         Given a Message, retrieve its content and creation date.
@@ -679,15 +679,15 @@ Notes:
         \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
-  \item Message Creator 
+  \item Message Creator
     \begin{itemize}
       \item \textbf{Description:}
         Given a Message, retrieve its author.
@@ -703,21 +703,21 @@ Notes:
         \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
-  \item Message Forum 
+  \item Message Forum
     \begin{itemize}
       \item \textbf{Description:}
         Given a Message, retrieve the Forum that contains it
         and the Person that moderates that forum. Since comments are not
         directly contained in forums, for comments, return the forum containing
-        the original post in the thread which the comment is replying to. 
+        the original post in the thread which the comment is replying to.
       \item \textbf{Parameters:} \\
         \begin{tabular}{lll}
           Message.id 										& ID \\
@@ -732,11 +732,11 @@ Notes:
         \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 
@@ -766,7 +766,7 @@ Notes:
         \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
-                    \item[] - 
+                    \item[] -
                   \end{itemize}
     \end{itemize}
 \end{enumerate}
@@ -775,7 +775,7 @@ Notes:
 \subsubsection{Update Query Descriptions}
 {\small
 \begin{enumerate}
-    \item Add Person 
+    \item Add Person
         \begin{itemize}
             \item \textbf{Description:} Add a Person to the social network.
             \item \textbf{Parameters:} \\
@@ -796,7 +796,7 @@ Notes:
                     Person-studyAt->.classYear \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
                         \{ Person-workAt->Company.id, \\
                         Person-workAt->.workFrom \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Post Like
                 \begin{itemize}
@@ -806,7 +806,7 @@ Notes:
                             Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Comment Like
                 \begin{itemize}
@@ -816,7 +816,7 @@ Notes:
                             Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Forum
                 \begin{itemize}
@@ -828,7 +828,7 @@ Notes:
                             Forum.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
                             Forum-hasModerator->Person.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
                             Forum-hasTag->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Forum Membership
                 \begin{itemize}
@@ -838,7 +838,7 @@ Notes:
                             Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Person-hasMember->Forum.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
                             Person-hasMember->.joinDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Post
                 \begin{itemize}
@@ -857,7 +857,7 @@ Notes:
                             Forum-containerOf->Post.id & ID & \parbox[t]{20cm}{\par \strut} \\
                             Post-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
                             \{Post-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Comment
                 \begin{itemize}
@@ -875,7 +875,7 @@ Notes:
                             Comment-replyOf->Post.id & ID & \parbox[t]{20cm}{ // -1 if the comment is a reply of a comment. \strut} \\
                             Comment-replyOf->Comment.id & ID & \parbox[t]{20cm}{// -1 if the comment is a reply of a post. \strut} \\
                             \{Comment-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
             \item Add Friendship
                 \begin{itemize}
@@ -885,7 +885,7 @@ Notes:
                             Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
                             Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
                             Person-knows->.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
-                        \end{tabular}		
+                        \end{tabular}
                 \end{itemize}
         \end{enumerate}
       }
