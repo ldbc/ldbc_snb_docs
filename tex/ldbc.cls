@@ -18,6 +18,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{arydshln}
 \RequirePackage{multirow}
+\RequirePackage{xspace}
 
 \newif\if@contributor
 
@@ -119,7 +120,7 @@
 
 % Page sizes and general layout for the 'report' variant
 
-\renewcommand\RSlargest{50pt} 
+\renewcommand\RSlargest{50pt}
 
 \newcommand{\normalLayout}{%
     \setlength{\hoffset}{-.5cm}%
@@ -142,8 +143,10 @@
 
 % Header setup
 
+\newcommand{\snbdocversion}{0.2.4}
+
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
-\newcommand{\mainmatterheadingl}{\relscale{.92}LDBC Social Network Benchmark (SNB) - v0.2.2 First Public Draft Release}
+\newcommand{\mainmatterheadingl}{\relscale{.92}LDBC Social Network Benchmark (SNB) - v0.2.4 First Public Draft Release}
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[OL,EL]{}
@@ -297,7 +300,7 @@
 %                              \natureText[3]~\boolTick{nature-level}{3}~~%
 %                              \natureText[4]~\boolTick{nature-level}{4}} \\%
 %        \hline%
-%        \textbf{Dissemination Level} \T\B 
+%        \textbf{Dissemination Level} \T\B
 %        & \multicolumn{4}{l|}{\footnotesize\disseminationLevelText[1]~\boolTick{dissemination-level}{1}~~%
 %                              \disseminationLevelText[2]~\boolTick{dissemination-level}{2}~~%
 %                              \disseminationLevelText[3]~\boolTick{dissemination-level}{3}~~%
@@ -385,7 +388,7 @@
 %       \versionLogText%
 %       \end{tabular} \par%
 %
- 
+
     } %\newpage \normalLayout \fancyhead[OL,EL]{\mainmatterheadingl}\fancyhead[OR,ER]{\mainmatterheadingr}%
 }
 
@@ -399,3 +402,12 @@
     \mainmatter%
 %    \addtocounter{page}{\value{pagesinfront}}%
 }
+
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\Ie}{I.e.\@\xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\Eg}{E.g.\@\xspace}
+\newcommand{\etal}{et al.\@\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\vs}{vs.\@\xspace}
+\newcommand{\viz}{viz.\@\xspace}

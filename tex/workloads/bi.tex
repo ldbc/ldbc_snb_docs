@@ -1,12 +1,11 @@
+\section{Business Intelligence Workload}
+\subsection{Choke Points}
 
-\subsection{Business Intelligence Workload}
-\subsubsection{Choke Points}
-
-\subsubsection{Business Intelligence Queries}
+\subsection{Business Intelligence Queries}
 
 {\small
     \begin{enumerate}
-      \item Posting summary 
+      \item Posting summary
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a date, find all Messages created before that date. \\
@@ -17,10 +16,10 @@
                     \item Each year, group into message types: Posts, Comments
                     \item Each year-type group, split into four groups based on length of their content:
                           \begin{itemize}
-                            \item 0 $\le$ length < 40 $\rightarrow$ 'short' 
-                            \item 40 $\le$ length < 80 $\rightarrow$ 'one liner' 
-                            \item 80 $\le$ length < 160 $\rightarrow$ 'tweet' 
-                            \item 160 $\le$ length $\rightarrow$ 'long' 
+                            \item 0 $\le$ length < 40 $\rightarrow$ 'short'
+                            \item 40 $\le$ length < 80 $\rightarrow$ 'one liner'
+                            \item 80 $\le$ length < 160 $\rightarrow$ 'tweet'
+                            \item 160 $\le$ length $\rightarrow$ 'long'
                           \end{itemize}
                   \end{enumerate}
 
@@ -95,7 +94,7 @@
 
                   \item \textbf{Limit:} 100 \\
                     \end{itemize}
-      \item Tag Evolution 
+      \item Tag Evolution
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a year and a month, find the Tags that were used in Messages during the given month of the given year,
@@ -107,7 +106,7 @@
                       year & 32-bit Integer \\
                       month (1-12) & 32-bit Integer \\
                     \end{tabular}
-                
+
                 \item \textbf{Results:} \\
                   For each of the tags: \\
                     \begin{tabular}{lll}
@@ -124,7 +123,7 @@
                       \end{tabular}
             \end{itemize}
 
-      \item Popular topics in a Country 
+      \item Popular topics in a Country
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a TagClass and a Country, find all the Forums created in the given Country,
@@ -142,7 +141,7 @@
                       Forum.title & String & \\
                       Forum.creationDate & DateTime & \\
                       Forum-hasModerator->Person.id & 64-bit Integer & \\
-                      count & 32-bit Integer & \parbox[t]{20cm}{// Post count in Forum with $\ge$ 1 Tags belonging to TagClass \strut} 
+                      count & 32-bit Integer & \parbox[t]{20cm}{// Post count in Forum with $\ge$ 1 Tags belonging to TagClass \strut}
                     \end{tabular}
 
                   \item \textbf{Sort:} \\
@@ -154,7 +153,7 @@
                   \item \textbf{Limit:} 20 \\
                     \end{itemize}
 
-      \item Top posters in a Country 
+      \item Top posters in a Country
             \begin{itemize}
                 \item \textbf{Description:}
                   Find the most popular Forums for a given Country,
@@ -170,7 +169,7 @@
                   \end{enumerate}
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
-                      Country.name & String \\ 
+                      Country.name & String \\
                     \end{tabular}
                 \item \textbf{Results:} \\
                     \begin{tabular}{lll}
@@ -190,7 +189,7 @@
                   \item \textbf{Limit:} 100 \\
                     \end{itemize}
 
-      \item Most active posters on a given topic 
+      \item Most active posters on a given topic
             \begin{itemize}
                 \item \textbf{Description:}
                   Get Persons who have created a Message (Post or Comment) with a given Tag.
@@ -200,13 +199,13 @@
                   Messages are multiplied by 1, Comments to Messages are multiplied by 2, Likes are multiplied by 10. \\
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
-                      Tag.id & 32-bit Integer 
+                      Tag.id & 32-bit Integer
                     \end{tabular}
                 \item \textbf{Results:} \\
                     \begin{tabular}{lll}
                       Person.id & 64-bit Integer \\
                       reply\_count & 32-bit Integer \\
-                      like\_count & 32-bit Integer \\ 
+                      like\_count & 32-bit Integer \\
                       message\_count & 32-bit Integer \\
                       score & 32-bit Integer & \\
                     \end{tabular}
@@ -220,7 +219,7 @@
                   \item \textbf{Limit:} 100 \\
                     \end{itemize}
 
-      \item Most authorative Person on a given topic 
+      \item Most authorative Person on a given topic
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a Tag, find all Persons that ever created a Message with the given Tag.
@@ -244,10 +243,10 @@
                     Return the top 100 Persons sorted the authorityScore (descending) and Person.Id (ascending).
                     \end{itemize}
 
-      \item Related Topics 
+      \item Related Topics
             \begin{itemize}
                 \item \textbf{Description:}
-                  Find all Messages that have a given Tag.    
+                  Find all Messages that have a given Tag.
                   Find the Tags attached to replies of these Messages, but only those replies that do not have the given
                   Tag. Group the Tags by name, and get the count of replies in each group.
                 \item \textbf{Parameters:} \\
@@ -263,18 +262,18 @@
                     Return the top-100 Tags, sorted by count (descending) and by Tag.name (ascending).
                     \end{itemize}
 
-      \item Forum with related Tags 
+      \item Forum with related Tags
             \begin{itemize}
                 \item \textbf{Description:}
                   Given two tagClasses, find those forums that contain Posts with Tags belonging tagClass1 and contain
                   Posts with Tags belonging to tagCalss2 (not transitive). Consider the forums with a number of members
                   greater than a given threshold.
                   For every such forum, count the number of Posts  that have a Tag from tagclass t1 (count1), and the
-                  number of posts that have a tag  from the tagclass2. 
+                  number of posts that have a tag  from the tagclass2.
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
-                      TagClass1.name & String \\ 
-                      TagClass2.name & String \\ 
+                      TagClass1.name & String \\
+                      TagClass2.name & String \\
                       threshold & 32-bit Integer \\
                     \end{tabular}
                 \item \textbf{Results:} \\
@@ -288,7 +287,7 @@
                     \end{tabular}
                     \end{itemize}
 
-      \item Central Person for a topic 
+      \item Central Person for a topic
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a Tag, find all Persons that are either interested on the Tag, or have written a Post with the
@@ -313,10 +312,10 @@
                     \end{tabular}
 
                     Return the top-100 Persons, sorted the sum of score and friendsScore (descending), and  Person.id
-                    (ascending) 
+                    (ascending)
                 \end{itemize}
 
-              \item Unrelated replies 
+              \item Unrelated replies
             \begin{itemize}
                 \item \textbf{Description:}
                   Find those Persons of a given country that replied to any Message, such that the reply does not have
@@ -346,7 +345,7 @@
                     Return top-100 results, sorted by count (descending) and Person.id (ascending)
                     \end{itemize}
 
-                  \item Trending Posts 
+                  \item Trending Posts
                     \begin{itemize}
                       \item \textbf{Description:}
                         Find all Message created after a given date, that received more than a given number of likes.
@@ -364,10 +363,10 @@
                           Person.lastName & String & \parbox[t]{20cm}{ // The last name of the Message creator \strut} \\
                           likeCount & 32-bit Integer & \parbox[t]{20cm}{ // The number of likes the message received \strut}\\
                         \end{tabular}
-                        Return top-100 by count (descending) and Message.id (ascending). 
+                        Return top-100 by count (descending) and Message.id (ascending).
                     \end{itemize}
 
-                  \item Popular Tags per month in a Country 
+                  \item Popular Tags per month in a Country
                     \begin{itemize}
                       \item \textbf{Description:}
                         Find all Messages in a given Country, as well as their Tags.
@@ -395,7 +394,7 @@
                         Return top-100, sorted by year (descending) and then by month (ascending).
                     \end{itemize}
 
-                  \item Top thread initiators 
+                  \item Top thread initiators
                     \begin{itemize}
                       \item \textbf{Description:}
                         Find all the threads initiated in a given time interval (closed interval).  A thread consists of
@@ -420,7 +419,7 @@
                         Return top-100 results, sorted messageCount (descending) and by Person.id (ascending).
                     \end{itemize}
 
-      \item Social Normals 
+      \item Social Normals
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a Country, find out all the Persons of the Country whose number of friends in the given Country
@@ -433,12 +432,12 @@
                    For each Person:
                     \begin{tabular}{lll}
                       Person.Id & ID & \\
-                      count & 32-bit Integer & \parbox[t]{20cm}{ // The number of friends \strut} \\ 
+                      count & 32-bit Integer & \parbox[t]{20cm}{ // The number of friends \strut} \\
                     \end{tabular}
                     Return top-100 results sorted Person.id (ascending).
                     \end{itemize}
 
-      \item Experts in social circle 
+      \item Experts in social circle
             \begin{itemize}
                 \item \textbf{Description:}
                   Given a Person, find all friends connected to that person by a path through the knows relation, that
@@ -454,7 +453,7 @@
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
                       Person.id & ID \\
-                      Country.name & String \\ 
+                      Country.name & String \\
                       TagClass.name & String \\
                     \end{tabular}
                 \item \textbf{Results:} \\
@@ -469,7 +468,7 @@
                     Person.id (ascending).
                     \end{itemize}
 
-      \item Friend triangles 
+      \item Friend triangles
             \begin{itemize}
                 \item \textbf{Description:}
                   For a given Country, count all the triangles formed by knows relationship of Persons in that
@@ -484,11 +483,11 @@
                     \end{tabular}
                     \end{itemize}
 
-      \item How many Persons have a given number of Posts 
+      \item How many Persons have a given number of Posts
             \begin{itemize}
                 \item \textbf{Description:}
                   For each Person, count the number of Posts they made after a given date.
-                  Group the results by the number of Posts created 
+                  Group the results by the number of Posts created
                 \item \textbf{Parameters:} \\
                     \begin{tabular}{ll}
                       creationDate & Date \\
@@ -496,11 +495,11 @@
                 \item \textbf{Results:} \\
                   For each group:
                     \begin{tabular}{lll}
-                      count & 32-bit Integer 
+                      count & 32-bit Integer
                     \end{tabular}
                     \end{itemize}
 
-                  \item Stranger's interaction 
+                  \item Stranger's interaction
             \begin{itemize}
                 \item \textbf{Description:}
 For all the Persons born after a certain date, find all the strangers they interacted with. We define strangers as
@@ -523,7 +522,7 @@ with all strangers.
                     Return Top-100 results sorted by messageCount (descending) and ascending by Person.id (ascending).
                     \end{itemize}
 
-            \item High level topics 
+            \item High level topics
             \begin{itemize}
                 \item \textbf{Description:}
                   Find all the TagClasses that are a children of at least one TagClass of a given set of TagClasses. For each of these
@@ -542,7 +541,7 @@ with all strangers.
                     Return top-100 results, sorted by messageCount (descending) and by TagClass.name (ascending)
                     \end{itemize}
 
-            \item Zombies in a Country 
+            \item Zombies in a Country
             \begin{itemize}
                 \item \textbf{Description:}
                     A zombie is a Person who produced less Messages than the number of months her profile has existed
@@ -565,7 +564,7 @@ with all strangers.
                     Return top-100, sorted zombieScore (descending) and Person.id (ascending).
                     \end{itemize}
 
-            \item International dialog 
+            \item International dialog
             \begin{itemize}
                 \item \textbf{Description:}
                   Given two countries X and Y, find all the Persons from country X that communicated the most with
@@ -575,12 +574,12 @@ with all strangers.
                   following interactions, where each interaction is scored as follows  (0 if none of the cases apply)
 
                    \begin{itemize}
-                     
+
                      \item  p1 has left a Comment on p2's Comment or post, this has the score 4
                      \item  p1 has created a post or comment that was commented by p2, this has the score 1
                      \item  p1 and p2 are friends, score 15
                      \item  p1 liked a post or comment by p2, score 10
-                     \item  p1 has created a post or comment that was liked by p2, score 1 
+                     \item  p1 has created a post or comment that was liked by p2, score 1
 
                        For all pairs of people (p1, p2) such that p1 is in some city
                        of country X and p2 is anywhere in country Y, find the pairs
@@ -602,11 +601,11 @@ with all strangers.
                     Sort results score (descending), Person1.id (ascending) and by Person2.id (ascending).
                     \end{itemize}
 
-                  \item Holiday destinations 
+                  \item Holiday destinations
             \begin{itemize}
                 \item \textbf{Description:}
                   Find all the destinations where Persons from the given Country are traveling to.  Traveling is derived
-                  from Messages, i.e. a Person has created a Message in a country which is not their country of
+                  from Messages, \ie a Person has created a Message in a country which is not their country of
                   residence (given country) Count the amount of Messages created in foreign Countries.  Group the
                   results by:
                   \begin{itemize}
@@ -631,7 +630,7 @@ with all strangers.
                     \end{itemize}
 
 
-                  \item Messages by topic and continent 
+                  \item Messages by topic and continent
             \begin{itemize}
                 \item \textbf{Description:}
                   Find all Messages, tagged with a Tag from a given TagClass.

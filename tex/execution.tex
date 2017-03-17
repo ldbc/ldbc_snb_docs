@@ -15,7 +15,7 @@
 %        gathering any optimizer statistics,.   The bulk load time is reported
 %        and is equal to the amount of elapsed wall clock time between starting
 %        the schema definition and receiving the confirmation message of the end
-%        of statistics gathering.  
+%        of statistics gathering.
 %    \item \textbf{Benchmark Run.} The run begins after the bulk load or after another
 %        benchmark run.  If the run does not directly follow the bulk load, it
 %        must start at a point in the update stream that has not previously been
@@ -32,7 +32,7 @@
 %        the discretion of the test sponsor at any time when the Minimum
 %        Measurement Window criteria are met. All the processes constituting
 %        the SUT are to be killed at the end of the window or alternatively all
-%        the hardware components of the SUT are to be powered off.  
+%        the hardware components of the SUT are to be powered off.
 %    \item \textbf{Recovery Test.} The SUT is to be restarted after the measurement
 %        window and the auditor will verify that the SUT contains the entirety
 %        of the last update recorded by the test driver(s) as successfully
@@ -41,7 +41,7 @@
 %
 %\subsection{Rules for the Data Schema}
 %
-%LDBC-SNB may be implemented with different data models, e.g. relational, RDF and
+%LDBC-SNB may be implemented with different data models, \eg relational, RDF and
 %different graph data models.  The reference schema is provided as RDFS and SQL.
 %The data generator produces TTL syntax for RDF and comma separated values for
 %other data models. A single attribute has a single data type. The following
@@ -52,9 +52,9 @@
 %        RDF.  If this is an integer column, the implementation data type should
 %        support at least $2^{55}$ distinct values
 %    \item \textbf{Datetime:} Should support a date range from 0000 to 9999 in
-%        the year field, with a resolution of no less than one second.  
+%        the year field, with a resolution of no less than one second.
 %    \item \textbf{String:} A string column for names may have a variable length
-%        and may have a declared maximum length, e.g. 40 characters.  
+%        and may have a declared maximum length, \eg 40 characters.
 %    \item \textbf{Long String:} For example a post content may be a long string
 %        that is often short in the data but may not declare a maximum length
 %        and must support data sizes of up to 1MB \alert{Current generator max post length is set to 2000 characters}..
@@ -66,7 +66,7 @@
 %
 %A schema on the DBMS is optional.  An RDF implementation for example may work
 %without one.  An RDF implementation is allowed to load the RDF reference schema
-%and to take advantage of the data type and cardinality statements therein. 
+%and to take advantage of the data type and cardinality statements therein.
 %
 %
 %A relational or graph schema may specify system specific options affecting
@@ -75,14 +75,14 @@
 %allocated storage space to use of explicit column groups.  Any mix of row or
 %column-wise storage structures is allowed as long as this is declaratively
 %specified data structure by data structure.  Data structure here means for
-%example table or index. 
+%example table or index.
 %
 %
 %Covering indices and clustered indices are allowed.
 %If these are defined, then all replications of data implied by these must be
-%maintained statement by statement, i.e. each auxiliary data structure must be
+%maintained statement by statement, \ie each auxiliary data structure must be
 %consistent with any other data structures of the table after each data
-%manipulation operation. 
+%manipulation operation.
 %
 %
 %A covering index is an index which materializes a
@@ -90,7 +90,7 @@
 %clustered index is an index which materializes all columns of a table in a
 %specific order, which order may or may not be that of the primary key of the
 %table. A clustered or covering index may be the primary or only representation
-%of a table. 
+%of a table.
 %
 %
 %Any subset of the columns on a covering or clustered index may be
@@ -103,16 +103,16 @@
 %\subsubsection{Queries' Implementation}
 %
 %The queries and updates may be implemented in a declarative query language or
-%as procedural code using an API.  If a declarative query language is used, e.g.
+%as procedural code using an API.  If a declarative query language is used, \eg
 %SPARQL or SQL, then explicit query plans are prohibited in all the read-only
 %queries. The update transactions may still consist of multiple statements,
-%effectively amounting to explicit plans.  
+%effectively amounting to explicit plans.
 %
 %
 %Explicit query plans include but \alert{are not limited to (this is too ambiguous and dangerous)}:
 %\begin{itemize}
 %    \item Directives or hints specifying a join order or join type
-%    \item Directives or hints specifying an access path, e.g. which index to use
+%    \item Directives or hints specifying an access path, \eg which index to use
 %    \item Directive or hints specifying an expected cardinality, selectivity,
 %        fanout or any other information that pertains to the expected number or
 %        results or cost of all or part of the query.
@@ -132,14 +132,14 @@
 %The interactive workload requires full ACID support from the SUT.
 %\begin{itemize}
 %    \item \textbf{Atomicity.} All the updates in a transaction must either take
-%        place or be all cancelled. 
-%    \item \textbf{Consistency.} If a database object, e.g. table, has auxiliary
-%        data structures, e.g. indices, the content of these must be consistent
+%        place or be all cancelled.
+%    \item \textbf{Consistency.} If a database object, \eg table, has auxiliary
+%        data structures, \eg indices, the content of these must be consistent
 %        after the commit or rollback of a transaction.   If multiple client
 %        application threads share one transaction context, these may
-%        transiently see inconsistent states, e.g. there may be a time when an
+%        transiently see inconsistent states, \eg there may be a time when an
 %       insert of a row is reflected in one index of a table but not in
-%        another.  
+%        another.
 %    \item \textbf{Isolation.} If a transaction reads the database with intent
 %        to update, the DBMS must guarantee that repeating the same read within
 %        the same transaction will return the same data.  This also means that
@@ -148,9 +148,9 @@
 %        isolation is applied for the operations where the transaction mix so
 %        specifies.  If the database is accessed without transaction context or
 %        without intent too update, then the DBMS should provide read committed
-%        semantics, e.g. repeating the same read may produce different results
+%        semantics, \eg repeating the same read may produce different results
 %        but these results may never include effects of pending uncommitted
-%        transactions.  
+%        transactions.
 %    \item \textbf{Durability.} The effects of a transaction must be made
 %        durable against instantaneous failure before the SUT confirms the
 %        successful commit of a transaction to the application. For systems
@@ -172,7 +172,7 @@
 %interfacing to the SUT. The parameter generation and result recording and
 %workload scheduling parts of the test driver cannot be changed.  The
 %auditor needs to have access to the test driver source code used for producing
-%the driver used in the reported run. 
+%the driver used in the reported run.
 %
 %\alert{ Check whether this is out of date or not}
 %
@@ -188,7 +188,7 @@
 %driver log(s) after a measurement window is completed.  The tool produces for
 %each of the distinct queries and transactions the following summary:
 %\begin{itemize}
-%    \item Count of executions 
+%    \item Count of executions
 %    \item Minimum/average/90th percentile/maximum execution time.
 %    \item Start and end date of the window in real time and in simulation time.
 %    \item Metric in operations per second at scale. (ops) (throughout rating)
@@ -208,7 +208,7 @@
 %transaction log to become durable outside of the transaction log. In specific,
 %this means that a SUT restart after instantaneous failure following the
 %completion of the checkpoint may not have recourse to transaction log entries
-%written before the end of the checkpoint. 
+%written before the end of the checkpoint.
 %
 %
 %A checkpoint typically involves a
@@ -218,7 +218,7 @@
 %
 %Not all DBMSs use a checkpointing mechanism for durability. For example a
 %system may rely on redundant storage of data for durability guarantees against
-%instantaneous failure of a single server. 
+%instantaneous failure of a single server.
 %
 %
 %The measurement window may contain a

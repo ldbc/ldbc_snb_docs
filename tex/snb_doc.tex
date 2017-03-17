@@ -6,11 +6,10 @@
 \usepackage{bbding}
 \usepackage{xcolor}
 \usepackage{rotating}
-\usepackage{pifont} 
+\usepackage{pifont}
 \usepackage{rotating}
 \usepackage{subfigure}
 \usepackage{amsmath}
-\usepackage{lscape}
 \usepackage{longtable}
 \usepackage{listings}
 \usepackage{hyperref}
@@ -37,7 +36,7 @@
 
 %\delID{}
 \renewcommand{\delIDText}{}
-\delName{LDBC Social Network Benchmark (SNB) - v0.2.3 }
+\delName{LDBC Social Network Benchmark (SNB) - v0.2.4 }
 
 \dueDate{M12}
 \submissionDate{M13}
@@ -92,15 +91,14 @@ LDBC-SNB uses the recognizable scenario of operating a social network, character
 its graph-shaped data.
 
 LDBC-SNB consists of three sub-benchmarks, or workloads, that focus on different
-functionalities. In this document, a preliminary version of the Interactive
-Workload. The other
-workloads, still in development, are the Business
+functionalities. In this document, we present a preliminary version of the Interactive
+Workload. The other workloads, still in development, are the Business
 Intelligence Workloads (with analytical queries), and the Graph Analytics
 Workload (with graph algorithms).
 
 This document contains a detailed explanation of the data used in the
-whole LDBC-SNB benchmark, a detailed description for all the Interactive Workload
-,and instructions on how to generate the data and run the benchmark
+whole LDBC-SNB benchmark, a detailed description for all the Interactive Workload,
+and instructions on how to generate the data and run the benchmark
 with the provided software.
 }
 
@@ -109,32 +107,32 @@ with the provided software.
 The new data economy era, based on complexly structured, distributed and large
 datasets, has brought on new demands on data management and analytics.  As a
 consequence, new industry actors have appeared, offering technologies specially
-build for the management of graph-like data. Also, traditional database
+built for the management of graph-like data. Also, traditional database
 technologies, such as relational databases, are being adapted to the new
-demands to remain competitive. 
+demands to remain competitive.
 
-LDBC's Social Network Benchmark (LDBC-SNB) is an industry and academia
+LDBC's Social Network Benchmark (LDBC-SNB) is an industrial and academic
 initiative, formed by principal actors in the field of graph-like data
-management. His goal is to define a framework where different graph based
+management. Its goal is to define a framework where different graph based
 technologies can be fairly tested and compared, that can drive the
 identification of systems' bottlenecks and required functionalities, and can
-help researchers to open new research lines. 
+help researchers to open new research frontiers.
 
-The philosophy around which LDBC-SNB is being designed is to be easy to
-understand, to be felxible and to be cheap to adopt. For all these reasons,
+The philosophy around which LDBC-SNB is designed is to be easy to
+understand, flexible and cheap to adopt. For all these reasons,
 LDBC-SNB will propose different workloads representing all the usage scenarios
 of graph-like database technologies, hence, targeting systems of different
 nature and characteristics.  In order increase its adoption by industry and
-reasearch institutions, LDBC-SNB provides all the necessary software, which are 
+research institutions, LDBC-SNB provides all necessary software, which are
 designed to be easy to use and deploy at a small cost.
 
 This document contains:
 \begin{itemize}
-\item a detailed specification of the data used in the whole LDBC-SNB benchmark.
-\item a detailed specification of the different workloads.
-\item a detailed specification of the execution rules of the benchmark.
-\item a detailed specification of the auditing rules and the full disclosure.
-  report required contents. 
+\item A detailed specification of the data used in the whole LDBC-SNB benchmark.
+\item A detailed specification of the workloads.
+\item A detailed specification of the execution rules of the benchmark.
+\item A detailed specification of the auditing rules and the full disclosure
+  report's required contents.
 \end{itemize}
 }
 
@@ -153,7 +151,7 @@ this benchmark:
   \item Peter Boncz (Vrije Universiteit Amsterdam)
   \item Orri Erling (Google)
   \item Andrey Gubichev (Google)
-  \item Moritz Kaufmann (Technische Universität München)
+  \item Moritz Kaufmann (Technische Universit\"at M\"unchen)
   \item Josep Llu\'is Larriba Pey (Universitat Polit\`ecnica de Catalunya)
   \item Minh-Duc Pham (Altran)
   \item Marcus Paradies (SAP)

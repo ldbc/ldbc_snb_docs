@@ -2,10 +2,10 @@
 
 Running a benchmark workload involves a number of steps, including data import, driver configuration and workload execution.
 The data import step involves loading the output of the data generator into the vendor database,
-deploying the database and, optionally, performing a warm-up phase. 
+deploying the database and, optionally, performing a warm-up phase.
 The other steps are explained in the following sections.
 
-\subsection{Driver Configuration} 
+\subsection{Driver Configuration}
 \label{sub:driver_configuration}
 
 Before running a benchmark workload the workload driver~\cite{test_driver} must be configured, this involves the following steps:
@@ -15,21 +15,21 @@ Before running a benchmark workload the workload driver~\cite{test_driver} must 
 	\item Configuration: configure the workload specific driver properties (covered in \ref{ssub:workload_specific_driver_properties})
 \end{enumerate}
 
-\subsubsection{Vendor specific database connector} 
+\subsubsection{Vendor specific database connector}
 \label{ssub:vendor_specific_database_connector}
 Vendors must provide the workload driver with implementations for a number of Java classes: \texttt{Db} and \texttt{OperationHandler}.
-More specifically, one implementation of \texttt{Db}, 
-(optionally) one implementation of \texttt{DbConnectionState} (used to manage shared resources among queries, e.g. network connections), 
+More specifically, one implementation of \texttt{Db},
+(optionally) one implementation of \texttt{DbConnectionState} (used to manage shared resources among queries, \eg network connections),
 and one implementation of \texttt{OperationHandler} per query in the workload.
 
-As a guide, to implement the necessary classes for a workload of two queries (\texttt{LdbcQuery1} and \texttt{LdbcQuery2}), 
+As a guide, to implement the necessary classes for a workload of two queries (\texttt{LdbcQuery1} and \texttt{LdbcQuery2}),
 see the code snippet below.
 For a more detailed explanation of how this is done refer to the workload driver documentation \cite{test_driver}.
 
 {\footnotesize
 	\begin{verbatim}
     public class ExampleDbConnectionState extends DbConnectionState {
-        private Client client;		
+        private Client client;
         public ExampleDbConnectionState(String url){
             client = new Client(url);
         }
@@ -62,7 +62,7 @@ For a more detailed explanation of how this is done refer to the workload driver
             protected OperationResult executeOperation(LdbcQuery1 operation) throws DbException {
                 Client client = ((ExampleDbConnectionState)dbConnectionState()).getClient();
                 LdbcQuery1Result result = client.execute(operation)
-                int resultCode = // typically used for debugging, e.g. to return error codes
+                int resultCode = // typically used for debugging, \eg to return error codes
                 return operation.buildResult(resultCode, result);
             }
         }
@@ -72,7 +72,7 @@ For a more detailed explanation of how this is done refer to the workload driver
             protected OperationResult executeOperation(LdbcQuery2 operation) throws DbException {
                 Client client = ((ExampleDbConnectionState)dbConnectionState()).getClient();
                 LdbcQuery2Result result = client.execute(operation)
-                int resultCode = // typically used for debugging, e.g. returning error codes
+                int resultCode = // typically used for debugging, \eg returning error codes
                 return operation.buildResult(resultCode, result);
             }
         }
@@ -112,24 +112,24 @@ configuration parameters, these parameters are summarized in
 		\hline
 		workload 				& string & class name of specific \texttt{Workload} implementation \\
 		\hline
-		database 				& string & class name of specific \texttt{Db} implementation \\  
+		database 				& string & class name of specific \texttt{Db} implementation \\
 		\hline
 		\end{tabular}
 	\end{center}
 	\caption{General Driver Parameters}
 \end{table}
-Note that default configuration files, with relevant parameter values set and required parameters commented, 
+Note that default configuration files, with relevant parameter values set and required parameters commented,
 are provided in the driver distribution.
 
 \subsubsection{Workload specific driver properties}
 \label{ssub:workload_specific_driver_properties}
 
-In addition to the general driver properties, the driver supports the definition of arbitrary properties, 
+In addition to the general driver properties, the driver supports the definition of arbitrary properties,
 which are passed along to the pluggable driver components: \texttt{Db} and \texttt{Workload}.
 The first, \texttt{Db}, was described already in the previous section.
 The second is \texttt{Workload}, it is the class responsible for defining which operations, in which order and at what throughput, the driver will generate.
 From the point of view of the driver, the LDBC Social Network Benchmark is an implementation of the \texttt{Workload} class,
-in this case named \texttt{LdbcInteractiveWorkload}. 
+in this case named \texttt{LdbcInteractiveWorkload}.
 For more details regarding the workload itself see \ref{section:workload}.
 
 The configuration parameters for the \texttt{LdbcInteractiveWorkload} workload are summarized in \tref{tab:snb_interactive_driver_parameters}.
@@ -296,7 +296,7 @@ The configuration parameters for the \texttt{LdbcInteractiveWorkload} workload a
 	\caption{LDBC Social Network Benchmark Parameters}
 \end{table}
 
-\subsection{Running Workload} 
+\subsection{Running Workload}
 \label{sub:running_workload}
 
 Finally, to run the workload execute the \texttt{main} method of the \texttt{Client} class in the driver.
@@ -336,18 +336,18 @@ The general pattern for doing so is as follows:
 
 For the Interactive workload of LDBC-SNB it is necessary to provide the driver with four configuration files, containing:
 general driver properties,
-workload specific driver properties (e.g. database connection string),
+workload specific driver properties (\eg database connection string),
 a dataset specific value for one of the general driver properties (specifically, \texttt{gctdeltaduration}),
 and vendor specific database properties.
 The commandline to execute the workload would look something like:
 
 {\footnotesize
 	\begin{verbatim}
-	java -cp ldbc_driver/target/core-0.2-SNAPSHOT.jar com.ldbc.driver.Client 
-		-db com.vendor.VendorDb 
+	java -cp ldbc_driver/target/core-0.2-SNAPSHOT.jar com.ldbc.driver.Client
+		-db com.vendor.VendorDb
 		-P vendor/vendor.properties,
 		-P data_generator/outputDir/updateStream_0.properties,
-		-P ldbc_driver/workloads/ldbc/socnet/interactive/ldbc_socnet_interactive.properties 
+		-P ldbc_driver/workloads/ldbc/socnet/interactive/ldbc_socnet_interactive.properties
 		-P ldbc_driver/src/main/resources/ldbc_driver_default.properties
 	\end{verbatim}
 }
