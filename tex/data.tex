@@ -706,7 +706,7 @@ connecting two entities A and B, where an entity A has a cardinality of one, A
 is output as a column of entity B. Generated files are summarized at
 Table~\ref{table:csv_merge_foreign}. Depending on the number of threads used for generating
 the dataset, the number of files varies, since there is a file generated per
-thread. The * in the file names indicates a number between 0 and $\infty$.
+thread. The * in the file names indicates a number between 0 and $\mathit{NumberOfThreads}-1$.
 
 \begin{table}[htbp]
 	\centering
