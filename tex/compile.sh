@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pdflatex sib_spec.tex
-bibtex sib_spec 
-pdflatex sib_spec.tex
+pdflatex snb_doc.tex
+bibtex snb_doc
+pdflatex snb_doc.tex
