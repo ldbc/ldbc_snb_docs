@@ -1,13 +1,13 @@
 Together with the dataset, DBGEN produces a set of parameters per
 query type. Parameter generation is designed in such a way that for each query
 type, all of the generated parameters yield similar runtime behaviour of that
-query. 
+query.
 
 Specifically, the selection of parameters for a query template guarantees the following properties of the resulting queries:
 \begin{enumerate}
 \item[P1:] the query runtime has a bounded variance: the average runtime corresponds to the behavior of the majority of the queries
-\item[P2:] the runtime distribution is stable: different samples of (e.g., 10) parameter bindings used in different query streams result in an identical runtime distribution across streams
-\item[P3:] the optimal logical plan (optimal operator order) of the queries is the same: this ensures that a specific query template tests the system's behavior under the well-chosen technical difficulty (e.g., handling voluminous joins or proper cardinality estimation for subqueries etc.)
+\item[P2:] the runtime distribution is stable: different samples of (\eg 10) parameter bindings used in different query streams result in an identical runtime distribution across streams
+\item[P3:] the optimal logical plan (optimal operator order) of the queries is the same: this ensures that a specific query template tests the system's behavior under the well-chosen technical difficulty (\eg handling voluminous joins or proper cardinality estimation for subqueries, \etc)
 \end{enumerate}
 
 
@@ -21,8 +21,8 @@ the data skew and correlations between values in the generated dataset.
 In order to get the parameter bindings for each of the queries, we have designed a \textit{Parameter Curation} procedure that works in two stages:
 
 \begin{enumerate}
-\item for each query template for all possible parameter bindings, we determine the size of intermediate results in the {\em intended} query plan. Intermediate result size heavily influences the runtime of a query, so two queries with the same operator tree and similar intermediate result sizes at every level of this operator tree are expected to have similar runtimes. This analysis is effectively a side effect of data generation, that is we keep all the necessary counts (number of friends per user, number of posts of friends etc.) as we create the dataset. 
-\item then, a greedy algorithm selects (``curates'') those parameters with similar intermediate result counts from the domain of all the parameters. 
+\item for each query template for all possible parameter bindings, we determine the size of intermediate results in the {\em intended} query plan. Intermediate result size heavily influences the runtime of a query, so two queries with the same operator tree and similar intermediate result sizes at every level of this operator tree are expected to have similar runtimes. This analysis is effectively a side effect of data generation, that is we keep all the necessary counts (number of friends per user, number of posts of friends \etc) as we create the dataset.
+\item then, a greedy algorithm selects (``curates'') those parameters with similar intermediate result counts from the domain of all the parameters.
 \end{enumerate}
 
 Parameter bindings are stored in the \texttt{substitution\_parameters} folder
