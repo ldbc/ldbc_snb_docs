@@ -1,0 +1,17 @@
+dist: trusty
+addons:
+  apt:
+    packages:
+      - texlive-base
+      - texlive-science
+      - texlive-fonts-recommended
+      - texlive-fonts-extra
+      - texlive-latex-extra
+      - latexmk
+      - lmodern
+      - pgf
+      - tex-gyre
+
+script:
+  - cd tex
+  - make
