@@ -1,0 +1,39 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 23                                                          \\ \hline
+	title       & Holiday destinations                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q23}} \\ \hline
+	description & Count the messages all residents of Country \texttt{country} have
+written abroad grouped by month and Country. A Message was written
+abroad if the Country the Message was written in is different than the
+Country of the Person it was written by.
+ \\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{country}{String} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{messageCount}{32bitInteger}The number of messages in each group\\
+		\variable{country.name}{String}The name of the destination country\\
+		\variable{month}{32bitInteger}
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{messageCount}{\desc}\\
+		\sortentry{country.name}{\asc}\\
+		\sortentry{month}{\asc}
+		}\\ \hline
+	limit       & 100                                                           \\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.6}, 
+		\chokepoint{2.3}, 
+		\chokepoint{2.4}, 
+		\chokepoint{3.3}, 
+		\chokepoint{4.3}
+		}\\ \hline
+\end{tabularx}
+\clearpage

@@ -1,0 +1,46 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 7                                                          \\ \hline
+	title       & Most authoritative users on a given topic                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q07}} \\ \hline
+	description & Given a Tag, find all Persons that ever created a Message with the given
+Tag. For each of these Persons compute their ``authority score'' as
+follows:
+
+\begin{itemize}
+\tightlist
+\item
+  The ``authority score'' is the sum of ``popularity scores'' of the
+  Persons that liked any of that Person's Messages with the given Tag.
+\item
+  A Person's ``popularity score'' is defined as the total number of
+  likes on all of their Messages.
+\end{itemize}
+ \\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{tag}{32bitInteger} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{person1.id}{64bitInteger}\\
+		\variable{authorityScore}{32bitInteger}
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{authorityScore}{\desc}\\
+		\sortentry{person1.id}{\asc}
+		}\\ \hline
+	limit       & 100                                                           \\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.2}, 
+		\chokepoint{2.3}, 
+		\chokepoint{3.2}, 
+		\chokepoint{3.3}, 
+		\chokepoint{6.1}
+		}\\ \hline
+\end{tabularx}
+\clearpage

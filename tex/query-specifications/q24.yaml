@@ -1,0 +1,36 @@
+number: 24
+title: Messages by Topic and Continent
+description: |
+  Find all Messages tagged with a Tag from the given TagClass (non-transitive).
+
+  Count all messages and their likes grouped by continent, year, and month. (TODO - do we group the Messages or the
+  Persons who liked the Messages by continent? I think the former one - szarnyasg)
+parameters:
+  - name: tagClass
+    type: String
+group:
+  - year
+  - month
+  - continent.name
+result:
+  - name: messageCount
+    type: 32bitInteger
+  - name: likeCount
+    type: 32bitInteger
+  - name: year
+    type: 32bitInteger
+    description: year of the Message's creationDate
+  - name: month
+    type: 32bitInteger
+    description: month of the Message's creationDate
+  - name: continent.name
+    type: String
+sort:
+  - name: year
+    direction: asc
+  - name: month
+    direction: asc
+  - name: continent.name
+    direction: desc
+limit: 100
+choke_points: [1.6, 2.1, 2.3, 2.4, 3.2, 4.3]

@@ -1,0 +1,25 @@
+number: 8
+title: Related topics
+description: |
+  Find all Messages that have a given Tag.
+  Find the related Tags attached to replies of these Messages (TODO - transitive? szarnyasg),
+  but only of those replies that do not have the given Tag.
+
+  Group the Tags by name, and get the count of replies in each group.
+parameters:
+  - name: tag
+    type: 32bitInteger
+group:
+  - relatedTag.name
+result:
+  - name: relatedTag.name
+    type: String
+  - name: count
+    type: 32bitInteger
+sort:
+  - name: count
+    direction: desc
+  - name: relatedTag.name
+    direction: asc
+limit: 100
+choke_points: [1.6, 3.3, 5.2]

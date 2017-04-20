@@ -1,0 +1,30 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 17                                                          \\ \hline
+	title       & Friend triangles                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q17}} \\ \hline
+	description & For a given country, count all the distinct triples of persons such that
+\texttt{a} is friend of \texttt{b}, \texttt{b} is friend of \texttt{c},
+and \texttt{c} is friend of \texttt{a}.
+
+Distinct means that given a triple \emph{t1} in the result set \emph{R}
+of all qualified triples, there is not a triple \emph{t2} in \emph{R}
+such that \textbar{}\emph{t1} U \emph{b}\textbar{} = 3.
+ \\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{country}{String} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{count}{32bitInteger}
+		}\\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.1}, 
+		\chokepoint{2.3}
+		}\\ \hline
+\end{tabularx}
+\clearpage
