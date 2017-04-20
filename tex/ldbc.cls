@@ -16,7 +16,6 @@
 \RequirePackage{relsize}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lastpage}
-\RequirePackage{arydshln}
 \RequirePackage{multirow}
 \RequirePackage{xspace}
 
