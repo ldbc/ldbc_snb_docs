@@ -90,7 +90,7 @@ CSE should recognize also that average aggregates can be derived afterwards by d
 \subsubsection{SNBI-4.2/TCPH-4.2d: QOPT Complex boolean expression joins and selections}
 \label{choke_point_4.2}
 This choke-point tests the ability of the query optimizer to reorder the execution of boolean expressions to improve the performance. Some boolean expressions are complex, with possibilities for alternative optimal evaluation orders. 
-For instance, the optimizer may reorder conjunctions to test first those conditions with larger selectivity [19].
+For instance, the optimizer may reorder conjunctions to test first those conditions with larger selectivity~\cite{DBLP:conf/vldb/Moerkotte98}.
 
 \subsubsection{SNBI-4.3 QEXE Low overhead expressions interpretation}
 \label{choke_point_4.3}
