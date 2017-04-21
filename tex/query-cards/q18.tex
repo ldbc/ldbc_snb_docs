@@ -1,0 +1,54 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 18                                                          \\ \hline
+	title       & How many persons have a given number of posts                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q18}} \\ \hline
+	description & For each Person, count the number of Messages (Posts \& Comments) they
+made.
+
+Only consider messages with:
+
+\begin{itemize}
+\tightlist
+\item
+  length below the \texttt{lengthThreshold}
+\item
+  creationDate after \texttt{creationDate} (TODO - is after exclusive or
+  inclusive, does it allow equality?)
+\item
+  any of the given \texttt{languages} (TODO - only Posts have a
+  language, messages do not)
+\end{itemize}
+ \\ \hline
+	
+	group       &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\varname{messageCount}
+		}\\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{creationDate}{Date} \\
+		\variable{lengthThreshold}{TODO (32bitInteger?)} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{messageCount}{32bitInteger}number of messages created\\
+		\variable{personCount}{32bitInteger}the number of Persons with `messageCount` messages
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{personCount}{\desc}
+		}\\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.1}, 
+		\chokepoint{1.2}, 
+		\chokepoint{1.6}, 
+		\chokepoint{3.2}, 
+		\chokepoint{4.2}, 
+		\chokepoint{4.3}
+		}\\ \hline
+\end{tabularx}
+\clearpage

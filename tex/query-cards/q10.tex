@@ -1,0 +1,46 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 10                                                          \\ \hline
+	title       & Central Person for a Tag                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q10}} \\ \hline
+	description & Given a Tag, find all Persons that are either interested in the Tag, or
+have written a Message (Post or Comment) with creation date after a
+given date and that has a given Tag. For each Person, compute the score
+as the sum of the following two aspects:
+
+\begin{itemize}
+\tightlist
+\item
+  100, if the Person has this tag as their interest, or 0 otherwise
+\item
+  number of messages by this person with the given tag
+\end{itemize}
+ \\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{tag}{32bitInteger} \\
+		\variable{date}{Date} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{person.id}{64bitInteger}\\
+		\variable{score}{32bitInteger}\\
+		\variable{friendsScore}{32bitInteger}The sum of the score of the Person's friends
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{score + friendsScore}{\desc}\\
+		\sortentry{person.id}{\asc}
+		}\\ \hline
+	limit       & 100                                                           \\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.2}, 
+		\chokepoint{2.1}, 
+		\chokepoint{2.3}, 
+		\chokepoint{3.2}
+		}\\ \hline
+\end{tabularx}
+\clearpage

@@ -1,0 +1,51 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 24                                                          \\ \hline
+	title       & Messages by Topic and Continent                                                           \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q24}} \\ \hline
+	description & Find all Messages tagged with a Tag from the given TagClass
+(non-transitive).
+
+Count all messages and their likes grouped by continent, year, and
+month. (TODO - do we group the Messages or the Persons who liked the
+Messages by continent? I think the former one - szarnyasg)
+ \\ \hline
+	
+	group       &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\varname{year}, 
+		\varname{month}, 
+		\varname{continent.name}
+		}\\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{tagClass}{String} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{messageCount}{32bitInteger}\\
+		\variable{likeCount}{32bitInteger}\\
+		\variable{year}{32bitInteger}year of the Message's creationDate\\
+		\variable{month}{32bitInteger}month of the Message's creationDate\\
+		\variable{continent.name}{String}
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{year}{\asc}\\
+		\sortentry{month}{\asc}\\
+		\sortentry{continent.name}{\desc}
+		}\\ \hline
+	limit       & 100                                                           \\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.6}, 
+		\chokepoint{2.1}, 
+		\chokepoint{2.3}, 
+		\chokepoint{2.4}, 
+		\chokepoint{3.2}, 
+		\chokepoint{4.3}
+		}\\ \hline
+\end{tabularx}
+\clearpage

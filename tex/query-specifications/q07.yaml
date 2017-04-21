@@ -1,0 +1,24 @@
+number: 7
+title: Most authoritative users on a given topic
+description: |
+  Given a Tag, find all Persons that ever created a Message with the given Tag.
+  For each of these Persons compute their "authority score" as follows\:
+
+  * The "authority score" is the sum of "popularity scores" of the Persons that liked any of that Person's Messages
+    with the given Tag.
+  * A Person's "popularity score" is defined as the total number of likes on all of their Messages.
+parameters:
+  - name: tag
+    type: 32bitInteger
+result:
+  - name: person1.id
+    type: 64bitInteger
+  - name: authorityScore
+    type: 32bitInteger
+sort:
+  - name: authorityScore
+    direction: desc
+  - name: person1.id
+    direction: asc
+limit: 100
+choke_points: [1.2, 2.3, 3.2, 3.3, 6.1]

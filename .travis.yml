@@ -1,4 +1,7 @@
 dist: trusty
+language: python
+python:
+  - "3.5"
 env:
   global:
     - GH_REF=github.com/ldbc/ldbc_snb_docs.git
@@ -6,16 +9,21 @@ env:
 addons:
   apt:
     packages:
-    - texlive-base
-    - texlive-science
-    - texlive-fonts-recommended
-    - texlive-fonts-extra
-    - texlive-latex-extra
-    - latexmk
-    - lmodern
-    - pgf
-    - tex-gyre
+      - latexmk
+      - lmodern
+      - pandoc
+      - pgf
+      - tex-gyre
+      - texlive-base
+      - texlive-extra-utils
+      - texlive-font-utils
+      - texlive-fonts-extra
+      - texlive-fonts-recommended
+      - texlive-latex-extra
+      - texlive-science
 script:
-- cd tex
-- make
-- ./deploy.sh
+  - cd tex
+  - ./generate-tex.py
+  - cd patterns; ./crop.sh; cd ..
+  - make
+  - ./deploy.sh
