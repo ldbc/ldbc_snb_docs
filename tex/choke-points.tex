@@ -7,7 +7,7 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 
 \subsubsection{SNBI-1.2/TCPH-1.1: QEXE High Cardinality group-by performance}
 \label{choke_point_1.2}
-This choke-point tests the ability of the execution engine to parallelize group-by’s with a large number of groups. Some queries require performing large group-by’s.
+This choke-point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
 In such a case, if an aggregation produces a significant number of groups, intra query parallelization can be exploited as each thread may make its own partial aggregation.
 Then, to produce the result, these have to be re-aggregated. In order to avoid this, the tuples entering the aggregation operator may be partitioned by a hash of the grouping key and be sent to the appropriate partition.
 Each partition would have its own thread so that only that thread would write the aggregation, hence avoiding costly critical sections as well. A high cardinality distinct modifier in a query is a special case of this choke point.
@@ -25,7 +25,7 @@ Once k results are obtained, extra restrictions in a selection can be added base
 
 \subsubsection{SNBI-1.5/TCPH-1.4: QEXE Dependent group-by keys}
 \label{choke_point_1.5}
-This choke-point tests the ability of the query optimizer to exclude those functionally dependent group-bys. Sometimes queries require for group-by’s on a set of columns and a key, where the value of the key determines the columns.
+This choke-point tests the ability of the query optimizer to exclude those functionally dependent group-bys. Sometimes queries require for group-by's on a set of columns and a key, where the value of the key determines the columns.
 In this situation, the aggregation operator should be able to exclude certain group-by attributes from the key matching.
 
 \subsubsection{SNBI-1.6/TCPH-1.3: QEXE Low Cardinality group-by performance}
@@ -133,7 +133,7 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 \subsubsection{SNBI-7.1: QOPT Translation of internal ids to external ones [KILL WITH FIRE]}
 \label{choke_point_7.1}
 This choke-point tests the ability of the query optimizer to delay the translation between internal and external entity ids to late in the query. Translate at point of minimum cardinality,
-e.g. after top k order by RDF and possibly graph models often use a synthetic integer identifier for entities, e.g. URI’s . For presentation to the client applications, these identifiers must be translated to their original form,
+e.g. after top k order by RDF and possibly graph models often use a synthetic integer identifier for entities, e.g. URI's . For presentation to the client applications, these identifiers must be translated to their original form,
 e.g. the URI string that was used when loading the data. This should be done as late as possible, or at the point of minimal cardinality in the plan.
 
 \subsubsection{SNBI-7.2: QOPT Cardinality Estimation of transitive paths}
