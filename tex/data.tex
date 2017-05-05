@@ -4,9 +4,10 @@
 
 \section{Data}\label{section:data}
 
-\newcommand{\attributecolumn}{p{2.5cm}}
-\newcommand{\typecolumn}{p{2.7cm}}
-\newcommand{\descriptioncolumn}{p{10.3cm}}
+\newcommand{\attributecolumn}{2.5cm}
+\newcommand{\typecolumn}{2.7cm}
+\newcommand{\descriptioncolumn}{10.3cm}
+\newcommand{\largedescriptioncolumn}{13cm}
 
 
 This section introduces the data used by LDBC-SNB. This includes the different
@@ -18,7 +19,7 @@ Table~\ref{table:types} describes the different types used in the whole benchmar
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{2.5cm}|p{13cm}|}
+\begin{tabular}{|p{\attributecolumn}|p{\largedescriptioncolumn}|}
     \hline
     \textbf{Type} & \textbf{Description} \\
     \hline
@@ -77,16 +78,11 @@ graph DBMS.
 %    \end{figure}
 %\end{landscape}
 
-\begin{figure}[p]
+\begin{figure}[htbp]
 	\centering
-	\rotatebox{90}{
-		\begin{minipage}{\textheight}
-			\centering
-	        \includegraphics[width=0.9\linewidth]{figures/schema/schema.pdf}
-    	    \caption{The LDBC-SNB data schema}
-        	\label{figure:schema}
-		\end{minipage}
-	}
+	\includegraphics[width=\linewidth]{figures/schema}
+     \caption{The LDBC-SNB data schema}
+	\label{figure:schema}
 \end{figure}
 
 The schema specifies different entities, their attributes and their relations.
@@ -122,7 +118,7 @@ distinguished by their titles. Table~\ref{table:forum} shows the attributes
 of Forum entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -142,7 +138,7 @@ created by a person. Table~\ref{table:message} shows the attributes of Message
 abstract entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -168,7 +164,7 @@ world. Table~\ref{table:organization} shows the attributes of Organization
 entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -187,7 +183,7 @@ person as well as network related information. Table~\ref{table:person} shows
 the attributes of Person entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{2.5cm}|\typecolumn|p{10.5cm}|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -221,7 +217,7 @@ the attributes of Person entity.
 Table~\ref{table:place} shows the attributes of Place entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -241,7 +237,7 @@ The one they do not have is an empty string.
 Table~\ref{table:post} shows the attributes of Post entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -259,7 +255,7 @@ specify the topics of forums and posts, as well as the topics a person is
 interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline
@@ -277,7 +273,7 @@ a hierarchy of tags. Table~\ref{table:tagclass} shows the attributes of TagClass
 entity.
 
 \begin{table}[H]
-    \begin{tabular}{|\attributecolumn|\typecolumn|\descriptioncolumn|}
+    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
         \hline
         \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
         \hline

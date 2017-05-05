@@ -3,21 +3,15 @@ title: Top tags for country, age, gender, time
 description: |
   Select all Messages (Posts & Comments) created between date1-date2 (inclusive) by persons located in country1 or country2.
   Select the creators (Persons) and the Tags of these Messages.
-  Split these Persons, Tags and Messages into a 5-level grouping\:
-
-  1. name of country of person
-  2. month message was created
-  3. gender of person
-  4. age group of person, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down
-  5. name of tag attached to message
+  Split these Persons, Tags and Messages into a 5-level grouping\: (1) name of country of person, (2) month message was created, (3) gender of person, (4) age group of person, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down, (5) name of tag attached to message.
 
   Only return groups where number of messages is greater than 100.
 group:
   - countryName
   - month
   - gender
-  - age group
-  - name
+  - ageGroup
+  - tagName
 parameters:
   - name: date1
     type: Date
