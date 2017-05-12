@@ -1,4 +1,4 @@
-DOCUMENT=snb_doc.tex
+DOCUMENT=ldbc-snb-specification.tex
 
 all: $(DOCUMENT)
 	latexmk -pdf $(DOCUMENT)
