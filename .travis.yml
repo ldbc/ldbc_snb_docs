@@ -26,3 +26,8 @@ script:
   - cd patterns; ./crop.sh; cd ..
   - make
   - ./deploy.sh
+notifications:
+  slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
+  email: false
+  on_success: change
+  on_failure: always
