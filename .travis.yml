@@ -22,7 +22,6 @@ addons:
       - texlive-latex-extra
       - texlive-science
 script:
-  - cd tex
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
   - make
