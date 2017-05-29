@@ -1,16 +1,46 @@
 number: 1
-title:
+title: Friends with certain name
 description: |
-
-group:
-  -
+  Given a start Person, find Persons with a given first name
+  that the start Person is connected to (excluding start Person) by
+  at most 3 steps via Knows relationships. Return Persons, including
+  summaries of the Persons workplaces and places of study.
 parameters:
-  - name:
-    type:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
 result:
-  - name:
-    type:
+  - name: Person.id
+    type: ID
+  - name: Person.lastName
+    type: String
+  - name: Person.birthday
+    type: Date
+  - name: Person.creationDate
+    type: DateTime
+  - name: Person.gender
+    type: String
+  - name: Person.browserUsed
+    type: String
+  - name: Person.locationIP
+    type: String
+  - name: \{Person.emails\}
+    type: \{String\}
+  - name: \{Person.language\}
+    type: \{String\}
+  - name: Person-isLocatedIn->Place.name
+    type: String
+  - name: \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}
+    type: \{<String, 32bitInteger, String>\}
+  - name: \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}
+    type: \{<String, 32bitInteger, String>\}
 sort:
-  - name:
-    direction:
+  - name: distance from person
+    direction: asc
+  - name: Person.lastName
+    direction: asc
+  - name: Person.id
+    direction: asc
+limit: 20
 choke_points: []
