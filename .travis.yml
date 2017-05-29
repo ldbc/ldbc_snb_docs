@@ -22,8 +22,12 @@ addons:
       - texlive-latex-extra
       - texlive-science
 script:
-  - cd tex
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
   - make
   - ./deploy.sh
+notifications:
+  slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
+  email: false
+  on_success: change
+  on_failure: always

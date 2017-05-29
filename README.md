@@ -4,4 +4,4 @@ LDBC SNB Documentation
 
 [![Build Status](https://travis-ci.org/ldbc/ldbc_snb_docs.svg?branch=master)](https://travis-ci.org/ldbc/ldbc_snb_docs)
 
-[Latest build [PDF]](http://ldbc.github.io/ldbc_snb_docs/snb_doc.pdf)
+[Latest build [PDF]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)

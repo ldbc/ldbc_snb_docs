@@ -142,10 +142,12 @@
 
 % Header setup
 
-\newcommand{\snbdocversion}{0.2.4}
+
+\newcommand{\ldbcsnbdocversion}{0.3.0}
+\newcommand{\ldbcsnbdoctitle}{LDBC Social Network Benchmark (SNB) -- \ldbcsnbdocversion}
 
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
-\newcommand{\mainmatterheadingl}{\relscale{.92}LDBC Social Network Benchmark (SNB) - v0.2.4 First Public Draft Release}
+\newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}
 \pagestyle{fancy}
 \fancyhead{\rhead{\includegraphics[width=0.2\linewidth]{./figures/ldbc-logo.png}}}
 \fancyhead[OL,EL]{}
