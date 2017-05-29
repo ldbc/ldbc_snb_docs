@@ -24,7 +24,7 @@ addons:
 script:
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
-  - make
+  - make texfot 
   - ./deploy.sh
 notifications:
   slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
