@@ -58,7 +58,7 @@ There is a break even point between index and hash based plans, depending on the
 
 \subsubsection{SNBI-2.4/TCPH-2.2: QOPT Sparse foreign key joins}
 \label{choke_point_2.4}
-This choke-point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing bloom filter tests inside the join are techniques to improve the performance in such situations [7].
+This choke-point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
 
 \subsection{Data Access Locality}
 
@@ -109,11 +109,11 @@ The ability to look up many keys in an index in one API call creates the opportu
 \subsubsection{SNBI-5.2/TCPH-5.3: QEXE Overlap between outer and sub-query}
 \label{choke_point_5.2}
 This choke-point tests the ability of the execution engine to reuse results when there is an overlap between the outer query and the sub-query. In some queries, the correlated sub-query and the outer query have the same joins and selections.
-In this case, a non-tree, rather DAG-shaped [21] query plan would allow to execute the common parts just once, providing the intermediate result stream to both the outer query and correlated sub-query,
+In this case, a non-tree, rather DAG-shaped~\cite{DBLP:conf/btw/NeumannM09} query plan would allow to execute the common parts just once, providing the intermediate result stream to both the outer query and correlated sub-query,
 which higher up in the query plan are joined together (using normal query decorrelation rewrites).
 As such, the benchmark rewards systems where the optimizer can detect this and the execution engine supports an operator that can buffer intermediate results and provide them to multiple parent operators.
 
-\subsubsection{SNBI-5.3/TCPH-5.2?: QEXE Intra-query result reuse}
+\subsubsection{SNBI-5.3/TCPH-5.2 ? TODO: QEXE Intra-query result reuse}
 \label{choke_point_5.3}
 This choke-point tests the ability of the execution engine to reuse sub-query results when two sub-queries are mostly identical.
 Some queries have almost identical sub-queries, where some of their internal results can be reused in both sides of the execution plan, thus avoiding to repeat computations.
