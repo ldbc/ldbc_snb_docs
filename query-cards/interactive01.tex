@@ -1,0 +1,44 @@
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+	\hline
+	number      & 1                                                          \\ \hline
+	title       & TODO                                                           \\ \hline
+	\multicolumn{2}{|c|}{ TODO } \\ \hline
+	description & Given a start Person, find Persons with a given first name that the
+start Person is connected to (excluding start Person) by at most 3 steps
+via Knows relationships. Return Persons, including summaries of the
+Persons workplaces and places of study.
+ \\ \hline
+	
+	parameters  &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{Person.id}{ID} \\
+		\variable{Person.firstName}{String} 
+		}\\ \hline
+	result      &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\variable{Person.id}{ID}\\
+		\variable{Person.lastName}{String}\\
+		\variable{Person.birthday}{Date}\\
+		\variable{Person.creationDate}{DateTime}\\
+		\variable{Person.gender}{String}\\
+		\variable{Person.browserUsed}{String}\\
+		\variable{Person.locationIP}{String}\\
+		\variable{\{Person.emails\}}{\{String\}}\\
+		\variable{\{Person.language\}}{\{String\}}\\
+		\variable{Person-isLocatedIn->Place.name}{String}\\
+		\variable{\{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}}{\{<String, 32bitInteger, String>\}}\\
+		\variable{\{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}}{\{<String, 32bitInteger, String>\}}
+		}\\ \hline
+	sort        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\sortentry{distance from person}{\asc}\\
+		\sortentry{Person.lastName}{\asc}\\
+		\sortentry{Person.id}{\asc}
+		}\\ \hline
+	limit       & 20                                                           \\ \hline
+	choke points        &
+	\multicolumn{1}{>{\raggedright}X|}{
+		}\\ \hline
+\end{tabularx}
+\clearpage

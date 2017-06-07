@@ -3,6 +3,7 @@
 import yaml
 import glob
 from jinja2 import Template
+from os.path import basename, splitext
 from subprocess import check_output
 
 def escape(s):
@@ -32,8 +33,9 @@ with open('query-card-template.tex', 'r') as f:
 
 variable_template = Template('\\variable{name}{type}')
 
-for filename in glob.glob("query-specifications/q*.yaml"):
+for filename in glob.glob("query-specifications/*.yaml"):
     print("Processing query specification: %s" % (filename))
+    query_name = splitext(basename(filename))[0]
     with open(filename, 'r') as f:
         doc = yaml.load(f)
 
@@ -62,5 +64,5 @@ for filename in glob.glob("query-specifications/q*.yaml"):
         choke_points  = doc.get('choke_points'),
     )
 
-    with open("query-cards/q%s.tex" % (number_string), 'w') as query_card_file:
+    with open("query-cards/%s.tex" % (query_name), 'w') as query_card_file:
         query_card_file.write(query_card)

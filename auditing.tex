@@ -72,9 +72,11 @@ following items:
 available from a trusted source.
 \item Setup the LDBC driver with the connectors provided by the test sponsor.
 The test sponsor must provide the configuration parameters to configure the
-driver (tcr, number of threads, \etc).  ldbc.snb.interactive.update\_interleave
-driver parameter must come from the updateStream.properties file, which is
-created by the data generator.That parameter should never be set manually.
+driver (tcr, number of threads, \etc).
+
+The \verb|ldbc.snb.interactive.update_interleave|
+driver parameter must come from the \verb|updateStream.properties|
+file, which is created by the data generator. That parameter should never be set manually.
 Also, make sure that the \verb|-rl/--results_log| is enabled.  Make sure that
 all operations are enabled and the frequencies are those for the selected scale
 factor. These can found in Appendix~\ref{appendix:scale_factors}.  If the driver
