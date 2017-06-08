@@ -25,7 +25,7 @@ script:
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
   - make texfot
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; ./deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./deploy.sh; fi
 notifications:
   slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
   email: false
