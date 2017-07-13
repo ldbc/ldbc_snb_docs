@@ -6,7 +6,7 @@
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q {{- number_string -}} }} \\ \hline
 	description & {{ description }} \\ \hline
 	{% if group %}
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		{% for g in group -%}
 			\varname{ {{- g -}} }{% if not loop.last %}, {% endif %}
@@ -44,4 +44,3 @@
 	}\\ \hline
 \end{tabularx}
 \clearpage
-
