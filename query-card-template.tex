@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\begin{tabularx}{15cm}{|p{2.1cm}|X|}
 	\hline
 	number      & {{ number }}                                                          \\ \hline
 	title       & {{ title }}                                                           \\ \hline
@@ -20,11 +20,12 @@
 		{% endfor -%}
 	}\\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		{% for entry in result -%}
-			\variable{ {{- entry.name -}} }{ {{- entry.type -}} } {{- entry.description -}} {% if not loop.last %}\\{% endif %}
-		{% endfor -%}
-	}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{12cm}{|p{2.5cm}|p{2cm}|X|} \hline
+	{% for entry in result -%}
+	\varname{ {{- entry.name -}} } & \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ \hline
+	{% endfor -%}
+	\end{tabularx}}\vspace{-0.2ex} \\ \hline
 	{% if sort -%}
 	sort        &
 	\multicolumn{1}{>{\raggedright}X|}{
