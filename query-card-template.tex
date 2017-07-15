@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}|X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & {{ number }}                                                          \\ \hline
 	title       & {{ title }}                                                           \\ \hline
@@ -14,25 +14,27 @@
 	}\\ \hline
 	{% endif %}
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		{% for entry in parameters -%}
-			\variable{ {{- entry.name -}} }{ {{- entry.type -}} } {% if not loop.last %}\\{% endif %}
-		{% endfor -%}
-	}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|r|l|p{2cm}|Y|} \hline
+	{% for entry in parameters -%}
+	{{loop.index}} & \varname{ {{- entry.name -}} } & \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ \hline
+	{% endfor -%}
+	\end{tabularx}}\vspace{-0.2ex} \\ \hline
 	result      &
 	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{12cm}{|p{2.5cm}|p{2cm}|X|} \hline
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|r|l|p{2cm}|Y|} \hline
 	{% for entry in result -%}
-	\varname{ {{- entry.name -}} } & \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ \hline
+	{{loop.index}} & \varname{ {{- entry.name -}} } & \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ \hline
 	{% endfor -%}
 	\end{tabularx}}\vspace{-0.2ex} \\ \hline
 	{% if sort -%}
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		{% for entry in sort -%}
-			\sortentry{ {{- entry.name -}} }{\{{- entry.direction -}} } {{- entry.description -}}  {% if not loop.last %}\\{% endif %}
-		{% endfor -%}
-	}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|r|l|X|} \hline
+	{% for entry in sort -%}
+	{{loop.index}} & $\{{- entry.direction -}}$ & \varname{ {{- entry.name -}} } \\ \hline
+	{% endfor -%}
+	\end{tabularx}}\vspace{-0.2ex} \\ \hline
 	{% endif -%}
 	{% if limit -%}
 	limit       & {{ limit }}                                                           \\ \hline
