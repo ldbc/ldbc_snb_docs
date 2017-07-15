@@ -18,6 +18,7 @@
 \providecommand{\tightlist}{%
 	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage[export]{adjustbox}
+\usepackage{array}
 
 \newcommand{\asc}{\uparrow}
 \newcommand{\desc}{\downarrow}
@@ -42,15 +43,10 @@
 \newcommand{\yes}{\color{green}\ding{51}\color{black}}
 \newcommand{\no}{\color{red}\ding{55}\color{black}}
 
-\newcommand{\cref}[1]{Chapter~\ref{#1}}
-\newcommand{\sref}[1]{Section~\ref{#1}}
-\newcommand{\tref}[1]{Table~\ref{#1}}
-\newcommand{\fref}[1]{Figure~\ref{#1}}
-\newcommand{\eref}[1]{Equation~\ref{#1}}
-\newcommand{\aref}[1]{Appendix~\ref{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
-\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
+%\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
 
 % todo change the following information as appropriate
 %\WP{N/A}
