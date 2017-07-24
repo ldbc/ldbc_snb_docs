@@ -5,12 +5,12 @@ description: |
   (floor of) average number of friends that Persons of the given country have in the given country.
 parameters:
   - name: country
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: count
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: person.id
     direction: asc

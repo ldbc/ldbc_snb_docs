@@ -9,20 +9,20 @@ description: |
   TODO - what do we count, Posts? (szarnyasg)
 parameters:
   - name: tagClass
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: country
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: forum.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: forum.title
     type: String
   - name: forum.creationDate
     type: DateTime
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: count
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: count
     direction: desc

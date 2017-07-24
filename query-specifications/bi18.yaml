@@ -12,15 +12,15 @@ parameters:
   - name: creationDate
     type: Date
   - name: lengthThreshold
-    type: TODO (32bitInteger?)
+    type: TODO (32-bit Integer?)
 group:
   - messageCount
 result:
   - name: messageCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: number of messages created
   - name: personCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: the number of Persons with `messageCount` messages
 sort:
   - name: personCount

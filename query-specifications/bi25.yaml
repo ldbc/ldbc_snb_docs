@@ -15,16 +15,16 @@ description: |
   Return all the paths with shortest length, and their weights.
 parameters:
   - name: person1Id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: person2Id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: startDate
     type: Date
   - name: endDate
     type: Date
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
     description: Identifiers representing an ordered sequence of the Persons in the path weight
 sort:
   - name: weight

@@ -22,13 +22,13 @@ parameters:
     type: String
 result:
   - name: p1.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: p2.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: cityX.name
     type: String
   - name: score
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: score
     direction: desc

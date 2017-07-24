@@ -9,12 +9,12 @@ description: |
   * A Person's "popularity score" is defined as the total number of likes on all of their Messages.
 parameters:
   - name: tag
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: person1.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: authorityScore
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: authorityScore
     direction: desc

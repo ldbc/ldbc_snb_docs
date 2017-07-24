@@ -9,19 +9,19 @@ description: |
   that have a tag from TagClass2.
 parameters:
   - name: tagClass1
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: tagClass2
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: threshold
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: forum.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: count1
-    type: 32bitInteger
+    type: 32-bit Integer
     description: Number of Posts with at least one tag belonging to tagClass1
   - name: count2
-    type: 32bitInteger
+    type: 32-bit Integer
     description: Number of Posts with at least one tag belonging to tagClass2
 sort:
   # TODO double-check this

@@ -32,9 +32,9 @@ result:
   - name: Person-isLocatedIn->Place.name
     type: String
   - name: \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}
-    type: \{<String, 32bitInteger, String>\}
+    type: \{<String, 32-bit Integer, String>\}
   - name: \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}
-    type: \{<String, 32bitInteger, String>\}
+    type: \{<String, 32-bit Integer, String>\}
 sort:
   - name: distance from person
     direction: asc

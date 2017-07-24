@@ -8,14 +8,14 @@ description: |
   Group the Tags by name, and get the count of replies in each group.
 parameters:
   - name: tag
-    type: 32bitInteger
+    type: 32-bit Integer
 group:
   - relatedTag.name
 result:
   - name: relatedTag.name
     type: String
   - name: count
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: count
     direction: desc

@@ -6,7 +6,7 @@ description: |
   Person and valid reply, retrieve the Tags associated with the reply, and retrieve the number of likes on the reply.
 parameters:
   - name: country
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: blacklist
     type: String[]
 group:
@@ -14,14 +14,14 @@ group:
   - tag.name
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: tag.name
     type: String
   - name: countLikes
-    type: 32bitInteger
+    type: 32-bit Integer
     description: The count of Likes to replies with that Tag.
   - name: countReplies
-    type: 32bitInteger
+    type: 32-bit Integer
     description: The count of replies with that Tag.
 sort:
   - name: countLikes

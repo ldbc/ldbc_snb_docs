@@ -16,16 +16,16 @@ parameters:
   - name: date
     type: Date
   - name: tagClass1
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: tagClass2
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: strangersCount
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: interactionCount
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: interactionCount
     direction: desc

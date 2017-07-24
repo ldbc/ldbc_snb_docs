@@ -7,20 +7,20 @@ description: |
   For both months, compute the count of Messages that used each of the Tags.
 parameters:
   - name: year
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: month
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: tag.name
     type: String
   - name: countMonth1
-    type: 32bitInteger
+    type: 32-bit Integer
     description: occurrences of the tag during year-month 1
   - name: countMonth2
-    type: 32bitInteger
+    type: 32-bit Integer
     description: occurrences of the tag during year-month 2
   - name: diff
-    type: 32bitInteger
+    type: 32-bit Integer
     description: difference between occurrences of this Tag in month 1 and month 2
 sort:
   - name: diff

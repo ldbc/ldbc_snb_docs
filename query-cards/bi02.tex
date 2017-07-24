@@ -9,11 +9,23 @@
 	description & Select all Messages (Posts \& Comments) created between date1-date2
 (inclusive) by persons located in country1 or country2. Select the
 creators (Persons) and the Tags of these Messages. Split these Persons,
-Tags and Messages into a 5-level grouping: (1) name of country of
-person, (2) month message was created, (3) gender of person, (4) age
-group of person, defined as years between person's birthday and end of
-simulation (2013-01-01), divided by 5, rounded down, (5) name of tag
-attached to message.
+Tags and Messages into a 5-level grouping:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  name of country of person,
+\item
+  month message was created,
+\item
+  gender of person,
+\item
+  age group of person, defined as years between person's birthday and
+  end of simulation (2013-01-01), divided by 5, rounded down,
+\item
+  name of tag attached to message.
+\end{enumerate}
 
 Only return groups where number of messages is greater than 100.
  \\ \hline
@@ -40,11 +52,11 @@ Only return groups where number of messages is greater than 100.
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{country.name} & \cellcolor{gray!20} \vartype{String} &  \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{message.month} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{message.month} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\\hline
 	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{person.gender} & \cellcolor{gray!20} \vartype{String} &  \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{ageGroup} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{ageGroup} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\\hline
 	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} &  \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{64bitInteger} &  \\
+	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\
 	\end{tabularx}} \\ \hline
 	%
 	sort        &

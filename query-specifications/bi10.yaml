@@ -9,16 +9,16 @@ description: |
   * number of messages by this person with the given tag
 parameters:
   - name: tag
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: date
     type: Date
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: score
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: friendsScore
-    type: 32bitInteger
+    type: 32-bit Integer
     description: The sum of the score of the Person's friends
 sort:
   - name: score + friendsScore

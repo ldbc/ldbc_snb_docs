@@ -16,18 +16,18 @@ description: |
   * Likes (`likeCount`) are multiplied by 10.
 parameters:
   - name: tag
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: replyCount
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: likeCount
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: postCount
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: score
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: score
     direction: desc

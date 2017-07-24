@@ -15,11 +15,11 @@ parameters:
     type: Date
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: zombieLikeCount
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: realLikeCount
-    type: 32bitInteger
+    type: 32-bit Integer
     comment: I think this should be `totalLikeCount` -- szarnyasg
   - name: zombieScore
     type: 32bitFloat

@@ -7,7 +7,7 @@ description: |
   For each member of the 100 most popular Forums, count the number of Posts they made in any of those (most popular) Forums.
 parameters:
   - name: country
-    type: 32bitInteger
+    type: 32-bit Integer
 group:
   - person.id
   - person.firstName
@@ -15,7 +15,7 @@ group:
   - person.creationDate
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: person.firstName
     type: String
   - name: person.lastName
@@ -23,7 +23,7 @@ result:
   - name: person.creationDate
     type: DateTime
   - name: postCount
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: postCount
     direction: desc

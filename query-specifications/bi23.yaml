@@ -9,13 +9,13 @@ parameters:
     type: String
 result:
   - name: messageCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: The number of messages in each group
   - name: country.name
     type: String
     description: The name of the destination country
   - name: month
-    type: 32bitInteger
+    type: 32-bit Integer
 sort:
   - name: messageCount
     direction: desc

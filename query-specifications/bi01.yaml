@@ -21,7 +21,7 @@ parameters:
     type: Date
 result:
   - name: message.year
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: messageType
     type: String
     description: post/comment (in lowercase)
@@ -29,13 +29,13 @@ result:
     type: String
     description: short/one-liner/tweet/long (in lowercase)
   - name: messageCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: total number of Messages (Posts/Comments) in that group
   - name: averageMessageLength
-    type: 32bitInteger
+    type: 32-bit Integer
     description: average length of the Message content in that group
   - name: sumMessageLength
-    type: 32bitInteger
+    type: 32-bit Integer
     description: sum of all message content lengths
   - name: percentageOfMessages
     type: 32bitFloat

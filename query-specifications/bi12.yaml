@@ -6,10 +6,10 @@ parameters:
   - name: creationDate
     type: Date
   - name: likeThreshold
-    type: 32bitInteger
+    type: 32-bit Integer
 result:
   - name: message.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: message.creationDate
     type: DateTime
   - name: creator.firstName
@@ -19,7 +19,7 @@ result:
     type: String
     description: The last name of the post's creator
   - name: likeCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: The number of Likes the Post received
 sort:
   - name: likeCount

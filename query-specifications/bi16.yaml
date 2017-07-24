@@ -14,25 +14,25 @@ description: |
   TODO [szarnyasg]: what is postCount?
 parameters:
   - name: personId
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: country
     type: String
   - name: tagClass
     type: String
   - name: minPathDistance
-    type: 32bitInteger
+    type: 32-bit Integer
   - name: maxPathDistance
-    type: 32bitInteger
+    type: 32-bit Integer
 group:
   - tag.name
   - person.id
 result:
   - name: person.id
-    type: 64bitInteger
+    type: 64-bit Integer
   - name: tag.name
     type: String
   - name: messageCount
-    type: 32bitInteger
+    type: 32-bit Integer
     description: number of Messages created by that Person containing that Tag
 sort:
   - name: messageCount
