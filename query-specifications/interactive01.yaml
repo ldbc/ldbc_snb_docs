@@ -36,7 +36,7 @@ result:
   - name: \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}
     type: \{<String, 32-bit Integer, String>\}
 sort:
-  - name: distance from person
+  - name: distanceFromPerson
     direction: asc
   - name: Person.lastName
     direction: asc
