@@ -1,7 +1,9 @@
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.1}
+
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 18                                                          \\ \hline
+%
 	title       & How many persons have a given number of posts                                                           \\ \hline
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q18}} \\ \hline
 	description & For each Person, count the number of Messages (Posts \& Comments) they
@@ -22,29 +24,32 @@ Only consider messages with:
 \end{itemize}
  \\ \hline
 	
+%
 	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{messageCount}
-		}\\ \hline
+		} \\ \hline
 	
+%
 	parameters  &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{creationDate} & \cellcolor{gray!20} \vartype{Date} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{lengthThreshold} & \cellcolor{gray!20} \vartype{TODO (32bitInteger?)} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{creationDate} & \cellcolor{gray!20} \vartype{Date} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{lengthThreshold} & \cellcolor{gray!20} \vartype{TODO (32bitInteger?)} &  \\
 	\end{tabularx}} \\ \hline
+%
 	result      &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32bitInteger} &number of messages created \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{personCount} & \cellcolor{gray!20} \vartype{32bitInteger} &the number of Persons with `messageCount` messages \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32bitInteger} & number of messages created \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{personCount} & \cellcolor{gray!20} \vartype{32bitInteger} & the number of Persons with `messageCount` messages \\
 	\end{tabularx}} \\ \hline
+	%
 	sort        &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{personCount} & \cellcolor{gray!20} $\desc$ \\ 
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{personCount} & \cellcolor{gray!20} $\desc$ \\
 	\end{tabular}} \\ \hline
-	choke points        &
+	%
+	%
+	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{1.1}, 
 		\chokepoint{1.2}, 

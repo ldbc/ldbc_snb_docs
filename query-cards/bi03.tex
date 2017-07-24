@@ -1,7 +1,9 @@
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.1}
+
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 3                                                          \\ \hline
+%
 	title       & Tag evolution                                                           \\ \hline
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q03}} \\ \hline
 	description & Given a year and a month, find the Tags that were used in Messages
@@ -12,28 +14,30 @@ For both months, compute the count of Messages that used each of the
 Tags.
  \\ \hline
 	
+%
 	parameters  &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\
 	\end{tabularx}} \\ \hline
+%
 	result      &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{countMonth1} & \cellcolor{gray!20} \vartype{32bitInteger} &occurrences of the tag during year-month 1 \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{countMonth2} & \cellcolor{gray!20} \vartype{32bitInteger} &occurrences of the tag during year-month 2 \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{diff} & \cellcolor{gray!20} \vartype{32bitInteger} &difference between occurrences of this Tag in month 1 and month 2 \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{countMonth1} & \cellcolor{gray!20} \vartype{32bitInteger} & occurrences of the tag during year-month 1 \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{countMonth2} & \cellcolor{gray!20} \vartype{32bitInteger} & occurrences of the tag during year-month 2 \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{diff} & \cellcolor{gray!20} \vartype{32bitInteger} & difference between occurrences of this Tag in month 1 and month 2 \\
 	\end{tabularx}} \\ \hline
+	%
 	sort        &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{diff} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{tag.name} & \cellcolor{gray!20} $\asc$ \\ 
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{diff} & \cellcolor{gray!20} $\desc$ \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{tag.name} & \cellcolor{gray!20} $\asc$ \\
 	\end{tabular}} \\ \hline
-	limit       & 100                                                           \\ \hline
-	choke points        &
+	%
+	limit       & 100 \\ \hline
+	%
+	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{2.4}, 
 		\chokepoint{3.1}, 

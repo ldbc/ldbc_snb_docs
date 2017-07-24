@@ -1,7 +1,9 @@
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.1}
+
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 25                                                          \\ \hline
+%
 	title       & Weighted paths                                                           \\ \hline
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q25}} \\ \hline
 	description & Given two Persons, find all (unweighted) shortest paths between these
@@ -22,25 +24,27 @@ within the timeframe \texttt{{[}startDate,\ endDate{]}}.
 Return all the paths with shortest length, and their weights.
  \\ \hline
 	
+%
 	parameters  &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person1Id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{person2Id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{startDate} & \cellcolor{gray!20} \vartype{Date} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{endDate} & \cellcolor{gray!20} \vartype{Date} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person1Id} & \cellcolor{gray!20} \vartype{64bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{person2Id} & \cellcolor{gray!20} \vartype{64bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{startDate} & \cellcolor{gray!20} \vartype{Date} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{endDate} & \cellcolor{gray!20} \vartype{Date} &  \\
 	\end{tabularx}} \\ \hline
+%
 	result      &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} &Identifiers representing an ordered sequence of the Persons in the path weight \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & Identifiers representing an ordered sequence of the Persons in the path weight \\
 	\end{tabularx}} \\ \hline
+	%
 	sort        &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{weight} & \cellcolor{gray!20} $\desc$ \\ 
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{weight} & \cellcolor{gray!20} $\desc$ \\
 	\end{tabular}} \\ \hline
-	choke points        &
+	%
+	%
+	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{1.2}, 
 		\chokepoint{2.1}, 

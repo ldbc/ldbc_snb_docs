@@ -1,7 +1,9 @@
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.1}
+
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 22                                                          \\ \hline
+%
 	title       & International dialog                                                           \\ \hline
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q22}} \\ \hline
 	description & Consider all pairs of people \texttt{(p1,\ p2)} such that one is located
@@ -36,28 +38,30 @@ I.e., the maximum score a pair can obtain is:
 \texttt{4\ +\ 1\ +\ 15\ +\ 10\ +\ 1\ =\ 31}
  \\ \hline
 	
+%
 	parameters  &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{countryX} & \cellcolor{gray!20} \vartype{String} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{countryY} & \cellcolor{gray!20} \vartype{String} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{countryX} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{countryY} & \cellcolor{gray!20} \vartype{String} &  \\
 	\end{tabularx}} \\ \hline
+%
 	result      &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{p1.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{p2.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{cityX.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{score} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{p1.id} & \cellcolor{gray!20} \vartype{64bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{p2.id} & \cellcolor{gray!20} \vartype{64bitInteger} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{cityX.name} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{score} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\
 	\end{tabularx}} \\ \hline
+	%
 	sort        &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{score} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{p1.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{p2.id} & \cellcolor{gray!20} $\asc$ \\ 
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{score} & \cellcolor{gray!20} $\desc$ \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{p1.id} & \cellcolor{gray!20} $\asc$ \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{p2.id} & \cellcolor{gray!20} $\asc$ \\
 	\end{tabular}} \\ \hline
-	choke points        &
+	%
+	%
+	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{1.4}, 
 		\chokepoint{1.6}, 

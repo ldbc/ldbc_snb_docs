@@ -1,7 +1,9 @@
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.1}
+
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 20                                                          \\ \hline
+%
 	title       & High-level topics                                                           \\ \hline
 	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q20}} \\ \hline
 	description & For all given TagClasses, count number of Messages that have a Tag that
@@ -9,25 +11,27 @@ belongs to that TagClass or any of its children (all descendants through
 a transitive relation).
  \\ \hline
 	
+%
 	parameters  &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tagClasses} & \cellcolor{gray!20} \vartype{String[]} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tagClasses} & \cellcolor{gray!20} \vartype{String[]} &  \\
 	\end{tabularx}} \\ \hline
+%
 	result      &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tagClass.name} & \cellcolor{gray!20} \vartype{String} &the TagClass of the root \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{postCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|l|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tagClass.name} & \cellcolor{gray!20} \vartype{String} & the TagClass of the root \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{postCount} & \cellcolor{gray!20} \vartype{32bitInteger} &  \\
 	\end{tabularx}} \\ \hline
+	%
 	sort        &
-	\renewcommand*{\arraystretch}{1.0}
-	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{postCount} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{tagClass.name} & \cellcolor{gray!20} $\asc$ \\ 
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{postCount} & \cellcolor{gray!20} $\desc$ \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{tagClass.name} & \cellcolor{gray!20} $\asc$ \\
 	\end{tabular}} \\ \hline
-	limit       & 100                                                           \\ \hline
-	choke points        &
+	%
+	limit       & 100 \\ \hline
+	%
+	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{1.6}, 
 		\chokepoint{2.1}, 

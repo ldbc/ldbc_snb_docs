@@ -43,7 +43,10 @@
 \newcommand{\yes}{\color{green}\ding{51}\color{black}}
 \newcommand{\no}{\color{red}\ding{55}\color{black}}
 
+% tabularx magic
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+% NOTE. Do note try to use a different value for \arraystretch for nested tables, as it will look bad if the nested table has a single line.
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
 %\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
