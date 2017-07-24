@@ -21,13 +21,17 @@
 \usepackage{array}
 \usepackage{enumitem}
 
-\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[]{noitemsep, topsep=5pt}
 
 \newcommand{\asc}{\uparrow}
 \newcommand{\desc}{\downarrow}
 
 \newcommand{\patternscale}{0.43}
-\newcommand{\varname}[1]{\small \texttt{#1}}
+
+% https://tex.stackexchange.com/a/44362/71109
+\DeclareTextFontCommand{\mytexttt}{\ttfamily\hyphenchar\font=45\relax}
+
+\newcommand{\varname}[1]{\small \mytexttt{#1}}
 \newcommand{\vartype}[1]{\footnotesize \textsf{#1}}
 \newcommand{\variable}[2]{
 	\renewcommand*{\arraystretch}{1}
@@ -47,8 +51,12 @@
 \newcommand{\no}{\color{red}\ding{55}\color{black}}
 
 % tabularx magic
+% https://tex.stackexchange.com/a/89932/71109
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+% https://tex.stackexchange.com/questions/252385/mixing-m-and-x-in-tabularx#comment602205_252388
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
+% https://tex.stackexchange.com/a/4712/71109
+\newcolumntype{M}{>{\begin{varwidth}{7cm}}l<{\end{varwidth}}}
 % NOTE. Do note try to use a different value for \arraystretch for nested tables, as it will look bad if the nested table has a single line.
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
