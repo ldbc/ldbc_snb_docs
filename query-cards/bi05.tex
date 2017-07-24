@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 5                                                          \\ \hline
 	title       & Top posters in a country                                                           \\ \hline
@@ -12,7 +12,7 @@ For each member of the 100 most popular Forums, count the number of
 Posts they made in any of those (most popular) Forums.
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{person.id}, 
 		\varname{person.firstName}, 
@@ -21,22 +21,25 @@ Posts they made in any of those (most popular) Forums.
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{country}{32bitInteger} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{country} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{person.id}{64bitInteger}\\
-		\variable{person.firstName}{String}\\
-		\variable{person.lastName}{String}\\
-		\variable{person.creationDate}{DateTime}\\
-		\variable{postCount}{32bitInteger}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{person.firstName} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{person.lastName} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{person.creationDate} & \cellcolor{gray!20} \vartype{DateTime} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{postCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{postCount}{\desc}\\
-		\sortentry{person.id}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{postCount} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

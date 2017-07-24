@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 24                                                          \\ \hline
 	title       & Messages by Topic and Continent                                                           \\ \hline
@@ -12,7 +12,7 @@ month. (TODO - do we group the Messages or the Persons who liked the
 Messages by continent? I think the former one - szarnyasg)
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{year}, 
 		\varname{month}, 
@@ -20,23 +20,26 @@ Messages by continent? I think the former one - szarnyasg)
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{tagClass}{String} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{tagClass} & \cellcolor{gray!20} \vartype{String} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{messageCount}{32bitInteger}\\
-		\variable{likeCount}{32bitInteger}\\
-		\variable{year}{32bitInteger}year of the Message's creationDate\\
-		\variable{month}{32bitInteger}month of the Message's creationDate\\
-		\variable{continent.name}{String}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{likeCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{year} & \cellcolor{gray!20} \vartype{32bitInteger} &year of the Message's creationDate \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{month} & \cellcolor{gray!20} \vartype{32bitInteger} &month of the Message's creationDate \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{continent.name} & \cellcolor{gray!20} \vartype{String} & \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{year}{\asc}\\
-		\sortentry{month}{\asc}\\
-		\sortentry{continent.name}{\desc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{year} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{month} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{continent.name} & \cellcolor{gray!20} $\desc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

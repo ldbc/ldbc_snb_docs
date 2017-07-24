@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 18                                                          \\ \hline
 	title       & How many persons have a given number of posts                                                           \\ \hline
@@ -22,25 +22,28 @@ Only consider messages with:
 \end{itemize}
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{messageCount}
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{creationDate}{Date} \\
-		\variable{lengthThreshold}{TODO (32bitInteger?)} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{creationDate} & \cellcolor{gray!20} \vartype{Date} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{lengthThreshold} & \cellcolor{gray!20} \vartype{TODO (32bitInteger?)} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{messageCount}{32bitInteger}number of messages created\\
-		\variable{personCount}{32bitInteger}the number of Persons with `messageCount` messages
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32bitInteger} &number of messages created \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{personCount} & \cellcolor{gray!20} \vartype{32bitInteger} &the number of Persons with `messageCount` messages \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{personCount}{\desc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{personCount} & \cellcolor{gray!20} $\desc$ \\ 
+	\end{tabular}} \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\chokepoint{1.1}, 

@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 21                                                          \\ \hline
 	title       & Zombies in a country                                                           \\ \hline
@@ -16,22 +16,25 @@ profile to the \texttt{endDate} and also includes partial months.
  \\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{country}{String} \\
-		\variable{endDate}{Date} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{country} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{endDate} & \cellcolor{gray!20} \vartype{Date} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{person.id}{64bitInteger}\\
-		\variable{zombieLikeCount}{32bitInteger}\\
-		\variable{realLikeCount}{32bitInteger}\\
-		\variable{zombieScore}{32bitFloat}the ratio between the number of likes received from zombies (`zombieLikeCount`) and the total number of likes received on that person's messages (`realLikeCount`) -- only count likes received from profiles that were created before the given `endDate`.
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{zombieLikeCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{realLikeCount} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{zombieScore} & \cellcolor{gray!20} \vartype{32bitFloat} &the ratio between the number of likes received from zombies (`zombieLikeCount`) and the total number of likes received on that person's messages (`realLikeCount`) -- only count likes received from profiles that were created before the given `endDate`. \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{zombieScore}{\desc}\\
-		\sortentry{person.id}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{zombieScore} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

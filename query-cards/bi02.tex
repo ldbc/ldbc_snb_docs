@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 2                                                          \\ \hline
 	title       & Top tags for country, age, gender, time                                                           \\ \hline
@@ -16,7 +16,7 @@ attached to message.
 Only return groups where number of messages is greater than 100.
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{countryName}, 
 		\varname{month}, 
@@ -26,30 +26,33 @@ Only return groups where number of messages is greater than 100.
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{date1}{Date} \\
-		\variable{date2}{Date} \\
-		\variable{country1}{String} \\
-		\variable{country2}{String} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{date1} & \cellcolor{gray!20} \vartype{Date} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{date2} & \cellcolor{gray!20} \vartype{Date} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{country1} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{country2} & \cellcolor{gray!20} \vartype{String} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{country.name}{String}\\
-		\variable{message.month}{32bitInteger}\\
-		\variable{person.gender}{String}\\
-		\variable{ageGroup}{32bitInteger}\\
-		\variable{tag.name}{String}\\
-		\variable{messageCount}{64bitInteger}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{country.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{message.month} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{person.gender} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{ageGroup} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 6 }$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{messageCount}{\desc}\\
-		\sortentry{tag.name}{\asc}\\
-		\sortentry{ageGroup}{\asc}\\
-		\sortentry{person.gender}{\asc}\\
-		\sortentry{message.month}{\asc}\\
-		\sortentry{country.name}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{messageCount} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{tag.name} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{ageGroup} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{person.gender} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{message.month} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 6 }$ & \varname{country.name} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

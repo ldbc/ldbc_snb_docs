@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 16                                                          \\ \hline
 	title       & Experts in social circle                                                           \\ \hline
@@ -19,32 +19,35 @@ For each Message, also retrieve its Tags.
 TODO {[}szarnyasg{]}: what is postCount?
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{tag.name}, 
 		\varname{person.id}
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{personId}{64bitInteger} \\
-		\variable{country}{String} \\
-		\variable{tagClass}{String} \\
-		\variable{minPathDistance}{32bitInteger} \\
-		\variable{maxPathDistance}{32bitInteger} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{personId} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{country} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{tagClass} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{minPathDistance} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{maxPathDistance} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{person.id}{64bitInteger}\\
-		\variable{tag.name}{String}\\
-		\variable{messageCount}{32bitInteger}number of Messages created by that Person containing that Tag
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32bitInteger} &number of Messages created by that Person containing that Tag \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{messageCount}{\desc}\\
-		\sortentry{tag.name}{\asc}\\
-		\sortentry{person.id}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{messageCount} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{tag.name} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

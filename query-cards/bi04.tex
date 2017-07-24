@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 4                                                          \\ \hline
 	title       & Popular topics in a country                                                           \\ \hline
@@ -15,23 +15,26 @@ TODO - what do we count, Posts? (szarnyasg)
  \\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{tagClass}{32bitInteger} \\
-		\variable{country}{32bitInteger} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{tagClass} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{country} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{forum.id}{64bitInteger}\\
-		\variable{forum.title}{String}\\
-		\variable{forum.creationDate}{DateTime}\\
-		\variable{person.id}{64bitInteger}\\
-		\variable{count}{32bitInteger}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{forum.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{forum.title} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{forum.creationDate} & \cellcolor{gray!20} \vartype{DateTime} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 5 }$ & \varname{count} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{count}{\desc}\\
-		\sortentry{forum.id}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{count} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{forum.id} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 20                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{

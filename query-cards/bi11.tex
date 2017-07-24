@@ -1,5 +1,5 @@
 \renewcommand*{\arraystretch}{1.5}
-\begin{tabularx}{15cm}{|p{2.1cm}@{\hskip 1ex}|@{\hskip 1ex}X|}
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
 	number      & 11                                                          \\ \hline
 	title       & Unrelated replies                                                           \\ \hline
@@ -12,30 +12,33 @@ and valid reply, retrieve the Tags associated with the reply, and
 retrieve the number of likes on the reply.
  \\ \hline
 	
-	group       &
+	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{person.id}, 
 		\varname{tag.name}
 		}\\ \hline
 	
 	parameters  &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{country}{32bitInteger} \\
-		\variable{blacklist}{String[]} 
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{country} & \cellcolor{gray!20} \vartype{32bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{blacklist} & \cellcolor{gray!20} \vartype{String[]} & \\ 
+	\end{tabularx}} \\ \hline
 	result      &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\variable{person.id}{64bitInteger}\\
-		\variable{tag.name}{String}\\
-		\variable{countLikes}{32bitInteger}The count of Likes to replies with that Tag.\\
-		\variable{countReplies}{32bitInteger}The count of replies with that Tag.
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64bitInteger} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} & \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{countLikes} & \cellcolor{gray!20} \vartype{32bitInteger} &The count of Likes to replies with that Tag. \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 4 }$ & \varname{countReplies} & \cellcolor{gray!20} \vartype{32bitInteger} &The count of replies with that Tag. \\ 
+	\end{tabularx}} \\ \hline
 	sort        &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\sortentry{countLikes}{\desc}\\
-		\sortentry{person.id}{\asc}\\
-		\sortentry{tag.name}{\asc}
-		}\\ \hline
+	\renewcommand*{\arraystretch}{1.0}
+	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 1 }$ & \varname{countLikes} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 2 }$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{ 3 }$ & \varname{tag.name} & \cellcolor{gray!20} $\asc$ \\ 
+	\end{tabular}} \\ \hline
 	limit       & 100                                                           \\ \hline
 	choke points        &
 	\multicolumn{1}{>{\raggedright}X|}{
