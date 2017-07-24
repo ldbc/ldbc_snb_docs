@@ -17,14 +17,14 @@
 	\renewcommand*{\arraystretch}{1.0}
 	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
 	{% for entry in parameters -%}
-	\cellcolor{black!70} \color{white} $\mathsf{ {{loop.index }} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ {% if not loop.last %}\hline{% endif %}
+	\cellcolor{black!70} \color{white} $\mathsf{ {{- loop.index -}} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ {% if not loop.last %}\hline{% endif %}
 	{% endfor -%}
 	\end{tabularx}} \\ \hline
 	result      &
 	\renewcommand*{\arraystretch}{1.0}
 	\vspace{-1.8ex}{\begin{tabularx}{14.2cm}{|c|l|p{2cm}|Y|} \hline
 	{% for entry in result -%}
-	\cellcolor{black!70} \color{white} $\mathsf{ {{loop.index }} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ {% if not loop.last %}\hline{% endif %}
+	\cellcolor{black!70} \color{white} $\mathsf{ {{- loop.index -}} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } & {{- entry.description }} \\ {% if not loop.last %}\hline{% endif %}
 	{% endfor -%}
 	\end{tabularx}} \\ \hline
 	{% if sort -%}
@@ -32,7 +32,7 @@
 	\renewcommand*{\arraystretch}{1.0}
 	\vspace{-1.8ex}{\begin{tabular}{|c|l|c|} \hline
 	{% for entry in sort -%}
-	\cellcolor{black!70} \color{white} $\mathsf{ {{loop.index }} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} $\{{- entry.direction -}}$ \\ {% if not loop.last %}\hline{% endif %}
+	\cellcolor{black!70} \color{white} $\mathsf{ {{- loop.index -}} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} $\{{- entry.direction -}}$ \\ {% if not loop.last %}\hline{% endif %}
 	{% endfor -%}
 	\end{tabular}} \\ \hline
 	{% endif -%}
