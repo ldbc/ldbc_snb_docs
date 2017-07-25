@@ -28,10 +28,10 @@ result:
     type: String
   - name: latency
     type: 32-bit Integer
-    description: duration between creation of\par Message and Like, in minutes
+    description: duration between creation of Message and Like, in minutes
   - name: isNew
     type: Boolean
-    description: false if liker Person is friend of\par start Person, true otherwise
+    description: false if liker Person is friend of start Person, true otherwise
 sort:
   - name: Like.creationDate
     direction: desc
