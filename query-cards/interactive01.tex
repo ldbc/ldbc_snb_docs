@@ -2,10 +2,12 @@
 
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
-	number      & 1                                                          \\ \hline
+	workload    & interactive \\ \hline
 %
-	title       & Friends with certain name                                                           \\ \hline
-	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q01}} \\ \hline
+	query       & 1 \\ \hline
+%
+	title       & Friends with certain name \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive01}} \\ \hline
 	description & Given a start Person, find Persons with a given first name that the
 start Person is connected to (excluding start Person) by at most 3 steps
 via Knows relationships. Return Persons, including summaries of the
@@ -46,6 +48,9 @@ Persons workplaces and places of study.
 	%
 	choke points &
 	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.7}, 
+		\chokepoint{2.3}, 
+		\chokepoint{7.1}
 		}\\ \hline
 \end{tabularx}
 \clearpage

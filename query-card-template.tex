@@ -2,10 +2,12 @@
 
 \noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
 	\hline
-	number      & {{ number }}                                                          \\ \hline
+	workload    & {{ workload }} \\ \hline
 %
-	title       & {{ title }}                                                           \\ \hline
-	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/q {{- number_string -}} }} \\ \hline
+	query       & {{ number }} \\ \hline
+%
+	title       & {{ title }} \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/{{ workload }}{{ number_string -}} }} \\ \hline
 	description & {{ description }} \\ \hline
 	{% if group %}
 %

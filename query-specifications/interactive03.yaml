@@ -1,0 +1,46 @@
+workload: interactive
+number: 3
+title: Friends and friends of friends that have been to countries X and Y
+description: |
+  Given a start Person, find Persons that are their friends and
+  friends of friends (excluding start Person) that have made
+  Posts/Comments in both of the given Countries, X and Y, within a
+  given period.  Only Persons that are foreign to Countries X and Y
+  are considered, that is Persons whose Location is not Country X or
+  Country Y.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: CountryX.name
+    type: String
+  - name: CountryY.name
+    type: String
+  - name: startDate
+    type: Date
+    description: beginning of requested period
+  - name: duration
+    type: 32-bit Integer
+    description: duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: countX
+    type: 32-bit Integer
+    description: number of Messages from Country X made by Person within the given time
+  - name: countY
+    type: 32-bit Integer
+    description: number of Messages from Country Y made by Person within the given time
+  - name: count
+    type: 32-bit Integer
+    description: countX + countY
+sort:
+  - name: countX
+    direction: desc
+  - name: Person.id
+    direction: asc
+limit: 20
+choke_points: []

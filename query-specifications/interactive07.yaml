@@ -1,0 +1,41 @@
+workload: interactive
+number: 7
+title: Recent likers
+description: |
+  Given a start Person, find (most recent) Likes on any of start
+  Person's Messages.  Find Persons that Liked any of start
+  Person's Messages, the Messages they liked most recently,
+  creation date of that Like, and the latency (in minutes) between
+  creation of Messages and Like.  Additionally, for each Person
+  found return a flag indicating whether the liker is a friend of
+  start Person.  In the case that a Person Liked multiple Messages
+  at the same time, return the Message with lowest identifier.
+parameters:
+  - name: Person.id
+    type: 64-bit Integer
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Like.creationDate
+    type: DateTime
+  - name: Message.id
+    type: ID
+  - name: Message.content or Post.imageFile
+    type: String
+  - name: latency
+    type: 32-bit Integer
+    description: duration between creation of\par Message and Like, in minutes
+  - name: isNew
+    type: Boolean
+    description: false if liker Person is friend of\par start Person, true otherwise
+sort:
+  - name: Like.creationDate
+    direction: desc
+  - name: Person.id
+    direction: asc
+limit: 20
+choke_points: []

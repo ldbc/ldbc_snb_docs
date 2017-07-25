@@ -1,3 +1,4 @@
+workload: interactive
 number: 1
 title: Friends with certain name
 description: |
@@ -43,4 +44,4 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-choke_points: []
+choke_points: [1.7, 2.3, 7.1]

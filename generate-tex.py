@@ -53,6 +53,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     query_card = template.render(
         number        = number,
+        workload      = doc['workload'],
         number_string = number_string,
         title         = escape(doc['title']),
         description   = description_latex,

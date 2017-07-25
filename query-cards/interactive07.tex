@@ -1,0 +1,51 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+	\hline
+	workload    & interactive \\ \hline
+%
+	query       & 7 \\ \hline
+%
+	title       & Recent likers \\ \hline
+	\multicolumn{2}{|c|}{ \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive07}} \\ \hline
+	description & Given a start Person, find (most recent) Likes on any of start Person's
+Messages. Find Persons that Liked any of start Person's Messages, the
+Messages they liked most recently, creation date of that Like, and the
+latency (in minutes) between creation of Messages and Like.
+Additionally, for each Person found return a flag indicating whether the
+liker is a friend of start Person. In the case that a Person Liked
+multiple Messages at the same time, return the Message with lowest
+identifier.
+ \\ \hline
+	
+%
+	parameters  &
+	\vspace{1.1ex}{\begin{tabularx}{14.38cm}{|c|M|m{2cm}|Y} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\
+	\end{tabularx}} \\ \hline
+%
+	result      &
+	\vspace{1.1ex}{\begin{tabularx}{14.38cm}{|c|M|m{2cm}|Y} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{Like.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{Message.content or Post.imageFile} & \cellcolor{gray!20} \vartype{String} &  \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{7}$ & \varname{latency} & \cellcolor{gray!20} \vartype{32-bit Integer} & duration between creation of\par Message and Like, in minutes \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{8}$ & \varname{isNew} & \cellcolor{gray!20} \vartype{Boolean} & false if liker Person is friend of\par start Person, true otherwise \\
+	\end{tabularx}} \\ \hline
+	%
+	sort        &
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Like.creationDate} & \cellcolor{gray!20} $\desc$ \\\hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Person.id} & \cellcolor{gray!20} $\asc$ \\
+	\end{tabular}} \\ \hline
+	%
+	limit       & 20 \\ \hline
+	%
+	choke points &
+	\multicolumn{1}{>{\raggedright}X|}{
+		}\\ \hline
+\end{tabularx}
+\clearpage

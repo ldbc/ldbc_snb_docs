@@ -1,0 +1,27 @@
+workload: interactive
+number: 6
+title: Tag co-occurrence
+description: |
+  Given a start Person and some Tag, find the other Tags that occur
+  together with this Tag on Posts that were created by start Person's
+  friends and friends of friends (excluding start Person).  Return
+  For each Tag, find the count of Posts that were created by these
+  Persons, which contain both this Tag and the given Tag.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Tag.name
+    type: String
+result:
+  - name: Tag.name
+    type: String
+  - name: count
+    type: 32-bit Integer
+    description: number of Posts that were created by friends and friends of friends, which contain this Tag
+sort:
+  - name: count
+    direction: desc
+  - name: Tag.name
+    direction: asc
+limit: 10
+choke_points: []

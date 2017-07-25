@@ -1,0 +1,32 @@
+workload: interactive
+number: 8
+title: Recent replies
+description: |
+  Given a start Person, find (most recent) Comments that are replies
+  to Messages of the start Person. Only consider immediate
+  (1-hop) replies, not the transitive (multi-hop) case.  Return the
+  reply Comments, and the Person that created each reply
+  Comment.
+parameters:
+  - name: Person.id
+    type: ID
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Comment.creationDate
+    type: DateTime
+  - name: Comment.id
+    type: ID
+  - name: Comment.content
+    type: String
+sort:
+  - name: Comment.creationDate
+    direction: desc
+  - name: Comment.id
+    direction: asc
+limit: 20
+choke_points: []

@@ -1,0 +1,37 @@
+workload: interactive
+number: 12
+title: Expert search
+description: |
+  Given a start Person, find the Comments that this Person's
+  friends made in reply to Posts, considering only those Comments
+  that are immediate (1-hop) replies to Posts, not the transitive
+  (multi-hop) case.  Only consider Posts with a Tag in a given
+  TagClass or in a descendent of that TagClass.  Count the number
+  of these reply Comments, and collect the Tags (with valid tag
+  class) that were attached to the Posts they replied to.  Return
+  Persons with at least one reply, the reply count, and
+  the collection of Tags.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: TagClass.name
+    type: String
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: \{Tag.name\}
+    type: \{String\}
+  - name: count
+    type: 32-bit Integer
+    description: number of reply Comments
+sort:
+  - name: count
+    direction: desc
+  - name: Person.id
+    direction: asc
+limit: 20
+choke_points: []

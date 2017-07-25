@@ -1,0 +1,31 @@
+workload: interactive
+number: 2
+title: Recent posts and comments by your friends
+description: |
+  Given a start Person, find (most recent) Messages from all of that Person's friends,
+  that were created before (and including) a given date.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: date
+    type: DateTime
+result:
+  - name: Message-hasCreator->Person.id
+    type: ID
+  - name: Message-hasCreator->Person.firstName
+    type: String
+  - name: Message-hasCreator->Person.lastName
+    type: String
+  - name: Message.id
+    type: ID
+  - name: Message.content or Post.imageFile
+    type: String
+  - name: Message.creationDate
+    type: DateTime
+sort:
+  - name: Message.creationDate
+    direction: desc
+  - name: Message.id
+    direction: asc
+limit: 20
+choke_points: []
