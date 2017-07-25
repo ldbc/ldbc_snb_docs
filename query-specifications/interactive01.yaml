@@ -1,4 +1,4 @@
-workload: interactive
+workload: Interactive
 number: 1
 title: Friends with certain name
 description: |
@@ -26,9 +26,9 @@ result:
     type: String
   - name: Person.locationIP
     type: String
-  - name: \{Person.emails\}
+  - name: \{Person.email\}
     type: \{String\}
-  - name: \{Person.language\}
+  - name: \{Person.speaks\}
     type: \{String\}
   - name: Person-isLocatedIn->Place.name
     type: String

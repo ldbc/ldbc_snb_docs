@@ -55,6 +55,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         number        = number,
         workload      = doc['workload'],
         number_string = number_string,
+        query_name    = query_name,
         title         = escape(doc['title']),
         description   = description_latex,
         group         = escape_list_entries(doc.get('group')),
