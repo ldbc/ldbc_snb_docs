@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/ldbc/ldbc_snb_docs.svg?branch=master)](https://travis-ci.org/ldbc/ldbc_snb_docs)
 
-[latest stable build (PDF))](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) | [latest snapshot build (PDF)](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
+[[latest stable build (PDF)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) [[latest snapshot build (PDF)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
 
 ## Contributor's guide
 
