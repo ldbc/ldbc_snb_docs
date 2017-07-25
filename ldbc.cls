@@ -154,7 +154,7 @@
 \fancyhead[OR,ER]{}
 \fancyfoot{}
 \fancyfoot[OL,ER]{\mainmatterheadingl}
-\fancyfoot[OR,EL]{Page \thepage{} of (\pageref{LastPage})}
+\fancyfoot[OR,EL]{Page \thepage{} of \pageref*{LastPage}}
 
 % Customizations of the book style
 
