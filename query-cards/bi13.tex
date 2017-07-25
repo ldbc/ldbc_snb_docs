@@ -23,22 +23,22 @@ number of Messages (from within the same group) where the Tag appears.
 	
 %
 	parameters  &
-	\vspace{1.1ex}{\begin{tabularx}{14.38cm}{|c|M|m{2cm}|Y} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\
-	\end{tabularx}} \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.38cm}{|c|M|m{2cm}|Y} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} & year(message.creationDate) \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} & month(message.creationDate) \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{popularTags} & \cellcolor{gray!20} \vartype{TagPairs} & (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\
-	\end{tabularx}} \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} & year(message.creationDate) \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} & month(message.creationDate) \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{popularTags} & \cellcolor{gray!20} \vartype{TagPairs} & (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	%
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} $\desc$ \\\hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} $\asc$ \\
-	\end{tabular}} \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\end{tabular}}\vspace{1.1ex} \\ \hline
 	%
 	limit       & 100 \\ \hline
 	%

@@ -20,6 +20,8 @@
 \usepackage[export]{adjustbox}
 \usepackage{array}
 \usepackage{enumitem}
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
 
 \setlist[]{noitemsep, topsep=5pt}
 
@@ -144,6 +146,8 @@
 \bibliography{ldbc-snb}
 
 \appendix
+
+\input{bi-choke-points}
 
 \chapter{Scale Factor Statistics}
 \input{sf-statistics}
