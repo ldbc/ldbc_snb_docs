@@ -7,14 +7,23 @@
 
 ## Contributor's guide
 
-* Install Python dependencies:
+1. Install Python dependencies:
 
    ```
    sudo apt-get install -y python3-pip python3-setuptools
    ```
 
-* We also use the `pandoc` package for Markdown to LaTeX conversion.
+1. Install Pandoc:
 
-* To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
+   ```
+   sudo apt-get install -y pandoc
+   ```
+
+1. To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
 
 If you are using a Linux-based system, you can also check the [`.travis.yml`](.travis.yml) file as it provides a precise documentation of what you should do in order to build the docs.
+
+## Naming conventions
+
+* if the attribute exists in the graph as part of an entity (vertex/edge) and is returned unchanged, name it `entity.attributeName`
+* if it is computed or aggregated, use `camelCase` notation
