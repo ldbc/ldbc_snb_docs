@@ -15,6 +15,7 @@ addition, return a boolean flag indicating if the author of the reply
 knows the author of the original message. If author is same as original
 author, return false for \texttt{knows} flag.
  \\ \hline
+%
 	
 %
 	parameters  &
@@ -22,6 +23,7 @@ author, return false for \texttt{knows} flag.
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
+	
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message<-replyOf-Comment.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
@@ -31,7 +33,8 @@ author, return false for \texttt{knows} flag.
 	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{Message-hasCreator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{Message-hasCreator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
-	%
+	
+%
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message<-replyOf-Comment.creationDate} & \cellcolor{gray!20} $\desc$ \\ \hline

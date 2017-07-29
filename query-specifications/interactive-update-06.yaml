@@ -1,0 +1,29 @@
+workload: Interactive / update
+number: 6
+title: Add Post
+description: Add a Post to the social network.
+parameters:
+  - name: Post.id
+    type: ID
+  - name: Post.imageFile
+    type: String
+  - name: Post.creationDate
+    type: DateTime
+  - name: Post.locationIp
+    type: String
+  - name: Post.browserUsed
+    type: String
+  - name: Post.language
+    type: String
+  - name: Post.content
+    type: Text
+  - name: Post.length
+    type: 32-bit Integer
+  - name: Post-hasCreator->Person.id
+    type: ID
+  - name: Forum-containerOf->Post.id
+    type: ID
+  - name: Post-isLocatedIn->Country.id
+    type: ID
+  - name: \{Post-hasTag->Tag.id\}
+    type: \{ID\}

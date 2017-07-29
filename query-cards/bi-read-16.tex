@@ -24,8 +24,8 @@ For each Message, also retrieve its Tags.
 
 TODO {[}szarnyasg{]}: what is postCount?
  \\ \hline
-	
 %
+	
 	group by       &
 	\multicolumn{1}{>{\raggedright}X|}{
 		\varname{tag.name}, 
@@ -42,13 +42,15 @@ TODO {[}szarnyasg{]}: what is postCount?
 	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{maxPathDistance} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
+	
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{tag.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32-bit Integer} & number of Messages created by that Person containing that Tag \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
-	%
+	
+%
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{messageCount} & \cellcolor{gray!20} $\desc$ \\ \hline

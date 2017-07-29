@@ -20,6 +20,7 @@ during the time range between profile creation date and the given
 The number of months spans the time range from creation date of the
 profile to the \texttt{endDate} and also includes partial months.
  \\ \hline
+%
 	
 %
 	parameters  &
@@ -28,6 +29,7 @@ profile to the \texttt{endDate} and also includes partial months.
 	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{endDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
+	
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
@@ -35,7 +37,8 @@ profile to the \texttt{endDate} and also includes partial months.
 	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{realLikeCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{zombieScore} & \cellcolor{gray!20} \vartype{32-bit Float} & the ratio between the number of likes received from zombies (`zombieLikeCount`) and the total number of likes received on that person's messages (`realLikeCount`) -- only count likes received from profiles that were created before the given `endDate`. \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
-	%
+	
+%
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{zombieScore} & \cellcolor{gray!20} $\desc$ \\ \hline

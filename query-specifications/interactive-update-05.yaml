@@ -1,0 +1,11 @@
+workload: Interactive / update
+number: 5
+title: Add Forum Membership
+description: Add a Forum membership to the social network.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Person-hasMember->Forum.id
+    type: ID
+  - name: Person-hasMember->.joinDate
+    type: DateTime

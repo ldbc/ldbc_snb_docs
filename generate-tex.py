@@ -60,7 +60,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         description   = description_latex,
         group         = escape_list_entries(doc.get('group')),
         parameters    = escape_map_list(doc['parameters']),
-        result        = escape_map_list(doc['result']),
+        result        = escape_map_list(doc.get('result')),
         sort          = escape_map_list(doc.get('sort')),
         limit         = doc.get('limit'),
         choke_points  = doc.get('choke_points'),

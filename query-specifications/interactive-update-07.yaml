@@ -1,0 +1,29 @@
+workload: Interactive / update
+number: 7
+title: Add Comment
+description: Add a Comment replying to a Post/Comment to the social network.
+parameters:
+  - name: Comment.id
+    type: ID
+  - name: Comment.creationDate
+    type: DateTime
+  - name: Comment.locationIp
+    type: String
+  - name: Comment.browserUsed
+    type: String
+  - name: Comment.content
+    type: Text
+  - name: Comment.length
+    type: 32-bit Integer
+  - name: Comment-hasCreator->Person.id
+    type: ID
+  - name: Comment-isLocatedIn->Country.id
+    type: ID
+  - name: Comment-replyOf->Post.id
+    type: ID
+    description: $-1$ if the comment is a reply of a comment
+  - name: Comment-replyOf->Comment.id
+    type: ID
+    description: $-1$ if the comment is a reply of a post
+  - name: \{Comment-hasTag->Tag.id\}
+    type: \{ID\}

@@ -15,6 +15,7 @@ start Person is connected to (excluding start Person) by at most 3 steps
 via Knows relationships. Return Persons, including summaries of the
 Persons workplaces and places of study.
  \\ \hline
+%
 	
 %
 	parameters  &
@@ -23,6 +24,7 @@ Persons workplaces and places of study.
 	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
+	
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
@@ -38,7 +40,8 @@ Persons workplaces and places of study.
 	\cellcolor{black!70} \color{white} $\mathsf{11}$ & \varname{\{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{12}$ & \varname{\{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
-	%
+	
+%
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{distanceFromPerson} & \cellcolor{gray!20} $\asc$ \\ \hline
