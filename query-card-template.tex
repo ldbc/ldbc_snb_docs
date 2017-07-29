@@ -48,11 +48,13 @@
 	limit       & {{ limit }} \\ \hline
 	{% endif -%}
 %
+	{% if choke_points -%}
 	choke points &
-	\multicolumn{1}{>{\raggedright}X|}{
-		{% for choke_point in choke_points -%}
-			\chokepoint{ {{- choke_point -}} } {%- if not loop.last %}, {% endif %}
-		{% endfor -%}
-	}\\ \hline
+	\multicolumn{1}{c}{  % >{\raggedright}x|}{
+	  {% for choke_point in choke_points -%}
+	    \chokepoint{ {{- choke_point -}} } {%- if not loop.last %}, {% endif %}
+	  {% endfor -%}
+	} \\ \hline
+	{% endif -%}
+%
 \end{tabularx}
-\clearpage

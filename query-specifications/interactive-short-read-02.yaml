@@ -1,0 +1,30 @@
+workload: Interactive / short
+number: 2
+title: Person Recent Messages
+description: |
+  Given a start Person, retrieve the last 10 Messages created by that user.
+  For each message, return that message, the original post in its conversation, and the author of that post.
+  If any of the Messages is a Post, then the original Post will be the same Message, i.e. that Message will appear twice in that result.
+parameters:
+  - name: Person.id
+    type: ID
+result:
+  - name: Message.id
+    type: 64-bit Integer
+  - name: Message.content or Post.imageFile
+    type: String
+  - name: Message.creationDate
+    type: DateTime
+  - name: Post.id or Comment-replyOf*->Post.id
+    type: ID
+  - name: Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id
+    type: ID
+  - name: Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName
+    type: String
+  - name: Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName
+    type: String
+sort:
+  - name: Message.creationDate
+    direction: desc
+  - name: Message.id
+    direction: desc

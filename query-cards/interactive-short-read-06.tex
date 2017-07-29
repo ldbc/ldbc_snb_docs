@@ -1,0 +1,36 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+	\hline
+	workload    & Interactive / short \\ \hline
+%
+	query       & 6 \\ \hline
+%
+	title       & Message Forum \\ \hline
+%
+    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-06}\hfill\vadjust{} \\ \hline
+%
+	description & Given a Message, retrieve the Forum that contains it and the Person that
+moderates that forum. Since comments are not directly contained in
+forums, for comments, return the forum containing the original post in
+the thread which the comment is replying to.
+ \\ \hline
+	
+%
+	parameters  &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+%
+	result      &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message<-containerOf-Forum.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Message<-containerOf-Forum.title} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{Message<-containerOf-Forum-hasModerator->Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{Message<-containerOf-Forum-hasModerator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{Message<-containerOf-Forum-hasModerator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	%
+	%
+	%
+\end{tabularx}
