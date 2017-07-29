@@ -1,0 +1,70 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+	\hline
+	workload    & BI \\ \hline
+%
+	query       & 6 \\ \hline
+%
+	title       & Most active Posters of a given Topic \\ \hline
+%
+    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-06}\hfill\vadjust{} \\ \hline
+%
+	description & Get Persons who have created a Message (Post or Comment) with a given
+Tag.
+
+Each Person has a score, computed as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Count of Messages with the given Tag (\texttt{postCount}).
+\item
+  Count of Likes (\texttt{likeCount}) and Comments (\texttt{replyCount})
+  in reply of their Messages with the given Tag. (TODO - transitive or
+  direct? szarnyasg)
+\end{itemize}
+
+The sum is weighted as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Messages (\texttt{postCount}) are multiplied by 1,
+\item
+  Comments to Messages (\texttt{replyCount}) are multiplied by 2,
+\item
+  Likes (\texttt{likeCount}) are multiplied by 10.
+\end{itemize}
+ \\ \hline
+	
+%
+	parameters  &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{tag} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+%
+	result      &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{replyCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{likeCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{postCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{score} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	%
+	sort        &
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{score} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\end{tabular}}\vspace{1.1ex} \\ \hline
+	%
+	limit       & 100 \\ \hline
+	%
+	choke points &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.2}, 
+		\chokepoint{2.3}
+		}\\ \hline
+\end{tabularx}
+\clearpage

@@ -1,0 +1,47 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+	\hline
+	workload    & BI \\ \hline
+%
+	query       & 15 \\ \hline
+%
+	title       & Social normals \\ \hline
+%
+    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-15}\hfill\vadjust{} \\ \hline
+%
+	description & Given a country, find all Persons of the country whose number of friends
+in the given country equals the (floor of) average number of friends
+that Persons of the given country have in the given country.
+ \\ \hline
+	
+%
+	parameters  &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+%
+	result      &
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{count} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
+	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	%
+	sort        &
+	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
+	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\end{tabular}}\vspace{1.1ex} \\ \hline
+	%
+	limit       & 100 \\ \hline
+	%
+	choke points &
+	\multicolumn{1}{>{\raggedright}X|}{
+		\chokepoint{1.2}, 
+		\chokepoint{2.3}, 
+		\chokepoint{3.2}, 
+		\chokepoint{3.3}, 
+		\chokepoint{5.3}, 
+		\chokepoint{6.1}
+		}\\ \hline
+\end{tabularx}
+\clearpage
