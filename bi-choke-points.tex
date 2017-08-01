@@ -144,11 +144,7 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 
 \subsection{RDF and Graph Specifics}
 
-\subsubsection{SNBI-7.1: [QOPT]  Translation of internal ids to external ones [KILL WITH FIRE]}
-\label{choke_point_7.1}
-This choke-point tests the ability of the query optimizer to delay the translation between internal and external entity ids to late in the query. Translate at point of minimum cardinality,
-e.g. after top k order by RDF and possibly graph models often use a synthetic integer identifier for entities, e.g. URI's . For presentation to the client applications, these identifiers must be translated to their original form,
-e.g. the URI string that was used when loading the data. This should be done as late as possible, or at the point of minimal cardinality in the plan.
+
 
 \subsubsection{SNBI-7.2: [QOPT]  Cardinality estimation of transitive paths}
 \label{choke_point_7.2}
