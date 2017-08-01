@@ -3,7 +3,8 @@ number: 7
 title: Message Replies
 description: |
   Given a Message, retrieve the (1-hop) Comments that reply to it.
-  In addition, return a boolean flag indicating if the author of the reply knows the author of the original message.
+
+  In addition, return a boolean flag `knows` indicating if the author of the reply knows the author of the original message.
   If author is same as original author, return false for `knows` flag.
 parameters:
   - name: Message.id
@@ -15,12 +16,15 @@ result:
     type: String
   - name: Message<-replyOf-Comment.creationDate
     type: DateTime
-  - name: Message-hasCreator->Person.id
+  - name: Comment-hasCreator->Person.id
     type: ID
-  - name: Message-hasCreator->Person.firstName
+  - name: Comment-hasCreator->Person.firstName
     type: String
-  - name: Message-hasCreator->Person.lastName
+  - name: Comment-hasCreator->Person.lastName
     type: String
+  - name: knows
+    type: Boolean
+    description: original message author knows reply author
 sort:
   - name: Message<-replyOf-Comment.creationDate
     direction: desc

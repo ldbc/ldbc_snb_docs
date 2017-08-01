@@ -10,10 +10,11 @@
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-07}\hfill\vadjust{} \\ \hline
 %
-	description & Given a Message, retrieve the (1-hop) Comments that reply to it. In
-addition, return a boolean flag indicating if the author of the reply
-knows the author of the original message. If author is same as original
-author, return false for \texttt{knows} flag.
+	description & Given a Message, retrieve the (1-hop) Comments that reply to it.
+
+In addition, return a boolean flag \texttt{knows} indicating if the
+author of the reply knows the author of the original message. If author
+is same as original author, return false for \texttt{knows} flag.
  \\ \hline
 %
 	
@@ -29,9 +30,10 @@ author, return false for \texttt{knows} flag.
 	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Message<-replyOf-Comment.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Message<-replyOf-Comment.content} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{Message<-replyOf-Comment.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{Message-hasCreator->Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{Message-hasCreator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{Message-hasCreator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{4}$ & \varname{Comment-hasCreator->Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{5}$ & \varname{Comment-hasCreator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{6}$ & \varname{Comment-hasCreator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{black!70} \color{white} $\mathsf{7}$ & \varname{knows} & \cellcolor{gray!20} \vartype{Boolean} & original message author knows reply author \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %
