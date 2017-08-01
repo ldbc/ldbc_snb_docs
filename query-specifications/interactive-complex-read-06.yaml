@@ -25,4 +25,10 @@ sort:
   - name: Tag.name
     direction: asc
 limit: 10
-choke_points: []
+#wiki
+wiki_choke_points: []
+#doc
+choke_points: [5.1]
+relevance: |
+  This query looks for paths of lengths three or four, starting from a Given Person, moving to friends or friends of
+  friends, then to Posts and finally ending at a given Tag.

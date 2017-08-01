@@ -18,4 +18,11 @@ result:
   - name: length
     type: 32-bit Integer
     category: calculated
-choke_points: []
+#wiki
+wiki_choke_points: []
+#doc
+choke_points: [3.3, 7.2, 7.3]
+relevance: |
+  This query looks for a variable length path, starting at a given Person and finishing at an another given Person.
+  Proper cardinality estimation and search space prunning, will be crucial. This query also allows for possible parallel
+  implementations.

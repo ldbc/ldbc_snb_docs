@@ -27,4 +27,12 @@ sort:
   - name: Tag.name
     direction: asc
 limit: 10
-choke_points: []
+#wiki
+wiki_choke_points: [2.7]
+#doc
+choke_points: [2.3]
+relevance: |
+  This query looks for paths of length two, starting from a given Person, moving to Posts and then to Tags. It tests
+  the ability of the query optimizer to properly select the usage of hash joins or index based joins, depending on the
+  cardinality of the intermediate results. These cardinalities are clearly affected by the input Person, the number of
+  friends, the variety of Tags, the time interval and the number of Posts.

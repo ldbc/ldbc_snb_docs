@@ -30,4 +30,12 @@ sort:
   - name: weight
     direction: desc
     description: The order of paths with the same weight is unspecified
-choke_points: []
+#wiki
+wiki_choke_points: []
+#doc
+choke_points: [3.3, 7.2, 7.3]
+relevance: |
+  This query looks for a variable length path, starting at a given Person and finishing at an another given Person. This
+  is a more complex query as not only requires computing the path length, but returning it and computing a weight.
+  To compute this weight one must look for smaller sub-queries with paths of length three, formed by the two Persons
+  at each step, a Post and a Comment.

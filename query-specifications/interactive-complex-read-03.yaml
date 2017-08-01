@@ -46,4 +46,15 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-choke_points: []
+#wiki
+wiki_choke_points: [3.3]
+#doc
+choke_points: [2.1, 3.1, 5.1]
+relevance: |
+  This query looks for paths of length two and three, starting from a Person, going to friends or friends of friends, and
+  then moving to Messages. This query tests the ability of the query optimizer to select the most efficient join ordering,
+  which will depend on the cardinalities of the intermediate results. Many friends of friends can be duplicate, then it is
+  expected to eliminate duplicates and those people prior to access the Post and Comments, as well as eliminate those
+  friends from countries X and Y, as the size of the intermediate results can be severely affected. A possible structural
+  optimization could be to materialize the number of Posts and Comments created by a person, and progressively
+  filter those people that could not even fall in the top 20 even having all their posts in the countries X and Y.

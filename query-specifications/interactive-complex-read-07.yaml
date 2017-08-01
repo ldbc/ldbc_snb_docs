@@ -40,4 +40,16 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-choke_points: []
+#wiki
+wiki_choke_points: []
+#doc
+choke_points: [2.2, 2.3, 3.3, 5.1]
+relevance: |
+  This query looks for paths of length two, starting from a given Person, moving
+  to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
+  both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
+  the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection
+  until the end. This query implies accessing 2-hop data, and as a consequence, index accesses are expected to be
+  scattered. We expect to observe variate cardinalities, depending on the characteristics of the input parameter, so
+  properly selecting the join operators will be crucial. This query has a lot of correlated sub-queries, so it is testing
+  the ability to flatten the query execution plans.
