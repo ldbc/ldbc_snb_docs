@@ -10,7 +10,7 @@ description: |
   * Count of Likes (`likeCount`) and Comments (`replyCount`) in reply of their Messages with the given Tag.
     (TODO - transitive or direct? szarnyasg)
 
-  The sum is weighted as follows\:
+  The `score` is calculated as a sum with the following weights\:
 
   * Messages (`postCount`) are multiplied by 1,
   * Comments to Messages (`replyCount`) are multiplied by 2,
