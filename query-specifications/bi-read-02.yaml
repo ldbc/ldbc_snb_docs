@@ -33,8 +33,10 @@ result:
     type: String
   - name: messageMonth
     type: 32-bit Integer
+    description: 1--12
   - name: person.gender
     type: String
+    description: male/female
   - name: ageGroup
     type: 32-bit Integer
     category: calculated
