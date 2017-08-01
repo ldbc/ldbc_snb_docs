@@ -5,7 +5,7 @@ description: Add a Forum membership to the social network.
 parameters:
   - name: Person.id
     type: ID
-  - name: Person-hasMember->Forum.id
+  - name: Forum-hasMember->Person.id
     type: ID
-  - name: Person-hasMember->.joinDate
+  - name: Forum-hasMember->.joinDate
     type: DateTime
