@@ -52,7 +52,7 @@
 %
 	{% if choke_points -%}
 	choke points &
-	\multicolumn{1}{c}{  % >{\raggedright}x|}{
+	\multicolumn{1}{>{\raggedright}l|}{
 	  {% for choke_point in choke_points -%}
 	    \chokepoint{ {{- choke_point -}} } {%- if not loop.last %}, {% endif %}
 	  {% endfor -%}
