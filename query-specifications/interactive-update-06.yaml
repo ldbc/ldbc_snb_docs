@@ -21,7 +21,7 @@ parameters:
     type: 32-bit Integer
   - name: Post-hasCreator->Person.id
     type: ID
-  - name: Forum-containerOf->Post.id
+  - name: Post<-containerOf-Forum.id
     type: ID
   - name: Post-isLocatedIn->Country.id
     type: ID
