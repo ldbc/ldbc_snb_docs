@@ -6,8 +6,6 @@ description: |
   containing at least one Post with Tags belonging directly to the given TagClass.
 
   The location of a Forum is identified by the location of the Forum's moderator.
-
-  TODO - what do we count, Posts? (szarnyasg)
 parameters:
   - name: tagClass
     type: 32-bit Integer
@@ -22,7 +20,7 @@ result:
     type: DateTime
   - name: person.id
     type: 64-bit Integer
-  - name: count
+  - name: postCount
     category: aggregated
     type: 32-bit Integer
 sort:
