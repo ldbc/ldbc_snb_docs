@@ -36,6 +36,18 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
     \end{itemize}
 }
 
+\todo{here comes the new stuff - Gabor}
+
+Results are categorized according to their source of origin:
+
+\begin{itemize}
+	\item raw (\texttt{R}), if the result is returned with an unmodified value and type.
+	\item calculated (\texttt{C}), if the result is calculated from other values and conditions.
+	\item aggregated (\texttt{A}), if the result is an aggregated value, e.g. a count or a sum of another value. If a result is both calculated and aggregated (e.g. \texttt{count(x) + count(y)} or \texttt{avg(x + y)}), it is considered an aggregated result.
+\end{itemize}
+
+
+
 \section{Graph Patterns}
 
 We use the following notation for defining graph patterns:

@@ -11,7 +11,7 @@ The query specifications are defined in [YAML](http://yaml.org/) format.
 
 Results are categorized according to their source of origin:
 
-* **raw** (`R`), if the result is returned with an unmodified name and type. This is the default category.
+* **raw** (`R`), if the result is returned with an unmodified value and type. This is the default category.
 * **calculated** (`C`), if the result is calculated from other values and conditions.
 * **aggregated** (`A`), if the result is an aggregated value, e.g. a _count_ or a _sum_ of another value. If a result is both calculated and aggregated (e.g. `count(x) + count(y)` or `avg(x + y)`), it is considered an aggregated result.
 
