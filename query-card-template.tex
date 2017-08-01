@@ -20,7 +20,7 @@
 	{% endif %}
 %
 	params.  &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
 	{% for entry in parameters -%}
 	\cellcolor{parameter} \color{white} $\mathsf{ {{- loop.index -}} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } & {{ entry.description }} \\ \hline
 	{% endfor -%}
@@ -28,7 +28,7 @@
 %
 	{% if result %}
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|c|Y|} \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
 	{% for entry in result -%}
 	\cellcolor{result} \color{white} $\mathsf{ {{- loop.index -}} }$ & \varname{ {{- entry.name -}} } & \cellcolor{gray!20} \vartype{ {{- entry.type -}} } &
 	    \texttt{
