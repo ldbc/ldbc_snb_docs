@@ -144,7 +144,10 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 
 \subsection{RDF and Graph Specifics}
 
-
+\subsubsection{SNBI 7.1: [QEXE] Path pattern reuse}
+\label{choke_point_7.1}
+This choke-point tests the ability of the execution engine to reuse work across graph traversals [TODO: complete in more detail]
+For example, when computing paths within a range of distances, it is often possible to incrementally compute longer paths by reusing paths of shorter distances that were already computed
 
 \subsubsection{SNBI-7.2: [QOPT]  Cardinality estimation of transitive paths}
 \label{choke_point_7.2}
@@ -170,5 +173,3 @@ This tests the ability of a system to express termination criteria for transitiv
 \label{choke_point_7.5}
 This choke-point tests the ability of the execution engine to reuse work across graph traversals [TODO: complete in more detail]
 For example, when computing paths within a range of distances, it is often possible to incrementally compute longer paths by reusing paths of shorter distances that were already computed
-
-\todo{Interactive does not have 7.4 and 7.5}
