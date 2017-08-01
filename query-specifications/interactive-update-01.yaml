@@ -22,12 +22,12 @@ parameters:
   - name: Person-isLocatedIn->City.id
     type: ID
   - name: Person.speaks
-    type: \{ String \}
+    type: \{String\}
   - name: Person.email
-    type: \{ String \}
+    type: \{String\}
   - name: Person-hasInterest->Tag.id
-    type: \{ ID \}
-  - name: \{ Person-studyAt->University.id, Person-studyAt->.classYear \}
+    type: \{ID\}
+  - name: \{Person-studyAt->University.id, Person-studyAt->.classYear\}
     type: \{ID, 32-bit Integer\}
-  - name: \{ Person-workAt->Company.id, Person-workAt->.workFrom \}
+  - name: \{Person-workAt->Company.id, Person-workAt->.workFrom\}
     type: \{ID, 32-bit Integer\}

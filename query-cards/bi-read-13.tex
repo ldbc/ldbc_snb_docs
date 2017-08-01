@@ -31,10 +31,16 @@ number of Messages (from within the same group) where the Tag appears.
 %
 	
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} & year(message.creationDate) \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} & month(message.creationDate) \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{popularTags} & \cellcolor{gray!20} \vartype{TagPairs} & (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|c|Y|} \hline
+	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} &
+	    \texttt{C} &
+	    year(message.creationDate) \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} &
+	    \texttt{C} &
+	    month(message.creationDate) \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{popularTags} & \cellcolor{gray!20} \vartype{TagPairs} &
+	    \texttt{C} &
+	    (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %

@@ -21,9 +21,11 @@ parameters:
     type: ID
   - name: Comment-replyOf->Post.id
     type: ID
+    category: calculated
     description: $-1$ if the comment is a reply of a comment
   - name: Comment-replyOf->Comment.id
     type: ID
+    category: calculated
     description: $-1$ if the comment is a reply of a post
   - name: \{Comment-hasTag->Tag.id\}
     type: \{ID\}

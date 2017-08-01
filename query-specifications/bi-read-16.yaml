@@ -11,8 +11,6 @@ description: |
   to a given TagClass (direct relation not transitive).
 
   For each Message, also retrieve its Tags.
-
-  TODO [szarnyasg]: what is postCount?
 parameters:
   - name: personId
     type: 64-bit Integer
@@ -34,6 +32,7 @@ result:
     type: String
   - name: messageCount
     type: 32-bit Integer
+    category: aggregated
     description: number of Messages created by that Person containing that Tag
 sort:
   - name: messageCount

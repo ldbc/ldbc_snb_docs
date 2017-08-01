@@ -25,21 +25,27 @@ result:
     type: 32-bit Integer
   - name: messageType
     type: String
+    category: meta
     description: post/comment (in lowercase)
   - name: lengthCategory
     type: String
+    category: calculated
     description: short/one-liner/tweet/long (in lowercase)
   - name: messageCount
     type: 32-bit Integer
+    category: aggregated
     description: total number of Messages (Posts/Comments) in that group
   - name: averageMessageLength
     type: 32-bit Integer
+    category: aggregated
     description: average length of the Message content in that group
   - name: sumMessageLength
     type: 32-bit Integer
+    category: aggregated
     description: sum of all message content lengths
   - name: percentageOfMessages
     type: 32-bit Float
+    category: aggregated
     description: number of messages in group as a percentage of all messages created before the given date
 sort:
   - name: year

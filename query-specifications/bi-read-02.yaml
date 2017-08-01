@@ -37,10 +37,12 @@ result:
     type: String
   - name: ageGroup
     type: 32-bit Integer
+    category: calculated
   - name: tag.name
     type: String
   - name: messageCount
     type: 64-bit Integer
+    category: aggregated
 sort:
   - name: messageCount
     direction: desc

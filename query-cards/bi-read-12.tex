@@ -24,12 +24,22 @@ given number of likes.
 %
 	
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{message.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{message.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{creator.firstName} & \cellcolor{gray!20} \vartype{String} & The first name of the post's creator \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{creator.lastName} & \cellcolor{gray!20} \vartype{String} & The last name of the post's creator \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{likeCount} & \cellcolor{gray!20} \vartype{32-bit Integer} & The number of Likes the Post received \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|c|Y|} \hline
+	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{message.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{message.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{creator.firstName} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	    The first name of the post's creator \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{creator.lastName} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	    The last name of the post's creator \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{likeCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
+	    \texttt{A} &
+	    The number of Likes the Post received \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %

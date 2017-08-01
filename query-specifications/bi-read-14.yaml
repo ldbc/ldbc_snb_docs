@@ -22,9 +22,11 @@ result:
     type: String
   - name: threadCount
     type: 32-bit Integer
+    category: aggregated
     description: The number of threads initiated by that Person
   - name: messageCount
     type: 32-bit Integer
+    category: aggregated
     description: The number of messages created in all the threads this Person initiated
 sort:
   - name: messageCount

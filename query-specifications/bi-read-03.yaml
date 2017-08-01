@@ -16,12 +16,15 @@ result:
     type: String
   - name: countMonth1
     type: 32-bit Integer
+    category: aggregated
     description: occurrences of the tag during year-month 1
   - name: countMonth2
     type: 32-bit Integer
+    category: aggregated
     description: occurrences of the tag during year-month 2
   - name: diff
     type: 32-bit Integer
+    category: aggregated
     description: difference between occurrences of this Tag in month 1 and month 2
 sort:
   - name: diff

@@ -19,9 +19,11 @@ group:
 result:
   - name: messageCount
     type: 32-bit Integer
+    category: aggregated
     description: number of messages created
   - name: personCount
     type: 32-bit Integer
+    category: aggregated
     description: the number of Persons with `messageCount` messages
 sort:
   - name: personCount

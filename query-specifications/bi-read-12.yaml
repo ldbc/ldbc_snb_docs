@@ -21,6 +21,7 @@ result:
     description: The last name of the post's creator
   - name: likeCount
     type: 32-bit Integer
+    category: aggregated
     description: The number of Likes the Post received
 sort:
   - name: likeCount

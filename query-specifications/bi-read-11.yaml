@@ -20,9 +20,11 @@ result:
     type: String
   - name: countLikes
     type: 32-bit Integer
+    category: aggregated
     description: The count of Likes to replies with that Tag.
   - name: countReplies
     type: 32-bit Integer
+    category: aggregated
     description: The count of replies with that Tag.
 sort:
   - name: countLikes

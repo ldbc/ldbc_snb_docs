@@ -15,12 +15,15 @@ group:
 result:
   - name: year
     type: 32-bit Integer
+    category: calculated
     description: year(message.creationDate)
   - name: month
     type: 32-bit Integer
+    category: calculated
     description: month(message.creationDate)
   - name: popularTags
     type: TagPairs
+    category: calculated
     description: (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name
 sort:
   - name: year

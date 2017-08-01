@@ -29,15 +29,31 @@ identifier.
 %
 	
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{Like.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{6}$ & \varname{Message.content or Post.imageFile} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{7}$ & \varname{latency} & \cellcolor{gray!20} \vartype{32-bit Integer} & duration between creation of Message and Like, in minutes \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{8}$ & \varname{isNew} & \cellcolor{gray!20} \vartype{Boolean} & false if liker Person is friend of start Person, true otherwise \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|c|Y|} \hline
+	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{Like.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{6}$ & \varname{Message.content or Post.imageFile} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{7}$ & \varname{latency} & \cellcolor{gray!20} \vartype{32-bit Integer} &
+	    \texttt{C} &
+	    duration between creation of Message and Like, in minutes \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{8}$ & \varname{isNew} & \cellcolor{gray!20} \vartype{Boolean} &
+	    \texttt{C} &
+	    false if liker Person is friend of start Person, true otherwise \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %

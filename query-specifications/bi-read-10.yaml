@@ -18,8 +18,10 @@ result:
     type: 64-bit Integer
   - name: score
     type: 32-bit Integer
+    category: aggregated
   - name: friendsScore
     type: 32-bit Integer
+    category: aggregated
     description: The sum of the score of the Person's friends
 sort:
   - name: score + friendsScore

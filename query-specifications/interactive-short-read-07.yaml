@@ -24,6 +24,7 @@ result:
     type: String
   - name: knows
     type: Boolean
+    category: calculated
     description: original message author knows reply author
 sort:
   - name: Message<-replyOf-Comment.creationDate

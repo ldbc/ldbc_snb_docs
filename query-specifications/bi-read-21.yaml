@@ -19,11 +19,14 @@ result:
     type: 64-bit Integer
   - name: zombieLikeCount
     type: 32-bit Integer
+    category: aggregated
   - name: realLikeCount
     type: 32-bit Integer
-    comment: I think this should be `totalLikeCount` -- szarnyasg
+    category: aggregated
+    description: I think this should be `totalLikeCount` -- szarnyasg
   - name: zombieScore
     type: 32-bit Float
+    category: aggregated
     description: the ratio between the number of likes received from zombies (`zombieLikeCount`) and the total number of likes received on that person's messages (`realLikeCount`) -- only count likes received from profiles that were created before the given `endDate`.
 sort:
   - name: zombieScore

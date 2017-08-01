@@ -30,12 +30,15 @@ result:
     type: String
   - name: countX
     type: 32-bit Integer
+    category: aggregated
     description: number of Messages from Country X made by Person within the given time
   - name: countY
     type: 32-bit Integer
+    category: aggregated
     description: number of Messages from Country Y made by Person within the given time
   - name: count
     type: 32-bit Integer
+    category: aggregated
     description: countX + countY
 sort:
   - name: countX

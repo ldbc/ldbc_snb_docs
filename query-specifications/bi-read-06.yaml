@@ -23,12 +23,16 @@ result:
     type: 64-bit Integer
   - name: replyCount
     type: 32-bit Integer
+    category: aggregated
   - name: likeCount
     type: 32-bit Integer
+    category: aggregated
   - name: postCount
     type: 32-bit Integer
+    category: aggregated
   - name: score
     type: 32-bit Integer
+    category: aggregated
 sort:
   - name: score
     direction: desc

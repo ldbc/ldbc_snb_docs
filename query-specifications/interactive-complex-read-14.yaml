@@ -22,8 +22,10 @@ result:
   - name: '[Person.id]'
     type: '[ID]'
     description: Identifiers representing an ordered sequence of the Persons in the path
+    category: calculated
   - name: weight
     type: 64-bit Float
+    category: calculated
 sort:
   - name: weight
     direction: desc

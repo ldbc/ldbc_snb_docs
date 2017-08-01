@@ -21,9 +21,11 @@ result:
   - name: count1
     type: 32-bit Integer
     description: Number of Posts with at least one tag belonging to tagClass1
+    category: aggregated
   - name: count2
     type: 32-bit Integer
     description: Number of Posts with at least one tag belonging to tagClass2
+    category: aggregated
 sort:
   # TODO double-check this
   - name: count2

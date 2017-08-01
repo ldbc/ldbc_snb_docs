@@ -26,19 +26,43 @@ Persons workplaces and places of study.
 %
 	
 	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{Person.birthday} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{Person.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{Person.gender} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{6}$ & \varname{Person.browserUsed} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{7}$ & \varname{Person.locationIP} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{8}$ & \varname{\{Person.email\}} & \cellcolor{gray!20} \vartype{\{String\}} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{9}$ & \varname{\{Person.speaks\}} & \cellcolor{gray!20} \vartype{\{String\}} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{10}$ & \varname{Person-isLocatedIn->Place.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{11}$ & \varname{\{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &  \\ \hline
-	\cellcolor{result} \color{white} $\mathsf{12}$ & \varname{\{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &  \\ \hline
+	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|c|Y|} \hline
+	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{3}$ & \varname{Person.birthday} & \cellcolor{gray!20} \vartype{Date} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{4}$ & \varname{Person.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{5}$ & \varname{Person.gender} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{6}$ & \varname{Person.browserUsed} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{7}$ & \varname{Person.locationIP} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{8}$ & \varname{\{Person.email\}} & \cellcolor{gray!20} \vartype{\{String\}} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{9}$ & \varname{\{Person.speaks\}} & \cellcolor{gray!20} \vartype{\{String\}} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{10}$ & \varname{Person-isLocatedIn->Place.name} & \cellcolor{gray!20} \vartype{String} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{11}$ & \varname{\{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &
+	    \texttt{R} &
+	     \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{12}$ & \varname{\{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &
+	    \texttt{R} &
+	     \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %

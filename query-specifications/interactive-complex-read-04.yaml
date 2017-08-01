@@ -19,6 +19,7 @@ result:
     type: String
   - name: count
     type: 32-bit Integer
+    category: aggregated
     description: number of Posts made within the given time interval that have this Tag
 sort:
   - name: count

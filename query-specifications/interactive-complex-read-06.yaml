@@ -17,6 +17,7 @@ result:
     type: String
   - name: count
     type: 32-bit Integer
+    category: aggregated
     description: number of Posts that were created by friends and friends of friends, which contain this Tag
 sort:
   - name: count
