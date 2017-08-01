@@ -31,7 +31,7 @@ parameters:
 result:
   - name: country.name
     type: String
-  - name: message.month
+  - name: messageMonth
     type: 32-bit Integer
   - name: person.gender
     type: String
@@ -52,7 +52,7 @@ sort:
     direction: asc
   - name: person.gender
     direction: asc
-  - name: message.month
+  - name: messageMonth
     direction: asc
   - name: country.name
     direction: asc

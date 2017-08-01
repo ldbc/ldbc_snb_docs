@@ -21,8 +21,9 @@ parameters:
   - name: date
     type: Date
 result:
-  - name: message.year
+  - name: messageYear
     type: 32-bit Integer
+    description: year of the message
   - name: messageType
     type: String
     category: meta
