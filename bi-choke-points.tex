@@ -30,6 +30,8 @@ Once k results are obtained, extra restrictions in a selection can be added base
 This choke-point tests the ability of the query optimizer to exclude those functionally dependent group-bys. Sometimes queries require for group-by's on a set of columns and a key, where the value of the key determines the columns.
 In this situation, the aggregation operator should be able to exclude certain group-by attributes from the key matching.
 
+\note{In the Interactive workload, this was CP-1.4}
+
 \subsubsection{CP-1.6/TCPH-1.3: [QEXE] Low Cardinality group-by performance}
 \label{choke_point_1.6}
 This choke-point tests the ability to efficiently perform group by evaluation when only a very limited set of groups is available.  This can require special strategies for parallelization, e.g. pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.

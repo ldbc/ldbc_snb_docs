@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 9 \\ \hline
+	query    & BI / 9 \\ \hline
 %
 	title       & Forum with related Tags \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-09}\hfill\vadjust{} \\ \hline
 %
-	description & Given two TagClasses (\texttt{tagClass1} \& \texttt{tagClass2}), find
+	desc. & Given two TagClasses (\texttt{tagClass1} \& \texttt{tagClass2}), find
 Forums that contain at least one Post with a Tag from \texttt{tagClass1}
 and at least one Post with a Tag from \texttt{tagClass2} (direct
 children not transitive) -- this may be the same Post.
@@ -23,7 +21,7 @@ from TagClass2.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tagClass1} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{tagClass2} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
@@ -54,7 +52,7 @@ from TagClass2.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{1.4}, 
@@ -63,5 +61,6 @@ from TagClass2.
 	  \chokepoint{2.4}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

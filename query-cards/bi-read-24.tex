@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 24 \\ \hline
+	query    & BI / 24 \\ \hline
 %
 	title       & Messages by Topic and Continent \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-24}\hfill\vadjust{} \\ \hline
 %
-	description & Find all Messages tagged with a Tag from the given TagClass
+	desc. & Find all Messages tagged with a Tag from the given TagClass
 (non-transitive).
 
 Count all messages and their likes grouped by continent, year, and
@@ -27,7 +25,7 @@ Messages by continent? I think the former one - szarnyasg)
 		} \\ \hline
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tagClass} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -62,7 +60,7 @@ Messages by continent? I think the former one - szarnyasg)
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.6}, 
 	  \chokepoint{2.1}, 
@@ -72,5 +70,6 @@ Messages by continent? I think the former one - szarnyasg)
 	  \chokepoint{4.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

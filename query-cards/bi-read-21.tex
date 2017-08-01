@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 21 \\ \hline
+	query    & BI / 21 \\ \hline
 %
 	title       & Zombies in a country \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-21}\hfill\vadjust{} \\ \hline
 %
-	description & Find zombies within the given country, and return their zombie scores.
+	desc. & Find zombies within the given country, and return their zombie scores.
 
 A zombie is a Person created before the given \texttt{endDate} and that
 has created between \texttt{{[}0,\ 1)} Messages per month, on average,
@@ -23,7 +21,7 @@ profile to the \texttt{endDate} and also includes partial months.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{endDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
@@ -55,7 +53,7 @@ profile to the \texttt{endDate} and also includes partial months.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{2.1}, 
@@ -67,5 +65,6 @@ profile to the \texttt{endDate} and also includes partial months.
 	  \chokepoint{5.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

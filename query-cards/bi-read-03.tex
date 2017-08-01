@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 3 \\ \hline
+	query    & BI / 3 \\ \hline
 %
 	title       & Tag evolution \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-03}\hfill\vadjust{} \\ \hline
 %
-	description & Given a year and a month, find the Tags that were used in Messages
+	desc. & Given a year and a month, find the Tags that were used in Messages
 during the given month of the given year, and the Tags that were used
 during the month after the given month of the given year.
 
@@ -20,7 +18,7 @@ Tags.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
@@ -52,7 +50,7 @@ Tags.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{2.4}, 
 	  \chokepoint{3.1}, 
@@ -63,5 +61,6 @@ Tags.
 	  \chokepoint{6.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

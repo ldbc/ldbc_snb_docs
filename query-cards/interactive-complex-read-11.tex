@@ -1,23 +1,21 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 11 \\ \hline
+	query    & Interactive / complex / 11 \\ \hline
 %
 	title       & Job referral \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-11}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, find that Person's friends and friends of friends
+	desc. & Given a start Person, find that Person's friends and friends of friends
 (excluding start Person) who started Working in some Company in a given
 Country, before a given date (year).
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{Country.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
@@ -54,7 +52,7 @@ Country, before a given date (year).
 	%
 	limit       & 10 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.4}, 
 	  \chokepoint{2.3}, 
@@ -62,5 +60,10 @@ Country, before a given date (year).
 	  \chokepoint{3.3}
 	  } \\ \hline
 	%
+    relevance &
+      \small This query looks for paths of length two or three, starting from a Person, moving to friends or friends of friends,
+and ending at a Company. In this query, there are selective joins and a top k order by that can be exploited for
+optimizations.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}

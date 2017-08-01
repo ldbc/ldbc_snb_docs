@@ -1,21 +1,19 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / short \\ \hline
-%
-	query       & 4 \\ \hline
+	query    & Interactive / short / 4 \\ \hline
 %
 	title       & Message Content \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-04}\hfill\vadjust{} \\ \hline
 %
-	description & Given a Message, retrieve its content and creation date.
+	desc. & Given a Message, retrieve its content and creation date.
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -35,5 +33,6 @@
 	%
 	%
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

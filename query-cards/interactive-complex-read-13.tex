@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 13 \\ \hline
+	query    & Interactive / complex / 13 \\ \hline
 %
 	title       & Single shortest path \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-13}\hfill\vadjust{} \\ \hline
 %
-	description & Given two Persons, find the shortest path between these two Persons in
+	desc. & Given two Persons, find the shortest path between these two Persons in
 the subgraph induced by the Knows relationships.
 
 Return the length of this path:
@@ -28,7 +26,7 @@ Return the length of this path:
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{person1.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{person2.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
@@ -45,12 +43,17 @@ Return the length of this path:
 %
 	%
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{3.3}, 
 	  \chokepoint{7.2}, 
 	  \chokepoint{7.3}
 	  } \\ \hline
 	%
+    relevance &
+      \small This query looks for a variable length path, starting at a given Person and finishing at an another given Person.
+Proper cardinality estimation and search space prunning, will be crucial. This query also allows for possible parallel
+implementations.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}

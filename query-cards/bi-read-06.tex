@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 6 \\ \hline
+	query    & BI / 6 \\ \hline
 %
 	title       & Most active Posters of a given Topic \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-06}\hfill\vadjust{} \\ \hline
 %
-	description & Get Persons who have created a Message (Post or Comment) with a given
+	desc. & Get Persons who have created a Message (Post or Comment) with a given
 Tag.
 
 Each Person has a score, computed as follows:
@@ -40,7 +38,7 @@ The \texttt{score} is calculated as a sum with the following weights:
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tag} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -74,11 +72,12 @@ The \texttt{score} is calculated as a sum with the following weights:
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{2.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

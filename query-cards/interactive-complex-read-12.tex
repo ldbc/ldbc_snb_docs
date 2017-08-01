@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 12 \\ \hline
+	query    & Interactive / complex / 12 \\ \hline
 %
 	title       & Expert search \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-12}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, find the Comments that this Person's friends made
+	desc. & Given a start Person, find the Comments that this Person's friends made
 in reply to Posts, considering only those Comments that are immediate
 (1-hop) replies to Posts, not the transitive (multi-hop) case. Only
 consider Posts with a Tag in a given TagClass or in a descendent of that
@@ -23,7 +21,7 @@ Tags.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{TagClass.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
@@ -58,7 +56,7 @@ Tags.
 	%
 	limit       & 20 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.5}, 
 	  \chokepoint{3.3}, 
@@ -66,5 +64,12 @@ Tags.
 	  \chokepoint{7.3}
 	  } \\ \hline
 	%
+    relevance &
+      \small This query looks for paths of length three, starting at a Person, moving to its friends, the to their Comments and
+ending at the Post the Comments are replying. The chain from original post to the reply is transitive. The traversal
+may be initiated at either end, the system may note that this is a tree, hence leaf to root is always best. Additionally,
+a hash table can be built from either end, e.g. from the friends of self, from the tags in the category, from the or
+other.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}

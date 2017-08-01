@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 10 \\ \hline
+	query    & Interactive / complex / 10 \\ \hline
 %
 	title       & Friend recommendation \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, find that Person's friends of friends (excluding
+	desc. & Given a start Person, find that Person's friends of friends (excluding
 start Person, and immediate friends), who were born on or after the 21st
 of a given month (in any year) and before the 22nd of the following
 month. Calculate the similarity between each of these Persons and start
@@ -31,7 +29,7 @@ Person, where similarity for any Person is defined as follows:
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} & between 1-12 \\ \hline
@@ -69,7 +67,7 @@ Person, where similarity for any Person is defined as follows:
 	%
 	limit       & 10 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{2.3}, 
 	  \chokepoint{3.3}, 
@@ -81,5 +79,12 @@ Person, where similarity for any Person is defined as follows:
 	  \chokepoint{7.1}
 	  } \\ \hline
 	%
+    relevance &
+      \small This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does
+widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired
+over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join
+for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the
+tags of the candidate’s posts to interests of self should be by hash.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}

@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 5 \\ \hline
+	query    & BI / 5 \\ \hline
 %
 	title       & Top posters in a country \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-05}\hfill\vadjust{} \\ \hline
 %
-	description & Find the most popular Forums for a given Country, where the popularity
+	desc. & Find the most popular Forums for a given Country, where the popularity
 of a Forum is measured by the number of members that Forum has from the
 given Country.
 
@@ -28,7 +26,7 @@ Posts they made in any of those (most popular) Forums.
 		} \\ \hline
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -62,7 +60,7 @@ Posts they made in any of those (most popular) Forums.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{1.4}, 
@@ -76,5 +74,6 @@ Posts they made in any of those (most popular) Forums.
 	  \chokepoint{6.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

@@ -1,22 +1,20 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / short \\ \hline
-%
-	query       & 1 \\ \hline
+	query    & Interactive / short / 1 \\ \hline
 %
 	title       & Person Profile \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-01}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, retrieve their first name, last name, birthday, IP
+	desc. & Given a start Person, retrieve their first name, last name, birthday, IP
 address, browser, and city of residence.
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -54,5 +52,6 @@ address, browser, and city of residence.
 	%
 	%
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 2 \\ \hline
+	query    & BI / 2 \\ \hline
 %
 	title       & Top tags for country, age, gender, time \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-02}\hfill\vadjust{} \\ \hline
 %
-	description & Select all Messages (Posts \& Comments) created between date1-date2
+	desc. & Select all Messages (Posts \& Comments) created between date1-date2
 (inclusive) by persons located in country1 or country2. Select the
 creators (Persons) and the Tags of these Messages. Split these Persons,
 Tags and Messages into a 5-level grouping:
@@ -45,7 +43,7 @@ Only return groups where number of messages is greater than 100.
 		} \\ \hline
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{date1} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{date2} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
@@ -89,7 +87,7 @@ Only return groups where number of messages is greater than 100.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.1}, 
 	  \chokepoint{1.2}, 
@@ -100,5 +98,6 @@ Only return groups where number of messages is greater than 100.
 	  \chokepoint{3.2}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

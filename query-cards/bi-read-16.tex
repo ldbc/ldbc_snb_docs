@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 16 \\ \hline
+	query    & BI / 16 \\ \hline
 %
 	title       & Experts in social circle \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-16}\hfill\vadjust{} \\ \hline
 %
-	description & Given a Person, find all other Persons that live in a given country and
+	desc. & Given a Person, find all other Persons that live in a given country and
 are connected to given person by a transitive path with length in range
 \texttt{{[}min,\ max{]}} through the knows relation.
 
@@ -31,7 +29,7 @@ For each Message, also retrieve its Tags.
 		} \\ \hline
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{personId} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
@@ -64,7 +62,7 @@ For each Message, also retrieve its Tags.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{1.4}, 
@@ -76,5 +74,6 @@ For each Message, also retrieve its Tags.
 	  \chokepoint{7.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

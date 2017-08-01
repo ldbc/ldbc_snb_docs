@@ -1,23 +1,21 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 20 \\ \hline
+	query    & BI / 20 \\ \hline
 %
 	title       & High-level topics \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-20}\hfill\vadjust{} \\ \hline
 %
-	description & For all given TagClasses, count number of Messages that have a Tag that
+	desc. & For all given TagClasses, count number of Messages that have a Tag that
 belongs to that TagClass or any of its children (all descendants through
 a transitive relation).
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tagClasses} & \cellcolor{gray!20} \vartype{String[]} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -42,12 +40,13 @@ a transitive relation).
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.6}, 
 	  \chokepoint{2.1}, 
 	  \chokepoint{6.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

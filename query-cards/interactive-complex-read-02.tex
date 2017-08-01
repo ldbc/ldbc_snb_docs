@@ -1,22 +1,20 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 2 \\ \hline
+	query    & Interactive / complex / 2 \\ \hline
 %
 	title       & Recent posts and comments by your friends \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, find (most recent) Messages from all of that
+	desc. & Given a start Person, find (most recent) Messages from all of that
 Person's friends, that were created before (and including) a given date.
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{date} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
@@ -54,7 +52,7 @@ Person's friends, that were created before (and including) a given date.
 	%
 	limit       & 20 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.1}, 
 	  \chokepoint{2.2}, 
@@ -62,5 +60,15 @@ Person's friends, that were created before (and including) a given date.
 	  \chokepoint{3.2}
 	  } \\ \hline
 	%
+    relevance &
+      \small This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
+from them, moving to their published Posts and Comments. This query exercices both the optimizer and how data is
+stored. It tests the ability to create execution plans taking advantage of the orderings induced by some operators to
+avoid performing expensive sorts. This query requires selecting Posts and Comments based on their creation date,
+which might be correlated with their identifier and therefore, having intermediate results with interesting orders.
+Also, messages could be stored in an order correlated with their creation date to improve data access locality. Finally,
+as many of the attributes required in the projection are not needed for the execution of the query, it is expected that
+the query optimizer will move the projection to the end.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}

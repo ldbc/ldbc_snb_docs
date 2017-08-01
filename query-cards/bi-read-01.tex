@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 1 \\ \hline
+	query    & BI / 1 \\ \hline
 %
 	title       & Posting summary \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
 %
-	description & Given a date, find all Messages created before that date. Group them by
+	desc. & Given a date, find all Messages created before that date. Group them by
 a 3-level grouping:
 
 \begin{enumerate}
@@ -47,7 +45,7 @@ a 3-level grouping:
 		} \\ \hline
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{date} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -87,12 +85,13 @@ a 3-level grouping:
 	\end{tabular}}\vspace{1.1ex} \\ \hline
 	%
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{3.2}, 
 	  \chokepoint{4.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

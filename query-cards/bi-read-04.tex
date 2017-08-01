@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 4 \\ \hline
+	query    & BI / 4 \\ \hline
 %
 	title       & Popular topics in a country \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-04}\hfill\vadjust{} \\ \hline
 %
-	description & Given a TagClass and a Country, find all the Forums created in the given
+	desc. & Given a TagClass and a Country, find all the Forums created in the given
 Country, containing at least one Post with Tags belonging directly to
 the given TagClass.
 
@@ -20,7 +18,7 @@ moderator.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tagClass} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{country} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
@@ -55,7 +53,7 @@ moderator.
 	%
 	limit       & 20 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.1}, 
 	  \chokepoint{1.2}, 
@@ -66,5 +64,6 @@ moderator.
 	  \chokepoint{3.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

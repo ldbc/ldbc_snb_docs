@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / short \\ \hline
-%
-	query       & 2 \\ \hline
+	query    & Interactive / short / 2 \\ \hline
 %
 	title       & Person Recent Messages \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-02}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, retrieve the last 10 Messages created by that
+	desc. & Given a start Person, retrieve the last 10 Messages created by that
 user. For each message, return that message, the original post in its
 conversation, and the author of that post. If any of the Messages is a
 Post, then the original Post will be the same Message, i.e.~that Message
@@ -19,7 +17,7 @@ will appear twice in that result.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -59,5 +57,6 @@ will appear twice in that result.
 	%
 	%
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

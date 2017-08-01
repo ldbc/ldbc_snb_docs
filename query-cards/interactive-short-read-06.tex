@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / short \\ \hline
-%
-	query       & 6 \\ \hline
+	query    & Interactive / short / 6 \\ \hline
 %
 	title       & Message Forum \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-06}\hfill\vadjust{} \\ \hline
 %
-	description & Given a Message, retrieve the Forum that contains it and the Person that
+	desc. & Given a Message, retrieve the Forum that contains it and the Person that
 moderates that forum. Since comments are not directly contained in
 forums, for comments, return the forum containing the original post in
 the thread which the comment is replying to.
@@ -18,7 +16,7 @@ the thread which the comment is replying to.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -47,5 +45,6 @@ the thread which the comment is replying to.
 	%
 	%
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

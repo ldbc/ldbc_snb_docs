@@ -1,22 +1,20 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 12 \\ \hline
+	query    & BI / 12 \\ \hline
 %
 	title       & Trending Posts \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-12}\hfill\vadjust{} \\ \hline
 %
-	description & Find all Messages created after a given date, that received more than a
+	desc. & Find all Messages created after a given date, that received more than a
 given number of likes.
  \\ \hline
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{creationDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
 	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{likeThreshold} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
@@ -51,7 +49,7 @@ given number of likes.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{2.2}, 
@@ -59,5 +57,6 @@ given number of likes.
 	  \chokepoint{6.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

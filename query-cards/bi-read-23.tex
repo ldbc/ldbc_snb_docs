@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 23 \\ \hline
+	query    & BI / 23 \\ \hline
 %
 	title       & Holiday destinations \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-23}\hfill\vadjust{} \\ \hline
 %
-	description & Count the messages all residents of Country \texttt{country} have
+	desc. & Count the messages all residents of Country \texttt{country} have
 written abroad grouped by month and Country. A Message was written
 abroad if the Country the Message was written in is different than the
 Country of the Person it was written by.
@@ -18,7 +16,7 @@ Country of the Person it was written by.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -47,7 +45,7 @@ Country of the Person it was written by.
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.6}, 
 	  \chokepoint{2.3}, 
@@ -56,5 +54,6 @@ Country of the Person it was written by.
 	  \chokepoint{4.3}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

@@ -64,6 +64,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         sort          = escape_map_list(doc.get('sort')),
         limit         = doc.get('limit'),
         choke_points  = doc.get('choke_points'),
+        relevance     = doc.get('relevance'),
     )
 
     with open("query-cards/%s.tex" % (query_name), 'w') as query_card_file:

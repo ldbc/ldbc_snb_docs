@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & BI \\ \hline
-%
-	query       & 7 \\ \hline
+	query    & BI / 7 \\ \hline
 %
 	title       & Most authoritative users on a given topic \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-07}\hfill\vadjust{} \\ \hline
 %
-	description & Given a Tag, find all Persons that ever created a Message with the given
+	desc. & Given a Tag, find all Persons that ever created a Message with the given
 Tag. For each of these Persons compute their ``authority score'' as
 follows:
 
@@ -27,7 +25,7 @@ follows:
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{tag} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -52,7 +50,7 @@ follows:
 	%
 	limit       & 100 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{1.2}, 
 	  \chokepoint{2.3}, 
@@ -61,5 +59,6 @@ follows:
 	  \chokepoint{6.1}
 	  } \\ \hline
 	%
+    %
 \end{tabularx}
 \vspace{2ex}

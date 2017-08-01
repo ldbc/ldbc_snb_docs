@@ -1,16 +1,14 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|p{1.95cm}|X|}
+\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
 	\hline
-	workload    & Interactive / complex \\ \hline
-%
-	query       & 7 \\ \hline
+	query    & Interactive / complex / 7 \\ \hline
 %
 	title       & Recent likers \\ \hline
 %
     pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07}\hfill\vadjust{} \\ \hline
 %
-	description & Given a start Person, find (most recent) Likes on any of start Person's
+	desc. & Given a start Person, find (most recent) Likes on any of start Person's
 Messages. Find Persons that Liked any of start Person's Messages, the
 Messages they liked most recently, creation date of that Like, and the
 latency (in minutes) between creation of Messages and Like.
@@ -22,7 +20,7 @@ identifier.
 %
 	
 %
-	parameters  &
+	params.  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
 	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
@@ -65,7 +63,7 @@ identifier.
 	%
 	limit       & 20 \\ \hline
 	%
-	choke points &
+	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
 	  \chokepoint{2.2}, 
 	  \chokepoint{2.3}, 
@@ -73,5 +71,15 @@ identifier.
 	  \chokepoint{5.1}
 	  } \\ \hline
 	%
+    relevance &
+      \small This query looks for paths of length two, starting from a given Person, moving
+to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
+both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
+the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection
+until the end. This query implies accessing 2-hop data, and as a consequence, index accesses are expected to be
+scattered. We expect to observe variate cardinalities, depending on the characteristics of the input parameter, so
+properly selecting the join operators will be crucial. This query has a lot of correlated sub-queries, so it is testing
+the ability to flatten the query execution plans.
+ \\ \hline%
 \end{tabularx}
 \vspace{2ex}
