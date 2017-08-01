@@ -20,23 +20,23 @@ never attached to friends' Posts created before this interval.
 %
 	parameters  &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{startDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{3}$ & \varname{duration} & \cellcolor{gray!20} \vartype{32-bit Integer} & duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open \\ \hline
+	\cellcolor{parameter} \color{white} $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
+	\cellcolor{parameter} \color{white} $\mathsf{2}$ & \varname{startDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
+	\cellcolor{parameter} \color{white} $\mathsf{3}$ & \varname{duration} & \cellcolor{gray!20} \vartype{32-bit Integer} & duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 %
 	
 	result      &
 	\vspace{1.1ex}{\begin{tabularx}{14.2cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{Tag.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{count} & \cellcolor{gray!20} \vartype{32-bit Integer} & number of Posts made within the given time interval that have this Tag \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{1}$ & \varname{Tag.name} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
+	\cellcolor{result} \color{white} $\mathsf{2}$ & \varname{count} & \cellcolor{gray!20} \vartype{32-bit Integer} & number of Posts made within the given time interval that have this Tag \\ \hline
 	\end{tabularx}}\vspace{1.1ex} \\ \hline
 	
 %
 	sort        &
 	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{black!70} \color{white} $\mathsf{1}$ & \varname{count} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{black!70} \color{white} $\mathsf{2}$ & \varname{Tag.name} & \cellcolor{gray!20} $\asc$ \\ \hline
+	\cellcolor{sort} \color{white} $\mathsf{1}$ & \varname{count} & \cellcolor{gray!20} $\desc$ \\ \hline
+	\cellcolor{sort} \color{white} $\mathsf{2}$ & \varname{Tag.name} & \cellcolor{gray!20} $\asc$ \\ \hline
 	\end{tabular}}\vspace{1.1ex} \\ \hline
 	%
 	limit       & 10 \\ \hline
