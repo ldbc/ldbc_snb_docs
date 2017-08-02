@@ -1,24 +1,24 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / update / 8 \\ \hline
+	query & Interactive / update / 8 \\ \hline
 %
-	title       & Add Friendship \\ \hline
+	title & Add Friendship \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-08}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-08}\hfill\vadjust{} \\ \hline
 %
 	desc. & Add a friendship relation to the social network
  \\ \hline
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} & person 1 \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} & person 2 \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ & \varname{Person-knows->.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID & person 1 \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Person.id& ID & person 2 \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &Person-knows->.creationDate& DateTime &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
 %
@@ -27,4 +27,4 @@
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

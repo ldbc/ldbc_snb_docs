@@ -1,33 +1,33 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / update / 6 \\ \hline
+	query & Interactive / update / 6 \\ \hline
 %
-	title       & Add Post \\ \hline
+	title & Add Post \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-06}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-06}\hfill\vadjust{} \\ \hline
 %
 	desc. & Add a Post to the social network.
  \\ \hline
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Post.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{Post.imageFile} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ & \varname{Post.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ & \varname{Post.locationIp} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{5}$ & \varname{Post.browserUsed} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{6}$ & \varname{Post.language} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{7}$ & \varname{Post.content} & \cellcolor{gray!20} \vartype{Text} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{8}$ & \varname{Post.length} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{9}$ & \varname{Post-hasCreator->Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{10}$ & \varname{Post<-containerOf-Forum.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{11}$ & \varname{Post-isLocatedIn->Country.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{12}$ & \varname{\{Post-hasTag->Tag.id\}} & \cellcolor{gray!20} \vartype{\{ID\}} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Post.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Post.imageFile& String &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &Post.creationDate& DateTime &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &Post.locationIp& String &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{5}$ &Post.browserUsed& String &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{6}$ &Post.language& String &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{7}$ &Post.content& Text &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{8}$ &Post.length& 32-bit Integer &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{9}$ &Post-hasCreator->Person.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{10}$ &Post<-containerOf-Forum.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{11}$ &Post-isLocatedIn->Country.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{12}$ &\{Post-hasTag->Tag.id\}& \{ID\} &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
 %
@@ -36,4 +36,4 @@
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / complex / 2 \\ \hline
+	query & Interactive / complex / 2 \\ \hline
 %
-	title       & Recent posts and comments by your friends \\ \hline
+	title & Recent posts and comments by your friends \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find (most recent) Messages from all of that
 Person's friends, that were created before (and including) a given date.
@@ -14,54 +14,48 @@ Person's friends, that were created before (and including) a given date.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{date} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &date& DateTime &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{Message-hasCreator->Person.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{Message-hasCreator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{Message-hasCreator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{Message.content or Post.imageFile} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{6}$ & \varname{Message.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
-	    \texttt{R} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & Message-hasCreator->Person.id & ID &R&
+                 \\ \hline
+        $\mathsf{2}$ & Message-hasCreator->Person.firstName & String &R&
+                 \\ \hline
+        $\mathsf{3}$ & Message-hasCreator->Person.lastName & String &R&
+                 \\ \hline
+        $\mathsf{4}$ & Message.id & ID &R&
+                 \\ \hline
+        $\mathsf{5}$ & Message.content or Post.imageFile & String &R&
+                 \\ \hline
+        $\mathsf{6}$ & Message.creationDate & DateTime &R&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{Message.creationDate} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{Message.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
+        $\mathsf{2}$ & Message.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
-	limit       & 20 \\ \hline
+	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.1}, 
-	  \chokepoint{2.2}, 
-	  \chokepoint{2.3}, 
-	  \chokepoint{3.2}
-	  } \\ \hline
+	    \chokePoint{1.1}, 
+	    \chokePoint{2.2}, 
+	    \chokePoint{2.3}, 
+	    \chokePoint{3.2}
+	    } \\ \hline
 	%
     relevance &
-      \small This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
+        \small This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
 from them, moving to their published Posts and Comments. This query exercices both the optimizer and how data is
 stored. It tests the ability to create execution plans taking advantage of the orderings induced by some operators to
 avoid performing expensive sorts. This query requires selecting Posts and Comments based on their creation date,
@@ -71,4 +65,4 @@ as many of the attributes required in the projection are not needed for the exec
 the query optimizer will move the projection to the end.
  \\ \hline%
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & BI / 1 \\ \hline
+	query & BI / 1 \\ \hline
 %
-	title       & Posting summary \\ \hline
+	title & Posting summary \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a date, find all Messages created before that date. Group them by
 a 3-level grouping:
@@ -37,61 +37,54 @@ a 3-level grouping:
  \\ \hline
 %
 	
-	group by       &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\varname{year}, 
-		\varname{message type}, 
-		\varname{length group}
-		} \\ \hline
+        group by &
+        \multicolumn{1}{>{\raggedright}X|}{
+            \varName{year}, 
+            \varName{message type}, 
+            \varName{length group}
+            } \\ \hline
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{date} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &date& Date &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{messageYear} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{R} &
-	    year of the message \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{messageType} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	    post/comment (in lowercase) \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{lengthCategory} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{C} &
-	    short/one-liner/tweet/long (in lowercase) \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	    total number of Messages (Posts/Comments) in that group \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{averageMessageLength} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	    average length of the Message content in that group \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{6}$ & \varname{sumMessageLength} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	    sum of all message content lengths \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{7}$ & \varname{percentageOfMessages} & \cellcolor{gray!20} \vartype{32-bit Float} &
-	    \texttt{A} &
-	    number of messages in group as a percentage of all messages created before the given date \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & messageYear & 32-bit Integer &R&
+                year of the message \\ \hline
+        $\mathsf{2}$ & messageType & String &R&
+                post/comment (in lowercase) \\ \hline
+        $\mathsf{3}$ & lengthCategory & String &C&
+                short/one-liner/tweet/long (in lowercase) \\ \hline
+        $\mathsf{4}$ & messageCount & 32-bit Integer &A&
+                total number of Messages (Posts/Comments) in that group \\ \hline
+        $\mathsf{5}$ & averageMessageLength & 32-bit Integer &A&
+                average length of the Message content in that group \\ \hline
+        $\mathsf{6}$ & sumMessageLength & 32-bit Integer &A&
+                sum of all message content lengths \\ \hline
+        $\mathsf{7}$ & percentageOfMessages & 32-bit Float &A&
+                number of messages in group as a percentage of all messages created before the given date \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{message type} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{3}$ & \varname{size category} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & year & $\desc$ \\ \hline
+        $\mathsf{2}$ & message type & $\asc$ \\ \hline
+        $\mathsf{3}$ & size category & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.2}, 
-	  \chokepoint{3.2}, 
-	  \chokepoint{4.1}
-	  } \\ \hline
+	    \chokePoint{1.2}, 
+	    \chokePoint{3.2}, 
+	    \chokePoint{4.1}
+	    } \\ \hline
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

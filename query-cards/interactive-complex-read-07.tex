@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / complex / 7 \\ \hline
+	query & Interactive / complex / 7 \\ \hline
 %
-	title       & Recent likers \\ \hline
+	title & Recent likers \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find (most recent) Likes on any of start Person's
 Messages. Find Persons that Liked any of start Person's Messages, the
@@ -20,59 +20,51 @@ identifier.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& 64-bit Integer &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{Like.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{6}$ & \varname{Message.content or Post.imageFile} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{7}$ & \varname{latency} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{C} &
-	    duration between creation of Message and Like, in minutes \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{8}$ & \varname{isNew} & \cellcolor{gray!20} \vartype{Boolean} &
-	    \texttt{C} &
-	    false if liker Person is friend of start Person, true otherwise \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & Person.id & ID &R&
+                 \\ \hline
+        $\mathsf{2}$ & Person.firstName & String &R&
+                 \\ \hline
+        $\mathsf{3}$ & Person.lastName & String &R&
+                 \\ \hline
+        $\mathsf{4}$ & Like.creationDate & DateTime &R&
+                 \\ \hline
+        $\mathsf{5}$ & Message.id & ID &R&
+                 \\ \hline
+        $\mathsf{6}$ & Message.content or Post.imageFile & String &R&
+                 \\ \hline
+        $\mathsf{7}$ & latency & 32-bit Integer &C&
+                duration between creation of Message and Like, in minutes \\ \hline
+        $\mathsf{8}$ & isNew & Boolean &C&
+                false if liker Person is friend of start Person, true otherwise \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{Like.creationDate} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & Like.creationDate & $\desc$ \\ \hline
+        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
-	limit       & 20 \\ \hline
+	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{2.2}, 
-	  \chokepoint{2.3}, 
-	  \chokepoint{3.3}, 
-	  \chokepoint{5.1}
-	  } \\ \hline
+	    \chokePoint{2.2}, 
+	    \chokePoint{2.3}, 
+	    \chokePoint{3.3}, 
+	    \chokePoint{5.1}
+	    } \\ \hline
 	%
     relevance &
-      \small This query looks for paths of length two, starting from a given Person, moving
+        \small This query looks for paths of length two, starting from a given Person, moving
 to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
 both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
 the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection
@@ -82,4 +74,4 @@ properly selecting the join operators will be crucial. This query has a lot of c
 the ability to flatten the query execution plans.
  \\ \hline%
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

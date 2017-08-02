@@ -1,24 +1,24 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / update / 5 \\ \hline
+	query & Interactive / update / 5 \\ \hline
 %
-	title       & Add Forum Membership \\ \hline
+	title & Add Forum Membership \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-05}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-05}\hfill\vadjust{} \\ \hline
 %
 	desc. & Add a Forum membership to the social network.
  \\ \hline
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{Forum-hasMember->Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ & \varname{Forum-hasMember->.joinDate} & \cellcolor{gray!20} \vartype{DateTime} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Forum-hasMember->Person.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &Forum-hasMember->.joinDate& DateTime &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
 %
@@ -27,4 +27,4 @@
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

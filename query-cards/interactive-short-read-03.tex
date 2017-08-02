@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / short / 3 \\ \hline
+	query & Interactive / short / 3 \\ \hline
 %
-	title       & Person Friends \\ \hline
+	title & Person Friends \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-03}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-03}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, retrieve all of their friends, and the date at
 which they became friends.
@@ -14,37 +14,33 @@ which they became friends.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{Knows.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
-	    \texttt{R} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & Person.id & ID &R&
+                 \\ \hline
+        $\mathsf{2}$ & Person.firstName & String &R&
+                 \\ \hline
+        $\mathsf{3}$ & Person.lastName & String &R&
+                 \\ \hline
+        $\mathsf{4}$ & Knows.creationDate & DateTime &R&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{Knows.creationDate} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & Knows.creationDate & $\desc$ \\ \hline
+        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

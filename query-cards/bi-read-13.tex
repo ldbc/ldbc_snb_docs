@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & BI / 13 \\ \hline
+	query & BI / 13 \\ \hline
 %
-	title       & Popular Tags per month in a country \\ \hline
+	title & Popular Tags per month in a country \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-13}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-13}\hfill\vadjust{} \\ \hline
 %
 	desc. & Find all Messages in a given Country, as well as their Tags.
 
@@ -15,50 +15,47 @@ number of Messages (from within the same group) where the Tag appears.
  \\ \hline
 %
 	
-	group by       &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\varname{year}, 
-		\varname{month}
-		} \\ \hline
+        group by &
+        \multicolumn{1}{>{\raggedright}X|}{
+            \varName{year}, 
+            \varName{month}
+            } \\ \hline
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &country& String &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{C} &
-	    year(message.creationDate) \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{C} &
-	    month(message.creationDate) \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{popularTags} & \cellcolor{gray!20} \vartype{TagPairs} &
-	    \texttt{C} &
-	    (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & year & 32-bit Integer &C&
+                year(message.creationDate) \\ \hline
+        $\mathsf{2}$ & month & 32-bit Integer &C&
+                month(message.creationDate) \\ \hline
+        $\mathsf{3}$ & popularTags & TagPairs &C&
+                (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{year} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{month} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & year & $\desc$ \\ \hline
+        $\mathsf{2}$ & month & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
-	limit       & 100 \\ \hline
+	limit & 100 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.2}, 
-	  \chokepoint{2.2}, 
-	  \chokepoint{2.3}, 
-	  \chokepoint{3.2}, 
-	  \chokepoint{6.1}
-	  } \\ \hline
+	    \chokePoint{1.2}, 
+	    \chokePoint{2.2}, 
+	    \chokePoint{2.3}, 
+	    \chokePoint{3.2}, 
+	    \chokePoint{6.1}
+	    } \\ \hline
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

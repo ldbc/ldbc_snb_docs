@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / short / 7 \\ \hline
+	query & Interactive / short / 7 \\ \hline
 %
-	title       & Message Replies \\ \hline
+	title & Message Replies \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-07}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-07}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a Message, retrieve the (1-hop) Comments that reply to it.
 
@@ -17,46 +17,39 @@ is same as original author, return false for \texttt{knows} flag.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Message.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Message.id& ID &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{Message<-replyOf-Comment.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{Message<-replyOf-Comment.content} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{Message<-replyOf-Comment.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{Comment-hasCreator->Person.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{Comment-hasCreator->Person.firstName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{6}$ & \varname{Comment-hasCreator->Person.lastName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{7}$ & \varname{knows} & \cellcolor{gray!20} \vartype{Boolean} &
-	    \texttt{C} &
-	    original message author knows reply author \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & Message<-replyOf-Comment.id & ID &R&
+                 \\ \hline
+        $\mathsf{2}$ & Message<-replyOf-Comment.content & String &R&
+                 \\ \hline
+        $\mathsf{3}$ & Message<-replyOf-Comment.creationDate & DateTime &R&
+                 \\ \hline
+        $\mathsf{4}$ & Comment-hasCreator->Person.id & ID &R&
+                 \\ \hline
+        $\mathsf{5}$ & Comment-hasCreator->Person.firstName & String &R&
+                 \\ \hline
+        $\mathsf{6}$ & Comment-hasCreator->Person.lastName & String &R&
+                 \\ \hline
+        $\mathsf{7}$ & knows & Boolean &C&
+                original message author knows reply author \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{Message<-replyOf-Comment.creationDate} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{Message-hasCreator->Person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & Message<-replyOf-Comment.creationDate & $\desc$ \\ \hline
+        $\mathsf{2}$ & Message-hasCreator->Person.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

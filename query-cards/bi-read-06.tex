@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & BI / 6 \\ \hline
+	query & BI / 6 \\ \hline
 %
-	title       & Most active Posters of a given Topic \\ \hline
+	title & Most active Posters of a given Topic \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-06}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-06}\hfill\vadjust{} \\ \hline
 %
 	desc. & Get Persons who have created a Message (Post or Comment) with a given
 Tag.
@@ -38,46 +38,41 @@ The \texttt{score} is calculated as a sum with the following weights:
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{tag} & \cellcolor{gray!20} \vartype{32-bit Integer} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &tag& 32-bit Integer &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{person.id} & \cellcolor{gray!20} \vartype{64-bit Integer} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{replyCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{likeCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{postCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{score} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & person.id & 64-bit Integer &R&
+                 \\ \hline
+        $\mathsf{2}$ & replyCount & 32-bit Integer &A&
+                 \\ \hline
+        $\mathsf{3}$ & likeCount & 32-bit Integer &A&
+                 \\ \hline
+        $\mathsf{4}$ & postCount & 32-bit Integer &A&
+                 \\ \hline
+        $\mathsf{5}$ & score & 32-bit Integer &A&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{score} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & score & $\desc$ \\ \hline
+        $\mathsf{2}$ & person.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
-	limit       & 100 \\ \hline
+	limit & 100 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.2}, 
-	  \chokepoint{2.3}
-	  } \\ \hline
+	    \chokePoint{1.2}, 
+	    \chokePoint{2.3}
+	    } \\ \hline
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

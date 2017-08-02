@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & BI / 17 \\ \hline
+	query & BI / 17 \\ \hline
 %
-	title       & Friend triangles \\ \hline
+	title & Friend triangles \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-17}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-17}\hfill\vadjust{} \\ \hline
 %
 	desc. & For a given country, count all the distinct triples of persons such that
 \texttt{a} is friend of \texttt{b}, \texttt{b} is friend of \texttt{c},
@@ -19,28 +19,27 @@ all qualified triples, there is not a triple \(t_2\) in \(R\) such that
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{country} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &country& String &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{count} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & count & 32-bit Integer &A&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.1}, 
-	  \chokepoint{2.3}
-	  } \\ \hline
+	    \chokePoint{1.1}, 
+	    \chokePoint{2.3}
+	    } \\ \hline
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

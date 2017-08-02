@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / complex / 14 \\ \hline
+	query & Interactive / complex / 14 \\ \hline
 %
-	title       & Weighted/unweighted paths \\ \hline
+	title & Weighted/unweighted paths \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-14}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-14}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given two Persons, find all (unweighted) shortest paths between these
 two Persons, in the subgraph induced by the Knows relationship. Then,
@@ -22,42 +22,40 @@ rows if there is now path between the two Persons.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{person1.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{person2.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &person1.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &person2.id& ID &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{[Person.id]} & \cellcolor{gray!20} \vartype{[ID]} &
-	    \texttt{C} &
-	    Identifiers representing an ordered sequence of the Persons in the path \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{weight} & \cellcolor{gray!20} \vartype{64-bit Float} &
-	    \texttt{C} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & [Person.id] & [ID] &C&
+                Identifiers representing an ordered sequence of the Persons in the path \\ \hline
+        $\mathsf{2}$ & weight & 64-bit Float &C&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{weight} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & weight & $\desc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{3.3}, 
-	  \chokepoint{7.2}, 
-	  \chokepoint{7.3}
-	  } \\ \hline
+	    \chokePoint{3.3}, 
+	    \chokePoint{7.2}, 
+	    \chokePoint{7.3}
+	    } \\ \hline
 	%
     relevance &
-      \small This query looks for a variable length path, starting at a given Person and finishing at an another given Person. This
+        \small This query looks for a variable length path, starting at a given Person and finishing at an another given Person. This
 is a more complex query as not only requires computing the path length, but returning it and computing a weight.
 To compute this weight one must look for smaller sub-queries with paths of length three, formed by the two Persons
 at each step, a Post and a Comment.
  \\ \hline%
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

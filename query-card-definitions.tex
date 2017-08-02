@@ -1,0 +1,37 @@
+% colors from Color Brewer 2.0, Set1: http://colorbrewer2.org/#type=qualitative&scheme=Set1&n=3
+\definecolor{parameter}{HTML}{e41a1c}
+\definecolor{result}{HTML}{377eb8}
+\definecolor{sort}{HTML}{4daf4a}
+
+% using camelCase notation is not conventional in LaTeX, but it helps readability a lot, so I decided to use it anyways [szarnyasg]
+
+\newcommand{\queryCardWidth}{17cm}
+\newcommand{\queryPropertyCell}{\small \sf}
+
+\newcommand{\attributeCardWidth}{14.66cm}
+\newcommand{\typeWidth}{2cm}
+
+\newcommand{\paramNumberCell}{\cellcolor{parameter} \color{white}\footnotesize}
+\newcommand{\resultNumberCell}{\cellcolor{result} \color{white} \footnotesize}
+\newcommand{\sortNumberCell}{\cellcolor{sort} \color{white} \footnotesize}
+
+\newcommand{\directionCell}{\cellcolor{gray!20}}
+\newcommand{\resultOriginCell}{\tt}
+
+\newcommand{\varName}{\small \tt}
+\newcommand{\varNameCell}{\small \normalfont\fontfamily{cmtt}\selectfont}
+\newcommand{\typeCell}{\cellcolor{gray!20} \footnotesize \sf \raggedright}
+
+\newcommand{\chokePoint}[1]{\hyperref[choke_point_#1]{#1}}
+
+\newcommand{\innerCardVSpace}{\vspace{1.1ex}}
+\newcommand{\queryCardVSpace}{\vspace{2ex}}
+
+% tabularx magic
+% https://tex.stackexchange.com/a/89932/71109
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+% https://tex.stackexchange.com/questions/252385/mixing-m-and-x-in-tabularx#comment602205_252388
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+% https://tex.stackexchange.com/a/4712/71109
+\newcolumntype{M}{>{\begin{varwidth}{7.8cm}}l<{\end{varwidth}}}
+% NOTE. Do note try to use a different value for \arraystretch for nested tables, as it will look bad if the nested table has a single line.

@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & BI / 18 \\ \hline
+	query & BI / 18 \\ \hline
 %
-	title       & How many persons have a given number of posts \\ \hline
+	title & How many persons have a given number of posts \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-18}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-18}\hfill\vadjust{} \\ \hline
 %
 	desc. & For each Person, count the number of Messages (Posts \& Comments) they
 made.
@@ -27,46 +27,44 @@ Only consider messages with:
  \\ \hline
 %
 	
-	group by       &
-	\multicolumn{1}{>{\raggedright}X|}{
-		\varname{messageCount}
-		} \\ \hline
+        group by &
+        \multicolumn{1}{>{\raggedright}X|}{
+            \varName{messageCount}
+            } \\ \hline
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{creationDate} & \cellcolor{gray!20} \vartype{Date} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{lengthThreshold} & \cellcolor{gray!20} \vartype{TODO (32-bit Integer?)} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &creationDate& Date &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &lengthThreshold& TODO (32-bit Integer?) &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{messageCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	    number of messages created \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{personCount} & \cellcolor{gray!20} \vartype{32-bit Integer} &
-	    \texttt{A} &
-	    the number of Persons with `messageCount` messages \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & messageCount & 32-bit Integer &A&
+                number of messages created \\ \hline
+        $\mathsf{2}$ & personCount & 32-bit Integer &A&
+                the number of Persons with `messageCount` messages \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{personCount} & \cellcolor{gray!20} $\desc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & personCount & $\desc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.1}, 
-	  \chokepoint{1.2}, 
-	  \chokepoint{1.6}, 
-	  \chokepoint{3.2}, 
-	  \chokepoint{4.2}, 
-	  \chokepoint{4.3}
-	  } \\ \hline
+	    \chokePoint{1.1}, 
+	    \chokePoint{1.2}, 
+	    \chokePoint{1.6}, 
+	    \chokePoint{3.2}, 
+	    \chokePoint{4.2}, 
+	    \chokePoint{4.3}
+	    } \\ \hline
 	%
     %
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace

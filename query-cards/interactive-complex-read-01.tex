@@ -1,12 +1,12 @@
 \renewcommand*{\arraystretch}{1.1}
 
-\noindent\begin{tabularx}{17cm}{|>{\small \sf}c|X|}
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query    & Interactive / complex / 1 \\ \hline
+	query & Interactive / complex / 1 \\ \hline
 %
-	title       & Friends with certain name \\ \hline
+	title & Friends with certain name \\ \hline
 %
-    pattern     & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-01}\hfill\vadjust{} \\ \hline
+    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-01}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find Persons with a given first name that the
 start Person is connected to (excluding start Person) by at most 3 steps
@@ -16,72 +16,60 @@ Persons workplaces and places of study.
 %
 	
 %
-	params  &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.firstName} & \cellcolor{gray!20} \vartype{String} &  \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+	params &
+	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
+	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Person.firstName& String &  \\ \hline
+	\end{tabularx}}\innerCardVSpace \\ \hline
 %
 	
-	result      &
-	\vspace{1.1ex}{\begin{tabularx}{14.66cm}{|c|M|m{2cm}|c|Y|} \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{1}$ & \varname{Person.id} & \cellcolor{gray!20} \vartype{ID} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.lastName} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{3}$ & \varname{Person.birthday} & \cellcolor{gray!20} \vartype{Date} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{4}$ & \varname{Person.creationDate} & \cellcolor{gray!20} \vartype{DateTime} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{5}$ & \varname{Person.gender} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{6}$ & \varname{Person.browserUsed} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{7}$ & \varname{Person.locationIP} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{8}$ & \varname{\{Person.email\}} & \cellcolor{gray!20} \vartype{\{String\}} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{9}$ & \varname{\{Person.speaks\}} & \cellcolor{gray!20} \vartype{\{String\}} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{10}$ & \varname{Person-isLocatedIn->Place.name} & \cellcolor{gray!20} \vartype{String} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{11}$ & \varname{\{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &
-	    \texttt{R} &
-	     \\ \hline
-	\cellcolor{result} \color{white} \footnotesize $\mathsf{12}$ & \varname{\{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}} & \cellcolor{gray!20} \vartype{\{<String, 32-bit Integer, String>\}} &
-	    \texttt{R} &
-	     \\ \hline
-	\end{tabularx}}\vspace{1.1ex} \\ \hline
+        result &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+        $\mathsf{1}$ & Person.id & ID &R&
+                 \\ \hline
+        $\mathsf{2}$ & Person.lastName & String &R&
+                 \\ \hline
+        $\mathsf{3}$ & Person.birthday & Date &R&
+                 \\ \hline
+        $\mathsf{4}$ & Person.creationDate & DateTime &R&
+                 \\ \hline
+        $\mathsf{5}$ & Person.gender & String &R&
+                 \\ \hline
+        $\mathsf{6}$ & Person.browserUsed & String &R&
+                 \\ \hline
+        $\mathsf{7}$ & Person.locationIP & String &R&
+                 \\ \hline
+        $\mathsf{8}$ & \{Person.email\} & \{String\} &R&
+                 \\ \hline
+        $\mathsf{9}$ & \{Person.speaks\} & \{String\} &R&
+                 \\ \hline
+        $\mathsf{10}$ & Person-isLocatedIn->Place.name & String &R&
+                 \\ \hline
+        $\mathsf{11}$ & \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\} & \{<String, 32-bit Integer, String>\} &R&
+                 \\ \hline
+        $\mathsf{12}$ & \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\} & \{<String, 32-bit Integer, String>\} &R&
+                 \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	sort        &
-	\vspace{1.1ex}{\begin{tabular}{|c|l|c|} \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{1}$ & \varname{distanceFromPerson} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{2}$ & \varname{Person.lastName} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\cellcolor{sort} \color{white} \footnotesize $\mathsf{3}$ & \varname{Person.id} & \cellcolor{gray!20} $\asc$ \\ \hline
-	\end{tabular}}\vspace{1.1ex} \\ \hline
+        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+        $\mathsf{1}$ & distanceFromPerson & $\asc$ \\ \hline
+        $\mathsf{2}$ & Person.lastName & $\asc$ \\ \hline
+        $\mathsf{3}$ & Person.id & $\asc$ \\ \hline
+        \end{tabular}}\innerCardVSpace \\ \hline
 	%
-	limit       & 20 \\ \hline
+	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	  \chokepoint{1.3}, 
-	  \chokepoint{2.1}, 
-	  \chokepoint{5.3}
-	  } \\ \hline
+	    \chokePoint{1.3}, 
+	    \chokePoint{2.1}, 
+	    \chokePoint{5.3}
+	    } \\ \hline
 	%
     relevance &
-      \small This query is a representative of a simple navigational query. It looks for paths of length one, two or three through
+        \small This query is a representative of a simple navigational query. It looks for paths of length one, two or three through
 the knows relation, starting from a given Person and ending at a Person with a given name. It is interesting for several
 aspects. First, it requires for a complex aggregation, that is, returning the concatenation of universities, companies,
 languages and email information of the person. Second, it tests the ability of the optimizer to move the evaluation of
@@ -90,4 +78,4 @@ highly sensitive to properly estimating the cardinalities in each transitive pat
 already visited Persons.
  \\ \hline%
 \end{tabularx}
-\vspace{2ex}
+\queryCardVSpace
