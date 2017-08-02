@@ -18,8 +18,9 @@
 \newcommand{\directionCell}{\cellcolor{gray!20}}
 \newcommand{\resultOriginCell}{\tt}
 
-\newcommand{\varName}{\small \tt}
-\newcommand{\varNameCell}{\small \normalfont\fontfamily{cmtt}\selectfont}
+% for hyphenating tt text, see also https://tex.stackexchange.com/a/44362/71109
+\newcommand{\varName}{\tt}
+\newcommand{\varNameCell}{\tt}%\normalfont\fontfamily{lxtt}\selectfont}
 \newcommand{\typeCell}{\cellcolor{gray!20} \footnotesize \sf \raggedright}
 
 \newcommand{\chokePoint}[1]{\hyperref[choke_point_#1]{#1}}
