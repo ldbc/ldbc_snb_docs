@@ -3,7 +3,7 @@
 \label{sec:bi-read-02}
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query & BI / 2 \\ \hline
+	query & BI / read / 2 \\ \hline
 %
 	title & Top tags for country, age, gender, time \\ \hline
 %
@@ -44,13 +44,15 @@ Only return groups where number of messages is greater than 100.
             } \\ \hline
 	
 %
-	params &
-	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &date1& Date &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &date2& Date &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &country1& String &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &country2& String &  \\ \hline
-	\end{tabularx}}\innerCardVSpace \\ \hline
+    
+        params &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &date1& Date &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &date2& Date &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &country1& String &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &country2& String &  \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
+	
 %
 	
         result &

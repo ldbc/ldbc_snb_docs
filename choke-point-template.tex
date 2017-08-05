@@ -1,3 +1,5 @@
-{% for query_id in query_ids -%}
-    \hyperref[sec: {{- query_id -}} ]{ {{- query_id -}} }
+{\raggedright\noindent\paragraph{Choke points.}
+{% for query in queries -%}
+    \queryRefCard{ {{- query.0 -}} }{ {{- query.1 -}} }{ {{- query.3 -}} }
 {% endfor -%}
+}

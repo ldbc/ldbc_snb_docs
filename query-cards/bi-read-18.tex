@@ -3,7 +3,7 @@
 \label{sec:bi-read-18}
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query & BI / 18 \\ \hline
+	query & BI / read / 18 \\ \hline
 %
 	title & How many persons have a given number of posts \\ \hline
 %
@@ -34,11 +34,13 @@ Only consider messages with:
             } \\ \hline
 	
 %
-	params &
-	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &creationDate& Date &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &lengthThreshold& TODO (32-bit Integer?) &  \\ \hline
-	\end{tabularx}}\innerCardVSpace \\ \hline
+    
+        params &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &creationDate& Date &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &lengthThreshold& TODO (32-bit Integer?) &  \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
+	
 %
 	
         result &

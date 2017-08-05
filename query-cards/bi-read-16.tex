@@ -3,7 +3,7 @@
 \label{sec:bi-read-16}
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query & BI / 16 \\ \hline
+	query & BI / read / 16 \\ \hline
 %
 	title & Experts in social circle \\ \hline
 %
@@ -30,14 +30,16 @@ For each Message, also retrieve its Tags.
             } \\ \hline
 	
 %
-	params &
-	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &personId& 64-bit Integer &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &country& String &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &tagClass& String &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &minPathDistance& 32-bit Integer &  \\ \hline
-	\cellcolor{parameter} \color{white} \footnotesize $\mathsf{5}$ &maxPathDistance& 32-bit Integer &  \\ \hline
-	\end{tabularx}}\innerCardVSpace \\ \hline
+    
+        params &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &personId& 64-bit Integer &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &country& String &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &tagClass& String &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &minPathDistance& 32-bit Integer &  \\ \hline
+        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{5}$ &maxPathDistance& 32-bit Integer &  \\ \hline
+        \end{tabularx}}\innerCardVSpace \\ \hline
+	
 %
 	
         result &

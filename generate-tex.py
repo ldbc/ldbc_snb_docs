@@ -42,11 +42,13 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     number = doc['number']
     number_string = "%02d" % (number)
+    workload = doc['workload']
     description_markdown = doc['description']
+    operation = doc['operation']
 
     choke_points = doc.get('choke_points', [])
     for choke_point in choke_points:
-        choke_point_references[choke_point].append(query_id)
+        choke_point_references[choke_point].append((query_id, workload, operation, number))
 
     # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
     # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
@@ -58,13 +60,14 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     query_card_text = query_card_template.render(
         number        = number,
-        workload      = doc['workload'],
+        workload      = workload,
+        operation     = operation,
         number_string = number_string,
         query_id      = query_id,
         title         = escape(doc['title']),
         description   = description_latex,
         group         = escape_list_entries(doc.get('group')),
-        parameters    = escape_map_list(doc['parameters']),
+        parameters    = escape_map_list(doc.get('parameters')),
         result        = escape_map_list(doc.get('result')),
         sort          = escape_map_list(doc.get('sort')),
         limit         = doc.get('limit'),
@@ -81,8 +84,10 @@ with open('choke-point-template.tex', 'r') as f:
 for choke_point in choke_point_references:
     choke_point_filename = str(choke_point).replace('.', '-')
 
+    queries = choke_point_references[choke_point]
+    queries_sorted = sorted(queries, key=lambda tup: tup[0])
     choke_point_text = choke_point_template.render(
-        query_ids = choke_point_references[choke_point],
+        queries = queries_sorted,
     )
 
     with open("query-cards/cp-%s.tex" % choke_point_filename, 'w') as choke_point_file:

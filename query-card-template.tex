@@ -3,7 +3,7 @@
 \label{sec: {{- query_id -}} }
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}c|X|}
 	\hline
-	query & {{ workload }} / {{ number }} \\ \hline
+	query & {{ workload }} / {{ operation }} / {{ number }} \\ \hline
 %
 	title & {{ title }} \\ \hline
 %
@@ -20,12 +20,14 @@
         } \\ \hline
 	{% endif %}
 %
-	params &
-	\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-	{% for entry in parameters -%}
-	    \cellcolor{parameter} \color{white} \footnotesize $\mathsf{ {{- loop.index -}} }$ & {{- entry.name -}} & {{ entry.type }} & {{ entry.description }} \\ \hline
-	{% endfor -%}
-	\end{tabularx}}\innerCardVSpace \\ \hline
+    {% if parameters %}
+        params &
+        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+        {% for entry in parameters -%}
+            \cellcolor{parameter} \color{white} \footnotesize $\mathsf{ {{- loop.index -}} }$ & {{- entry.name -}} & {{ entry.type }} & {{ entry.description }} \\ \hline
+        {% endfor -%}
+        \end{tabularx}}\innerCardVSpace \\ \hline
+	{% endif %}
 %
 	{% if result %}
         result &
