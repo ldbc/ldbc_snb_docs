@@ -128,10 +128,10 @@
     \setlength{\oddsidemargin}{0cm}%
     %
     \setlength{\textheight}{24.5cm}%
-    \setlength{\voffset}{-.7cm}%
-    \setlength{\topmargin}{0cm}%
-    \setlength{\headheight}{1.5cm}%
-    \setlength{\headsep}{0.8cm}%
+%    \setlength{\voffset}{-.7cm}%
+%    \setlength{\topmargin}{0cm}%
+%    \setlength{\headheight}{1.5cm}%
+%    \setlength{\headsep}{0.8cm}%
     \renewcommand{\headrulewidth}{0.2pt}%
     \renewcommand{\footrulewidth}{0.2pt}%
 }
@@ -254,12 +254,14 @@
 %        \end{tabular}%
         \newpage%
         \normalLayout%
-        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
-        \hline%
-        \emph{\bfseries \T Abstract} \\[2mm]%
-        \parbox[t]{17.0cm}{\abstractText } \B \\%
-            \hline%
-        \end{tabular}%
+%        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
+%        %\hline%
+        \chapter*{Abstract}%
+%        \emph{\bfseries \T Abstract} \\[2mm]%
+%        \parbox[t]{17.0cm}{\abstractText } \B \\%
+%            \hline%
+%        \end{tabular}%
+		\abstractText
         \newpage%
         \addcontentsline{toc}{chapter}{Executive Summary}%
         \chapter*{Executive Summary}%
