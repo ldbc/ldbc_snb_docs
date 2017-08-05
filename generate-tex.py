@@ -5,6 +5,7 @@ import glob
 from jinja2 import Template
 from os.path import basename, splitext
 from subprocess import check_output
+from collections import defaultdict
 
 def escape(s):
     return s\
@@ -29,13 +30,13 @@ def escape_map_list(list_of_maps):
 
 
 with open('query-card-template.tex', 'r') as f:
-    template = Template(f.read())
+    query_card_template = Template(f.read())
 
-variable_template = Template('\\variable{name}{type}')
+choke_point_references = defaultdict(list)
 
 for filename in glob.glob("query-specifications/*.yaml"):
     print("Processing query specification: %s" % (filename))
-    query_name = splitext(basename(filename))[0]
+    query_id = splitext(basename(filename))[0]
     with open(filename, 'r') as f:
         doc = yaml.load(f)
 
@@ -43,19 +44,23 @@ for filename in glob.glob("query-specifications/*.yaml"):
     number_string = "%02d" % (number)
     description_markdown = doc['description']
 
-    # currently, there are no off-the-shelf solutions for markdown -> latex conversion in Python3,
-    # so we use Pandoc
+    choke_points = doc.get('choke_points', [])
+    for choke_point in choke_points:
+        choke_point_references[choke_point].append(query_id)
+
+    # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
+    # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
     description_latex = check_output(
         ["pandoc", "--from=markdown", "--to=latex"],
         universal_newlines = True,
         input = description_markdown
     )
 
-    query_card = template.render(
+    query_card_text = query_card_template.render(
         number        = number,
         workload      = doc['workload'],
         number_string = number_string,
-        query_name    = query_name,
+        query_id      = query_id,
         title         = escape(doc['title']),
         description   = description_latex,
         group         = escape_list_entries(doc.get('group')),
@@ -63,9 +68,22 @@ for filename in glob.glob("query-specifications/*.yaml"):
         result        = escape_map_list(doc.get('result')),
         sort          = escape_map_list(doc.get('sort')),
         limit         = doc.get('limit'),
-        choke_points  = doc.get('choke_points'),
+        choke_points  = choke_points,
         relevance     = doc.get('relevance'),
     )
 
-    with open("query-cards/%s.tex" % (query_name), 'w') as query_card_file:
-        query_card_file.write(query_card)
+    with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:
+        query_card_file.write(query_card_text)
+
+with open('choke-point-template.tex', 'r') as f:
+    choke_point_template = Template(f.read())
+
+for choke_point in choke_point_references:
+    choke_point_filename = str(choke_point).replace('.', '-')
+
+    choke_point_text = choke_point_template.render(
+        query_ids = choke_point_references[choke_point],
+    )
+
+    with open("query-cards/cp-%s.tex" % choke_point_filename, 'w') as choke_point_file:
+        choke_point_file.write(choke_point_text)
