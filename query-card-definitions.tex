@@ -3,6 +3,14 @@
 \definecolor{result}{HTML}{377eb8}
 \definecolor{sort}{HTML}{4daf4a}
 
+\newcommand{\attributeColumnWidth}{2.5cm}
+\newcommand{\typeColumnWidth}{2.7cm}
+\newcommand{\descriptionColumnWidth}{10.3cm}
+\newcommand{\largeDescriptionColumnWidth}{13cm}
+
+\newcommand{\tableHeaderFirst}[1]{\multicolumn{1}{|c|}{\bf #1}}
+\newcommand{\tableHeader}[1]{\multicolumn{1}{c|}{\bf #1}}
+
 % using camelCase notation is not conventional in LaTeX, but it helps readability a lot, so I decided to use it anyways [szarnyasg]
 
 \newcommand{\queryCardWidth}{17cm}
@@ -17,11 +25,15 @@
 
 \newcommand{\directionCell}{\cellcolor{gray!20}}
 \newcommand{\resultOriginCell}{\tt}
+\newcommand{\edgeDirectionCell}{\tt}
 
 % for hyphenating tt text, see also https://tex.stackexchange.com/a/44362/71109
-\newcommand{\varName}{\tt}
-\newcommand{\varNameCell}{\tt}%\normalfont\fontfamily{lxtt}\selectfont}
-\newcommand{\typeCell}{\cellcolor{gray!20} \footnotesize \sf \raggedright}
+\newcommand{\varNameText}{\tt}
+\newcommand{\varNameCell}{\varNameText}
+
+\newcommand{\typeText}{\footnotesize \sf}
+\newcommand{\typeCellBase}{\cellcolor{gray!20} \typeText}
+\newcommand{\typeCell}{\typeCellBase \raggedright}
 
 \newcommand{\chokePoint}[1]{\hyperref[choke_point_#1]{#1}}
 
@@ -36,3 +48,13 @@
 % https://tex.stackexchange.com/a/4712/71109
 \newcolumntype{M}{>{\begin{varwidth}{7.8cm}}l<{\end{varwidth}}}
 % NOTE. Do note try to use a different value for \arraystretch for nested tables, as it will look bad if the nested table has a single line.
+
+\newcommand{\attributeTable}[3]{
+	\vspace{1ex}
+	\begin{tabularx}{\linewidth}{|l|Y|}
+	\hline
+	\bf Attribute   & \varNameCell  #1 \\ \hline
+	\bf Type        & \typeCellBase #2 \\ \hline % using typeCellBase as we cannot use \raggedright here
+	\bf Description &               #3 \\
+	\hline
+	\end{tabularx}}

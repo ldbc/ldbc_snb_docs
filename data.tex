@@ -4,12 +4,6 @@
 
 \section{Data}\label{section:data}
 
-\newcommand{\attributecolumn}{2.5cm}
-\newcommand{\typecolumn}{2.7cm}
-\newcommand{\descriptioncolumn}{10.3cm}
-\newcommand{\largedescriptioncolumn}{13cm}
-
-
 This section introduces the data used by \ldbcsnb. This includes the different
 data types, the data schema, how it is generated and the different scale
 factors.
@@ -19,9 +13,9 @@ Table~\ref{table:types} describes the different types used in the whole benchmar
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{\attributecolumn}|p{\largedescriptioncolumn}|}
+\begin{tabular}{|>{\typeCell}p{\attributeColumnWidth}|p{\largeDescriptionColumnWidth}|}
     \hline
-    \textbf{Type} & \textbf{Description} \\
+    \tableHeaderFirst{Type} & \tableHeader{Description} \\
     \hline
     ID &  integer type with 64-bit precision. All IDs within a single entity are unique\\
     \hline
@@ -118,15 +112,15 @@ distinguished by their titles. Table~\ref{table:forum} shows the attributes
 of Forum entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the forum.\\
         \hline
         title & Long String  & The title of the forum.\\
         \hline
-        creationDate & DateTime  & The date the forum was created\\
+        creationDate & DateTime  & The date the forum was created.\\
         \hline
     \end{tabular}
     \caption{Attributes of Forum entity.}
@@ -138,9 +132,9 @@ created by a person. Table~\ref{table:message} shows the attributes of Message
 abstract entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the message.\\
         \hline
@@ -164,9 +158,9 @@ world. Table~\ref{table:organization} shows the attributes of Organization
 entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the organization.\\
         \hline
@@ -183,9 +177,9 @@ person as well as network related information. Table~\ref{table:person} shows
 the attributes of Person entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the person.\\
         \hline
@@ -195,7 +189,7 @@ the attributes of Person entity.
         \hline
         gender & String  & The gender of the person.\\
         \hline
-        birthDay & Date  & The birthday of the person .\\
+        birthDay & Date  & The birthday of the person.\\
         \hline
         email & Long String[1..*]  & The set of emails the person has.\\
         \hline
@@ -217,9 +211,9 @@ the attributes of Person entity.
 Table~\ref{table:place} shows the attributes of Place entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the place.\\
         \hline
@@ -237,9 +231,9 @@ The one they do not have is an empty string.
 Table~\ref{table:post} shows the attributes of Post entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         language & String[0..1]  & The language of the post.\\
         \hline
@@ -255,9 +249,9 @@ specify the topics of forums and posts, as well as the topics a person is
 interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the tag.\\
         \hline
@@ -273,9 +267,9 @@ a hierarchy of tags. Table~\ref{table:tagclass} shows the attributes of TagClass
 entity.
 
 \begin{table}[H]
-    \begin{tabular}{|p{\attributecolumn}|p{\typecolumn}|p{\descriptioncolumn}|}
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
         \hline
-        \textbf{Attribute} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         id & ID  & The identifier of the tagclass.\\
         \hline
@@ -293,9 +287,9 @@ and represents an institution where persons study.
 
 Relations connect entities of different types. Entities are defined by their ''id'' attribute.
 
-\begin{longtable}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{1cm}|p{7cm}|}
+\begin{longtable}{|>{\varNameCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\edgeDirectionCell}c|p{6.5cm}|}
        \hline
-        \textbf{Name} & \textbf{Tail} & \textbf{Head} & \textbf{Type} & \textbf{Description} \\
+        \tableHeaderFirst{Name} & \tableHeader{Tail} & \tableHeader{Head} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
         containerOf & Forum[1] & Post[1..*] & D & A Forum and a Post contained in it\\
         \hline
@@ -304,11 +298,9 @@ Relations connect entities of different types. Entities are defined by their ''i
         hasInterest & Person[0..*] & Tag[0..*] & D & A Person and a Tag representing a topic the person is interested in\\
         \hline
         hasMember & Forum[0..*] &  Person[1..*] & D & A  Forum and a member (Person) of the forum
-        \begin{itemize}
-            \item \textbf{Attribute}: joinDate
-            \item \textbf{Type:} DateTime
-            \item \textbf{Description:} The Date the person joined the forum
-        \end{itemize}
+
+        \attributeTable{joinDate}{DateTime}{The Date the person joined the forum}
+
         \\
         \hline
         hasModerator & Forum[0..*] & Person[1] & D & A Forum and its moderator (Person) \\
@@ -334,37 +326,29 @@ Relations connect entities of different types. Entities are defined by their ''i
         isSubclassOf & TagClass[0..*] & TagClass[0..*] & D & A TagClass its parent TagClass \\
         \hline
         knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other
-        \begin{itemize}
-            \item \textbf{Attribute}: creationDate
-            \item \textbf{Type:} DateTime
-            \item \textbf{Description:}  The date the knows relation was established
-        \end{itemize}
+
+        \attributeTable{creationDate}{DateTime}{The date the knows relation was established}
+
         \\
         \hline
         likes & Person[0..*] & Message[0..*] & D & A Person that likes a Message
-        \begin{itemize}
-            \item \textbf{Attribute}: creationDate
-            \item \textbf{Type:} DateTime
-            \item \textbf{Description:}  The date the like was issued
-        \end{itemize}
+
+		\attributeTable{creationDate}{DateTime}{The date the like was issued}
+
         \\
         \hline
         replyOf & Comment[0..*] & Message[1] & D & A Comment and the Message it replies \\
         \hline
         studyAt & Person[0..*] & University[0..*] & D & A Person and a University it has studied
-        \begin{itemize}
-            \item \textbf{Attribute}: classYear
-            \item \textbf{Type:} 32-bit Integer
-            \item \textbf{Description:} The year the person graduated.
-        \end{itemize}
+
+		\attributeTable{classYear}{32-bit Integer}{The year the person graduated}
+
         \\
         \hline
         workAt & Person[0..*] & Company[0..*] & D & A Person and a Company it works
-        \begin{itemize}
-            \item \textbf{Attribute:} workFrom
-            \item \textbf{Type:} 32-bit Integer
-            \item \textbf{Description:} The year the person started to work at that company
-        \end{itemize}
+
+		\attributeTable{workFrom}{32-bit Integer}{The year the person started to work at that company}
+
         \\
         \hline
         \caption{Description of the data relations.}
@@ -438,7 +422,7 @@ Relations connect entities of different types. Entities are defined by their ''i
 %\begin{table}[H]
 %\begin{tabular}{|p{4cm}|p{12cm}|}
 %    \hline
-%    \textbf{Resource Name} & \textbf{Description} \\
+%    \tableHeaderFirst{Resource Name} & \tableHeader{Description} \\
 %    \hline
 %    Browsers & Contains a list of web browsers and their probability to be used. It is used to set the browsers used by the users.\\
 %    \hline
@@ -614,14 +598,14 @@ cardinality larger than one, are output in a separate file. Generated files are
 summarized at Table~\ref{table:csv}.  Depending on the number of threads used
 for generating the dataset, the number of files varies, since there is a file
 generated per thread. The * in the file names indicates a number between 0 and
-$\mathit{NumberOfThreads}-1$.
+$\mathsf{NumberOfThreads}-1$.
 
 \begin{table}[htbp]
     \scriptsize
     \centering
     \begin{tabular}{|p{4.6cm}|p{9.8cm}|}
         \hline
-        \textbf{File} & \textbf{Content} \\
+        \tableHeaderFirst{File} & \tableHeader{Content} \\
         \hline
         comment\_*.csv & id | creationDate | locationIP | browserUsed | content | length \\
         \hline
@@ -702,13 +686,13 @@ connecting two entities A and B, where an entity A has a cardinality of one, A
 is output as a column of entity B. Generated files are summarized at
 Table~\ref{table:csv_merge_foreign}. Depending on the number of threads used for generating
 the dataset, the number of files varies, since there is a file generated per
-thread. The * in the file names indicates a number between 0 and $\mathit{NumberOfThreads}-1$.
+thread. The * in the file names indicates a number between 0 and $\mathsf{NumberOfThreads}-1$.
 
 \begin{table}[htbp]
     \scriptsize
     \centerline{\begin{tabular}{|p{4.3cm}|p{12.4cm}|}
         \hline
-        \textbf{File} & \textbf{Content} \\
+        \tableHeaderFirst{File} & \tableHeader{Content} \\
         \hline
         comment\_*.csv & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment \\
         \hline

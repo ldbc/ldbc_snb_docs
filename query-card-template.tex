@@ -14,7 +14,7 @@
         group by &
         \multicolumn{1}{>{\raggedright}X|}{
             {% for g in group -%}
-                \varName{ {{- g -}} }{% if not loop.last %}, {% endif %}
+                \varNameText {{ g -}} {% if not loop.last %}, {% endif %}
             {% endfor -%}
         } \\ \hline
 	{% endif %}
