@@ -203,7 +203,7 @@
     \normalLayout%
     \setlength{\voffset}{-2.15cm}%
     \thispagestyle{empty}%
-    \renewcommand{\headrulewidth}{0pt}%
+    %\renewcommand{\headrulewidth}{0pt}%
     \noindent \setlength{\unitlength}{1mm}%
     \begin{center}%
         \hspace{.5mm}
