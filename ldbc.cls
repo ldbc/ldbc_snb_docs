@@ -129,7 +129,7 @@
     %
     \setlength{\textheight}{24.5cm}%
     \setlength{\voffset}{-.7cm}%
-    \setlength{\topmargin}{-1.6cm}%
+    \setlength{\topmargin}{0cm}%
     \setlength{\headheight}{1.5cm}%
     \setlength{\headsep}{0.8cm}%
     \renewcommand{\headrulewidth}{0.2pt}%
@@ -150,11 +150,11 @@
 \newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[OL,EL]{}
-\fancyhead[OR,ER]{}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyhead[RO,LE]{\nouppercase{\rightmark}}
 \fancyfoot{}
-\fancyfoot[OL,ER]{\mainmatterheadingl}
-\fancyfoot[OR,EL]{Page \thepage{} of \pageref*{LastPage}}
+\fancyfoot[LO,RE]{\mainmatterheadingl}
+\fancyfoot[RO,LE]{Page \thepage{} of \pageref*{LastPage}}
 
 % Customizations of the book style
 
