@@ -48,4 +48,4 @@ relevance: |
   widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired
   over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join
   for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the
-  tags of the candidate’s posts to interests of self should be by hash.
+  tags of the candidate's posts to interests of self should be by hash.

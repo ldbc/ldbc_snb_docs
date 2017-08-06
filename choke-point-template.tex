@@ -2,4 +2,6 @@
 {% for query in queries -%}
     \queryRefCard{ {{- query.0 -}} }{ {{- query.1 -}} }{ {{- query.3 -}} }
 {% endfor -%}
+{# this newline is required by \raggedright to work #}
+
 }

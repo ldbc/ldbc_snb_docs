@@ -7,9 +7,9 @@ description: |
 
   Return the length of this path:
 
-  * -1 : no path found
-  * 0: start person = end person
-  * \> 0: regular case
+  * $-1$ : no path found
+  * $0$: start person = end person
+  * $> 0$: regular case
 parameters:
   - name: person1.id
     type: ID
