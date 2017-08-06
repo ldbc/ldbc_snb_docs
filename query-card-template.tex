@@ -35,17 +35,16 @@
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		{% for entry in result -%}
-			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} &
-				{%- if   entry.category == 'aggregated' -%} A
-				{%- elif entry.category == 'calculated' -%} C
-				{%- else -%} R
-				{%- endif -%} &
+			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {%  if   entry.category == 'aggregated' -%} A
+                                                                                    {%- elif entry.category == 'calculated' -%} C
+                                                                                    {%- else -%} R
+                                                                                    {%- endif %} &
 				{{ entry.description }} \\ \hline
 		{% endfor -%}
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	{% endif %}
 %
-	{% if sort -%}
+	{% if sort %}
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		{% for entry in sort -%}

@@ -31,14 +31,15 @@ which joined that particular Forum after the given date.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Forum.title & String &R&
+		$\mathsf{1}$ & Forum.title & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & count & 32-bit Integer &A&
+		$\mathsf{2}$ & count & 32-bit Integer & A &
 				number of Posts made in Forum that were created by friends \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & count & $\desc$ \\ \hline
 		$\mathsf{2}$ & Forum.id & $\asc$ \\ \hline

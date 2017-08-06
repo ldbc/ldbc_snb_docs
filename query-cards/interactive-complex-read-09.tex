@@ -29,22 +29,23 @@ consider the Messages created before a given date (excluding that date).
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Message-hasCreator->Person.id & ID &R&
+		$\mathsf{1}$ & Message-hasCreator->Person.id & ID & R &
 				 \\ \hline
-		$\mathsf{2}$ & Message-hasCreator->Person.firstName & String &R&
+		$\mathsf{2}$ & Message-hasCreator->Person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Message-hasCreator->Person.lastName & String &R&
+		$\mathsf{3}$ & Message-hasCreator->Person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & Message.id & ID &R&
+		$\mathsf{4}$ & Message.id & ID & R &
 				 \\ \hline
-		$\mathsf{5}$ & Message.content or Post.imageFile & String &R&
+		$\mathsf{5}$ & Message.content or Post.imageFile & String & R &
 				 \\ \hline
-		$\mathsf{6}$ & Message.creationDate & DateTime &R&
+		$\mathsf{6}$ & Message.creationDate & DateTime & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
 		$\mathsf{2}$ & Message.id & $\asc$ \\ \hline

@@ -29,16 +29,17 @@ Country of the Person it was written by.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageCount & 32-bit Integer &A&
+		$\mathsf{1}$ & messageCount & 32-bit Integer & A &
 				The number of messages in each group \\ \hline
-		$\mathsf{2}$ & country.name & String &R&
+		$\mathsf{2}$ & country.name & String & R &
 				The name of the destination country \\ \hline
-		$\mathsf{3}$ & month & 32-bit Integer &C&
+		$\mathsf{3}$ & month & 32-bit Integer & C &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & messageCount & $\desc$ \\ \hline
 		$\mathsf{2}$ & country.name & $\asc$ \\ \hline

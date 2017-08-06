@@ -35,18 +35,19 @@ profile to the \texttt{endDate} and also includes partial months.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer &R&
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & zombieLikeCount & 32-bit Integer &A&
+		$\mathsf{2}$ & zombieLikeCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{3}$ & realLikeCount & 32-bit Integer &A&
+		$\mathsf{3}$ & realLikeCount & 32-bit Integer & A &
 				I think this should be `totalLikeCount` -- szarnyasg \\ \hline
-		$\mathsf{4}$ & zombieScore & 32-bit Float &A&
+		$\mathsf{4}$ & zombieScore & 32-bit Float & A &
 				the ratio between the number of likes received from zombies (`zombieLikeCount`) and the total number of likes received on that person's messages (`realLikeCount`) -- only count likes received from profiles that were created before the given `endDate`. \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & zombieScore & $\desc$ \\ \hline
 		$\mathsf{2}$ & person.id & $\asc$ \\ \hline

@@ -33,26 +33,27 @@ identifier.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &R&
+		$\mathsf{1}$ & Person.id & ID & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName & String &R&
+		$\mathsf{2}$ & Person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName & String &R&
+		$\mathsf{3}$ & Person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & Like.creationDate & DateTime &R&
+		$\mathsf{4}$ & Like.creationDate & DateTime & R &
 				 \\ \hline
-		$\mathsf{5}$ & Message.id & ID &R&
+		$\mathsf{5}$ & Message.id & ID & R &
 				 \\ \hline
-		$\mathsf{6}$ & Message.content or Post.imageFile & String &R&
+		$\mathsf{6}$ & Message.content or Post.imageFile & String & R &
 				 \\ \hline
-		$\mathsf{7}$ & latency & 32-bit Integer &C&
+		$\mathsf{7}$ & latency & 32-bit Integer & C &
 				duration between creation of Message and Like, in minutes \\ \hline
-		$\mathsf{8}$ & isNew & Boolean &C&
+		$\mathsf{8}$ & isNew & Boolean & C &
 				false if liker Person is friend of start Person, true otherwise \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & Like.creationDate & $\desc$ \\ \hline
 		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline

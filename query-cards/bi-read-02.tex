@@ -59,22 +59,23 @@ Only return groups where number of messages is greater than 100.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & country.name & String &R&
+		$\mathsf{1}$ & country.name & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & messageMonth & 32-bit Integer &R&
+		$\mathsf{2}$ & messageMonth & 32-bit Integer & R &
 				1--12 \\ \hline
-		$\mathsf{3}$ & person.gender & String &R&
+		$\mathsf{3}$ & person.gender & String & R &
 				male/female \\ \hline
-		$\mathsf{4}$ & ageGroup & 32-bit Integer &C&
+		$\mathsf{4}$ & ageGroup & 32-bit Integer & C &
 				 \\ \hline
-		$\mathsf{5}$ & tag.name & String &R&
+		$\mathsf{5}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{6}$ & messageCount & 64-bit Integer &A&
+		$\mathsf{6}$ & messageCount & 64-bit Integer & A &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & messageCount & $\desc$ \\ \hline
 		$\mathsf{2}$ & tag.name & $\asc$ \\ \hline

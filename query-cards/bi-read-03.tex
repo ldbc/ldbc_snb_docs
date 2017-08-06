@@ -32,18 +32,19 @@ Tags.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & tag.name & String &R&
+		$\mathsf{1}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & countMonth1 & 32-bit Integer &A&
+		$\mathsf{2}$ & countMonth1 & 32-bit Integer & A &
 				occurrences of the tag during year-month 1 \\ \hline
-		$\mathsf{3}$ & countMonth2 & 32-bit Integer &A&
+		$\mathsf{3}$ & countMonth2 & 32-bit Integer & A &
 				occurrences of the tag during year-month 2 \\ \hline
-		$\mathsf{4}$ & diff & 32-bit Integer &A&
+		$\mathsf{4}$ & diff & 32-bit Integer & A &
 				difference between occurrences of this Tag in month 1 and month 2 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & diff & $\desc$ \\ \hline
 		$\mathsf{2}$ & tag.name & $\asc$ \\ \hline

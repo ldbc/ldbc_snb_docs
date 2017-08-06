@@ -30,20 +30,21 @@ Country, before a given date (year).
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &R&
+		$\mathsf{1}$ & Person.id & ID & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName & String &R&
+		$\mathsf{2}$ & Person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName & String &R&
+		$\mathsf{3}$ & Person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & Person-worksAt->Organization.name & String &R&
+		$\mathsf{4}$ & Person-worksAt->Organization.name & String & R &
 				 \\ \hline
-		$\mathsf{5}$ & Person-worksAt->.worksFrom & 32-bit Integer &R&
+		$\mathsf{5}$ & Person-worksAt->.worksFrom & 32-bit Integer & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & Person-worksAt->.worksFrom & $\asc$ \\ \hline
 		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline

@@ -30,24 +30,25 @@ is same as original author, return false for \texttt{knows} flag.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Message<-replyOf-Comment.id & ID &R&
+		$\mathsf{1}$ & Message<-replyOf-Comment.id & ID & R &
 				 \\ \hline
-		$\mathsf{2}$ & Message<-replyOf-Comment.content & String &R&
+		$\mathsf{2}$ & Message<-replyOf-Comment.content & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Message<-replyOf-Comment.creationDate & DateTime &R&
+		$\mathsf{3}$ & Message<-replyOf-Comment.creationDate & DateTime & R &
 				 \\ \hline
-		$\mathsf{4}$ & Comment-hasCreator->Person.id & ID &R&
+		$\mathsf{4}$ & Comment-hasCreator->Person.id & ID & R &
 				 \\ \hline
-		$\mathsf{5}$ & Comment-hasCreator->Person.firstName & String &R&
+		$\mathsf{5}$ & Comment-hasCreator->Person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{6}$ & Comment-hasCreator->Person.lastName & String &R&
+		$\mathsf{6}$ & Comment-hasCreator->Person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{7}$ & knows & Boolean &C&
+		$\mathsf{7}$ & knows & Boolean & C &
 				original message author knows reply author \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort		&
+	
+		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & Message<-replyOf-Comment.creationDate & $\desc$ \\ \hline
 		$\mathsf{2}$ & Message-hasCreator->Person.id & $\asc$ \\ \hline
