@@ -8,13 +8,17 @@ description: |
   Only consider messages with:
 
   * length below the `lengthThreshold`
-  * creationDate after `creationDate` (TODO - is after exclusive or inclusive, does it allow equality?)
+  * creationDate after `date` (exclusive, equality is not allowed)
   * any of the given `languages` (TODO - only Posts have a language, messages do not)
+
+  The language of a Comment is that of the Post that initiates the thread where Comment belongs to.
 parameters:
-  - name: creationDate
+  - name: date
     type: Date
   - name: lengthThreshold
-    type: TODO (32-bit Integer?)
+    type: 32-bit Integer
+  - name: languages
+    type: String[]
 group:
   - messageCount
 result:

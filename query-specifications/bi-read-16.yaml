@@ -8,10 +8,13 @@ description: |
 
   [DISCUSS\: edge isomorphism semantics]
 
-  For each of these Persons, retrieve all of their Messages (Posts & Comments) that contain at least one Tag belonging
-  to a given TagClass (direct relation not transitive).
+  [Proposal for this (szarnyasg)\:] In the path, an edge might be only traveled once. (Consequently, it is not possible
+  to travel an edge multiple times so that the path length reaches the minimum length.)
 
-  For each Message, also retrieve its Tags.
+  For each of these Persons, retrieve all of their Messages (Posts & Comments) that contain at least one Tag belonging
+  to a given TagClass (direct relation not transitive). For each Message, retrieve all of its Tags.
+
+  Group the results by Persons and Tags, then count the Messages by a certain Person having a certain Tag.
 parameters:
   - name: personId
     type: 64-bit Integer

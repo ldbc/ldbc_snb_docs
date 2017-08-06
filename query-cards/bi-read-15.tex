@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 15 \\ \hline
 %
-	title & Social normals \\ \hline
+	title & Social normals
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-15}\hfill\vadjust{} \\ \hline
 %
@@ -21,16 +22,22 @@ that Persons of the given country have in the given country.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & country & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & country
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & count & 32-bit Integer & A &
+		$\mathsf{2}$ & count
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -38,7 +45,9 @@ that Persons of the given country have in the given country.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & person.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & person.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

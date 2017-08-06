@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / update / 7 \\ \hline
 %
-	title & Add Comment \\ \hline
+	title & Add Comment
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-07}\hfill\vadjust{} \\ \hline
 %
@@ -19,17 +20,41 @@
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Comment.id & ID &  \\ \hline
-		$\mathsf{2}$ & Comment.creationDate & DateTime &  \\ \hline
-		$\mathsf{3}$ & Comment.locationIp & String &  \\ \hline
-		$\mathsf{4}$ & Comment.browserUsed & String &  \\ \hline
-		$\mathsf{5}$ & Comment.content & Text &  \\ \hline
-		$\mathsf{6}$ & Comment.length & 32-bit Integer &  \\ \hline
-		$\mathsf{7}$ & Comment-hasCreator->Person.id & ID &  \\ \hline
-		$\mathsf{8}$ & Comment-isLocatedIn->Country.id & ID &  \\ \hline
-		$\mathsf{9}$ & Comment-replyOf->Post.id & ID & $-1$ if the comment is a reply of a comment \\ \hline
-		$\mathsf{10}$ & Comment-replyOf->Comment.id & ID & $-1$ if the comment is a reply of a post \\ \hline
-		$\mathsf{11}$ & \{Comment-hasTag->Tag.id\} & \{ID\} &  \\ \hline
+		$\mathsf{1}$ & Comment.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & Comment.creationDate
+ & DateTime
+ &  \\ \hline
+		$\mathsf{3}$ & Comment.locationIp
+ & String
+ &  \\ \hline
+		$\mathsf{4}$ & Comment.browserUsed
+ & String
+ &  \\ \hline
+		$\mathsf{5}$ & Comment.content
+ & Text
+ &  \\ \hline
+		$\mathsf{6}$ & Comment.length
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{7}$ & Comment-hasCreator-\textgreater{}Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{8}$ & Comment-isLocatedIn-\textgreater{}Country.id
+ & ID
+ &  \\ \hline
+		$\mathsf{9}$ & Comment-replyOf-\textgreater{}Post.id
+ & ID
+ & \(-1\) if the comment is a reply of a comment
+ \\ \hline
+		$\mathsf{10}$ & Comment-replyOf-\textgreater{}Comment.id
+ & ID
+ & \(-1\) if the comment is a reply of a post
+ \\ \hline
+		$\mathsf{11}$ & \{Comment-hasTag-\textgreater{}Tag.id\}
+ & \{ID\}
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

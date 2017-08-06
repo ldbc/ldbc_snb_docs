@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / complex / 5 \\ \hline
 %
-	title & New groups \\ \hline
+	title & New groups
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-05}\hfill\vadjust{} \\ \hline
 %
@@ -23,26 +24,39 @@ which joined that particular Forum after the given date.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
-		$\mathsf{2}$ & date & Date &  \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & date
+ & Date
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Forum.title & String & R &
+		$\mathsf{1}$ & Forum.title
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & count & 32-bit Integer & A &
-				number of Posts made in Forum that were created by friends \\ \hline
+		$\mathsf{2}$ & count
+ & 32-bit Integer
+ & R &
+				number of Posts made in Forum that were created by friends
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & count & $\desc$ \\ \hline
-		$\mathsf{2}$ & Forum.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & count
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Forum.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline

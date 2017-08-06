@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 19 \\ \hline
 %
-	title & Stranger's interaction \\ \hline
+	title & Stranger's interaction
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-19}\hfill\vadjust{} \\ \hline
 %
@@ -20,12 +21,13 @@ Consider only strangers that are members of Forums tagged with tagClass1
 tagClass2 (direct children not transitive). It does not matter if these
 Tags are attached to the same Forum, or different Forums.
 
-We define interaction as follows: a Person replies to a Message (Post or
-Comment) by another Person.
+We define interaction as follows: if Person \emph{A} replies to a
+Message (Post or Comment) by another Person \emph{B}, there is a
+``interacted with'' relationship from \emph{A} to \emph{B}. Note that
+the ``interacted with'' relationship is directed.
 
-For each Person, count the number of strangers they interacted
-(directed) with and total number of times they interacted (directed)
-with them.
+For each Person, count the number of strangers they interacted with and
+total number of times they interacted with them.
  \\ \hline
 %
 	
@@ -33,20 +35,32 @@ with them.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & date & Date &  \\ \hline
-		$\mathsf{2}$ & tagClass1 & 32-bit Integer &  \\ \hline
-		$\mathsf{3}$ & tagClass2 & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & date
+ & Date
+ &  \\ \hline
+		$\mathsf{2}$ & tagClass1
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{3}$ & tagClass2
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & strangersCount & 32-bit Integer & A &
+		$\mathsf{2}$ & strangersCount
+ & 32-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & interactionCount & 32-bit Integer & A &
+		$\mathsf{3}$ & interactionCount
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -54,8 +68,12 @@ with them.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & interactionCount & $\desc$ \\ \hline
-		$\mathsf{2}$ & person.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & interactionCount
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & person.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

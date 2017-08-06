@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 7 \\ \hline
 %
-	title & Most authoritative users on a given topic \\ \hline
+	title & Most authoritative users on a given topic
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-07}\hfill\vadjust{} \\ \hline
 %
@@ -31,16 +32,22 @@ follows:
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & tag & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & tag
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person1.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person1.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & authorityScore & 32-bit Integer & A &
+		$\mathsf{2}$ & authorityScore
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -48,8 +55,12 @@ follows:
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & authorityScore & $\desc$ \\ \hline
-		$\mathsf{2}$ & person1.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & authorityScore
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & person1.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

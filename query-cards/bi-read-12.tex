@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 12 \\ \hline
 %
-	title & Trending Posts \\ \hline
+	title & Trending Posts
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-12}\hfill\vadjust{} \\ \hline
 %
@@ -20,32 +21,53 @@ given number of likes.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & creationDate & Date &  \\ \hline
-		$\mathsf{2}$ & likeThreshold & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & creationDate
+ & Date
+ &  \\ \hline
+		$\mathsf{2}$ & likeThreshold
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & message.id & 64-bit Integer & R &
+		$\mathsf{1}$ & message.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & message.creationDate & DateTime & R &
+		$\mathsf{2}$ & message.creationDate
+ & DateTime
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & creator.firstName & String & R &
-				The first name of the post's creator \\ \hline
-		$\mathsf{4}$ & creator.lastName & String & R &
-				The last name of the post's creator \\ \hline
-		$\mathsf{5}$ & likeCount & 32-bit Integer & A &
-				The number of Likes the Post received \\ \hline
+		$\mathsf{3}$ & creator.firstName
+ & String
+ & R &
+				The first name of the post's creator
+ \\ \hline
+		$\mathsf{4}$ & creator.lastName
+ & String
+ & R &
+				The last name of the post's creator
+ \\ \hline
+		$\mathsf{5}$ & likeCount
+ & 32-bit Integer
+ & R &
+				The number of Likes the Post received
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & likeCount & $\desc$ \\ \hline
-		$\mathsf{2}$ & message.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & likeCount
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & message.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

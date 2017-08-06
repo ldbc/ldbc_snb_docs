@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 1 \\ \hline
 %
-	title & Posting summary \\ \hline
+	title & Posting summary
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
 %
@@ -20,7 +21,7 @@ a 3-level grouping:
 \item
   by year of creation
 \item
-  for each year, group into message types, i.e., Posts or Comments
+  for each year, group into message types (Posts or Comments)
 \item
   for each year-type group, split into four groups based on length of
   their content
@@ -42,45 +43,78 @@ a 3-level grouping:
 	
 		group by &
 		\multicolumn{1}{>{\raggedright}X|}{
-			\varNameText year, 
-			\varNameText message type, 
+			\varNameText year
+, 
+			\varNameText message type
+, 
 			\varNameText length group
+
 			} \\ \hline
 	
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & date & Date &  \\ \hline
+		$\mathsf{1}$ & date
+ & Date
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageYear & 32-bit Integer & R &
-				year of the message \\ \hline
-		$\mathsf{2}$ & messageType & String & R &
-				post/comment (in lowercase) \\ \hline
-		$\mathsf{3}$ & lengthCategory & String & C &
-				short/one-liner/tweet/long (in lowercase) \\ \hline
-		$\mathsf{4}$ & messageCount & 32-bit Integer & A &
-				total number of Messages (Posts/Comments) in that group \\ \hline
-		$\mathsf{5}$ & averageMessageLength & 32-bit Integer & A &
-				average length of the Message content in that group \\ \hline
-		$\mathsf{6}$ & sumMessageLength & 32-bit Integer & A &
-				sum of all message content lengths \\ \hline
-		$\mathsf{7}$ & percentageOfMessages & 32-bit Float & A &
-				number of messages in group as a percentage of all messages created before the given date \\ \hline
+		$\mathsf{1}$ & messageYear
+ & 32-bit Integer
+ & R &
+				year of the message
+ \\ \hline
+		$\mathsf{2}$ & messageType
+ & String
+ & R &
+				post/comment (in lowercase)
+ \\ \hline
+		$\mathsf{3}$ & lengthCategory
+ & String
+ & R &
+				short/one-liner/tweet/long (in lowercase)
+ \\ \hline
+		$\mathsf{4}$ & messageCount
+ & 32-bit Integer
+ & R &
+				total number of Messages (Posts/Comments) in that group
+ \\ \hline
+		$\mathsf{5}$ & averageMessageLength
+ & 32-bit Integer
+ & R &
+				average length of the Message content in that group
+ \\ \hline
+		$\mathsf{6}$ & sumMessageLength
+ & 32-bit Integer
+ & R &
+				sum of all message content lengths
+ \\ \hline
+		$\mathsf{7}$ & percentageOfMessages
+ & 32-bit Float
+ & R &
+				number of messages in group as a percentage of all messages created
+before the given date
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & year & $\desc$ \\ \hline
-		$\mathsf{2}$ & message type & $\asc$ \\ \hline
-		$\mathsf{3}$ & size category & $\asc$ \\ \hline
+		$\mathsf{1}$ & year
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & message type
+ & $\asc
+$ \\ \hline
+		$\mathsf{3}$ & size category
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%

@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / complex / 2 \\ \hline
 %
-	title & Recent posts and comments by your friends \\ \hline
+	title & Recent posts and comments by your friends
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
 %
@@ -20,25 +21,41 @@ Person's friends, that were created before (and including) a given date.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
-		$\mathsf{2}$ & date & DateTime &  \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & date
+ & DateTime
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Message-hasCreator->Person.id & ID & R &
+		$\mathsf{1}$ & Message-hasCreator-\textgreater{}Person.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & Message-hasCreator->Person.firstName & String & R &
+		$\mathsf{2}$ & Message-hasCreator-\textgreater{}Person.firstName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & Message-hasCreator->Person.lastName & String & R &
+		$\mathsf{3}$ & Message-hasCreator-\textgreater{}Person.lastName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{4}$ & Message.id & ID & R &
+		$\mathsf{4}$ & Message.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & Message.content or Post.imageFile & String & R &
+		$\mathsf{5}$ & Message.content or Post.imageFile
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{6}$ & Message.creationDate & DateTime & R &
+		$\mathsf{6}$ & Message.creationDate
+ & DateTime
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -46,8 +63,12 @@ Person's friends, that were created before (and including) a given date.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
-		$\mathsf{2}$ & Message.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & Message.creationDate
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Message.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline

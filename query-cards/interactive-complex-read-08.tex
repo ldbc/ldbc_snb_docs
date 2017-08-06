@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / complex / 8 \\ \hline
 %
-	title & Recent replies \\ \hline
+	title & Recent replies
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-08}\hfill\vadjust{} \\ \hline
 %
@@ -22,24 +23,38 @@ Person that created each reply Comment.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID & R &
+		$\mathsf{1}$ & Person.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName & String & R &
+		$\mathsf{2}$ & Person.firstName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName & String & R &
+		$\mathsf{3}$ & Person.lastName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{4}$ & Comment.creationDate & DateTime & R &
+		$\mathsf{4}$ & Comment.creationDate
+ & DateTime
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & Comment.id & ID & R &
+		$\mathsf{5}$ & Comment.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{6}$ & Comment.content & String & R &
+		$\mathsf{6}$ & Comment.content
+ & String
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -47,8 +62,12 @@ Person that created each reply Comment.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & Comment.creationDate & $\desc$ \\ \hline
-		$\mathsf{2}$ & Comment.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & Comment.creationDate
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Comment.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline

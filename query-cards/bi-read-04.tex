@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 4 \\ \hline
 %
-	title & Popular topics in a country \\ \hline
+	title & Popular topics in a country
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-04}\hfill\vadjust{} \\ \hline
 %
@@ -24,23 +25,37 @@ moderator.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & tagClass & 32-bit Integer &  \\ \hline
-		$\mathsf{2}$ & country & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & tagClass
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{2}$ & country
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & forum.id & 64-bit Integer & R &
+		$\mathsf{1}$ & forum.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & forum.title & String & R &
+		$\mathsf{2}$ & forum.title
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & forum.creationDate & DateTime & R &
+		$\mathsf{3}$ & forum.creationDate
+ & DateTime
+ & R &
 				 \\ \hline
-		$\mathsf{4}$ & person.id & 64-bit Integer & R &
+		$\mathsf{4}$ & person.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & postCount & 32-bit Integer & A &
+		$\mathsf{5}$ & postCount
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -48,8 +63,12 @@ moderator.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & count & $\desc$ \\ \hline
-		$\mathsf{2}$ & forum.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & count
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & forum.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline

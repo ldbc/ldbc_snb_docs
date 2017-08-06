@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / complex / 10 \\ \hline
 %
-	title & Friend recommendation \\ \hline
+	title & Friend recommendation
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10}\hfill\vadjust{} \\ \hline
 %
@@ -35,25 +36,42 @@ Person, where similarity for any Person is defined as follows:
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
-		$\mathsf{2}$ & month & 32-bit Integer & between 1-12 \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & month
+ & 32-bit Integer
+ & between 1-12
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID & R &
+		$\mathsf{1}$ & Person.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName & String & R &
+		$\mathsf{2}$ & Person.firstName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName & String & R &
+		$\mathsf{3}$ & Person.lastName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{4}$ & similarity & 32-bit Integer & C &
+		$\mathsf{4}$ & similarity
+ & 32-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & Person.gender & String & R &
+		$\mathsf{5}$ & Person.gender
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{6}$ & Person-isLocatedIn->Place.name & String & R &
+		$\mathsf{6}$ & Person-isLocatedIn-\textgreater{}Place.name
+ & String
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -61,8 +79,12 @@ Person, where similarity for any Person is defined as follows:
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & similarity & $\desc$ \\ \hline
-		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & similarity
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Person.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 10 \\ \hline

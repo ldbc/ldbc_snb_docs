@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 2 \\ \hline
 %
-	title & Top tags for country, age, gender, time \\ \hline
+	title & Top tags for country, age, gender, time
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-02}\hfill\vadjust{} \\ \hline
 %
@@ -38,38 +39,65 @@ Only return groups where number of messages is greater than 100.
 	
 		group by &
 		\multicolumn{1}{>{\raggedright}X|}{
-			\varNameText countryName, 
-			\varNameText month, 
-			\varNameText gender, 
-			\varNameText ageGroup, 
+			\varNameText countryName
+, 
+			\varNameText month
+, 
+			\varNameText gender
+, 
+			\varNameText ageGroup
+, 
 			\varNameText tagName
+
 			} \\ \hline
 	
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & date1 & Date &  \\ \hline
-		$\mathsf{2}$ & date2 & Date &  \\ \hline
-		$\mathsf{3}$ & country1 & String &  \\ \hline
-		$\mathsf{4}$ & country2 & String &  \\ \hline
+		$\mathsf{1}$ & date1
+ & Date
+ &  \\ \hline
+		$\mathsf{2}$ & date2
+ & Date
+ &  \\ \hline
+		$\mathsf{3}$ & country1
+ & String
+ &  \\ \hline
+		$\mathsf{4}$ & country2
+ & String
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & country.name & String & R &
+		$\mathsf{1}$ & country.name
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & messageMonth & 32-bit Integer & R &
-				1--12 \\ \hline
-		$\mathsf{3}$ & person.gender & String & R &
-				male/female \\ \hline
-		$\mathsf{4}$ & ageGroup & 32-bit Integer & C &
+		$\mathsf{2}$ & messageMonth
+ & 32-bit Integer
+ & R &
+				1--12
+ \\ \hline
+		$\mathsf{3}$ & person.gender
+ & String
+ & R &
+				male/female
+ \\ \hline
+		$\mathsf{4}$ & ageGroup
+ & 32-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & tag.name & String & R &
+		$\mathsf{5}$ & tag.name
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{6}$ & messageCount & 64-bit Integer & A &
+		$\mathsf{6}$ & messageCount
+ & 64-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -77,12 +105,24 @@ Only return groups where number of messages is greater than 100.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & messageCount & $\desc$ \\ \hline
-		$\mathsf{2}$ & tag.name & $\asc$ \\ \hline
-		$\mathsf{3}$ & ageGroup & $\asc$ \\ \hline
-		$\mathsf{4}$ & person.gender & $\asc$ \\ \hline
-		$\mathsf{5}$ & messageMonth & $\asc$ \\ \hline
-		$\mathsf{6}$ & country.name & $\asc$ \\ \hline
+		$\mathsf{1}$ & messageCount
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & tag.name
+ & $\asc
+$ \\ \hline
+		$\mathsf{3}$ & ageGroup
+ & $\asc
+$ \\ \hline
+		$\mathsf{4}$ & person.gender
+ & $\asc
+$ \\ \hline
+		$\mathsf{5}$ & messageMonth
+ & $\asc
+$ \\ \hline
+		$\mathsf{6}$ & country.name
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

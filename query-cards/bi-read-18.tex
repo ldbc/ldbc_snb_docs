@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 18 \\ \hline
 %
-	title & How many persons have a given number of posts \\ \hline
+	title & How many persons have a given number of posts
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-18}\hfill\vadjust{} \\ \hline
 %
@@ -21,43 +22,61 @@ Only consider messages with:
 \item
   length below the \texttt{lengthThreshold}
 \item
-  creationDate after \texttt{creationDate} (TODO - is after exclusive or
-  inclusive, does it allow equality?)
+  creationDate after \texttt{date} (exclusive, equality is not allowed)
 \item
   any of the given \texttt{languages} (TODO - only Posts have a
   language, messages do not)
 \end{itemize}
+
+The language of a Comment is that of the Post that initiates the thread
+where Comment belongs to.
  \\ \hline
 %
 	
 		group by &
 		\multicolumn{1}{>{\raggedright}X|}{
 			\varNameText messageCount
+
 			} \\ \hline
 	
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & creationDate & Date &  \\ \hline
-		$\mathsf{2}$ & lengthThreshold & TODO (32-bit Integer?) &  \\ \hline
+		$\mathsf{1}$ & date
+ & Date
+ &  \\ \hline
+		$\mathsf{2}$ & lengthThreshold
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{3}$ & languages
+ & String{[}{]}
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageCount & 32-bit Integer & A &
-				number of messages created \\ \hline
-		$\mathsf{2}$ & personCount & 32-bit Integer & A &
-				the number of Persons with `messageCount` messages \\ \hline
+		$\mathsf{1}$ & messageCount
+ & 32-bit Integer
+ & R &
+				number of messages created
+ \\ \hline
+		$\mathsf{2}$ & personCount
+ & 32-bit Integer
+ & R &
+				the number of Persons with \texttt{messageCount} messages
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & personCount & $\desc$ \\ \hline
+		$\mathsf{1}$ & personCount
+ & $\desc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%

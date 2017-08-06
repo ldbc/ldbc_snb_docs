@@ -7,7 +7,7 @@ description: |
   and `c` is friend of `a`.
 
   Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples,
-  there is not a triple $t_2$ in $R$ such that $| t_1 \cup b | = 3$.
+  there is not a triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
   - name: country
     type: String

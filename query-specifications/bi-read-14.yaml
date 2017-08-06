@@ -3,8 +3,9 @@ operation: read
 number: 14
 title: Top thread initiators
 description: |
-  For each person, count the number Posts they created in the time interval `(begin, end)`, and the number of messages in
-  each of their (transitive) reply trees.
+  For each person, count the number of Posts they created in the time interval `[begin, end]`
+  (equivalent to the number of threads they initiated)
+  and the number of messages in  each of their (transitive) reply trees.
   When calculating message counts only consider messages created within the given time interval.
 
   Return each person, number of Posts they created, and the count of all messages that appeared in the reply trees
@@ -21,10 +22,10 @@ result:
     type: String
   - name: person.lastName
     type: String
-  - name: threadCount
+  - name: postCount
     type: 32-bit Integer
     category: aggregated
-    description: The number of threads initiated by that Person
+    description: The number of posts created by that Person (the number of threads initiated)
   - name: messageCount
     type: 32-bit Integer
     category: aggregated

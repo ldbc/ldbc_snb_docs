@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 23 \\ \hline
 %
-	title & Holiday destinations \\ \hline
+	title & Holiday destinations
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-23}\hfill\vadjust{} \\ \hline
 %
@@ -22,18 +23,28 @@ Country of the Person it was written by.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & country & String &  \\ \hline
+		$\mathsf{1}$ & country
+ & String
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageCount & 32-bit Integer & A &
-				The number of messages in each group \\ \hline
-		$\mathsf{2}$ & country.name & String & R &
-				The name of the destination country \\ \hline
-		$\mathsf{3}$ & month & 32-bit Integer & C &
+		$\mathsf{1}$ & messageCount
+ & 32-bit Integer
+ & R &
+				The number of messages in each group
+ \\ \hline
+		$\mathsf{2}$ & country.name
+ & String
+ & R &
+				The name of the destination country
+ \\ \hline
+		$\mathsf{3}$ & month
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -41,9 +52,15 @@ Country of the Person it was written by.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & messageCount & $\desc$ \\ \hline
-		$\mathsf{2}$ & country.name & $\asc$ \\ \hline
-		$\mathsf{3}$ & month & $\asc$ \\ \hline
+		$\mathsf{1}$ & messageCount
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & country.name
+ & $\asc
+$ \\ \hline
+		$\mathsf{3}$ & month
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

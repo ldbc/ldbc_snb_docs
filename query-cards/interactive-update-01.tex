@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / update / 1 \\ \hline
 %
-	title & Add Person \\ \hline
+	title & Add Person
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-01}\hfill\vadjust{} \\ \hline
 %
@@ -19,20 +20,50 @@
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
-		$\mathsf{2}$ & Person.firstName & String &  \\ \hline
-		$\mathsf{3}$ & Person.lastName & String &  \\ \hline
-		$\mathsf{4}$ & Person.gender & String &  \\ \hline
-		$\mathsf{5}$ & Person.birthDay & Date &  \\ \hline
-		$\mathsf{6}$ & Person.creationDate & DateTime &  \\ \hline
-		$\mathsf{7}$ & Person.locationIp & String &  \\ \hline
-		$\mathsf{8}$ & Person.browserUsed & String &  \\ \hline
-		$\mathsf{9}$ & Person-isLocatedIn->City.id & ID &  \\ \hline
-		$\mathsf{10}$ & Person.speaks & \{String\} &  \\ \hline
-		$\mathsf{11}$ & Person.email & \{String\} &  \\ \hline
-		$\mathsf{12}$ & Person-hasInterest->Tag.id & \{ID\} &  \\ \hline
-		$\mathsf{13}$ & \{Person-studyAt->University.id, Person-studyAt->.classYear\} & \{ID, 32-bit Integer\} &  \\ \hline
-		$\mathsf{14}$ & \{Person-workAt->Company.id, Person-workAt->.workFrom\} & \{ID, 32-bit Integer\} &  \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & Person.firstName
+ & String
+ &  \\ \hline
+		$\mathsf{3}$ & Person.lastName
+ & String
+ &  \\ \hline
+		$\mathsf{4}$ & Person.gender
+ & String
+ &  \\ \hline
+		$\mathsf{5}$ & Person.birthDay
+ & Date
+ &  \\ \hline
+		$\mathsf{6}$ & Person.creationDate
+ & DateTime
+ &  \\ \hline
+		$\mathsf{7}$ & Person.locationIp
+ & String
+ &  \\ \hline
+		$\mathsf{8}$ & Person.browserUsed
+ & String
+ &  \\ \hline
+		$\mathsf{9}$ & Person-isLocatedIn-\textgreater{}City.id
+ & ID
+ &  \\ \hline
+		$\mathsf{10}$ & Person.speaks
+ & \{String\}
+ &  \\ \hline
+		$\mathsf{11}$ & Person.email
+ & \{String\}
+ &  \\ \hline
+		$\mathsf{12}$ & Person-hasInterest-\textgreater{}Tag.id
+ & \{ID\}
+ &  \\ \hline
+		$\mathsf{13}$ & \{Person-studyAt-\textgreater{}University.id,
+Person-studyAt-\textgreater{}.classYear\}
+ & \{ID, 32-bit Integer\}
+ &  \\ \hline
+		$\mathsf{14}$ & \{Person-workAt-\textgreater{}Company.id,
+Person-workAt-\textgreater{}.workFrom\}
+ & \{ID, 32-bit Integer\}
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

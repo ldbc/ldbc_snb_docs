@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 3 \\ \hline
 %
-	title & Tag evolution \\ \hline
+	title & Tag evolution
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-03}\hfill\vadjust{} \\ \hline
 %
@@ -24,30 +25,49 @@ Tags.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & year & 32-bit Integer &  \\ \hline
-		$\mathsf{2}$ & month & 32-bit Integer &  \\ \hline
+		$\mathsf{1}$ & year
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{2}$ & month
+ & 32-bit Integer
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & tag.name & String & R &
+		$\mathsf{1}$ & tag.name
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & countMonth1 & 32-bit Integer & A &
-				occurrences of the tag during year-month 1 \\ \hline
-		$\mathsf{3}$ & countMonth2 & 32-bit Integer & A &
-				occurrences of the tag during year-month 2 \\ \hline
-		$\mathsf{4}$ & diff & 32-bit Integer & A &
-				difference between occurrences of this Tag in month 1 and month 2 \\ \hline
+		$\mathsf{2}$ & countMonth1
+ & 32-bit Integer
+ & R &
+				occurrences of the tag during year-month 1
+ \\ \hline
+		$\mathsf{3}$ & countMonth2
+ & 32-bit Integer
+ & R &
+				occurrences of the tag during year-month 2
+ \\ \hline
+		$\mathsf{4}$ & diff
+ & 32-bit Integer
+ & R &
+				difference between occurrences of this Tag in month 1 and month 2
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & diff & $\desc$ \\ \hline
-		$\mathsf{2}$ & tag.name & $\asc$ \\ \hline
+		$\mathsf{1}$ & diff
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & tag.name
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

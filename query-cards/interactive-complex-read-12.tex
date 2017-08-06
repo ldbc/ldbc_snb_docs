@@ -7,7 +7,8 @@
 	\hline
 	query & Interactive / complex / 12 \\ \hline
 %
-	title & Expert search \\ \hline
+	title & Expert search
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-12}\hfill\vadjust{} \\ \hline
 %
@@ -27,32 +28,51 @@ Tags.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID &  \\ \hline
-		$\mathsf{2}$ & TagClass.name & String &  \\ \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & TagClass.name
+ & String
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id & ID & R &
+		$\mathsf{1}$ & Person.id
+ & ID
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName & String & R &
+		$\mathsf{2}$ & Person.firstName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName & String & R &
+		$\mathsf{3}$ & Person.lastName
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{4}$ & \{Tag.name\} & \{String\} & R &
+		$\mathsf{4}$ & \{Tag.name\}
+ & \{String\}
+ & R &
 				 \\ \hline
-		$\mathsf{5}$ & count & 32-bit Integer & A &
-				number of reply Comments \\ \hline
+		$\mathsf{5}$ & count
+ & 32-bit Integer
+ & R &
+				number of reply Comments
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & count & $\desc$ \\ \hline
-		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & count
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Person.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline

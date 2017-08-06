@@ -7,14 +7,15 @@
 	\hline
 	query & BI / read / 10 \\ \hline
 %
-	title & Central Person for a Tag \\ \hline
+	title & Central Person for a Tag
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-10}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a Tag, find all Persons that are either interested in the Tag, or
 have written a Message (Post or Comment) with creation date after a
 given date and that has a given Tag. For each Person, compute the score
-as the sum of the following two aspects:
+(\texttt{score}) as the sum of the following two aspects:
 
 \begin{itemize}
 \tightlist
@@ -23,6 +24,9 @@ as the sum of the following two aspects:
 \item
   number of messages by this person with the given tag
 \end{itemize}
+
+Also, for each Person, compute the sum of the score of the Person's
+friends (\texttt{friendsScore}).
  \\ \hline
 %
 	
@@ -30,28 +34,43 @@ as the sum of the following two aspects:
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & tag & 32-bit Integer &  \\ \hline
-		$\mathsf{2}$ & date & Date &  \\ \hline
+		$\mathsf{1}$ & tag
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{2}$ & date
+ & Date
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & score & 32-bit Integer & A &
+		$\mathsf{2}$ & score
+ & 32-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & friendsScore & 32-bit Integer & A &
-				The sum of the score of the Person's friends \\ \hline
+		$\mathsf{3}$ & friendsScore
+ & 32-bit Integer
+ & R &
+				The sum of the score of the Person's friends
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & score + friendsScore & $\desc$ \\ \hline
-		$\mathsf{2}$ & person.id & $\asc$ \\ \hline
+		$\mathsf{1}$ & score + friendsScore
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & person.id
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline

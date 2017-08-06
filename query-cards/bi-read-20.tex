@@ -7,7 +7,8 @@
 	\hline
 	query & BI / read / 20 \\ \hline
 %
-	title & High-level topics \\ \hline
+	title & High-level topics
+ \\ \hline
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-20}\hfill\vadjust{} \\ \hline
 %
@@ -21,16 +22,23 @@ a transitive relation).
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & tagClasses & String[] &  \\ \hline
+		$\mathsf{1}$ & tagClasses
+ & String{[}{]}
+ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & tagClass.name & String & R &
-				the TagClass of the root \\ \hline
-		$\mathsf{2}$ & postCount & 32-bit Integer & A &
+		$\mathsf{1}$ & tagClass.name
+ & String
+ & R &
+				the TagClass of the root
+ \\ \hline
+		$\mathsf{2}$ & postCount
+ & 32-bit Integer
+ & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -38,8 +46,12 @@ a transitive relation).
 	
 		sort		&
 		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & postCount & $\desc$ \\ \hline
-		$\mathsf{2}$ & tagClass.name & $\asc$ \\ \hline
+		$\mathsf{1}$ & postCount
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & tagClass.name
+ & $\asc
+$ \\ \hline
 		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
