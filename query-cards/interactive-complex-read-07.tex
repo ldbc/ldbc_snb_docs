@@ -9,7 +9,7 @@
 %
 	title & Recent likers \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find (most recent) Likes on any of start Person's
 Messages. Find Persons that Liked any of start Person's Messages, the
@@ -23,53 +23,53 @@ identifier.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& 64-bit Integer &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & 64-bit Integer &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{2}$ & Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Person.lastName & String &R&
-                 \\ \hline
-        $\mathsf{4}$ & Like.creationDate & DateTime &R&
-                 \\ \hline
-        $\mathsf{5}$ & Message.id & ID &R&
-                 \\ \hline
-        $\mathsf{6}$ & Message.content or Post.imageFile & String &R&
-                 \\ \hline
-        $\mathsf{7}$ & latency & 32-bit Integer &C&
-                duration between creation of Message and Like, in minutes \\ \hline
-        $\mathsf{8}$ & isNew & Boolean &C&
-                false if liker Person is friend of start Person, true otherwise \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{2}$ & Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Person.lastName & String &R&
+				 \\ \hline
+		$\mathsf{4}$ & Like.creationDate & DateTime &R&
+				 \\ \hline
+		$\mathsf{5}$ & Message.id & ID &R&
+				 \\ \hline
+		$\mathsf{6}$ & Message.content or Post.imageFile & String &R&
+				 \\ \hline
+		$\mathsf{7}$ & latency & 32-bit Integer &C&
+				duration between creation of Message and Like, in minutes \\ \hline
+		$\mathsf{8}$ & isNew & Boolean &C&
+				false if liker Person is friend of start Person, true otherwise \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & Like.creationDate & $\desc$ \\ \hline
-        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & Like.creationDate & $\desc$ \\ \hline
+		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{2.2}, 
-	    \chokePoint{2.3}, 
-	    \chokePoint{3.3}, 
-	    \chokePoint{5.1}
-	    } \\ \hline
+		\chokePoint{2.2}, 
+		\chokePoint{2.3}, 
+		\chokePoint{3.3}, 
+		\chokePoint{5.1}
+		} \\ \hline
 	%
-    relevance &
-        \small This query looks for paths of length two, starting from a given Person, moving
+	relevance &
+		\small This query looks for paths of length two, starting from a given Person, moving
 to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
 both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
 the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection

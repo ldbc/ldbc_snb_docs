@@ -9,7 +9,7 @@
 %
 	title & Single shortest path \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-13}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-13}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given two Persons, find the shortest path between these two Persons in
 the subgraph induced by the Knows relationships.
@@ -29,33 +29,33 @@ Return the length of this path:
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &person1.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &person2.id& ID &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & person1.id & ID &  \\ \hline
+		$\mathsf{2}$ & person2.id & ID &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & length & 32-bit Integer &C&
-                 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & length & 32-bit Integer &C&
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{3.3}, 
-	    \chokePoint{7.2}, 
-	    \chokePoint{7.3}
-	    } \\ \hline
+		\chokePoint{3.3}, 
+		\chokePoint{7.2}, 
+		\chokePoint{7.3}
+		} \\ \hline
 	%
-    relevance &
-        \small This query looks for a variable length path, starting at a given Person and finishing at an another given Person.
+	relevance &
+		\small This query looks for a variable length path, starting at a given Person and finishing at an another given Person.
 Proper cardinality estimation and search space prunning, will be crucial. This query also allows for possible parallel
 implementations.
  \\ \hline%

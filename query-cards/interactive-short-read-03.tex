@@ -9,7 +9,7 @@
 %
 	title & Person Friends \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-03}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-03}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, retrieve all of their friends, and the date at
 which they became friends.
@@ -17,35 +17,35 @@ which they became friends.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{2}$ & Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Person.lastName & String &R&
-                 \\ \hline
-        $\mathsf{4}$ & Knows.creationDate & DateTime &R&
-                 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{2}$ & Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Person.lastName & String &R&
+				 \\ \hline
+		$\mathsf{4}$ & Knows.creationDate & DateTime &R&
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & Knows.creationDate & $\desc$ \\ \hline
-        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & Knows.creationDate & $\desc$ \\ \hline
+		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	%
-    %
+	%
 \end{tabularx}
 \queryCardVSpace

@@ -9,7 +9,7 @@
 %
 	title & Central Person for a Tag \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-10}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-10}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a Tag, find all Persons that are either interested in the Tag, or
 have written a Message (Post or Comment) with creation date after a
@@ -27,42 +27,42 @@ as the sum of the following two aspects:
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &tag& 32-bit Integer &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &date& Date &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & tag & 32-bit Integer &  \\ \hline
+		$\mathsf{2}$ & date & Date &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & person.id & 64-bit Integer &R&
-                 \\ \hline
-        $\mathsf{2}$ & score & 32-bit Integer &A&
-                 \\ \hline
-        $\mathsf{3}$ & friendsScore & 32-bit Integer &A&
-                The sum of the score of the Person's friends \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & person.id & 64-bit Integer &R&
+				 \\ \hline
+		$\mathsf{2}$ & score & 32-bit Integer &A&
+				 \\ \hline
+		$\mathsf{3}$ & friendsScore & 32-bit Integer &A&
+				The sum of the score of the Person's friends \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & score + friendsScore & $\desc$ \\ \hline
-        $\mathsf{2}$ & person.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & score + friendsScore & $\desc$ \\ \hline
+		$\mathsf{2}$ & person.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{1.2}, 
-	    \chokePoint{2.1}, 
-	    \chokePoint{2.3}, 
-	    \chokePoint{3.2}
-	    } \\ \hline
+		\chokePoint{1.2}, 
+		\chokePoint{2.1}, 
+		\chokePoint{2.3}, 
+		\chokePoint{3.2}
+		} \\ \hline
 	%
-    %
+	%
 \end{tabularx}
 \queryCardVSpace

@@ -9,7 +9,7 @@
 %
 	title & Tag co-occurrence \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-06}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-06}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person and some Tag, find the other Tags that occur
 together with this Tag on Posts that were created by start Person's
@@ -20,39 +20,39 @@ contain both this Tag and the given Tag.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Tag.name& String &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		$\mathsf{2}$ & Tag.name & String &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Tag.name & String &R&
-                 \\ \hline
-        $\mathsf{2}$ & count & 32-bit Integer &A&
-                number of Posts that were created by friends and friends of friends, which contain this Tag \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Tag.name & String &R&
+				 \\ \hline
+		$\mathsf{2}$ & count & 32-bit Integer &A&
+				number of Posts that were created by friends and friends of friends, which contain this Tag \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & count & $\desc$ \\ \hline
-        $\mathsf{2}$ & Tag.name & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & count & $\desc$ \\ \hline
+		$\mathsf{2}$ & Tag.name & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 10 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{5.1}
-	    } \\ \hline
+		\chokePoint{5.1}
+		} \\ \hline
 	%
-    relevance &
-        \small This query looks for paths of lengths three or four, starting from a Given Person, moving to friends or friends of
+	relevance &
+		\small This query looks for paths of lengths three or four, starting from a Given Person, moving to friends or friends of
 friends, then to Posts and finally ending at a given Tag.
  \\ \hline%
 \end{tabularx}

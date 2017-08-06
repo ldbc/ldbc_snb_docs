@@ -9,7 +9,7 @@
 %
 	title & Friend recommendation \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find that Person's friends of friends (excluding
 start Person, and immediate friends), who were born on or after the 21st
@@ -32,54 +32,54 @@ Person, where similarity for any Person is defined as follows:
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &month& 32-bit Integer & between 1-12 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		$\mathsf{2}$ & month & 32-bit Integer & between 1-12 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{2}$ & Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Person.lastName & String &R&
-                 \\ \hline
-        $\mathsf{4}$ & similarity & 32-bit Integer &C&
-                 \\ \hline
-        $\mathsf{5}$ & Person.gender & String &R&
-                 \\ \hline
-        $\mathsf{6}$ & Person-isLocatedIn->Place.name & String &R&
-                 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{2}$ & Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Person.lastName & String &R&
+				 \\ \hline
+		$\mathsf{4}$ & similarity & 32-bit Integer &C&
+				 \\ \hline
+		$\mathsf{5}$ & Person.gender & String &R&
+				 \\ \hline
+		$\mathsf{6}$ & Person-isLocatedIn->Place.name & String &R&
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & similarity & $\desc$ \\ \hline
-        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & similarity & $\desc$ \\ \hline
+		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 10 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{2.3}, 
-	    \chokePoint{3.3}, 
-	    \chokePoint{4.1}, 
-	    \chokePoint{4.2}, 
-	    \chokePoint{5.1}, 
-	    \chokePoint{5.2}, 
-	    \chokePoint{6.1}, 
-	    \chokePoint{7.1}
-	    } \\ \hline
+		\chokePoint{2.3}, 
+		\chokePoint{3.3}, 
+		\chokePoint{4.1}, 
+		\chokePoint{4.2}, 
+		\chokePoint{5.1}, 
+		\chokePoint{5.2}, 
+		\chokePoint{6.1}, 
+		\chokePoint{7.1}
+		} \\ \hline
 	%
-    relevance &
-        \small This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does
+	relevance &
+		\small This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does
 widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired
 over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join
 for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the

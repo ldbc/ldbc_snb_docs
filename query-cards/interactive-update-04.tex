@@ -9,22 +9,22 @@
 %
 	title & Add Forum \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-04}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-04}\hfill\vadjust{} \\ \hline
 %
 	desc. & Add a Forum to the social network.
  \\ \hline
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Forum.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &Forum.title& String &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{3}$ &Forum.creationDate& DateTime &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{4}$ &Forum-hasModerator->Person.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{5}$ &Forum-hasTag->Tag.id& \{ID\} &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Forum.id & ID &  \\ \hline
+		$\mathsf{2}$ & Forum.title & String &  \\ \hline
+		$\mathsf{3}$ & Forum.creationDate & DateTime &  \\ \hline
+		$\mathsf{4}$ & Forum-hasModerator->Person.id & ID &  \\ \hline
+		$\mathsf{5}$ & Forum-hasTag->Tag.id & \{ID\} &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
@@ -32,6 +32,6 @@
 	%
 	%
 	%
-    %
+	%
 \end{tabularx}
 \queryCardVSpace

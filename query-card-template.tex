@@ -9,68 +9,68 @@
 %
 	title & {{ title }} \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/{{ query_id -}} }\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/{{ query_id -}} }\hfill\vadjust{} \\ \hline
 %
 	desc. & {{ description }} \\ \hline
 %
 	{% if group %}
-        group by &
-        \multicolumn{1}{>{\raggedright}X|}{
-            {% for g in group -%}
-                \varNameText {{ g -}} {% if not loop.last %}, {% endif %}
-            {% endfor -%}
-        } \\ \hline
+		group by &
+		\multicolumn{1}{>{\raggedright}X|}{
+			{% for g in group -%}
+				\varNameText {{ g -}} {% if not loop.last %}, {% endif %}
+			{% endfor -%}
+		} \\ \hline
 	{% endif %}
 %
-    {% if parameters %}
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        {% for entry in parameters -%}
-            \cellcolor{parameter} \color{white} \footnotesize $\mathsf{ {{- loop.index -}} }$ & {{- entry.name -}} & {{ entry.type }} & {{ entry.description }} \\ \hline
-        {% endfor -%}
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	{% if parameters %}
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		{% for entry in parameters -%}
+			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {{ entry.description }} \\ \hline
+		{% endfor -%}
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	{% endif %}
 %
 	{% if result %}
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        {% for entry in result -%}
-            $\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} &
-                {%- if   entry.category == 'aggregated' -%} A
-                {%- elif entry.category == 'calculated' -%} C
-                {%- else -%} R
-                {%- endif -%} &
-                {{ entry.description }} \\ \hline
-        {% endfor -%}
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		{% for entry in result -%}
+			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} &
+				{%- if   entry.category == 'aggregated' -%} A
+				{%- elif entry.category == 'calculated' -%} C
+				{%- else -%} R
+				{%- endif -%} &
+				{{ entry.description }} \\ \hline
+		{% endfor -%}
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	{% endif %}
 %
 	{% if sort -%}
-        sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        {% for entry in sort -%}
-            $\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & $\{{ entry.direction }}$ \\ \hline
-        {% endfor -%}
-        \end{tabular}}\innerCardVSpace \\ \hline
+		sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		{% for entry in sort -%}
+			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & $\{{ entry.direction }}$ \\ \hline
+		{% endfor -%}
+		\end{tabular}}\innerCardVSpace \\ \hline
 	{% endif -%}
 %
 	{% if limit -%}
-	    limit & {{ limit }} \\ \hline
+		limit & {{ limit }} \\ \hline
 	{% endif -%}
 %
 	{% if choke_points -%}
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    {% for choke_point in choke_points -%}
-	        \chokePoint{ {{- choke_point -}} } {%- if not loop.last %}, {% endif %}
-	    {% endfor -%}
+		{% for choke_point in choke_points -%}
+			\chokePoint{ {{- choke_point -}} } {%- if not loop.last %}, {% endif %}
+		{% endfor -%}
 	} \\ \hline
 	{% endif -%}
 %
-    {% if relevance -%}
-    relevance &
-        \small {{ relevance }} \\ \hline
-    {%- endif -%}
+	{% if relevance -%}
+	relevance &
+		\small {{ relevance }} \\ \hline
+	{%- endif -%}
 %
 \end{tabularx}
 \queryCardVSpace

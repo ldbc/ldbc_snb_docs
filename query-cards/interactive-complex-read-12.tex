@@ -9,7 +9,7 @@
 %
 	title & Expert search \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-12}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-12}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find the Comments that this Person's friends made
 in reply to Posts, considering only those Comments that are immediate
@@ -24,48 +24,48 @@ Tags.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &TagClass.name& String &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		$\mathsf{2}$ & TagClass.name & String &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{2}$ & Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Person.lastName & String &R&
-                 \\ \hline
-        $\mathsf{4}$ & \{Tag.name\} & \{String\} &R&
-                 \\ \hline
-        $\mathsf{5}$ & count & 32-bit Integer &A&
-                number of reply Comments \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{2}$ & Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Person.lastName & String &R&
+				 \\ \hline
+		$\mathsf{4}$ & \{Tag.name\} & \{String\} &R&
+				 \\ \hline
+		$\mathsf{5}$ & count & 32-bit Integer &A&
+				number of reply Comments \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & count & $\desc$ \\ \hline
-        $\mathsf{2}$ & Person.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & count & $\desc$ \\ \hline
+		$\mathsf{2}$ & Person.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{1.5}, 
-	    \chokePoint{3.3}, 
-	    \chokePoint{7.2}, 
-	    \chokePoint{7.3}
-	    } \\ \hline
+		\chokePoint{1.5}, 
+		\chokePoint{3.3}, 
+		\chokePoint{7.2}, 
+		\chokePoint{7.3}
+		} \\ \hline
 	%
-    relevance &
-        \small This query looks for paths of length three, starting at a Person, moving to its friends, the to their Comments and
+	relevance &
+		\small This query looks for paths of length three, starting at a Person, moving to its friends, the to their Comments and
 ending at the Post the Comments are replying. The chain from original post to the reply is transitive. The traversal
 may be initiated at either end, the system may note that this is a tree, hence leaf to root is always best. Additionally,
 a hash table can be built from either end, e.g. from the friends of self, from the tags in the category, from the or

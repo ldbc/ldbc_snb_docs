@@ -9,7 +9,7 @@
 %
 	title & Recent posts and comments by your friends \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-02}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, find (most recent) Messages from all of that
 Person's friends, that were created before (and including) a given date.
@@ -17,50 +17,50 @@ Person's friends, that were created before (and including) a given date.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{2}$ &date& DateTime &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		$\mathsf{2}$ & date & DateTime &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Message-hasCreator->Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{2}$ & Message-hasCreator->Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Message-hasCreator->Person.lastName & String &R&
-                 \\ \hline
-        $\mathsf{4}$ & Message.id & ID &R&
-                 \\ \hline
-        $\mathsf{5}$ & Message.content or Post.imageFile & String &R&
-                 \\ \hline
-        $\mathsf{6}$ & Message.creationDate & DateTime &R&
-                 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Message-hasCreator->Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{2}$ & Message-hasCreator->Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Message-hasCreator->Person.lastName & String &R&
+				 \\ \hline
+		$\mathsf{4}$ & Message.id & ID &R&
+				 \\ \hline
+		$\mathsf{5}$ & Message.content or Post.imageFile & String &R&
+				 \\ \hline
+		$\mathsf{6}$ & Message.creationDate & DateTime &R&
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
-        $\mathsf{2}$ & Message.id & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
+		$\mathsf{2}$ & Message.id & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 20 \\ \hline
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{1.1}, 
-	    \chokePoint{2.2}, 
-	    \chokePoint{2.3}, 
-	    \chokePoint{3.2}
-	    } \\ \hline
+		\chokePoint{1.1}, 
+		\chokePoint{2.2}, 
+		\chokePoint{2.3}, 
+		\chokePoint{3.2}
+		} \\ \hline
 	%
-    relevance &
-        \small This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
+	relevance &
+		\small This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
 from them, moving to their published Posts and Comments. This query exercices both the optimizer and how data is
 stored. It tests the ability to create execution plans taking advantage of the orderings induced by some operators to
 avoid performing expensive sorts. This query requires selecting Posts and Comments based on their creation date,

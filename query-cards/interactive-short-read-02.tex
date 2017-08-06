@@ -9,7 +9,7 @@
 %
 	title & Person Recent Messages \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-02}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-02}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a start Person, retrieve the last 10 Messages created by that
 user. For each message, return that message, the original post in its
@@ -20,41 +20,41 @@ will appear twice in that result.
 %
 	
 %
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &Person.id& ID &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id & ID &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & Message.id & 64-bit Integer &R&
-                 \\ \hline
-        $\mathsf{2}$ & Message.content or Post.imageFile & String &R&
-                 \\ \hline
-        $\mathsf{3}$ & Message.creationDate & DateTime &R&
-                 \\ \hline
-        $\mathsf{4}$ & Post.id or Comment-replyOf*->Post.id & ID &R&
-                 \\ \hline
-        $\mathsf{5}$ & Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id & ID &R&
-                 \\ \hline
-        $\mathsf{6}$ & Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName & String &R&
-                 \\ \hline
-        $\mathsf{7}$ & Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName & String &R&
-                 \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Message.id & 64-bit Integer &R&
+				 \\ \hline
+		$\mathsf{2}$ & Message.content or Post.imageFile & String &R&
+				 \\ \hline
+		$\mathsf{3}$ & Message.creationDate & DateTime &R&
+				 \\ \hline
+		$\mathsf{4}$ & Post.id or Comment-replyOf*->Post.id & ID &R&
+				 \\ \hline
+		$\mathsf{5}$ & Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id & ID &R&
+				 \\ \hline
+		$\mathsf{6}$ & Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName & String &R&
+				 \\ \hline
+		$\mathsf{7}$ & Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName & String &R&
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
-        $\mathsf{2}$ & Message.id & $\desc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & Message.creationDate & $\desc$ \\ \hline
+		$\mathsf{2}$ & Message.id & $\desc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	%
-    %
+	%
 \end{tabularx}
 \queryCardVSpace

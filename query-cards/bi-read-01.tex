@@ -9,7 +9,7 @@
 %
 	title & Posting summary \\ \hline
 %
-    pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given a date, find all Messages created before that date. Group them by
 a 3-level grouping:
@@ -40,56 +40,56 @@ a 3-level grouping:
  \\ \hline
 %
 	
-        group by &
-        \multicolumn{1}{>{\raggedright}X|}{
-            \varNameText year, 
-            \varNameText message type, 
-            \varNameText length group
-            } \\ \hline
-	
-%
-    
-        params &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-        \cellcolor{parameter} \color{white} \footnotesize $\mathsf{1}$ &date& Date &  \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		group by &
+		\multicolumn{1}{>{\raggedright}X|}{
+			\varNameText year, 
+			\varNameText message type, 
+			\varNameText length group
+			} \\ \hline
 	
 %
 	
-        result &
-        \innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-        $\mathsf{1}$ & messageYear & 32-bit Integer &R&
-                year of the message \\ \hline
-        $\mathsf{2}$ & messageType & String &R&
-                post/comment (in lowercase) \\ \hline
-        $\mathsf{3}$ & lengthCategory & String &C&
-                short/one-liner/tweet/long (in lowercase) \\ \hline
-        $\mathsf{4}$ & messageCount & 32-bit Integer &A&
-                total number of Messages (Posts/Comments) in that group \\ \hline
-        $\mathsf{5}$ & averageMessageLength & 32-bit Integer &A&
-                average length of the Message content in that group \\ \hline
-        $\mathsf{6}$ & sumMessageLength & 32-bit Integer &A&
-                sum of all message content lengths \\ \hline
-        $\mathsf{7}$ & percentageOfMessages & 32-bit Float &A&
-                number of messages in group as a percentage of all messages created before the given date \\ \hline
-        \end{tabularx}}\innerCardVSpace \\ \hline
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & date & Date &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
-	sort        &
-        \innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-        $\mathsf{1}$ & year & $\desc$ \\ \hline
-        $\mathsf{2}$ & message type & $\asc$ \\ \hline
-        $\mathsf{3}$ & size category & $\asc$ \\ \hline
-        \end{tabular}}\innerCardVSpace \\ \hline
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & messageYear & 32-bit Integer &R&
+				year of the message \\ \hline
+		$\mathsf{2}$ & messageType & String &R&
+				post/comment (in lowercase) \\ \hline
+		$\mathsf{3}$ & lengthCategory & String &C&
+				short/one-liner/tweet/long (in lowercase) \\ \hline
+		$\mathsf{4}$ & messageCount & 32-bit Integer &A&
+				total number of Messages (Posts/Comments) in that group \\ \hline
+		$\mathsf{5}$ & averageMessageLength & 32-bit Integer &A&
+				average length of the Message content in that group \\ \hline
+		$\mathsf{6}$ & sumMessageLength & 32-bit Integer &A&
+				sum of all message content lengths \\ \hline
+		$\mathsf{7}$ & percentageOfMessages & 32-bit Float &A&
+				number of messages in group as a percentage of all messages created before the given date \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & year & $\desc$ \\ \hline
+		$\mathsf{2}$ & message type & $\asc$ \\ \hline
+		$\mathsf{3}$ & size category & $\asc$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &
 	\multicolumn{1}{>{\raggedright}l|}{
-	    \chokePoint{1.2}, 
-	    \chokePoint{3.2}, 
-	    \chokePoint{4.1}
-	    } \\ \hline
+		\chokePoint{1.2}, 
+		\chokePoint{3.2}, 
+		\chokePoint{4.1}
+		} \\ \hline
 	%
-    %
+	%
 \end{tabularx}
 \queryCardVSpace
