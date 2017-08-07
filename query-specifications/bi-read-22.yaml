@@ -16,7 +16,7 @@ description: |
   * `p1` liked at least one Post or Comment by `p2`\: `Score = 10`
   * `p1` has created at least one Post or Comment that was liked by `p2`\: `Score = 1`
 
-  I.e., the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
+  Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
 parameters:
   - name: countryX
     type: String
