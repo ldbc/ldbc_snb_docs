@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\begin{tabular}{|l||
+    {%- for choke_point in choke_points -%}
+        c|
+    {%- endfor -%}
+} \hline
+\multicolumn{1}{|c|}{query} {% for choke_point in choke_points -%}
+    & \chokePoint{ {{- choke_point -}} }
+{% endfor %} \\ \hline\hline
+
+{% for query in queries -%}
+    {# only list queries that have at least on choke point #}
+    {% if query_choke_point[query.0] %}
+        \queryRefCard{ {{- query.0 -}} }{ {{- query.1 -}} }{ {{- query.3 -}} }
+        {% for choke_point in choke_points -%}
+            & {% if choke_point in query_choke_point[query.0] %} \ldbcYes {% else %} {% endif %}
+        {% endfor %} \\ \hline
+    {% endif %}
+{% endfor %}
+\end{tabular}
+\caption{Choke point X query}
+\label{tab:query_choke_point}
+\end{table}

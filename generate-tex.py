@@ -31,15 +31,20 @@ def convert_map_list_to_tex(list_of_maps):
     if list_of_maps is not None:
         return [convert_map_values_to_tex(e) for e in list_of_maps]
 
+##### query cards
 
-with open('query-card-template.tex', 'r') as f:
+with open('templates/query-card-template.tex', 'r') as f:
     query_card_template = Template(f.read())
 
-choke_point_references = defaultdict(list)
+all_choke_points = set()
+all_queries = set()
+query_choke_point = defaultdict(list)      # queries -> cps
+choke_point_references = defaultdict(list) # cps -> queries
 
 for filename in glob.glob("query-specifications/*.yaml"):
     print("Processing query specification: %s" % filename)
     query_id = splitext(basename(filename))[0]
+
     with open(filename, 'r') as f:
         doc = yaml.load(f)
 
@@ -49,9 +54,15 @@ for filename in glob.glob("query-specifications/*.yaml"):
     description_markdown = doc['description']
     operation = doc['operation']
 
+    query_tuple = (query_id, workload, operation, number)
+    all_queries.add(query_tuple)
+
     choke_points = doc.get('choke_points', [])
     for choke_point in choke_points:
-        choke_point_references[choke_point].append((query_id, workload, operation, number))
+        choke_point_references[choke_point].append(query_tuple)
+        all_choke_points.add(choke_point)
+
+    query_choke_point[query_id] = choke_points
 
     # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
     # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
@@ -77,7 +88,9 @@ for filename in glob.glob("query-specifications/*.yaml"):
     with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:
         query_card_file.write(query_card_text)
 
-with open('choke-point-template.tex', 'r') as f:
+##### choke points
+
+with open('templates/choke-point-template.tex', 'r') as f:
     choke_point_template = Template(f.read())
 
 for choke_point in choke_point_references:
@@ -91,3 +104,21 @@ for choke_point in choke_point_references:
 
     with open("query-cards/cp-%s.tex" % choke_point_filename, 'w') as choke_point_file:
         choke_point_file.write(choke_point_text)
+
+##### table for choke points and queries
+
+with open('templates/choke-points-queries.tex', 'r') as f:
+    choke_points_queries_template = Template(f.read())
+
+all_queries_sorted = sorted(all_queries, key=lambda tup: tup[0])
+all_choke_points_sorted = sorted(all_choke_points)
+
+choke_points_queries_text = choke_points_queries_template.render(
+    choke_point_references = choke_point_references,
+    query_choke_point = query_choke_point,
+    queries = all_queries_sorted,
+    choke_points = all_choke_points_sorted,
+)
+
+with open("query-cards/choke-points-queries.tex", 'w') as choke_points_queries_template:
+    choke_points_queries_template.write(choke_points_queries_text)
