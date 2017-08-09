@@ -31,9 +31,6 @@ sort:
   - name: Message.id
     direction: asc
 limit: 20
-#wiki
-wiki_choke_points: []
-#doc
 choke_points: [1.1, 1.2, 2.2, 2.3, 3.2, 3.3]
 relevance: |
   This query looks for paths of length two or three, starting from a given Person, moving to its friends and friends of

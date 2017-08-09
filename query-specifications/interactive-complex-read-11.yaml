@@ -32,9 +32,6 @@ sort:
   - name: Person-worksAt->Organization.name
     direction: desc
 limit: 10
-#wiki
-wiki_choke_points: [2.7]
-#doc
 choke_points: [1.4, 2.3, 2.4, 3.3]
 relevance: |
   This query looks for paths of length two or three, starting from a Person, moving to friends or friends of friends,

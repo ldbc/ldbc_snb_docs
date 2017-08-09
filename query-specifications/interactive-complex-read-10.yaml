@@ -39,9 +39,6 @@ sort:
   - name: Person.id
     direction: asc
 limit: 10
-#wiki
-wiki_choke_points: [2.6, 2.7, 4.2, 5, 6.3, 7.1]
-#doc
 choke_points: [2.3, 3.3, 4.1, 4.2, 5.1, 5.2, 6.1, 7.1]
 relevance: |
   This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does

@@ -28,9 +28,6 @@ sort:
   - name: Tag.name
     direction: asc
 limit: 10
-#wiki
-wiki_choke_points: [2.7]
-#doc
 choke_points: [2.3]
 relevance: |
   This query looks for paths of length two, starting from a given Person, moving to Posts and then to Tags. It tests

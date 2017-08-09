@@ -31,9 +31,6 @@ sort:
   - name: weight
     direction: desc
     description: The order of paths with the same weight is unspecified
-#wiki
-wiki_choke_points: []
-#doc
 choke_points: [3.3, 7.2, 7.3]
 relevance: |
   This query looks for a variable length path, starting at a given Person and finishing at an another given Person. This

@@ -41,9 +41,6 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-#wiki
-wiki_choke_points: []
-#doc
 choke_points: [2.2, 2.3, 3.3, 5.1]
 relevance: |
   This query looks for paths of length two, starting from a given Person, moving

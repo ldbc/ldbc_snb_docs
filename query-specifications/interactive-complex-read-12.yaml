@@ -36,9 +36,6 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-#wiki
-wiki_choke_points: [7.2, 7.3]
-#doc
 choke_points: [1.5, 3.3, 7.2, 7.3]
 relevance: |
   This query looks for paths of length three, starting at a Person, moving to its friends, the to their Comments and
