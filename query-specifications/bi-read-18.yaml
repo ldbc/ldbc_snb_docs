@@ -9,7 +9,7 @@ description: |
 
   * length below the `lengthThreshold`
   * creationDate after `date` (exclusive, equality is not allowed)
-  * any of the given `languages` (TODO - only Posts have a language, messages do not)
+  * any of the given `languages`
 
   The language of a Comment is that of the Post that initiates the thread where Comment belongs to.
 parameters:
