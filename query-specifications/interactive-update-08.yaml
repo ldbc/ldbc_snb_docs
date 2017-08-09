@@ -6,9 +6,9 @@ description: Add a friendship relation to the social network
 parameters:
   - name: Person.id
     type: ID
-    description: person 1
+    description: Person 1
   - name: Person.id
     type: ID
-    description: person 2
+    description: Person 2
   - name: Person-knows->.creationDate
     type: DateTime

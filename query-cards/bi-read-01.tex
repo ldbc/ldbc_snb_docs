@@ -55,37 +55,38 @@ a 3-level grouping:
 		$\mathsf{1}$ & messageYear
  & 32-bit Integer
  & R &
-				year of the message
+				Year of the message
  \\ \hline
 		$\mathsf{2}$ & messageType
  & String
  & R &
-				post/comment (in lowercase)
+				\texttt{post}/\texttt{comment} (in lowercase)
  \\ \hline
 		$\mathsf{3}$ & lengthCategory
  & String
  & R &
-				short/one-liner/tweet/long (in lowercase)
+				\texttt{short}/\texttt{one-liner}/\texttt{tweet}/\texttt{long} (in
+lowercase)
  \\ \hline
 		$\mathsf{4}$ & messageCount
  & 32-bit Integer
  & R &
-				total number of Messages (Posts/Comments) in that group
+				Total number of Messages (Posts/Comments) in that group
  \\ \hline
 		$\mathsf{5}$ & averageMessageLength
  & 32-bit Integer
  & R &
-				average length of the Message content in that group
+				Average length of the Message content in that group
  \\ \hline
 		$\mathsf{6}$ & sumMessageLength
  & 32-bit Integer
  & R &
-				sum of all message content lengths
+				Sum of all message content lengths
  \\ \hline
 		$\mathsf{7}$ & percentageOfMessages
  & 32-bit Float
  & R &
-				number of messages in group as a percentage of all messages created
+				Number of messages in group as a percentage of all messages created
 before the given date
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline

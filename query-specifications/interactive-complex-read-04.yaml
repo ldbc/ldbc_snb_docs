@@ -14,14 +14,14 @@ parameters:
     type: Date
   - name: duration
     type: 32-bit Integer
-    description: duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
+    description: Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
 result:
   - name: Tag.name
     type: String
   - name: count
     type: 32-bit Integer
     category: aggregated
-    description: number of Posts made within the given time interval that have this Tag
+    description: Number of Posts made within the given time interval that have this Tag
 sort:
   - name: count
     direction: desc

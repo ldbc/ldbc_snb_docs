@@ -31,7 +31,7 @@ result:
     description: 1--12
   - name: person.gender
     type: String
-    description: male/female
+    description: "`male`/`female`"
   - name: ageGroup
     type: 32-bit Integer
     category: calculated
@@ -40,6 +40,7 @@ result:
   - name: messageCount
     type: 64-bit Integer
     category: aggregated
+    description: The number of messages in the group
 sort:
   - name: messageCount
     direction: desc
