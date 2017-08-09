@@ -11,9 +11,6 @@ parameters:
     type: 32-bit Integer
   - name: blacklist
     type: String[]
-group:
-  - person.id
-  - tag.name
 result:
   - name: person.id
     type: 64-bit Integer

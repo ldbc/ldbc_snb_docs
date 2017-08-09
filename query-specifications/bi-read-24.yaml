@@ -9,10 +9,6 @@ description: |
 parameters:
   - name: tagClass
     type: String
-group:
-  - year
-  - month
-  - continent.name
 result:
   - name: messageCount
     type: 32-bit Integer

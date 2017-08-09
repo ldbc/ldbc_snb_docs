@@ -13,15 +13,6 @@
 %
 	desc. & {{ description }} \\ \hline
 %
-	{% if group %}
-		group by &
-		\multicolumn{1}{>{\raggedright}X|}{
-			{% for g in group -%}
-				\varNameText {{ g -}} {% if not loop.last %}, {% endif %}
-			{% endfor -%}
-		} \\ \hline
-	{% endif %}
-%
 	{% if parameters %}
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline

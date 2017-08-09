@@ -10,11 +10,6 @@ description: |
 parameters:
   - name: country
     type: 32-bit Integer
-group:
-  - person.id
-  - person.firstName
-  - person.lastName
-  - person.creationDate
 result:
   - name: person.id
     type: 64-bit Integer

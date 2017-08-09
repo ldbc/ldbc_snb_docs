@@ -26,9 +26,6 @@ parameters:
     type: 32-bit Integer
   - name: maxPathDistance
     type: 32-bit Integer
-group:
-  - tag.name
-  - person.id
 result:
   - name: person.id
     type: 64-bit Integer

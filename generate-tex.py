@@ -76,7 +76,6 @@ for filename in glob.glob("query-specifications/*.yaml"):
         query_id      = query_id,
         title         = convert_markdown_to_tex(doc['title']),
         description   = description_tex,
-        group         = convert_list_entries_to_tex(doc.get('group')),
         parameters    = convert_map_list_to_tex(doc.get('parameters')),
         result        = convert_map_list_to_tex(doc.get('result')),
         sort          = convert_map_list_to_tex(doc.get('sort')),
