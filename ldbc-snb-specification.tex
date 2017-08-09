@@ -39,16 +39,22 @@
 \newcommand{\datagen}{DATAGEN\xspace}
 \newcommand{\ldbcsnb}{LDBC SNB\xspace}
 
-\input{query-card-definitions}
-\input{listings}
-
 % tt font 
 \usepackage[scale=0.85,ttdefault=true]{AnonymousPro}
 
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
-\newcommand{\yes}{\color{green}\ding{51}\color{black}}
-\newcommand{\no}{\color{red}\ding{55}\color{black}}
+%\newcommand{\cmark}{\ding{51}}%
+%\newcommand{\xmark}{\ding{55}}%
+%\newcommand{\yes}{\color{green}\ding{51}\color{black}}
+%\newcommand{\no}{\color{red}\ding{55}\color{black}}
+
+\newcommand{\yes}{\CIRCLE\xspace}
+\newcommand{\somewhat}{\LEFTcircle\xspace}
+\newcommand{\no}{\Circle\xspace}
+
+\input{query-card-definitions}
+\input{listings}
+
+
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
 %\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}

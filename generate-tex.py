@@ -57,7 +57,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
     query_tuple = (query_id, workload, operation, number)
     all_queries.add(query_tuple)
 
-    choke_points = doc.get('choke_points', [])
+    choke_points = list(map(lambda e: str(e), doc.get('choke_points', [])))
     for choke_point in choke_points:
         choke_point_references[choke_point].append(query_tuple)
         all_choke_points.add(choke_point)
@@ -93,7 +93,7 @@ with open('templates/choke-point-template.tex', 'r') as f:
     choke_point_template = Template(f.read())
 
 for choke_point in choke_point_references:
-    choke_point_filename = str(choke_point).replace('.', '-')
+    choke_point_filename = choke_point.replace('.', '-')
 
     queries = choke_point_references[choke_point]
     queries_sorted = sorted(queries, key=lambda tup: tup[0])

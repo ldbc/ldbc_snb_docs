@@ -1,22 +1,24 @@
 \begin{table}[htbp]
-\begin{tabular}{|l||
+\begin{tabular}{|l|
     {%- for choke_point in choke_points -%}
-        c|
+        {% if choke_points[loop.index0 - 1][0] != choke_points[loop.index0][0] %}|{% endif %}c|
     {%- endfor -%}
 } \hline
-\multicolumn{1}{|c||}{} {% for choke_point in choke_points -%}
+{% for choke_point in choke_points -%}
     & \chokePoint{ {{- choke_point -}} }
-{% endfor %} \\ \hline\hline
+{% endfor %} \\ \hline
 
-{% for query in queries -%}
-    {# only list queries that have at least on choke point #}
-    {% if query_choke_point[query.0] %}
+{%- for query in queries -%}
+    {#- only list queries that have at least on choke point -#}
+    {%- if query_choke_point[query.0] -%}
+        {%- if queries[loop.index0 - 1].0[0] != queries[loop.index0].0[0] %}\hline{% endif %}
         \queryRefCard{ {{- query.0 -}} }{ {{- query.1 -}} }{ {{- query.3 -}} }
         {% for choke_point in choke_points -%}
-            & {% if choke_point in query_choke_point[query.0] %} \ldbcYes {% else %} {% endif %}
+            & {% if choke_point in query_choke_point[query.0] %} \yes {% else %} {% endif %}
         {% endfor %} \\ \hline
-    {% endif %}
-{% endfor %}
+    {%- endif -%}
+{% endfor -%}
+
 \end{tabular}
 \caption{Choke point X query}
 \label{tab:query_choke_point}
