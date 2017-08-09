@@ -1,15 +1,52 @@
+\chapter{Benchmark Specification}
+\label{section:benchmark-specification}
+
+\section{Requirements}
+
+\ldbcsnb is designed to be flexible and to have an affordable entry point.
+From small single node and in memory systems to large distributed multi-node
+clusters have its own place in \ldbcsnb.  Therefore, the requirements to
+fulfill for executing \ldbcsnb are limited to pure software requirements to be
+able to run the tools. All the software provided by \ldbcsnb have been
+developed and tested under Linux-based operating systems.
+
+\ldbcsnb does not impose the usage of any specific type of system, as it
+targets systems of different nature and characteristics, from graph databases,
+graph processing frameworks and RDF systems, to traditional relational database
+management systems. Consequently, any language or API capable of expressing the
+proposed queries can be used. Similarly, data can be stored in the most
+convenient manner the test sponsor may decide.
+
+%, as long as it conforms with the
+%execution rules. Finally, in order to have an official benchmark execution, the
+%results will have to be audited and all the required information disclosed.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Data}\label{section:data}
+\section{Software and Useful Links}
+
+\begin{itemize}
+	\item \textbf{LDBC Driver 0.3 -- \url{https://github.com/ldbc/ldbc_driver}}: The driver
+	responsible for executing the \ldbcsnb workload.
+	\item \textbf{\datagen 0.2.5 -- \url{https://github.com/ldbc/ldbc_snb_datagen}}: The data
+	generator used to generate the datasets of the benchmark.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data}
+\label{section:data}
 
 This section introduces the data used by \ldbcsnb. This includes the different
 data types, the data schema, how it is generated and the different scale
 factors.
 
 \subsection{Data Types}
-Table~\ref{table:types} describes the different types used in the whole benchmark.
+\autoref{table:types} describes the different types used in the whole benchmark.
 
 \begin{table}[h]
 \centering
@@ -45,7 +82,7 @@ Table~\ref{table:types} describes the different types used in the whole benchmar
 
 \subsection{Data Schema}
 
-Figure~\ref{figure:schema} shows the data schema in UML. The schema defines the
+\autoref{figure:schema} shows the data schema in UML. The schema defines the
 structure of the data used in the benchmark in terms of entities and their
 relations. Data represents a snapshot of the activity of a social network
 during a period of time. Data includes entities such as Persons, Organizations,
@@ -58,7 +95,7 @@ represented as tags.
 \ldbcsnb has been designed to be flexible and to target systems of different
 nature and characteristics. As such, it does not force any particular internal
 representation of the schema. The \datagen component
-% described in Section~\ref{section:data_generation}
+% described in \autoref{section:data_generation}
 supports multiple output data formats to
 fit the needs of different types of systems, including RDF, relational DBMS and
 graph DBMS.
@@ -108,7 +145,7 @@ post messages. Forums are characterized by the topics (represented as tags)
 people in the forum are talking about. Although from the schema's perspective
 it is not evident, there exist three different types of
 forums: persons' personal walls, image albums, and groups. They are
-distinguished by their titles. Table~\ref{table:forum} shows the attributes
+distinguished by their titles. \autoref{table:forum} shows the attributes
 of Forum entity.
 
 \begin{table}[H]
@@ -128,7 +165,7 @@ of Forum entity.
 \end{table}
 
 {\flushleft \textbf{Message:}} an abstract entity that represents a message
-created by a person. Table~\ref{table:message} shows the attributes of Message
+created by a person. \autoref{table:message} shows the attributes of Message
 abstract entity.
 
 \begin{table}[H]
@@ -154,7 +191,7 @@ abstract entity.
 \end{table}
 
 {\flushleft \textbf{Organization:}} an institution of the real
-world. Table~\ref{table:organization} shows the attributes of Organization
+world. \autoref{table:organization} shows the attributes of Organization
 entity.
 
 \begin{table}[H]
@@ -173,7 +210,7 @@ entity.
 
 {\flushleft \textbf{Person:}} the avatar a real world person creates
 when he/she joins the network, and contains various information about the
-person as well as network related information. Table~\ref{table:person} shows
+person as well as network related information. \autoref{table:person} shows
 the attributes of Person entity.
 
 \begin{table}[H]
@@ -208,7 +245,7 @@ the attributes of Person entity.
 
 
 {\flushleft \textbf{Place:}} a place in the world.
-Table~\ref{table:place} shows the attributes of Place entity.
+\autoref{table:place} shows the attributes of Place entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -228,7 +265,7 @@ Table~\ref{table:place} shows the attributes of Place entity.
 forum. Posts are created by persons into the forums where they belong.
 Posts contain either content or imageFile, always one of them but never both.
 The one they do not have is an empty string.
-Table~\ref{table:post} shows the attributes of Post entity.
+\autoref{table:post} shows the attributes of Post entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -246,7 +283,7 @@ Table~\ref{table:post} shows the attributes of Post entity.
 
 {\flushleft \textbf{Tag:}} a topic or a concept. Tags are used to
 specify the topics of forums and posts, as well as the topics a person is
-interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
+interested in. \autoref{table:tag} shows the attributes of Tag entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -263,7 +300,7 @@ interested in. Table~\ref{table:tag} shows the attributes of Tag entity.
 \end{table}
 
 {\flushleft \textbf{TagClass:}} a class or a category used to build
-a hierarchy of tags. Table~\ref{table:tagclass} shows the attributes of TagClass
+a hierarchy of tags. \autoref{table:tagclass} shows the attributes of TagClass
 entity.
 
 \begin{table}[H]
@@ -355,7 +392,8 @@ Relations connect entities of different types. Entities are defined by their ''i
         \label{table:relations}
 \end{longtable}
 
-%\subsection{Data Generation}\label{section:data_generation}
+%\subsection{Data Generation}
+%\label{section:data_generation}
 %
 %\ldbcsnb provides \datagen (Data Base Generator), which produces synthetic
 %datasets following the schema described above. Data
@@ -417,7 +455,7 @@ Relations connect entities of different types. Entities are defined by their ''i
 %produced by function $R$ over the full dictionary of names.  \datagen uses a
 %dictionary for each literal property, as well as ranking functions for all
 %literal properties. These are materialized in a set of resource files, which
-%are described in Table~\ref{table:property_dictionaries}.
+%are described in \autoref{table:property_dictionaries}.
 %
 %\begin{table}[H]
 %\begin{tabular}{|p{4cm}|p{12cm}|}
@@ -463,7 +501,7 @@ Relations connect entities of different types. Entities are defined by their ''i
 %
 %\subsubsection{Graph Generation}
 %
-%Figure~\ref{figure:generation_process} conceptually depicts the full data
+%\autoref{figure:generation_process} conceptually depicts the full data
 %generation process. The first step loads all the dictionaries and resource
 %files, and initializes the \datagen parameters.  Second, it generates all the
 %Persons in the graph, and the minimum necessary information to operate. Part of
@@ -595,7 +633,7 @@ Three different formats are supported by \datagen:
 
 This is a comma separated format. Each entity, relation and properties with a
 cardinality larger than one, are output in a separate file. Generated files are
-summarized at Table~\ref{table:csv}.  Depending on the number of threads used
+summarized at \autoref{table:csv}.  Depending on the number of threads used
 for generating the dataset, the number of files varies, since there is a file
 generated per thread. The * in the file names indicates a number between 0 and
 $\mathsf{NumberOfThreads}-1$.
@@ -684,7 +722,7 @@ $\mathsf{NumberOfThreads}-1$.
 This is a comma separated format. It is similar to CSV, but those relations
 connecting two entities A and B, where an entity A has a cardinality of one, A
 is output as a column of entity B. Generated files are summarized at
-Table~\ref{table:csv_merge_foreign}. Depending on the number of threads used for generating
+\autoref{table:csv_merge_foreign}. Depending on the number of threads used for generating
 the dataset, the number of files varies, since there is a file generated per
 thread. The * in the file names indicates a number between 0 and $\mathsf{NumberOfThreads}-1$.
 
@@ -751,6 +789,10 @@ This is the standard Turtle\footnote{Description of
 the Turtle RDF format http://www.w3.org/TR/turtle/} format. \datagen outputs
 two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_socialnet.ttl}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Scale Factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different
@@ -759,13 +801,13 @@ the generated output files using the CSV serializer. For example, SF 1 weights r
 format, SF 3 weights roughly 3~GB and so on and so forth.  The proposed SFs are
 the following: 1, 3, 10, 30, 100, 300, 1000. The Test Sponsor may select the SF
 that better fits their needs, by properly configuring the \datagen.
-% , as described in Section~\ref{section:data_generation}.
+% , as described in \autoref{section:data_generation}.
 
 The size of the resulting dataset, is mainly affected by the following
 configuration parameters: the number of persons and the number of years
 simulated. Different SFs are computed by scaling the number of Persons in
 the network, while fixing the number of years simulated.
-Table~\ref{tab:snsize} shows the parameters used in each of the SFs.
+\autoref{tab:snsize} shows the parameters used in each of the SFs.
 
 \begin{table}[H]
 \centering
@@ -784,10 +826,5 @@ Table~\ref{tab:snsize} shows the parameters used in each of the SFs.
 For example, SF 30 consists of the activity of a social network of 182K users
 during a period of three years, starting from 2010.
 
-%In
-%Appendix~\ref{appendix:scale_factors}, we show the statistics of each of the
+%In \autoref{appendix:scale_factors}, we show the statistics of each of the
 %proposed SFs in detail, including distributions for some of the relations.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -32,10 +32,9 @@ key-value pairs (name of the parameter and its value). For example, the Query 1
 parameter bindings are stored in file \texttt{query\_1\_param.txt}, and one of
 its lines may look like this:
 
-\vspace{-6mm}
-$$
-\{\text{"PersonID"}: 1, \text{"Name"}: \text{"Lei"}, \text{"PersonURI"}: \text{"http://www.ldbc.eu/ldbc\_socialnet/1.0/data/pers1"}\}
-$$
+\begin{lstlisting}
+{"PersonID": 1, "Name": "Lei", "PersonURI": "http://www.ldbc.eu/ldbc_socialnet/1.0/data/pers1"}
+\end{lstlisting}
 
 Depending on implementation, the SUT may refer to persons either by IDs
 (relational and graph databases) or URIs (RDF systems), so we provide both

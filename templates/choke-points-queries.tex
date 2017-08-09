@@ -4,7 +4,7 @@
         c|
     {%- endfor -%}
 } \hline
-\multicolumn{1}{|c|}{query} {% for choke_point in choke_points -%}
+\multicolumn{1}{|c||}{} {% for choke_point in choke_points -%}
     & \chokePoint{ {{- choke_point -}} }
 {% endfor %} \\ \hline\hline
 

@@ -1,6 +1,10 @@
 \chapter{Workloads}
 \label{section:workloads}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Query Description Format}
 \label{sub:queries_structure}
 Queries are described in natural language using a well-defined structure that consists of three sections:
@@ -16,12 +20,12 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
     \item \textbf{Relationship}: relationship type in the dataset.\\
         One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
         and surrounded by arrow to communicate direction,
-        \eg \texttt{-worksAt->} represents a directed relationship of type ``worksAt''.
+        \eg \mbox{\texttt{-worksAt->}} represents a directed relationship of type ``worksAt''.
     \item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
         One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
         and prefixed by a ``.'' to dereference the entity/relationship,
         \eg \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity,
-        and \texttt{-studyAt->.classYear} refers to ``classYear'' attribute on the ``studyAt'' relationship.
+        and \mbox{\texttt{-studyAt->.classYear}} refers to ``classYear'' attribute on the ``studyAt'' relationship.
     \item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
         Surrounded by \{ and \} braces, with the element type between them,
         \eg \texttt{\{String\}} refers to a set of strings.
@@ -44,7 +48,9 @@ Results are categorized according to their source of origin:
 	\item aggregated (\texttt{A}), if the result is an aggregated value, e.g. a count or a sum of another value. If a result is both calculated and aggregated (e.g. \texttt{count(x) + count(y)} or \texttt{avg(x + y)}), it is considered an aggregated result.
 \end{itemize}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Graph Patterns}
 
@@ -67,13 +73,27 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 
 \newcommand{\tuple}[1]{\langle #1 \rangle}
 
-\paragraph{Keywords.} The notation uses a small set of keywords: \textsf{UNWIND} that unnest a list, \ie produces a set of one-tuples (\eg UNWIND $ [1, 2, 3] $ results in $ \{ \tuple{1}, \tuple{2}, \tuple{3} \} $). Aggregation operations: \textsf{count}, \textsf{sf}z
+\paragraph{Keywords.} The notation uses a small set of keywords:
+
+\begin{itemize}
+	\item \textsf{UNWIND} unnests a list, \ie produces a set of one-tuples. For example, UNWIND $ [1, 2, 3] $ results in $ \{ \tuple{1}, \tuple{2}, \tuple{3} \} $)
+	\item Aggregation operations: \lstinline{count}, \lstinline{average}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
+	\item Functions: \lstinline{floor}, \lstinline{year} (extracts the year from a given date), \lstinline{month} (extracts the month from a given date).
+\end{itemize}
 
 \paragraph{Resolving ambiguity.} Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Substitution Parameters}
 
 \input{substitution-parameters}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Load Definition}
 

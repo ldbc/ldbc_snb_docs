@@ -1,6 +1,13 @@
+\chapter{Auditing Rules}
+\label{section:auditing-rules}
+
 This chapter describes the rules to audit benchmark runs, that is, what
 techniques are allowed and what are not, what must be provided to the auditor
 and guidelines for the auditors to perform the audit.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Preparation}
 
@@ -77,7 +84,7 @@ driver parameter must come from the \verb|updateStream.properties|
 file, which is created by the data generator. That parameter should never be set manually.
 Also, make sure that the \verb|-rl/--results_log| is enabled.  Make sure that
 all operations are enabled and the frequencies are those for the selected scale
-factor. These can found in Appendix~\ref{appendix:scale_factors}.  If the driver
+factor. These can found in \autoref{appendix:scale_factors}.  If the driver
 will be executed on a separate machine, gather the characteristics of that
 machine in the same way as specified above.
 \end{itemize}
@@ -93,6 +100,10 @@ must be loaded.  The test sponsor must provide a tool to perform arbitrary
 checks of the data or a shell to issue queries in a declarative language if the
 system supports it. The auditor will measure the time to load the data, which
 will be disclosed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Running the Benchmark}
 
@@ -121,6 +132,10 @@ files from directory specified by \verb|-rd/--results_dir| which includes
 configuration settings used, results log, results summary, which will be
 disclosed.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Recovery}
 
 Once an official run has been validated, the recovery capabilities of the
@@ -137,6 +152,9 @@ recover from the failure. Also, all the information about how durability is
 ensured must be disclosed. If checkpoints are used, these must be performed
 with a period of 10 minutes at most.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Serializability}
 

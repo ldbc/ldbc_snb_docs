@@ -40,9 +40,10 @@
 \newcommand{\ldbcsnb}{LDBC SNB\xspace}
 
 \input{query-card-definitions}
+\input{listings}
 
 % tt font 
-\usepackage[scale=0.95,ttdefault=true]{AnonymousPro}
+\usepackage[scale=0.85,ttdefault=true]{AnonymousPro}
 
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -115,11 +116,9 @@
 \chapter*{Definitions}
 \input{defs}
 
-\chapter{Introduction}
 \input{introduction}
 
-\chapter{Benchmark Specification}
-\input{definition}
+\input{benchmark-specification}
 
 \input{workloads}
 
@@ -127,14 +126,8 @@
 
 \input{bi}
 
-%\input{metrics}
-%\input{execution}
-%\input{disclosure}
-
-\chapter{Auditing Rules}\label{chapter:auditing}
 \input{auditing}
 
-\chapter{Related Work}
 \input{related-work}
 
 \bibliographystyle{abbrv}
@@ -145,7 +138,7 @@
 \chapter{Choke Points}
 %\input{interactive-choke-points}
 
-\input{bi-choke-points}
+\input{choke-points}
 
 \chapter{Scale Factor Statistics}
 \input{sf-statistics}
