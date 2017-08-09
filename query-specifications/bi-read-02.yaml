@@ -13,7 +13,7 @@ description: |
   4. age group of person, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down,
   5. name of tag attached to message.
 
-  Only return groups where number of messages is greater than 100.
+  Consider only those groups where number of messages is greater than 100.
 parameters:
   - name: date1
     type: Date
