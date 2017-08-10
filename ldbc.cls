@@ -207,8 +207,7 @@
     \noindent \setlength{\unitlength}{1mm}%
     \begin{center}%
         \hspace{.5mm}
-        \includegraphics[height=2.8cm]{figures/ldbc-logo} \hfill
-       % \includegraphics[height=3.0cm]{figures/fp7-logo}\hspace*{6mm} \vspace{0.5cm} \\%
+        \includegraphics[height=7cm]{figures/ldbc-logo.eps} \hfill
     \end{center}%
     {\vspace{1.8cm}%
 %        \begin{center}%
