@@ -28,10 +28,7 @@ result:
     description: Number of Posts with at least one tag belonging to tagClass2
     category: aggregated
 sort:
-  # TODO double-check this
-  - name: count2
-    direction: desc
-  - name: count1
+  - name: "|count2 - count1|"
     direction: desc
   - name: forum.id
     direction: asc
