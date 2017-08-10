@@ -48,11 +48,23 @@ Results are categorized according to their source of origin:
 	\item aggregated (\texttt{A}), if the result is an aggregated value, e.g. a count or a sum of another value. If a result is both calculated and aggregated (e.g. \texttt{count(x) + count(y)} or \texttt{avg(x + y)}), it is considered an aggregated result.
 \end{itemize}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Graph Patterns}
+\section{Query Definitions}
+
+\subsection{Notation}
+
+\paragraph{Intervals.} Closed interval boundaries are denoted with \texttt{[} and \texttt{]}, while open interval boundaries are denoted with \texttt{(} and \texttt{)}. For example, \texttt{[0, 1)} denoted an interval between 0 and 1, closed on the left and open on the right.
+
+\subsection{Morphisms}
+
+\todo{Discuss \emph{homomorphism} \vs \emph{isomorphism}}
+
+\subsection{Graph Patterns}
 
 To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-pattern} with the following notation:
 
@@ -80,8 +92,6 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\item Aggregation operations: \lstinline{count}, \lstinline{average}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
 	\item Functions: \lstinline{floor}, \lstinline{year} (extracts the year from a given date), \lstinline{month} (extracts the month from a given date).
 \end{itemize}
-
-\paragraph{Intervals.} Closed interval boundaries are denoted with \texttt{[} and \texttt{]}, while open interval boundaries are denoted with \texttt{(} and \texttt{)}. For example, \texttt{[0, 1)} denoted an interval between 0 and 1, closed on the left and open on the right.
 
 \paragraph{Resolving ambiguity.} Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.
 
