@@ -26,6 +26,7 @@
 \usepackage{cellspace}
 \usepackage{rotate}
 \usepackage{wasysym}
+\usepackage{xifthen}
 
 \setlist[]{noitemsep, topsep=5pt}
 
@@ -42,19 +43,12 @@
 % tt font 
 \usepackage[scale=0.85,ttdefault=true]{AnonymousPro}
 
-%\newcommand{\cmark}{\ding{51}}%
-%\newcommand{\xmark}{\ding{55}}%
-%\newcommand{\yes}{\color{green}\ding{51}\color{black}}
-%\newcommand{\no}{\color{red}\ding{55}\color{black}}
-
 \newcommand{\yes}{\CIRCLE\xspace}
 \newcommand{\somewhat}{\LEFTcircle\xspace}
 \newcommand{\no}{\Circle\xspace}
 
 \input{query-card-definitions}
 \input{listings}
-
-
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
 %\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
@@ -98,11 +92,6 @@
 % 0 for ``draft'', 1 for ``project approved'', 2 for ``further revisions''
 % such as when the EC rejected version 1
 
-% uncomment the following for final version
-%\final
-
-%\rhead{\includegraphics[width=0.2\linewidth]{./figures/ldbc-logo.png}}
-
 \sloppy
 
 \setcounter{secnumdepth}{2}
@@ -142,11 +131,11 @@
 \appendix
 
 \chapter{Choke Points}
-%\input{interactive-choke-points}
 
 \input{choke-points}
 
 \chapter{Scale Factor Statistics}
+
 \input{sf-statistics}
 
 \end{document}
