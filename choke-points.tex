@@ -1,3 +1,11 @@
+\newcommand{\tpcCard}[1]{\colorbox{lightgray}{\tt TPC-H #1}}
+\newcommand{\cpSection}[4][]{%
+	\subsection*{%
+		CP-#2: [#3] #4%
+		\ifthenelse{\equal{#1}{}}{}{\hfill \tpcCard{#1}}%
+	}%
+	\label{choke_point_#2}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,14 +26,6 @@ Choke points X queries are displayed in \autoref{tab:query_choke_point}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Aggregation Performance}
-
-\newcommand{\tpcCard}[1]{\colorbox{lightgray}{\tt TPC-H #1}}
-\newcommand{\cpSection}[4][]{%
-	\subsection*{%
-		CP-#2: [#3] #4%
-		\ifthenelse{\equal{#1}{}}{}{\hfill \tpcCard{#1}}%
-	}%
-	\label{choke_point_#1}}
 
 \cpSection[1.2]{1.1}{QOPT}{Interesting orders}
 
@@ -290,7 +290,7 @@ There are many possible tradeoffs between generality and performance
 
 \input{query-cards/cp-7-3}
 
-\cpSection{ 7.4}{QEXE}{Efficient evaluation of termination criteria for transitive queries}
+\cpSection{7.4}{QEXE}{Efficient evaluation of termination criteria for transitive queries}
 
 This tests the ability of a system to express termination criteria for transitive queries so that not the whole transitive relation has to be evaluated as well as efficient testing for termination.
 
