@@ -14,13 +14,10 @@
 %
 	desc. & Given a Person, find all other Persons that live in a given country and
 are connected to given person by a transitive path with length in range
-\texttt{{[}min,\ max{]}} through the knows relation.
+{[}min, max{]} through the knows relation.
 
-{[}DISCUSS: edge isomorphism semantics{]}
-
-{[}Proposal for this (szarnyasg):{]} In the path, an edge might be only
-traveled once. (Consequently, it is not possible to travel an edge
-multiple times so that the path length reaches the minimum length.)
+In the path, an edge can be only traversed once while nodes can be
+traversed multiple times.
 
 For each of these Persons, retrieve all of their Messages (Posts \&
 Comments) that contain at least one Tag belonging to a given TagClass
