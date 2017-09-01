@@ -36,6 +36,9 @@ def convert_map_list_to_tex(list_of_maps):
 with open('templates/query-card-template.tex', 'r') as f:
     query_card_template = Template(f.read())
 
+with open('templates/short-description-template.tex', 'r') as f:
+    short_description_template = Template(f.read())
+
 all_choke_points = set()
 all_queries = set()
 query_choke_point = defaultdict(list)      # queries -> cps
@@ -86,6 +89,14 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:
         query_card_file.write(query_card_text)
+
+    short_description_text = short_description_template.render(
+        number        = number,
+        description   = description_tex,
+    )
+
+    with open("short-descriptions/%s.tex" % query_id, 'w') as short_description_file:
+        short_description_file.write(short_description_text)
 
 ##### choke points
 
