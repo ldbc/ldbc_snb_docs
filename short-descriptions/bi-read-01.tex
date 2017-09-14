@@ -1,28 +1,3 @@
-\paragraph{Q1.}
-
+\textbf{Q1.}
 Given a date, find all Messages created before that date. Group them by
-a 3-level grouping:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  by year of creation
-\item
-  for each year, group into message types (Posts or Comments)
-\item
-  for each year-type group, split into four groups based on length of
-  their content
-
-  \begin{itemize}
-  \tightlist
-  \item
-    0 \textless{}= length \textless{} 40: \texttt{short}
-  \item
-    40 \textless{}= length \textless{} 80: \texttt{one\ liner}
-  \item
-    80 \textless{}= length \textless{} 160: \texttt{tweet}
-  \item
-    160 \textless{}= length: \texttt{long}
-  \end{itemize}
-\end{enumerate}
+a 3-level grouping: 1. by year of creation, 2. for each year, group into message types (Posts or Comments), 3. for each year-type group, split into four groups based on length of their content (0 \textless{}= length \textless{} 40: \texttt{short}, 40 \textless{}= length \textless{} 80: \texttt{one\ liner}, 80 \textless{}= length \textless{} 160: \texttt{tweet}, 160 \textless{}= length: \texttt{long}).

@@ -1,17 +1,7 @@
-\paragraph{Q10.}
-
+\textbf{Q10.}
 Given a Tag, find all Persons that are either interested in the Tag, or
 have written a Message (Post or Comment) with creation date after a
 given date and that has a given Tag. For each Person, compute the score
-(\texttt{score}) as the sum of the following two aspects:
-
-\begin{itemize}
-\tightlist
-\item
-  100, if the Person has this tag as their interest, or 0 otherwise
-\item
-  number of messages by this person with the given tag
-\end{itemize}
-
+(\texttt{score}) as the sum of the following two aspects: 1. 100, if the Person has this tag as their interest, or 0 otherwise; 2. the number of messages by this person with the given tag
 Also, for each Person, compute the sum of the score of the Person's
 friends (\texttt{friendsScore}).

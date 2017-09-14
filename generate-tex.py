@@ -94,6 +94,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         number        = number,
         description   = description_tex,
     )
+    short_description_text = short_description_text.replace("\n\n", "\n")
 
     with open("short-descriptions/%s.tex" % query_id, 'w') as short_description_file:
         short_description_file.write(short_description_text)
