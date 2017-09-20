@@ -4,7 +4,8 @@ python:
   - "3.5"
 env:
   global:
-    - GH_REF=github.com/ldbc/ldbc_snb_docs.git
+    - REPOSITORY_STABLE=github.com/ldbc/ldbc_snb_docs.git
+    - REPOSITORY_SNAPSHOT=github.com/ldbc/ldbc_snb_docs_snapshot.git
     - secure: H/QaDPPacT6wJsGNyDbD934OjGVBVx7XhR/lz+fe/8709sWLy/r7Bzc5sJIW7RezQTaCRd/6pSLwvwvnRBWN0Cd83Pxn5aLwfLq1v8m0fElMEdG0jQHXpYXfUyhcemTH0pvc4BA0RBET00xid08TSuXek5Olys700s5SMJ89St7hbrRiW4cMdS5yWI6tzVjC+ndv+JjeHABcqXf+IIQqdv+FZ/845x7mQqaLs6u70pQaIWEf5ktT1Qqj7WEuGpSOg3M+Ipn870T9msK6QUsOlj1+p3AcVY79F2Ybt+X7fghRLZGH/F970nYa0t1tGR3T99WQFxUxJ22GS+jTfyx5o2eVBRL9zYUsLmTy01Y3/IO9vC16yNBh8KviWfNobvCKmpqGdOalJ7UvyIJ6Tj4fQ/ytgonDGCzY5MiwPPvyJRwAKwtWTIo3EcV8DoE7lc1uwHTqsOX7CtyyMm4s4RSdXMfcLbYST4TgS+hKnOmOBywTtOKRR2a4Odgc9ZQeKA1rHcdv8rJQJ6uJANymJxUJZEj4FyZmOz1NNJMQENVBTBhPdc1rKoyOQ8KpSHdAXOCfe1KmVmcgFQYMTcEfnfWGpOQgWOtBjP2SwSyt8YE10wHLkHcpNQSagsGqs4z6NGNMW8wBzg4fkZlUMyYxA/rVm2i9HpzhVnvZYfgKtHGcTwk=
 addons:
   apt:
@@ -19,13 +20,15 @@ addons:
       - texlive-font-utils
       - texlive-fonts-extra
       - texlive-fonts-recommended
+      - texlive-generic-recommended
       - texlive-latex-extra
       - texlive-science
 script:
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
   - make texfot
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_STABLE;   ./deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "dev"    -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_SNAPSHOT; ./deploy.sh; fi
 notifications:
   slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
   email: false

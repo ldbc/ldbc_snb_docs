@@ -1,0 +1,39 @@
+workload: Interactive
+operation: complex
+number: 9
+title: Recent posts and comments by friends or friends of friends
+description: |
+  Given a start Person, find the (most recent) Messages created
+  by that Person's friends or friends of friends (excluding start
+  Person). Only consider the Messages created before a given
+  date (excluding that date).
+parameters:
+  - name: Person.id
+    type: ID
+  - name: date
+    type: Date
+result:
+  - name: Message-hasCreator->Person.id
+    type: ID
+  - name: Message-hasCreator->Person.firstName
+    type: String
+  - name: Message-hasCreator->Person.lastName
+    type: String
+  - name: Message.id
+    type: ID
+  - name: Message.content or Post.imageFile
+    type: String
+  - name: Message.creationDate
+    type: DateTime
+sort:
+  - name: Message.creationDate
+    direction: desc
+  - name: Message.id
+    direction: asc
+limit: 20
+choke_points: [1.1, 1.2, 2.2, 2.3, 3.2, 3.3]
+relevance: |
+  This query looks for paths of length two or three, starting from a given Person, moving to its friends and friends of
+  friends, and ending at their created Messages. This is one of the most complex queries, as the list of choke-points
+  indicates. This query is expected to touch variable amounts of data with entities of different characteristics, and
+  therefore, properly estimating cardinalities and selecting the proper operators will be crucial.

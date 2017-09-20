@@ -1,0 +1,85 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{BI / read / 9}
+\label{section:bi-read-09}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & BI / read / 9 \\ \hline
+%
+	title & Forum with related Tags
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-09}\hfill\vadjust{} \\ \hline
+%
+	desc. & Given two TagClasses (\texttt{tagClass1} and \texttt{tagClass2}), find
+Forums that contain at least one Post with a Tag from \texttt{tagClass1}
+and at least one Post with a Tag from \texttt{tagClass2} (direct
+children not transitive) -- this may be the same Post.
+
+Consider the Forums with a number of members greater than a given
+threshold. For every such forum, count the number of Posts that have a
+Tag from TagClass1 (\texttt{count1}), and the number of posts that have
+a tag from TagClass2 (\texttt{count2}).
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & tagClass1
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{2}$ & tagClass2
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{3}$ & threshold
+ & 32-bit Integer
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & forum.id
+ & 64-bit Integer
+ & R &
+				 \\ \hline
+		$\mathsf{2}$ & count1
+ & 32-bit Integer
+ & R &
+				Number of Posts with at least one tag belonging to tagClass1
+ \\ \hline
+		$\mathsf{3}$ & count2
+ & 32-bit Integer
+ & R &
+				Number of Posts with at least one tag belonging to tagClass2
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & \textbar{}count2 - count1\textbar{}
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & forum.id
+ & $\asc
+$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
+	%
+	limit & 100 \\ \hline
+	%
+	CPs &
+	\multicolumn{1}{>{\raggedright}l|}{
+		\chokePoint{1.2}, 
+		\chokePoint{1.4}, 
+		\chokePoint{2.1}, 
+		\chokePoint{2.3}, 
+		\chokePoint{2.4}
+		} \\ \hline
+	%
+	%
+\end{tabularx}
+\queryCardVSpace

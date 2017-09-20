@@ -1,0 +1,16 @@
+workload: Interactive
+operation: update
+number: 4
+title: Add Forum
+description: Add a Forum to the social network.
+parameters:
+  - name: Forum.id
+    type: ID
+  - name: Forum.title
+    type: String
+  - name: Forum.creationDate
+    type: DateTime
+  - name: Forum-hasModerator->Person.id
+    type: ID
+  - name: Forum-hasTag->Tag.id
+    type: \{ID\}

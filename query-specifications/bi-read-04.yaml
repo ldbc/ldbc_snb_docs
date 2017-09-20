@@ -1,0 +1,33 @@
+workload: BI
+operation: read
+number: 4
+title: Popular topics in a country
+description: |
+  Given a TagClass and a Country, find all the Forums created in the given Country,
+  containing at least one Post with Tags belonging directly to the given TagClass.
+
+  The location of a Forum is identified by the location of the Forum's moderator.
+parameters:
+  - name: tagClass
+    type: 32-bit Integer
+  - name: country
+    type: 32-bit Integer
+result:
+  - name: forum.id
+    type: 64-bit Integer
+  - name: forum.title
+    type: String
+  - name: forum.creationDate
+    type: DateTime
+  - name: person.id
+    type: 64-bit Integer
+  - name: postCount
+    category: aggregated
+    type: 32-bit Integer
+sort:
+  - name: postCount
+    direction: desc
+  - name: forum.id
+    direction: asc
+limit: 20
+choke_points: [1.1, 1.2, 1.4, 2.1, 2.2, 2.4, 3.3]

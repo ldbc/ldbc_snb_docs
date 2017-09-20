@@ -1,0 +1,34 @@
+workload: Interactive
+operation: update
+number: 1
+title: Add Person
+description: Add a Person to the social network.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Person.gender
+    type: String
+  - name: Person.birthDay
+    type: Date
+  - name: Person.creationDate
+    type: DateTime
+  - name: Person.locationIp
+    type: String
+  - name: Person.browserUsed
+    type: String
+  - name: Person-isLocatedIn->City.id
+    type: ID
+  - name: Person.speaks
+    type: \{String\}
+  - name: Person.email
+    type: \{String\}
+  - name: Person-hasInterest->Tag.id
+    type: \{ID\}
+  - name: \{Person-studyAt->University.id, Person-studyAt->.classYear\}
+    type: \{ID, 32-bit Integer\}
+  - name: \{Person-workAt->Company.id, Person-workAt->.workFrom\}
+    type: \{ID, 32-bit Integer\}

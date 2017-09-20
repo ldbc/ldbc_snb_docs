@@ -1,0 +1,104 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{BI / read / 21}
+\label{section:bi-read-21}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & BI / read / 21 \\ \hline
+%
+	title & Zombies in a country
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-21}\hfill\vadjust{} \\ \hline
+%
+	desc. & Find zombies within the given country, and return their zombie scores.
+
+A zombie is a Person created before the given \texttt{endDate} and that
+has created between \texttt{{[}0,\ 1)} Messages per month, on average,
+during the time range between profile creation date and the given
+\texttt{endDate}. The number of months spans the time range from
+creation date of the profile to the \texttt{endDate} and also includes
+partial months.
+
+For each person, calculate the following:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{zombieLikeCount}: the number of likes received from zombies
+\item
+  \texttt{totalLikeCount}: the total number of likes received on that
+  Person's messages
+\item
+  \texttt{zombieScore}: \texttt{zombieLikeCount} /
+  \texttt{totalLikeCount}
+\end{itemize}
+
+In all cases, only count likes received from profiles that were created
+before the given \texttt{endDate}.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & country
+ & String
+ &  \\ \hline
+		$\mathsf{2}$ & endDate
+ & Date
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & person.id
+ & 64-bit Integer
+ & R &
+				 \\ \hline
+		$\mathsf{2}$ & zombieLikeCount
+ & 32-bit Integer
+ & R &
+				 \\ \hline
+		$\mathsf{3}$ & totalLikeCount
+ & 32-bit Integer
+ & R &
+				 \\ \hline
+		$\mathsf{4}$ & zombieScore
+ & 32-bit Float
+ & R &
+				The ratio of \texttt{zombieLikeCount} and \texttt{totalLikeCount}
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & zombieScore
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & person.id
+ & $\asc
+$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
+	%
+	limit & 100 \\ \hline
+	%
+	CPs &
+	\multicolumn{1}{>{\raggedright}l|}{
+		\chokePoint{1.2}, 
+		\chokePoint{2.1}, 
+		\chokePoint{2.3}, 
+		\chokePoint{2.4}, 
+		\chokePoint{3.2}, 
+		\chokePoint{3.3}, 
+		\chokePoint{5.1}, 
+		\chokePoint{5.3}
+		} \\ \hline
+	%
+	%
+\end{tabularx}
+\queryCardVSpace

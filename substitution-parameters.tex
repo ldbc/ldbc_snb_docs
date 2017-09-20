@@ -1,0 +1,42 @@
+Together with the dataset, \datagen produces a set of parameters per
+query type. Parameter generation is designed in such a way that for each query
+type, all of the generated parameters yield similar runtime behaviour of that
+query.
+
+Specifically, the selection of parameters for a query template guarantees the following properties of the resulting queries:
+\begin{enumerate}
+\item[P1:] the query runtime has a bounded variance: the average runtime corresponds to the behavior of the majority of the queries
+\item[P2:] the runtime distribution is stable: different samples of (\eg 10) parameter bindings used in different query streams result in an identical runtime distribution across streams
+\item[P3:] the optimal logical plan (optimal operator order) of the queries is the same: this ensures that a specific query template tests the system's behavior under the well-chosen technical difficulty (\eg handling voluminous joins or proper cardinality estimation for subqueries, \etc)
+\end{enumerate}
+
+
+As a result, the amount of data that the query touches is roughly the
+same for every parameter binding, assuming that the query optimizer figures out a
+reasonable execution plan for the query. This is done to avoid bindings that
+cause unexpectedly long or short runtimes of queries, or even result in a
+completely different optimal execution plan. Such effects could arise due to
+the data skew and correlations between values in the generated dataset.
+
+In order to get the parameter bindings for each of the queries, we have designed a \textit{Parameter Curation} procedure that works in two stages:
+
+\begin{enumerate}
+\item for each query template for all possible parameter bindings, we determine the size of intermediate results in the {\em intended} query plan. Intermediate result size heavily influences the runtime of a query, so two queries with the same operator tree and similar intermediate result sizes at every level of this operator tree are expected to have similar runtimes. This analysis is effectively a side effect of data generation, that is we keep all the necessary counts (number of friends per user, number of posts of friends \etc) as we create the dataset.
+\item then, a greedy algorithm selects (``curates'') those parameters with similar intermediate result counts from the domain of all the parameters.
+\end{enumerate}
+
+Parameter bindings are stored in the \texttt{substitution\_parameters} folder
+inside the data generator directory. Each query gets its bindings in a separate
+file. Every line of a parameter file is a JSON-formatted collection of
+key-value pairs (name of the parameter and its value). For example, the Query 1
+parameter bindings are stored in file \texttt{query\_1\_param.txt}, and one of
+its lines may look like this:
+
+\begin{lstlisting}
+{"PersonID": 1, "Name": "Lei", "PersonURI": "http://www.ldbc.eu/ldbc_socialnet/1.0/data/pers1"}
+\end{lstlisting}
+
+Depending on implementation, the SUT may refer to persons either by IDs
+(relational and graph databases) or URIs (RDF systems), so we provide both
+values for the Person parameter.  Finally, parameters for short reads are taken
+from those in complex reads and updates.

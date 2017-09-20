@@ -1,0 +1,42 @@
+workload: BI
+operation: read
+number: 22
+title: International dialog
+description: |
+  Consider all pairs of people `(p1, p2)` such that one is located in a city of Country `countryX`
+  and the other is located in a city of Country `countryY`.
+
+  For each city of Country `countryX`, return the highest scoring pair.
+
+  The score of a pair is defined as the sum of the scores of the following kinds of interaction\:
+
+  * `p1` has created a reply Comment to at least one Comment or Post by `p2`\: `Score = 4`
+  * `p1` has created at least one Post or Comment that `p2` has created a reply Comment to\: `Score = 1`
+  * `p1` and `p2` Know each other\: `Score = 15`
+  * `p1` liked at least one Post or Comment by `p2`\: `Score = 10`
+  * `p1` has created at least one Post or Comment that was liked by `p2`\: `Score = 1`
+
+  Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
+parameters:
+  - name: countryX
+    type: String
+  - name: countryY
+    type: String
+result:
+  - name: p1.id
+    type: 64-bit Integer
+  - name: p2.id
+    type: 64-bit Integer
+  - name: cityX.name
+    type: String
+  - name: score
+    type: 32-bit Integer
+    category: calculated
+sort:
+  - name: score
+    direction: desc
+  - name: p1.id
+    direction: asc
+  - name: p2.id
+    direction: asc
+choke_points: [1.4, 1.6, 2.1, 3.1, 3.3, 5.1, 5.2, 5.3]

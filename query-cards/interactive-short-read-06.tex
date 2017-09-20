@@ -1,0 +1,61 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{Interactive / short / 6}
+\label{section:interactive-short-read-06}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & Interactive / short / 6 \\ \hline
+%
+	title & Message Forum
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-06}\hfill\vadjust{} \\ \hline
+%
+	desc. & Given a Message, retrieve the Forum that contains it and the Person that
+moderates that forum. Since comments are not directly contained in
+forums, for comments, return the forum containing the original post in
+the thread which the comment is replying to.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Message.id
+ & ID
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Message\textless{}-containerOf-Forum.id
+ & ID
+ & R &
+				 \\ \hline
+		$\mathsf{2}$ & Message\textless{}-containerOf-Forum.title
+ & String
+ & R &
+				 \\ \hline
+		$\mathsf{3}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.id
+ & ID
+ & R &
+				 \\ \hline
+		$\mathsf{4}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.firstName
+ & String
+ & R &
+				 \\ \hline
+		$\mathsf{5}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.lastName
+ & String
+ & R &
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	%
+	%
+	%
+	%
+\end{tabularx}
+\queryCardVSpace

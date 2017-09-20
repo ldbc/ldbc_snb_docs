@@ -1,0 +1,77 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{Interactive / complex / 14}
+\label{section:interactive-complex-read-14}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & Interactive / complex / 14 \\ \hline
+%
+	title & Weighted/unweighted paths
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-14}\hfill\vadjust{} \\ \hline
+%
+	desc. & Given two Persons, find all (unweighted) shortest paths between these
+two Persons, in the subgraph induced by the Knows relationship. Then,
+for each path calculate a weight. The nodes in the path are Persons, and
+the weight of a path is the sum of weights between every pair of
+consecutive Person nodes in the path. The weight for a pair of Persons
+is calculated such that every reply (by one of the Persons) to a Post
+(by the other Person) contributes 1.0, and every reply (by ones of the
+Persons) to a Comment (by the other Person) contributes 0.5. Return all
+the paths with shortest length, and their weights. Do not return any
+rows if there is now path between the two Persons.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & person1.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & person2.id
+ & ID
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & {[}Person.id{]}
+ & {[}ID{]}
+ & R &
+				Identifiers representing an ordered sequence of the Persons in the path
+ \\ \hline
+		$\mathsf{2}$ & weight
+ & 64-bit Float
+ & R &
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & weight
+ & $\desc
+$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
+	%
+	%
+	CPs &
+	\multicolumn{1}{>{\raggedright}l|}{
+		\chokePoint{3.3}, 
+		\chokePoint{7.2}, 
+		\chokePoint{7.3}
+		} \\ \hline
+	%
+	relevance &
+		\small This query looks for a variable length path, starting at a given Person and finishing at an another given Person. This
+is a more complex query as not only requires computing the path length, but returning it and computing a weight.
+To compute this weight one must look for smaller sub-queries with paths of length three, formed by the two Persons
+at each step, a Post and a Comment.
+ \\ \hline%
+\end{tabularx}
+\queryCardVSpace

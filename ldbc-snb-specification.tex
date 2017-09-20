@@ -1,9 +1,11 @@
+% !TeX spellcheck = en_GB
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
 \documentclass{ldbc}
 
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{amsfonts}
-\usepackage{bbding}
 \usepackage{rotating}
 \usepackage{pifont}
 \usepackage{rotating}
@@ -11,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{tabularx}
+\usepackage{varwidth}
 \usepackage{hyperref}
 \usepackage{xspace}
 \usepackage[table]{xcolor}
@@ -18,39 +21,40 @@
 \providecommand{\tightlist}{%
 	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage[export]{adjustbox}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+\usepackage[normalem]{ulem}
+\usepackage{cellspace}
+\usepackage{rotate}
+\usepackage{wasysym}
+\usepackage{xifthen}
+
+\setlist[]{noitemsep, topsep=5pt}
 
 \newcommand{\asc}{\uparrow}
 \newcommand{\desc}{\downarrow}
 
 \newcommand{\patternscale}{0.43}
-\newcommand{\varname}[1]{\small \texttt{#1}}
-\newcommand{\vartype}[1]{\footnotesize \textsf{#1}}
-\newcommand{\variable}[2]{
-	\renewcommand*{\arraystretch}{1}
-	\begin{tabular}{|c|c|}\hline \varname{#1} & \cellcolor{gray!20} \vartype{#2}\\\hline\end{tabular}
-	\renewcommand*{\arraystretch}{1.95}
-}
-\newcommand{\sortentry}[2]{
-	\renewcommand*{\arraystretch}{1}
-	\begin{tabular}{|c|c|}\hline \varname{#1} & $#2$\\\hline\end{tabular}
-	\renewcommand*{\arraystretch}{1.95}
-}
-\newcommand{\chokepoint}[1]{\hyperref[choke_point_#1]{#1}}
 
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
-\newcommand{\yes}{\color{green}\ding{51}\color{black}}
-\newcommand{\no}{\color{red}\ding{55}\color{black}}
+\newcommand{\note}[1]{\noindent \textbf{Note.} #1}
 
-\newcommand{\cref}[1]{Chapter~\ref{#1}}
-\newcommand{\sref}[1]{Section~\ref{#1}}
-\newcommand{\tref}[1]{Table~\ref{#1}}
-\newcommand{\fref}[1]{Figure~\ref{#1}}
-\newcommand{\eref}[1]{Equation~\ref{#1}}
-\newcommand{\aref}[1]{Appendix~\ref{#1}}
+\newcommand{\datagen}{DATAGEN\xspace}
+\newcommand{\ldbcsnb}{LDBC SNB\xspace}
+
+% tt font 
+\usepackage[scale=0.85,ttdefault=true]{AnonymousPro}
+
+\newcommand{\yes}{\CIRCLE\xspace}
+\newcommand{\somewhat}{\LEFTcircle\xspace}
+\newcommand{\no}{\Circle\xspace}
+
+\input{query-card-definitions}
+\input{listings}
 
 % Alex Averbuch: used internally only, to make missing/erroneous sections stand out
-\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
+%\newcommand{\alert}[1]{\textit{\textbf{{\color{red}#1}}}}
 
 % todo change the following information as appropriate
 %\WP{N/A}
@@ -74,6 +78,7 @@
 %\natD % Demonstrator
 %\natO % Other
 
+\author{LDBC Social Network Benchmark Task Force}
 %\author{[Arnau Prat (UPC)]}
 %\authorPartner{Arnau Prat (UPC)}
 %\responsibleAuthor{Arnau Prat}
@@ -90,14 +95,13 @@
 % 0 for ``draft'', 1 for ``project approved'', 2 for ``further revisions''
 % such as when the EC rejected version 1
 
-% uncomment the following for final version
-%\final
-
-%\rhead{\includegraphics[width=0.2\linewidth]{./figures/ldbc-logo.png}}
-
 \sloppy
 
 \setcounter{secnumdepth}{2}
+
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
 
 \input{abstract}
 \input{executive-summary}
@@ -106,35 +110,39 @@
 
 \maketitle
 
-%\include{glossary}
-
-\chapter*{Special thanks}
+\chapter*{Acknowledgments}
 \input{special-thanks}
 
-\listoffigures
-\listoftables
-\chapter*{Definitions}
+%\listoffigures
+%\listoftables
+
 \input{defs}
 
-\chapter{Introduction}
 \input{introduction}
 
-\chapter{Benchmark Specification}
-\input{definition}
-\input{workloads}
-%\input{metrics}
-%\input{execution}
-%\input{disclosure}
+\input{benchmark-specification}
 
-\chapter{Auditing rules}\label{chapter:auditing}
+\input{workloads}
+
+\input{interactive}
+
+\input{bi}
+
 \input{auditing}
+
+\input{related-work}
 
 \bibliographystyle{abbrv}
 \bibliography{ldbc-snb}
 
 \appendix
 
+\chapter{Choke Points}
+
+\input{choke-points}
+
 \chapter{Scale Factor Statistics}
+
 \input{sf-statistics}
 
 \end{document}

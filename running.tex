@@ -10,9 +10,9 @@ The other steps are explained in the following sections.
 
 Before running a benchmark workload the workload driver~\cite{test_driver} must be configured, this involves the following steps:
 \begin{enumerate}
-	\item Programming: implement a vendor specific database connector (covered in section \ref{ssub:vendor_specific_database_connector})
-	\item Configuration: configure the general driver properties (covered in section \ref{ssub:general_driver_properties})
-	\item Configuration: configure the workload specific driver properties (covered in \ref{ssub:workload_specific_driver_properties})
+	\item Programming: implement a vendor specific database connector (covered in \autoref{ssub:vendor_specific_database_connector})
+	\item Configuration: configure the general driver properties (covered in \autoref{ssub:general_driver_properties})
+	\item Configuration: configure the workload specific driver properties (covered in \autoref{ssub:workload_specific_driver_properties})
 \end{enumerate}
 
 \subsubsection{Vendor specific database connector}
@@ -85,7 +85,7 @@ For a more detailed explanation of how this is done refer to the workload driver
 Although a detailed explanation of the workload driver design is beyond the
 scope of this document, it is worth noting that it has a number of
 configuration parameters, these parameters are summarized in
-\tref{tab:general_driver_parameters}.
+\autoref{tab:general_driver_parameters}.
 
 \begin{table}[h!]
 	\label{tab:general_driver_parameters}
@@ -130,9 +130,9 @@ The first, \texttt{Db}, was described already in the previous section.
 The second is \texttt{Workload}, it is the class responsible for defining which operations, in which order and at what throughput, the driver will generate.
 From the point of view of the driver, the LDBC Social Network Benchmark is an implementation of the \texttt{Workload} class,
 in this case named \texttt{LdbcInteractiveWorkload}.
-For more details regarding the workload itself see \ref{section:workload}.
+For more details regarding the workload itself see \autoref{section:workload}.
 
-The configuration parameters for the \texttt{LdbcInteractiveWorkload} workload are summarized in \tref{tab:snb_interactive_driver_parameters}.
+The configuration parameters for the \texttt{LdbcInteractiveWorkload} workload are summarized in \autoref{tab:snb_interactive_driver_parameters}.
 
 \begin{table}[h!]
 	\label{tab:snb_interactive_driver_parameters}
@@ -334,7 +334,7 @@ The general pattern for doing so is as follows:
 	\end{verbatim}
 }
 
-For the Interactive workload of LDBC-SNB it is necessary to provide the driver with four configuration files, containing:
+For the Interactive workload of \ldbcsnb it is necessary to provide the driver with four configuration files, containing:
 general driver properties,
 workload specific driver properties (\eg database connection string),
 a dataset specific value for one of the general driver properties (specifically, \texttt{gctdeltaduration}),

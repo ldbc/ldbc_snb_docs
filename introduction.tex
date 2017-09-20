@@ -1,4 +1,5 @@
-%%% INTRODUCTION %%%
+\chapter{Introduction}
+\label{section:introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,17 +24,29 @@ and development of new information technology solutions. Without them, the
 uptake of these technologies is at risk by not providing the industry with
 clear, user-driven targets for performance and functionality.
 
-The LDBC Social Network Benchmark (LDBC-SNB) aims at being comprehensive
+The LDBC Social Network Benchmark (\ldbcsnb) aims at being comprehensive
 benchmark setting the rules for the evaluation of graph-like data management
-technologies.  LDBC-SNB is designed to be a plausible look-alike of all the
+technologies.  \ldbcsnb is designed to be a plausible look-alike of all the
 aspects of operating a social network site, as one of the most representative
-and relevant use case of modern graph-like applications. LDBC-SNB is a work in
-progress, and initially, it only includes the Interactive Workload~\cite{DBLP:conf/sigmod/ErlingALCGPPB15},
-but two more workloads will be introduced in the future: Business
-Intelligence and Analytics. By designing three separate workloads, LDBC-SNB
-targets a broader range of systems with different nature and characteristics.
-LDBC-SNB aims at capturing the essential features of these usage scenarios
-while abstracting away details of specific business deployments.
+and relevant use case of modern graph-like applications. 
+
+\ldbcsnb includes the Interactive
+Workload~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}, which consists of user-centric
+transactional-like interactive queries, and the Business Intelligence Workload,
+which includes analytical queries to respond to business critic questions.
+Initially, a graph analytics workload was also included in the roadmap of
+\ldbcsnb, but this was finally delegated to the Graphalytics benchmark
+project~\cite{graphalytics}, which was adopted as an official LDBC graph
+analytics benchmark. \ldbcsnb and Graphalytics combined target a broad range of
+systems with different nature and characteristics.  \ldbcsnb and Graphalytics
+aims at capturing the essential features of these usage scenarios while
+abstracting away details of specific business deployments.
+
+This document contains the definition of the Interactive Workload and the first
+draft of the Business Intelligence Workload. This includes a detailed
+explanation of the data used in the \ldbcsnb benchmark, a detailed description
+for all queries, and instructions on how to generate the data and run the
+benchmark with the provided software.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,17 +54,17 @@ while abstracting away details of specific business deployments.
 
 \section{Relevance to Industry}
 
-LDBC-SNB is intended to provide the following value to different stakeholders:
+\ldbcsnb is intended to provide the following value to different stakeholders:
 
 \begin{itemize}
- \item For \textbf{end users} facing graph processing tasks, LDBC-SNB provides
+ \item For \textbf{end users} facing graph processing tasks, \ldbcsnb provides
      a recognizable scenario against which it is possible to compare merits of
      different products and technologies.  By covering a wide variety of scales
-     and price points, LDBC-SNB can serve as an aid to technology selection.
- \item For \textbf{vendors} of graph database technology, LDBC-SNB provides a
+     and price points, \ldbcsnb can serve as an aid to technology selection.
+ \item For \textbf{vendors} of graph database technology, \ldbcsnb provides a
      checklist of features and performance characteristics that helps in
      product positioning and can serve to guide new development.
- \item For \textbf{researchers}, both industrial and academic, the LDBC-SNB
+ \item For \textbf{researchers}, both industrial and academic, the \ldbcsnb
      dataset and workload provide interesting challenges in multiple
      choke-point areas, such as query optimization, (distributed) graph
      analysis, transactional throughput, and provides a way to objectively
@@ -59,7 +72,7 @@ LDBC-SNB is intended to provide the following value to different stakeholders:
      these areas.
 \end{itemize}
 
-The technological scope of LDBC-SNB comprises all systems that one might
+The technological scope of \ldbcsnb comprises all systems that one might
 conceivably use to perform social network data management tasks:
 
 \begin{itemize}
@@ -97,9 +110,9 @@ conceivably use to perform social network data management tasks:
      PL/SQL. Both single-machine and cluster systems exist.  They  do not
      normally support recursion, or stateful recursive algorithms, which makes
      them not at home in the Graph Analytics workloads
- \item \textbf{noSQL database systems} (\eg key-value stores such as HBase,
+ \item \textbf{NoSQL database systems} (\eg key-value stores such as HBase,
      REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
-     are cluster-vbased and scalable. Key-value stores could possibly implement
+     are cluster-based and scalable. Key-value stores could possibly implement
      the Interactive Workload, though its navigational aspects would pose some
      problems as potentially many key-value lookups are needed. MapReduce
      systems could be suited for the Graph Analytics workload, but their query
@@ -115,31 +128,31 @@ conceivably use to perform social network data management tasks:
 
 \section{General Benchmark Overview}
 
-LDBC-SNB aims at being a complete benchmark, designed with the following goals in mind:
+\ldbcsnb aims at being a complete benchmark, designed with the following goals in mind:
 
 \begin{itemize}
- \item \textbf{Rich coverage}. LDBC-SNB is intended to cover most demands
+ \item \textbf{Rich coverage}. \ldbcsnb is intended to cover most demands
      encountered in the management of complexly structured data.
- \item \textbf{Modularity}. LDBC-SNB is broken into parts that can be
-     individually addressed. In this manner LDBC-SNB
+ \item \textbf{Modularity}. \ldbcsnb is broken into parts that can be
+     individually addressed. In this manner \ldbcsnb
      stimulates innovation without imposing an overly high threshold for
      participation.
  \item \textbf{Reasonable implementation cost}. For a product offering relevant
      functionality, the effort for obtaining initial results with SNB should be
      small, on the order of days.
  \item \textbf{Relevant selection of challenges}. Benchmarks are known to
-     direct product development in certain directions. LDBC-SNB is informed by
+     direct product development in certain directions. \ldbcsnb is informed by
      the state of the art in database research so as to offer optimization
      challenges for years to come while not having a prohibitively high
      threshold for entry.
- \item \textbf{Reproducibility and documentation of results}. LDBC-SNB
+ \item \textbf{Reproducibility and documentation of results}. \ldbcsnb
      will specify the rules for full disclosure of benchmark execution and for
      auditing of benchmark runs. The workloads may be run on any equipment
      but the exact configuration and price of the hardware and software must be
      disclosed.
 \end{itemize}
 
-LDBC-SNB benchmark is modeled around the operation of a real social network
+\ldbcsnb benchmark is modeled around the operation of a real social network
 site. A social network site represents a relevant use case for the following
 reasons:
 
@@ -153,62 +166,65 @@ reasons:
         scalable benchmark targeting systems of different sizes and budgets.
 \end{itemize}
 
-In Section~\ref{section:data}, LDBC-SNB defines the schema of the data used in
+In \autoref{section:data}, \ldbcsnb defines the schema of the data used in
 the benchmark. The schema, represents a realistic social network, including
 people and their activity in the social network during a period of time.
 Personal information of each person, such as name, birthday, interests
 or places where people work or study, is included. Persons' activity is
 represented in the form of friendhisp relationships and content sharing (\ie
-messages and pictures). LDBC-SNB provides a scalable synthetic data generator
+messages and pictures). \ldbcsnb provides a scalable synthetic data generator
 based on the MapReduce parallel paradigm, that produces networks with the
 described schema with distributions and correlations similar to those expected
 in a real social network. Furthermore, the data generator is designed to be
 user-friendly. The proposed data schema is shared by all the different proposed
 workloads, those we currently have, and those that will be proposed in the future.
 
-In Section~\ref{section:workloads}, the Interactive Workload is proposed.
-Two more workloads are planned:  Business Intelligence Workload and
-Analytical workload. Workloads are designed to mimic the different usage
-scenarios found in operating a real social network site, and each of them
-targets one or more types of systems.  Each workload defines a set of queries
-and query mixes, designed to stress the SUTs in different choke-point areas,
-while being credible and realistic. Interactive workload reproduces the
+In \autoref{section:workloads}, the Interactive Workload and the first draft of
+the Business Intelligence workload are proposed. Workloads are designed to mimic
+the different usage scenarios found in operating a real social network site, and
+each of them targets one or more types of systems.  Each workload defines a set
+of queries and query mixes, designed to stress the SUTs in different choke-point
+areas, while being credible and realistic. Interactive workload reproduces the
 interaction between the users of the social network by including lookups and
 transactions that update small portions of the data base.  These queries are
-designed to be interactive and target systems capable of responding such
-queries with low latency for multiple concurrent users. Business Intelligence
-workload, will represent those business intelligence analytics a social
-network company would like to perform in the social network, in order to take
-advantage of the data to discover new business opportunities. This workload
-will explore moderate portions of data from different entities, and performing more
-resource intensive operations. Finally, the graph analytics workload will aim at
-exploring the characteristics of the underlying structure of the network. Shortest
-paths, community detection or centrality, are representative queries of this workload,
-and will imply touching a vast amount of the dataset.
+designed to be interactive and target systems capable of responding such queries
+with low latency for multiple concurrent users. Business Intelligence workload,
+represents those business intelligence analytics a social network company would
+like to perform in the social network, in order to take advantage of the data to
+discover new business opportunities. This workload explores moderate to large
+portions of data from different entities, and performing more resource intensive
+operations. 
 
-
-LDBC-SNB provides an execution test driver, which is responsible for executing
+\ldbcsnb provides an execution test driver, which is responsible for executing
 the workloads and gathering the results. The driver is designed with simplicity
 and portability in mind, to ease the implementation on systems with different
 nature and characteristics, at a low implementation cost. Furthermore, it
 automatically handles the validation of the queries by means of a validation
-dataset provided by LDBC.  The overall philosophy of LDBC-SNB is to provide all
+dataset provided by LDBC.  The overall philosophy of \ldbcsnb is to provide all
 the necessary software tools to run the benchmark, and therefore to reduce the
 benchmark's entry point as much as possible.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Related Projects}
 
-LDBC~\cite{DBLP:journals/sigmod/AnglesBLF0ENMKT14} provides other benchmarks:
+Along the Social Network Benchmark, LDBC~\cite{DBLP:journals/sigmod/AnglesBLF0ENMKT14} provides other benchmarks as well:
 
 \begin{itemize}
 	\item The Semantic Publishing Benchmark (SPB)\footnote{\url{http://ldbcouncil.org/benchmarks/spb}} measures the performance of RDF engines operating on semantic data sets.
 	\item The Graphalytics benchmark~\cite{DBLP:journals/pvldb/IosupHNHPMCCSAT16} measures the performance of graph analysis operations (\eg PageRank, local clustering coefficient).
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Participation of Industry and Academia}
 
 The list of institutions that take part in the definition and development
-of LDBC-SNB is formed by relevant actors from both the industry and academia in
+of \ldbcsnb is formed by relevant actors from both the industry and academia in
 the field of linked data management. All the participants have contributed with
 their experience and expertise in the field, making a credible and relevant
 benchmark that meets all the desired needs. The list of participants is the

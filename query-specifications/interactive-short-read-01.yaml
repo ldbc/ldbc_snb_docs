@@ -1,0 +1,26 @@
+workload: Interactive
+operation: short
+number: 1
+title: Person Profile
+description: |
+  Given a start Person, retrieve their first name, last name, birthday, IP address, browser, and city of residence.
+parameters:
+  - name: Person.id
+    type: ID
+result:
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Person.birthDay
+    type: Date
+  - name: Person.locationIP
+    type: String
+  - name: Person.browserUsed
+    type: String
+  - name: Person-isLocatedIn->Place.id
+    type: 32-bit Integer
+  - name: Person.gender
+    type: String
+  - name: Person.creationDate
+    type: DateTime

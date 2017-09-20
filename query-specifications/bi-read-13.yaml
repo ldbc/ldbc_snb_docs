@@ -1,0 +1,33 @@
+workload: BI
+operation: read
+number: 13
+title: Popular Tags per month in a country
+description: |
+  Find all Messages in a given Country, as well as their Tags.
+
+  Group messages by creation year and month.
+  For each group, find the 5 most popular Tags, where popularity is the number of Messages (from within the same group)
+  where the Tag appears.
+parameters:
+  - name: country
+    type: String
+result:
+  - name: year
+    type: 32-bit Integer
+    category: calculated
+    description: year(message.creationDate)
+  - name: month
+    type: 32-bit Integer
+    category: calculated
+    description: month(message.creationDate)
+  - name: popularTags
+    type: TagPairs
+    category: calculated
+    description: (tag.name - String, popularity - 32-bit Integer), sorted descending by popularity, then ascending by tag name
+sort:
+  - name: year
+    direction: desc
+  - name: month
+    direction: asc
+limit: 100
+choke_points: [1.2, 2.2, 2.3, 3.2, 6.1]

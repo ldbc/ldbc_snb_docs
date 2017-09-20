@@ -1,23 +1,24 @@
-\section{Data generation}\label{section:data_generation}
+\section{Data generation}
+\label{section:data_generation}
 
-DATAGEN uses Hadoop to implement the data generation. Detailed instructions
-to configure hadoop for running DATAGEN can be found at the DATAGEN project
-software repository\footnote{ DATAGEN repository:
+\datagen uses Hadoop to implement the data generation. Detailed instructions
+to configure hadoop for running \datagen can be found at the DATAGEN project
+software repository\footnote{ \datagen repository:
 https://github.com/ldbc/ldbc\_snb\_datagen}. 
 
-\subsection{DATAGEN Configuration, Compilation and Execution}
+\subsection{\datagen Configuration, Compilation and Execution}
 
-DATAGEN is designed to be as easy to configure, compile and execute as
+\datagen is designed to be as easy to configure, compile and execute as
 possible. With this objective in mind, a \textit{run.sh} script is provided,
 which handles all the compilation and execution processes.  \textit{run.sh}
-is found in the DATAGEN root folder. DATAGEN uses Apache Maven to download any
+is found in the \datagen root folder. DATAGEN uses Apache Maven to download any
 required dependencies and compile the sources.  \textit{run.sh} needs to be
 configured with two variables pointing to the proper folders. The following is
 the list of variables to set:
 
 \begin{itemize}
     \item \textbf{HADOOP\_HOME}: Points to your hadoop root folder.
-    \item \textbf{LDBC\_SNB\_DATAGEN\_HOME}: Points to your DATAGEN root folder.
+    \item \textbf{LDBC\_SNB\_\datagen\_HOME}: Points to your DATAGEN root folder.
 \end{itemize}
 
 Once these variables are properly set, by typing:
@@ -26,11 +27,11 @@ Once these variables are properly set, by typing:
 $ ./run.sh
 \end{lstlisting}
 
-DATAGEN is compiled and executed, and a dataset with the default options is
+\datagen is compiled and executed, and a dataset with the default options is
 generated in the current folder.
 
 A file \textit{params.ini} is used to change the characteristics of the
-generated network, as well as to set other options. Table~\ref{table:sndg_options}
+generated network, as well as to set other options. \autoref{table:sndg_options}
 summarizes the different available options and their default values:
 
 \begin{table}[h]
@@ -49,7 +50,7 @@ summarizes the different available options and their default values:
     \hline
     numThreads & 1 & Sets the number of threads to use. Only works for pseudo-distributed mode \\
     \hline
-    updateStreams & false & Sets DATAGEN to generate the update streams used by the driver to issue update queries. \\
+    updateStreams & false & Sets \datagen to generate the update streams used by the driver to issue update queries. \\
     \hline
     numUpdatePartitions & 1 & The number of update stream partitions per thread. \\
     \hline
@@ -69,17 +70,17 @@ outputDir:/home/user/output
 numThreads:4
 \end{lstlisting}
 
-DATAGEN outputs data into HDFS. The outputDir directory specified in
+\datagen outputs data into HDFS. The outputDir directory specified in
 \textit{params.ini} file, will be automatically created in HDFS if it does not
 exist. If there is not an HDFS file system mounted, then data is output to your
 local file system. 
 
-DATAGEN creates two directories in the \textit{outputDir} directory: hadoop and
+\datagen creates two directories in the \textit{outputDir} directory: hadoop and
 social\_network.  The former is used to store temporary files used during the
 data generation process. The later stores the actual dataset created in the
 specified format.
 
-Additionally, DATAGEN creates a third directory in the DATAGEN home folder
+Additionally, \datagen creates a third directory in the DATAGEN home folder
 called \textit{substitution\_parameters}.  This folder contains the files with
 the substitution parameters used by the driver to execute the workload.
 

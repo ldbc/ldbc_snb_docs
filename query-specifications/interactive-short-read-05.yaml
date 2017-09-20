@@ -1,0 +1,16 @@
+workload: Interactive
+operation: short
+number: 5
+title: Message Creator
+description: |
+  Given a Message, retrieve its author.
+parameters:
+  - name: Message.id
+    type: ID
+result:
+  - name: Message-hasCreator->Person.id
+    type: ID
+  - name: Message-hasCreator->Person.firstName
+    type: String
+  - name: Message-hasCreator->Person.lastName
+    type: String

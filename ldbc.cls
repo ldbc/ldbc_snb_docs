@@ -128,10 +128,10 @@
     \setlength{\oddsidemargin}{0cm}%
     %
     \setlength{\textheight}{24.5cm}%
-    \setlength{\voffset}{-.7cm}%
-    \setlength{\topmargin}{-1.6cm}%
-    \setlength{\headheight}{1.5cm}%
-    \setlength{\headsep}{0.8cm}%
+%    \setlength{\voffset}{-.7cm}%
+%    \setlength{\topmargin}{0cm}%
+%    \setlength{\headheight}{1.5cm}%
+%    \setlength{\headsep}{0.8cm}%
     \renewcommand{\headrulewidth}{0.2pt}%
     \renewcommand{\footrulewidth}{0.2pt}%
 }
@@ -150,11 +150,11 @@
 \newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[OL,EL]{}
-\fancyhead[OR,ER]{}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyhead[RO,LE]{\nouppercase{\rightmark}}
 \fancyfoot{}
-\fancyfoot[OL,ER]{\mainmatterheadingl}
-\fancyfoot[OR,EL]{Page \thepage{} of (\pageref{LastPage})}
+\fancyfoot[LO,RE]{\mainmatterheadingl}
+\fancyfoot[RO,LE]{Page \thepage{} of \pageref*{LastPage}}
 
 % Customizations of the book style
 
@@ -203,12 +203,11 @@
     \normalLayout%
     \setlength{\voffset}{-2.15cm}%
     \thispagestyle{empty}%
-    \renewcommand{\headrulewidth}{0pt}%
+    %\renewcommand{\headrulewidth}{0pt}%
     \noindent \setlength{\unitlength}{1mm}%
     \begin{center}%
         \hspace{.5mm}
-        \includegraphics[height=2.8cm]{figures/ldbc-logo} \hfill
-       % \includegraphics[height=3.0cm]{figures/fp7-logo}\hspace*{6mm} \vspace{0.5cm} \\%
+        \includegraphics[height=7cm]{figures/ldbc-logo.pdf} \hfill
     \end{center}%
     {\vspace{1.8cm}%
 %        \begin{center}%
@@ -254,12 +253,14 @@
 %        \end{tabular}%
         \newpage%
         \normalLayout%
-        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
-        \hline%
-        \emph{\bfseries \T Abstract} \\[2mm]%
-        \parbox[t]{17.0cm}{\abstractText } \B \\%
-            \hline%
-        \end{tabular}%
+%        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
+%        %\hline%
+        \chapter*{Abstract}%
+%        \emph{\bfseries \T Abstract} \\[2mm]%
+%        \parbox[t]{17.0cm}{\abstractText } \B \\%
+%            \hline%
+%        \end{tabular}%
+		\abstractText
         \newpage%
         \addcontentsline{toc}{chapter}{Executive Summary}%
         \chapter*{Executive Summary}%

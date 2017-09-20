@@ -1,0 +1,81 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{Interactive / short / 7}
+\label{section:interactive-short-read-07}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & Interactive / short / 7 \\ \hline
+%
+	title & Message Replies
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-short-read-07}\hfill\vadjust{} \\ \hline
+%
+	desc. & Given a Message, retrieve the (1-hop) Comments that reply to it.
+
+In addition, return a boolean flag \texttt{knows} indicating if the
+author of the reply knows the author of the original message. If author
+is same as original author, return false for \texttt{knows} flag.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Message.id
+ & ID
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & Message\textless{}-replyOf-Comment.id
+ & ID
+ & R &
+				 \\ \hline
+		$\mathsf{2}$ & Message\textless{}-replyOf-Comment.content
+ & String
+ & R &
+				 \\ \hline
+		$\mathsf{3}$ & Message\textless{}-replyOf-Comment.creationDate
+ & DateTime
+ & R &
+				 \\ \hline
+		$\mathsf{4}$ & Comment-hasCreator-\textgreater{}Person.id
+ & ID
+ & R &
+				 \\ \hline
+		$\mathsf{5}$ & Comment-hasCreator-\textgreater{}Person.firstName
+ & String
+ & R &
+				 \\ \hline
+		$\mathsf{6}$ & Comment-hasCreator-\textgreater{}Person.lastName
+ & String
+ & R &
+				 \\ \hline
+		$\mathsf{7}$ & knows
+ & Boolean
+ & R &
+				Original message author knows reply author
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		sort		&
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		$\mathsf{1}$ & Message\textless{}-replyOf-Comment.creationDate
+ & $\desc
+$ \\ \hline
+		$\mathsf{2}$ & Message-hasCreator-\textgreater{}Person.id
+ & $\asc
+$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
+	%
+	%
+	%
+	%
+\end{tabularx}
+\queryCardVSpace
