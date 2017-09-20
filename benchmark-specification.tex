@@ -85,7 +85,7 @@ factors.
 \autoref{figure:schema} shows the data schema in UML. The schema defines the
 structure of the data used in the benchmark in terms of entities and their
 relations. Data represents a snapshot of the activity of a social network
-during a period of time. Data includes entities such as Persons, Organizations,
+during a period of time. Data includes entities such as Persons, Organisations,
 and Places. The schema also models the way persons interact, by means of the
 friendship relations established with other persons, and the sharing of content
 such as messages (both textual and images), replies to messages and likes to
@@ -134,7 +134,7 @@ as well as where universities operate.
 {\flushleft \textbf{Comment:}} a sub-class of a Message, and represents a
 comment made by a person to an existing message (either a Post or a Comment).
 
-{\flushleft \textbf{Company:}} a sub-class of an Organization, and represents a company where persons work.
+{\flushleft \textbf{Company:}} a sub-class of an Organisation, and represents a company where persons work.
 
 
 {\flushleft \textbf{Country:}} a sub-class of a Place, and represents a continent of the real world.
@@ -190,8 +190,8 @@ abstract entity.
     \label{table:message}
 \end{table}
 
-{\flushleft \textbf{Organization:}} an institution of the real
-world. \autoref{table:organization} shows the attributes of Organization
+{\flushleft \textbf{Organisation:}} an institution of the real
+world. \autoref{table:organisation} shows the attributes of Organisation
 entity.
 
 \begin{table}[H]
@@ -199,13 +199,13 @@ entity.
         \hline
         \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
         \hline
-        id & ID  & The identifier of the organization.\\
+        id & ID  & The identifier of the organisation.\\
         \hline
-        name & Long String  & The name of the organization.\\
+        name & Long String  & The name of the organisation.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Organization entity.}
-    \label{table:organization}
+    \caption{Attributes of Organisation entity.}
+    \label{table:organisation}
 \end{table}
 
 {\flushleft \textbf{Person:}} the avatar a real world person creates
@@ -317,7 +317,7 @@ entity.
     \label{table:tagclass}
 \end{table}
 
-{\flushleft \textbf{University:}} a sub-class of Organization,
+{\flushleft \textbf{University:}} a sub-class of Organisation,
 and represents an institution where persons study.
 
 \subsubsection{Relations}
@@ -669,7 +669,7 @@ $\mathsf{NumberOfThreads}-1$.
         \hline
         forum\_hasTag\_tag\_*.csv & Forum.id | Tag.id \\
         \hline
-        organization\_*.csv & id | type({"university", "company"}) | name | url \\
+        organisation\_*.csv & id | type({"university", "company"}) | name | url \\
         \hline
         organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id \\
         \hline
@@ -744,7 +744,7 @@ thread. The * in the file names indicates a number between 0 and $\mathsf{Number
         \hline
         forum\_hasTag\_tag\_*.csv & Forum.id | Tag.id \\
         \hline
-        organization\_*.csv & id | type({"university", "company"}) | name | url \\
+        organisation\_*.csv & id | type({"university", "company"}) | name | url \\
         \hline
         organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id \\
         \hline

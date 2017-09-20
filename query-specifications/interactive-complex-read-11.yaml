@@ -20,7 +20,7 @@ result:
     type: String
   - name: Person.lastName
     type: String
-  - name: Person-worksAt->Organization.name
+  - name: Person-worksAt->Organisation.name
     type: String
   - name: Person-worksAt->.worksFrom
     type: 32-bit Integer
@@ -29,7 +29,7 @@ sort:
     direction: asc
   - name: Person.id
     direction: asc
-  - name: Person-worksAt->Organization.name
+  - name: Person-worksAt->Organisation.name
     direction: desc
 limit: 10
 choke_points: [1.4, 2.3, 2.4, 3.3]

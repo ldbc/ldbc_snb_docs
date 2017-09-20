@@ -373,14 +373,14 @@ Notes:
                     Person.id 	 						& ID & \parbox[t]{20cm}{\par \strut} \\
                     Person.firstName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
                     Person.lastName 	 				& String & \parbox[t]{20cm}{\par \strut} \\
-                    Person-worksAt->Organization.name 	& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-worksAt->Organisation.name 	& String & \parbox[t]{20cm}{\par \strut} \\
                     Person-worksAt->.worksFrom 	 		& 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
                 \end{tabular}
             \item \textbf{Sort:}
                   \begin{itemize}
                     \item[1st] Person-worksAt->.worksFrom (ascending)
                     \item[2nd] Person.id (ascending)
-                    \item[3st] Person-worksAt->Organization.name (descending)
+                    \item[3st] Person-worksAt->Organisation.name (descending)
                   \end{itemize}
             \item \textbf{Limit:}
                   \begin{itemize}
