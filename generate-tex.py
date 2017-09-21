@@ -118,11 +118,11 @@ for choke_point in choke_point_references:
 
 ##### table for choke points and queries
 
-with open('templates/choke-points-queries.tex', 'r') as f:
-    choke_points_queries_template = Template(f.read())
-
 all_queries_sorted = sorted(all_queries, key=lambda tup: tup[0])
 all_choke_points_sorted = sorted(all_choke_points)
+
+with open('templates/choke-points-queries.tex', 'r') as f:
+    choke_points_queries_template = Template(f.read())
 
 choke_points_queries_text = choke_points_queries_template.render(
     choke_point_references = choke_point_references,
@@ -132,4 +132,18 @@ choke_points_queries_text = choke_points_queries_template.render(
 )
 
 with open("query-cards/choke-points-queries.tex", 'w') as choke_points_queries_template:
+    choke_points_queries_template.write(choke_points_queries_text)
+
+
+with open('templates/choke-points-queries.csv', 'r') as f:
+    choke_points_queries_template = Template(f.read())
+
+choke_points_queries_text = choke_points_queries_template.render(
+    choke_point_references=choke_point_references,
+    query_choke_point=query_choke_point,
+    queries=all_queries_sorted,
+    choke_points=all_choke_points_sorted,
+)
+
+with open("query-cards/choke-points-queries.csv", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)
