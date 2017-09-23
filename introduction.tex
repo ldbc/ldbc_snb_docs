@@ -7,16 +7,16 @@
 
 \section{Motivation for the Benchmark}
 
-The new era of data economy, based on large, distributed and complexly
+The new era of data economy, based on large, distributed, and complexly
 structured data sets, has brought on new and complex challenges in the field of
 data management and analytics. These data sets, usually modeled as large
 graphs, have attracted both industry and academia, due to new
-opportunities in research and innovation they offer.  This situation has also
+opportunities in research and innovation they offer. This situation has also
 opened the door for new companies to emerge, offering new non-relational and
 graph-like technologies that are called to play a significant role in upcoming
 years.
 
-The change in the data paradigm calls for new benchmarks to test new
+The change in the data paradigm calls for new benchmarks to test these new
 emerging technologies, as they set a framework where different systems can
 compete and be compared in a fair way, they let technology providers identify
 the bottlenecks and gaps of their systems and, in general, drive the research
@@ -24,22 +24,22 @@ and development of new information technology solutions. Without them, the
 uptake of these technologies is at risk by not providing the industry with
 clear, user-driven targets for performance and functionality.
 
-The LDBC Social Network Benchmark (\ldbcsnb) aims at being comprehensive
-benchmark setting the rules for the evaluation of graph-like data management
+The LDBC Social Network Benchmark (\ldbcsnb) aims at being a comprehensive
+benchmark by setting the rules for the evaluation of graph-like data management
 technologies.  \ldbcsnb is designed to be a plausible look-alike of all the
 aspects of operating a social network site, as one of the most representative
-and relevant use case of modern graph-like applications. 
+and relevant use cases of modern graph-like applications.
 
 \ldbcsnb includes the Interactive
 Workload~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}, which consists of user-centric
 transactional-like interactive queries, and the Business Intelligence Workload,
-which includes analytical queries to respond to business critic questions.
+which includes analytic queries to respond to business-critical questions.
 Initially, a graph analytics workload was also included in the roadmap of
 \ldbcsnb, but this was finally delegated to the Graphalytics benchmark
 project~\cite{graphalytics}, which was adopted as an official LDBC graph
 analytics benchmark. \ldbcsnb and Graphalytics combined target a broad range of
 systems with different nature and characteristics.  \ldbcsnb and Graphalytics
-aims at capturing the essential features of these usage scenarios while
+aim at capturing the essential features of these scenarios while
 abstracting away details of specific business deployments.
 
 This document contains the definition of the Interactive Workload and the first
@@ -52,7 +52,7 @@ benchmark with the provided software.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Relevance to Industry}
+\section{Relevance to the Industry}
 
 \ldbcsnb is intended to provide the following value to different stakeholders:
 
@@ -79,37 +79,37 @@ conceivably use to perform social network data management tasks:
  \item \textbf{Graph database systems} (\eg Neo4j, InfiniteGraph, Sparksee,
      Titan) are novel technologies aimed at storing directed and labeled
      graphs. They support graph traverals, typically by means of APIs, though
-     some of them also support some sort of graph oriented query language (\eg
+     some of them also support dedicated graph-oriented query languages (\eg
      Neo4j's Cypher). These systems' internal structures are typically designed
-     to store dynamic graphs that change over time.  They ofter support
+     to store dynamic graphs that change over time.  They ofter support for
      transactional queries with some degree of consistency, and value-based
      indexes to quickly locate nodes and edges. Finally, their architecture is
      typically single-machine (non-cluster). These systems can
      potentially implement all three workloads, though Interactive and Business Intelligence
      workloads are where they will presumably be more competitive.
- \item \textbf{Graph programming frameworks} (\eg Giraph, Signal/Collect,
-     GraphLab, Green Marl) are designed to perform global graph queries
-     computations, executed in parallel or lockstep. These computations are typically
+ \item \textbf{Graph processing frameworks} (\eg Giraph, Signal/Collect,
+     GraphLab, Green Marl) are designed to perform global graph
+     computations, executed in parallel or in a lockstep fashion. These computations are typically
      long latency, involving many nodes and edges and often consist of approximation
      answers to NP-complete problems. These systems expose an API, sometimes following
      a vertex-centric paradigm, and their architecture targets both single-machine and
-     cluster systems. Though these systems will likely implement the Graph Analytics workload.
+     cluster systems. These systems will likely implement the Graph Analytics workload.
  \item \textbf{RDF database systems} (\eg OWLIM, Virtuoso, BigData, Jena TDB,
      Stardog, Allegrograph) are systems that implement the SPARQL~1.1 query
      language, similar in complexity to \mbox{SQL-92}, which allows for structured
-     queries, and simple traversals. RDF database system often come with
-     additional support for simple reasoning (sameAs, subClass), text search and
+     queries, and simple traversals. RDF database systems often come with
+     additional support for simple reasoning (sameAs, subClass), text search, and
      geospatial predicates.  RDF database systems generally support
      transactions, but not always with full concurrency and serializability and
      their supposed strength is integrating multiple data sources (\eg
      DBpedia). Their architecture is both single-machine and clustered, and
      they will likely target Interactive and Business Intelligence workloads.
- \item \textbf{Relational database systems} (\eg Postgres, MySQL, Oracle, DB2,
-     SQLserver, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
-     Impala) treat data as relational, and queries are formulated in SQL and/or
-     PL/SQL. Both single-machine and cluster systems exist.  They  do not
-     normally support recursion, or stateful recursive algorithms, which makes
-     them not at home in the Graph Analytics workloads
+ \item \textbf{Relational database systems} (\eg Postgres, MySQL, Oracle, IBM DB2,
+     SQLServer, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
+     Impala) treat graph data relationally, and queries are formulated in SQL and/or
+     PL/SQL. Both single-machine and cluster systems exist.  They do not
+     normally support recursion or stateful recursive algorithms, which makes
+     them not at home in the Graph Analytics workloads.
  \item \textbf{NoSQL database systems} (\eg key-value stores such as HBase,
      REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
      are cluster-based and scalable. Key-value stores could possibly implement
@@ -139,10 +139,10 @@ conceivably use to perform social network data management tasks:
      participation.
  \item \textbf{Reasonable implementation cost}. For a product offering relevant
      functionality, the effort for obtaining initial results with SNB should be
-     small, on the order of days.
+     small, in the order of days.
  \item \textbf{Relevant selection of challenges}. Benchmarks are known to
      direct product development in certain directions. \ldbcsnb is informed by
-     the state of the art in database research so as to offer optimization
+     the state-of-the-art in database research so as to offer optimization
      challenges for years to come while not having a prohibitively high
      threshold for entry.
  \item \textbf{Reproducibility and documentation of results}. \ldbcsnb
@@ -158,7 +158,7 @@ reasons:
 
 \begin{itemize}
     \item It is simple to understand for a large audience, as it is
-        arguably present to our every-day life in different shapes and forms.
+        arguably present in our every-day life in different shapes and forms.
     \item It allows testing a complete range of interesting
         challenges, by means of different workloads targeting systems of
         different nature and characteristics.
@@ -167,13 +167,13 @@ reasons:
 \end{itemize}
 
 In \autoref{section:data}, \ldbcsnb defines the schema of the data used in
-the benchmark. The schema, represents a realistic social network, including
-people and their activity in the social network during a period of time.
+the benchmark. The schema represents a realistic social network, including
+people and their activities in the social network during a period of time.
 Personal information of each person, such as name, birthday, interests
-or places where people work or study, is included. Persons' activity is
-represented in the form of friendhisp relationships and content sharing (\ie
+or places where people work or study, is included. A persons' activity is
+represented in the form of friendship relationships and content sharing (\ie
 messages and pictures). \ldbcsnb provides a scalable synthetic data generator
-based on the MapReduce parallel paradigm, that produces networks with the
+based on the MapReduce paradigm, which produces networks with the
 described schema with distributions and correlations similar to those expected
 in a real social network. Furthermore, the data generator is designed to be
 user-friendly. The proposed data schema is shared by all the different proposed
@@ -184,23 +184,23 @@ the Business Intelligence workload are proposed. Workloads are designed to mimic
 the different usage scenarios found in operating a real social network site, and
 each of them targets one or more types of systems.  Each workload defines a set
 of queries and query mixes, designed to stress the SUTs in different choke-point
-areas, while being credible and realistic. Interactive workload reproduces the
+areas, while being credible and realistic. The Interactive workload reproduces the
 interaction between the users of the social network by including lookups and
-transactions that update small portions of the data base.  These queries are
-designed to be interactive and target systems capable of responding such queries
-with low latency for multiple concurrent users. Business Intelligence workload,
-represents those business intelligence analytics a social network company would
-like to perform in the social network, in order to take advantage of the data to
+transactions, which update small portions of the database. These queries are
+designed to be interactive and target systems capable of responding to such queries
+with low latency for multiple concurrent users. The Business Intelligence workload
+represents analytic queries a social network company would
+like to perform in the social network, to take advantage of the data and to
 discover new business opportunities. This workload explores moderate to large
-portions of data from different entities, and performing more resource intensive
+portions of the graph from different entities, and performs more resource-intensive
 operations. 
 
 \ldbcsnb provides an execution test driver, which is responsible for executing
 the workloads and gathering the results. The driver is designed with simplicity
-and portability in mind, to ease the implementation on systems with different
-nature and characteristics, at a low implementation cost. Furthermore, it
+and portability in mind to ease the implementation on systems with different
+nature and characteristics at a low implementation cost. Furthermore, it
 automatically handles the validation of the queries by means of a validation
-dataset provided by LDBC.  The overall philosophy of \ldbcsnb is to provide all
+dataset provided by LDBC.  The overall philosophy of \ldbcsnb is to provide
 the necessary software tools to run the benchmark, and therefore to reduce the
 benchmark's entry point as much as possible.
 
@@ -227,7 +227,7 @@ The list of institutions that take part in the definition and development
 of \ldbcsnb is formed by relevant actors from both the industry and academia in
 the field of linked data management. All the participants have contributed with
 their experience and expertise in the field, making a credible and relevant
-benchmark that meets all the desired needs. The list of participants is the
+benchmark, which meets all the desired needs. The list of participants is the
 following:
 
 \begin{itemize}
