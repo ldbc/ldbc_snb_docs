@@ -81,7 +81,7 @@ conceivably use to perform social network data management tasks:
      graphs. They support graph traverals, typically by means of APIs, though
      some of them also support dedicated graph-oriented query languages (\eg
      Neo4j's Cypher). These systems' internal structures are typically designed
-     to store dynamic graphs that change over time.  They ofter support for
+     to store dynamic graphs that change over time.  They offer support for
      transactional queries with some degree of consistency, and value-based
      indexes to quickly locate nodes and edges. Finally, their architecture is
      typically single-machine (non-cluster). These systems can
@@ -104,11 +104,8 @@ conceivably use to perform social network data management tasks:
      their supposed strength is integrating multiple data sources (\eg
      DBpedia). Their architecture is both single-machine and clustered, and
      they will likely target Interactive and Business Intelligence workloads.
- \item \textbf{Relational database systems} (\eg Postgres, MySQL, Oracle, IBM DB2,
-     SQLServer, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
-     Impala) treat graph data relationally, and queries are formulated in SQL and/or
-     PL/SQL. Both single-machine and cluster systems exist.  They do not
-     normally support recursion or stateful recursive algorithms, which makes
+     Microsoft SQL Server, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
+     PL/SQL. Both single-machine and cluster systems exist. They do not
      them not at home in the Graph Analytics workloads.
  \item \textbf{NoSQL database systems} (\eg key-value stores such as HBase,
      REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
