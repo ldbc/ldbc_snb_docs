@@ -104,9 +104,11 @@ conceivably use to perform social network data management tasks:
      their supposed strength is integrating multiple data sources (\eg
      DBpedia). Their architecture is both single-machine and clustered, and
      they will likely target Interactive and Business Intelligence workloads.
+\item \textbf{Relational database systems} (\eg Postgres, MySQL, Oracle, IBM DB2,
      Microsoft SQL Server, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
+     Impala) treat graph data relationally, and queries are formulated in SQL and/or
      PL/SQL. Both single-machine and cluster systems exist. They do not
-     them not at home in the Graph Analytics workloads.
+     normally support recursion or stateful recursive algorithms, which makes     them not at home in the Graph Analytics workloads.
  \item \textbf{NoSQL database systems} (\eg key-value stores such as HBase,
      REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
      are cluster-based and scalable. Key-value stores could possibly implement
