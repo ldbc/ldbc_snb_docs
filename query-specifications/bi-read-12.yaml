@@ -5,7 +5,7 @@ title: Trending Posts
 description: |
   Find all Messages created after a given date, that received more than a given number of likes.
 parameters:
-  - name: creationDate
+  - name: date
     type: Date
   - name: likeThreshold
     type: 32-bit Integer
