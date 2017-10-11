@@ -1,0 +1,35 @@
+workload: BI
+operation: read
+number: 11
+title: Unrelated replies
+description: |
+  Find those Persons of a given country that replied to any Message, such that the reply does not have any Tag in
+  common with the Message (only direct replies are considered, transitive ones are not). Consider only those replies not containing any word from a given blacklist. For each
+  Person and valid reply, retrieve the Tags associated with the reply, and retrieve the number of likes on the reply.
+parameters:
+  - name: country
+    type: 32-bit Integer
+  - name: blacklist
+    type: String[]
+result:
+  - name: person.id
+    type: 64-bit Integer
+  - name: tag.name
+    type: String
+  - name: countLikes
+    type: 32-bit Integer
+    category: aggregated
+    description: The count of Likes to replies with that Tag.
+  - name: countReplies
+    type: 32-bit Integer
+    category: aggregated
+    description: The count of replies with that Tag.
+sort:
+  - name: countLikes
+    direction: desc
+  - name: person.id
+    direction: asc
+  - name: tag.name
+    direction: asc
+limit: 100
+choke_points: [1.1, 2.1, 2.2, 2.3, 3.1, 3.2, 6.1]

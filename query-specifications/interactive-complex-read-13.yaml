@@ -1,0 +1,26 @@
+workload: Interactive
+operation: complex
+number: 13
+title: Single shortest path
+description: |
+  Given two Persons, find the shortest path between these two Persons in the subgraph induced by the Knows relationships.
+
+  Return the length of this path:
+
+  * $-1$ : no path found
+  * $0$: start person = end person
+  * $> 0$: regular case
+parameters:
+  - name: person1.id
+    type: ID
+  - name: person2.id
+    type: ID
+result:
+  - name: length
+    type: 32-bit Integer
+    category: calculated
+choke_points: [3.3, 7.2, 7.3]
+relevance: |
+  This query looks for a variable length path, starting at a given Person and finishing at an another given Person.
+  Proper cardinality estimation and search space prunning, will be crucial. This query also allows for possible parallel
+  implementations.

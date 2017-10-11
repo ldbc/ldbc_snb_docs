@@ -1,0 +1,116 @@
+{\small
+\begin{enumerate}
+    \item Add Person
+        \begin{itemize}
+            \item \textbf{Description:} Add a Person to the social network.
+            \item \textbf{Parameters:} \\
+                \begin{tabular}{lll}
+                    Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.firstName 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.lastName 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.gender 		& String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.birthDay 		& Date & \parbox[t]{20cm}{\par \strut} \\
+                    Person.creationDate     & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                    Person.locationIp     & String & \parbox[t]{20cm}{\par \strut} \\
+                    Person.browserUsed     & String & \parbox[t]{20cm}{\par \strut} \\
+                    Person-isLocatedIn->City.id 	& ID & \parbox[t]{20cm}{\par \strut} \\
+                    Person.speaks 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
+                    Person.emails 	& \{ String \} & \parbox[t]{20cm}{\par \strut} \\
+                    Person-hasInterest->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                    \{ Person-studyAt->University.id, \\
+                    Person-studyAt->.classYear \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
+                        \{ Person-workAt->Company.id, \\
+                        Person-workAt->.workFrom \}  & \{ID, 32-bit Integer\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Post Like
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Like to a Post of the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Comment Like
+                \begin{itemize}
+                    \item \textbf{Description: Add a Like to a Comment of the social network.}
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-likes->.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Forum
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Forum to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Forum.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                            Forum.title 	 			& String & \parbox[t]{20cm}{// person 2\strut} \\
+                            Forum.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-hasModerator->Person.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-hasTag->Tag.id 	& \{ ID \} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Forum Membership
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Forum membership to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-hasMember->Forum.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Person-hasMember->.joinDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Post
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Post to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Post.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post.imageFile 	 			& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.creationDate 	 		& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Post.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.language 	 		    & String & \parbox[t]{20cm}{\par \strut} \\
+                            Post.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
+                            Post.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                            Post-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Forum-containerOf->Post.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Post-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            \{Post-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Comment
+                \begin{itemize}
+                    \item \textbf{Description:} Add a Comment replying to a Post/Comment to the social network.
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Comment.id 	 			& ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.creationDate 			& DateTime & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.locationIp 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.browserUsed 	 		& String & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.content 	 		    & Text & \parbox[t]{20cm}{\par \strut} \\
+                            Comment.length 	 		    & 32-bit Integer & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-hasCreator->Person.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-isLocatedIn->Country.id & ID & \parbox[t]{20cm}{\par \strut} \\
+                            Comment-replyOf->Post.id & ID & \parbox[t]{20cm}{ // -1 if the comment is a reply of a comment. \strut} \\
+                            Comment-replyOf->Comment.id & ID & \parbox[t]{20cm}{// -1 if the comment is a reply of a post. \strut} \\
+                            \{Comment-hasTag->Tag.id\} & \{ID\} & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+            \item Add Friendship
+                \begin{itemize}
+                    \item \textbf{Description:} Add a friendship relation to the social network
+                    \item \textbf{Parameters:} \\
+                        \begin{tabular}{lll}
+                            Person.id 	 			& ID & \parbox[t]{20cm}{// person 1\strut} \\
+                            Person.id 	 			& ID & \parbox[t]{20cm}{// person 2\strut} \\
+                            Person-knows->.creationDate & DateTime & \parbox[t]{20cm}{\par \strut} \\
+                        \end{tabular}
+                \end{itemize}
+        \end{enumerate}
+      }

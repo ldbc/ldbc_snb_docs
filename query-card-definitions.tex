@@ -1,0 +1,73 @@
+% colors from Color Brewer 2.0, Set1: http://colorbrewer2.org/#type=qualitative&scheme=Set1&n=3
+\definecolor{parameter}{HTML}{e41a1c}
+\definecolor{result}{HTML}{377eb8}
+\definecolor{sort}{HTML}{4daf4a}
+
+% colors from Color Brewer 2.0, PRGn: http://colorbrewer2.org/#type=diverging&scheme=PRGn&n=7
+\definecolor{BI}{HTML}{e7d4e8}
+\definecolor{Interactive}{HTML}{d9f0d3}
+
+\newcommand{\queryRefCard}[3]{\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}}
+
+\newcommand{\attributeColumnWidth}{2.5cm}
+\newcommand{\typeColumnWidth}{2.7cm}
+\newcommand{\descriptionColumnWidth}{10.3cm}
+\newcommand{\largeDescriptionColumnWidth}{13cm}
+
+\newcommand{\tableHeaderFirst}[1]{\multicolumn{1}{|c|}{\bf #1}}
+\newcommand{\tableHeader}[1]{\multicolumn{1}{c|}{\bf #1}}
+
+% using camelCase notation is not conventional in LaTeX, but it helps readability a lot, so I decided to use it anyways [szarnyasg]
+
+\newcommand{\queryCardWidth}{17cm}
+\newcommand{\queryPropertyCell}{\small \sf \centering}
+\newcommand{\queryPropertyCellWidth}{1.48cm}
+
+\newcommand{\attributeCardWidth}{14.66cm}
+\newcommand{\typeWidth}{2.04cm}
+
+\newcommand{\paramNumberCell}{\cellcolor{parameter}\color{white}\footnotesize}
+\newcommand{\resultNumberCell}{\cellcolor{result}\color{white}\footnotesize}
+\newcommand{\sortNumberCell}{\cellcolor{sort}\color{white}\footnotesize}
+
+\newcommand{\directionCell}{\cellcolor{gray!20}}
+\newcommand{\resultOriginCell}{\tt}
+\newcommand{\edgeDirectionCell}{\tt}
+
+% for hyphenating tt text, see also https://tex.stackexchange.com/a/44362/71109
+\newcommand{\varNameText}{\tt}
+\newcommand{\varNameCell}{\varNameText}
+
+\newcommand{\typeText}{\footnotesize\sf}
+\newcommand{\typeCellBase}{\cellcolor{gray!20}\typeText}
+\newcommand{\typeCell}{\typeCellBase\raggedright}
+
+\newcommand{\chokePoint}[1]{\hyperref[choke_point_#1]{#1}}
+
+\newcommand{\innerCardVSpace}{\vspace{1.1ex}}
+\newcommand{\queryCardVSpace}{\vspace{2ex}}
+
+% tabularx magic
+% https://tex.stackexchange.com/a/89932/71109
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+% https://tex.stackexchange.com/questions/252385/mixing-m-and-x-in-tabularx#comment602205_252388
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+% https://tex.stackexchange.com/a/4712/71109
+%\newcolumntype{M}{>{\begin{varwidth}{7.8cm}}l<{\end{varwidth}}}
+
+% https://tex.stackexchange.com/a/385069/71109
+\setlength\cellspacetoplimit{3pt}
+\setlength\cellspacebottomlimit{3pt}
+\newcolumntype{M}{>{\begin{varwidth}{7.8cm}}Sl<{\end{varwidth}}}
+
+\newcommand{\attributeTable}[3]{
+	\vspace{1ex}
+	\begin{tabularx}{\linewidth}{|l|Y|}
+	\hline
+	\bf Attribute   & \varNameCell  #1 \\ \hline
+	\bf Type        & \typeCellBase #2 \\ \hline % using typeCellBase as we cannot use \raggedright here
+	\bf Description &               #3 \\
+	\hline
+	\end{tabularx}}
+
+\newcommand{\tpch}[1]{{\color{gray}(Related TPC-H choke point: #1)}}

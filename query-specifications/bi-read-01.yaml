@@ -1,0 +1,55 @@
+workload: BI
+operation: read
+number: 1
+title: Posting summary
+description: |
+  Given a date, find all Messages created before that date.
+  Group them by a 3-level grouping\:
+
+  1. by year of creation
+  2. for each year, group into message types (Posts or Comments)
+  3. for each year-type group, split into four groups based on length of their content
+      * 0 <= length < 40\: `short`
+      * 40 <= length < 80\: `one liner`
+      * 80 <= length < 160\: `tweet`
+      * 160 <= length\: `long`
+
+parameters:
+  - name: date
+    type: Date
+result:
+  - name: messageYear
+    type: 32-bit Integer
+    description: Year of the message
+  - name: messageType
+    type: String
+    category: meta
+    description: "`post`/`comment` (in lowercase)"
+  - name: lengthCategory
+    type: String
+    category: calculated
+    description: "`short`/`one-liner`/`tweet`/`long` (in lowercase)"
+  - name: messageCount
+    type: 32-bit Integer
+    category: aggregated
+    description: Total number of Messages (Posts/Comments) in that group
+  - name: averageMessageLength
+    type: 32-bit Integer
+    category: aggregated
+    description: Average length of the Message content in that group
+  - name: sumMessageLength
+    type: 32-bit Integer
+    category: aggregated
+    description: Sum of all message content lengths
+  - name: percentageOfMessages
+    type: 32-bit Float
+    category: aggregated
+    description: Number of messages in group as a percentage of all messages created before the given date
+sort:
+  - name: year
+    direction: desc
+  - name: messageType
+    direction: asc
+  - name: lengthCategory
+    direction: asc
+choke_points: [1.2, 3.2, 4.1]

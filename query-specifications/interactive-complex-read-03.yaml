@@ -1,0 +1,58 @@
+workload: Interactive
+operation: complex
+number: 3
+title: Friends and friends of friends that have been to countries X and Y
+description: |
+  Given a start Person, find Persons that are their friends and
+  friends of friends (excluding start Person) that have made
+  Posts/Comments in both of the given Countries, X and Y, within a
+  given period.  Only Persons that are foreign to Countries X and Y
+  are considered, that is Persons whose Location is not Country X or
+  Country Y.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: CountryX.name
+    type: String
+  - name: CountryY.name
+    type: String
+  - name: startDate
+    type: Date
+    description: Beginning of requested period
+  - name: duration
+    type: 32-bit Integer
+    description: Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: countX
+    type: 32-bit Integer
+    category: aggregated
+    description: Number of Messages from Country X made by Person within the given time
+  - name: countY
+    type: 32-bit Integer
+    category: aggregated
+    description: Number of Messages from Country Y made by Person within the given time
+  - name: count
+    type: 32-bit Integer
+    category: aggregated
+    description: "`countX` + `countY`"
+sort:
+  - name: countX
+    direction: desc
+  - name: Person.id
+    direction: asc
+limit: 20
+choke_points: [2.1, 3.1, 5.1]
+relevance: |
+  This query looks for paths of length two and three, starting from a Person, going to friends or friends of friends, and
+  then moving to Messages. This query tests the ability of the query optimizer to select the most efficient join ordering,
+  which will depend on the cardinalities of the intermediate results. Many friends of friends can be duplicate, then it is
+  expected to eliminate duplicates and those people prior to access the Post and Comments, as well as eliminate those
+  friends from countries X and Y, as the size of the intermediate results can be severely affected. A possible structural
+  optimization could be to materialize the number of Posts and Comments created by a person, and progressively
+  filter those people that could not even fall in the top 20 even having all their posts in the countries X and Y.

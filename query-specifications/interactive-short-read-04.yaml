@@ -1,0 +1,14 @@
+workload: Interactive
+operation: short
+number: 4
+title: Message Content
+description: |
+  Given a Message, retrieve its content and creation date.
+parameters:
+  - name: Message.id
+    type: ID
+result:
+  - name: Message.creationDate
+    type: ID
+  - name: Message.content or Post.imageFile
+    type: String

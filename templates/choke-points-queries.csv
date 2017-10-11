@@ -1,0 +1,10 @@
+{% for choke_point in choke_points -%}
+    {{- choke_point -}},
+{%- endfor %}
+{% for query in queries -%}
+    {%- if query_choke_point[query.0] -%}
+        {% for choke_point in choke_points -%}
+            {% if choke_point in query_choke_point[query.0] %}x{% else %}{% endif %},
+        {%- endfor %}
+    {%- endif %}
+{% endfor -%}

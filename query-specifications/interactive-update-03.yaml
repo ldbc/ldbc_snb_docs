@@ -1,0 +1,12 @@
+workload: Interactive
+operation: update
+number: 3
+title: Add Comment Like
+description: Add a Like to a Comment of the social network.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Comment.id
+    type: ID
+  - name: Person-likes->.creationDate
+    type: DateTime

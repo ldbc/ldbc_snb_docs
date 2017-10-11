@@ -1,0 +1,67 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{Interactive / update / 6}
+\label{section:interactive-update-06}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & Interactive / update / 6 \\ \hline
+%
+	title & Add Post
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-06}\hfill\vadjust{} \\ \hline
+%
+	desc. & Add a Post to the social network.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Post.id
+ & ID
+ &  \\ \hline
+		$\mathsf{2}$ & Post.imageFile
+ & String
+ &  \\ \hline
+		$\mathsf{3}$ & Post.creationDate
+ & DateTime
+ &  \\ \hline
+		$\mathsf{4}$ & Post.locationIp
+ & String
+ &  \\ \hline
+		$\mathsf{5}$ & Post.browserUsed
+ & String
+ &  \\ \hline
+		$\mathsf{6}$ & Post.language
+ & String
+ &  \\ \hline
+		$\mathsf{7}$ & Post.content
+ & Text
+ &  \\ \hline
+		$\mathsf{8}$ & Post.length
+ & 32-bit Integer
+ &  \\ \hline
+		$\mathsf{9}$ & Post-hasCreator-\textgreater{}Person.id
+ & ID
+ &  \\ \hline
+		$\mathsf{10}$ & Post\textless{}-containerOf-Forum.id
+ & ID
+ &  \\ \hline
+		$\mathsf{11}$ & Post-isLocatedIn-\textgreater{}Country.id
+ & ID
+ &  \\ \hline
+		$\mathsf{12}$ & \{Post-hasTag-\textgreater{}Tag.id\}
+ & \{ID\}
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+%
+	%
+	%
+	%
+	%
+\end{tabularx}
+\queryCardVSpace

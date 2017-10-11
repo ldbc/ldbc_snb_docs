@@ -1,0 +1,39 @@
+workload: Interactive
+operation: complex
+number: 11
+title: Job referral
+description: |
+  Given a start Person, find that Person's friends and friends of
+  friends (excluding start Person) who started Working in some
+  Company in a given Country, before a given date (year).
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Country.name
+    type: String
+  - name: year
+    type: 32-bit Integer
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Person-worksAt->Organisation.name
+    type: String
+  - name: Person-worksAt->.worksFrom
+    type: 32-bit Integer
+sort:
+  - name: Person-worksAt->.worksFrom
+    direction: asc
+  - name: Person.id
+    direction: asc
+  - name: Person-worksAt->Organisation.name
+    direction: desc
+limit: 10
+choke_points: [1.4, 2.3, 2.4, 3.3]
+relevance: |
+  This query looks for paths of length two or three, starting from a Person, moving to friends or friends of friends,
+  and ending at a Company. In this query, there are selective joins and a top k order by that can be exploited for
+  optimizations.

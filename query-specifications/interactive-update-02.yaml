@@ -1,0 +1,12 @@
+workload: Interactive
+operation: update
+number: 2
+title: Add Post Like
+description: Add a Like to a Post of the social network.
+parameters:
+  - name: Person.id
+    type: ID
+  - name: Post.id
+    type: ID
+  - name: Person-likes->.creationDate
+    type: DateTime

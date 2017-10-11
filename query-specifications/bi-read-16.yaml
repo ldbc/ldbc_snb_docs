@@ -1,0 +1,41 @@
+workload: BI
+operation: read
+number: 16
+title: Experts in social circle
+description: |
+  Given a Person, find all other Persons that live in a given country and are connected to given person by a transitive path with length in range [min, max] through the knows relation.
+
+  In the path, an edge can be only traversed once while nodes can be traversed multiple times.
+
+  For each of these Persons, retrieve all of their Messages (Posts & Comments) that contain at least one Tag belonging to a given TagClass (direct relation not transitive). For each Message, retrieve all of its Tags.
+
+  Group the results by Persons and Tags, then count the Messages by a certain Person having a certain Tag.
+parameters:
+  - name: person
+    type: 64-bit Integer
+  - name: country
+    type: String
+  - name: tagClass
+    type: String
+  - name: minPathDistance
+    type: 32-bit Integer
+  - name: maxPathDistance
+    type: 32-bit Integer
+result:
+  - name: person.id
+    type: 64-bit Integer
+  - name: tag.name
+    type: String
+  - name: messageCount
+    type: 32-bit Integer
+    category: aggregated
+    description: Number of Messages created by that Person containing that Tag
+sort:
+  - name: messageCount
+    direction: desc
+  - name: tag.name
+    direction: asc
+  - name: person.id
+    direction: asc
+limit: 100
+choke_points: [1.2, 1.4, 2.3, 2.4, 3.3, 7.1, 7.2, 7.3]

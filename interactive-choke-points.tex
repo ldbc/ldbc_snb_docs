@@ -1,4 +1,6 @@
-\section{Choke Points}
+\section{Interactive Choke Points}
+
+\todo{See also \url{http://wiki.ldbcouncil.org/display/TUC/Interactive+Choke+Points}}
 
 The design of the interactive workload queries has been conceived around two
 main aspects: realism and technological relevance.  While realism has been
@@ -9,9 +11,7 @@ stress.  These choke points capture those critical operations, techniques or
 technologies that  could significatively affect the performance of the queries.
 The choke points can be summarized in the following list:
 
-% http://wiki.ldbcouncil.org/display/TUC/Interactive+Choke+Points
-
-\subsection{Aggregation Performance}
+\subsection*{Aggregation Performance / CP1-AggregationPerformance. Performance of aggregate calculations.}
 
 The queries generally have a top-$k$ order by and often a group by in
 addition to this.  These offer multiple optimization opportunities.
@@ -23,7 +23,7 @@ limited to counts and sums.  For example string concatenation occurs
 as an aggregate, testing possible user defined aggregate support.
 There is a wide range of cardinalities in grouping, from low, \eg country, to high, \eg post.
 
-\subsection{Join Performance}
+\subsection*{Join Performance / CP2-JoinPerformance. Voluminous joins, with or without selections.}
 
 Each graph traversal step is in principle a join.  The join patterns are
 diverse, exercising both index- and hash-based operators.   Queries are designed
@@ -31,20 +31,20 @@ so as to reward judicious use of hash join by having patterns starting with one
 entity, fetching many related entities and then testing how these are related
 to a third entity, \eg posts of a user with a tag of a given type.
 
-\subsection{Data Access Locality}
+\subsection*{Data Access Locality / CP3-DataAccessLocality. Non-full-scan access to (correlated) table data.}
 
 Graph problems are notoriously non-local.  However, when queries touch
 any non-trivial fraction of a dataset, locality will emerge and can be
 exploited, for example by vectored index access or by ordering data so
 that that a merge join is possible.
 
-\subsection{Expression Calculation}
+\subsection*{Expression Calculation / CP4-ExpressionCalculation. Efficiency in evaluating (complex) expressions.}
 
 Queries often have expressions, including conditional expressions.
 This provides opportunities for vectoring and tests efficient
 management of intermediate results.
 
-\subsection{Correlated Subqueries}
+\subsection*{Correlated Subqueries / CP5-CorrelatedSubqueries. Efficiently handling dependent subqueries.}
 
 The workload has many correlated subqueries, for example constructts
 like x within two steps but not in one step, which would typically be
@@ -53,7 +53,7 @@ subqueries with aggregation, for example returning the count of posts
 satisfying a certain criteria.
 
 
-\subsection{Parallelism and Concurrency}
+\subsection*{Parallelism and Concurrency / CP6-Parallelism and Concurrency. Making use of parallel computing resources.}
 
 All queries offer opportunities for parallelism.  This tests a wide
 range of constructs, for example partitioned parallel variants of
@@ -66,7 +66,7 @@ starting a parallel thread with too little to do is
 counter-productive.
 
 
-\subsection{Graph Specifics}
+\subsection*{Graph Specifics / CP7 RDF and Graph Specifics.}
 
 Graph problems are generally characterized by transitive properties
 and the fact that neighboring vertices often have a large overlap in

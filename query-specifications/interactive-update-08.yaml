@@ -1,0 +1,14 @@
+workload: Interactive
+operation: update
+number: 8
+title: Add Friendship
+description: Add a friendship relation to the social network
+parameters:
+  - name: Person.id
+    type: ID
+    description: Person 1
+  - name: Person.id
+    type: ID
+    description: Person 2
+  - name: Person-knows->.creationDate
+    type: DateTime

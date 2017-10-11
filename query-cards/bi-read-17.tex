@@ -1,0 +1,53 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection*{BI / read / 17}
+\label{section:bi-read-17}
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & BI / read / 17 \\ \hline
+%
+	title & Friend triangles
+ \\ \hline
+%
+	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-17}\hfill\vadjust{} \\ \hline
+%
+	desc. & For a given country, count all the distinct triples of persons such that
+\texttt{a} is friend of \texttt{b}, \texttt{b} is friend of \texttt{c},
+and \texttt{c} is friend of \texttt{a}.
+
+Distinct means that given a triple \(t_1\) in the result set \(R\) of
+all qualified triples, there is not a triple \(t_2\) in \(R\) such that
+\(t_1\) and \(t_2\) have the same set of elements.
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & country
+ & String
+ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+		result &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		$\mathsf{1}$ & count
+ & 32-bit Integer
+ & R &
+				 \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	%
+	%
+	CPs &
+	\multicolumn{1}{>{\raggedright}l|}{
+		\chokePoint{1.1}, 
+		\chokePoint{2.3}
+		} \\ \hline
+	%
+	%
+\end{tabularx}
+\queryCardVSpace

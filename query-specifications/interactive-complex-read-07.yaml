@@ -1,0 +1,53 @@
+workload: Interactive
+operation: complex
+number: 7
+title: Recent likers
+description: |
+  Given a start Person, find (most recent) Likes on any of start
+  Person's Messages.  Find Persons that Liked any of start
+  Person's Messages, the Messages they liked most recently,
+  creation date of that Like, and the latency (in minutes) between
+  creation of Messages and Like.  Additionally, for each Person
+  found return a flag indicating whether the liker is a friend of
+  start Person.  In the case that a Person Liked multiple Messages
+  at the same time, return the Message with lowest identifier.
+parameters:
+  - name: Person.id
+    type: 64-bit Integer
+result:
+  - name: Person.id
+    type: ID
+  - name: Person.firstName
+    type: String
+  - name: Person.lastName
+    type: String
+  - name: Like.creationDate
+    type: DateTime
+  - name: Message.id
+    type: ID
+  - name: Message.content or Post.imageFile
+    type: String
+  - name: latency
+    type: 32-bit Integer
+    category: calculated
+    description: Duration between creation of Message and Like, in minutes
+  - name: isNew
+    type: Boolean
+    category: calculated
+    description: "`false` if liker Person is friend of start Person, `true` otherwise"
+sort:
+  - name: Like.creationDate
+    direction: desc
+  - name: Person.id
+    direction: asc
+limit: 20
+choke_points: [2.2, 2.3, 3.3, 5.1]
+relevance: |
+  This query looks for paths of length two, starting from a given Person, moving
+  to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
+  both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
+  the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection
+  until the end. This query implies accessing 2-hop data, and as a consequence, index accesses are expected to be
+  scattered. We expect to observe variate cardinalities, depending on the characteristics of the input parameter, so
+  properly selecting the join operators will be crucial. This query has a lot of correlated sub-queries, so it is testing
+  the ability to flatten the query execution plans.

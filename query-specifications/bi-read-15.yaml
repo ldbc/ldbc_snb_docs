@@ -1,0 +1,21 @@
+workload: BI
+operation: read
+number: 15
+title: Social normals
+description: |
+  Given a country, find all Persons of the country whose number of friends in the given country equals the
+  (floor of) average number of friends that Persons of the given country have in the given country.
+parameters:
+  - name: country
+    type: 32-bit Integer
+result:
+  - name: person.id
+    type: 64-bit Integer
+  - name: count
+    type: 32-bit Integer
+    category: aggregated
+sort:
+  - name: person.id
+    direction: asc
+limit: 100
+choke_points: [1.2, 2.3, 3.2, 3.3, 5.3, 6.1]
