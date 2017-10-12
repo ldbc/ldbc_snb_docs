@@ -3,10 +3,10 @@ operation: read
 number: 22
 title: International dialog
 description: |
-  Consider all pairs of people `(p1, p2)` such that one is located in a city of Country `countryX`
-  and the other is located in a city of Country `countryY`.
+  Consider all pairs of people `(p1, p2)` such that one is located in a city of Country `country1`
+  and the other is located in a city of Country `country2`.
 
-  For each city of Country `countryX`, return the highest scoring pair.
+  For each city of Country `country1`, return the highest scoring pair.
 
   The score of a pair is defined as the sum of the scores of the following kinds of interaction\:
 
@@ -18,16 +18,16 @@ description: |
 
   Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
 parameters:
-  - name: countryX
+  - name: country1
     type: String
-  - name: countryY
+  - name: country2
     type: String
 result:
   - name: p1.id
     type: 64-bit Integer
   - name: p2.id
     type: 64-bit Integer
-  - name: cityX.name
+  - name: city1.name
     type: String
   - name: score
     type: 32-bit Integer
