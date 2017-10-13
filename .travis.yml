@@ -27,8 +27,8 @@ script:
   - ./generate-tex.py
   - cd patterns; ./crop.sh; cd ..
   - make texfot
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_STABLE;   ./deploy.sh; fi
-  - if [ "$TRAVIS_BRANCH" = "dev"    -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_SNAPSHOT; ./deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_STABLE;   deployment/deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "dev"    -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_SNAPSHOT; deployment/deploy.sh; fi
 notifications:
   slack: ldbcouncil:xAGBuRGeUmub4UxqrfJhOquF
   email: false

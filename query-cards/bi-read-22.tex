@@ -13,10 +13,10 @@
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-22}\hfill\vadjust{} \\ \hline
 %
 	desc. & Consider all pairs of people \texttt{(p1,\ p2)} such that one is located
-in a city of Country \texttt{countryX} and the other is located in a
-city of Country \texttt{countryY}.
+in a city of Country \texttt{country1} and the other is located in a
+city of Country \texttt{country2}.
 
-For each city of Country \texttt{countryX}, return the highest scoring
+For each city of Country \texttt{country1}, return the highest scoring
 pair.
 
 The score of a pair is defined as the sum of the scores of the following
@@ -47,10 +47,10 @@ Consequently, the maximum score a pair can obtain is:
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & countryX
+		$\mathsf{1}$ & country1
  & String
  &  \\ \hline
-		$\mathsf{2}$ & countryY
+		$\mathsf{2}$ & country2
  & String
  &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -67,7 +67,7 @@ Consequently, the maximum score a pair can obtain is:
  & 64-bit Integer
  & R &
 				 \\ \hline
-		$\mathsf{3}$ & cityX.name
+		$\mathsf{3}$ & city1.name
  & String
  & R &
 				 \\ \hline
