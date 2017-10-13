@@ -5,7 +5,9 @@
 
 [[Latest stable build (PDF)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) [[Latest snapshot build (PDF)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
 
-This README is a documentation on how to build the specification PDF.
+This repository contains the LaTeX source for the specification of the LDBC Social Network Benchmark.
+
+This README discusses how to build the [specification PDF](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) from source. For an architectural overview and guide on how to  develop benchmark implementations, please visit the [wiki of this repository](https://github.com/ldbc/ldbc_snb_docs/wiki).
 
 ## Generating query cards
 
