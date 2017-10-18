@@ -7,7 +7,7 @@ description: |
   (floor of) average number of friends that Persons of the given country have in the given country.
 parameters:
   - name: country
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer

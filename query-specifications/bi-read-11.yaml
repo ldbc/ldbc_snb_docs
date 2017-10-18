@@ -8,7 +8,7 @@ description: |
   Person and valid reply, retrieve the Tags associated with the reply, and retrieve the number of likes on the reply.
 parameters:
   - name: country
-    type: 32-bit Integer
+    type: String
   - name: blacklist
     type: String[]
 result:

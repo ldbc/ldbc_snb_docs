@@ -11,9 +11,9 @@ description: |
   that have a tag from TagClass2 (`count2`).
 parameters:
   - name: tagClass1
-    type: 32-bit Integer
+    type: String
   - name: tagClass2
-    type: 32-bit Integer
+    type: String
   - name: threshold
     type: 32-bit Integer
 result:

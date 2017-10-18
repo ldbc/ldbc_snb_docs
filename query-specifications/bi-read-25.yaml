@@ -3,7 +3,7 @@ operation: read
 number: 25
 title: Weighted paths
 description: |
-  Given two Persons, find all (unweighted) shortest paths between these two Persons, in the subgraph induced by the
+  Given two Persons, person1 and person2, find all (unweighted) shortest paths between these two Persons, in the subgraph induced by the
   Knows relationship.
 
   Then, for each path calculate a weight. The nodes in the path are Persons, and the weight of a path is the sum of
@@ -16,10 +16,10 @@ description: |
 
   Return all the paths with shortest length, and their weights.
 parameters:
-  - name: person1Id
-    type: 64-bit Integer
-  - name: person2Id
-    type: 64-bit Integer
+  - name: person1
+    type: String
+  - name: person2
+    type: String
   - name: startDate
     type: Date
   - name: endDate

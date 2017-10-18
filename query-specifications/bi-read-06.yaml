@@ -18,7 +18,7 @@ description: |
   * Likes (`likeCount`) are multiplied by 10.
 parameters:
   - name: tag
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer

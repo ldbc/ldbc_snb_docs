@@ -12,8 +12,9 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-25}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given two Persons, find all (unweighted) shortest paths between these
-two Persons, in the subgraph induced by the Knows relationship.
+	desc. & Given two Persons, person1 and person2, find all (unweighted) shortest
+paths between these two Persons, in the subgraph induced by the Knows
+relationship.
 
 Then, for each path calculate a weight. The nodes in the path are
 Persons, and the weight of a path is the sum of weights between every
@@ -33,11 +34,11 @@ Return all the paths with shortest length, and their weights.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & person1Id
- & 64-bit Integer
+		$\mathsf{1}$ & person1
+ & String
  &  \\ \hline
-		$\mathsf{2}$ & person2Id
- & 64-bit Integer
+		$\mathsf{2}$ & person2
+ & String
  &  \\ \hline
 		$\mathsf{3}$ & startDate
  & Date
