@@ -223,8 +223,8 @@
           \hline\Huge\relscale{1.15}%
           \parbox{16cm}{\vspace{3mm}\centering\bfseries \T \delIDText{} \delNameText \B} \\[3mm]%
         \hline%
-        \parbox[t]{16cm}{\centering\bfseries \vspace{0mm} Coordinator: \authorText \B} \\%
-        \if@contributor\parbox[t]{16cm}{\centering\bfseries \vspace{-3mm} With contributions from: \contributorText} \\\fi%
+%        \parbox[t]{16cm}{\centering\bfseries \vspace{0mm} Coordinator: \authorText \B} \\%
+%        \if@contributor\parbox[t]{16cm}{\centering\bfseries \vspace{-3mm} With contributions from: \contributorText} \\\fi%
 %        \normalsize%
 %        \parbox{16cm}{\centering\bfseries 1\textsuperscript{st} Quality Reviewer: \reviewerOneText} \\[-3mm]%
 %        \normalsize%
@@ -251,6 +251,15 @@
 %        \T Keywords: \B & \keywordsText \\%
 %        \hline%
 %        \end{tabular}%
+%        \newpage%
+%        \newpage%
+%        \normalLayout%
+%        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
+%        \hline%
+%        \emph{\bfseries \T Abstract} \\[2mm]%
+%        \parbox[t]{17.0cm}{\abstractText } \B \\%
+%            \hline%
+%        \end{tabular}%
         \newpage%
         \normalLayout%
 %        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
@@ -262,13 +271,13 @@
 %        \end{tabular}%
 		\abstractText
         \newpage%
-        \addcontentsline{toc}{chapter}{Executive Summary}%
+%        \addcontentsline{toc}{chapter}{Executive Summary}%
         \chapter*{Executive Summary}%
         \execSummaryText%
         \newpage%
-        \renewcommand\T{\rule{0pt}{3.5mm}}%
-        \renewcommand\B{\rule[-1.5mm]{0pt}{0pt}}%
-        \addcontentsline{toc}{chapter}{Document Information}%
+%        \renewcommand\T{\rule{0pt}{3.5mm}}%
+%        \renewcommand\B{\rule[-1.5mm]{0pt}{0pt}}%
+%        \addcontentsline{toc}{chapter}{Document Information}%
 %        \chapter*{Document Information}%
 %        \noindent\begin{tabular}{|@{\@spacer}p{3.9cm}@{}|@{}p{4.3cm}@{}|@{}p{4.3cm}@{}|@{}p{4.3cm}@{}|}%
 %        \hline%

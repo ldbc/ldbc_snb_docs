@@ -67,7 +67,9 @@ In this situation, the aggregation operator should be able to exclude certain gr
 
 \cpSection[1.3]{1.6}{QEXE}{Low Cardinality group-by performance}
 
-This choke-point tests the ability to efficiently perform group by evaluation when only a very limited set of groups is available.  This can require special strategies for parallelization, \eg pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.
+This choke-point tests the ability to efficiently perform group by evaluation
+when only a very limited set of groups is available.  This can require special
+strategies for parallelization, \eg pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.
 
 \input{query-cards/cp-1-6}
 
@@ -111,29 +113,6 @@ This choke-point tests the performance of join operators when the join is sparse
 
 \input{query-cards/cp-2-4}
 
-\cpSection{2.5}{QOPT}{Index choice - Decide scan order taking into account order of results for downstream (parent) operators}
-
-\todo{Add description}
-
-\todo{this is not covered by the queries - at least according to the docs}
-
-%\input{query-cards/cp-2-5}
-
-\cpSection{2.6}{QEXE}{Unpredictable, widely scattered indexed access pattern (graph walk)}
-
-The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access. Techniques like vectoring non-local index access by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact. Also detecting absence of locality should turn off any locality dependent optimizations if these have overhead when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
-
-\todo{this is not convered by the queries - at least according to the docs}
-%\input{query-cards/cp-2-6}
-
-\cpSection{2.7}{QOPT}{Join type - correct choice of hash vs. index based on cardinality on either side}
-
-Specially with stores, where one usually has an index on everything, deciding to use a hash join requires a good estimation of cardinalities on both the probe and build sides. In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns. There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides.sides. This choke point tests whether this break-even point is correctly modeled and whether the cost model produces accurate estimates as input to this choice.
-
-\todo{this is not convered by the queries - at least according to the docs}
-%\input{query-cards/cp-2-7}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +130,8 @@ With MinMax indexes, range-predicates on any column can be translated into quali
 \cpSection{3.2}{STORAGE}{Dimensional clustering}
 
 This chokepoint tests suitability of the identifiers assigned to entities by the storage system to better exploit data locality. A data model where each entity has a unique synthetic identifier,
-\eg RDF or graph models, has some choice in assigning a value to this identifier. The properties of the entity being identified may affect this, \eg type (label), other dependent properties,
+\eg RDF or graph models, has some choice in assigning a value to this identifier.
+The properties of the entity being identified may affect this, \eg type (label), other dependent properties,
 \eg geographic location, date, position in a hierarchy etc, depending on the application. Such identifier choice may create locality which in turn improves efficiency of compression or index access.
 
 \input{query-cards/cp-3-2}
@@ -162,21 +142,7 @@ This choke-point tests the performance of indexes when scattered accesses are pe
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
 Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
 
-\todo{this is not convered by the queries - at least according to the docs}
-%\input{query-cards/cp-3-3}
-
-\cpSection{3.4}{QEXE}{Use of zone maps for accelerating scans}
-
-\todo{Add description}
-\todo{this is not convered by the queries - at least according to the docs}
-%\input{query-cards/cp-3-4}
-
-\cpSection{3.5}{STORAGE}{Dimensional clustering - assigning pk/fk/uri/vertex ids in function of attributes of the entity concerned}
-
-A data model where each entity has a unique synthetic identifier, \eg RDF or graph models, has some choice in assigning a value to this identifier. The properties of the entity being identified may affect this, \eg type (label), other dependent properties, \eg geographic location, date, position in a hierarchy etc, depending on the application. Such identifier choice may create locality which in turn improves efficiency of compression or index access.
-
-\todo{this is not convered by the queries - at least according to the docs}
-%\input{query-cards/cp-3-5}
+\input{query-cards/cp-3-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -200,13 +166,15 @@ For instance, the optimizer may reorder conjunctions to test first those conditi
 
 \cpSection{4.3}{QEXE}{Low overhead expressions interpretation}
 
-This choke-point tests the ability to efficiently evaluate simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
+This choke-point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
 
 \input{query-cards/cp-4-3}
 
 \cpSection{4.4}{QEXE}{String matching performance}
 
-\todo{this is not covered by the queries - at least according to the docs}
+This chokepoint tests the ability of efficiently evaluating complex string
+matching expressions (\eg via regular expressions).
+
 %\input{query-cards/cp-4-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -265,8 +233,10 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 
 \cpSection{7.1}{QEXE}{Path pattern reuse}
 
-This choke-point tests the ability of the execution engine to reuse work across graph traversals \todo{complete in more detail}
-For example, when computing paths within a range of distances, it is often possible to incrementally compute longer paths by reusing paths of shorter distances that were already computed
+This choke-point tests the ability of the execution engine to reuse work across
+graph traversals. For example, when computing paths within a range of distances,
+it is often possible to incrementally compute longer paths by reusing paths of
+shorter distances that were already computed.
 
 \input{query-cards/cp-7-1}
 
@@ -275,7 +245,8 @@ For example, when computing paths within a range of distances, it is often possi
 This choke-point tests the ability of the query optimizer to properly estimate the cardinality of intermediate results when executing transitive paths. A transitive path may occur in a ``fact table'' or a ``dimension table'' position.
 A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy vs. graph neighborhood or transitive closure in a many-to-many connected social network.
 In order to decide proper join order and type, the cardinality of the expansion of the transitive path needs to be correctly estimated.
-This could for example take the form of executing on a sample of the data in the cost model or of gathering special statistics, \eg the depth and fan-out of a tree. In the case of hierarchical dimensions,
+This could for example take the form of executing on a sample of the data in the
+cost model or of gathering special statistics, \eg the depth and fan-out of a tree. In the case of hierarchical dimensions,
 \eg geographic locations or other hierarchical classifications, detecting the cardinality of the transitive path will allow one to go to a star schema plan with scan of a fact table with a selective hash join.
 Such a plan will be on the other hand very bad for example if the hash table is much larger than the ``fact table'' being scanned.
 
@@ -284,8 +255,11 @@ Such a plan will be on the other hand very bad for example if the hash table is 
 \cpSection{7.3}{QEXE}{Execution of a transitive step}
 
 This choke-point tests the ability of the query execution engine to efficiently execute transitive steps. Graph workloads may have transitive operations, for example finding a shortest path between vertices.
-This involves repeated execution of a short lookup, often on many values at the same time, while usually having an end condition, \eg the target vertex being reached or having reached the border of a search going in the opposite direction.
-For the best efficiency, these operations can be merged or tightly coupled to the index operations themselves. Also parallelization may be possible but may need to deal with a global state, \eg set of visited vertices.
+This involves repeated execution of a short lookup, often on many values at the
+same time, while usually having an end condition, \eg the target vertex being reached or having reached the border of a search going in the opposite direction.
+For the best efficiency, these operations can be merged or tightly coupled to
+the index operations themselves. Also parallelization may be possible but may
+need to deal with a global state, \eg set of visited vertices.
 There are many possible tradeoffs between generality and performance
 
 \input{query-cards/cp-7-3}
