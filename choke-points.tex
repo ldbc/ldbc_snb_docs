@@ -163,14 +163,14 @@ For instance, the optimizer may reorder conjunctions to test first those conditi
 
 \cpSection{4.3}{QEXE}{Low overhead expressions interpretation}
 
-This choke-point tests the ability to efficiently evaluate simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
+This choke-point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
 
 \input{query-cards/cp-4-3}
 
 \cpSection{4.4}{QEXE}{String matching performance}
 
-This chokepoint tests the ability of efficiently evaluate complex string
-matching expressions (e.g. via regular expressions).
+This chokepoint tests the ability of efficiently evaluating complex string
+matching expressions (\eg via regular expressions).
 
 %\input{query-cards/cp-4-4}
 
@@ -233,7 +233,7 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 This choke-point tests the ability of the execution engine to reuse work across
 graph traversals. For example, when computing paths within a range of distances,
 it is often possible to incrementally compute longer paths by reusing paths of
-shorter distances that were already computed
+shorter distances that were already computed.
 
 \input{query-cards/cp-7-1}
 
