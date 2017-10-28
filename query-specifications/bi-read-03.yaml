@@ -3,10 +3,9 @@ operation: read
 number: 3
 title: Tag evolution
 description: |
-  Given a year and a month, find the Tags that were used in Messages during the given month of the given year (year1 and month1),
-  and the Tags that were used during the month after the given month of the given year (year2 and month2).
+  Find the *Tags* that were used in *Messages* during the given `month` of the given `year` and the *Tags* that were used during the next month.
 
-  For both months, compute the count of Messages that used each of the Tags.
+  For both months, compute the count of *Messages* that used each of the *Tags*.
 parameters:
   - name: year
     type: 32-bit Integer
@@ -18,15 +17,15 @@ result:
   - name: countMonth1
     type: 32-bit Integer
     category: aggregated
-    description: Occurrences of the tag during year1 and month1
+    description: Occurrences of the tag during the given `year` and `month`
   - name: countMonth2
     type: 32-bit Integer
     category: aggregated
-    description: Occurrences of the tag during year2 and month2
+    description: Occurrences of the tag during the next month after the given `year` and `month`
   - name: diff
     type: 32-bit Integer
     category: aggregated
-    description: Absolute difference between occurrences of this Tag in year1, month1 and in year2, month2
+    description: Absolute difference of `countMonth1` and `countMonth2`
 sort:
   - name: diff
     direction: desc
