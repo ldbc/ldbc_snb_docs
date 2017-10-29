@@ -3,10 +3,10 @@ operation: read
 number: 8
 title: Related topics
 description: |
-  Find all Messages that have a given Tag.
-  Find the related Tags attached to replies of these Messages (direct relation not transitive), but only of those replies that do not have the given Tag.
+  Find all *Messages* that have a given *Tag*.
+  Find the related *Tags* attached to replies of these *Messages* (direct relation not transitive), but only of those replies that do not have the given *Tag*.
 
-  Group the Tags by name, and get the count of replies in each group.
+  Group the *Tags* by name, and get the count of replies in each group.
 parameters:
   - name: tag
     type: 32-bit Integer

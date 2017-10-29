@@ -12,8 +12,8 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-01}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a date, find all Messages created before that date. Group them by
-a 3-level grouping:
+	desc. & Given a date, find all \emph{Messages} created before that date. Group
+them by a 3-level grouping:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -21,7 +21,8 @@ a 3-level grouping:
 \item
   by year of creation
 \item
-  for each year, group into message types (Posts or Comments)
+  for each year, group into \emph{Message} types (\emph{Posts} or
+  \emph{Comments})
 \item
   for each year-type group, split into four groups based on length of
   their content
@@ -55,7 +56,7 @@ a 3-level grouping:
 		$\mathsf{1}$ & messageYear
  & 32-bit Integer
  & R &
-				Year of the message
+				Year of the \emph{Message}
  \\ \hline
 		$\mathsf{2}$ & messageType
  & String
@@ -71,23 +72,24 @@ lowercase)
 		$\mathsf{4}$ & messageCount
  & 32-bit Integer
  & R &
-				Total number of Messages (Posts/Comments) in that group
+				Total number of \emph{Messages} (\emph{Posts}/\emph{Comments}) in that
+group
  \\ \hline
 		$\mathsf{5}$ & averageMessageLength
  & 32-bit Integer
  & R &
-				Average length of the Message content in that group
+				Average length of the \emph{Message} content in that group
  \\ \hline
 		$\mathsf{6}$ & sumMessageLength
  & 32-bit Integer
  & R &
-				Sum of all message content lengths
+				Sum of all \emph{Message} content lengths
  \\ \hline
 		$\mathsf{7}$ & percentageOfMessages
  & 32-bit Float
  & R &
-				Number of messages in group as a percentage of all messages created
-before the given date
+				Number of \emph{Messages} in group as a percentage of all messages
+created before the given date
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

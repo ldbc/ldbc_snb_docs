@@ -12,20 +12,22 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-16}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a Person, find all other Persons that live in a given country and
-are connected to given person by a transitive path with length in range
-{[}min, max{]} through the knows relation.
+	desc. & Given a \emph{Person}, find all other \emph{Persons} that live in a
+given \texttt{country} and are connected a to given \texttt{person} by a
+transitive path with length in range
+\texttt{{[}minPathDistance,\ maxPathDistance{]}} through the
+\emph{knows} relation.
 
 In the path, an edge can be only traversed once while nodes can be
 traversed multiple times.
 
-For each of these Persons, retrieve all of their Messages (Posts \&
-Comments) that contain at least one Tag belonging to a given TagClass
-(direct relation not transitive). For each Message, retrieve all of its
-Tags.
+For each of these \emph{Persons}, retrieve all of their \emph{Messages}
+(\emph{Posts} \& \emph{Comments}) that contain at least one \emph{Tag}
+belonging to a given \emph{TagClass} (direct relation not transitive).
+For each \emph{Message}, retrieve all of its \emph{Tags}.
 
-Group the results by Persons and Tags, then count the Messages by a
-certain Person having a certain Tag.
+Group the results by \emph{Persons} and \emph{Tags}, then count the
+\emph{Messages} by a certain \emph{Person} having a certain \emph{Tag}.
  \\ \hline
 %
 	
@@ -63,7 +65,8 @@ certain Person having a certain Tag.
 		$\mathsf{3}$ & messageCount
  & 32-bit Integer
  & R &
-				Number of Messages created by that Person containing that Tag
+				Number of \emph{Messages} created by that \emph{Person} containing that
+\emph{Tag}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

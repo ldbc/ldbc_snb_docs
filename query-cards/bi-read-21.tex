@@ -12,16 +12,17 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-21}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find zombies within the given country, and return their zombie scores.
+	desc. & Find zombies within the given \texttt{country}, and return their zombie
+scores.
 
-A zombie is a Person created before the given \texttt{endDate} and that
-has created between \texttt{{[}0,\ 1)} Messages per month, on average,
-during the time range between profile creation date and the given
-\texttt{endDate}. The number of months spans the time range from
-creation date of the profile to the \texttt{endDate} and also includes
-partial months.
+A zombie is a \emph{Person} created before the given \texttt{endDate}
+and that has created between \texttt{{[}0,\ 1)} \emph{Messages} per
+month, on average, during the time range between profile creation date
+and the given \texttt{endDate}. The number of months spans the time
+range from creation date of the profile to the \texttt{endDate} and also
+includes partial months.
 
-For each person, calculate the following:
+For each \emph{Person}, calculate the following:
 
 \begin{itemize}
 \tightlist
@@ -29,7 +30,7 @@ For each person, calculate the following:
   \texttt{zombieLikeCount}: the number of likes received from zombies
 \item
   \texttt{totalLikeCount}: the total number of likes received on that
-  Person's messages
+  \emph{Person}'s \emph{Messages}
 \item
   \texttt{zombieScore}: \texttt{zombieLikeCount} /
   \texttt{totalLikeCount}

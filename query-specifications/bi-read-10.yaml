@@ -3,14 +3,13 @@ operation: read
 number: 10
 title: Central Person for a Tag
 description: |
-  Given a Tag, find all Persons that are either interested in the Tag, or have written a Message (Post or Comment) with
-  creation date after a given date and that has a given Tag. For each Person, compute the score (`score`) as the sum of the
+  Given a *Tag*, find all *Persons* that are either interested in the *Tag*, or have written a *Message* (*Post* or *Comment*) with creation date after a given `date` and that has a given *Tag*. For each *Person*, compute the `score` as the sum of the
   following two aspects\:
 
-  * 100, if the Person has this tag as their interest, or 0 otherwise
-  * number of messages by this person with the given tag
+  * 100, if the *Person* has this *Tag* as their interest, or 0 otherwise
+  * number of *Messages* by this person with the given *Tag*
 
-  Also, for each Person, compute the sum of the score of the Person's friends (`friendsScore`).
+  Also, for each *Person*, compute the sum of the score of the *Person*'s friends (`friendsScore`).
 parameters:
   - name: tag
     type: 32-bit Integer

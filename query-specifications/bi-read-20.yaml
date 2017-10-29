@@ -3,15 +3,14 @@ operation: read
 number: 20
 title: High-level topics
 description: |
-  For all given TagClasses, count number of Messages that have a Tag that belongs to that TagClass or any of its
-  children (all descendants through a transitive relation).
+  For all given *TagClasses*, count number of *Messages* that have a *Tag* that belongs to that *TagClass* or any of its children (all descendants through a transitive relation).
 parameters:
   - name: tagClasses
     type: String[]
 result:
   - name: tagClass.name
     type: String
-    description: The TagClass of the root
+    description: The *TagClass* of the root
   - name: postCount
     type: 32-bit Integer
     category: aggregated

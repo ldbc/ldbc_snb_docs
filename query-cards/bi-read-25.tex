@@ -12,20 +12,22 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-25}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given two Persons, find all (unweighted) shortest paths between these
-two Persons, in the subgraph induced by the Knows relationship.
+	desc. & Given two \emph{Persons}, find all (unweighted) shortest paths between
+these two \emph{Persons}, in the subgraph induced by the \emph{knows}
+relationship.
 
 Then, for each path calculate a weight. The nodes in the path are
-Persons, and the weight of a path is the sum of weights between every
-pair of consecutive Person nodes in the path.
+\emph{Persons}, and the weight of a path is the sum of weights between
+every pair of consecutive \emph{Person} nodes in the path.
 
-The weight for a pair of Persons is calculated such that every reply (by
-one of the Persons) to a Post (by the other Person) contributes 1.0, and
-every reply (by ones of the Persons) to a Comment (by the other Person)
+The weight for a pair of \emph{Persons} is calculated such that every
+reply (by one of the \emph{Persons}) to a \emph{Post} (by the other
+\emph{Person}) contributes 1.0, and every reply (by ones of the
+\emph{Persons}) to a \emph{Comment} (by the other \emph{Person})
 contributes 0.5.
 
-Only consider messages that were created in a forum that was created
-within the timeframe \texttt{{[}startDate,\ endDate{]}}.
+Only consider \emph{Messages} that were created in a \emph{Forum} that
+was created within the timeframe \texttt{{[}startDate,\ endDate{]}}.
 
 Return all the paths with shortest length, and their weights.
  \\ \hline
@@ -54,8 +56,8 @@ Return all the paths with shortest length, and their weights.
 		$\mathsf{1}$ & person.id
  & 64-bit Integer{[}{]}
  & R &
-				Identifiers representing an ordered sequence of the Persons in the path
-weight
+				Identifiers representing an ordered sequence of the \emph{Persons} in
+the path weight
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
