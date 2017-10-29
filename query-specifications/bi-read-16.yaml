@@ -11,8 +11,8 @@ description: |
 
   Group the results by Persons and Tags, then count the Messages by a certain Person having a certain Tag.
 parameters:
-  - name: person
-    type: String
+  - name: personId
+    type: 64-bit Integer
   - name: country
     type: String
   - name: tagClass

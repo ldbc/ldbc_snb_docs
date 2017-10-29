@@ -16,10 +16,10 @@ description: |
 
   Return all the paths with shortest length, and their weights.
 parameters:
-  - name: person1
-    type: String
-  - name: person2
-    type: String
+  - name: person1Id
+    type: 64-bit Integer
+  - name: person2Id
+    type: 64-bit Integer
   - name: startDate
     type: Date
   - name: endDate
