@@ -43,7 +43,7 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
 \begin{itemize}
 	\item \textbf{Raw} (\texttt{R}), if the result is returned with an unmodified value and type.
 	\item \textbf{Calculated} (\texttt{C}), if the result is calculated from other values and conditions.
-	\item \textbf{Aggregated} (\texttt{A}), if the result is an aggregated value, \eg a count or a sum of another value. If a result is both calculated and aggregated (\eg $\mathsf{count(x) + count(y)}$ or $\mathsf{average(x + y)}$), it is considered an aggregated result.
+	\item \textbf{Aggregated} (\texttt{A}), if the result is an aggregated value, \eg a count or a sum of another value. If a result is both calculated and aggregated (\eg $\mathsf{count(x) + count(y)}$ or $\mathsf{avg(x + y)}$), it is considered an aggregated result.
 \end{itemize}
 
 
@@ -81,7 +81,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\item Filtering conditions are typeset in \textit{italic}, \eg $\mathit{id} = \mathit{\textdollar tag}$.
 	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathsf{name}$.
 	\item Variable length paths, \ie edges that can be traversed multiple times are denotes with $*\mathsf{min}...\mathsf{max}$, \eg $\mathsf{replyOf}*$ or $\mathsf{knows*1 \ldots 2}$. By default, the value of $\mathsf{min}$ is 1, and the value of $\mathsf{max}$ is unlimited.
-	\item Aggregations are shown in dashed boxes with the type of aggregation ($\mathsf{count}$, $\mathsf{sum}$, $\mathsf{average}$, etc.) in the upper right corner.
+	\item Aggregations are shown in dashed boxes with the type of aggregation ($\mathsf{count}$, $\mathsf{sum}$, $\mathsf{avg}$, etc.) in the upper right corner.
 \end{itemize}
 
 \newcommand{\tuple}[1]{\langle #1 \rangle}
@@ -90,7 +90,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 
 \begin{itemize}
 	\item \textsf{UNWIND} unnests a list, \ie produces a set of one-tuples. For example, UNWIND $ [1, 2, 3] $ results in $ \{ \tuple{1}, \tuple{2}, \tuple{3} \} $)
-	\item Aggregation operations: \lstinline{count}, \lstinline{average}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
+	\item Aggregation operations: \lstinline{count}, \lstinline{avg}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
 	\item Functions:
 	\begin{itemize}
 		\item \lstinline{floor(x)} (returns $\lfloor x \rfloor$),
