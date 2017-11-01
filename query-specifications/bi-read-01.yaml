@@ -9,10 +9,10 @@ description: |
   1. by year of creation
   2. for each year, group into *Message* types (*Posts* or *Comments*)
   3. for each year-type group, split into four groups based on length of their content
-      * 0 <= length < 40\: `short`
-      * 40 <= length < 80\: `one liner`
-      * 80 <= length < 160\: `tweet`
-      * 160 <= length\: `long`
+      1. 0 <= length < 40\: `short`
+      2. 40 <= length < 80\: `one liner`
+      3. 80 <= length < 160\: `tweet`
+      4. 160 <= length\: `long`
 
 parameters:
   - name: date
@@ -50,6 +50,8 @@ sort:
     direction: desc
   - name: messageType
     direction: asc
+    description: first *Posts*, then *Comments*
   - name: lengthCategory
     direction: asc
+    description: order based on the length of the category, `short`, `one liner`, etc.
 choke_points: [1.2, 3.2, 4.1]
