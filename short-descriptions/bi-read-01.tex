@@ -12,7 +12,8 @@ them by a 3-level grouping:
 \item
   for each year-type group, split into four groups based on length of
   their content
-  \begin{itemize}
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
   \tightlist
   \item
     0 \textless{}= length \textless{} 40: \texttt{short}
@@ -22,5 +23,5 @@ them by a 3-level grouping:
     80 \textless{}= length \textless{} 160: \texttt{tweet}
   \item
     160 \textless{}= length: \texttt{long}
-  \end{itemize}
+  \end{enumerate}
 \end{enumerate}

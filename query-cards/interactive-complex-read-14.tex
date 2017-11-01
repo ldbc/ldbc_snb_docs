@@ -53,11 +53,12 @@ rows if there is now path between the two Persons.
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & weight
  & $\desc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ & The order of paths with the same weight is unspecified
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &

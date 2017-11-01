@@ -27,7 +27,8 @@ them by a 3-level grouping:
   for each year-type group, split into four groups based on length of
   their content
 
-  \begin{itemize}
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
   \tightlist
   \item
     0 \textless{}= length \textless{} 40: \texttt{short}
@@ -37,7 +38,7 @@ them by a 3-level grouping:
     80 \textless{}= length \textless{} 160: \texttt{tweet}
   \item
     160 \textless{}= length: \texttt{long}
-  \end{itemize}
+  \end{enumerate}
 \end{enumerate}
  \\ \hline
 %
@@ -96,17 +97,20 @@ created before the given date
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & year
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & messageType
  & $\asc
-$ \\ \hline
+$ & first \emph{Posts}, then \emph{Comments}
+ \\ \hline
 		$\mathsf{3}$ & lengthCategory
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ & order based on the length of the category, \texttt{short},
+\texttt{one\ liner}, etc.
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &

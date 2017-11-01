@@ -1,29 +1,32 @@
 \paragraph{Q22.}
-Consider all pairs of people \texttt{(p1,\ p2)} such that one is located
-in a \emph{City} of \emph{Country} \texttt{country1} and the other is
-located in a city of \emph{Country} \texttt{country2}.
-For each city of \emph{Country} \texttt{country1}, return the highest
-scoring pair.
-The score of a pair is defined as the sum of the scores of the following
-kinds of interaction:
+Consider all pairs of people \texttt{(person1,\ person2)} such that one
+is located in a \emph{City} of \emph{Country} \texttt{country1} and the
+other is located in a \emph{City} of \emph{Country} \texttt{country2}.
+For each \emph{City} of \emph{Country} \texttt{country1}, return the
+highest scoring pair.
+The score of a pair is defined as the sum of the subscores awarded for
+the following kinds of interaction. The initial value is
+\texttt{score\ =\ 0}.
 \begin{itemize}
 \tightlist
 \item
-  \texttt{p1} has created a reply \emph{Comment} to at least one
-  \emph{Comment} or \emph{Post} by \texttt{p2}: \texttt{Score\ =\ 4}
+  \texttt{person1} has created a reply \emph{Comment} to at least one
+  \emph{Comment} or \emph{Post} by \texttt{person2}:
+  \texttt{score\ +=\ 4}
 \item
-  \texttt{p1} has created at least one \emph{Post} or \emph{Comment}
-  that \texttt{p2} has created a reply \emph{Comment} to:
-  \texttt{Score\ =\ 1}
+  \texttt{person1} has created at least one \emph{Post} or
+  \emph{Comment} that \texttt{person2} has created a reply
+  \emph{Comment} to: \texttt{score\ +=\ 1}
 \item
-  \texttt{p1} and \texttt{p2} \emph{know} each other:
-  \texttt{Score\ =\ 15}
+  \texttt{person1} and \texttt{person2} \emph{know} each other:
+  \texttt{score\ +=\ 15}
 \item
-  \texttt{p1} liked at least one \emph{Post} or \emph{Comment} by
-  \texttt{p2}: \texttt{Score\ =\ 10}
+  \texttt{person1} liked at least one \emph{Post} or \emph{Comment} by
+  \texttt{person2}: \texttt{score\ +=\ 10}
 \item
-  \texttt{p1} has created at least one \emph{Post} or \emph{Comment}
-  that was liked by \texttt{p2}: \texttt{Score\ =\ 1}
+  \texttt{person1} has created at least one \emph{Post} or
+  \emph{Comment} that was liked by \texttt{person2}:
+  \texttt{score\ +=\ 1}
 \end{itemize}
 Consequently, the maximum score a pair can obtain is:
 \texttt{4\ +\ 1\ +\ 15\ +\ 10\ +\ 1\ =\ 31}
