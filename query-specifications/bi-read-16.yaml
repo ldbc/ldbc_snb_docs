@@ -3,7 +3,7 @@ operation: read
 number: 16
 title: Experts in social circle
 description: |
-  Given a *Person*, find all other *Persons* that live in a given `country` and are connected a to given `person` by a transitive path with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
+  Given a *Person*, find all other *Persons* that live in a given `country` and are connected to given *Person* by a transitive path with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
 
   In the path, an edge can be only traversed once while nodes can be traversed multiple times.
 
@@ -11,7 +11,7 @@ description: |
 
   Group the results by *Persons* and *Tags*, then count the *Messages* by a certain *Person* having a certain *Tag*.
 parameters:
-  - name: person
+  - name: personId
     type: 64-bit Integer
   - name: country
     type: String
