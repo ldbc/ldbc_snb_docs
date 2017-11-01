@@ -74,7 +74,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \end{figure}
 
 \begin{itemize}
-	\item Vertices are . If the value of the vertex is part of the query result, it is denoted on the figure as 
+	\item Vertices are marked as \textsf{entityName:EntityType} (camel case notation, starting with a lowercase character for the former and an uppercase character for the latter). The \textsf{entityName} is assigned if the vertex or its attributes are used later for aggregation or as part of the query result. If they are not used later, the \textsf{entityName}  can be omitted.
 	\item Positive conditions for edges are denoted with solid lines.
 	\item Negative conditions for edges, \ie edges that are not allowed in the graph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
 	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.
@@ -91,7 +91,12 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \begin{itemize}
 	\item \textsf{UNWIND} unnests a list, \ie produces a set of one-tuples. For example, UNWIND $ [1, 2, 3] $ results in $ \{ \tuple{1}, \tuple{2}, \tuple{3} \} $)
 	\item Aggregation operations: \lstinline{count}, \lstinline{average}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
-	\item Functions: \lstinline{floor}, \lstinline{year} (extracts the year from a given date), \lstinline{month} (extracts the month from a given date).
+	\item Functions:
+	\begin{itemize}
+		\item \lstinline{floor(x)} (returns $\lfloor x \rfloor$),
+		\item \lstinline{year(date)} (extracts the year from a given date),
+		\item \lstinline{month(date)} (extracts the month from a given date).
+	\end{itemize}
 \end{itemize}
 
 \paragraph{Resolving ambiguity.} Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.
