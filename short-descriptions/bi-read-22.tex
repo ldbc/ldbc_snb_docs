@@ -7,7 +7,8 @@ highest scoring pair.
 The score of a pair is defined as the sum of the subscores awarded for
 the following kinds of interaction. The initial value is
 \texttt{score\ =\ 0}.
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   \texttt{person1} has created a reply \emph{Comment} to at least one
@@ -27,6 +28,6 @@ the following kinds of interaction. The initial value is
   \texttt{person1} has created at least one \emph{Post} or
   \emph{Comment} that was liked by \texttt{person2}:
   \texttt{score\ +=\ 1}
-\end{itemize}
+\end{enumerate}
 Consequently, the maximum score a pair can obtain is:
 \texttt{4\ +\ 1\ +\ 15\ +\ 10\ +\ 1\ =\ 31}
