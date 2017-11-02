@@ -9,9 +9,9 @@ description: |
   For every such *Forum*, count the number of *Posts* that have a *Tag* from *TagClass1* (`count1`), and the number of *Posts* that have a *Tag* from *TagClass2* (`count2`).
 parameters:
   - name: tagClass1
-    type: 32-bit Integer
+    type: String
   - name: tagClass2
-    type: 32-bit Integer
+    type: String
   - name: threshold
     type: 32-bit Integer
 result:
