@@ -26,10 +26,12 @@
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		{% for entry in result -%}
-			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {%  if   entry.category == 'aggregated' -%} A
-                                                                                    {%- elif entry.category == 'calculated' -%} C
-                                                                                    {%- else -%} R
-                                                                                    {%- endif %} &
+			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name|trim() }} & {{ entry.type|trim() }} & {% set cat = entry.category|trim() -%}
+                {%- if   cat == "aggregated" -%} A
+                {%- elif cat == "calculated" -%} C
+                {%- elif cat == "meta" -%} M
+                {%- else -%} R
+                {%- endif %} &
 				{{ entry.description }} \\ \hline
 		{% endfor -%}
 		\end{tabularx}}\innerCardVSpace \\ \hline

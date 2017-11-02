@@ -33,19 +33,13 @@ appears.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & year
- & 32-bit Integer
- & R &
+		$\mathsf{1}$ & year & 32-bit Integer & C &
 				year(message.creationDate)
  \\ \hline
-		$\mathsf{2}$ & month
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & month & 32-bit Integer & C &
 				month(message.creationDate)
  \\ \hline
-		$\mathsf{3}$ & popularTags
- & TagPairs
- & R &
+		$\mathsf{3}$ & popularTags & TagPairs & C &
 				(tag.name - String, popularity - 32-bit Integer), sorted descending by
 popularity, then ascending by tag name
  \\ \hline

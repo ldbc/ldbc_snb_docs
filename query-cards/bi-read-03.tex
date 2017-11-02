@@ -35,24 +35,16 @@ the \emph{Tags}.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & tag.name
- & String
- & R &
+		$\mathsf{1}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & countMonth1
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & countMonth1 & 32-bit Integer & A &
 				Occurrences of the tag during the given \texttt{year} and \texttt{month}
  \\ \hline
-		$\mathsf{3}$ & countMonth2
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & countMonth2 & 32-bit Integer & A &
 				Occurrences of the tag during the next month after the given
 \texttt{year} and \texttt{month}
  \\ \hline
-		$\mathsf{4}$ & diff
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & diff & 32-bit Integer & A &
 				Absolute difference of \texttt{countMonth1} and \texttt{countMonth2}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline

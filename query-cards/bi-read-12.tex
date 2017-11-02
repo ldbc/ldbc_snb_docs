@@ -31,27 +31,17 @@ received more than a given number of likes (\texttt{likeThreshold}).
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & message.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & message.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & message.creationDate
- & DateTime
- & R &
+		$\mathsf{2}$ & message.creationDate & DateTime & R &
 				 \\ \hline
-		$\mathsf{3}$ & creator.firstName
- & String
- & R &
+		$\mathsf{3}$ & creator.firstName & String & R &
 				The first name of the post's creator
  \\ \hline
-		$\mathsf{4}$ & creator.lastName
- & String
- & R &
+		$\mathsf{4}$ & creator.lastName & String & R &
 				The last name of the post's creator
  \\ \hline
-		$\mathsf{5}$ & likeCount
- & 32-bit Integer
- & R &
+		$\mathsf{5}$ & likeCount & 32-bit Integer & A &
 				The number of Likes the Post received
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline

@@ -46,31 +46,19 @@ startDate + Duration) is closed-open
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Person.id
- & ID
- & R &
+		$\mathsf{1}$ & Person.id & ID & R &
 				 \\ \hline
-		$\mathsf{2}$ & Person.firstName
- & String
- & R &
+		$\mathsf{2}$ & Person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Person.lastName
- & String
- & R &
+		$\mathsf{3}$ & Person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & countX
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & countX & 32-bit Integer & A &
 				Number of Messages from Country X made by Person within the given time
  \\ \hline
-		$\mathsf{5}$ & countY
- & 32-bit Integer
- & R &
+		$\mathsf{5}$ & countY & 32-bit Integer & A &
 				Number of Messages from Country Y made by Person within the given time
  \\ \hline
-		$\mathsf{6}$ & count
- & 32-bit Integer
- & R &
+		$\mathsf{6}$ & count & 32-bit Integer & A &
 				\texttt{countX} + \texttt{countY}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline

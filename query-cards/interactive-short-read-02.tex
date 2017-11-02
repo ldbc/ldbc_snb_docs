@@ -31,36 +31,22 @@ will appear twice in that result.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & Message.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & Message.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & Message.content or Post.imageFile
- & String
- & R &
+		$\mathsf{2}$ & Message.content or Post.imageFile & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & Message.creationDate
- & DateTime
- & R &
+		$\mathsf{3}$ & Message.creationDate & DateTime & R &
 				 \\ \hline
-		$\mathsf{4}$ & Post.id or Comment-replyOf*-\textgreater{}Post.id
- & ID
- & R &
+		$\mathsf{4}$ & Post.id or Comment-replyOf*-\textgreater{}Post.id & ID & R &
 				 \\ \hline
 		$\mathsf{5}$ & Post-hasCreator-\textgreater{}Person.id or
-Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.id
- & ID
- & R &
+Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.id & ID & R &
 				 \\ \hline
 		$\mathsf{6}$ & Post-hasCreator-\textgreater{}Person.firstName or
-Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.firstName
- & String
- & R &
+Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.firstName & String & R &
 				 \\ \hline
 		$\mathsf{7}$ & Post-hasCreator-\textgreater{}Person.lastName or
-Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.lastName
- & String
- & R &
+Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.lastName & String & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

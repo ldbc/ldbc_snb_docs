@@ -54,41 +54,27 @@ them by a 3-level grouping:
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageYear
- & 32-bit Integer
- & R &
+		$\mathsf{1}$ & messageYear & 32-bit Integer & R &
 				Year of the \emph{Message}
  \\ \hline
-		$\mathsf{2}$ & messageType
- & String
- & R &
+		$\mathsf{2}$ & messageType & String & M &
 				\texttt{post}/\texttt{comment} (in lowercase)
  \\ \hline
-		$\mathsf{3}$ & lengthCategory
- & String
- & R &
+		$\mathsf{3}$ & lengthCategory & String & C &
 				\texttt{short}/\texttt{one-liner}/\texttt{tweet}/\texttt{long} (in
 lowercase)
  \\ \hline
-		$\mathsf{4}$ & messageCount
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & messageCount & 32-bit Integer & A &
 				Total number of \emph{Messages} (\emph{Posts}/\emph{Comments}) in that
 group
  \\ \hline
-		$\mathsf{5}$ & averageMessageLength
- & 32-bit Integer
- & R &
+		$\mathsf{5}$ & averageMessageLength & 32-bit Integer & A &
 				Average length of the \emph{Message} content in that group
  \\ \hline
-		$\mathsf{6}$ & sumMessageLength
- & 32-bit Integer
- & R &
+		$\mathsf{6}$ & sumMessageLength & 32-bit Integer & A &
 				Sum of all \emph{Message} content lengths
  \\ \hline
-		$\mathsf{7}$ & percentageOfMessages
- & 32-bit Float
- & R &
+		$\mathsf{7}$ & percentageOfMessages & 32-bit Float & A &
 				Number of \emph{Messages} in group as a percentage of all messages
 created before the given date
  \\ \hline
