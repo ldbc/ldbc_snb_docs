@@ -12,11 +12,9 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-16}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a \emph{Person}, find all other \emph{Persons} that live in a
-given \texttt{country} and are connected to given \emph{Person} by a
-transitive path with length in range
-\texttt{{[}minPathDistance,\ maxPathDistance{]}} through the
-\emph{knows} relation.
+	desc. & Given a Person, find all other Persons that live in a given country and
+are connected to given person by a transitive path with length in range
+{[}min, max{]} through the knows relation.
 
 In the path, an edge can be only traversed once while nodes can be
 traversed multiple times.
@@ -33,8 +31,8 @@ Group the results by \emph{Persons} and \emph{Tags}, then count the
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & personId
- & 64-bit Integer
+		$\mathsf{1}$ & person
+ & String
  &  \\ \hline
 		$\mathsf{2}$ & country
  & String
@@ -54,30 +52,35 @@ Group the results by \emph{Persons} and \emph{Tags}, then count the
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person.id
+ & 64-bit Integer
+ & R &
 				 \\ \hline
-		$\mathsf{2}$ & tag.name & String & R &
+		$\mathsf{2}$ & tag.name
+ & String
+ & R &
 				 \\ \hline
-		$\mathsf{3}$ & messageCount & 32-bit Integer & A &
-				Number of \emph{Messages} created by that \emph{Person} containing that
-\emph{Tag}
+		$\mathsf{3}$ & messageCount
+ & 32-bit Integer
+ & R &
+				Number of Messages created by that Person containing that Tag
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
+		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
 		$\mathsf{1}$ & messageCount
  & $\desc
-$ &  \\ \hline
+$ \\ \hline
 		$\mathsf{2}$ & tag.name
  & $\asc
-$ &  \\ \hline
+$ \\ \hline
 		$\mathsf{3}$ & person.id
  & $\asc
-$ &  \\ \hline
-		\end{tabularx}}\innerCardVSpace \\ \hline
+$ \\ \hline
+		\end{tabular}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

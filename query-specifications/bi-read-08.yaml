@@ -9,7 +9,7 @@ description: |
   Group the *Tags* by name, and get the count of replies in each group.
 parameters:
   - name: tag
-    type: 32-bit Integer
+    type: String
 result:
   - name: relatedTag.name
     type: String

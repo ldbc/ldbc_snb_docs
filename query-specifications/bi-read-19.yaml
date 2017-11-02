@@ -14,9 +14,9 @@ parameters:
   - name: date
     type: Date
   - name: tagClass1
-    type: 32-bit Integer
+    type: String
   - name: tagClass2
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer

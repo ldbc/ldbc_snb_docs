@@ -11,7 +11,7 @@ description: |
   * A *Person*'s "popularity score" is defined as the total number of likes on all of their *Messages*.
 parameters:
   - name: tag
-    type: 32-bit Integer
+    type: String
 result:
   - name: person1.id
     type: 64-bit Integer

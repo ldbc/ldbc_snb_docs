@@ -8,9 +8,9 @@ description: |
   The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
   - name: tagClass
-    type: 32-bit Integer
+    type: String
   - name: country
-    type: 32-bit Integer
+    type: String
 result:
   - name: forum.id
     type: 64-bit Integer

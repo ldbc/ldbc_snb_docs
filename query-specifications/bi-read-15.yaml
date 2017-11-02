@@ -6,7 +6,7 @@ description: |
   Given a `country`, find all *Persons* of the *Country* whose number of friends in the given *Country* equals the (floor of) average number of friends that *Persons* of the given *Country* have in the given *country*.
 parameters:
   - name: country
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer
