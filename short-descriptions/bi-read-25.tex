@@ -5,11 +5,16 @@ relationship.
 Then, for each path calculate a weight. The nodes in the path are
 \emph{Persons}, and the weight of a path is the sum of weights between
 every pair of consecutive \emph{Person} nodes in the path.
-The weight for a pair of \emph{Persons} is calculated such that every
-reply (by one of the \emph{Persons}) to a \emph{Post} (by the other
-\emph{Person}) contributes 1.0, and every reply (by ones of the
-\emph{Persons}) to a \emph{Comment} (by the other \emph{Person})
-contributes 0.5.
+The weight for a pair of \emph{Persons} is calculated such that
+\begin{itemize}
+\tightlist
+\item
+  every reply (by one of the \emph{Persons}) to a \emph{Post} (by the
+  other \emph{Person}) contributes 1.0, and
+\item
+  every reply (by one of the \emph{Persons}) to a \emph{Comment} (by the
+  other \emph{Person}) contributes 0.5.
+\end{itemize}
 Only consider \emph{Messages} that were created in a \emph{Forum} that
 was created within the timeframe \texttt{{[}startDate,\ endDate{]}}.
 Return all the paths with shortest length, and their weights.
