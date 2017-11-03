@@ -12,22 +12,25 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-19}\hfill\vadjust{} \\ \hline
 %
-	desc. & For all the Persons born after a certain date, find all the strangers
-they interacted with, where strangers are Persons that do not Know each
-other. There is no restriction on the date that strangers were born.
+	desc. & For all the \emph{Persons} born after a certain \texttt{date}, find all
+the strangers they interacted with, where strangers are \emph{Persons}
+that do not \emph{know} each other. There is no restriction on the date
+that strangers were born.
 
-Consider only strangers that are members of Forums tagged with tagClass1
-(direct children not transitive) AND members of Forums tagged with
-tagClass2 (direct children not transitive). It does not matter if these
-Tags are attached to the same Forum, or different Forums.
+Consider only strangers that are members of \emph{Forums} tagged with
+\texttt{tagClass1} (direct children not transitive) AND members of
+\emph{Forums} tagged with \texttt{tagClass2} (direct children not
+transitive). It does not matter if these \emph{Tags} are attached to the
+same \emph{Forum}, or different \emph{Forums}.
 
-Interaction is defined as follows: if Person \emph{A} replies to a
-Message (Post or Comment) by another Person \emph{B}, there is an
-``interacted with'' relationship from \emph{A} to \emph{B}. Note that
-the ``interacted with'' relationship is directed.
+Interaction is defined as follows: if \emph{Person} \emph{A} replies to
+a \emph{Message} (\emph{Post} or \emph{Comment}) by another
+\emph{Person} \emph{B}, there is an ``interacted with'' relationship
+from \emph{A} to \emph{B}. Note that the ``interacted with''
+relationship is directed.
 
-For each Person, count the number of strangers they interacted with and
-total number of times they interacted with them.
+For each \emph{Person}, count the number of strangers they interacted
+with and total number of times they interacted with them.
  \\ \hline
 %
 	
@@ -37,10 +40,10 @@ total number of times they interacted with them.
  & Date
  &  \\ \hline
 		$\mathsf{2}$ & tagClass1
- & 32-bit Integer
+ & String
  &  \\ \hline
 		$\mathsf{3}$ & tagClass2
- & 32-bit Integer
+ & String
  &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -48,31 +51,25 @@ total number of times they interacted with them.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & strangersCount
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & strangersCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{3}$ & interactionCount
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & interactionCount & 32-bit Integer & A &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & interactionCount
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

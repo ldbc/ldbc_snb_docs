@@ -164,7 +164,6 @@ lastName</y:NodeLabel>
     </node>
     <node id="n10" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -196,7 +195,7 @@ lastName</y:NodeLabel>
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.53664000000003" x="881.7084177777779" y="1242.934423611108"/>
-              <y:Fill color="#BEBADA" transparent="false"/>
+              <y:Fill color="#80B1D3" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="127.662109375" x="18.437265312500017" y="6.015625">comment: Comment<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -259,7 +258,6 @@ lastName</y:NodeLabel>
       </data>
     </edge>
     <edge id="e2" source="n2" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -296,7 +294,6 @@ lastName</y:NodeLabel>
       </data>
     </edge>
     <edge id="e4" source="n0" target="n9">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -321,7 +318,7 @@ lastName</y:NodeLabel>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.69921875" x="4.987927722430868" y="-34.11134463107783">isSubclassOf 
-[0..*]<y:LabelModel>
+*0..<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>

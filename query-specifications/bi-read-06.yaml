@@ -3,22 +3,22 @@ operation: read
 number: 6
 title: Most active Posters of a given Topic
 description: |
-  Get Persons who have created a Message (Post or Comment) with a given Tag.
+  Get *Persons* who have created a *Message* (*Post* or *Comment*) with a given *Tag*.
 
-  Each Person has a score, computed as follows\:
+  Each *Person* has a score, computed as follows\:
 
-  * Count of Messages with the given Tag (`messageCount`).
-  * Count of Likes (`likeCount`) and Comments (`replyCount`) in reply of their Messages with the given Tag
+  * Count of *Messages* with the given *Tag* (`messageCount`).
+  * Count of *Likes* (`likeCount`) and *Comments* (`replyCount`) in reply of their *Messages* with the given *Tag*
     (direct relation not transitive).
 
   The `score` is calculated as a sum with the following weights\:
 
-  * Messages (`messageCount`) are multiplied by 1,
-  * Comments to Messages (`replyCount`) are multiplied by 2,
-  * Likes (`likeCount`) are multiplied by 10.
+  * *Messages* (`messageCount`) are multiplied by 1,
+  * *Comments* to *Messages* (`replyCount`) are multiplied by 2,
+  * *Likes* (`likeCount`) are multiplied by 10.
 parameters:
   - name: tag
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer

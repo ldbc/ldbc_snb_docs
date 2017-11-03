@@ -12,18 +12,19 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-07}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a Tag, find all Persons that ever created a Message with the given
-Tag. For each of these Persons compute their ``authority score'' as
-follows:
+	desc. & Given a \emph{Tag}, find all \emph{Persons} that ever created a
+\emph{Message} with the given \emph{Tag}. For each of these
+\emph{Persons} compute their ``authority score'' as follows:
 
 \begin{itemize}
 \tightlist
 \item
   The ``authority score'' is the sum of ``popularity scores'' of the
-  Persons that liked any of that Person's Messages with the given Tag.
+  \emph{Persons} that liked any of that \emph{Person}'s \emph{Messages}
+  with the given \emph{Tag}.
 \item
-  A Person's ``popularity score'' is defined as the total number of
-  likes on all of their Messages.
+  A \emph{Person}'s ``popularity score'' is defined as the total number
+  of likes on all of their \emph{Messages}.
 \end{itemize}
  \\ \hline
 %
@@ -31,7 +32,7 @@ follows:
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & tag
- & 32-bit Integer
+ & String
  &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -39,27 +40,23 @@ follows:
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person1.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person1.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & authorityScore
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & authorityScore & 32-bit Integer & A &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & authorityScore
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person1.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

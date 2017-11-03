@@ -3,7 +3,7 @@ operation: read
 number: 18
 title: How many persons have a given number of posts
 description: |
-  For each Person, count the number of Messages (Posts & Comments) they made.
+  For each *Person*, count the number of *Messages* (*Posts* & *Comments*) they made.
 
   Only consider messages with:
 
@@ -11,7 +11,7 @@ description: |
   * creationDate after `date` (exclusive, equality is not allowed)
   * any of the given `languages`
 
-  The language of a Comment is that of the Post that initiates the thread where Comment belongs to.
+  The language of a *Comment* is that of the *Post* that initiates the thread where *Comment* belongs to.
 parameters:
   - name: date
     type: Date
@@ -23,11 +23,11 @@ result:
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of messages created
+    description: Number of *Messages* created
   - name: personCount
     type: 32-bit Integer
     category: aggregated
-    description: The number of Persons with `messageCount` messages
+    description: The number of *Persons* with `messageCount` messages
 sort:
   - name: personCount
     direction: desc

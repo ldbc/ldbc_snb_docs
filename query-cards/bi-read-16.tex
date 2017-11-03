@@ -12,26 +12,28 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-16}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a Person, find all other Persons that live in a given country and
-are connected to given person by a transitive path with length in range
-{[}min, max{]} through the knows relation.
+	desc. & Given a \emph{Person}, find all other \emph{Persons} that live in a
+given \texttt{country} and are connected to given \emph{Person} by a
+transitive path with length in range
+\texttt{{[}minPathDistance,\ maxPathDistance{]}} through the
+\emph{knows} relation.
 
 In the path, an edge can be only traversed once while nodes can be
 traversed multiple times.
 
-For each of these Persons, retrieve all of their Messages (Posts \&
-Comments) that contain at least one Tag belonging to a given TagClass
-(direct relation not transitive). For each Message, retrieve all of its
-Tags.
+For each of these \emph{Persons}, retrieve all of their \emph{Messages}
+(\emph{Posts} \& \emph{Comments}) that contain at least one \emph{Tag}
+belonging to a given \emph{TagClass} (direct relation not transitive).
+For each \emph{Message}, retrieve all of its \emph{Tags}.
 
-Group the results by Persons and Tags, then count the Messages by a
-certain Person having a certain Tag.
+Group the results by \emph{Persons} and \emph{Tags}, then count the
+\emph{Messages} by a certain \emph{Person} having a certain \emph{Tag}.
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & person
+		$\mathsf{1}$ & personId
  & 64-bit Integer
  &  \\ \hline
 		$\mathsf{2}$ & country
@@ -52,35 +54,30 @@ certain Person having a certain Tag.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & tag.name
- & String
- & R &
+		$\mathsf{2}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & messageCount
- & 32-bit Integer
- & R &
-				Number of Messages created by that Person containing that Tag
+		$\mathsf{3}$ & messageCount & 32-bit Integer & A &
+				Number of \emph{Messages} created by that \emph{Person} containing that
+\emph{Tag}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & messageCount
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & tag.name
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{3}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

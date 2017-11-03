@@ -12,12 +12,12 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-03}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a year and a month, find the Tags that were used in Messages
-during the given month of the given year, and the Tags that were used
-during the month after the given month of the given year.
+	desc. & Find the \emph{Tags} that were used in \emph{Messages} during the given
+\texttt{month} of the given \texttt{year} and the \emph{Tags} that were
+used during the next month.
 
-For both months, compute the count of Messages that used each of the
-Tags.
+For both months, compute the count of \emph{Messages} that used each of
+the \emph{Tags}.
  \\ \hline
 %
 	
@@ -35,38 +35,31 @@ Tags.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & tag.name
- & String
- & R &
+		$\mathsf{1}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & countMonth1
- & 32-bit Integer
- & R &
-				Occurrences of the tag during year-month 1
+		$\mathsf{2}$ & countMonth1 & 32-bit Integer & A &
+				Occurrences of the tag during the given \texttt{year} and \texttt{month}
  \\ \hline
-		$\mathsf{3}$ & countMonth2
- & 32-bit Integer
- & R &
-				Occurrences of the tag during year-month 2
+		$\mathsf{3}$ & countMonth2 & 32-bit Integer & A &
+				Occurrences of the tag during the next month after the given
+\texttt{year} and \texttt{month}
  \\ \hline
-		$\mathsf{4}$ & diff
- & 32-bit Integer
- & R &
-				Difference between occurrences of this Tag in month 1 and month 2
+		$\mathsf{4}$ & diff & 32-bit Integer & A &
+				Absolute difference of \texttt{countMonth1} and \texttt{countMonth2}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & diff
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & tag.name
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

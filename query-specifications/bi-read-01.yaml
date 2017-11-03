@@ -3,11 +3,11 @@ operation: read
 number: 1
 title: Posting summary
 description: |
-  Given a date, find all Messages created before that date.
+  Given a date, find all *Messages* created before that date.
   Group them by a 3-level grouping\:
 
   1. by year of creation
-  2. for each year, group into message types (Posts or Comments)
+  2. for each year, group into *Message* types (*Posts* or *Comments*)
   3. for each year-type group, split into four groups based on length of their content
       1. 0 <= length < 40\: `short`
       2. 40 <= length < 80\: `one liner`
@@ -20,7 +20,7 @@ parameters:
 result:
   - name: messageYear
     type: 32-bit Integer
-    description: Year of the message
+    description: Year of the *Message*
   - name: messageType
     type: String
     category: meta
@@ -32,19 +32,19 @@ result:
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
-    description: Total number of Messages (Posts/Comments) in that group
+    description: Total number of *Messages* (*Posts*/*Comments*) in that group
   - name: averageMessageLength
     type: 32-bit Integer
     category: aggregated
-    description: Average length of the Message content in that group
+    description: Average length of the *Message* content in that group
   - name: sumMessageLength
     type: 32-bit Integer
     category: aggregated
-    description: Sum of all message content lengths
+    description: Sum of all *Message* content lengths
   - name: percentageOfMessages
     type: 32-bit Float
     category: aggregated
-    description: Number of messages in group as a percentage of all messages created before the given date
+    description: Number of *Messages* in group as a percentage of all messages created before the given date
 sort:
   - name: year
     direction: desc

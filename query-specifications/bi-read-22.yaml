@@ -3,18 +3,17 @@ operation: read
 number: 22
 title: International dialog
 description: |
-  Consider all pairs of people `(p1, p2)` such that one is located in a city of Country `country1`
-  and the other is located in a city of Country `country2`.
+  Consider all pairs of people `(person1, person2)` such that one is located in a *City* of *Country* `country1` and the other is located in a *City* of *Country* `country2`.
 
-  For each city of Country `country1`, return the highest scoring pair.
+  For each *City* of *Country* `country1`, return the highest scoring pair.
 
-  The score of a pair is defined as the sum of the scores of the following kinds of interaction\:
+  The score of a pair is defined as the sum of the subscores awarded for the following kinds of interaction. The initial value is `score = 0`.
 
-  * `p1` has created a reply Comment to at least one Comment or Post by `p2`\: `Score = 4`
-  * `p1` has created at least one Post or Comment that `p2` has created a reply Comment to\: `Score = 1`
-  * `p1` and `p2` Know each other\: `Score = 15`
-  * `p1` liked at least one Post or Comment by `p2`\: `Score = 10`
-  * `p1` has created at least one Post or Comment that was liked by `p2`\: `Score = 1`
+  1. `person1` has created a reply *Comment* to at least one *Message* by `person2`\: `score += 4`
+  2. `person1` has created at least one *Message* that `person2` has created a reply *Comment* to\: `score += 1`
+  3. `person1` and `person2` *know* each other\: `score += 15`
+  4. `person1` liked at least one *Message* by `person2`\: `score += 10`
+  5. `person1` has created at least one *Message* that was liked by `person2`\: `score += 1`
 
   Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
 parameters:
@@ -23,9 +22,9 @@ parameters:
   - name: country2
     type: String
 result:
-  - name: p1.id
+  - name: person1.id
     type: 64-bit Integer
-  - name: p2.id
+  - name: person2.id
     type: 64-bit Integer
   - name: city1.name
     type: String
@@ -35,8 +34,8 @@ result:
 sort:
   - name: score
     direction: desc
-  - name: p1.id
+  - name: person1.id
     direction: asc
-  - name: p2.id
+  - name: person2.id
     direction: asc
 choke_points: [1.4, 1.6, 2.1, 3.1, 3.3, 5.1, 5.2, 5.3]

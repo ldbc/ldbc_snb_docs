@@ -12,33 +12,37 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-22}\hfill\vadjust{} \\ \hline
 %
-	desc. & Consider all pairs of people \texttt{(p1,\ p2)} such that one is located
-in a city of Country \texttt{country1} and the other is located in a
-city of Country \texttt{country2}.
+	desc. & Consider all pairs of people \texttt{(person1,\ person2)} such that one
+is located in a \emph{City} of \emph{Country} \texttt{country1} and the
+other is located in a \emph{City} of \emph{Country} \texttt{country2}.
 
-For each city of Country \texttt{country1}, return the highest scoring
-pair.
+For each \emph{City} of \emph{Country} \texttt{country1}, return the
+highest scoring pair.
 
-The score of a pair is defined as the sum of the scores of the following
-kinds of interaction:
+The score of a pair is defined as the sum of the subscores awarded for
+the following kinds of interaction. The initial value is
+\texttt{score\ =\ 0}.
 
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \texttt{p1} has created a reply Comment to at least one Comment or
-  Post by \texttt{p2}: \texttt{Score\ =\ 4}
+  \texttt{person1} has created a reply \emph{Comment} to at least one
+  \emph{Message} by \texttt{person2}: \texttt{score\ +=\ 4}
 \item
-  \texttt{p1} has created at least one Post or Comment that \texttt{p2}
-  has created a reply Comment to: \texttt{Score\ =\ 1}
+  \texttt{person1} has created at least one \emph{Message} that
+  \texttt{person2} has created a reply \emph{Comment} to:
+  \texttt{score\ +=\ 1}
 \item
-  \texttt{p1} and \texttt{p2} Know each other: \texttt{Score\ =\ 15}
+  \texttt{person1} and \texttt{person2} \emph{know} each other:
+  \texttt{score\ +=\ 15}
 \item
-  \texttt{p1} liked at least one Post or Comment by \texttt{p2}:
-  \texttt{Score\ =\ 10}
+  \texttt{person1} liked at least one \emph{Message} by
+  \texttt{person2}: \texttt{score\ +=\ 10}
 \item
-  \texttt{p1} has created at least one Post or Comment that was liked by
-  \texttt{p2}: \texttt{Score\ =\ 1}
-\end{itemize}
+  \texttt{person1} has created at least one \emph{Message} that was
+  liked by \texttt{person2}: \texttt{score\ +=\ 1}
+\end{enumerate}
 
 Consequently, the maximum score a pair can obtain is:
 \texttt{4\ +\ 1\ +\ 15\ +\ 10\ +\ 1\ =\ 31}
@@ -59,38 +63,30 @@ Consequently, the maximum score a pair can obtain is:
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & p1.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person1.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & p2.id
- & 64-bit Integer
- & R &
+		$\mathsf{2}$ & person2.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{3}$ & city1.name
- & String
- & R &
+		$\mathsf{3}$ & city1.name & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & score
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & score & 32-bit Integer & C &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & score
  & $\desc
-$ \\ \hline
-		$\mathsf{2}$ & p1.id
+$ &  \\ \hline
+		$\mathsf{2}$ & person1.id
  & $\asc
-$ \\ \hline
-		$\mathsf{3}$ & p2.id
+$ &  \\ \hline
+		$\mathsf{3}$ & person2.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	%
 	CPs &

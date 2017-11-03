@@ -12,19 +12,20 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-11}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find those Persons of a given country that replied to any Message, such
-that the reply does not have any Tag in common with the Message (only
-direct replies are considered, transitive ones are not). Consider only
-those replies not containing any word from a given blacklist. For each
-Person and valid reply, retrieve the Tags associated with the reply, and
-retrieve the number of likes on the reply.
+	desc. & Find those \emph{Persons} of a given \emph{Country} that replied to any
+\emph{Message}, such that the reply does not have any \emph{Tag} in
+common with the \emph{Message} (only direct replies are considered,
+transitive ones are not). Consider only those replies not containing any
+word from a given \texttt{blacklist}. For each \emph{Person} and valid
+reply, retrieve the \emph{Tags} associated with the reply, and retrieve
+the number of likes on the reply.
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & country
- & 32-bit Integer
+ & String
  &  \\ \hline
 		$\mathsf{2}$ & blacklist
  & String{[}{]}
@@ -35,22 +36,14 @@ retrieve the number of likes on the reply.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & tag.name
- & String
- & R &
+		$\mathsf{2}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & countLikes
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & countLikes & 32-bit Integer & A &
 				The count of Likes to replies with that Tag.
  \\ \hline
-		$\mathsf{4}$ & countReplies
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & countReplies & 32-bit Integer & A &
 				The count of replies with that Tag.
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -58,17 +51,17 @@ retrieve the number of likes on the reply.
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & countLikes
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person.id
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{3}$ & tag.name
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

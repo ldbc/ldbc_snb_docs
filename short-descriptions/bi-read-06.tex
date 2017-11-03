@@ -1,23 +1,25 @@
 \paragraph{Q6.}
-Get Persons who have created a Message (Post or Comment) with a given
-Tag.
-Each Person has a score, computed as follows:
+Get \emph{Persons} who have created a \emph{Message} (\emph{Post} or
+\emph{Comment}) with a given \emph{Tag}.
+Each \emph{Person} has a score, computed as follows:
 \begin{itemize}
 \tightlist
 \item
-  Count of Messages with the given Tag (\texttt{messageCount}).
+  Count of \emph{Messages} with the given \emph{Tag}
+  (\texttt{messageCount}).
 \item
-  Count of Likes (\texttt{likeCount}) and Comments (\texttt{replyCount})
-  in reply of their Messages with the given Tag (direct relation not
-  transitive).
+  Count of \emph{Likes} (\texttt{likeCount}) and \emph{Comments}
+  (\texttt{replyCount}) in reply of their \emph{Messages} with the given
+  \emph{Tag} (direct relation not transitive).
 \end{itemize}
 The \texttt{score} is calculated as a sum with the following weights:
 \begin{itemize}
 \tightlist
 \item
-  Messages (\texttt{messageCount}) are multiplied by 1,
+  \emph{Messages} (\texttt{messageCount}) are multiplied by 1,
 \item
-  Comments to Messages (\texttt{replyCount}) are multiplied by 2,
+  \emph{Comments} to \emph{Messages} (\texttt{replyCount}) are
+  multiplied by 2,
 \item
-  Likes (\texttt{likeCount}) are multiplied by 10.
+  \emph{Likes} (\texttt{likeCount}) are multiplied by 10.
 \end{itemize}

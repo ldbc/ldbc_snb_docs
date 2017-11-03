@@ -12,11 +12,13 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-13}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find all Messages in a given Country, as well as their Tags.
+	desc. & Find all \emph{Messages} in a given \emph{Country}, as well as their
+\emph{Tags}.
 
-Group messages by creation year and month. For each group, find the 5
-most popular Tags, where popularity is the number of Messages (from
-within the same group) where the Tag appears.
+Group \emph{Messages} by creation year and month. For each group, find
+the 5 most popular \emph{Tags}, where popularity is the number of
+\emph{Messages} (from within the same group) where the \emph{Tag}
+appears.
  \\ \hline
 %
 	
@@ -31,19 +33,13 @@ within the same group) where the Tag appears.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & year
- & 32-bit Integer
- & R &
+		$\mathsf{1}$ & year & 32-bit Integer & C &
 				year(message.creationDate)
  \\ \hline
-		$\mathsf{2}$ & month
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & month & 32-bit Integer & C &
 				month(message.creationDate)
  \\ \hline
-		$\mathsf{3}$ & popularTags
- & TagPairs
- & R &
+		$\mathsf{3}$ & popularTags & TagPairs & C &
 				(tag.name - String, popularity - 32-bit Integer), sorted descending by
 popularity, then ascending by tag name
  \\ \hline
@@ -52,14 +48,14 @@ popularity, then ascending by tag name
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & year
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & month
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

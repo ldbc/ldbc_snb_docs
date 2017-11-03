@@ -12,12 +12,12 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-17}\hfill\vadjust{} \\ \hline
 %
-	desc. & For a given country, count all the distinct triples of persons such that
-\texttt{a} is friend of \texttt{b}, \texttt{b} is friend of \texttt{c},
-and \texttt{c} is friend of \texttt{a}.
+	desc. & For a given \texttt{country}, count all the distinct triples of
+\emph{Persons} such that \texttt{a} is friend of \texttt{b}, \texttt{b}
+is friend of \texttt{c}, and \texttt{c} is friend of \texttt{a}.
 
 Distinct means that given a triple \(t_1\) in the result set \(R\) of
-all qualified triples, there is not a triple \(t_2\) in \(R\) such that
+all qualified triples, there is no triple \(t_2\) in \(R\) such that
 \(t_1\) and \(t_2\) have the same set of elements.
  \\ \hline
 %
@@ -33,9 +33,7 @@ all qualified triples, there is not a triple \(t_2\) in \(R\) such that
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & count
- & 32-bit Integer
- & R &
+		$\mathsf{1}$ & count & 32-bit Integer & A &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

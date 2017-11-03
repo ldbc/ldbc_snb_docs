@@ -54,7 +54,7 @@
           <y:Geometry height="30.0" width="163.99999999999997" x="708.3650173611111" y="488.1755642361111"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="59.9453125" x="4.0" y="6.015625">id = $tag</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.025390625" x="4.0" y="6.015625">name = $tag</y:NodeLabel>
           <y:Shape type="rectangle"/>
         </y:ShapeNode>
       </data>
@@ -72,7 +72,6 @@
     </node>
     <node id="n4" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -121,7 +120,6 @@
     </node>
     <node id="n5" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -153,7 +151,7 @@
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="962.3650173611111" y="581.1443142361111"/>
-              <y:Fill color="#BEBADA" transparent="false"/>
+              <y:Fill color="#80B1D3" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="127.662109375" x="18.1689453125" y="6.015625">comment: Comment<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -170,7 +168,6 @@
     </node>
     <node id="n6" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -202,7 +199,7 @@
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="708.3650173611111" y="581.1443142361111"/>
-              <y:Fill color="#80B1D3" transparent="false"/>
+              <y:Fill color="#BEBADA" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.59375" x="53.703125" y="6.015625">Message<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -272,7 +269,6 @@
       </data>
     </edge>
     <edge id="e3" source="n5::n0" target="n6::n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

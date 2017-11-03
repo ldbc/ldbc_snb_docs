@@ -3,13 +3,13 @@ operation: read
 number: 5
 title: Top posters in a country
 description: |
-  Find the most popular Forums for a given Country, where the popularity of a Forum
-  is measured by the number of members that Forum has from the given Country.
+  Find the most popular *Forums* for a given *Country*, where the popularity of a *Forum*
+  is measured by the number of members that *Forum* has from the given *Country*.
 
-  For each member of the 100 most popular Forums, count the number of Posts they made in any of those (most popular) Forums.
+  For each member of the 100 most popular *Forums*, count the number of *Posts* they made in any of those (most popular) *Forums*.
 parameters:
   - name: country
-    type: 32-bit Integer
+    type: String
 result:
   - name: person.id
     type: 64-bit Integer

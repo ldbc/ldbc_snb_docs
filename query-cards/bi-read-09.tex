@@ -12,25 +12,27 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-09}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given two TagClasses (\texttt{tagClass1} and \texttt{tagClass2}), find
-Forums that contain at least one Post with a Tag from \texttt{tagClass1}
-and at least one Post with a Tag from \texttt{tagClass2} (direct
-children not transitive) -- this may be the same Post.
+	desc. & Given two \emph{TagClasses} (\texttt{tagClass1} and \texttt{tagClass2}),
+find \emph{Forums} that contain at least one \emph{Post} with a
+\emph{Tag} from \texttt{tagClass1} and at least one \emph{Post} with a
+\emph{Tag} from \texttt{tagClass2} (direct children not transitive) --
+this may be the same \emph{Post}.
 
-Consider the Forums with a number of members greater than a given
-threshold. For every such forum, count the number of Posts that have a
-Tag from TagClass1 (\texttt{count1}), and the number of posts that have
-a tag from TagClass2 (\texttt{count2}).
+Consider the \emph{Forums} with a number of members greater than a given
+\texttt{threshold}. For every such \emph{Forum}, count the number of
+\emph{Posts} that have a \emph{Tag} from \emph{TagClass1}
+(\texttt{count1}), and the number of \emph{Posts} that have a \emph{Tag}
+from \emph{TagClass2} (\texttt{count2}).
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & tagClass1
- & 32-bit Integer
+ & String
  &  \\ \hline
 		$\mathsf{2}$ & tagClass2
- & 32-bit Integer
+ & String
  &  \\ \hline
 		$\mathsf{3}$ & threshold
  & 32-bit Integer
@@ -41,18 +43,12 @@ a tag from TagClass2 (\texttt{count2}).
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & forum.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & forum.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & count1
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & count1 & 32-bit Integer & A &
 				Number of Posts with at least one tag belonging to tagClass1
  \\ \hline
-		$\mathsf{3}$ & count2
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & count2 & 32-bit Integer & A &
 				Number of Posts with at least one tag belonging to tagClass2
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -60,14 +56,14 @@ a tag from TagClass2 (\texttt{count2}).
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
-		$\mathsf{1}$ & \textbar{}count2 - count1\textbar{}
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
+		$\mathsf{1}$ & abs(count2 - count1)
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & forum.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

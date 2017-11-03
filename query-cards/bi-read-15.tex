@@ -12,16 +12,17 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-15}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a country, find all Persons of the country whose number of friends
-in the given country equals the (floor of) average number of friends
-that Persons of the given country have in the given country.
+	desc. & Given a \texttt{country}, find all \emph{Persons} of the \emph{Country}
+whose number of friends in the given \emph{Country} equals the (floor
+of) average number of friends that \emph{Persons} of the given
+\emph{Country} have in the given \emph{country}.
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & country
- & 32-bit Integer
+ & String
  &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -29,24 +30,20 @@ that Persons of the given country have in the given country.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & count
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & count & 32-bit Integer & A &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

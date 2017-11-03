@@ -3,15 +3,14 @@ operation: read
 number: 4
 title: Popular topics in a country
 description: |
-  Given a TagClass and a Country, find all the Forums created in the given Country,
-  containing at least one Post with Tags belonging directly to the given TagClass.
+  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Post* with *Tags* belonging directly to the given *TagClass*.
 
-  The location of a Forum is identified by the location of the Forum's moderator.
+  The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
   - name: tagClass
-    type: 32-bit Integer
+    type: String
   - name: country
-    type: 32-bit Integer
+    type: String
 result:
   - name: forum.id
     type: 64-bit Integer

@@ -12,10 +12,11 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-23}\hfill\vadjust{} \\ \hline
 %
-	desc. & Count the messages all residents of Country \texttt{country} have
-written abroad grouped by month and Country. A Message was written
-abroad if the Country the Message was written in is different than the
-Country of the Person it was written by.
+	desc. & Count the \emph{Messages} all residents of a given \texttt{country} who
+have written a \emph{Message} abroad, grouped by month and Country. A
+\emph{Message} was written abroad if the \emph{Country} of the
+\emph{Message} was written in is different than the \emph{Country} of
+the \emph{Person} it was written by.
  \\ \hline
 %
 	
@@ -30,36 +31,30 @@ Country of the Person it was written by.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageCount
- & 32-bit Integer
- & R &
-				The number of messages in each group
+		$\mathsf{1}$ & messageCount & 32-bit Integer & A &
+				The number of \emph{Messages} in each group
  \\ \hline
-		$\mathsf{2}$ & country.name
- & String
- & R &
-				The name of the destination country
+		$\mathsf{2}$ & country.name & String & R &
+				The name of the destination \emph{Country}
  \\ \hline
-		$\mathsf{3}$ & month
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & month & 32-bit Integer & C &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & messageCount
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & country.name
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{3}$ & month
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

@@ -3,17 +3,15 @@ operation: read
 number: 21
 title: Zombies in a country
 description: |
-  Find zombies within the given country, and return their zombie scores.
+  Find zombies within the given `country`, and return their zombie scores.
 
-  A zombie is a Person created before the given `endDate` and that has created between `[0, 1)` Messages per month,
-  on average, during the time range between profile creation date and the given `endDate`.
-  The number of months spans the time range from creation date of the profile to the `endDate` and also includes
+  A zombie is a *Person* created before the given `endDate` and that has created between `[0, 1)` *Messages* per month, on average, during the time range between profile creation date and the given `endDate`. The number of months spans the time range from creation date of the profile to the `endDate` and also includes
   partial months.
 
-  For each person, calculate the following\:
+  For each *Person*, calculate the following\:
 
   * `zombieLikeCount`: the number of likes received from zombies
-  * `totalLikeCount`: the total number of likes received on that Person's messages
+  * `totalLikeCount`: the total number of likes received on that *Person*'s *Messages*
   * `zombieScore`: `zombieLikeCount` / `totalLikeCount`
 
   In all cases, only count likes received from profiles that were created before the given `endDate`.

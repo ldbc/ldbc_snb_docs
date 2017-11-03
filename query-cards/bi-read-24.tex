@@ -12,11 +12,11 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-24}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find all Messages tagged with a Tag from the given TagClass
-(non-transitive).
+	desc. & Find all \emph{Messages} tagged with a \emph{Tag} from the given
+\emph{tagClass} (non-transitive).
 
-Count all Messages and their likes grouped by continent, year, and
-month.
+Count all \emph{Messages} and their likes grouped by continent, year,
+and month.
  \\ \hline
 %
 	
@@ -31,44 +31,34 @@ month.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & messageCount
- & 32-bit Integer
- & R &
+		$\mathsf{1}$ & messageCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{2}$ & likeCount
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & likeCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{3}$ & year
- & 32-bit Integer
- & R &
-				Year of the Message's creationDate
+		$\mathsf{3}$ & year & 32-bit Integer & C &
+				Year of the \emph{Message}'s creationDate
  \\ \hline
-		$\mathsf{4}$ & month
- & 32-bit Integer
- & R &
-				Month of the Message's creationDate
+		$\mathsf{4}$ & month & 32-bit Integer & C &
+				Month of the \emph{Message}'s creationDate
  \\ \hline
-		$\mathsf{5}$ & continent.name
- & String
- & R &
+		$\mathsf{5}$ & continent.name & String & R &
 				 \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & year
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & month
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{3}$ & continent.name
  & $\desc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

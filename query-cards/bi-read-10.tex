@@ -12,28 +12,30 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-10}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a Tag, find all Persons that are either interested in the Tag, or
-have written a Message (Post or Comment) with creation date after a
-given date and that has a given Tag. For each Person, compute the score
-(\texttt{score}) as the sum of the following two aspects:
+	desc. & Given a \emph{Tag}, find all \emph{Persons} that are either interested
+in the \emph{Tag}, or have written a \emph{Message} (\emph{Post} or
+\emph{Comment}) with creation date after a given \texttt{date} and that
+has a given \emph{Tag}. For each \emph{Person}, compute the
+\texttt{score} as the sum of the following two aspects:
 
 \begin{itemize}
 \tightlist
 \item
-  100, if the Person has this tag as their interest, or 0 otherwise
+  100, if the \emph{Person} has this \emph{Tag} as their interest, or 0
+  otherwise
 \item
-  number of messages by this person with the given tag
+  number of \emph{Messages} by this person with the given \emph{Tag}
 \end{itemize}
 
-Also, for each Person, compute the sum of the score of the Person's
-friends (\texttt{friendsScore}).
+Also, for each \emph{Person}, compute the sum of the score of the
+\emph{Person}'s friends (\texttt{friendsScore}).
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & tag
- & 32-bit Integer
+ & String
  &  \\ \hline
 		$\mathsf{2}$ & date
  & Date
@@ -44,17 +46,11 @@ friends (\texttt{friendsScore}).
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & score
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & score & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{3}$ & friendsScore
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & friendsScore & 32-bit Integer & A &
 				The sum of the score of the Person's friends
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -62,14 +58,14 @@ friends (\texttt{friendsScore}).
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & score + friendsScore
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

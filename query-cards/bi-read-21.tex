@@ -12,16 +12,17 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-21}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find zombies within the given country, and return their zombie scores.
+	desc. & Find zombies within the given \texttt{country}, and return their zombie
+scores.
 
-A zombie is a Person created before the given \texttt{endDate} and that
-has created between \texttt{{[}0,\ 1)} Messages per month, on average,
-during the time range between profile creation date and the given
-\texttt{endDate}. The number of months spans the time range from
-creation date of the profile to the \texttt{endDate} and also includes
-partial months.
+A zombie is a \emph{Person} created before the given \texttt{endDate}
+and that has created between \texttt{{[}0,\ 1)} \emph{Messages} per
+month, on average, during the time range between profile creation date
+and the given \texttt{endDate}. The number of months spans the time
+range from creation date of the profile to the \texttt{endDate} and also
+includes partial months.
 
-For each person, calculate the following:
+For each \emph{Person}, calculate the following:
 
 \begin{itemize}
 \tightlist
@@ -29,7 +30,7 @@ For each person, calculate the following:
   \texttt{zombieLikeCount}: the number of likes received from zombies
 \item
   \texttt{totalLikeCount}: the total number of likes received on that
-  Person's messages
+  \emph{Person}'s \emph{Messages}
 \item
   \texttt{zombieScore}: \texttt{zombieLikeCount} /
   \texttt{totalLikeCount}
@@ -54,21 +55,13 @@ before the given \texttt{endDate}.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & zombieLikeCount
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & zombieLikeCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{3}$ & totalLikeCount
- & 32-bit Integer
- & R &
+		$\mathsf{3}$ & totalLikeCount & 32-bit Integer & A &
 				 \\ \hline
-		$\mathsf{4}$ & zombieScore
- & 32-bit Float
- & R &
+		$\mathsf{4}$ & zombieScore & 32-bit Float & A &
 				The ratio of \texttt{zombieLikeCount} and \texttt{totalLikeCount}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -76,14 +69,14 @@ before the given \texttt{endDate}.
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & zombieScore
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

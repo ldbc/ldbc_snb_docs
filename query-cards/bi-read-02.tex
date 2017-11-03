@@ -12,28 +12,30 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-02}\hfill\vadjust{} \\ \hline
 %
-	desc. & Select all Messages (Posts \& Comments) created between date1-date2
-(inclusive) by persons located in country1 or country2. Select the
-creators (Persons) and the Tags of these Messages. Split these Persons,
-Tags and Messages into a 5-level grouping:
+	desc. & Select all \emph{Messages} (Posts \& Comments) created between
+\texttt{date1}-\texttt{date2} (inclusive) by \emph{Persons} located in
+\texttt{country1} or \texttt{country2}. Select the creator
+\emph{Persons} and the \emph{Tags} of these \emph{Messages}. Split these
+\emph{Persons}, \emph{Tags} and \emph{Messages} into a 5-level grouping:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  name of country of person,
+  name of country of \emph{Person},
 \item
-  month message was created,
+  month the \emph{Message} was created,
 \item
-  gender of person,
+  gender of \emph{Person},
 \item
-  age group of person, defined as years between person's birthday and
-  end of simulation (2013-01-01), divided by 5, rounded down,
+  age group of \emph{Person}, defined as years between person's birthday
+  and end of simulation (2013-01-01), divided by 5, rounded down,
 \item
-  name of tag attached to message.
+  name of tag attached to \emph{Message}.
 \end{enumerate}
 
-Consider only those groups where number of messages is greater than 100.
+Consider only those groups where number of \emph{Messages} is greater
+than 100.
  \\ \hline
 %
 	
@@ -57,31 +59,19 @@ Consider only those groups where number of messages is greater than 100.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & country.name
- & String
- & R &
+		$\mathsf{1}$ & country.name & String & R &
 				 \\ \hline
-		$\mathsf{2}$ & messageMonth
- & 32-bit Integer
- & R &
+		$\mathsf{2}$ & messageMonth & 32-bit Integer & R &
 				1--12
  \\ \hline
-		$\mathsf{3}$ & person.gender
- & String
- & R &
+		$\mathsf{3}$ & person.gender & String & R &
 				\texttt{male}/\texttt{female}
  \\ \hline
-		$\mathsf{4}$ & ageGroup
- & 32-bit Integer
- & R &
+		$\mathsf{4}$ & ageGroup & 32-bit Integer & C &
 				 \\ \hline
-		$\mathsf{5}$ & tag.name
- & String
- & R &
+		$\mathsf{5}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{6}$ & messageCount
- & 64-bit Integer
- & R &
+		$\mathsf{6}$ & messageCount & 64-bit Integer & A &
 				The number of messages in the group
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -89,26 +79,26 @@ Consider only those groups where number of messages is greater than 100.
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & messageCount
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & tag.name
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{3}$ & ageGroup
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{4}$ & person.gender
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{5}$ & messageMonth
  & $\asc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{6}$ & country.name
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%

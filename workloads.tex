@@ -38,16 +38,14 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
         and \texttt{[<String, Boolean>]} is an ordered list of those 2-tuples.
 \end{itemize}
 
-\todo{here comes the new stuff - Gabor}
-
-Results are categorized according to their source of origin:
+\paragraph{Categorization of results.} Results are categorized according to their source of origin:
 
 \begin{itemize}
-	\item raw (\texttt{R}), if the result is returned with an unmodified value and type.
-	\item calculated (\texttt{C}), if the result is calculated from other values and conditions.
-	\item aggregated (\texttt{A}), if the result is an aggregated value, e.g. a count or a sum of another value. If a result is both calculated and aggregated (e.g. \texttt{count(x) + count(y)} or \texttt{avg(x + y)}), it is considered an aggregated result.
+	\item \textbf{Raw} (\texttt{R}), if the result is returned with an unmodified value and type.
+	\item \textbf{Calculated} (\texttt{C}), if the result is calculated from other values and conditions.
+	\item \textbf{Aggregated} (\texttt{A}), if the result is an aggregated value, \eg a count or a sum of another value. If a result is both calculated and aggregated (\eg $\mathsf{count(x) + count(y)}$ or $\mathsf{avg(x + y)}$), it is considered an aggregated result.
+	\item \textbf{Meta} (\texttt{M}), if the result is based on type information, \eg the type of the vertex.	
 \end{itemize}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,20 +66,24 @@ Results are categorized according to their source of origin:
 
 To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-pattern} with the following notation:
 
-\begin{itemize}
-	\item Filtering conditions are typeset in \textit{italic}.
-	\item Properties that should be returned are denoted in normal (book) font.
-	\item Negative conditions, i.e., edges that are now allowed in the graph are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
-	\item Aggregations are shown in dashed boxes.
-\end{itemize}
-
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-23}
+		\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-08}
 		\caption{Example graph pattern.}
 		\label{fig:example-graph-pattern}
 	\end{center}
 \end{figure}
+
+\begin{itemize}
+	\item Vertices are marked as \textsf{entityName:EntityType} (camel case notation, starting with a lowercase character for the former and an uppercase character for the latter). The \textsf{entityName} is assigned if the vertex or its attributes are used later for aggregation or as part of the query result. If they are not used later, the \textsf{entityName}  can be omitted.
+	\item Positive conditions for edges are denoted with solid lines.
+	\item Negative conditions for edges, \ie edges that are not allowed in the graph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
+	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.
+	\item Filtering conditions are typeset in \textit{italic}, \eg $\mathit{id} = \mathit{\textdollar tag}$.
+	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathsf{name}$.
+	\item Variable length paths, \ie edges that can be traversed multiple times are denotes with $*\mathsf{min}...\mathsf{max}$, \eg $\mathsf{replyOf}*$ or $\mathsf{knows*1 \ldots 2}$. By default, the value of $\mathsf{min}$ is 1, and the value of $\mathsf{max}$ is unlimited.
+	\item Aggregations are shown in dashed boxes with the type of aggregation ($\mathsf{count}$, $\mathsf{sum}$, $\mathsf{avg}$, etc.) in the upper right corner.
+\end{itemize}
 
 \newcommand{\tuple}[1]{\langle #1 \rangle}
 
@@ -89,8 +91,13 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 
 \begin{itemize}
 	\item \textsf{UNWIND} unnests a list, \ie produces a set of one-tuples. For example, UNWIND $ [1, 2, 3] $ results in $ \{ \tuple{1}, \tuple{2}, \tuple{3} \} $)
-	\item Aggregation operations: \lstinline{count}, \lstinline{average}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
-	\item Functions: \lstinline{floor}, \lstinline{year} (extracts the year from a given date), \lstinline{month} (extracts the month from a given date).
+	\item Aggregation operations: \lstinline{count}, \lstinline{avg}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
+	\item Functions:
+	\begin{itemize}
+		\item \lstinline{floor(x)} (returns $\lfloor x \rfloor$),
+		\item \lstinline{year(date)} (extracts the year from a given date),
+		\item \lstinline{month(date)} (extracts the month from a given date).
+	\end{itemize}
 \end{itemize}
 
 \paragraph{Resolving ambiguity.} Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.

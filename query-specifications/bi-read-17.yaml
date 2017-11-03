@@ -3,11 +3,9 @@ operation: read
 number: 17
 title: Friend triangles
 description: |
-  For a given country, count all the distinct triples of persons such that `a` is friend of `b`, `b` is friend of `c`,
-  and `c` is friend of `a`.
+  For a given `country`, count all the distinct triples of *Persons* such that `a` is friend of `b`, `b` is friend of `c`, and `c` is friend of `a`.
 
-  Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples,
-  there is not a triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
+  Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
   - name: country
     type: String

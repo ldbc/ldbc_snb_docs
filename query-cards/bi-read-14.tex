@@ -12,15 +12,15 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-14}\hfill\vadjust{} \\ \hline
 %
-	desc. & For each person, count the number of Posts they created in the time
-interval \texttt{{[}begin,\ end{]}} (equivalent to the number of threads
-they initiated) and the number of messages in each of their (transitive)
-reply trees. When calculating message counts only consider messages
-created within the given time interval.
+	desc. & For each \emph{Person}, count the number of \emph{Posts} they created in
+the time interval \texttt{{[}begin,\ end{]}} (equivalent to the number
+of threads they initiated) and the number of \emph{Messages} in each of
+their (transitive) reply trees. When calculating \emph{Message} counts
+only consider messages created within the given time interval.
 
-Return each person, number of Posts they created, and the count of all
-messages that appeared in the reply trees (including Post at tree root)
-they created.
+Return each \emph{Person}, number of \emph{Posts} they created, and the
+count of all \emph{Messages} that appeared in the reply trees (including
+\emph{Post} at tree root) they created.
  \\ \hline
 %
 	
@@ -38,42 +38,33 @@ they created.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id
- & 64-bit Integer
- & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & person.firstName
- & String
- & R &
+		$\mathsf{2}$ & person.firstName & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & person.lastName
- & String
- & R &
+		$\mathsf{3}$ & person.lastName & String & R &
 				 \\ \hline
-		$\mathsf{4}$ & postCount
- & 32-bit Integer
- & R &
-				The number of posts created by that Person (the number of threads
-initiated)
+		$\mathsf{4}$ & postCount & 32-bit Integer & A &
+				The number of \emph{Posts} created by that \emph{Person} (the number of
+threads initiated)
  \\ \hline
-		$\mathsf{5}$ & messageCount
- & 32-bit Integer
- & R &
-				The number of messages created in all the threads this Person initiated
+		$\mathsf{5}$ & messageCount & 32-bit Integer & A &
+				The number of \emph{Messages} created in all the threads this
+\emph{Person} initiated
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
 	
 		sort		&
-		\innerCardVSpace{\begin{tabular}{|>{\sortNumberCell}c|>{\varNameCell}l|>{\directionCell}c|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		$\mathsf{1}$ & messageCount
  & $\desc
-$ \\ \hline
+$ &  \\ \hline
 		$\mathsf{2}$ & person.id
  & $\asc
-$ \\ \hline
-		\end{tabular}}\innerCardVSpace \\ \hline
+$ &  \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
 	%
 	limit & 100 \\ \hline
 	%
