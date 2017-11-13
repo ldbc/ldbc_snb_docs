@@ -39,6 +39,9 @@ with open('templates/query-card-template.tex', 'r') as f:
 with open('templates/short-description-template.tex', 'r') as f:
     short_description_template = Template(f.read())
 
+with open('templates/standalone-query-card.tex', 'r') as f:
+    standalone_query_card_template = Template(f.read())
+
 all_choke_points = set()
 all_queries = set()
 query_choke_point = defaultdict(list)      # queries -> cps
@@ -90,6 +93,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
     with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:
         query_card_file.write(query_card_text)
 
+    ##### short descriptions
     short_description_text = short_description_template.render(
         number        = number,
         description   = description_tex,
@@ -98,6 +102,13 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     with open("short-descriptions/%s.tex" % query_id, 'w') as short_description_file:
         short_description_file.write(short_description_text)
+
+    ##### standalone query cards
+    standalone_query_card_text = standalone_query_card_template.render(
+        query_id=query_id
+    )
+    with open("standalone-query-cards/%s.tex" % query_id, 'w') as standalone_query_card_file:
+        standalone_query_card_file.write(standalone_query_card_text)
 
 ##### choke points
 
@@ -133,7 +144,6 @@ choke_points_queries_text = choke_points_queries_template.render(
 
 with open("query-cards/choke-points-queries.tex", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)
-
 
 with open('templates/choke-points-queries.csv', 'r') as f:
     choke_points_queries_template = Template(f.read())
