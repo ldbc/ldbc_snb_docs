@@ -5,5 +5,5 @@
 
 Standalone query cards:
 
-*  [BI-1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-1.pdf), etc.
-*  [interactive-complex-1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-1.pdf), etc.
+*  [BI-1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-01.pdf), etc.
+*  [interactive-complex-1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-01.pdf), etc.
