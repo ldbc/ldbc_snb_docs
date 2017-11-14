@@ -6,7 +6,7 @@ all: $(DOCUMENT)
 query_cards: $(DOCUMENT)
 	cd standalone-query-cards && \
 	for card in *.tex; do \
-		pdflatex $$card ; \
+		../texfot.pl latexmk -pdf --interaction=batchmode $$card ; \
 	done
 
 texfot: $(DOCUMENT)
