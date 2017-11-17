@@ -75,7 +75,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \end{figure}
 
 \begin{itemize}
-	\item Vertices are marked as \textsf{entityName:EntityType} (camel case notation, starting with a lowercase character for the former and an uppercase character for the latter). The \textsf{entityName} is assigned if the vertex or its attributes are used later for aggregation or as part of the query result. If they are not used later, the \textsf{entityName}  can be omitted.
+	\item Vertices are marked as \textsf{entityName: EntityType} (camel case notation for both, starting with a lowercase character for the former and an uppercase character for the latter). The \textsf{entityName} is assigned if the vertex or its attributes are used later for aggregation or as part of the query result. If they are not used later, the \textsf{entityName:} part can be omitted.
 	\item Positive conditions for edges are denoted with solid lines.
 	\item Negative conditions for edges, \ie edges that are not allowed in the graph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
 	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.

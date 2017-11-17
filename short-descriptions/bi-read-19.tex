@@ -3,11 +3,11 @@ For all the \emph{Persons} born after a certain \texttt{date}, find all
 the strangers they interacted with, where strangers are \emph{Persons}
 that do not \emph{know} each other. There is no restriction on the date
 that strangers were born.
-Consider only strangers that are members of \emph{Forums} tagged with
-\texttt{tagClass1} (direct children not transitive) AND members of
-\emph{Forums} tagged with \texttt{tagClass2} (direct children not
-transitive). It does not matter if these \emph{Tags} are attached to the
-same \emph{Forum}, or different \emph{Forums}.
+Consider only strangers that are members of \emph{Forums} tagged with a
+\emph{Tag} of \texttt{tagClass1} (direct children not transitive) AND
+members of \emph{Forums} tagged with a \emph{Tag} of \texttt{tagClass2}
+(direct children not transitive). The tags may be attached to the same
+\emph{Forum} or they may not be attached to different \emph{Forums}.
 Interaction is defined as follows: if \emph{Person} \emph{A} replies to
 a \emph{Message} (\emph{Post} or \emph{Comment}) by another
 \emph{Person} \emph{B}, there is an ``interacted with'' relationship
