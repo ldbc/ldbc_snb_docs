@@ -16,7 +16,6 @@
     <data key="d0"/>
     <node id="n0" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -24,7 +23,7 @@
               <y:Geometry height="218.5597287644465" width="769.8755381944449" x="30.898958333333326" y="641.6158354716646"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="769.8755381944449" x="0.0" y="0.0">zombies = collect(zombie)</y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="769.8755381944449" x="0.0" y="0.0">1. zombies = collect(zombie)</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -126,11 +125,11 @@
         <node id="n0::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="45.0" width="163.99999999999997" x="326.3367274305558" y="800.1755642361111"/>
+              <y:Geometry height="38.0" width="163.99999999999997" x="326.3367274305558" y="800.1755642361111"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="162.35546875" x="4.0" y="6.53125">creationDate &lt; $endDate 
-&amp; count(m) / months &lt; 1</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="162.35546875" x="4.0" y="3.03125">creationDate &lt; $endDate 
+&amp; mCount / months &lt; 1</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
           </data>
@@ -144,7 +143,7 @@
                   <y:Geometry height="107.96875" width="194.0" x="591.7744965277782" y="737.2068142361111"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="194.0" x="0.0" y="0.0">count</y:NodeLabel>
+                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="194.0" x="0.0" y="0.0">mCount = count(m)</y:NodeLabel>
                   <y:Shape type="roundrectangle"/>
                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                   <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -198,15 +197,14 @@
     </node>
     <node id="n1" yfiles.foldertype="group">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="305.9374999999998" width="769.8755381944449" x="30.89895833333344" y="875.1755642361111"/>
+              <y:Geometry height="313.9374999999998" width="769.8755381944449" x="30.89895833333344" y="875.1755642361111"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="769.8755381944449" x="0.0" y="0.0">for each person, calculate: zombieScore = zombieLikeCount / totalLikeCount</y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="769.8755381944449" x="0.0" y="0.0">2. for each zombie, calculate: zombieScore = zombieLikeCount / totalLikeCount</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -232,7 +230,7 @@
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GroupNode>
-                  <y:Geometry height="107.96874999999977" width="194.0" x="576.7744965277782" y="1058.144314236111"/>
+                  <y:Geometry height="107.96874999999977" width="194.0" x="576.7744965277782" y="1066.144314236111"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="194.0" x="0.0" y="0.0">zombieLikeCount = count</y:NodeLabel>
@@ -258,7 +256,7 @@
             <node id="n1::n0::n0">
               <data key="d6">
                 <y:ShapeNode>
-                  <y:Geometry height="30.0" width="164.0" x="591.7744965277782" y="1091.113064236111"/>
+                  <y:Geometry height="30.0" width="164.0" x="591.7744965277782" y="1099.113064236111"/>
                   <y:Fill color="#FDB462" transparent="false"/>
                   <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="44.751953125" x="59.6240234375" y="6.015625">Person<y:LabelModel>
@@ -275,7 +273,7 @@
             <node id="n1::n0::n1">
               <data key="d6">
                 <y:ShapeNode>
-                  <y:Geometry height="30.0" width="163.99999999999997" x="591.7744965277782" y="1121.1130642361109"/>
+                  <y:Geometry height="30.0" width="163.99999999999997" x="591.7744965277782" y="1129.1130642361109"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.24609375" x="4.0" y="6.015625">IN zombies</y:NodeLabel>
@@ -288,7 +286,7 @@
         <node id="n1::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="164.0" x="326.3367274305558" y="1091.113064236111"/>
+              <y:Geometry height="30.0" width="164.0" x="326.3367274305558" y="1099.113064236111"/>
               <y:Fill color="#BEBADA" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.59375" x="53.703125" y="6.015625">Message<y:LabelModel>
@@ -308,7 +306,7 @@
               <y:Geometry height="30.0" width="164.0" x="326.3367274305558" y="1001.1130642361111"/>
               <y:Fill color="#FDB462" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="93.7421875" x="35.12890625" y="6.015625">person: Person<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.2734375" x="33.86328125" y="6.015625">zombie: Person<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -322,10 +320,11 @@
         <node id="n1::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="163.99999999999997" x="326.3367274305558" y="1031.113064236111"/>
+              <y:Geometry height="38.0" width="163.99999999999997" x="326.3367274305558" y="1031.113064236111"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="158.541015625" x="4.0" y="6.015625">creationDate &lt; $endDate</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="158.541015625" x="4.0" y="3.03125">IN zombies &amp;
+creationDate &lt; $endDate</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
           </data>
@@ -336,7 +335,7 @@
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GroupNode>
-                  <y:Geometry height="77.96875" width="207.6" x="45.89895833333344" y="1058.144314236111"/>
+                  <y:Geometry height="77.96875" width="207.6" x="45.89895833333344" y="1066.144314236111"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="207.6" x="0.0" y="0.0">totalLikeCount = count</y:NodeLabel>
@@ -362,7 +361,7 @@
             <node id="n1::n4::n0">
               <data key="d6">
                 <y:ShapeNode>
-                  <y:Geometry height="30.0" width="164.0" x="60.89895833333344" y="1091.113064236111"/>
+                  <y:Geometry height="30.0" width="164.0" x="60.89895833333344" y="1099.113064236111"/>
                   <y:Fill color="#FDB462" transparent="false"/>
                   <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="44.751953125" x="59.6240234375" y="6.015625">Person<y:LabelModel>
@@ -520,7 +519,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.240234375" x="-78.02892071397542" y="-23.574747873263732">hasCreator<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.240234375" x="-78.02892071397542" y="-23.57474787326396">hasCreator<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
