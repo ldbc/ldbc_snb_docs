@@ -5,7 +5,7 @@ title: Zombies in a country
 description: |
   Find zombies within the given `country`, and return their zombie scores.
 
-  A `zombie` is a *Person* created before the given `endDate`, which has created between `[0, 1)` *Messages* per month on average, during the time range between profile creation date and the given `endDate`. The number of months spans the time range from creation date of the profile to the `endDate` and also includes partial months.
+  A `zombie` is a *Person* created before the given `endDate`, which has created an average of `[0, 1)` *Messages* per month, during the time range between profile creation date and the given `endDate`. The number of months spans the time range from creation date of the profile to the `endDate` and also includes partial months.
 
   For each `zombie`, calculate the following\:
 
