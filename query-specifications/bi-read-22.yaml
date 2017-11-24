@@ -3,11 +3,7 @@ operation: read
 number: 22
 title: International dialog
 description: |
-  Consider all pairs of people `(person1, person2)` such that one is located in a *City* of *Country* `country1` and the other is located in a *City* of *Country* `country2`.
-
-  For each *City* of *Country* `country1`, return the highest scoring pair.
-
-  The score of a pair is defined as the sum of the subscores awarded for the following kinds of interaction. The initial value is `score = 0`.
+  Consider all pairs of people `(person1, person2)` such that one is located in a *City* of *Country* `country1` and the other is located in a *City* of *Country* `country2`. For each *City* of *Country* `country1`, return the highest scoring pair. The score of a pair is defined as the sum of the subscores awarded for the following kinds of interaction. The initial value is `score = 0`.
 
   1. `person1` has created a reply *Comment* to at least one *Message* by `person2`\: `score += 4`
   2. `person1` has created at least one *Message* that `person2` has created a reply *Comment* to\: `score += 1`
