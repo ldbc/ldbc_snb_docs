@@ -7,21 +7,20 @@ them by a 3-level grouping:
 \item
   by year of creation
 \item
-  for each year, group into \emph{Message} types (\emph{Posts} or
-  \emph{Comments})
+  for each year, group into \emph{Message} types: is \emph{Comment} or
+  not
 \item
   for each year-type group, split into four groups based on length of
   their content
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
+  \begin{itemize}
   \tightlist
   \item
-    0 \textless{}= length \textless{} 40: \texttt{short}
+    \texttt{0}: 0 \textless{}= length \textless{} 40~(short)
   \item
-    40 \textless{}= length \textless{} 80: \texttt{one\ liner}
+    \texttt{1}: 40 \textless{}= length \textless{} 80~(one liner)
   \item
-    80 \textless{}= length \textless{} 160: \texttt{tweet}
+    \texttt{2}: 80 \textless{}= length \textless{} 160~(tweet)
   \item
-    160 \textless{}= length: \texttt{long}
-  \end{enumerate}
+    \texttt{3}: 160 \textless{}= length~(long)
+  \end{itemize}
 \end{enumerate}

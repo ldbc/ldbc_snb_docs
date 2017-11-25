@@ -5,14 +5,15 @@ relationship.
 Then, for each path calculate a weight. The nodes in the path are
 \emph{Persons}, and the weight of a path is the sum of weights between
 every pair of consecutive \emph{Person} nodes in the path.
-The weight for a pair of \emph{Persons} is calculated such that
+The weight for a pair of \emph{Persons} is calculated based on their
+interactions:
 \begin{itemize}
 \tightlist
 \item
-  every reply (by one of the \emph{Persons}) to a \emph{Post} (by the
-  other \emph{Person}) contributes 1.0, and
+  Every reply (by one of the \emph{Persons}) to a \emph{Post} (by the
+  other \emph{Person}) contributes 1.0.
 \item
-  every reply (by one of the \emph{Persons}) to a \emph{Comment} (by the
+  Every reply (by one of the \emph{Persons}) to a \emph{Comment} (by the
   other \emph{Person}) contributes 0.5.
 \end{itemize}
 Only consider \emph{Messages} that were created in a \emph{Forum} that

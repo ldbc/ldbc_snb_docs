@@ -15,29 +15,33 @@
 	desc. & Find zombies within the given \texttt{country}, and return their zombie
 scores.
 
-A zombie is a \emph{Person} created before the given \texttt{endDate}
-and that has created between \texttt{{[}0,\ 1)} \emph{Messages} per
-month, on average, during the time range between profile creation date
-and the given \texttt{endDate}. The number of months spans the time
-range from creation date of the profile to the \texttt{endDate} and also
-includes partial months.
+A \texttt{zombie} is a \emph{Person} created before the given
+\texttt{endDate}, which has created an average of \texttt{{[}0,\ 1)}
+\emph{Messages} per month, during the time range between profile
+creation date and the given \texttt{endDate}. The number of months spans
+the time range from creation date of the profile to the \texttt{endDate}
+with partial months on both end counting as one month (e.g.~a
+\texttt{creationDate\ of} Jan 31 and an \texttt{endDate} of Mar 1
+results in 3 months).
 
-For each \emph{Person}, calculate the following:
+For each \texttt{zombie}, calculate the following:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{zombieLikeCount}: the number of likes received from zombies
+  \texttt{zombieLikeCount}: the number of likes received from other
+  zombies
 \item
   \texttt{totalLikeCount}: the total number of likes received on that
-  \emph{Person}'s \emph{Messages}
+  \texttt{zombie}'s \emph{Messages}
 \item
   \texttt{zombieScore}: \texttt{zombieLikeCount} /
   \texttt{totalLikeCount}
 \end{itemize}
 
-In all cases, only count likes received from profiles that were created
-before the given \texttt{endDate}.
+For both \texttt{zombieLikeCount} and \texttt{totalLikeCount}, only
+count likes received from profiles that were created before the given
+\texttt{endDate}.
  \\ \hline
 %
 	
@@ -55,7 +59,7 @@ before the given \texttt{endDate}.
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person.id & 64-bit Integer & R &
+		$\mathsf{1}$ & zombie.id & 64-bit Integer & R &
 				 \\ \hline
 		$\mathsf{2}$ & zombieLikeCount & 32-bit Integer & A &
 				 \\ \hline
@@ -73,7 +77,7 @@ before the given \texttt{endDate}.
 		$\mathsf{1}$ & zombieScore
  & $\desc
 $ &  \\ \hline
-		$\mathsf{2}$ & person.id
+		$\mathsf{2}$ & zombie.id
  & $\asc
 $ &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline

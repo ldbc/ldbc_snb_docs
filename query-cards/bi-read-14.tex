@@ -13,10 +13,10 @@
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-14}\hfill\vadjust{} \\ \hline
 %
 	desc. & For each \emph{Person}, count the number of \emph{Posts} they created in
-the time interval \texttt{{[}begin,\ end{]}} (equivalent to the number
-of threads they initiated) and the number of \emph{Messages} in each of
-their (transitive) reply trees. When calculating \emph{Message} counts
-only consider messages created within the given time interval.
+the time interval \texttt{{[}startDate,\ endDate{]}} (equivalent to the
+number of threads they initiated) and the number of \emph{Messages} in
+each of their (transitive) reply trees. When calculating \emph{Message}
+counts only consider messages created within the given time interval.
 
 Return each \emph{Person}, number of \emph{Posts} they created, and the
 count of all \emph{Messages} that appeared in the reply trees (including
@@ -26,10 +26,10 @@ count of all \emph{Messages} that appeared in the reply trees (including
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & begin
+		$\mathsf{1}$ & startDate
  & Date
  &  \\ \hline
-		$\mathsf{2}$ & end
+		$\mathsf{2}$ & endDate
  & Date
  &  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
