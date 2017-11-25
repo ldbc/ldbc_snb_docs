@@ -24,11 +24,11 @@ result:
   - name: isComment
     type: Boolean
     category: meta
-    description: `true` for *Comments*, `false` for *Posts*
+    description: " `true` for *Comments*, `false` for *Posts*"
   - name: lengthCategory
     type: String
     category: calculated
-    description: `0` for short, `1` for one-liner, `2` for tweet, `3` for long
+    description: " `0` for short, `1` for one-liner, `2` for tweet, `3` for long"
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
@@ -50,7 +50,7 @@ sort:
     direction: desc
   - name: isComment
     direction: asc
-    description: `false < true`, i.e. the ordering puts *Posts* first, and *Comments* second
+    description: " `false < true`, i.e. the ordering puts *Posts* first, and *Comments* second"
   - name: lengthCategory
     direction: asc
     description: order based on the length of the category, `0` (short), `1` (one liner), etc.
