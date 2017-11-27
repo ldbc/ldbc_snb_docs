@@ -3,6 +3,10 @@
 \subsection*{Interactive / complex / 9}
 \label{section:interactive-complex-read-09}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\footnotesize \sf #1}
+
 \renewcommand{\currentQueryCard}{9}
 \input{query-cards/interactive-navbar}
 
@@ -81,3 +85,6 @@ therefore, properly estimating cardinalities and selecting the proper operators 
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

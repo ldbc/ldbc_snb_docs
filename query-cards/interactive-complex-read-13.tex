@@ -3,6 +3,10 @@
 \subsection*{Interactive / complex / 13}
 \label{section:interactive-complex-read-13}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\footnotesize \sf #1}
+
 \renewcommand{\currentQueryCard}{13}
 \input{query-cards/interactive-navbar}
 
@@ -67,3 +71,6 @@ implementations.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

@@ -12,11 +12,21 @@
 \newcommand{\currentQueryCard}{0}
 \newcommand{\queryRefCard}[3]{%
 	\ifthenelse{
+		\equal{Interactive}{#2}
+	}{%
+		\queryRefCardInternal{#1}{IA}{#3}%
+	}{%
+		\queryRefCardInternal{#1}{#2}{#3}%
+	}%
+}
+
+\newcommand{\queryRefCardInternal}[3]{%
+	\ifthenelse{
 		\equal{\currentQueryCard}{#3}
 	}{%
-		\colorbox{white}{\tt #2 #3}
+		\colorbox{white}{\tt #2 #3}%
 	}{%
-		\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}
+		\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
 	}%
 }
 

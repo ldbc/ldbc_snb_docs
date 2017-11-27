@@ -3,8 +3,12 @@
 \subsection*{BI / read / 25}
 \label{section:bi-read-25}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\footnotesize \sf #1}
+
 \renewcommand{\currentQueryCard}{25}
-    \input{query-cards/bi-navbar}
+\input{query-cards/bi-navbar}
 
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
@@ -97,3 +101,6 @@ $ & The order of paths with the same weight is unspecified
 	%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

@@ -3,9 +3,13 @@
 \subsection*{ {{- workload }} / {{ operation }} / {{ number -}} }
 \label{section: {{- query_id -}} }
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\footnotesize \sf #1}
+
 {% if workload == "BI" -%}
-    \renewcommand{\currentQueryCard}{ {{- number -}} }
-    \input{query-cards/bi-navbar}
+\renewcommand{\currentQueryCard}{ {{- number -}} }
+\input{query-cards/bi-navbar}
 {% endif -%}
 
 {%- if workload == "Interactive" and operation == "complex" -%}
@@ -76,3 +80,6 @@
 %
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{{ '{#' }}1}}
