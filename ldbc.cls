@@ -2,7 +2,7 @@
 \ProvidesClass{ldbc}
 
 \ProcessOptions
-\LoadClass[11pt,twoside,openany,a4paper]{book}
+\LoadClass[11pt,oneside,openany,a4paper]{book}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
 \RequirePackage{epsfig}
