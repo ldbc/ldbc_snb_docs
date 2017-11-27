@@ -3,8 +3,12 @@
 \subsection*{BI / read / 17}
 \label{section:bi-read-17}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\footnotesize \sf #1}
+
 \renewcommand{\currentQueryCard}{17}
-    \input{query-cards/bi-navbar}
+\input{query-cards/bi-navbar}
 
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
@@ -53,3 +57,6 @@ all qualified triples, there is no triple \(t_2\) in \(R\) such that
 	%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}
