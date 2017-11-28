@@ -7,12 +7,12 @@ description: |
   Group them by a 3-level grouping\:
 
   1. by year of creation
-  2. for each year, group into *Message* types (*Posts* or *Comments*)
+  2. for each year, group into *Message* types: is *Comment* or not
   3. for each year-type group, split into four groups based on length of their content
-      1. 0 <= length < 40\: `short`
-      2. 40 <= length < 80\: `one liner`
-      3. 80 <= length < 160\: `tweet`
-      4. 160 <= length\: `long`
+      * `0`: 0 <= length < 40\ (short)
+      * `1`: 40 <= length < 80\ (one liner)
+      * `2`: 80 <= length < 160\ (tweet)
+      * `3`: 160 <= length\ (long)
 
 parameters:
   - name: date
@@ -21,18 +21,18 @@ result:
   - name: messageYear
     type: 32-bit Integer
     description: Year of the *Message*
-  - name: messageType
-    type: String
+  - name: isComment
+    type: Boolean
     category: meta
-    description: "`post`/`comment` (in lowercase)"
+    description: " `true` for *Comments*, `false` for *Posts*"
   - name: lengthCategory
     type: String
     category: calculated
-    description: "`short`/`one-liner`/`tweet`/`long` (in lowercase)"
+    description: " `0` for short, `1` for one-liner, `2` for tweet, `3` for long"
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
-    description: Total number of *Messages* (*Posts*/*Comments*) in that group
+    description: Total number of *Messages* in that group
   - name: averageMessageLength
     type: 32-bit Integer
     category: aggregated
@@ -48,10 +48,10 @@ result:
 sort:
   - name: year
     direction: desc
-  - name: messageType
+  - name: isComment
     direction: asc
-    description: first *Posts*, then *Comments*
+    description: " `false < true`, i.e. the ordering puts *Posts* first, and *Comments* second"
   - name: lengthCategory
     direction: asc
-    description: order based on the length of the category, `short`, `one liner`, etc.
+    description: order based on the length of the category, `0` (short), `1` (one liner), etc.
 choke_points: [1.2, 3.2, 4.1]

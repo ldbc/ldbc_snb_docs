@@ -21,24 +21,23 @@ them by a 3-level grouping:
 \item
   by year of creation
 \item
-  for each year, group into \emph{Message} types (\emph{Posts} or
-  \emph{Comments})
+  for each year, group into \emph{Message} types: is \emph{Comment} or
+  not
 \item
   for each year-type group, split into four groups based on length of
   their content
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
+  \begin{itemize}
   \tightlist
   \item
-    0 \textless{}= length \textless{} 40: \texttt{short}
+    \texttt{0}: 0 \textless{}= length \textless{} 40~(short)
   \item
-    40 \textless{}= length \textless{} 80: \texttt{one\ liner}
+    \texttt{1}: 40 \textless{}= length \textless{} 80~(one liner)
   \item
-    80 \textless{}= length \textless{} 160: \texttt{tweet}
+    \texttt{2}: 80 \textless{}= length \textless{} 160~(tweet)
   \item
-    160 \textless{}= length: \texttt{long}
-  \end{enumerate}
+    \texttt{3}: 160 \textless{}= length~(long)
+  \end{itemize}
 \end{enumerate}
  \\ \hline
 %
@@ -57,16 +56,15 @@ them by a 3-level grouping:
 		$\mathsf{1}$ & messageYear & 32-bit Integer & R &
 				Year of the \emph{Message}
  \\ \hline
-		$\mathsf{2}$ & messageType & String & M &
-				\texttt{post}/\texttt{comment} (in lowercase)
+		$\mathsf{2}$ & isComment & Boolean & M &
+				\texttt{true} for \emph{Comments}, \texttt{false} for \emph{Posts}
  \\ \hline
 		$\mathsf{3}$ & lengthCategory & String & C &
-				\texttt{short}/\texttt{one-liner}/\texttt{tweet}/\texttt{long} (in
-lowercase)
+				\texttt{0} for short, \texttt{1} for one-liner, \texttt{2} for tweet,
+\texttt{3} for long
  \\ \hline
 		$\mathsf{4}$ & messageCount & 32-bit Integer & A &
-				Total number of \emph{Messages} (\emph{Posts}/\emph{Comments}) in that
-group
+				Total number of \emph{Messages} in that group
  \\ \hline
 		$\mathsf{5}$ & averageMessageLength & 32-bit Integer & A &
 				Average length of the \emph{Message} content in that group
@@ -87,14 +85,15 @@ created before the given date
 		$\mathsf{1}$ & year
  & $\desc
 $ &  \\ \hline
-		$\mathsf{2}$ & messageType
+		$\mathsf{2}$ & isComment
  & $\asc
-$ & first \emph{Posts}, then \emph{Comments}
+$ & \texttt{false\ \textless{}\ true}, i.e.~the ordering puts \emph{Posts}
+first, and \emph{Comments} second
  \\ \hline
 		$\mathsf{3}$ & lengthCategory
  & $\asc
-$ & order based on the length of the category, \texttt{short},
-\texttt{one\ liner}, etc.
+$ & order based on the length of the category, \texttt{0} (short),
+\texttt{1} (one liner), etc.
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	%

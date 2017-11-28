@@ -1,17 +1,18 @@
 workload: BI
 operation: read
 number: 18
-title: How many persons have a given number of posts
+title: How many persons have a given number of messages
 description: |
-  For each *Person*, count the number of *Messages* (*Posts* & *Comments*) they made.
+  For each *Person*, count the number of *Messages* they made (`messageCount`). Only consider *Messages* with the following attributes:
 
-  Only consider messages with:
+  * `content` not empty (and consequently, `imageFile` empty for *Posts*),
+  * `length` below the `lengthThreshold` (exclusive, equality is not allowed),
+  * `creationDate` after `date` (exclusive, equality is not allowed),
+  * The *Message is written in any of the given `languages`.
+    * The language of a *Post* is defined by its `language` attribute.
+    * The language of a *Comment* is that of the *Post* that initiates the thread where *Comment* replies to.
 
-  * length below the `lengthThreshold`
-  * creationDate after `date` (exclusive, equality is not allowed)
-  * any of the given `languages`
-
-  The language of a *Comment* is that of the *Post* that initiates the thread where *Comment* belongs to.
+  For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
   - name: date
     type: Date
@@ -30,5 +31,7 @@ result:
     description: The number of *Persons* with `messageCount` messages
 sort:
   - name: personCount
+    direction: desc
+  - name: messageCount
     direction: desc
 choke_points: [1.1, 1.2, 1.6, 3.2, 4.2, 4.3]

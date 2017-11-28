@@ -1,15 +1,27 @@
 \paragraph{Q18.}
-For each \emph{Person}, count the number of \emph{Messages}
-(\emph{Posts} \& \emph{Comments}) they made.
-Only consider messages with:
+For each \emph{Person}, count the number of \emph{Messages} they made
+(\texttt{messageCount}). Only consider \emph{Messages} with the
+following attributes:
 \begin{itemize}
 \tightlist
 \item
-  length below the \texttt{lengthThreshold}
+  \texttt{content} not empty (and consequently, \texttt{imageFile} empty
+  for \emph{Posts}),
 \item
-  creationDate after \texttt{date} (exclusive, equality is not allowed)
+  \texttt{length} below the \texttt{lengthThreshold} (exclusive,
+  equality is not allowed),
 \item
-  any of the given \texttt{languages}
+  \texttt{creationDate} after \texttt{date} (exclusive, equality is not
+  allowed),
+\item
+  The *Message is written in any of the given \texttt{languages}.
+\item
+  The language of a \emph{Post} is defined by its \texttt{language}
+  attribute.
+\item
+  The language of a \emph{Comment} is that of the \emph{Post} that
+  initiates the thread where \emph{Comment} replies to.
 \end{itemize}
-The language of a \emph{Comment} is that of the \emph{Post} that
-initiates the thread where \emph{Comment} belongs to.
+For each \texttt{messageCount} value, count the number of \emph{Persons}
+with exactly \texttt{messageCount} \emph{Messages} (with the required
+attributes).
