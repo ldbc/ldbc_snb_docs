@@ -11,7 +11,7 @@ description: |
   4. `person1` liked at least one *Message* by `person2`\: `score += 10`
   5. `person1` has created at least one *Message* that was liked by `person2`\: `score += 1`
 
-  Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`
+  Consequently, the maximum score a pair can obtain is\: `4 + 1 + 15 + 10 + 1 = 31`.
 parameters:
   - name: country1
     type: String

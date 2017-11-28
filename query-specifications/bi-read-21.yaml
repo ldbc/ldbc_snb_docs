@@ -5,15 +5,15 @@ title: Zombies in a country
 description: |
   Find zombies within the given `country`, and return their zombie scores.
 
-  A `zombie` is a *Person* created before the given `endDate`, which has created an average of `[0, 1)` *Messages* per month, during the time range between profile creation date and the given `endDate`. The number of months spans the time range from creation date of the profile to the `endDate` with partial months on both end counting as one month (e.g. a `creationDate of` Jan 31 and an `endDate` of Mar 1 results in 3 months).
+  A `zombie` is a *Person* created before the given `endDate`, which has created an average of `[0, 1)` *Messages* per month, during the time range between profile creation date and the given `endDate`. The number of months spans the time range from creation date of the profile to the `endDate` with partial months on both end counting as one month (e.g. a `creationDate of` Jan 31 and an `endDate` of Mar 1 result in 3 months).
 
   For each `zombie`, calculate the following\:
 
-  * `zombieLikeCount`: the number of likes received from other zombies
-  * `totalLikeCount`: the total number of likes received on that `zombie`'s *Messages*
+  * `zombieLikeCount`: the number of *likes* received from other zombies
+  * `totalLikeCount`: the total number of *likes* received
   * `zombieScore`: `zombieLikeCount` / `totalLikeCount`
 
-  For both `zombieLikeCount` and `totalLikeCount`, only count likes received from profiles that were created before the given `endDate`.
+  For both `zombieLikeCount` and `totalLikeCount`, only consider *likes* received from profiles that were created before the given `endDate`.
 parameters:
   - name: country
     type: String
