@@ -3,7 +3,7 @@ operation: read
 number: 24
 title: Messages by Topic and Continent
 description: |
-  Find all *Messages* tagged with a *Tag* from the given *tagClass* (non-transitive).
+  Find all *Messages* tagged with a *Tag* that has the (direct) type of the given *tagClass*.
 
   Count all *Messages* and their likes grouped by continent, year, and month.
 parameters:
@@ -19,11 +19,11 @@ result:
   - name: year
     type: 32-bit Integer
     category: calculated
-    description: Year of the *Message*'s creationDate
+    description: year(message.creationDate)
   - name: month
     type: 32-bit Integer
     category: calculated
-    description: Month of the *Message*'s creationDate
+    description: month(message.creationDate)
   - name: continent.name
     type: String
 sort:

@@ -4,7 +4,7 @@ number: 8
 title: Related topics
 description: |
   Find all *Messages* that have a given *Tag*.
-  Find the related *Tags* attached to replies of these *Messages* (direct relation not transitive), but only of those replies that do not have the given *Tag*.
+  Find the related *Tags* attached to (direct) reply *Comments* of these *Messages*, but only of those reply *Comments* that do not have the given *Tag*.
 
   Group the *Tags* by name, and get the count of replies in each group.
 parameters:
