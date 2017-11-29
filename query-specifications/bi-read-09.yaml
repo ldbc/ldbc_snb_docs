@@ -24,11 +24,11 @@ result:
     type: 64-bit Integer
   - name: count1
     type: 32-bit Integer
-    description: Number of `post1*Posts* with at least one g belonging to tagClass1
+    description: Number of `post1` nodes
     category: aggregated
   - name: count2
     type: 32-bit Integer
-    description: Number of Posts with at least one tag belonging to tagClass2
+    description: Number of `post2` nodes
     category: aggregated
 sort:
   - name: abs(count2 - count1)
