@@ -20,8 +20,9 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-12}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find all \emph{Messages} created after a given \texttt{date}, that
-received more than a given number of likes (\texttt{likeThreshold}).
+	desc. & Find all \emph{Messages} created after a given \texttt{date}
+(exclusive), that received more than a given number of likes
+(\texttt{likeThreshold}).
  \\ \hline
 %
 	
@@ -44,13 +45,13 @@ received more than a given number of likes (\texttt{likeThreshold}).
 		$\mathsf{2}$ & message.creationDate & DateTime & R &
 				 \\ \hline
 		$\mathsf{3}$ & creator.firstName & String & R &
-				The first name of the post's creator
+				The first name of the \emph{Post}'s \texttt{creator}
  \\ \hline
 		$\mathsf{4}$ & creator.lastName & String & R &
-				The last name of the post's creator
+				The last name of the \emph{Post}'s \texttt{creator}
  \\ \hline
 		$\mathsf{5}$ & likeCount & 32-bit Integer & A &
-				The number of Likes the Post received
+				The number of \emph{likes} the \emph{Post} received
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

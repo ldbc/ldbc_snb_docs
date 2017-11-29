@@ -20,8 +20,8 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-24}\hfill\vadjust{} \\ \hline
 %
-	desc. & Find all \emph{Messages} tagged with a \emph{Tag} from the given
-\emph{tagClass} (non-transitive).
+	desc. & Find all \emph{Messages} tagged with a \emph{Tag} that has the (direct)
+type of the given \emph{tagClass}.
 
 Count all \emph{Messages} and their likes grouped by continent, year,
 and month.
@@ -44,10 +44,10 @@ and month.
 		$\mathsf{2}$ & likeCount & 32-bit Integer & A &
 				 \\ \hline
 		$\mathsf{3}$ & year & 32-bit Integer & C &
-				Year of the \emph{Message}'s creationDate
+				year(message.creationDate)
  \\ \hline
 		$\mathsf{4}$ & month & 32-bit Integer & C &
-				Month of the \emph{Message}'s creationDate
+				month(message.creationDate)
  \\ \hline
 		$\mathsf{5}$ & continent.name & String & R &
 				 \\ \hline
