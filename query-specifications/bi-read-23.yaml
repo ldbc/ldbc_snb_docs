@@ -18,6 +18,7 @@ result:
   - name: month
     category: calculated
     type: 32-bit Integer
+    desc: month(message.creationDate)
 sort:
   - name: messageCount
     direction: desc

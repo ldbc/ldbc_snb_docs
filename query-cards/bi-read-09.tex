@@ -8,7 +8,36 @@
 \renewcommand{\emph}[1]{{\footnotesize \sf #1}}
 
 \renewcommand{\currentQueryCard}{9}
-\input{query-cards/bi-navbar}
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+    \queryRefCard{bi-read-01}{BI}{1}\\
+    \queryRefCard{bi-read-02}{BI}{2}\\
+    \queryRefCard{bi-read-03}{BI}{3}\\
+    \queryRefCard{bi-read-04}{BI}{4}\\
+    \queryRefCard{bi-read-05}{BI}{5}\\
+    \queryRefCard{bi-read-06}{BI}{6}\\
+    \queryRefCard{bi-read-07}{BI}{7}\\
+    \queryRefCard{bi-read-08}{BI}{8}\\
+    \queryRefCard{bi-read-09}{BI}{9}\\
+    \queryRefCard{bi-read-10}{BI}{10}\\
+    \queryRefCard{bi-read-11}{BI}{11}\\
+    \queryRefCard{bi-read-12}{BI}{12}\\
+    \queryRefCard{bi-read-13}{BI}{13}\\
+    \queryRefCard{bi-read-14}{BI}{14}\\
+    \queryRefCard{bi-read-15}{BI}{15}\\
+    \queryRefCard{bi-read-16}{BI}{16}\\
+    \queryRefCard{bi-read-17}{BI}{17}\\
+    \queryRefCard{bi-read-18}{BI}{18}\\
+    \queryRefCard{bi-read-19}{BI}{19}\\
+    \queryRefCard{bi-read-20}{BI}{20}\\
+    \queryRefCard{bi-read-21}{BI}{21}\\
+    \queryRefCard{bi-read-22}{BI}{22}\\
+    \queryRefCard{bi-read-23}{BI}{23}\\
+    \queryRefCard{bi-read-24}{BI}{24}\\
+    \queryRefCard{bi-read-25}{BI}{25}\\
+}
 
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
@@ -21,16 +50,24 @@
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-09}\hfill\vadjust{} \\ \hline
 %
 	desc. & Given two \emph{TagClasses} (\texttt{tagClass1} and \texttt{tagClass2}),
-find \emph{Forums} that contain at least one \emph{Post} with a
-\emph{Tag} from \texttt{tagClass1} and at least one \emph{Post} with a
-\emph{Tag} from \texttt{tagClass2} (direct children not transitive) --
-this may be the same \emph{Post}.
+find \emph{Forums} that contain
+
+\begin{itemize}
+\tightlist
+\item
+  at least one \emph{Post} (\texttt{post1}) with a \emph{Tag} with a
+  (direct) type of \texttt{tagClass1} and
+\item
+  at least one \emph{Post} (\texttt{post2}) with a \emph{Tag} with a
+  (direct) type of \texttt{tagClass2}.
+\end{itemize}
+
+The \texttt{post1} and \texttt{post2} nodes may be the same \emph{Post}.
 
 Consider the \emph{Forums} with a number of members greater than a given
 \texttt{threshold}. For every such \emph{Forum}, count the number of
-\emph{Posts} that have a \emph{Tag} from \emph{TagClass1}
-(\texttt{count1}), and the number of \emph{Posts} that have a \emph{Tag}
-from \emph{TagClass2} (\texttt{count2}).
+\texttt{post1} nodes (\texttt{count1}) and the number of \texttt{post2}
+nodes (\texttt{count2}).
  \\ \hline
 %
 	
@@ -54,10 +91,10 @@ from \emph{TagClass2} (\texttt{count2}).
 		$\mathsf{1}$ & forum.id & 64-bit Integer & R &
 				 \\ \hline
 		$\mathsf{2}$ & count1 & 32-bit Integer & A &
-				Number of Posts with at least one tag belonging to tagClass1
+				Number of \texttt{post1} nodes
  \\ \hline
 		$\mathsf{3}$ & count2 & 32-bit Integer & A &
-				Number of Posts with at least one tag belonging to tagClass2
+				Number of \texttt{post2} nodes
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

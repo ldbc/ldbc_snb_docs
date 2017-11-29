@@ -3,7 +3,7 @@ operation: read
 number: 12
 title: Trending Posts
 description: |
-  Find all *Messages* created after a given `date`, that received more than a given number of likes (`likeThreshold`).
+  Find all *Messages* created after a given `date` (exclusive), that received more than a given number of likes (`likeThreshold`).
 parameters:
   - name: date
     type: Date
@@ -16,14 +16,14 @@ result:
     type: DateTime
   - name: creator.firstName
     type: String
-    description: The first name of the post's creator
+    description: The first name of the *Post*'s `creator`
   - name: creator.lastName
     type: String
-    description: The last name of the post's creator
+    description: The last name of the *Post*'s `creator`
   - name: likeCount
     type: 32-bit Integer
     category: aggregated
-    description: The number of Likes the Post received
+    description: The number of *likes* the *Post* received
 sort:
   - name: likeCount
     direction: desc

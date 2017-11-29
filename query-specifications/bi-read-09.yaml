@@ -3,10 +3,15 @@ operation: read
 number: 9
 title: Forum with related Tags
 description: |
-  Given two *TagClasses* (`tagClass1` and `tagClass2`), find *Forums* that contain at least one *Post* with a *Tag* from `tagClass1` and at least one *Post* with a *Tag* from `tagClass2` (direct children not transitive) -- this may be the same *Post*.
+  Given two *TagClasses* (`tagClass1` and `tagClass2`), find *Forums* that contain
+
+  * at least one *Post* (`post1`) with a *Tag* with a (direct) type of `tagClass1` and
+  * at least one *Post* (`post2`) with a *Tag* with a (direct) type of `tagClass2`.
+
+  The `post1` and `post2` nodes may be the same *Post*.
 
   Consider the *Forums* with a number of members greater than a given `threshold`.
-  For every such *Forum*, count the number of *Posts* that have a *Tag* from *TagClass1* (`count1`), and the number of *Posts* that have a *Tag* from *TagClass2* (`count2`).
+  For every such *Forum*, count the number of `post1` nodes (`count1`) and the number of `post2` nodes (`count2`).
 parameters:
   - name: tagClass1
     type: String
@@ -19,11 +24,11 @@ result:
     type: 64-bit Integer
   - name: count1
     type: 32-bit Integer
-    description: Number of Posts with at least one tag belonging to tagClass1
+    description: Number of `post1` nodes
     category: aggregated
   - name: count2
     type: 32-bit Integer
-    description: Number of Posts with at least one tag belonging to tagClass2
+    description: Number of `post2` nodes
     category: aggregated
 sort:
   - name: abs(count2 - count1)

@@ -8,7 +8,36 @@
 \renewcommand{\emph}[1]{{\footnotesize \sf #1}}
 
 \renewcommand{\currentQueryCard}{13}
-\input{query-cards/bi-navbar}
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+    \queryRefCard{bi-read-01}{BI}{1}\\
+    \queryRefCard{bi-read-02}{BI}{2}\\
+    \queryRefCard{bi-read-03}{BI}{3}\\
+    \queryRefCard{bi-read-04}{BI}{4}\\
+    \queryRefCard{bi-read-05}{BI}{5}\\
+    \queryRefCard{bi-read-06}{BI}{6}\\
+    \queryRefCard{bi-read-07}{BI}{7}\\
+    \queryRefCard{bi-read-08}{BI}{8}\\
+    \queryRefCard{bi-read-09}{BI}{9}\\
+    \queryRefCard{bi-read-10}{BI}{10}\\
+    \queryRefCard{bi-read-11}{BI}{11}\\
+    \queryRefCard{bi-read-12}{BI}{12}\\
+    \queryRefCard{bi-read-13}{BI}{13}\\
+    \queryRefCard{bi-read-14}{BI}{14}\\
+    \queryRefCard{bi-read-15}{BI}{15}\\
+    \queryRefCard{bi-read-16}{BI}{16}\\
+    \queryRefCard{bi-read-17}{BI}{17}\\
+    \queryRefCard{bi-read-18}{BI}{18}\\
+    \queryRefCard{bi-read-19}{BI}{19}\\
+    \queryRefCard{bi-read-20}{BI}{20}\\
+    \queryRefCard{bi-read-21}{BI}{21}\\
+    \queryRefCard{bi-read-22}{BI}{22}\\
+    \queryRefCard{bi-read-23}{BI}{23}\\
+    \queryRefCard{bi-read-24}{BI}{24}\\
+    \queryRefCard{bi-read-25}{BI}{25}\\
+}
 
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
@@ -48,8 +77,8 @@ appears.
 				month(message.creationDate)
  \\ \hline
 		$\mathsf{3}$ & popularTags & TagPairs & C &
-				(tag.name - String, popularity - 32-bit Integer), sorted descending by
-popularity, then ascending by tag name
+				(tag.name {[}String{]}, popularity {[}32-bit Integer{]}) pairs, sorted
+descending by popularity, then ascending by tag name
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

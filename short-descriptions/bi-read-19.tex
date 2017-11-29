@@ -3,15 +3,21 @@ For all the \emph{Persons} born after a certain \texttt{date}, find all
 the strangers they interacted with, where strangers are \emph{Persons}
 that do not \emph{know} each other. There is no restriction on the date
 that strangers were born.
-Consider only strangers that are members of \emph{Forums} tagged with a
-\emph{Tag} of \texttt{tagClass1} (direct children not transitive) AND
-members of \emph{Forums} tagged with a \emph{Tag} of \texttt{tagClass2}
-(direct children not transitive). The tags may be attached to the same
-\emph{Forum} or they may be attached to different \emph{Forums}.
+Consider only strangers that are
+\begin{itemize}
+\tightlist
+\item
+  members of \emph{Forums} tagged with a \emph{Tag} with a (direct) type
+  of \texttt{tagClass1} and
+\item
+  members of \emph{Forums} tagged with a \emph{Tag} with a (direct) type
+  of \texttt{tagClass2}.
+\end{itemize}
+The tags may be attached to the same \emph{Forum} or they may be
+attached to different \emph{Forums}.
 Interaction is defined as follows: if \emph{Person} \emph{A} replies to
-a \emph{Message} (\emph{Post} or \emph{Comment}) by another
-\emph{Person} \emph{B}, there is an ``interacted with'' relationship
-from \emph{A} to \emph{B}. Note that the ``interacted with''
-relationship is directed.
+a \emph{Message} by another \emph{Person} \emph{B}, there is an
+``interacted with'' relationship from \emph{A} to \emph{B}. Note that
+the ``interacted with'' relationship is directed.
 For each \emph{Person}, count the number of strangers they interacted
 with and total number of times they interacted with them.
