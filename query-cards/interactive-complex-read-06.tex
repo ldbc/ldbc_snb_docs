@@ -3,6 +3,13 @@
 \subsection*{Interactive / complex / 6}
 \label{section:interactive-complex-read-06}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{6}
+\input{query-cards/interactive-navbar}
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & Interactive / complex / 6 \\ \hline
@@ -67,3 +74,6 @@ friends, then to Posts and finally ending at a given Tag.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

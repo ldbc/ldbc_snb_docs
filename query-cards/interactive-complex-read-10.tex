@@ -3,6 +3,13 @@
 \subsection*{Interactive / complex / 10}
 \label{section:interactive-complex-read-10}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{10}
+\input{query-cards/interactive-navbar}
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & Interactive / complex / 10 \\ \hline
@@ -96,3 +103,6 @@ tags of the candidate's posts to interests of self should be by hash.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

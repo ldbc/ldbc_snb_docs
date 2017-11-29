@@ -3,6 +3,13 @@
 \subsection*{Interactive / complex / 3}
 \label{section:interactive-complex-read-03}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{3}
+\input{query-cards/interactive-navbar}
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & Interactive / complex / 3 \\ \hline
@@ -95,3 +102,6 @@ filter those people that could not even fall in the top 20 even having all their
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

@@ -3,6 +3,12 @@
 \subsection*{Interactive / short / 2}
 \label{section:interactive-short-read-02}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & Interactive / short / 2 \\ \hline
@@ -67,3 +73,6 @@ $ &  \\ \hline
 	%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

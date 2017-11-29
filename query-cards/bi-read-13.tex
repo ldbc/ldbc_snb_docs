@@ -3,6 +3,14 @@
 \subsection*{BI / read / 13}
 \label{section:bi-read-13}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{13}
+\input{query-cards/bi-navbar}
+
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & BI / read / 13 \\ \hline
@@ -71,3 +79,6 @@ $ &  \\ \hline
 	%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

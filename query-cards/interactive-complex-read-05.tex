@@ -3,6 +3,13 @@
 \subsection*{Interactive / complex / 5}
 \label{section:interactive-complex-read-05}
 
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{5}
+\input{query-cards/interactive-navbar}
+
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline
 	query & Interactive / complex / 5 \\ \hline
@@ -70,3 +77,6 @@ implementations of such indexes will be highly beneficial.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
+
+% change \emph back to the old one
+\renewcommand{\emph}[1]{\oldemph{#1}}

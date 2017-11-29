@@ -5,9 +5,30 @@
 
 % colors from Color Brewer 2.0, PRGn: http://colorbrewer2.org/#type=diverging&scheme=PRGn&n=7
 \definecolor{BI}{HTML}{e7d4e8}
+\definecolor{IA}{HTML}{d9f0d3}
 \definecolor{Interactive}{HTML}{d9f0d3}
 
-\newcommand{\queryRefCard}[3]{\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}}
+\reversemarginpar
+\newcommand{\currentQueryCard}{0}
+\newcommand{\queryRefCard}[3]{%
+	\ifthenelse{
+		\equal{Interactive}{#2}
+	}{%
+		\queryRefCardInternal{#1}{IA}{#3}%
+	}{%
+		\queryRefCardInternal{#1}{#2}{#3}%
+	}%
+}
+
+\newcommand{\queryRefCardInternal}[3]{%
+	\ifthenelse{
+		\equal{\currentQueryCard}{#3}
+	}{%
+		\colorbox{white}{\tt #2 #3}%
+	}{%
+		\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
+	}%
+}
 
 \newcommand{\attributeColumnWidth}{2.5cm}
 \newcommand{\typeColumnWidth}{2.7cm}
