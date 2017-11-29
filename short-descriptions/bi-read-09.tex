@@ -1,11 +1,17 @@
 \paragraph{Q9.}
 Given two \emph{TagClasses} (\texttt{tagClass1} and \texttt{tagClass2}),
-find \emph{Forums} that contain at least one \emph{Post} with a
-\emph{Tag} from \texttt{tagClass1} and at least one \emph{Post} with a
-\emph{Tag} from \texttt{tagClass2} (direct children not transitive) --
-this may be the same \emph{Post}.
+find \emph{Forums} that contain
+\begin{itemize}
+\tightlist
+\item
+  at least one \emph{Post} (\texttt{post1}) with a \emph{Tag} with a
+  (direct) type of \texttt{tagClass1} and
+\item
+  at least one \emph{Post} (\texttt{post2}) with a \emph{Tag} with a
+  (direct) type of \texttt{tagClass2}.
+\end{itemize}
+The \texttt{post1} and \texttt{post2} nodes may be the same \emph{Post}.
 Consider the \emph{Forums} with a number of members greater than a given
 \texttt{threshold}. For every such \emph{Forum}, count the number of
-\emph{Posts} that have a \emph{Tag} from \emph{TagClass1}
-(\texttt{count1}), and the number of \emph{Posts} that have a \emph{Tag}
-from \emph{TagClass2} (\texttt{count2}).
+\texttt{post1} nodes (\texttt{count1}) and the number of \texttt{post2}
+nodes (\texttt{count2}).
