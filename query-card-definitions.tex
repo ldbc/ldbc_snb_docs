@@ -8,6 +8,8 @@
 \definecolor{IA}{HTML}{d9f0d3}
 \definecolor{Interactive}{HTML}{d9f0d3}
 
+\newboolean{standalone}
+
 \reversemarginpar
 \newcommand{\currentQueryCard}{0}
 \newcommand{\queryRefCard}[3]{%
@@ -26,7 +28,13 @@
 	}{%
 		\colorbox{white}{\tt #2 #3}%
 	}{%
-		\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
+		\ifthenelse{
+			\boolean{standalone}
+		}{
+			\href{#1.pdf}{\colorbox{#2}{\tt #2 #3}}%
+		}{
+			\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
+		}
 	}%
 }
 
