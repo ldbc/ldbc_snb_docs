@@ -40,5 +40,5 @@ If you are using a Linux-based system, you can also check the [`.travis.yml`](.t
 
 #### Naming conventions
 
-* If an attribute exists in the graph as part of an entity (vertex/edge) and is returned unchanged, name it `entity.attributeName`.
+* If an attribute exists in the graph as part of an entity (node/edge) and is returned unchanged, name it `entity.attributeName`.
 * If it is computed or aggregated, use `camelCase` notation.
