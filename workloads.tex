@@ -44,7 +44,7 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
 	\item \textbf{Raw} (\texttt{R}), if the result is returned with an unmodified value and type.
 	\item \textbf{Calculated} (\texttt{C}), if the result is calculated from other values and conditions.
 	\item \textbf{Aggregated} (\texttt{A}), if the result is an aggregated value, \eg a count or a sum of another value. If a result is both calculated and aggregated (\eg $\mathsf{count(x) + count(y)}$ or $\mathsf{avg(x + y)}$), it is considered an aggregated result.
-	\item \textbf{Meta} (\texttt{M}), if the result is based on type information, \eg the type of the vertex.	
+	\item \textbf{Meta} (\texttt{M}), if the result is based on type information, \eg the type of the node.
 \end{itemize}
 
 
@@ -75,7 +75,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \end{figure}
 
 \begin{itemize}
-	\item Vertices are marked as \textsf{entityName: EntityType} (camel case notation for both, starting with a lowercase character for the former and an uppercase character for the latter). The \textsf{entityName} is assigned if the vertex or its attributes are used later for aggregation or as part of the query result. If they are not used later, the \textsf{entityName:} part can be omitted.
+	\item Nodes are marked as \textsf{entityName: EntityType} (camel case notation for both, starting with a lowercase character for the first and an uppercase character for the second). If the \textsf{entityName} is not used in the query results, aggregations or calculations, and not referenced in the query specification, the \textsf{entityName} can be omitted.
 	\item Positive conditions for edges are denoted with solid lines.
 	\item Negative conditions for edges, \ie edges that are not allowed in the graph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
 	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.
