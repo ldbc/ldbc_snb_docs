@@ -10,7 +10,7 @@ description: |
   1. name of country of *Person*,
   2. month the *Message* was created,
   3. gender of *Person*,
-  4. age group of *Person*, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down,
+  4. age group of *Person*, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down (partial years do not count),
   5. name of tag attached to *Message*.
 
   Consider only those groups where number of *Messages* is greater than 100.
