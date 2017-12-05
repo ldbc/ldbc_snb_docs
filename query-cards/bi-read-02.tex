@@ -12,31 +12,31 @@
 	\raggedleft
 	\vspace{0.22ex}
 
-    \queryRefCard{bi-read-01}{BI}{1}\\
-    \queryRefCard{bi-read-02}{BI}{2}\\
-    \queryRefCard{bi-read-03}{BI}{3}\\
-    \queryRefCard{bi-read-04}{BI}{4}\\
-    \queryRefCard{bi-read-05}{BI}{5}\\
-    \queryRefCard{bi-read-06}{BI}{6}\\
-    \queryRefCard{bi-read-07}{BI}{7}\\
-    \queryRefCard{bi-read-08}{BI}{8}\\
-    \queryRefCard{bi-read-09}{BI}{9}\\
-    \queryRefCard{bi-read-10}{BI}{10}\\
-    \queryRefCard{bi-read-11}{BI}{11}\\
-    \queryRefCard{bi-read-12}{BI}{12}\\
-    \queryRefCard{bi-read-13}{BI}{13}\\
-    \queryRefCard{bi-read-14}{BI}{14}\\
-    \queryRefCard{bi-read-15}{BI}{15}\\
-    \queryRefCard{bi-read-16}{BI}{16}\\
-    \queryRefCard{bi-read-17}{BI}{17}\\
-    \queryRefCard{bi-read-18}{BI}{18}\\
-    \queryRefCard{bi-read-19}{BI}{19}\\
-    \queryRefCard{bi-read-20}{BI}{20}\\
-    \queryRefCard{bi-read-21}{BI}{21}\\
-    \queryRefCard{bi-read-22}{BI}{22}\\
-    \queryRefCard{bi-read-23}{BI}{23}\\
-    \queryRefCard{bi-read-24}{BI}{24}\\
-    \queryRefCard{bi-read-25}{BI}{25}\\
+	\queryRefCard{bi-read-01}{BI}{1}\\
+	\queryRefCard{bi-read-02}{BI}{2}\\
+	\queryRefCard{bi-read-03}{BI}{3}\\
+	\queryRefCard{bi-read-04}{BI}{4}\\
+	\queryRefCard{bi-read-05}{BI}{5}\\
+	\queryRefCard{bi-read-06}{BI}{6}\\
+	\queryRefCard{bi-read-07}{BI}{7}\\
+	\queryRefCard{bi-read-08}{BI}{8}\\
+	\queryRefCard{bi-read-09}{BI}{9}\\
+	\queryRefCard{bi-read-10}{BI}{10}\\
+	\queryRefCard{bi-read-11}{BI}{11}\\
+	\queryRefCard{bi-read-12}{BI}{12}\\
+	\queryRefCard{bi-read-13}{BI}{13}\\
+	\queryRefCard{bi-read-14}{BI}{14}\\
+	\queryRefCard{bi-read-15}{BI}{15}\\
+	\queryRefCard{bi-read-16}{BI}{16}\\
+	\queryRefCard{bi-read-17}{BI}{17}\\
+	\queryRefCard{bi-read-18}{BI}{18}\\
+	\queryRefCard{bi-read-19}{BI}{19}\\
+	\queryRefCard{bi-read-20}{BI}{20}\\
+	\queryRefCard{bi-read-21}{BI}{21}\\
+	\queryRefCard{bi-read-22}{BI}{22}\\
+	\queryRefCard{bi-read-23}{BI}{23}\\
+	\queryRefCard{bi-read-24}{BI}{24}\\
+	\queryRefCard{bi-read-25}{BI}{25}\\
 }
 
 
@@ -49,11 +49,11 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-02}\hfill\vadjust{} \\ \hline
 %
-	desc. & Select all \emph{Messages} created in \texttt{{[}date1,\ date2{]}}
-(inclusive) by \emph{Persons} located in \texttt{country1} or
-\texttt{country2}. Select the creator \emph{Persons} and the \emph{Tags}
-of these \emph{Messages}. Split these \emph{Persons}, \emph{Tags} and
-\emph{Messages} into a 5-level grouping:
+	desc. & Select all \emph{Messages} created in \texttt{{[}date1,\ date2{]}} by
+\emph{Persons} located in \texttt{country1} or \texttt{country2}. Select
+the creator \emph{Persons} and the \emph{Tags} of these \emph{Messages}.
+Split these \emph{Persons}, \emph{Tags} and \emph{Messages} into a
+5-level grouping:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -66,7 +66,8 @@ of these \emph{Messages}. Split these \emph{Persons}, \emph{Tags} and
   gender of \emph{Person},
 \item
   age group of \emph{Person}, defined as years between person's birthday
-  and end of simulation (2013-01-01), divided by 5, rounded down,
+  and end of simulation (2013-01-01), divided by 5, rounded down
+  (partial years do not count),
 \item
   name of tag attached to \emph{Message}.
 \end{enumerate}

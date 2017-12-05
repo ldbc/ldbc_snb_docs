@@ -30,9 +30,9 @@
 	}{%
 		\ifthenelse{
 			\boolean{standalone}
-		}{
+		}{%
 			\href{#1.pdf}{\colorbox{#2}{\tt #2 #3}}%
-		}{
+		}{%
 			\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
 		}
 	}%
