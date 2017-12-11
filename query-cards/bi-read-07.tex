@@ -48,19 +48,22 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-07}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a \emph{Tag}, find all \emph{Persons} that ever created a
-\emph{Message} with the given \emph{Tag}. For each of these
-\emph{Persons} compute their ``authority score'' as follows:
+	desc. & Given a \emph{Tag}, find all \emph{Persons} (\texttt{person1}) that ever
+created a \emph{Message} (\texttt{message1}) with the given \emph{Tag}.
+For each of these \emph{Persons} (\texttt{person}) compute their
+``authority score'' as follows:
 
 \begin{itemize}
 \tightlist
 \item
   The ``authority score'' is the sum of ``popularity scores'' of the
-  \emph{Persons} that liked any of that \emph{Person}'s \emph{Messages}
-  with the given \emph{Tag}.
+  \emph{Persons} (\texttt{person2}) that liked any of that
+  \emph{Person}'s \emph{Messages} (\texttt{message2}) with the given
+  \emph{Tag}.
 \item
-  A \emph{Person}'s ``popularity score'' is defined as the total number
-  of likes on all of their \emph{Messages}.
+  A \emph{Person}'s (\texttt{person2}) ``popularity score'' is defined
+  as the total number of likes on all of their \emph{Messages}
+  (\texttt{message3}).
 \end{itemize}
  \\ \hline
 %
