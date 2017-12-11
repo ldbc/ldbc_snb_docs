@@ -57,6 +57,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
     number = doc['number']
     number_string = "%02d" % (number)
     workload = doc['workload']
+    title = doc['title']
     description_markdown = doc['description']
     operation = doc['operation']
 
@@ -80,7 +81,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         operation     = operation,
         number_string = number_string,
         query_id      = query_id,
-        title         = convert_markdown_to_tex(doc['title']),
+        title         = title,
         description   = description_tex,
         parameters    = convert_map_list_to_tex(doc.get('parameters')),
         result        = convert_map_list_to_tex(doc.get('result')),
@@ -96,6 +97,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
     ##### short descriptions
     short_description_text = short_description_template.render(
         number        = number,
+        title         = title,
         description   = description_tex,
     )
     short_description_text = short_description_text.replace("\n\n", "\n")
