@@ -10,8 +10,8 @@ description: |
   * `creationDate` after `date` (exclusive, equality is not allowed),
   * The *Message* is written in any of the given `languages`.
 
-    - The language of a *Post* is defined by its `language` attribute.
-    - The language of a *Comment* is that of the *Post* that initiates the thread where *Comment* replies to.
+      * The language of a *Post* is defined by its `language` attribute.
+      * The language of a *Comment* is that of the *Post* that initiates the thread where *Comment* replies to.
 
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:

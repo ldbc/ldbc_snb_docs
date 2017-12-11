@@ -14,12 +14,15 @@ following attributes:
   allowed),
 \item
   The \emph{Message} is written in any of the given \texttt{languages}.
-\item
-  The language of a \emph{Post} is defined by its \texttt{language}
-  attribute.
-\item
-  The language of a \emph{Comment} is that of the \emph{Post} that
-  initiates the thread where \emph{Comment} replies to.
+  \begin{itemize}
+  \tightlist
+  \item
+    The language of a \emph{Post} is defined by its \texttt{language}
+    attribute.
+  \item
+    The language of a \emph{Comment} is that of the \emph{Post} that
+    initiates the thread where \emph{Comment} replies to.
+  \end{itemize}
 \end{itemize}
 For each \texttt{messageCount} value, count the number of \emph{Persons}
 with exactly \texttt{messageCount} \emph{Messages} (with the required
