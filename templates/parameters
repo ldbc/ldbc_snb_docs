@@ -1,3 +1,1 @@
-{% for parameter in parameters -%}
-{{ parameter.name }}
-{% endfor %}
+ImmutableList.of("{{ parameters|map(attribute='name')|join('", "') }}")

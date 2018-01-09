@@ -1,14 +1,1 @@
-Person.id
-Person.firstName
-Person.lastName
-Person.gender
-Person.birthDay
-Person.creationDate
-Person.locationIp
-Person.browserUsed
-Person-isLocatedIn->City.id
-Person.speaks
-Person.email
-Person-hasInterest->Tag.id
-\{Person-studyAt->University.id, Person-studyAt->.classYear\}
-\{Person-workAt->Company.id, Person-workAt->.workFrom\}
+ImmutableList.of("Person.id", "Person.firstName", "Person.lastName", "Person.gender", "Person.birthDay", "Person.creationDate", "Person.locationIp", "Person.browserUsed", "Person-isLocatedIn->City.id", "Person.speaks", "Person.email", "Person-hasInterest->Tag.id", "\{Person-studyAt->University.id, Person-studyAt->.classYear\}", "\{Person-workAt->Company.id, Person-workAt->.workFrom\}")
