@@ -3,7 +3,7 @@ operation: read
 number: 2
 title: Top tags for country, age, gender, time
 description: |
-  Select all *Messages* created in `[date1, date2]` by *Persons* located in `country1` or `country2`.
+  Select all *Messages* created in `[startDate, endDate]` by *Persons* located in `country1` or `country2`.
   Select the creator *Persons* and the *Tags* of these *Messages*.
   Split these *Persons*, *Tags* and *Messages* into a 5-level grouping\:
 
@@ -15,9 +15,9 @@ description: |
 
   Consider only those groups where number of *Messages* is greater than 100.
 parameters:
-  - name: date1
+  - name: startDate
     type: Date
-  - name: date2
+  - name: endDate
     type: Date
   - name: country1
     type: String

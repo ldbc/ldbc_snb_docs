@@ -48,11 +48,11 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-02}\hfill\vadjust{} \\ \hline
 %
-	desc. & Select all \emph{Messages} created in \texttt{{[}date1,\ date2{]}} by
-\emph{Persons} located in \texttt{country1} or \texttt{country2}. Select
-the creator \emph{Persons} and the \emph{Tags} of these \emph{Messages}.
-Split these \emph{Persons}, \emph{Tags} and \emph{Messages} into a
-5-level grouping:
+	desc. & Select all \emph{Messages} created in \texttt{{[}startDate,\ endDate{]}}
+by \emph{Persons} located in \texttt{country1} or \texttt{country2}.
+Select the creator \emph{Persons} and the \emph{Tags} of these
+\emph{Messages}. Split these \emph{Persons}, \emph{Tags} and
+\emph{Messages} into a 5-level grouping:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -78,10 +78,10 @@ than 100.
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & date1
+		$\mathsf{1}$ & startDate
  & Date
  &  \\ \hline
-		$\mathsf{2}$ & date2
+		$\mathsf{2}$ & endDate
  & Date
  &  \\ \hline
 		$\mathsf{3}$ & country1
