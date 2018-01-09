@@ -12,8 +12,8 @@ description: |
 
       * The language of a *Post* is defined by its `language` attribute.
       * The language of a *Comment* is that of the *Post* that initiates the thread where the *Comment* replies to.
-
       The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length` and `creationDate`.
+
 
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
