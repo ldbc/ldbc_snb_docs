@@ -3,19 +3,13 @@ operation: read
 number: 6
 title: Most active Posters of a given Topic
 description: |
-  Get *Persons* who have created a *Message* with a given *Tag*.
+  Get each *Person* (`person`) who has created a *Message* (`message`) with a given *Tag* (direct relation, not transitive). Considering only these messages, for each *Person*\ node:
 
-  Each *Person* has a score, computed as follows\:
+  * Count its `message`s (`messageCount`).
+  * Count *likes* (`likeCount`) to its `message`s.
+  * Count *Comments* (`replyCount`) in reply to it `message`s.
 
-  * Count of *Messages* with the given *Tag* (`messageCount`).
-  * Count of *Likes* (`likeCount`) and *Comments* (`replyCount`) in reply of their *Messages* with the given *Tag*
-    (direct relation not transitive).
-
-  The `score` is calculated as a sum with the following weights\:
-
-  * *Messages* (`messageCount`) are multiplied by 1,
-  * *Comments* to *Messages* (`replyCount`) are multiplied by 2,
-  * *Likes* (`likeCount`) are multiplied by 10.
+  The `score` is calculated according to the following formula: `1 * messageCount + 2 * replyCount + 10 * likeCount`.
 parameters:
   - name: tag
     type: String
