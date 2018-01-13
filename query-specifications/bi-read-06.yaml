@@ -3,7 +3,7 @@ operation: read
 number: 6
 title: Most active Posters of a given Topic
 description: |
-  Get each *Person* (`person`) who has created a *Message* (`message`) with a given *Tag* (direct relation, not transitive). For each *Person*\ node:
+  Get each *Person* (`person`) who has created a *Message* (`message`) with a given *Tag* (direct relation, not transitive). Considering only these messages, for each *Person*\ node:
 
   * Count its `message`s (`messageCount`).
   * Count *likes* (`likeCount`) to its `message`s.
