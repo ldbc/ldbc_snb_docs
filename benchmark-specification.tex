@@ -368,7 +368,7 @@ Relations connect entities of different types. Entities are defined by their ''i
         \hline
         isPartOf & Country[1..*] & Continent[1] & D & A Country and the Continent it is part of \\
         \hline
-        isSubclassOf & TagClass[0..*] & TagClass[0..*] & D & A TagClass its parent TagClass \\
+        isSubclassOf & TagClass[0..*] & TagClass[0..1] & D & A TagClass and its parent TagClass \\
         \hline
         knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other
 
