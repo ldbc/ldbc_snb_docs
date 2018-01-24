@@ -731,10 +731,9 @@ thread. The * in the file names indicates a number between 0 and $\mathsf{Number
     	post\_hasTag\_tag\_*.csv                & Post.id | Tag.id                                                                                                    \\ \hline
     	tag\_*.csv                              & id | name | url                                                                                                     \\ \hline
     	tag\_hasType\_tagclass\_*.csv           & Tag.id | TagClass.id                                                                                                \\ \hline
-    	tagclass\_*.csv                         & id | name | url                                                                                                     \\ \hline
-    	tagclass\_isSubclassOf\_tagclass\_*.csv & TagClass.id | TagClass.id                                                                                           \\ \hline
+    	tagclass\_*.csv                         & id | name | url | isSubclassOf                                                                                      \\ \hline
     \end{tabular}}
-    \caption{Files output by the CSV\_MERGE\_FOREIGN serializer (22 in total)}
+    \caption{Files output by the CSV\_MERGE\_FOREIGN serializer (21 in total)}
     \label{table:csv_merge_foreign}
 \end{table}
 
@@ -748,7 +747,7 @@ two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_soc
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different
 sizes and budgets.  SFs are computed based on the ASCII size in Gigabytes of
-the generated output files using the CSV serializer. For example, SF 1 weights roughly 1~GB in CSV
+the generated output files using the CSV serializer. For example, SF 1 weighs roughly 1~GB in CSV
 format, SF 3 weights roughly 3~GB and so on and so forth.  The proposed SFs are
 the following: 1, 3, 10, 30, 100, 300, 1000. The Test Sponsor may select the SF
 that better fits their needs, by properly configuring the \datagen.
