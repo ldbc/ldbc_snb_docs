@@ -76,10 +76,10 @@ the number of \emph{likes} on the reply.
 				 \\ \hline
 		$\mathsf{2}$ & tag.name & String & R &
 				 \\ \hline
-		$\mathsf{3}$ & countLikes & 32-bit Integer & A &
-				The count of Likes to replies with that Tag.
+		$\mathsf{3}$ & likeCount & 32-bit Integer & A &
+				The count of likes to replies with that Tag.
  \\ \hline
-		$\mathsf{4}$ & countReplies & 32-bit Integer & A &
+		$\mathsf{4}$ & replyCount & 32-bit Integer & A &
 				The count of replies with that Tag.
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
@@ -88,7 +88,7 @@ the number of \emph{likes} on the reply.
 	
 		sort		&
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
-		$\mathsf{1}$ & countLikes
+		$\mathsf{1}$ & likeCount
  & $\desc
 $ &  \\ \hline
 		$\mathsf{2}$ & person.id
