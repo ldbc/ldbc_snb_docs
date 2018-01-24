@@ -3,7 +3,7 @@ operation: read
 number: 7
 title: Most authoritative users on a given topic
 description: |
-  Given a *Tag*, find all *Persons* (`person1`) that ever created a *Message* (`message1`) with the given *Tag*.
+  Given a *Tag*, find all *Persons* (`person`) that ever created a *Message* (`message1`) with the given *Tag*.
   For each of these *Persons* (`person`) compute their "authority score" as follows\:
 
   * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* (`message2`)
@@ -13,7 +13,7 @@ parameters:
   - name: tag
     type: String
 result:
-  - name: person1.id
+  - name: person.id
     type: 64-bit Integer
   - name: authorityScore
     type: 32-bit Integer
