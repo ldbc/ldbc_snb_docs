@@ -14,7 +14,7 @@ description: |
 
   Interaction is defined as follows\: if *Person* _A_ replies to a *Message* by another *Person* _B_, there is an "interacted with" relationship from _A_ to _B_. Note that the "interacted with" relationship is directed.
 
-  For each *Person*, count the number of strangers they interacted with and total number of times they interacted with them.
+  For each *Person*, count the number of strangers they interacted with (`strangerCount`) and total number of times they interacted with them (`interactionCount`).
 parameters:
   - name: date
     type: Date
@@ -25,7 +25,7 @@ parameters:
 result:
   - name: person.id
     type: 64-bit Integer
-  - name: strangersCount
+  - name: strangerCount
     type: 32-bit Integer
     category: aggregated
   - name: interactionCount
