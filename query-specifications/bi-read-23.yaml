@@ -3,7 +3,7 @@ operation: read
 number: 23
 title: Holiday destinations
 description: |
-  Count the *Messages* of all residents of a given *Country* (`home`), where the message was written a *Message* abroad. Group the messages by `month` and `destination`.
+  Count the *Messages* of all residents of a given *Country* (`home`), where the message was written abroad. Group the messages by `month` and `destination`.
 
   A *Message* was written abroad if it *is located in* a *Country* (`destination`) different than `home`.
 parameters:
