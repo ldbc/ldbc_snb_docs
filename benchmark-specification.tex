@@ -354,7 +354,7 @@ Relations connect entities of different types. Entities are defined by their ''i
         \hline
         hasTag & Forum[0..*] & Tag[0..*] & D & A Forum and a Tag representing the forum's topic \\
         \hline
-        hasType & Tag[0..*] & TagClass[0..*] & D & A Tag and a TagClass the tag belongs to \\
+        hasType & Tag[0..*] & TagClass[1] & D & A Tag and a TagClass the tag belongs to \\
         \hline
         isLocatedIn & Company[0..*] & Country[1] & D & A Company and its home Country \\
         \hline
@@ -729,11 +729,10 @@ thread. The * in the file names indicates a number between 0 and $\mathsf{Number
     	place\_*.csv                            & id | name | url | type({"city", "country", "continent"})                                                            \\ \hline
     	post\_*.csv                             & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place \\ \hline
     	post\_hasTag\_tag\_*.csv                & Post.id | Tag.id                                                                                                    \\ \hline
-    	tag\_*.csv                              & id | name | url                                                                                                     \\ \hline
-    	tag\_hasType\_tagclass\_*.csv           & Tag.id | TagClass.id                                                                                                \\ \hline
+    	tag\_*.csv                              & id | name | url | hasType                                                                                                     \\ \hline
     	tagclass\_*.csv                         & id | name | url | isSubclassOf                                                                                      \\ \hline
     \end{tabular}}
-    \caption{Files output by the CSV\_MERGE\_FOREIGN serializer (21 in total)}
+    \caption{Files output by the CSV\_MERGE\_FOREIGN serializer (20 in total)}
     \label{table:csv_merge_foreign}
 \end{table}
 
