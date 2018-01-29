@@ -1,0 +1,1 @@
+ImmutableList.of("{{ parameters|map(attribute='name')|join('", "') }}")

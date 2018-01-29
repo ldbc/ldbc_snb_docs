@@ -11,11 +11,11 @@ result:
   - name: tagClass.name
     type: String
     description: The *TagClass* of the root
-  - name: postCount
+  - name: messageCount
     type: 32-bit Integer
     category: aggregated
 sort:
-  - name: postCount
+  - name: messageCount
     direction: desc
   - name: tagClass.name
     direction: asc

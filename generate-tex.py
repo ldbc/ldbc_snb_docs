@@ -42,6 +42,9 @@ with open('templates/short-description-template.tex', 'r') as f:
 with open('templates/standalone-query-card.tex', 'r') as f:
     standalone_query_card_template = Template(f.read())
 
+with open('templates/parameters', 'r') as f:
+    parameters_template = Template(f.read())
+
 all_choke_points = set()
 all_queries = set()
 query_choke_point = defaultdict(list)      # queries -> cps
@@ -74,6 +77,18 @@ for filename in glob.glob("query-specifications/*.yaml"):
     # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
     # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
     description_tex = convert_markdown_to_tex(description_markdown)
+    parameters = doc.get('parameters')
+    results = doc.get('result')
+    sort = doc.get('sort')
+    limit = doc.get('limit')
+    relevance = doc.get('relevance')
+
+    parameter_file_text = parameters_template.render(
+        parameters = parameters,
+    )
+
+    with open("parameters/%s.parameters" % query_id, 'w') as parameter_file:
+        parameter_file.write(parameter_file_text)
 
     query_card_text = query_card_template.render(
         number        = number,
@@ -83,12 +98,12 @@ for filename in glob.glob("query-specifications/*.yaml"):
         query_id      = query_id,
         title         = title,
         description   = description_tex,
-        parameters    = convert_map_list_to_tex(doc.get('parameters')),
-        result        = convert_map_list_to_tex(doc.get('result')),
-        sort          = convert_map_list_to_tex(doc.get('sort')),
-        limit         = doc.get('limit'),
+        parameters    = convert_map_list_to_tex(parameters),
+        result        = convert_map_list_to_tex(results),
+        sort          = convert_map_list_to_tex(sort),
+        limit         = limit,
         choke_points  = choke_points,
-        relevance     = doc.get('relevance'),
+        relevance     = relevance,
     )
 
     with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:

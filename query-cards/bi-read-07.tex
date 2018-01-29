@@ -48,7 +48,7 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-07}\hfill\vadjust{} \\ \hline
 %
-	desc. & Given a \emph{Tag}, find all \emph{Persons} (\texttt{person1}) that ever
+	desc. & Given a \emph{Tag}, find all \emph{Persons} (\texttt{person}) that ever
 created a \emph{Message} (\texttt{message1}) with the given \emph{Tag}.
 For each of these \emph{Persons} (\texttt{person}) compute their
 ``authority score'' as follows:
@@ -79,7 +79,7 @@ For each of these \emph{Persons} (\texttt{person}) compute their
 	
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
-		$\mathsf{1}$ & person1.id & 64-bit Integer & R &
+		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
 		$\mathsf{2}$ & authorityScore & 32-bit Integer & A &
 				 \\ \hline

@@ -14,16 +14,16 @@ result:
     type: 64-bit Integer
   - name: tag.name
     type: String
-  - name: countLikes
+  - name: likeCount
     type: 32-bit Integer
     category: aggregated
-    description: The count of Likes to replies with that Tag.
-  - name: countReplies
+    description: The count of likes to replies with that Tag.
+  - name: replyCount
     type: 32-bit Integer
     category: aggregated
     description: The count of replies with that Tag.
 sort:
-  - name: countLikes
+  - name: likeCount
     direction: desc
   - name: person.id
     direction: asc

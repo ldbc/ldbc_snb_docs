@@ -74,7 +74,8 @@ a \emph{Message} by another \emph{Person} \emph{B}, there is an
 the ``interacted with'' relationship is directed.
 
 For each \emph{Person}, count the number of strangers they interacted
-with and total number of times they interacted with them.
+with (\texttt{strangerCount}) and total number of times they interacted
+with them (\texttt{interactionCount}).
  \\ \hline
 %
 	
@@ -97,7 +98,7 @@ with and total number of times they interacted with them.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & person.id & 64-bit Integer & R &
 				 \\ \hline
-		$\mathsf{2}$ & strangersCount & 32-bit Integer & A &
+		$\mathsf{2}$ & strangerCount & 32-bit Integer & A &
 				 \\ \hline
 		$\mathsf{3}$ & interactionCount & 32-bit Integer & A &
 				 \\ \hline

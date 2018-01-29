@@ -49,8 +49,8 @@
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-18}\hfill\vadjust{} \\ \hline
 %
 	desc. & For each \emph{Person}, count the number of \emph{Messages} they made
-(\texttt{messageCount}). Only consider \emph{Messages} with the
-following attributes:
+(\texttt{messageCount}). Only count \emph{Messages} with the following
+attributes:
 
 \begin{itemize}
 \item
@@ -74,6 +74,11 @@ following attributes:
     The language of a \emph{Comment} is that of the \emph{Post} that
     initiates the thread where the \emph{Comment} replies to.
   \end{itemize}
+
+  The \emph{Post} and \emph{Comments} in the reply tree's path (from the
+  \emph{Message} to the \emph{Post}) do not have to satisfy the
+  constraints for \texttt{content}, \texttt{length} and
+  \texttt{creationDate}.
 \end{itemize}
 
 For each \texttt{messageCount} value, count the number of \emph{Persons}
