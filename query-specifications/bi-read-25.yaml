@@ -9,12 +9,12 @@ description: |
 
   The weight for a pair of *Persons* is calculated based on their interactions:
 
-  * Every reply (by one of the *Persons*) to a *Post* (by the other *Person*) contributes 1.0.
-  * Every reply (by one of the *Persons*) to a *Comment* (by the other *Person*) contributes 0.5.
+  * Every direct reply (by one of the *Persons*) to a *Post* (by the other *Person*) contributes 1.0.
+  * Every direct reply (by one of the *Persons*) to a *Comment* (by the other *Person*) contributes 0.5.
 
-  Only consider *Messages* that were created in a *Forum* that was created within the timeframe `[startDate, endDate]`.
+  Only consider *Messages* that were created in a *Forum* that was created within the timeframe `[startDate, endDate]`. Note that for *Comments*, the containing *Forum* is that of the *Post* that the comment (transitively) replies to.
 
-  Return all the paths with shortest length, and their weights.
+  Return all paths with the *Person* ids ordered by their weights descending.
 parameters:
   - name: person1Id
     type: 64-bit Integer
