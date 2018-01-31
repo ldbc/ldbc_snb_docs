@@ -48,12 +48,13 @@
 %
 	pattern & \hfill\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/bi-read-19}\hfill\vadjust{} \\ \hline
 %
-	desc. & For all the \emph{Persons} born after a certain \texttt{date}, find all
-the strangers they interacted with, where strangers are \emph{Persons}
-that do not \emph{know} each other. There is no restriction on the date
-that strangers were born.
+	desc. & For all the \emph{Persons} (\texttt{person}) born after a certain
+\texttt{date}, find all the \texttt{stranger}s they interacted with,
+where \texttt{stranger}s are \emph{Persons} that do not \emph{know}
+\texttt{person}. There is no restriction on the date that
+\texttt{stranger}s were born.
 
-Consider only strangers that are
+Consider only \texttt{stranger}s that are
 
 \begin{itemize}
 \tightlist
@@ -65,17 +66,16 @@ Consider only strangers that are
   of \texttt{tagClass2}.
 \end{itemize}
 
-The tags may be attached to the same \emph{Forum} or they may be
+The \emph{Tags} may be attached to the same \emph{Forum} or they may be
 attached to different \emph{Forums}.
 
-Interaction is defined as follows: if \emph{Person} \emph{A} replies to
-a \emph{Message} by another \emph{Person} \emph{B}, there is an
-``interacted with'' relationship from \emph{A} to \emph{B}. Note that
-the ``interacted with'' relationship is directed.
+Interaction is defined as follows: the \texttt{person} has replied to a
+\emph{Message} by the \texttt{stranger} \emph{B} (the reply might be a
+transitive one).
 
-For each \emph{Person}, count the number of strangers they interacted
-with (\texttt{strangerCount}) and total number of times they interacted
-with them (\texttt{interactionCount}).
+For each \texttt{person}, count the number of \texttt{strangers} they
+interacted with (\texttt{strangerCount}) and total number of times they
+interacted with them (\texttt{interactionCount}).
  \\ \hline
 %
 	

@@ -3,18 +3,18 @@ operation: read
 number: 19
 title: Stranger's interaction
 description: |
-  For all the *Persons* born after a certain `date`, find all the strangers they interacted with, where strangers are *Persons* that do not *know* each other. There is no restriction on the date that strangers were born.
+  For all the *Persons* (`person`) born after a certain `date`, find all the `stranger`s they interacted with, where `stranger`s are *Persons* that do not *know* `person`. There is no restriction on the date that `stranger`s were born.
 
-  Consider only strangers that are
+  Consider only `stranger`s that are
 
   * members of *Forums* tagged with a *Tag* with a (direct) type of `tagClass1` and
   * members of *Forums* tagged with a *Tag* with a (direct) type of `tagClass2`.
 
-  The tags may be attached to the same *Forum* or they may be attached to different *Forums*.
+  The *Tags* may be attached to the same *Forum* or they may be attached to different *Forums*.
 
-  Interaction is defined as follows\: if *Person* _A_ replies to a *Message* by another *Person* _B_, there is an "interacted with" relationship from _A_ to _B_. Note that the "interacted with" relationship is directed.
+  Interaction is defined as follows\: the `person` has replied to a *Message* by the `stranger` _B_ (the reply might be a transitive one).
 
-  For each *Person*, count the number of strangers they interacted with (`strangerCount`) and total number of times they interacted with them (`interactionCount`).
+  For each `person`, count the number of `strangers` they interacted with (`strangerCount`) and total number of times they interacted with them (`interactionCount`).
 parameters:
   - name: date
     type: Date
