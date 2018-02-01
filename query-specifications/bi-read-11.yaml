@@ -17,11 +17,11 @@ result:
   - name: likeCount
     type: 32-bit Integer
     category: aggregated
-    description: The count of likes to replies with that Tag.
+    description: The count of likes to replies with that Tag
   - name: replyCount
     type: 32-bit Integer
     category: aggregated
-    description: The count of replies with that Tag.
+    description: The count of replies with that Tag
 sort:
   - name: likeCount
     direction: desc
