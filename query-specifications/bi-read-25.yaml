@@ -28,6 +28,8 @@ result:
   - name: person.id
     type: 64-bit Integer[]
     description: Identifiers representing an ordered sequence of the *Persons* in the path weight
+  - name: weight
+    type: 64-bit Double
 sort:
   - name: weight
     direction: desc
