@@ -10,13 +10,15 @@ interactions:
 \begin{itemize}
 \tightlist
 \item
-  Every reply (by one of the \emph{Persons}) to a \emph{Post} (by the
-  other \emph{Person}) contributes 1.0.
+  Every direct reply (by one of the \emph{Persons}) to a \emph{Post} (by
+  the other \emph{Person}) contributes 1.0.
 \item
-  Every reply (by one of the \emph{Persons}) to a \emph{Comment} (by the
-  other \emph{Person}) contributes 0.5.
+  Every direct reply (by one of the \emph{Persons}) to a \emph{Comment}
+  (by the other \emph{Person}) contributes 0.5.
 \end{itemize}
 Only consider \emph{Messages} that were created in a \emph{Forum} that
 was created within the timeframe \texttt{{[}startDate,\ endDate{]}}.
+Note that for \emph{Comments}, the containing \emph{Forum} is that of
+the \emph{Post} that the comment (transitively) replies to.
 Return all paths with the \emph{Person} ids ordered by their weights
 descending.
