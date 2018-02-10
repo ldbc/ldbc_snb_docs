@@ -19,11 +19,11 @@ result:
   - name: year
     type: 32-bit Integer
     category: calculated
-    description: year(message.creationDate)
+    description: "`year(message.creationDate)`"
   - name: month
     type: 32-bit Integer
     category: calculated
-    description: month(message.creationDate)
+    description: "`month(message.creationDate)`"
   - name: continent.name
     type: String
 sort:
