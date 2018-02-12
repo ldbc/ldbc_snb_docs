@@ -269,3 +269,55 @@ There are many possible tradeoffs between generality and performance
 This tests the ability of a system to express termination criteria for transitive queries so that not the whole transitive relation has to be evaluated as well as efficient testing for termination.
 
 \input{query-cards/cp-7-4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Language Features}
+
+\cpSection{8.1}{}{Dates and times}
+
+\input{query-cards/cp-8-1}
+
+\cpSection{8.2}{}{Lists}
+
+\input{query-cards/cp-8-2}
+
+\cpSection{8.3}{}{Arithmetic operations and comparisons}
+
+\input{query-cards/cp-8-3}
+
+\cpSection{8.4}{}{Functions}
+
+Simple numeric functions such \texttt{floor} and \texttt{abs}.
+
+\input{query-cards/cp-8-4}
+
+\cpSection{8.5}{}{Unnesting and nesting}
+
+\input{query-cards/cp-8-5}
+
+\cpSection{8.6}{}{Negative patterns}
+
+\input{query-cards/cp-8-6}
+
+\cpSection{8.7}{}{Variable length paths}
+
+\input{query-cards/cp-8-7}
+
+\cpSection{8.8}{}{Aggregations}
+
+\input{query-cards/cp-8-8}
+
+\cpSection{8.9}{}{Negative edge conditions}
+
+For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature).
+
+Negative edge conditions are often difficult to express. This is showcased by the fact the early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher 
+
+
+\footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
+
+\input{query-cards/cp-8-9}
+
