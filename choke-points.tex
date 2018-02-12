@@ -278,17 +278,41 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \cpSection{8.1}{}{Dates and times}
 
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
+
 \input{query-cards/cp-8-1}
 
 \cpSection{8.2}{}{Lists}
+
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
 
 \input{query-cards/cp-8-2}
 
 \cpSection{8.3}{}{Arithmetic operations and comparisons}
 
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
+
 \input{query-cards/cp-8-3}
 
 \cpSection{8.4}{}{Functions}
+
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
 
 Simple numeric functions such \texttt{floor} and \texttt{abs}.
 
@@ -296,17 +320,47 @@ Simple numeric functions such \texttt{floor} and \texttt{abs}.
 
 \cpSection{8.5}{}{Unnesting and nesting}
 
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
+
 \input{query-cards/cp-8-5}
 
 \cpSection{8.6}{}{Negative patterns}
+
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
 
 \input{query-cards/cp-8-6}
 
 \cpSection{8.7}{}{Variable length paths}
 
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
+
 \input{query-cards/cp-8-7}
 
 \cpSection{8.8}{}{Aggregations}
+
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+y
+
+The exact semantics of aggregations are often difficult to express.
+
+\subsection*{Language-specific notes}
+
+\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
 
 \input{query-cards/cp-8-8}
 
@@ -314,7 +368,11 @@ Simple numeric functions such \texttt{floor} and \texttt{abs}.
 
 For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature).
 
-\textbf{Note.} Negative edge conditions are often difficult to express. This is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
+x
+
+\noindent\paragraph{Language-specific notes.}
+
+Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
 
 \begin{lstlisting}[language=cypher]
 MATCH (source)-[r?:someType]->(target)
@@ -329,27 +387,28 @@ WHERE r IS NULL
 RETURN source
 \end{lstlisting}
 
-
+Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
 
 \begin{lstlisting}[language=sparql]
 OPTIONAL {
   ?xRoute ?routeDefinition ?xSensor .
-  FILTER (sameTerm(base:routeDefinition, 
-                   ?routeDefinition))
+  FILTER (sameTerm(base:routeDefinition, routeDefinition))
 } .
 FILTER (!bound(?routeDefinition))
 \end{lstlisting}
+
+Since SPARQL 1.1, the preferred method is using the \lstinline{NOT EXISTS} construct.
 
 
 \begin{lstlisting}[language=sparql]
 ?xSensor rdf:type base:Sensor .
 ?xRoute base:switchPosition ?xSwitchPosition .
-
 FILTER NOT EXISTS {
     ?xRoute ?routeDefinition ?xSensor .
 } .
 \end{lstlisting}
 
+The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
 
 \begin{lstlisting}[language=sparql]
 ?xSensor rdf:type base:Sensor .
@@ -360,8 +419,6 @@ MINUS {
 } .
 \end{lstlisting}
 
-
-\footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
 
 % https://stackoverflow.com/questions/10952332/return-node-if-relationship-is-not-present/14254214
 
