@@ -26,3 +26,20 @@
 	tabsize=2,
 	frame=single,
 }
+
+\lstdefinelanguage{cypher}
+{
+	morekeywords={
+		MATCH, OPTIONAL, WHERE, NOT, AND, OR, XOR, RETURN, DISTINCT, ORDER, BY, ASC, ASCENDING, DESC, DESCENDING, UNWIND, AS, UNION, WITH, ALL, CREATE, DELETE, DETACH, REMOVE, SET, MERGE, SET, SKIP, LIMIT, IN, IS, NULL,
+		% some legacy rules
+		INDEX, DROP, UNIQUE, CONSTRAINT, EXPLAIN, PROFILE, START, CASE,
+	},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]{"},
+}
+
+\lstdefinelanguage{sparql}{
+	morekeywords={SELECT, DISTINCT, WHERE, OPTIONAL, FILTER, NOT, EXISTS, sameTerm, bound},
+}

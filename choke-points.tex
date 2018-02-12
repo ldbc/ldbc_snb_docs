@@ -314,10 +314,56 @@ Simple numeric functions such \texttt{floor} and \texttt{abs}.
 
 For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature).
 
-Negative edge conditions are often difficult to express. This is showcased by the fact the early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher 
+\textbf{Note.} Negative edge conditions are often difficult to express. This is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
+
+\begin{lstlisting}[language=cypher]
+MATCH (source)-[r?:someType]->(target)
+WHERE r IS NULL
+RETURN source
+\end{lstlisting}
+
+\begin{lstlisting}[language=cypher]
+MATCH (source)
+OPTIONAL MATCH (source)-[r:someType]->(target)
+WHERE r IS NULL
+RETURN source
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language=sparql]
+OPTIONAL {
+  ?xRoute ?routeDefinition ?xSensor .
+  FILTER (sameTerm(base:routeDefinition, 
+                   ?routeDefinition))
+} .
+FILTER (!bound(?routeDefinition))
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=sparql]
+?xSensor rdf:type base:Sensor .
+?xRoute base:switchPosition ?xSwitchPosition .
+
+FILTER NOT EXISTS {
+    ?xRoute ?routeDefinition ?xSensor .
+} .
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=sparql]
+?xSensor rdf:type base:Sensor .
+?xRoute base:switchPosition ?xSwitchPosition .
+
+MINUS {
+    ?xRoute ?routeDefinition ?xSensor .
+} .
+\end{lstlisting}
 
 
 \footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
+
+% https://stackoverflow.com/questions/10952332/return-node-if-relationship-is-not-present/14254214
 
 \input{query-cards/cp-8-9}
 
