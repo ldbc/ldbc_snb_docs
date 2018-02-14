@@ -75,6 +75,10 @@ semantics~\cite{Angles:2017:FMQ:3145473.3104031}, \ie both nodes and edges can
 occur multiple times in a match. Note that for variable length path, duplicate 
 edges are not allowed.
 
+\paragraph{Aggregation semantics.}
+
+The \lstinline{count} aggregation always requires the query to determine the number of \emph{distinct} elements (nodes or edges). For example, this can be achieved in the Cypher, SPARQL and SQL query languages with the \lstinline[language=sql]{count(DISTINCT ...)} construct.
+
 \paragraph{Graph patterns.}
 
 To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-pattern} with the following notation:
