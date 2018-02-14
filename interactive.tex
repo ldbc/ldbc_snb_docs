@@ -1,15 +1,25 @@
 \chapter{Interactive Workload}
 \label{section:interactive}
 
-\todo{this empty space looks so bad, we should write something here -- szarnyasg}
+This workload consists of a set of relatively complex read-only queries, that touch a significant
+amount of data -- often the two-step friendship neighborhood and associated messages --, but typically in close proximity to a single node. Hence, the query complexity is sublinear to the dataset size.
+
+The LDBC SNB Interactive workload consists of three query classes:
+
+\begin{itemize}
+\item \textbf{Complex read-only queries.} See \autoref{sec:complex-reads}.
+\item \textbf{Short read-only queries.} See \autoref{sec:short-reads}.
+\item \textbf{Transactional update queries.} See \autoref{sec:updates}.
+\end{itemize}
+
+A detailed description of the workload is available in the 2015 \mbox{SIGMOD} paper~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Complex Reads Query Descriptions}
-
-Query cards for complex read follow.
+\section{Complex Reads}
+\label{sec:complex-reads}
 
 \input{query-cards/interactive-complex-read-01}
 \input{query-cards/interactive-complex-read-02}
@@ -30,7 +40,8 @@ Query cards for complex read follow.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Short Reads Query Descriptions}
+\section{Short Reads}
+\label{sec:short-reads}
 
 \input{query-cards/interactive-short-read-01}
 \input{query-cards/interactive-short-read-02}
@@ -44,7 +55,8 @@ Query cards for complex read follow.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Update Query Descriptions}
+\section{Updates}
+\label{sec:updates}
 
 Each update query inserts either (1) a single node of a certain type, along with its edges to other existing nodes or (2) a single edge of a certain type between two existing nodes.
 
