@@ -276,7 +276,7 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \section{Language Features}
 
-\cpSection{8.1}{}{Dates and times}
+\cpSection{8.1}{LANG}{Dates and times}
 
 x
 
@@ -286,7 +286,7 @@ y
 
 \input{query-cards/cp-8-1}
 
-\cpSection{8.2}{}{Lists}
+\cpSection{8.2}{LANG}{Lists}
 
 x
 
@@ -296,7 +296,7 @@ y
 
 \input{query-cards/cp-8-2}
 
-\cpSection{8.3}{}{Arithmetic operations and comparisons}
+\cpSection{8.3}{LANG}{Arithmetic operations and comparisons}
 
 x
 
@@ -306,7 +306,7 @@ y
 
 \input{query-cards/cp-8-3}
 
-\cpSection{8.4}{}{Functions}
+\cpSection{8.4}{LANG}{Functions}
 
 x
 
@@ -318,7 +318,7 @@ Simple numeric functions such \texttt{floor} and \texttt{abs}.
 
 \input{query-cards/cp-8-4}
 
-\cpSection{8.5}{}{Unnesting and nesting}
+\cpSection{8.5}{LANG}{Unnesting and nesting}
 
 x
 
@@ -328,7 +328,7 @@ y
 
 \input{query-cards/cp-8-5}
 
-\cpSection{8.6}{}{Negative patterns}
+\cpSection{8.6}{LANG}{Negative patterns}
 
 x
 
@@ -338,7 +338,7 @@ y
 
 \input{query-cards/cp-8-6}
 
-\cpSection{8.7}{}{Variable length paths}
+\cpSection{8.7}{LANG}{Variable length paths}
 
 x
 
@@ -348,7 +348,7 @@ y
 
 \input{query-cards/cp-8-7}
 
-\cpSection{8.8}{}{Aggregations}
+\cpSection{8.8}{LANG}{Aggregations}
 
 x
 
@@ -364,7 +364,7 @@ The exact semantics of aggregations are often difficult to express.
 
 \input{query-cards/cp-8-8}
 
-\cpSection{8.9}{}{Negative edge conditions}
+\cpSection{8.9}{LANG}{Negative edge conditions}
 
 For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature).
 
@@ -372,13 +372,19 @@ x
 
 \noindent\paragraph{Language-specific notes.}
 
-Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions: prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
+Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions.
+
+\begin{description}
+\item[Cypher] 
+Prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
 
 \begin{lstlisting}[language=cypher]
 MATCH (source)-[r?:someType]->(target)
 WHERE r IS NULL
 RETURN source
 \end{lstlisting}
+
+In Neo4j 2.0, the \lstinline[language=cypher]{OPTIONAL MATCH} clause was introduced:\footnote{\url{https://dzone.com/articles/new-neo4j-optional}}
 
 \begin{lstlisting}[language=cypher]
 MATCH (source)
@@ -387,6 +393,15 @@ WHERE r IS NULL
 RETURN source
 \end{lstlisting}
 
+However, the preferred method is to use a pattern condition in the \lstinline[language=cypher]{WHERE} clause:
+
+\begin{lstlisting}[language=cypher]
+MATCH (source)
+WHERE NOT (source)-[:someType]->(target)
+RETURN source
+\end{lstlisting}
+
+\item[SPARQL]
 Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
 
 \begin{lstlisting}[language=sparql]
@@ -419,6 +434,7 @@ MINUS {
 } .
 \end{lstlisting}
 
+\end{description}
 
 % https://stackoverflow.com/questions/10952332/return-node-if-relationship-is-not-present/14254214
 
