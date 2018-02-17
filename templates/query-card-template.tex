@@ -47,22 +47,56 @@
 	\raggedleft
 	\vspace{0.22ex}
 
-	\queryRefCard{interactive-complex-read-01}{Interactive}{1}\\
-	\queryRefCard{interactive-complex-read-02}{Interactive}{2}\\
-	\queryRefCard{interactive-complex-read-03}{Interactive}{3}\\
-	\queryRefCard{interactive-complex-read-04}{Interactive}{4}\\
-	\queryRefCard{interactive-complex-read-05}{Interactive}{5}\\
-	\queryRefCard{interactive-complex-read-06}{Interactive}{6}\\
-	\queryRefCard{interactive-complex-read-07}{Interactive}{7}\\
-	\queryRefCard{interactive-complex-read-08}{Interactive}{8}\\
-	\queryRefCard{interactive-complex-read-09}{Interactive}{9}\\
-	\queryRefCard{interactive-complex-read-10}{Interactive}{10}\\
-	\queryRefCard{interactive-complex-read-11}{Interactive}{11}\\
-	\queryRefCard{interactive-complex-read-12}{Interactive}{12}\\
-	\queryRefCard{interactive-complex-read-13}{Interactive}{13}\\
-	\queryRefCard{interactive-complex-read-14}{Interactive}{14}\\
+	\queryRefCard{interactive-complex-read-01}{IC}{1}\\
+	\queryRefCard{interactive-complex-read-02}{IC}{2}\\
+	\queryRefCard{interactive-complex-read-03}{IC}{3}\\
+	\queryRefCard{interactive-complex-read-04}{IC}{4}\\
+	\queryRefCard{interactive-complex-read-05}{IC}{5}\\
+	\queryRefCard{interactive-complex-read-06}{IC}{6}\\
+	\queryRefCard{interactive-complex-read-07}{IC}{7}\\
+	\queryRefCard{interactive-complex-read-08}{IC}{8}\\
+	\queryRefCard{interactive-complex-read-09}{IC}{9}\\
+	\queryRefCard{interactive-complex-read-10}{IC}{10}\\
+	\queryRefCard{interactive-complex-read-11}{IC}{11}\\
+	\queryRefCard{interactive-complex-read-12}{IC}{12}\\
+	\queryRefCard{interactive-complex-read-13}{IC}{13}\\
+	\queryRefCard{interactive-complex-read-14}{IC}{14}\\
 }
 {%- endif %}
+
+{%- if workload == "Interactive" and operation == "short" -%}
+\renewcommand{\currentQueryCard}{ {{- number -}} }
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+	\queryRefCard{interactive-short-read-01}{IS}{1}\\
+	\queryRefCard{interactive-short-read-02}{IS}{2}\\
+	\queryRefCard{interactive-short-read-03}{IS}{3}\\
+	\queryRefCard{interactive-short-read-04}{IS}{4}\\
+	\queryRefCard{interactive-short-read-05}{IS}{5}\\
+	\queryRefCard{interactive-short-read-06}{IS}{6}\\
+	\queryRefCard{interactive-short-read-07}{IS}{7}\\
+}
+{%- endif %}
+
+{%- if workload == "Interactive" and operation == "update" -%}
+\renewcommand{\currentQueryCard}{ {{- number -}} }
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+	\queryRefCard{interactive-update-01}{IU}{1}\\
+	\queryRefCard{interactive-update-02}{IU}{2}\\
+	\queryRefCard{interactive-update-03}{IU}{3}\\
+	\queryRefCard{interactive-update-04}{IU}{4}\\
+	\queryRefCard{interactive-update-05}{IU}{5}\\
+	\queryRefCard{interactive-update-06}{IU}{6}\\
+	\queryRefCard{interactive-update-07}{IU}{7}\\
+	\queryRefCard{interactive-update-08}{IU}{8}\\
+}
+{%- endif %}
+
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline

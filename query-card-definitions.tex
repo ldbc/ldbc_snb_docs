@@ -3,23 +3,20 @@
 \definecolor{result}{HTML}{377eb8}
 \definecolor{sort}{HTML}{4daf4a}
 
-% colors from Color Brewer 2.0, PRGn: http://colorbrewer2.org/#type=diverging&scheme=PRGn&n=7
-\definecolor{BI}{HTML}{e7d4e8}
-\definecolor{IA}{HTML}{d9f0d3}
-\definecolor{Interactive}{HTML}{d9f0d3}
+% colors from Color Brewer 2.0, Pastel1: http://colorbrewer2.org/#type=qualitative&scheme=Pastel1&n=9
+\definecolor{BI}{HTML}{decbe4}
+\definecolor{BIU}{HTML}{fddaec}
+\definecolor{IC}{HTML}{ffffcc}
+\definecolor{Interactive}{HTML}{ffffcc}
+\definecolor{IS}{HTML}{fed9a6}
+\definecolor{IU}{HTML}{e5d8bd}
 
 \newboolean{standalone}
 
 \reversemarginpar
 \newcommand{\currentQueryCard}{0}
 \newcommand{\queryRefCard}[3]{%
-	\ifthenelse{
-		\equal{Interactive}{#2}
-	}{%
-		\queryRefCardInternal{#1}{IA}{#3}%
-	}{%
-		\queryRefCardInternal{#1}{#2}{#3}%
-	}%
+	\queryRefCardInternal{#1}{#2}{#3}%
 }
 
 \newcommand{\queryRefCardInternal}[3]{%
