@@ -20,7 +20,7 @@ parameters:
 result:
   - name: year
     type: 32-bit Integer
-    description: Year of the *Message*
+    description: "`year(message.creationDate)`"
   - name: isComment
     type: Boolean
     category: meta
