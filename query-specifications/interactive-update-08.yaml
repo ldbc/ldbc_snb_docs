@@ -2,7 +2,7 @@ workload: Interactive
 operation: update
 number: 8
 title: Add Friendship
-description: Add a friendship relation to the social network
+description: Add a friendship **edge** (*knows*) between two *Persons*.
 parameters:
   - name: Person.id
     type: ID
