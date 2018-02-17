@@ -1,4 +1,5 @@
 \begin{table}[htbp]
+\scriptsize
 \begin{tabular}{|l|
     {%- for choke_point in choke_points -%}
         {% if choke_points[loop.index0 - 1][0] != choke_points[loop.index0][0] %}|{% endif %}c|
@@ -20,6 +21,6 @@
 {% endfor -%}
 
 \end{tabular}
-\caption{Choke point X query}
+\caption{Coverage of choke points by queries}
 \label{tab:query_choke_point}
 \end{table}
