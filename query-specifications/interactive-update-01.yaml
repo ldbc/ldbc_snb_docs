@@ -28,7 +28,7 @@ parameters:
     type: \{String\}
   - name: Person-hasInterest->Tag.id
     type: \{ID\}
-  - name: \{Person-studyAt->University.id, Person-studyAt->.classYear\}
-    type: \{ID, 32-bit Integer\}
-  - name: \{Person-workAt->Company.id, Person-workAt->.workFrom\}
-    type: \{ID, 32-bit Integer\}
+  - name: (Person-studyAt->University.id, Person-studyAt->.classYear)
+    type: \{(ID, 32-bit Integer)\}
+  - name: (Person-workAt->Company.id, Person-workAt->.workFrom)
+    type: \{(ID, 32-bit Integer)\}
