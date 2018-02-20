@@ -5,8 +5,10 @@ title: Popular Tags per month in a country
 description: |
   Find all *Messages* in a given *Country*, as well as their *Tags*.
 
-  Group *Messages* by creation year and month.
+  Group *Messages* by creation `year` and `month`.
   For each group, find the 5 most popular *Tags*, where popularity is the number of *Messages* (from within the same group) where the *Tag* appears.
+
+  Note\: even if there are no *Tags* for *Messages* in a given `year` and `month`, the result should include the `year` and `month` with an empty `popularTags` list.
 parameters:
   - name: country
     type: String
