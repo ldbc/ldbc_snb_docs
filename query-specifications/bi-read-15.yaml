@@ -3,7 +3,9 @@ operation: read
 number: 15
 title: Social normals
 description: |
-  Given a `country`, find all *Persons* of the *Country* whose number of friends in the given *Country* equals the (floor of) average number of friends that *Persons* of the given *Country* have in the given `country`.
+  Given a *Country* `country`, determine the "social normal", i.e. the floor of average number of friends that *Persons* of `country` have in `country`.
+
+  Then, find all *Persons* in `country`, whose number of friends in `country` equals the social normal value.
 parameters:
   - name: country
     type: String
