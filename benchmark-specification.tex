@@ -631,11 +631,13 @@ Three different formats are supported by \datagen:
 
 \begin{itemize}
   \item \textbf{CSV:} Data output in CSV format, one file per different entity and on file
-    per different relation. Also, there is a file por those attributes whose
-    cardinality is larger than one (\ie Person.email, Person.speaks, \etc).
-  \item \textbf{CSVMergeForeign:} Similar to CSV format, but in this case, those
+    per different relation. Also, there is a file for those attributes whose
+    cardinality is larger than one (\ie Person.email, Person.speaks).
+  \item \textbf{CSVMergeForeign:} Similar to the CSV format, but in this case, those
     relations of the form 1 to 1 and 1 to N, are stored in the tail entity file as
     a foreign keys.
+  \item \textbf{CSVComposite:} Similar to the CSV format, but uses composite attributes for storing the Person.email, Person.speaks attributes.
+  \item \textbf{CSVCompositeMergeForeign:} Has the traits of both the CSVComposite and the CSVMergeForeign formats.
   \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
 \end{itemize}
 
@@ -650,51 +652,7 @@ for generating the dataset, the number of files varies, since there is a file
 generated per thread. The * in the file names indicates a number between 0 and
 $\mathsf{NumberOfThreads}-1$.
 
-\begin{table}[htbp]
-    \scriptsize
-    \centering
-    \begin{tabular}{|p{4.6cm}|p{9.8cm}|}
-    	\hline
-    	\tableHeaderFirst{File}                 & \tableHeader{Content}                                                                   \\ \hline
-    	comment\_*.csv                          & id | creationDate | locationIP | browserUsed | content | length                         \\ \hline
-    	comment\_hasCreator\_person\_*.csv      & Comment.id | Person.id                                                                  \\ \hline
-    	comment\_hasTag\_tag\_*.csv             & Comment.id | Tag.id                                                                     \\ \hline
-    	comment\_isLocatedIn\_place\_*.csv      & Comment.id | Place.id                                                                   \\ \hline
-    	comment\_replyOf\_comment\_*.csv        & Comment.id | Comment.id                                                                 \\ \hline
-    	comment\_replyOf\_post\_*.csv           & Comment.id | Post.id                                                                    \\ \hline
-    	forum\_*.csv                            & id | title | creationDate                                                               \\ \hline
-    	forum\_containerOf\_post\_*.csv         & Forum.id | Post.id                                                                      \\ \hline
-    	forum\_hasMember\_person\_*.csv         & Forum.id | Person.id | joinDate                                                         \\ \hline
-    	forum\_hasModerator\_person\_*.csv      & Forum.id | Person.id                                                                    \\ \hline
-    	forum\_hasTag\_tag\_*.csv               & Forum.id | Tag.id                                                                       \\ \hline
-    	organisation\_*.csv                     & id | type({"university", "company"}) | name | url                                       \\ \hline
-    	organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id                                                              \\ \hline
-    	person\_*.csv                           & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed \\ \hline
-    	person\_email\_emailaddress\_*.csv      & Person.id | email                                                                       \\ \hline
-    	person\_hasInterest\_tag\_*.csv         & Person.id | Tag.id                                                                      \\ \hline
-    	person\_isLocatedIn\_place\_*.csv       & Person.id | Place.id                                                                    \\ \hline
-    	person\_knows\_person\_*.csv            & Person.id | Person.id | creationDate                                                    \\ \hline
-    	person\_likes\_comment\_*.csv           & Person.id | Post.id | creationDate                                                      \\ \hline
-    	person\_likes\_post\_*.csv              & Person.id | Post.id | creationDate                                                      \\ \hline
-    	person\_speaks\_language\_*.csv         & Person.id | language                                                                    \\ \hline
-    	person\_studyAt\_organisation\_*.csv    & Person.id | Organisation.id | classYear                                                 \\ \hline
-    	person\_workAt\_organisation\_*.csv     & Person.id | Organisation.id | workFrom                                                  \\ \hline
-    	place\_*.csv                            & id | name | url | type({"city", "country", "continent"})                                \\ \hline
-    	place\_isPartOf\_place\_*.csv           & Place.id | Place.id                                                                     \\ \hline
-    	post\_*.csv                             & id | imageFile | creationDate | locationIP | browserUsed | language | content | length  \\ \hline
-    	post\_hasCreator\_person\_*.csv         & Post.id | Person.id                                                                     \\ \hline
-    	post\_hasTag\_tag\_*.csv                & Post.id | Tag.id                                                                        \\ \hline
-    	post\_isLocatedIn\_place.csv            & Post.id | Place.id                                                                      \\ \hline
-    	tag\_*.csv                              & id | name | url                                                                         \\ \hline
-    	tag\_hasType\_tagclass\_*.csv           & Tag.id | TagClass.id                                                                    \\ \hline
-    	tagclass\_*.csv                         & id | name | url                                                                         \\ \hline
-    	tagclass\_isSubclassOf\_tagclass\_*.csv & TagClass.id | TagClass.id                                                               \\ \hline
-    \end{tabular}
-    \caption{Files output by the CSV serializer (33 in total)}
-    \label{table:csv}
-\end{table}
-
-
+\input{table-csv}
 
 
 \subsubsection{CSV\_MERGE\_FOREIGN}
@@ -706,35 +664,12 @@ is output as a column of entity B. Generated files are summarized at
 the dataset, the number of files varies, since there is a file generated per
 thread. The * in the file names indicates a number between 0 and $\mathsf{NumberOfThreads}-1$.
 
-\begin{table}[htbp]
-    \scriptsize
-    \centerline{\begin{tabular}{|p{4.3cm}|p{12.4cm}|}
-    	\hline
-    	\tableHeaderFirst{File}                 & \tableHeader{Content}                                                                                               \\ \hline
-    	comment\_*.csv                          & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment    \\ \hline
-    	comment\_hasTag\_tag\_*.csv             & Comment.id | Tag.id                                                                                                 \\ \hline
-    	forum\_*.csv                            & id | title | creationDate | moderator                                                                               \\ \hline
-    	forum\_hasMember\_person\_*.csv         & Forum.id | Person.id | joinDate                                                                                     \\ \hline
-    	forum\_hasTag\_tag\_*.csv               & Forum.id | Tag.id                                                                                                   \\ \hline
-    	organisation\_*.csv                     & id | type({"university", "company"}) | name | url                                                                   \\ \hline
-    	person\_*.csv                           & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed | place                     \\ \hline
-    	person\_email\_emailaddress\_*.csv      & Person.id | email                                                                                                   \\ \hline
-    	person\_hasInterest\_tag\_*.csv         & Person.id | Tag.id                                                                                                  \\ \hline
-    	person\_knows\_person\_*.csv            & Person.id | Person.id | creationDate                                                                                \\ \hline
-    	person\_likes\_comment\_*.csv           & Person.id | Post.id | creationDate                                                                                  \\ \hline
-    	person\_likes\_post\_*.csv              & Person.id | Post.id | creationDate                                                                                  \\ \hline
-    	person\_speaks\_language\_*.csv         & Person.id | language                                                                                                \\ \hline
-    	person\_studyAt\_organisation\_*.csv    & Person.id | Organisation.id | classYear                                                                             \\ \hline
-    	person\_workAt\_organisation\_*.csv     & Person.id | Organisation.id | workFrom                                                                              \\ \hline
-    	place\_*.csv                            & id | name | url | type({"city", "country", "continent"})                                                            \\ \hline
-    	post\_*.csv                             & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place \\ \hline
-    	post\_hasTag\_tag\_*.csv                & Post.id | Tag.id                                                                                                    \\ \hline
-    	tag\_*.csv                              & id | name | url | hasType                                                                                                     \\ \hline
-    	tagclass\_*.csv                         & id | name | url | isSubclassOf                                                                                      \\ \hline
-    \end{tabular}}
-    \caption{Files output by the CSV\_MERGE\_FOREIGN serializer (20 in total)}
-    \label{table:csv_merge_foreign}
-\end{table}
+\input{table-csv-merge-foreign}
+
+\input{table-csv-composite}
+
+\input{table-csv-composite-merge-foreign}
+
 
 \subsubsection{Turtle}
 

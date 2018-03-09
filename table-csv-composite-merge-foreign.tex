@@ -1,0 +1,27 @@
+\begin{table}[htb]
+    \scriptsize
+    \centerline{\begin{tabular}{|p{4.3cm}|p{12.4cm}|}
+    	\hline
+    	\tableHeaderFirst{File}              & \tableHeader{Content}                                                                                               \\ \hline
+    	comment\_*.csv                       & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment    \\ \hline
+    	comment\_hasTag\_tag\_*.csv          & Comment.id | Tag.id                                                                                                 \\ \hline
+    	forum\_*.csv                         & id | title | creationDate | moderator                                                                               \\ \hline
+    	forum\_hasMember\_person\_*.csv      & Forum.id | Person.id | joinDate                                                                                     \\ \hline
+    	forum\_hasTag\_tag\_*.csv            & Forum.id | Tag.id                                                                                                   \\ \hline
+    	organisation\_*.csv                  & id | type({"university", "company"}) | name | url                                                                   \\ \hline
+    	person\_*.csv                        & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed | place | language | emails \\ \hline
+    	person\_hasInterest\_tag\_*.csv      & Person.id | Tag.id                                                                                                  \\ \hline
+    	person\_knows\_person\_*.csv         & Person.id | Person.id | creationDate                                                                                \\ \hline
+    	person\_likes\_comment\_*.csv        & Person.id | Post.id | creationDate                                                                                  \\ \hline
+    	person\_likes\_post\_*.csv           & Person.id | Post.id | creationDate                                                                                  \\ \hline
+    	person\_studyAt\_organisation\_*.csv & Person.id | Organisation.id | classYear                                                                             \\ \hline
+    	person\_workAt\_organisation\_*.csv  & Person.id | Organisation.id | workFrom                                                                              \\ \hline
+    	place\_*.csv                         & id | name | url | type({"city", "country", "continent"})                                                            \\ \hline
+    	post\_*.csv                          & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place \\ \hline
+    	post\_hasTag\_tag\_*.csv             & Post.id | Tag.id                                                                                                    \\ \hline
+    	tag\_*.csv                           & id | name | url | hasType                                                                                           \\ \hline
+    	tagclass\_*.csv                      & id | name | url | isSubclassOf                                                                                      \\ \hline
+    \end{tabular}}
+    \caption{Files output by the CSV\_COMPOSITE\_MERGE\_FOREIGN serializer (18 in total)}
+    \label{table:csv_merge_foreign}
+\end{table}
