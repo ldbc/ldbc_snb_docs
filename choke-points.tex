@@ -27,12 +27,16 @@ The connection between choke points and queries is displayed in \autoref{tab:que
 
 \section{Aggregation Performance}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[1.2]{1.1}{QOPT}{Interesting orders}
 
 This choke-point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indexes providing key order, other operators also preserve or even induce tuple orderings.
 Sort-based operators create new orderings, typically the probe-side of a hash join conserves its order, etc.
 
 \input{query-cards/cp-1-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[1.1]{1.2}{QEXE}{High Cardinality group-by performance}
 
@@ -45,11 +49,15 @@ We further note that scale-out systems have an extra incentive for partitioning 
 
 \input{query-cards/cp-1-2}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection{1.3}{QEXE}{Complex aggregate performance}
 
 This choke-point test the performance of the execution engine to perform complex aggregates. Many databases offer user defined aggregates and more complex aggregation operations than the basic count, sum, max and min, for example string concatenation aggregation operator. These types of aggregates are expected to benefit from the same optimizations as the basic built-in ones, for example partitioning.
 
 \input{query-cards/cp-1-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{1.4}{QOPT}{Top-k push down}
 
@@ -58,12 +66,16 @@ Once k results are obtained, extra restrictions in a selection can be added base
 
 \input{query-cards/cp-1-4}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[1.4]{1.5}{QEXE}{Dependent group-by keys}
 
 This choke-point tests the ability of the query optimizer to exclude those functionally dependent group-bys. Sometimes queries require for group-by's on a set of columns and a key, where the value of the key determines the columns.
 In this situation, the aggregation operator should be able to exclude certain group-by attributes from the key matching.
 
 \input{query-cards/cp-1-5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[1.3]{1.6}{QEXE}{Low Cardinality group-by performance}
 
@@ -79,6 +91,8 @@ strategies for parallelization, \eg pre-aggregation when possible. This case als
 
 \section{Join Performance}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[2.3]{2.1}{QOPT}{Rich join order optimization}
 
 This choke-point tests the ability of the query optimizer to find optimal join orders. A graph can be traversed in different ways. In the relational model, this is equivalent as different join orders.
@@ -86,6 +100,8 @@ The execution time of these orders may differ by orders of magnitude. Therefore,
 The enumeration is complicated by operators that are not freely re-orderable like semi-, \mbox{anti-,} and outer-joins. Because of this difficulty most join enumeration algorithms do not enumerate all possible plans, and therefore can miss the optimal join order. Therefore, these chokepoint tests the ability of the query optimizer to find optimal join (traversal) orders.
 
 \input{query-cards/cp-2-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[2.4]{2.2}{QOPT}{Late projection}
 
@@ -97,6 +113,8 @@ for example after an aggregation with only few unique group-by keys, or a top-k 
 
 \input{query-cards/cp-2-2}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection{2.3}{QOPT}{Join type selection}
 
 This choke-point tests the ability of the query optimizer to select the proper join operator type, which implies accurate estimates of cardinalities.
@@ -106,6 +124,8 @@ In TPC-H, the use of hash join is almost a foregone conclusion in many cases, si
 There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides
 
 \input{query-cards/cp-2-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[2.2]{2.4}{QOPT}{Sparse foreign key joins}
 
@@ -119,6 +139,8 @@ This choke-point tests the performance of join operators when the join is sparse
 
 \section{Data Access Locality}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[3.3]{3.1}{QOPT}{Detecting correlation}
 
 This choke-point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indexes, the question then is which of the date or data columns to use as key.
@@ -126,6 +148,8 @@ In fact it should not matter which column is used, as range- propagation between
 With MinMax indexes, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
 
 \input{query-cards/cp-3-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{3.2}{STORAGE}{Dimensional clustering}
 
@@ -135,6 +159,8 @@ The properties of the entity being identified may affect this, \eg type (label),
 \eg geographic location, date, position in a hierarchy etc, depending on the application. Such identifier choice may create locality which in turn improves efficiency of compression or index access.
 
 \input{query-cards/cp-3-2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{3.3}{QEXE}{Scattered index access patterns}
 
@@ -150,12 +176,16 @@ Also detecting absence of locality should turn off any locality dependent optimi
 
 \section{Expression Calculation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[4.2a]{4.1}{QOPT}{Common subexpression elimination}
 
 This choke-point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
 CSE should recognize also that average aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
 
 \input{query-cards/cp-4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[4.2d]{4.2}{QOPT}{Complex boolean expression joins and selections}
 
@@ -164,11 +194,15 @@ For instance, the optimizer may reorder conjunctions to test first those conditi
 
 \input{query-cards/cp-4-2}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection{4.3}{QEXE}{Low overhead expressions interpretation}
 
 This choke-point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
 
 \input{query-cards/cp-4-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{4.4}{QEXE}{String matching performance}
 
@@ -183,6 +217,8 @@ matching expressions (\eg via regular expressions).
 
 \section{Correlated Sub-queries}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[5.1]{5.1}{QOPT}{Flattening sub-queries}
 
 This choke-point tests the ability of the query optimizer to flatten execution plans when there are correlated sub-queries. Many queries have correlated sub-queries and their query plans can be flattened,
@@ -193,6 +229,8 @@ The ability to look up many keys in an index in one API call creates the opportu
 
 \input{query-cards/cp-5-1}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection[5.3]{5.2}{QEXE}{Overlap between outer and sub-query}
 
 This choke-point tests the ability of the execution engine to reuse results when there is an overlap between the outer query and the sub-query. In some queries, the correlated sub-query and the outer query have the same joins and selections.
@@ -201,6 +239,8 @@ which higher up in the query plan are joined together (using normal query decorr
 As such, the benchmark rewards systems where the optimizer can detect this and the execution engine supports an operator that can buffer intermediate results and provide them to multiple parent operators.
 
 \input{query-cards/cp-5-2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[5.2]{5.3}{QEXE}{Intra-query result reuse}
 
@@ -214,6 +254,8 @@ Some queries have almost identical sub-queries, where some of their internal res
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Parallelism and Concurrency}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection[6.3]{6.1}{QEXE}{Inter-query result reuse}
 
@@ -231,6 +273,8 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 
 \section{RDF and Graph Specifics}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection{7.1}{QEXE}{Path pattern reuse}
 
 This choke-point tests the ability of the execution engine to reuse work across
@@ -239,6 +283,8 @@ it is often possible to incrementally compute longer paths by reusing paths of
 shorter distances that were already computed.
 
 \input{query-cards/cp-7-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{7.2}{QOPT}{Cardinality estimation of transitive paths}
 
@@ -252,6 +298,8 @@ Such a plan will be on the other hand very bad for example if the hash table is 
 
 \input{query-cards/cp-7-2}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cpSection{7.3}{QEXE}{Execution of a transitive step}
 
 This choke-point tests the ability of the query execution engine to efficiently execute transitive steps. Graph workloads may have transitive operations, for example finding a shortest path between nodes.
@@ -263,6 +311,8 @@ need to deal with a global state, \eg set of visited nodes.
 There are many possible tradeoffs between generality and performance
 
 \input{query-cards/cp-7-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{7.4}{QEXE}{Efficient evaluation of termination criteria for transitive queries}
 
@@ -276,107 +326,24 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \section{Language Features}
 
-\cpSection{8.1}{LANG}{Dates and times}
 
-x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\noindent\paragraph{Language-specific notes.}
+\cpSection{8.1}{LANG}{Complex patterns}
 
-y
+\subsubsection{Description}
 
-\input{query-cards/cp-8-1}
-
-\cpSection{8.2}{LANG}{Lists}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-\input{query-cards/cp-8-2}
-
-\cpSection{8.3}{LANG}{Arithmetic operations and comparisons}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-\input{query-cards/cp-8-3}
-
-\cpSection{8.4}{LANG}{Functions}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-Simple numeric functions such \texttt{floor} and \texttt{abs}.
-
-\input{query-cards/cp-8-4}
-
-\cpSection{8.5}{LANG}{Unnesting and nesting}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-\input{query-cards/cp-8-5}
-
-\cpSection{8.6}{LANG}{Negative patterns}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-\input{query-cards/cp-8-6}
-
-\cpSection{8.7}{LANG}{Variable length paths}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-\input{query-cards/cp-8-7}
-
-\cpSection{8.8}{LANG}{Aggregations}
-
-x
-
-\noindent\paragraph{Language-specific notes.}
-
-y
-
-The exact semantics of aggregations are often difficult to express.
-
-\subsection*{Language-specific notes}
-
-\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
-
-\input{query-cards/cp-8-8}
-
-\cpSection{8.9}{LANG}{Negative edge conditions}
+\todo{description}
 
 For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature).
 
-x
-
-\noindent\paragraph{Language-specific notes.}
+\subsubsection{Language-specific notes}
 
 Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions.
 
 \begin{description}
-\item[Cypher] 
-Prior to Neo4j 2.0, Cypher queries used a syntax such as the following:
+\item[Cypher.]
+Prior to Neo4j version 2.0, Cypher queries used a syntax such as the following:
 
 \begin{lstlisting}[language=cypher]
 MATCH (source)-[r?:someType]->(target)
@@ -401,7 +368,9 @@ WHERE NOT (source)-[:someType]->(target)
 RETURN source
 \end{lstlisting}
 
-\item[SPARQL]
+\item[G-CORE.] TODO
+
+\item[SPARQL.]
 Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
 
 \begin{lstlisting}[language=sparql]
@@ -418,9 +387,7 @@ Since SPARQL 1.1, the preferred method is using the \lstinline{NOT EXISTS} const
 \begin{lstlisting}[language=sparql]
 ?xSensor rdf:type base:Sensor .
 ?xRoute base:switchPosition ?xSwitchPosition .
-FILTER NOT EXISTS {
-    ?xRoute ?routeDefinition ?xSensor .
-} .
+FILTER NOT EXISTS { xRoute ?routeDefinition ?xSensor } .
 \end{lstlisting}
 
 The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
@@ -428,15 +395,139 @@ The \lstinline{MINUS} construct can also be used for defining a negative conditi
 \begin{lstlisting}[language=sparql]
 ?xSensor rdf:type base:Sensor .
 ?xRoute base:switchPosition ?xSwitchPosition .
-
-MINUS {
-    ?xRoute ?routeDefinition ?xSensor .
-} .
+MINUS { xRoute ?routeDefinition ?xSensor } .
 \end{lstlisting}
 
 \end{description}
 
 % https://stackoverflow.com/questions/10952332/return-node-if-relationship-is-not-present/14254214
 
-\input{query-cards/cp-8-9}
+\input{query-cards/cp-8-1}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{8.2}{LANG}{Complex aggregations}
+
+\subsubsection{Description}
+
+Aggregations on aggregations, filtering on aggregation results (similarly to the \lstinline{HAVING} keyword of SQL).
+
+
+
+\subsubsection{Language-specific notes}
+
+\begin{description}
+\item[Cypher.] Cypher does not allow aggregations on aggregations, \eg \lstinline[language=cypher]{avg(count(x))}, as the semantics of such expressions is not meaningful. However, it allows multiple aggregations is subsequent \lstinline[language=cypher]{WITH} and  \lstinline[language=cypher]{RETURN} clauses. There were multiple discussion rounds on the aggregation semantics of the openCypher language.\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
+
+\item[G-CORE.] TODO
+
+\item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sparql]{GROUP BY} clause (similarly to SQL).
+\end{description}
+
+\input{query-cards/cp-8-2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{8.3}{LANG}{Ranking-style queries}
+
+\subsubsection{Description}
+
+Selecting top-k with other graph elements/attributes.
+
+
+\subsubsection{Language-specific notes}
+
+\begin{description}
+\item[Cypher.] Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-k values of the result list.
+\begin{lstlisting}[language=cypher]
+...
+WITH x, ...
+ORDER BY x
+WITH collect(x) AS xs
+WITH xs[0] AS top, xs[0..5] AS top5
+...
+\end{lstlisting}
+
+\item[G-CORE.] TODO
+
+\item[SPARQL.] TODO
+\end{description}
+
+\input{query-cards/cp-8-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{8.4}{LANG}{Query composition}
+
+\subsubsection{Description}
+
+Numerous use cases require \emph{composition} of queries, including the reuse of query results (\eg nodes, edges) and using scalar subqueries.
+
+\subsubsection{Language-specific notes}
+
+\begin{description}
+\item[Cypher.] Nested subqueries were accepted in the openCypher language.\footnote{\url{https://github.com/petraselmer/openCypher/blob/1ca70bf8e3cea65ee47ce49eeabea83530eb529b/cip/1.accepted/CIP2016-06-22-nested-updating-and-chained-subqueries.adoc}}
+\item[G-CORE.] TODO
+\item[SPARQL.] SPARQL fully supports query composition.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#subqueries}}
+\end{description}
+
+\input{query-cards/cp-8-4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{8.5}{LANG}{Dates and times}
+
+\subsubsection{Description}
+
+Handling dates and times is a fundamental requirement for database systems.
+
+\todo{more text}
+
+\subsubsection{Language-specific notes}
+
+\begin{description}
+\item[Cypher.] The openCypher project has accepted a proposal to support dates and times.\footnote{\url{https://github.com/thobe/openCypher/blob/06accdb3e69820cdfac3dbd50a4f8eee73ba179a/cip/1.accepted/CIP2015-08-06-date-time.adoc}}
+
+\item[G-CORE.] TODO
+
+\item[SPARQL.] SPARQL supports dates and times extensively with timezones and functions for extracting a part of a given date.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#func-date-time}}
+\end{description}
+
+\input{query-cards/cp-8-5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{8.6}{LANG}{Handling paths}
+
+\subsubsection{Description}
+
+\paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of vertices and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of vertices or edges), depending on the source.''
+In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{Angles:2017:FMQ:3145473.3104031}. In other words, we use the expressions ``path'' and ``walk'' interchangeably. 
+
+Handling paths is one of the key distinguishing features of graph database systems.
+
+%RPQ (regular path queries)
+
+\paragraph{Node and edge uniqueness.} Some use cases specify that paths must not have repeated edges (in graph theory, these walks are called ``trails''). More formally, paper~\cite{Angles:2017:FMQ:3145473.3104031} defines \emph{homomorphism-based semantics} (no constraints on repetitions) and
+multiple flavours of \emph{isomorphism-based semantics}:
+\begin{itemize}
+\item \emph{no-repeated-node semantics} (also called \emph{fully isomorphic matching}),
+\item \emph{no-repeated-edge semantics} (also called \emph{edge-isomorphic matching}),
+\item \emph{no-repeated-anything semantics} (not used in the context of this work).
+\end{itemize}
+
+\subsubsection{Language-specific notes}
+
+\begin{description}
+\item[Cypher.] Cypher uses \emph{no-repeated-edge matching semantics} (in return, this semantics is sometimes dubbed as \emph{cyphermorphism}).
+Configurable matching semantics (\eg \lstinline[language=cypher]{MATCH ALL WALKS}) were proposed in the openCypher language.\footnote{\url{https://github.com/boggle/openCypher/blob/c139130b49aebe6a85fc395e2cf03cfeec8484c6/cip/1.accepted/CIP2017-01-18-configurable-pattern-matching-semantics.adoc}}
+RPQs are also proposed in the openCypher language as \emph{path patterns}.\footnote{\url{https://github.com/thobe/openCypher/blob/b95eec108ce4ec07eedfe13b3e5fff0e94f789a4/cip/1.accepted/CIP2017-02-06-Path-Patterns.adoc}}
+
+\item[G-CORE.] The \mbox{G-CORE} language~\cite{GCORE_SIGMOD} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
+
+\item[SPARQL.] SPARQL uses \emph{homomorphism-based matching semantics} and supports RPQs as \emph{property paths}. Isomorphism-based matching semantics can be expressed by introducing custom filtering condition, \eg \lstinline[language=sparql]{FILTER ( ?e1 != ?e2 )}.
+\end{description}
+
+\input{query-cards/cp-8-6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
