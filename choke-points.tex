@@ -445,7 +445,7 @@ TODO
 
 Selecting top-k with other graph elements/attributes, also known as \emph{windowing} or \emph{ranking}.
 
-PostgreSQL defines the \lstinline[language=sql]{rank()} function for this.\footnote{\url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html}}
+PostgreSQL defines the \lstinline[language=sql]{OVER} keyword to use aggregation functions as window functions.\footnote{\url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html}}
 
 TODO
 
@@ -520,7 +520,7 @@ Handling dates and times is a fundamental requirement for database systems.
 \subsubsection{Description}
 
 \paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of vertices and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of vertices or edges), depending on the source.''
-In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{Angles:2017:FMQ:3145473.3104031}. In other words, we use the expressions ``path'' and ``walk'' interchangeably. 
+In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{Angles:2017:FMQ:3145473.3104031}. In other words, we use the expressions ``path'' and ``walk'' interchangeably.
 
 Handling paths is one of the key distinguishing features of graph database systems.
 
