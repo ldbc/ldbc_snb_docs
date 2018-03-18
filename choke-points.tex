@@ -333,9 +333,15 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \subsubsection{Description}
 
-\paragraph{Transitive edges.} TODO bound (3..5-style )or unbound
+A natural requirement for graph query systems is to be able to express complex
+graph patterns.
 
-\paragraph{Negative edge conditions.} Some queries define \emph{negative edge conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions or NACs in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}).
+\paragraph{Transitive edges.} Transitive closure-style computations are common in graph query systems, both with fixed bounds
+(\eg get nodes that can be reached through at least 3 and at most 5 \textsf{knows} edges),
+and without fixed bounds
+(\eg get all \texttt{messages} that a \texttt{comment} replies to).
+
+\paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for the (also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}).
 
 \subsubsection{Language-specific notes}
 
@@ -399,7 +405,7 @@ FILTER NOT EXISTS { xRoute ?routeDefinition ?xSensor } .
 \end{lstlisting}
 \end{minipage}
 
-The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between NOT EXISTS and MINUS'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
+The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between \lstinline[language=sparql]{NOT EXISTS} and \lstinline[language=sparql]{MINUS}'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=sparql]
@@ -421,9 +427,11 @@ MINUS { xRoute ?routeDefinition ?xSensor } .
 
 \subsubsection{Description}
 
-Aggregations on aggregations, filtering on aggregation results (similarly to the \lstinline{HAVING} keyword of SQL).
-
-TODO
+BI workloads are heavy on aggregation, including queries with \emph{subsequent
+aggregations}, where the results of an aggregation serves as the input of
+another aggregation. Expressing such operations requires some sort of query
+composition or chaining (see also CP-8.4). It is also common to \emph{filter on
+aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword of SQL).
 
 \subsubsection{Language-specific notes}
 
@@ -443,16 +451,20 @@ TODO
 
 \subsubsection{Description}
 
-Selecting top-k with other graph elements/attributes, also known as \emph{windowing} or \emph{ranking}.
-
-PostgreSQL defines the \lstinline[language=sql]{OVER} keyword to use aggregation functions as window functions.\footnote{\url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html}}
-
-TODO
+Additionally to aggregations, BI workloads often use \emph{window functions},
+which perform aggregations without grouping input tuples to a single output
+tuple.  A common use case for windowing is \emph{ranking}, \ie selecting the top
+element with additional values in the tuple (nodes, edges or
+attributes).\footnote{PostgreSQL defines the \lstinline[language=sql]{OVER}
+keyword to use aggregation functions as window functions, and the
+\lstinline[language=sql]{rank()} function to produce numerical ranks, see
+\url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html} for
+details.}
 
 \subsubsection{Language-specific notes}
 
-%\begin{description}
-%\item[Cypher.]
+\begin{description}
+\item[Cypher.]
 Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-k values of the result list.
 
 \noindent\begin{minipage}{\linewidth}
@@ -466,10 +478,10 @@ WITH xs[0] AS top, xs[0..5] AS top5
 \end{lstlisting}
 \end{minipage}
 
-%\item[G-CORE.] TODO
-%
-%\item[SPARQL.] TODO
-%\end{description}
+\item[G-CORE.] TODO
+
+\item[SPARQL.] TODO
+\end{description}
 
 \input{query-cards/cp-8-3}
 
@@ -479,7 +491,10 @@ WITH xs[0] AS top, xs[0..5] AS top5
 
 \subsubsection{Description}
 
-Numerous use cases require \emph{composition} of queries, including the reuse of query results (\eg nodes, edges) and using scalar subqueries.
+Numerous use cases require \emph{composition} of queries, including the reuse of
+query results (\eg nodes, edges) or using scalar subqueries (\eg selecting a
+threshold value with a subquery and using it for subsequent filtering
+operations).
 
 \subsubsection{Language-specific notes}
 
@@ -497,9 +512,9 @@ Numerous use cases require \emph{composition} of queries, including the reuse of
 
 \subsubsection{Description}
 
-Handling dates and times is a fundamental requirement for database systems.
-
-\todo{more text}
+Handling dates and times is a fundamental requirement for production-ready
+database systems. It is particularly important in the context of BI queries as
+these often calculate aggregations on certain periods of time (\eg on a month).
 
 \subsubsection{Language-specific notes}
 
@@ -520,17 +535,21 @@ Handling dates and times is a fundamental requirement for database systems.
 \subsubsection{Description}
 
 \paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of vertices and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of vertices or edges), depending on the source.''
-In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{Angles:2017:FMQ:3145473.3104031}. In other words, we use the expressions ``path'' and ``walk'' interchangeably.
+In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{Angles:2017:FMQ:3145473.3104031}.
 
-Handling paths is one of the key distinguishing features of graph database systems.
-
-%RPQ (regular path queries)
-
-\paragraph{Node and edge uniqueness.} Some use cases specify that paths must not have repeated edges (in graph theory, these walks are called ``trails''). More formally, paper~\cite{Angles:2017:FMQ:3145473.3104031} defines \emph{homomorphism-based semantics} (no constraints on repetitions) and
-multiple flavours of \emph{isomorphism-based semantics}:
+Handling paths as first-class citizens is one of the key distinguishing features of graph database 
+systems~\cite{GCORE_SIGMOD}. Hence, additionally to
+reachability-style checks, a language should be able to express
+queries that operate on elements of a path, \eg calculate a score on each edge
+of the path.
+Also, some use cases specify uniqueness constraints on paths, \eg that a certain path must
+not have repeated nodes (referred to as ``walks'' in graph theory) or 
+not have repeated edges (``trails'' in graph theory). More precisely, 
+paper~\cite{Angles:2017:FMQ:3145473.3104031} defines \emph{homomorphism-based semantics} 
+(no constraints on repetitions) and multiple flavours of \emph{isomorphism-based semantics}:
 \begin{itemize}
-\item \emph{no-repeated-node semantics} (also called \emph{fully isomorphic matching}),
-\item \emph{no-repeated-edge semantics} (also called \emph{edge-isomorphic matching}),
+\item \emph{no-repeated-node semantics} (also known as \emph{fully isomorphic matching}),
+\item \emph{no-repeated-edge semantics} (also known as \emph{edge-isomorphic matching}),
 \item \emph{no-repeated-anything semantics} (not used in the context of this work).
 \end{itemize}
 
