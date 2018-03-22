@@ -17,12 +17,12 @@ result:
   - name: Tag.name
     type: String
     description: "`tagName`"
-  - name: count
+  - name: postCount
     type: 32-bit Integer
     category: aggregated
     description: "`postCount` -- Number of Posts that were created by friends and friends of friends, which contain this Tag"
 sort:
-  - name: count
+  - name: postCount
     direction: desc
   - name: Tag.name
     direction: asc
