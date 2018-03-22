@@ -12,16 +12,19 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: CountryX.name
     type: String
+    description: "`Country1`"
   - name: CountryY.name
     type: String
+    description: "`Country2`"
   - name: startDate
     type: Date
-    description: Beginning of requested period
+    description: "`Date0` -- Beginning of requested period"
   - name: duration
     type: 32-bit Integer
-    description: Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
+    description: "`Duration` -- Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open"
 result:
   - name: Person.id
     type: ID

@@ -13,9 +13,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: month
     type: 32-bit Integer
-    description: Between 1-12
+    description: "`HS0` -- Between 1-12"
 result:
   - name: Person.id
     type: ID

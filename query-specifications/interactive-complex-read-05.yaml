@@ -12,8 +12,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: date
     type: Date
+    description: "`Date0`"
 result:
   - name: Forum.title
     type: String

@@ -48,14 +48,16 @@ never attached to friends' Posts created before this interval.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Person.id
  & ID
- &  \\ \hline
+ & \texttt{Person}
+ \\ \hline
 		$\mathsf{2}$ & startDate
  & Date
- &  \\ \hline
+ & \texttt{Date0}
+ \\ \hline
 		$\mathsf{3}$ & duration
  & 32-bit Integer
- & Duration of requested period, in days the interval {[}startDate,
-startDate + Duration) is closed-open
+ & \texttt{Duration} -- Duration of requested period, in days. The interval
+{[}startDate, startDate + Duration) is closed-open
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

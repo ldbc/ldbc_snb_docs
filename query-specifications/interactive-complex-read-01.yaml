@@ -10,8 +10,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: Person.firstName
     type: String
+    description: "`Name`"
 result:
   - name: Person.id
     type: ID

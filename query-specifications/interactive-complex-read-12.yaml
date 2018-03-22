@@ -15,8 +15,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: TagClass.name
     type: String
+    description: "`TagType`"
 result:
   - name: Person.id
     type: ID

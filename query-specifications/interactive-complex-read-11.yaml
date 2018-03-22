@@ -9,10 +9,13 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: Country.name
     type: String
+    description: "`Country`"
   - name: year
     type: 32-bit Integer
+    description: "`Date0`"
 result:
   - name: Person.id
     type: ID

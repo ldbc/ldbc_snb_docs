@@ -10,11 +10,13 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`Person`"
   - name: startDate
     type: Date
+    description: "`Date0`"
   - name: duration
     type: 32-bit Integer
-    description: Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open
+    description: "`Duration` -- Duration of requested period, in days. The interval [startDate, startDate + Duration) is closed-open"
 result:
   - name: Tag.name
     type: String
