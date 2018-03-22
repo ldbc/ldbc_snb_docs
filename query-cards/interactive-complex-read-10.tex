@@ -41,19 +41,9 @@
 start Person, and immediate friends), who were born on or after the 21st
 of a given month (in any year) and before the 22nd of the following
 month. Calculate the similarity between each of these Persons and start
-Person, where similarity for any Person is defined as follows:
-
-\begin{itemize}
-\tightlist
-\item
-  common = number of Posts created by that Person, such that the Post
-  has a Tag that start Person is Interested in
-\item
-  uncommon = number of Posts created by that Person, such that the Post
-  has no Tag that start Person is Interested in
-\item
-  similarity = common - uncommon
-\end{itemize}
+Person, where commonInterestScore is defined as follows: number of Posts
+created by that Person, such that the Post has a Tag that start Person
+is Interested in
  \\ \hline
 %
 	
@@ -73,17 +63,23 @@ Person, where similarity for any Person is defined as follows:
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Person.id & ID & R &
-				 \\ \hline
+				\texttt{personId}
+ \\ \hline
 		$\mathsf{2}$ & Person.firstName & String & R &
-				 \\ \hline
+				\texttt{personFirstName}
+ \\ \hline
 		$\mathsf{3}$ & Person.lastName & String & R &
-				 \\ \hline
-		$\mathsf{4}$ & similarity & 32-bit Integer & C &
-				 \\ \hline
-		$\mathsf{5}$ & Person.gender & String & R &
-				 \\ \hline
-		$\mathsf{6}$ & Person-isLocatedIn-\textgreater{}Place.name & String & R &
-				 \\ \hline
+				\texttt{personLastName}
+ \\ \hline
+		$\mathsf{4}$ & Person.gender & String & R &
+				\texttt{personGender}
+ \\ \hline
+		$\mathsf{5}$ & Person-isLocatedIn-\textgreater{}Place.name & String & R &
+				\texttt{personCityName}
+ \\ \hline
+		$\mathsf{6}$ & commonInterestScore & 32-bit Integer & C &
+				\texttt{commonInterestScore}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

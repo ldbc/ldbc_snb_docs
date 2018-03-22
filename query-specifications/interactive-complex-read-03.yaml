@@ -25,22 +25,25 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Person.lastName
     type: String
-  - name: countX
+    description: "`personLastName`"
+  - name: xCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of Messages from Country X made by Person within the given time
+    description: "`xCount` -- Number of Messages from Country X made by Person within the given time"
   - name: countY
     type: 32-bit Integer
     category: aggregated
-    description: Number of Messages from Country Y made by Person within the given time
+    description: "`yCount` -- Number of Messages from Country Y made by Person within the given time"
   - name: count
     type: 32-bit Integer
     category: aggregated
-    description: "`countX` + `countY`"
+    description: "`count` = `countX` + `countY`"
 sort:
   - name: countX
     direction: desc

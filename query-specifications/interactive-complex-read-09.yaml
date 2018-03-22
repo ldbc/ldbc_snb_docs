@@ -15,16 +15,22 @@ parameters:
 result:
   - name: Message-hasCreator->Person.id
     type: ID
+    description: "`personId`"
   - name: Message-hasCreator->Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Message-hasCreator->Person.lastName
     type: String
+    description: "`personLastName`"
   - name: Message.id
     type: ID
+    description: "`commentOrPostId`"
   - name: Message.content or Post.imageFile
     type: String
+    description: "`commentOrPostContent`"
   - name: Message.creationDate
     type: DateTime
+    description: "`commentOrPostCreationDate`"
 sort:
   - name: Message.creationDate
     direction: desc

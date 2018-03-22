@@ -22,11 +22,12 @@ parameters:
 result:
   - name: '[Person.id]'
     type: '[ID]'
-    description: Identifiers representing an ordered sequence of the Persons in the path
+    description: "`personIdsInPath` -- identifiers representing an ordered sequence of the Persons in the path"
     category: calculated
   - name: weight
     type: 64-bit Float
     category: calculated
+    description: "`pathWeight`"
 sort:
   - name: weight
     direction: desc

@@ -20,16 +20,20 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Person.lastName
     type: String
+    description: "`personLastName`"
   - name: \{Tag.name\}
     type: \{String\}
-  - name: count
+    description: "`tagNames`"
+  - name: replyCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of reply Comments
+    description: "`replyCount` -- Number of reply Comments"
 sort:
   - name: count
     direction: desc

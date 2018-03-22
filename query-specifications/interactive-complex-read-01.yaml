@@ -5,7 +5,7 @@ title: Friends with certain name
 description: |
   Given a start Person, find Persons with a given first name
   that the start Person is connected to (excluding start Person) by
-  at most 3 steps via Knows relationships. Return Persons, including
+  at most 3 steps via Knows relationships. Return Persons, including the distance (1..3),
   summaries of the Persons workplaces and places of study.
 parameters:
   - name: Person.id
@@ -15,31 +15,43 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`friendId`"
   - name: Person.lastName
     type: String
+    description: "`friendLastName`"
   - name: distanceFromPerson
     type: 32-bit Integer
-    description: 1..3
+    description: "`distanceFromPerson`"
   - name: Person.birthday
     type: Date
+    description: "`friendBirthday`"
   - name: Person.creationDate
     type: DateTime
+    description: "`friendCreationDate`"
   - name: Person.gender
     type: String
+    description: "`friendGender`"
   - name: Person.browserUsed
     type: String
+    description: "`friendBrowserUsed`"
   - name: Person.locationIP
     type: String
+    description: "`friendLocationIp`"
   - name: \{Person.email\}
     type: \{String\}
+    description: "`friendEmails`"
   - name: \{Person.speaks\}
     type: \{String\}
+    description: "`friendLanguages`"
   - name: Person-isLocatedIn->Place.name
     type: String
+    description: "`friendCityName`"
   - name: \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}
     type: \{\<String, 32-bit Integer, String>\}
+    description: "`friendUniversities`"
   - name: \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}
     type: \{\<String, 32-bit Integer, String>\}
+    description: "`friendCompanies`"
 sort:
   - name: distanceFromPerson
     direction: asc

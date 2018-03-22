@@ -58,17 +58,23 @@ consider the Messages created before a given date (excluding that date).
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Message-hasCreator-\textgreater{}Person.id & ID & R &
-				 \\ \hline
+				\texttt{personId}
+ \\ \hline
 		$\mathsf{2}$ & Message-hasCreator-\textgreater{}Person.firstName & String & R &
-				 \\ \hline
+				\texttt{personFirstName}
+ \\ \hline
 		$\mathsf{3}$ & Message-hasCreator-\textgreater{}Person.lastName & String & R &
-				 \\ \hline
+				\texttt{personLastName}
+ \\ \hline
 		$\mathsf{4}$ & Message.id & ID & R &
-				 \\ \hline
+				\texttt{commentOrPostId}
+ \\ \hline
 		$\mathsf{5}$ & Message.content or Post.imageFile & String & R &
-				 \\ \hline
+				\texttt{commentOrPostContent}
+ \\ \hline
 		$\mathsf{6}$ & Message.creationDate & DateTime & R &
-				 \\ \hline
+				\texttt{commentOrPostCreationDate}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

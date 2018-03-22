@@ -17,10 +17,11 @@ parameters:
 result:
   - name: Forum.title
     type: String
+    description: "`forumTitle`"
   - name: count
     type: 32-bit Integer
     category: aggregated
-    description: Number of Posts made in Forum that were created by friends
+    description: "`postCount` -- Number of Posts made in Forum that were created by friends"
 sort:
   - name: count
     direction: desc

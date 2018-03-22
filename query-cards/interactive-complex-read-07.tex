@@ -60,23 +60,30 @@ identifier.
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Person.id & ID & R &
-				 \\ \hline
+				\texttt{personId}
+ \\ \hline
 		$\mathsf{2}$ & Person.firstName & String & R &
-				 \\ \hline
+				\texttt{personFirstName}
+ \\ \hline
 		$\mathsf{3}$ & Person.lastName & String & R &
-				 \\ \hline
+				\texttt{personLastName}
+ \\ \hline
 		$\mathsf{4}$ & Like.creationDate & DateTime & R &
-				 \\ \hline
+				\texttt{likeCreationDate}
+ \\ \hline
 		$\mathsf{5}$ & Message.id & ID & R &
-				 \\ \hline
+				\texttt{commentOrPostId}
+ \\ \hline
 		$\mathsf{6}$ & Message.content or Post.imageFile & String & R &
-				 \\ \hline
-		$\mathsf{7}$ & latency & 32-bit Integer & C &
-				Duration between creation of Message and Like, in minutes
+				\texttt{commentOrPostContent}
+ \\ \hline
+		$\mathsf{7}$ & minutesLatency & 32-bit Integer & C &
+				\texttt{minutesLatency} -- Duration between creation of Message and
+Like, in minutes
  \\ \hline
 		$\mathsf{8}$ & isNew & Boolean & C &
-				\texttt{false} if liker Person is friend of start Person, \texttt{true}
-otherwise
+				\texttt{isNew} -- \texttt{false} if liker Person is friend of start
+Person, \texttt{true} otherwise
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

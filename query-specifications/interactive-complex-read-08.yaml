@@ -14,16 +14,22 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Person.lastName
     type: String
+    description: "`personLastName`"
   - name: Comment.creationDate
     type: DateTime
+    description: "`commentCreationDate`"
   - name: Comment.id
     type: ID
+    description: "`commentId`"
   - name: Comment.content
     type: String
+    description: "`commentContent`"
 sort:
   - name: Comment.creationDate
     direction: desc

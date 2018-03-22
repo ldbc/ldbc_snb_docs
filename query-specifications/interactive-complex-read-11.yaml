@@ -16,14 +16,19 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Person.lastName
     type: String
+    description: "`personLastName`"
   - name: Person-worksAt->Organisation.name
     type: String
+    description: "`organizationName`"
   - name: Person-worksAt->.worksFrom
     type: 32-bit Integer
+    description: "`organizationWorkFromYear`"
 sort:
   - name: Person-worksAt->.worksFrom
     direction: asc

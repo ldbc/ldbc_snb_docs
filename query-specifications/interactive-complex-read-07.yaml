@@ -17,24 +17,30 @@ parameters:
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`personFirstName`"
   - name: Person.lastName
     type: String
+    description: "`personLastName`"
   - name: Like.creationDate
     type: DateTime
+    description: "`likeCreationDate`"
   - name: Message.id
     type: ID
+    description: "`commentOrPostId`"
   - name: Message.content or Post.imageFile
     type: String
-  - name: latency
+    description: "`commentOrPostContent`"
+  - name: minutesLatency
     type: 32-bit Integer
     category: calculated
-    description: Duration between creation of Message and Like, in minutes
+    description: "`minutesLatency` -- Duration between creation of Message and Like, in minutes"
   - name: isNew
     type: Boolean
     category: calculated
-    description: "`false` if liker Person is friend of start Person, `true` otherwise"
+    description: "`isNew` -- `false` if liker Person is friend of start Person, `true` otherwise"
 sort:
   - name: Like.creationDate
     direction: desc

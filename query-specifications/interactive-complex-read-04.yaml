@@ -18,10 +18,11 @@ parameters:
 result:
   - name: Tag.name
     type: String
+    description: "`tagName`"
   - name: count
     type: 32-bit Integer
     category: aggregated
-    description: Number of Posts made within the given time interval that have this Tag
+    description: "`postCount` -- Number of Posts made within the given time interval that have this Tag"
 sort:
   - name: count
     direction: desc
