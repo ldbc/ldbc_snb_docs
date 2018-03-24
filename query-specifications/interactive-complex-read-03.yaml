@@ -46,9 +46,9 @@ result:
   - name: count
     type: 32-bit Integer
     category: aggregated
-    description: "`count` = `countX` + `countY`"
+    description: "`count` = `xCount` + `yCount`"
 sort:
-  - name: countX
+  - name: xCount
     direction: desc
   - name: Person.id
     direction: asc
