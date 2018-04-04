@@ -27,16 +27,16 @@ result:
   - name: Person.lastName
     type: String
     description: "`personLastName`"
+  - name: commonInterestScore
+    type: 32-bit Integer
+    category: calculated
+    description: "`commonInterestScore`"
   - name: Person.gender
     type: String
     description: "`personGender`"
   - name: Person-isLocatedIn->Place.name
     type: String
     description: "`personCityName`"
-  - name: commonInterestScore
-    type: 32-bit Integer
-    category: calculated
-    description: "`commonInterestScore`"
 sort:
   - name: similarity
     direction: desc
