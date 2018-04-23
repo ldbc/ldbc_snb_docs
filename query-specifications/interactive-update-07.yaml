@@ -23,10 +23,10 @@ parameters:
   - name: Comment-replyOf->Post.id
     type: ID
     category: calculated
-    description: $-1$ if the comment is a reply of a comment
+    description: $-1$ if the *Comment* is a reply of a *Comment*
   - name: Comment-replyOf->Comment.id
     type: ID
     category: calculated
-    description: $-1$ if the comment is a reply of a post
+    description: $-1$ if the *Comment* is a reply of a *Post*
   - name: Comment-hasTag->Tag.id
     type: \{ID\}
