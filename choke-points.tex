@@ -51,10 +51,10 @@ We further note that scale-out systems have an extra incentive for partitioning 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection{1.3}{QOPT}{Top-k push down}
+\cpSection{1.3}{QOPT}{Top-k pushdown}
 
-Top-k push down. This choke-point tests the ability of the query optimizer to perform optimizations based on top-k selections. Many times queries demand for returning the top-k elements.
-Once k results are obtained, extra restrictions in a selection can be added based on the properties of the kth element currently in the top-k, being more restrictive as the query advances, instead of sorting all elements and picking the highest k.
+This choke-point tests the ability of the query optimizer to perform optimizations based on top-$k$ selections. Many times queries demand for returning the top-$k$ elements based on some property.
+Engines can exploit that once $k$ results are obtained, extra restrictions in a selection can be added based on the properties of the $k$th element currently in the top-$k$, being more restrictive as the query advances, instead of sorting all elements and picking the highest $k$.
 
 \input{query-cards/cp-1-3}
 
