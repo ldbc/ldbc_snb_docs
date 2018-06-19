@@ -5,28 +5,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Graph Database Benchmarks}
+\paragraph*{Graph processing benchmarks}
 
-Train Benchmark: model validation~\cite{TrainBenchmarkSOSYM}.
+Recent graph benchmarking initiatives focus on three key areas:
 
-Graph database comparison~\cite{lissandrini17}.
+\begin{enumerate}
+\item transactional workloads consisting of interactive read and update queries (OLTP) aiming at graph databases that explore small portions of the graph in each query~\cite{DBLP:conf/cidr/BarahmandG13,DBLP:conf/sigmod/ArmstrongPBC13,DBLP:conf/sigmod/ErlingALCGPPB15},
+\item graph analysis algorithms (\eg PageRank) computed in bulk, typically expressed in cluster frameworks with graph APIs, rather than high-level queries~\cite{DBLP:conf/hipc/BaderM05,DBLP:conf/bigdataconf/ElserM13,DBLP:conf/sc/NaiXTKL15,DBLP:journals/pvldb/IosupHNHPMCCSAT16}, and
+\item inferencing/matching on semantic data~\cite{DBLP:journals/ws/GuoPH05,DBLP:books/sp/virgilio09/SchmidtHMPL09,DBLP:conf/semweb/MorseyLAN11,DBLP:conf/semweb/AlucHOD14,TrainBenchmarkSOSYM}
+\end{enumerate}
 
-An ``interactive social network benchmark'':~\cite{DBLP:conf/cidr/BarahmandG13}.
+\mbox{XDGBench} is described in~\cite{DBLP:journals/ase/DayarathnaS14}.
 
-XDGBench~\cite{DBLP:journals/ase/DayarathnaS14}
+A recent technical report~\cite{lissandrini17} compares graph databases.
+
+The challenges of using benchmarks correctly are described in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Scalable Graph Generators}
+%\section{Scalable Graph Generators}
 
-The \datagen component is a fork of the generator described in~\cite{DBLP:conf/tpctc/PhamBE12}.
+%The \datagen component of SNB is a fork of the generator described in~\cite{DBLP:conf/tpctc/PhamBE12}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{LDBC Publications}
+\paragraph*{LDBC Publications}
 
-LDBC publications are listed at~\url{http://ldbcouncil.org/publications}.
+A detailed list of LDBC publications is curated at~\url{http://ldbcouncil.org/publications}.

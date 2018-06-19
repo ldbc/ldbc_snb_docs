@@ -77,7 +77,7 @@ conceivably use to perform social network data management tasks:
 
 \begin{itemize}
  \item \textbf{Graph database systems} (\eg Neo4j, InfiniteGraph, Sparksee,
-     Titan) are novel technologies aimed at storing directed and labeled
+     Titan/JanusGraph) are novel technologies aimed at storing directed and labeled
      graphs. They support graph traverals, typically by means of APIs, though
      some of them also support dedicated graph-oriented query languages (\eg
      Neo4j's Cypher). These systems' internal structures are typically designed
@@ -212,8 +212,8 @@ benchmark's entry point as much as possible.
 Along the Social Network Benchmark, LDBC~\cite{DBLP:journals/sigmod/AnglesBLF0ENMKT14} provides other benchmarks as well:
 
 \begin{itemize}
-	\item The Semantic Publishing Benchmark (SPB)\footnote{\url{http://ldbcouncil.org/benchmarks/spb}} measures the performance of RDF engines operating on semantic data sets.
-	\item The Graphalytics benchmark~\cite{DBLP:journals/pvldb/IosupHNHPMCCSAT16} measures the performance of graph analysis operations (\eg PageRank, local clustering coefficient).
+	\item The Semantic Publishing Benchmark (SPB)~\cite{DBLP:conf/semweb/SpasicJP16} measures the performance of \emph{semantic databases} operating on RDF data sets.
+	\item The Graphalytics benchmark~\cite{DBLP:journals/pvldb/IosupHNHPMCCSAT16} measures the performance of \emph{graph analysis} operations (\eg PageRank, local clustering coefficient).
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
