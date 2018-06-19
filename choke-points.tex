@@ -521,14 +521,14 @@ these often calculate aggregations on certain periods of time (\eg on a month).
 In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{DBLP:journals/csur/AnglesABHRV17}.
 
 Handling paths as first-class citizens is one of the key distinguishing features of graph database 
-systems~\cite{GCORE_SIGMOD}. Hence, additionally to
+systems~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18}. Hence, additionally to
 reachability-style checks, a language should be able to express
 queries that operate on elements of a path, \eg calculate a score on each edge
 of the path.
 Also, some use cases specify uniqueness constraints on paths, \eg that a certain path must
 not have repeated nodes (referred to as ``walks'' in graph theory) or 
 not have repeated edges (``trails'' in graph theory). More precisely, 
-paper~\cite{Angles:2017:FMQ:3145473.3104031} defines \emph{homomorphism-based semantics} 
+paper~\cite{DBLP:journals/csur/AnglesABHRV17} defines \emph{homomorphism-based semantics} 
 (no constraints on repetitions) and multiple flavours of \emph{isomorphism-based semantics}:
 \begin{itemize}
 \item \emph{no-repeated-node semantics} (also known as \emph{fully isomorphic matching}),
@@ -543,7 +543,7 @@ paper~\cite{Angles:2017:FMQ:3145473.3104031} defines \emph{homomorphism-based se
 Configurable matching semantics (\eg \lstinline[language=cypher]{MATCH ALL WALKS}) were proposed in the openCypher language.\footnote{\url{https://github.com/boggle/openCypher/blob/c139130b49aebe6a85fc395e2cf03cfeec8484c6/cip/1.accepted/CIP2017-01-18-configurable-pattern-matching-semantics.adoc}}
 RPQs are also proposed in the openCypher language as \emph{path patterns}.\footnote{\url{https://github.com/thobe/openCypher/blob/b95eec108ce4ec07eedfe13b3e5fff0e94f789a4/cip/1.accepted/CIP2017-02-06-Path-Patterns.adoc}}
 
-\item[G-CORE.] The \mbox{G-CORE} language~\cite{GCORE_SIGMOD} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
+\item[G-CORE.] The \mbox{G-CORE} language~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
 
 \item[SPARQL.] SPARQL uses \emph{homomorphism-based matching semantics} and supports RPQs as \emph{property paths}. Isomorphism-based matching semantics can be expressed by introducing custom filtering condition, \eg \lstinline[language=sparql]{FILTER ( ?e1 != ?e2 )}.
 \end{description}
