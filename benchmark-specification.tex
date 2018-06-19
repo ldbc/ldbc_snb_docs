@@ -524,7 +524,7 @@ function similar to that found in Facebook~\cite{facebook_anatomy}.
 The next three steps are devoted to the creation of knows relationships.  An
 important aspect of real social networks, is the fact that similar persons
 (with similar interests and behaviors) tend to be connected. This is known as
-the Homophily principle~\cite{mcpherson2001birds}, and implies the presence of
+the Homophily principle~\cite{mcpherson2001birds,DBLP:journals/socnet/BaroneC18}, and implies the presence of
 a larger amount of triangles than that expected in a random network. In order
 to reproduce this characteristic, \datagen generates the edges by means of
 correlation dimensions.  Given a person, the probability to be connected to
@@ -541,7 +541,7 @@ exploited by \datagen to reproduce correlations.
     \label{figure:generation_process}
 \end{figure}
 
-Given a similarity function $M(x) : n → [0, \infty]$ that gives a score to a person,
+Given a similarity function $M(x) : n \rightarrow [0, \infty]$ that gives a score to a person,
 with the characteristic that two similar persons will have similar scores, we
 can sort all the persons by function $M$ and compare a person n against only the
 W neighboring persons in the sorted array. The consequence of this approach is
