@@ -12,9 +12,9 @@
 
 \section*{Introduction}
 
-Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP 7.1, which was removed and replaced with a new choke point.
+Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP 7.1, which was removed and replaced with a new choke point. The correlations between choke points and queries are displayed in \autoref{tab:query_choke_point}.
 
-The connection between choke points and queries is displayed in \autoref{tab:query_choke_point}.
+\todo{TODO fill language CPs for interactive}
 
 {
 \setlength{\tabcolsep}{.1em}
@@ -92,7 +92,7 @@ This choke-point tests the ability of the query optimizer to delay the projectio
 In such a situation, it is better to omit them from initial table scans, as fetching them later by row-id with a separate scan operator, which is joined to the intermediate query result, can save temporal space, and therefore I/O.
 Late projection does have a trade-off involving locality, since late in the plan the tuples may be in a different order, and scattered I/O in terms of tuples/second is much more expensive than sequential I/O.
 Late projection specifically makes sense in queries where the late use of these columns happens at a moment where the amount of tuples involved has been considerably reduced;
-for example after an aggregation with only few unique group-by keys, or a top-k operator.
+for example after an aggregation with only few unique group-by keys, or a top-$k$ operator.
 
 \input{query-cards/cp-2-2}
 
@@ -423,7 +423,7 @@ aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword 
 
 \item[G-CORE.] TODO
 
-\item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sparql]{GROUP BY} clause (similarly to SQL).
+\item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sql]{GROUP BY} clause (similarly to SQL).
 \end{description}
 
 \input{query-cards/cp-8-2}
@@ -448,7 +448,7 @@ details.}
 
 \begin{description}
 \item[Cypher.]
-Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-k values of the result list.
+Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-$k$ values of the result list.
 
 \noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=cypher]
