@@ -221,7 +221,7 @@
         \newcommand\B{\rule[-2.5mm]{0pt}{0pt}}%
         \LARGE
         \begin{tabular}{c}\hspace*{16.6cm}\\[9mm]%
-          \hline\Huge\relscale{1.15}%
+          \hline\Huge\relscale{1.05}%
           \parbox{16cm}{\vspace{3mm}\centering\bfseries \T \delIDText{} \delNameText \B} \\[3mm]%
         \hline%
 %        \parbox[t]{16cm}{\centering\bfseries \vspace{0mm} Coordinator: \authorText \B} \\%
