@@ -143,8 +143,9 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{0.3.0}
-\newcommand{\ldbcsnbdoctitle}{LDBC Social Network Benchmark (SNB) -- \ldbcsnbdocversion}
+\newcommand{\ldbcsnbdocversion}{0.3.1}
+\newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
+\delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
 \newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}
