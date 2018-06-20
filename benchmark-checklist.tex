@@ -1,0 +1,19 @@
+We expect LDBC benchmarks to be used in many scenarios.
+For most research papers, fully audited results are unrealistic and even unaudited results can provide insight into the performance of the systems under benchmark (SUB). However, we ask authors to include the following information in their papers:
+
+\begin{itemize}
+\item Were the results cross-validated for at least one scale factor?
+\item Were the results cross-validated for all scale factors used in the benchmark?
+\item Does the SUB have a persistent storage?
+\item Does the SUB provide ACID transactions?
+\item Does the SUB provide any level of fault-tolerance?
+\item How many warmup rounds were performed?
+\item How many execution rounds were performed?
+\item How were the execution times summarized? %(For example, by taking the median or geometric mean values of the runs.)
+\item Was the loading phase measured in the execution times?  
+%(This might be relevant for non-persistent systems.)
+\end{itemize}
+
+These results will help the reader to put the results in context. For example, a non-ACID compliant, non-fault-tolerant system without a persistent storage is expected to have better results than a fully-fledged disk-based DBMS.
+
+We also suggest to take a look at the checklist presented in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
