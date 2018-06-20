@@ -9,11 +9,11 @@ For most research papers, fully audited results are unrealistic and even unaudit
 \item Does the SUB provide any level of fault-tolerance?
 \item How many warmup rounds were performed?
 \item How many execution rounds were performed?
-\item How were the execution times summarized? %(For example, by taking the median or geometric mean values of the runs.)
-\item Was the loading phase measured in the execution times?  
-%(This might be relevant for non-persistent systems.)
+\item How were the execution times summarized?\footnote{Popular methods to summarize benchmark results are taking the median or geometric mean values of repeated runs.}
+\item Is the loading phase included in the query execution times?\footnote{This might be relevant for systems without persistent storage, or systems providing lazy/incremental computation.}
+\item If the SUB is not your own system, did you contact its developers or experts to help optimizing the queries?\footnote{For a research prototype tool, the tuning knobs are usually not well documented. Hence, it is worth contacting the tool's authors, who are generally keen to help. For more mature systems (\eg most established RDBMSs), there is a large body of knowledge available, in the form of books and online forums, which should help your optimization efforts. It is also possible to contact experienced DBAs who can assist with fine tuning the system.}
 \end{itemize}
 
 These results will help the reader to put the results in context. For example, a non-ACID compliant, non-fault-tolerant system without a persistent storage is expected to have better results than a fully-fledged disk-based DBMS.
 
-We also suggest to take a look at the checklist presented in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
+Additionally, we also suggest to take a look at the checklist presented in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
