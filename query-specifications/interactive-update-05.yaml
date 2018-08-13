@@ -6,7 +6,7 @@ description: Add a *Forum* membership **edge** (*hasMember*) to a *Person*.
 parameters:
   - name: Person.id
     type: ID
-  - name: Forum-hasMember->Person.id
+  - name: Forum.id
     type: ID
   - name: Forum-hasMember->.joinDate
     type: DateTime
