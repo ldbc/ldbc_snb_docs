@@ -13,7 +13,7 @@ def convert_markdown_to_tex(markdown):
         ["pandoc", "--from=markdown", "--to=latex"],
         universal_newlines=True,
         input=markdown
-    )
+    ).replace('??', '\+')
 
 
 def convert_map_values_to_tex(map):

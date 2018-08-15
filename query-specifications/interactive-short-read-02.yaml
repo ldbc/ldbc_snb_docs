@@ -28,10 +28,10 @@ result:
     description: "`originalPostAuthorId`"
   - name: Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName
     type: String
-    description: "`originalPostAuthorFirstName`"
+    description: "`original??Post??Author??First??Name`"
   - name: Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName
     type: String
-    description: "`originalPostAuthorLastName`"
+    description: "`original??Post??Author??Last??Name`"
 sort:
   - name: Message.creationDate
     direction: desc
