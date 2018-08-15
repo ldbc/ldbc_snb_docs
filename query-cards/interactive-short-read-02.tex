@@ -42,7 +42,8 @@ will appear twice in that result.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Person.id
  & ID
- &  \\ \hline
+ & \texttt{personId}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
@@ -50,22 +51,29 @@ will appear twice in that result.
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Message.id & 64-bit Integer & R &
-				 \\ \hline
+				\texttt{messageId}
+ \\ \hline
 		$\mathsf{2}$ & Message.content or Post.imageFile & String & R &
-				 \\ \hline
+				\texttt{messageContent}
+ \\ \hline
 		$\mathsf{3}$ & Message.creationDate & DateTime & R &
-				 \\ \hline
+				\texttt{messageCreationDate}
+ \\ \hline
 		$\mathsf{4}$ & Post.id or Comment-replyOf*-\textgreater{}Post.id & ID & R &
-				 \\ \hline
+				\texttt{originalPostId}
+ \\ \hline
 		$\mathsf{5}$ & Post-hasCreator-\textgreater{}Person.id or
 Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.id & ID & R &
-				 \\ \hline
+				\texttt{originalPostAuthorId}
+ \\ \hline
 		$\mathsf{6}$ & Post-hasCreator-\textgreater{}Person.firstName or
 Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.firstName & String & R &
-				 \\ \hline
+				\texttt{originalPostAuthorFirstName}
+ \\ \hline
 		$\mathsf{7}$ & Post-hasCreator-\textgreater{}Person.lastName or
 Comment-replyOf*-\textgreater{}Post-hasCreator-\textgreater{}Person.lastName & String & R &
-				 \\ \hline
+				\texttt{originalPostAuthorLastName}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

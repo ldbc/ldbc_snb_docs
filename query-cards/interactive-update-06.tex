@@ -41,40 +41,52 @@ possible \textbf{edge} types (\emph{hasCreator}, \emph{containerOf},
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Post.id
  & ID
- &  \\ \hline
+ & \texttt{postId}
+ \\ \hline
 		$\mathsf{2}$ & Post.imageFile
  & String
- &  \\ \hline
+ & \texttt{imageFile}
+ \\ \hline
 		$\mathsf{3}$ & Post.creationDate
  & DateTime
- &  \\ \hline
+ & \texttt{creationDate}
+ \\ \hline
 		$\mathsf{4}$ & Post.locationIp
  & String
- &  \\ \hline
+ & \texttt{locationIp}
+ \\ \hline
 		$\mathsf{5}$ & Post.browserUsed
  & String
- &  \\ \hline
+ & \texttt{browserUsed}
+ \\ \hline
 		$\mathsf{6}$ & Post.language
  & String
- &  \\ \hline
+ & \texttt{language}
+ \\ \hline
 		$\mathsf{7}$ & Post.content
  & Text
- &  \\ \hline
+ & \texttt{content}
+ \\ \hline
 		$\mathsf{8}$ & Post.length
  & 32-bit Integer
- &  \\ \hline
+ & \texttt{length}
+ \\ \hline
 		$\mathsf{9}$ & Post-hasCreator-\textgreater{}Person.id
  & ID
- &  \\ \hline
+ & \texttt{authorPersonId}
+ \\ \hline
 		$\mathsf{10}$ & Post\textless{}-containerOf-Forum.id
  & ID
- &  \\ \hline
+ & \texttt{forumId}
+ \\ \hline
 		$\mathsf{11}$ & Post-isLocatedIn-\textgreater{}Country.id
  & ID
- &  \\ \hline
+ & \texttt{countryId}
+ \\ \hline
 		$\mathsf{12}$ & Post-hasTag-\textgreater{}Tag.id
  & \{ID\}
- &  \\ \hline
+ & \texttt{tagIds}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

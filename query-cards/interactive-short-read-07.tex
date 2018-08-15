@@ -42,7 +42,8 @@ is same as original author, return false for \texttt{knows} flag.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Message.id
  & ID
- &  \\ \hline
+ & \texttt{messageId}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
@@ -50,19 +51,25 @@ is same as original author, return false for \texttt{knows} flag.
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Message\textless{}-replyOf-Comment.id & ID & R &
-				 \\ \hline
+				\texttt{commentId}
+ \\ \hline
 		$\mathsf{2}$ & Message\textless{}-replyOf-Comment.content & String & R &
-				 \\ \hline
+				\texttt{commentContent}
+ \\ \hline
 		$\mathsf{3}$ & Message\textless{}-replyOf-Comment.creationDate & DateTime & R &
-				 \\ \hline
+				\texttt{commentCreationDate}
+ \\ \hline
 		$\mathsf{4}$ & Comment-hasCreator-\textgreater{}Person.id & ID & R &
-				 \\ \hline
+				\texttt{replyAuthorId}
+ \\ \hline
 		$\mathsf{5}$ & Comment-hasCreator-\textgreater{}Person.firstName & String & R &
-				 \\ \hline
+				\texttt{replyAuthorFirstName}
+ \\ \hline
 		$\mathsf{6}$ & Comment-hasCreator-\textgreater{}Person.lastName & String & R &
-				 \\ \hline
+				\texttt{replyAuthorLastName}
+ \\ \hline
 		$\mathsf{7}$ & knows & Boolean & C &
-				Original message author knows reply author
+				\texttt{replyAuthorKnowsOriginalMessageAuthor}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

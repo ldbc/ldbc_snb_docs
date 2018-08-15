@@ -10,14 +10,20 @@ description: |
 parameters:
   - name: Message.id
     type: ID
+    description: "`messageId`"
 result:
   - name: Message<-containerOf-Forum.id
     type: ID
+    description: "`forumId`"
   - name: Message<-containerOf-Forum.title
     type: String
+    description: "`forumTitle`"
   - name: Message<-containerOf-Forum-hasModerator->Person.id
     type: ID
+    description: "`moderatorId`"
   - name: Message<-containerOf-Forum-hasModerator->Person.firstName
     type: String
+    description: "`moderatorFirstName`"
   - name: Message<-containerOf-Forum-hasModerator->Person.lastName
     type: String
+    description: "`moderatorLastName`"

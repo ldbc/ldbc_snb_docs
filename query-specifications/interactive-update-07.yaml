@@ -6,27 +6,36 @@ description: Add a *Comment* **node** replying to a *Post*/*Comment*, connected 
 parameters:
   - name: Comment.id
     type: ID
+    description: "`commentId`"
   - name: Comment.creationDate
     type: DateTime
+    description: "`creationDate`"
   - name: Comment.locationIp
     type: String
+    description: "`locationIp`"
   - name: Comment.browserUsed
     type: String
+    description: "`browserUsed`"
   - name: Comment.content
     type: Text
+    description: "`content`"
   - name: Comment.length
     type: 32-bit Integer
+    description: "`length`"
   - name: Comment-hasCreator->Person.id
     type: ID
+    description: "`authorPersonId`"
   - name: Comment-isLocatedIn->Country.id
     type: ID
+    description: "`countryId`"
   - name: Comment-replyOf->Post.id
     type: ID
     category: calculated
-    description: $-1$ if the *Comment* is a reply of a *Comment*
+    description: "`replyToPostId`, $-1$ if the *Comment* is a reply of a *Comment*"
   - name: Comment-replyOf->Comment.id
     type: ID
     category: calculated
-    description: $-1$ if the *Comment* is a reply of a *Post*
+    description: "`replyToCommentId`, $-1$ if the *Comment* is a reply of a *Post*"
   - name: Comment-hasTag->Tag.id
     type: \{ID\}
+    description: "`tagIds`"

@@ -7,15 +7,20 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`personId`"
 result:
   - name: Person.id
     type: ID
+    description: "`personId`"
   - name: Person.firstName
     type: String
+    description: "`firstName`"
   - name: Person.lastName
     type: String
+    description: "`lastName`"
   - name: Knows.creationDate
     type: DateTime
+    description: "`friendshipCreationDate`"
 sort:
   - name: Knows.creationDate
     direction: desc

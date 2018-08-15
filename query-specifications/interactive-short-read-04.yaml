@@ -7,8 +7,11 @@ description: |
 parameters:
   - name: Message.id
     type: ID
+    description: "`messageId`"
 result:
   - name: Message.creationDate
     type: ID
+    description: "`messageCreationDate`"
   - name: Message.content or Post.imageFile
     type: String
+    description: "`messageContent`"

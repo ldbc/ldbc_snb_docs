@@ -41,7 +41,8 @@ the thread which the comment is replying to.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Message.id
  & ID
- &  \\ \hline
+ & \texttt{messageId}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %
@@ -49,15 +50,20 @@ the thread which the comment is replying to.
 		result &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		$\mathsf{1}$ & Message\textless{}-containerOf-Forum.id & ID & R &
-				 \\ \hline
+				\texttt{forumId}
+ \\ \hline
 		$\mathsf{2}$ & Message\textless{}-containerOf-Forum.title & String & R &
-				 \\ \hline
+				\texttt{forumTitle}
+ \\ \hline
 		$\mathsf{3}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.id & ID & R &
-				 \\ \hline
+				\texttt{moderatorId}
+ \\ \hline
 		$\mathsf{4}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.firstName & String & R &
-				 \\ \hline
+				\texttt{moderatorFirstName}
+ \\ \hline
 		$\mathsf{5}$ & Message\textless{}-containerOf-Forum-hasModerator-\textgreater{}Person.lastName & String & R &
-				 \\ \hline
+				\texttt{moderatorLastName}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

@@ -40,48 +40,62 @@ possible \textbf{edge} types.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Person.id
  & ID
- &  \\ \hline
+ & \texttt{personId}
+ \\ \hline
 		$\mathsf{2}$ & Person.firstName
  & String
- &  \\ \hline
+ & \texttt{personFirstName}
+ \\ \hline
 		$\mathsf{3}$ & Person.lastName
  & String
- &  \\ \hline
+ & \texttt{personLastName}
+ \\ \hline
 		$\mathsf{4}$ & Person.gender
  & String
- &  \\ \hline
+ & \texttt{gender}
+ \\ \hline
 		$\mathsf{5}$ & Person.birthDay
  & Date
- &  \\ \hline
+ & \texttt{birthday}
+ \\ \hline
 		$\mathsf{6}$ & Person.creationDate
  & DateTime
- &  \\ \hline
+ & \texttt{creationDate}
+ \\ \hline
 		$\mathsf{7}$ & Person.locationIp
  & String
- &  \\ \hline
+ & \texttt{locationIp}
+ \\ \hline
 		$\mathsf{8}$ & Person.browserUsed
  & String
- &  \\ \hline
+ & \texttt{browserUsed}
+ \\ \hline
 		$\mathsf{9}$ & Person-isLocatedIn-\textgreater{}City.id
  & ID
- &  \\ \hline
+ & \texttt{cityId}
+ \\ \hline
 		$\mathsf{10}$ & Person.speaks
  & \{String\}
- &  \\ \hline
+ & \texttt{languages}
+ \\ \hline
 		$\mathsf{11}$ & Person.email
  & \{String\}
- &  \\ \hline
+ & \texttt{emails}
+ \\ \hline
 		$\mathsf{12}$ & Person-hasInterest-\textgreater{}Tag.id
  & \{ID\}
- &  \\ \hline
+ & \texttt{tagIds}
+ \\ \hline
 		$\mathsf{13}$ & (Person-studyAt-\textgreater{}University.id,
 Person-studyAt-\textgreater{}.classYear)
  & \{(ID, 32-bit Integer)\}
- &  \\ \hline
+ & \texttt{studyAt}
+ \\ \hline
 		$\mathsf{14}$ & (Person-workAt-\textgreater{}Company.id,
 Person-workAt-\textgreater{}.workFrom)
  & \{(ID, 32-bit Integer)\}
- &  \\ \hline
+ & \texttt{workAt}
+ \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
 %

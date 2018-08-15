@@ -6,9 +6,10 @@ description: Add a friendship **edge** (*knows*) between two *Persons*.
 parameters:
   - name: Person.id
     type: ID
-    description: "*Person* 1"
+    description: "`person1Id`"
   - name: Person.id
     type: ID
-    description: "*Person* 2"
+    description: "`person2Id`"
   - name: Person-knows->.creationDate
     type: DateTime
+    description: "`creationDate`"

@@ -6,25 +6,37 @@ description: Add a *Post* **node** to the social network connected by 4 possible
 parameters:
   - name: Post.id
     type: ID
+    description: "`postId`"
   - name: Post.imageFile
     type: String
+    description: "`imageFile`"
   - name: Post.creationDate
     type: DateTime
+    description: "`creationDate`"
   - name: Post.locationIp
     type: String
+    description: "`locationIp`"
   - name: Post.browserUsed
     type: String
+    description: "`browserUsed`"
   - name: Post.language
     type: String
+    description: "`language`"
   - name: Post.content
     type: Text
+    description: "`content`"
   - name: Post.length
     type: 32-bit Integer
+    description: "`length`"
   - name: Post-hasCreator->Person.id
     type: ID
+    description: "`authorPersonId`"
   - name: Post<-containerOf-Forum.id
     type: ID
+    description: "`forumId`"
   - name: Post-isLocatedIn->Country.id
     type: ID
+    description: "`countryId`"
   - name: Post-hasTag->Tag.id
     type: \{ID\}
+    description: "`tagIds`"

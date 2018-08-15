@@ -9,21 +9,29 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`personId`"
 result:
   - name: Message.id
     type: 64-bit Integer
+    description: "`messageId`"
   - name: Message.content or Post.imageFile
     type: String
+    description: "`messageContent`"
   - name: Message.creationDate
     type: DateTime
+    description: "`messageCreationDate`"
   - name: Post.id or Comment-replyOf*->Post.id
     type: ID
+    description: "`originalPostId`"
   - name: Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id
     type: ID
+    description: "`originalPostAuthorId`"
   - name: Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName
     type: String
+    description: "`originalPostAuthorFirstName`"
   - name: Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName
     type: String
+    description: "`originalPostAuthorLastName`"
 sort:
   - name: Message.creationDate
     direction: desc

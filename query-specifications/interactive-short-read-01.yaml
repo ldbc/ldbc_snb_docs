@@ -7,20 +7,29 @@ description: |
 parameters:
   - name: Person.id
     type: ID
+    description: "`personId`"
 result:
   - name: Person.firstName
     type: String
+    description: "`firstName`"
   - name: Person.lastName
     type: String
+    description: "`lastName`"
   - name: Person.birthDay
     type: Date
+    description: "`birthday`"
   - name: Person.locationIP
     type: String
+    description: "`locationIp`"
   - name: Person.browserUsed
     type: String
+    description: "`browserUsed`"
   - name: Person-isLocatedIn->Place.id
     type: 32-bit Integer
+    description: "`cityId`"
   - name: Person.gender
     type: String
+    description: "`gender`"
   - name: Person.creationDate
     type: DateTime
+    description: "`creationDate`"
