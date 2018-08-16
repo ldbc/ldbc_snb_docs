@@ -8,10 +8,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
-    description: "`Person`"
+    description: "`personId`"
   - name: date
     type: DateTime
-    description: "`Date0`"
+    description: "`maxDate`"
 result:
   - name: Message-hasCreator->Person.id
     type: ID

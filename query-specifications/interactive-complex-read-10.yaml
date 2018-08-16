@@ -13,7 +13,7 @@ description: |
 parameters:
   - name: Person.id
     type: ID
-    description: "`Person`"
+    description: "`personId`"
   - name: month
     type: 32-bit Integer
     description: "`month` -- Between 1 and 12. Implementations may also pass the next month as an additional `nextMonth` parameter"

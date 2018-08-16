@@ -49,24 +49,24 @@ whose Location is not Country X or Country Y.
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		$\mathsf{1}$ & Person.id
  & ID
- & \texttt{Person}
+ & \texttt{personId}
  \\ \hline
 		$\mathsf{2}$ & CountryX.name
  & String
- & \texttt{Country1}
+ & \texttt{countryXName}
  \\ \hline
 		$\mathsf{3}$ & CountryY.name
  & String
- & \texttt{Country2}
+ & \texttt{countryYName}
  \\ \hline
 		$\mathsf{4}$ & startDate
  & Date
- & \texttt{Date0} -- Beginning of requested period
+ & \texttt{startDate} -- Beginning of requested period
  \\ \hline
 		$\mathsf{5}$ & duration
  & 32-bit Integer
- & \texttt{Duration} -- Duration of requested period, in days the interval
-{[}startDate, startDate + Duration) is closed-open
+ & \texttt{durationDays} -- Duration of requested period, in days the
+interval {[}startDate, startDate + Duration) is closed-open
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

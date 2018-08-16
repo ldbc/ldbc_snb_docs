@@ -12,10 +12,10 @@ description: |
 parameters:
   - name: Person.id
     type: ID
-    description: "`Person`"
+    description: "`personId`"
   - name: date
     type: Date
-    description: "`Date0`"
+    description: "`minDate`"
 result:
   - name: Forum.title
     type: String

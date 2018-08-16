@@ -13,10 +13,10 @@ description: |
 parameters:
   - name: person1.id
     type: ID
-    description: "`Person1`"
+    description: "`person1Id`"
   - name: person2.id
     type: ID
-    description: "`Person2`"
+    description: "`person2Id`"
 result:
   - name: length
     type: 32-bit Integer
