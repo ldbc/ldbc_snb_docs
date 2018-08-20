@@ -37,13 +37,27 @@
 %
 	pattern & \multicolumn{1}{c|}{\includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10}} \\ \hline
 %
-	desc. & Given a start Person, find that Person's friends of friends (excluding
-start Person, and immediate friends), who were born on or after the 21st
-of a given month (in any year) and before the 22nd of the following
-month. Calculate the similarity between each of these Persons and start
-Person, where commonInterestScore is defined as follows: number of Posts
-created by that Person, such that the Post has a Tag that start Person
-is Interested in
+	desc. & Given a start \emph{Person} (\texttt{rootPerson}), find that
+\emph{Person}'s friends of friends (\texttt{person}) - excluding
+\texttt{rootPerson}, and immediate friends -, who were born on or after
+the 21st of a given month (in any year) and before the 22nd of the
+following month. Calculate the similarity between each \texttt{person}
+and \texttt{rootPerson}, where \texttt{commonInterestScore} is defined
+as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{common} = number of \emph{Posts} created by \texttt{person},
+  such that the \emph{Post} has a \emph{Tag} that \texttt{rootPerson} is
+  interested in
+\item
+  \texttt{uncommon} = number of \emph{Posts} created by \texttt{person},
+  such that the \emph{Post} has no \emph{Tag} that \texttt{rootPerson}
+  is interested in
+\item
+  \texttt{commonInterestScore} = \texttt{common} - \texttt{uncommon}
+\end{itemize}
  \\ \hline
 %
 	
@@ -74,7 +88,8 @@ next month as an additional \texttt{nextMonth} parameter
 				\texttt{personLastName}
  \\ \hline
 		$\mathsf{4}$ & commonInterestScore & 32-bit Integer & C &
-				\texttt{commonInterestScore}
+				\texttt{commonInterestScore} (also called \texttt{similarity} in earlier
+versions of the spec)
  \\ \hline
 		$\mathsf{5}$ & Person.gender & String & R &
 				\texttt{personGender}

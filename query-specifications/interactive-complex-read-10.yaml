@@ -4,13 +4,14 @@ number: 10
 title: Friend recommendation
 description: |
   Given a start *Person* (`rootPerson`), find that *Person*'s friends of friends
-  (`Person`) - excluding `rootPerson`, and immediate friends -, 
+  (`person`) - excluding `rootPerson`, and immediate friends -, 
   who were born on or after the 21st of a given month (in any year) and before the
   22nd of the following month. Calculate the similarity between each
-  `person` and `rootPerson`, where `commonInterestScore`
-  is defined as follows: number of *Posts* created by that `person`,
-  such that the *Post* has a *Tag* that `rootPerson` is Interested in.
+  `person` and `rootPerson`, where `commonInterestScore` is defined as follows:
 
+  * `common`   = number of *Posts* created by `person`, such that the *Post* has a  *Tag* that `rootPerson` is interested in
+  * `uncommon` = number of *Posts* created by `person`, such that the *Post* has no *Tag* that `rootPerson` is interested in
+  * `commonInterestScore` = `common` - `uncommon`
 parameters:
   - name: Person.id
     type: ID
@@ -31,7 +32,7 @@ result:
   - name: commonInterestScore
     type: 32-bit Integer
     category: calculated
-    description: "`commonInterestScore`"
+    description: "`commonInterestScore` (also called `similarity` in earlier versions of the spec)"
   - name: Person.gender
     type: String
     description: "`personGender`"
