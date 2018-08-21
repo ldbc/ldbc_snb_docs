@@ -221,7 +221,7 @@ the attributes of Person entity.
         \hline
         gender & String  & The gender of the person.\\
         \hline
-        birthDay & Date  & The birthday of the person.\\
+        birthday & Date  & The birthday of the person.\\
         \hline
         email & Long String[1..*]  & The set of emails the person has.\\
         \hline
@@ -455,7 +455,7 @@ need of generating correlated values: in particular, the ranking function is
 typically parameterized by some parameters: different parameter values result
 in different rankings. For example, in the case of a dictionary of property
 firstName, the popularity of first names, might depend on the gender, country
-and birthDate properties. Thus, the fact that the popularity of first names in
+and birthday properties. Thus, the fact that the popularity of first names in
 different countries and times is different, is reflected by the different ranks
 produced by function $R$ over the full dictionary of names.  \datagen uses a
 dictionary for each literal property, as well as ranking functions for all
