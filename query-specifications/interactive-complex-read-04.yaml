@@ -3,7 +3,7 @@ operation: complex
 number: 4
 title: New topics
 description: |
-  Given a start Person, find Tags that are attached to Posts that
+  Given a start Person (`person`), find Tags that are attached to Posts that
   were created by that Person's friends.  Only include Tags that were
   attached to friends' Posts created within a given time interval, and that
   were never attached to friends' Posts created before this interval.
@@ -16,7 +16,7 @@ parameters:
     description: "`startDate`"
   - name: duration
     type: 32-bit Integer
-    description: "`durationDays` -- Duration of requested period, in days. The interval [startDate, startDate + Duration) is closed-open"
+    description: "`durationDays` -- Duration of requested period, in days. The interval [startDate, startDate + duration) is closed-open"
 result:
   - name: Tag.name
     type: String

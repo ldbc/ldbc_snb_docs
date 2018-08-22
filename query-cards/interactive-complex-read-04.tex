@@ -37,10 +37,11 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-04} \tabularnewline \hline
 %
-	desc. & Given a start Person, find Tags that are attached to Posts that were
-created by that Person's friends. Only include Tags that were attached
-to friends' Posts created within a given time interval, and that were
-never attached to friends' Posts created before this interval.
+	desc. & Given a start Person (\texttt{person}), find Tags that are attached to
+Posts that were created by that Person's friends. Only include Tags that
+were attached to friends' Posts created within a given time interval,
+and that were never attached to friends' Posts created before this
+interval.
  \\ \hline
 %
 	
@@ -57,7 +58,7 @@ never attached to friends' Posts created before this interval.
 		$\mathsf{3}$ & duration
  & 32-bit Integer
  & \texttt{durationDays} -- Duration of requested period, in days. The
-interval {[}startDate, startDate + Duration) is closed-open
+interval {[}startDate, startDate + duration) is closed-open
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
