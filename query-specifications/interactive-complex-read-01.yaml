@@ -45,7 +45,7 @@ result:
   - name: \{Person.speaks\}
     type: \{String\}
     description: "`friendLanguages`"
-  - name: Person-isLocatedIn->Place.name
+  - name: Person-isLocatedIn->City.name
     type: String
     description: "`friendCityName`"
   - name: \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}
