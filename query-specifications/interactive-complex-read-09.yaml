@@ -39,7 +39,7 @@ sort:
   - name: Message.id
     direction: asc
 limit: 20
-choke_points: [1.1, 1.2, 2.2, 2.3, 3.2, 3.3]
+choke_points: [1.1, 1.2, 2.2, 2.3, 3.2, 3.3, 8.5]
 relevance: |
   This query looks for paths of length two or three, starting from a given Person, moving to its friends and friends of
   friends, and ending at their created Messages. This is one of the most complex queries, as the list of choke-points

@@ -48,7 +48,7 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-choke_points: [2.2, 2.3, 3.3, 5.1]
+choke_points: [2.2, 2.3, 3.3, 5.1, 8.1, 8.3]
 relevance: |
   This query looks for paths of length two, starting from a given Person, moving
   to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,

@@ -37,7 +37,7 @@ sort:
   - name: Message.id
     direction: asc
 limit: 20
-choke_points: [1.1, 2.2, 2.3, 3.2]
+choke_points: [1.1, 2.2, 2.3, 3.2, 8.5]
 relevance: |
   This is a navigational query looking for paths of length two, starting from a given Person, going to their friends and
   from them, moving to their published Posts and Comments. This query exercices both the optimizer and how data is

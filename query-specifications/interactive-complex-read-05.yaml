@@ -30,7 +30,7 @@ sort:
   - name: Forum.id
     direction: asc
 limit: 20
-choke_points: [2.3, 3.3]
+choke_points: [2.3, 3.3, 8.2, 8.5]
 relevance: |
   This query looks for paths of length two and three, starting from a given Person, moving to friends and friends of
   friends, and then getting the Forums they are members of. Besides testing the ability of the query optimizer to select

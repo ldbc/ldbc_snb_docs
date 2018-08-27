@@ -16,10 +16,10 @@
         {%- if queries[loop.index0 - 1].0[0] != queries[loop.index0].0[0] %}\hline{% endif %}
         \queryRefCard{ {{- query.0 -}} }{ {%- if query.1 == "Interactive" %}IC{% else %}{{ query.1 }}{% endif -%} }{ {{- query.3 -}} }
         {% for choke_point in choke_points -%}
-            & {% if choke_point in query_choke_point[query.0] %} \yes {% else %} {% endif %}
+            & {% if choke_point in query_choke_point[query.0] %} \yes {%- else %} {% endif %}
         {% endfor %} \\ \hline
     {%- endif -%}
-{% endfor -%}
+{% endfor %}
 
 \end{tabular}
 \caption{Coverage of choke points by queries}

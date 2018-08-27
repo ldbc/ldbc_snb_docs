@@ -42,7 +42,7 @@ sort:
   - name: Person.id
     direction: asc
 limit: 20
-choke_points: [3.3, 7.2, 7.3]
+choke_points: [3.3, 7.2, 7.3, 8.2]
 relevance: |
   This query looks for paths of length three, starting at a Person, moving to its friends, the to their Comments and
   ending at the Post the Comments are replying. The chain from original post to the reply is transitive. The traversal
