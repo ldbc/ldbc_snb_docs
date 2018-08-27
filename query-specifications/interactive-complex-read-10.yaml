@@ -40,7 +40,7 @@ result:
     type: String
     description: "`personCityName`"
 sort:
-  - name: similarity
+  - name: commonInterestScore
     direction: desc
   - name: Person.id
     direction: asc
