@@ -13,3 +13,9 @@ that contain at least one \emph{Tag} belonging to a given
 \emph{Message}, retrieve all of its \emph{Tags}.
 Group the results by \emph{Persons} and \emph{Tags}, then count the
 \emph{Messages} by a certain \emph{Person} having a certain \emph{Tag}.
+(Note: it is not yet decided whether a \emph{Person} connected to the
+start \emph{Person} on a trail with a length smaller than
+\texttt{minPathDistance}, but also on a trail with the length in
+\texttt{{[}minPathDistance,\ maxPathDistance{]}} should be included. The
+current reference implementations allow such \emph{Persons}, but this
+might be subject to change in the future.)

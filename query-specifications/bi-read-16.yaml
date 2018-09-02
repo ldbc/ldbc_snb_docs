@@ -10,6 +10,8 @@ description: |
   For each of these *Persons*, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given *TagClass* (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
 
   Group the results by *Persons* and *Tags*, then count the *Messages* by a certain *Person* having a certain *Tag*.
+
+  (Note: it is not yet decided whether a *Person* connected to the start *Person* on a trail with a length smaller than `minPathDistance`, but also on a trail with the length in `[minPathDistance, maxPathDistance]` should be included. The current reference implementations allow such *Persons*, but this might be subject to change in the future.)
 parameters:
   - name: personId
     type: 64-bit Integer
