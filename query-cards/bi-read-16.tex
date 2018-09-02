@@ -51,12 +51,13 @@
 %
 	desc. & Given a \emph{Person}, find all other \emph{Persons} that live in a
 given \texttt{country} and are connected to given \emph{Person} by a
-transitive path with length in range
+transitive trail with length in range
 \texttt{{[}minPathDistance,\ maxPathDistance{]}} through the
 \emph{knows} relation.
 
-In the path, an edge can be only traversed once while nodes can be
-traversed multiple times.
+In the trail, an edge can be only traversed once while nodes can be
+traversed multiple times (as opposed to a path which allows repetitions
+of both nodes and edges).
 
 For each of these \emph{Persons}, retrieve all of their \emph{Messages}
 that contain at least one \emph{Tag} belonging to a given
