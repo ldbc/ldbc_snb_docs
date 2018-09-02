@@ -3,7 +3,7 @@ operation: read
 number: 19
 title: Stranger's interaction
 description: |
-  For all the *Persons* (`person`) born after a certain `date`, find all the `stranger`s they interacted with, where `stranger`s are *Persons* that do not *know* `person`. There is no restriction on the date that `stranger`s were born.
+  For all the *Persons* (`person`) born after a certain `date`, find all the `stranger`s they interacted with, where `stranger`s are *Persons* that do not *know* `person`. There is no restriction on the date that `stranger`s were born. (Of course, `person` and `stranger` are required to be two different *Persons*.)
 
   Consider only `stranger`s that are
 
