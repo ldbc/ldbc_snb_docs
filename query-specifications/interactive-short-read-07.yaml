@@ -37,5 +37,5 @@ result:
 sort:
   - name: Message<-replyOf-Comment.creationDate
     direction: desc
-  - name: Message-hasCreator->Person.id
+  - name: Comment-hasCreator->Person.id
     direction: asc
