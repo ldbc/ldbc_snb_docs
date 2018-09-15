@@ -24,7 +24,7 @@ parameters:
     description: "`startDate` -- Beginning of requested period"
   - name: duration
     type: 32-bit Integer
-    description: "`durationDays` -- Duration of requested period, in days the interval [startDate, startDate + Duration) is closed-open"
+    description: "`durationDays` -- Duration of requested period, in days the interval `[startDate, startDate + duration)` is closed-open"
 result:
   - name: Person.id
     type: ID
