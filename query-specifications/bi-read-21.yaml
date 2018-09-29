@@ -9,7 +9,7 @@ description: |
 
   * `zombieLikeCount`: the number of *likes* received from other zombies.
   * `totalLikeCount`: the total number of *likes* received.
-  * `zombieScore`: `zombieLikeCount` / `totalLikeCount`. If the value of `totalLikeCount` is 0, the `zombieScore` of the `zombie` should be 0.
+  * `zombieScore`: `zombieLikeCount` / `totalLikeCount`. If the value of `totalLikeCount` is 0, the `zombieScore` of the `zombie` should be 0.0.
 
   For both `zombieLikeCount` and `totalLikeCount`, only consider *likes* received from profiles that were created before the given `endDate`.
 parameters:
