@@ -2,7 +2,7 @@ workload: Interactive
 operation: update
 number: 7
 title: Add Comment
-description: Add a *Comment* **node** replying to a *Post*/*Comment*, connected to the network by 5 possible **edge** types (*replyOf*, *hasCreator*, *containerOf*, *isLocatedIn*, *hasTag*).
+description: Add a *Comment* **node** replying to a *Post*/*Comment*, connected to the network by 4 possible **edge** types (*replyOf*, *hasCreator*, *isLocatedIn*, *hasTag*).
 parameters:
   - name: Comment.id
     type: ID
