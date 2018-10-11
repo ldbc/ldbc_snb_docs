@@ -26,18 +26,18 @@ result:
   - name: Person.lastName
     type: String
     description: "`personLastName`"
-  - name: Person-worksAt->Organisation.name
+  - name: Person-workAt->Organisation.name
     type: String
     description: "`organizationName`"
-  - name: Person-worksAt->.worksFrom
+  - name: Person-workAt->.worksFrom
     type: 32-bit Integer
     description: "`organizationWorkFromYear`"
 sort:
-  - name: Person-worksAt->.worksFrom
+  - name: Person-workAt->.worksFrom
     direction: asc
   - name: Person.id
     direction: asc
-  - name: Person-worksAt->Organisation.name
+  - name: Person-workAt->Organisation.name
     direction: desc
 limit: 10
 choke_points: [1.3, 2.3, 2.4, 3.3]
