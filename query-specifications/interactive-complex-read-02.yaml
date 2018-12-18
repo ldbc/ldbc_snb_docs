@@ -24,13 +24,13 @@ result:
     description: "`personLastName`"
   - name: Message.id
     type: ID
-    description: "`postOrCommentId`"
+    description: "`messageId`"
   - name: Message.content or Post.imageFile
     type: String
-    description: "`postOrCommentContent`"
+    description: "`messageContent`"
   - name: Message.creationDate
     type: DateTime
-    description: "`postOrCommentCreationDate`"
+    description: "`messageCreationDate`"
 sort:
   - name: Message.creationDate
     direction: desc
