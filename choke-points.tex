@@ -523,16 +523,12 @@ systems~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18}. Hence, additionally to
 reachability-style checks, a language should be able to express
 queries that operate on elements of a path, \eg calculate a score on each edge
 of the path.
-Also, some use cases specify uniqueness constraints on paths, \eg that a certain path must
-not have repeated nodes (referred to as ``walks'' in graph theory) or 
-not have repeated edges (``trails'' in graph theory). More precisely, 
-paper~\cite{DBLP:journals/csur/AnglesABHRV17} defines \emph{homomorphism-based semantics} 
-(no constraints on repetitions) and multiple flavours of \emph{isomorphism-based semantics}:
-\begin{itemize}
-\item \emph{no-repeated-node semantics} (also known as \emph{fully isomorphic matching}),
-\item \emph{no-repeated-edge semantics} (also known as \emph{edge-isomorphic matching}),
-\item \emph{no-repeated-anything semantics} (not used in the context of this work).
-\end{itemize}
+Also, some use cases specify uniqueness constraints on paths~\cite{DBLP:journals/csur/AnglesABHRV17}:
+\emph{arbitrary path},
+\emph{shortest path},
+\emph{no-repeated-node semantics} (also known as \emph{simple paths}), and
+\emph{no-repeated-edge semantics} (also known as \emph{trails}).
+Other variants are also used in rare cases, such as \emph{maximal} (non-expandable) or \emph{minimal} (non-contractable) paths, and \emph{longest trails} and \emph{longest simple paths}.
 
 \subsubsection{Language-specific notes}
 
