@@ -3,7 +3,7 @@ operation: read
 number: 16
 title: Experts in social circle
 description: |
-  Given a *Person*, find all other *Persons* that live in a given `country` and are connected to given *Person* by a transitive trail with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
+  Given a *Person*, find all other *Persons* that live in a given *Country* and are connected to given *Person* by a transitive trail with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
 
   In the trail, an edge can be only traversed once while nodes can be traversed multiple times (as opposed to a path which allows repetitions of both nodes and edges).
 
