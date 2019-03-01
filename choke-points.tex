@@ -29,7 +29,7 @@ Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP \
 
 \cpSection[1.2]{1.1}{QOPT}{Interesting orders}
 
-This choke-point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indexes providing key order, other operators also preserve or even induce tuple orderings.
+This choke point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indexes providing key order, other operators also preserve or even induce tuple orderings.
 Sort-based operators create new orderings, typically the probe-side of a hash join conserves its order, etc.
 
 \input{query-cards/cp-1-1}
@@ -38,7 +38,7 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 
 \cpSection[1.1]{1.2}{QEXE}{High Cardinality group-by performance}
 
-This choke-point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
+This choke point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
 In such a case, if an aggregation produces a significant number of groups, intra query parallelization can be exploited as each thread may make its own partial aggregation.
 Then, to produce the result, these have to be re-aggregated. In order to avoid this, the tuples entering the aggregation operator may be partitioned by a hash of the grouping key and be sent to the appropriate partition.
 Each partition would have its own thread so that only that thread would write the aggregation, hence avoiding costly critical sections as well. A high cardinality distinct modifier in a query is a special case of this choke point.
@@ -51,7 +51,7 @@ We further note that scale-out systems have an extra incentive for partitioning 
 
 \cpSection{1.3}{QOPT}{Top-k pushdown}
 
-This choke-point tests the ability of the query optimizer to perform optimizations based on top-$k$ selections. Many times queries demand for returning the top-$k$ elements based on some property.
+This choke point tests the ability of the query optimizer to perform optimizations based on top-$k$ selections. Many times queries demand for returning the top-$k$ elements based on some property.
 Engines can exploit that once $k$ results are obtained, extra restrictions in a selection can be added based on the properties of the $k$th element currently in the top-$k$, being more restrictive as the query advances, instead of sorting all elements and picking the highest $k$.
 
 \input{query-cards/cp-1-3}
@@ -60,7 +60,7 @@ Engines can exploit that once $k$ results are obtained, extra restrictions in a 
 
 \cpSection[1.3]{1.4}{QEXE}{Low Cardinality group-by performance}
 
-This choke-point tests the ability to efficiently perform group by evaluation
+This choke point tests the ability to efficiently perform group by evaluation
 when only a very limited set of groups is available.  This can require special
 strategies for parallelization, \eg pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.
 
@@ -76,9 +76,9 @@ strategies for parallelization, \eg pre-aggregation when possible. This case als
 
 \cpSection[2.3]{2.1}{QOPT}{Rich join order optimization}
 
-This choke-point tests the ability of the query optimizer to find optimal join orders. A graph can be traversed in different ways. In the relational model, this is equivalent to different join orders.
+This choke point tests the ability of the query optimizer to find optimal join orders. A graph can be traversed in different ways. In the relational model, this is equivalent to different join orders.
 The execution time of these orders may differ by orders of magnitude. Therefore, finding an efficient join (traversal) order is important, which in general, requires enumeration of all the possibilities.
-The enumeration is complicated by operators that are not freely re-orderable like semi-, \mbox{anti-,} and outer-joins. Because of this difficulty most join enumeration algorithms do not enumerate all possible plans, and therefore can miss the optimal join order. Therefore, this chokepoint tests the ability of the query optimizer to find optimal join (traversal) orders.
+The enumeration is complicated by operators that are not freely re-orderable like semi-, \mbox{anti-,} and outer-joins. Because of this difficulty most join enumeration algorithms do not enumerate all possible plans, and therefore can miss the optimal join order. Therefore, this choke point tests the ability of the query optimizer to find optimal join (traversal) orders.
 
 \input{query-cards/cp-2-1}
 
@@ -86,7 +86,7 @@ The enumeration is complicated by operators that are not freely re-orderable lik
 
 \cpSection[2.4]{2.2}{QOPT}{Late projection}
 
-This choke-point tests the ability of the query optimizer to delay the projection of unneeded attributes until late in the execution. Queries where certain columns are only needed late in the query.
+This choke point tests the ability of the query optimizer to delay the projection of unneeded attributes until late in the execution. Queries where certain columns are only needed late in the query.
 In such a situation, it is better to omit them from initial table scans, as fetching them later by row-id with a separate scan operator, which is joined to the intermediate query result, can save temporal space, and therefore I/O.
 Late projection does have a trade-off involving locality, since late in the plan the tuples may be in a different order, and scattered I/O in terms of tuples/second is much more expensive than sequential I/O.
 Late projection specifically makes sense in queries where the late use of these columns happens at a moment where the amount of tuples involved has been considerably reduced;
@@ -98,7 +98,7 @@ for example after an aggregation with only few unique group-by keys, or a top-$k
 
 \cpSection{2.3}{QOPT}{Join type selection}
 
-This choke-point tests the ability of the query optimizer to select the proper join operator type, which implies accurate estimates of cardinalities.
+This choke point tests the ability of the query optimizer to select the proper join operator type, which implies accurate estimates of cardinalities.
 Depending on the cardinalities of both sides of a join, a hash or an index index based join operator is more appropriate.
 This is especially important with column stores, where one usually has an index on everything. Deciding to use a hash join requires a good estimation of cardinalities on both the probe and build sides.
 In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns.
@@ -110,7 +110,7 @@ There is a break even point between index and hash based plans, depending on the
 
 \cpSection[2.2]{2.4}{QOPT}{Sparse foreign key joins}
 
-This choke-point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
+This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
 
 \input{query-cards/cp-2-4}
 
@@ -124,7 +124,7 @@ This choke-point tests the performance of join operators when the join is sparse
 
 \cpSection[3.3]{3.1}{QOPT}{Detecting correlation}
 
-This choke-point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indexes, the question then is which of the date or data columns to use as key.
+This choke point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indexes, the question then is which of the date or data columns to use as key.
 In fact it should not matter which column is used, as range- propagation between correlated attributes of the same table is relatively easy. One way is through the creation of multi-attribute histograms after detection of attribute correlation.
 With MinMax indexes, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
 
@@ -134,7 +134,7 @@ With MinMax indexes, range-predicates on any column can be translated into quali
 
 \cpSection{3.2}{STORAGE}{Dimensional clustering}
 
-This chokepoint tests suitability of the identifiers assigned to entities by the storage system to better exploit data locality. A data model where each entity has a unique synthetic identifier,
+This choke point tests suitability of the identifiers assigned to entities by the storage system to better exploit data locality. A data model where each entity has a unique synthetic identifier,
 \eg RDF or graph models, has some choice in assigning a value to this identifier.
 The properties of the entity being identified may affect this, \eg type (label), other dependent properties,
 \eg geographic location, date, position in a hierarchy etc, depending on the application. Such identifier choice may create locality which in turn improves efficiency of compression or index access.
@@ -145,7 +145,7 @@ The properties of the entity being identified may affect this, \eg type (label),
 
 \cpSection{3.3}{QEXE}{Scattered index access patterns}
 
-This choke-point tests the performance of indexes when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
+This choke point tests the performance of indexes when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
 Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
 
@@ -161,7 +161,7 @@ Also detecting absence of locality should turn off any locality dependent optimi
 
 \cpSection[4.2a]{4.1}{QOPT}{Common subexpression elimination}
 
-This choke-point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
+This choke point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
 CSE should recognize also that average aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
 
 \input{query-cards/cp-4-1}
@@ -170,7 +170,7 @@ CSE should recognize also that average aggregates can be derived afterwards by d
 
 \cpSection[4.2d]{4.2}{QOPT}{Complex boolean expression joins and selections}
 
-This choke-point tests the ability of the query optimizer to reorder the execution of boolean expressions to improve the performance. Some boolean expressions are complex, with possibilities for alternative optimal evaluation orders.
+This choke point tests the ability of the query optimizer to reorder the execution of boolean expressions to improve the performance. Some boolean expressions are complex, with possibilities for alternative optimal evaluation orders.
 For instance, the optimizer may reorder conjunctions to test first those conditions with larger selectivity~\cite{DBLP:conf/vldb/Moerkotte98}.
 
 \input{query-cards/cp-4-2}
@@ -179,7 +179,7 @@ For instance, the optimizer may reorder conjunctions to test first those conditi
 
 \cpSection{4.3}{QEXE}{Low overhead expressions interpretation}
 
-This choke-point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
+This choke point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
 
 \input{query-cards/cp-4-3}
 
@@ -187,7 +187,7 @@ This choke-point tests the ability of efficiently evaluating simple expressions 
 
 \cpSection{4.4}{QEXE}{String matching performance}
 
-This chokepoint tests the ability of efficiently evaluating complex string
+This choke point tests the ability of efficiently evaluating complex string
 matching expressions (\eg via regular expressions).
 
 %\input{query-cards/cp-4-4}
@@ -202,7 +202,7 @@ matching expressions (\eg via regular expressions).
 
 \cpSection[5.1]{5.1}{QOPT}{Flattening sub-queries}
 
-This choke-point tests the ability of the query optimizer to flatten execution plans when there are correlated sub-queries. Many queries have correlated sub-queries and their query plans can be flattened,
+This choke point tests the ability of the query optimizer to flatten execution plans when there are correlated sub-queries. Many queries have correlated sub-queries and their query plans can be flattened,
 such that the correlated sub-query is handled using an equi-join, outer-join or anti-join. To execute queries well, systems need to flatten both sub-queries, the first into an equi-join plan, the second into an anti-join plan.
 Therefore, the execution layer of the database system will benefit from implementing these extended join variants.
 The ill effects of repetitive tuple-at-a-time sub-query execution can also be mitigated if execution systems by using vectorized, or block-wise query execution, allowing to run sub-queries with thousands of input parameters instead of one.
@@ -214,7 +214,7 @@ The ability to look up many keys in an index in one API call creates the opportu
 
 \cpSection[5.3]{5.2}{QEXE}{Overlap between outer and sub-query}
 
-This choke-point tests the ability of the execution engine to reuse results when there is an overlap between the outer query and the sub-query. In some queries, the correlated sub-query and the outer query have the same joins and selections.
+This choke point tests the ability of the execution engine to reuse results when there is an overlap between the outer query and the sub-query. In some queries, the correlated sub-query and the outer query have the same joins and selections.
 In this case, a non-tree, rather DAG-shaped~\cite{DBLP:conf/btw/NeumannM09} query plan would allow to execute the common parts just once, providing the intermediate result stream to both the outer query and correlated sub-query,
 which higher up in the query plan are joined together (using normal query decorrelation rewrites).
 As such, the benchmark rewards systems where the optimizer can detect this and the execution engine supports an operator that can buffer intermediate results and provide them to multiple parent operators.
@@ -225,7 +225,7 @@ As such, the benchmark rewards systems where the optimizer can detect this and t
 
 \cpSection[5.2]{5.3}{QEXE}{Intra-query result reuse}
 
-This choke-point tests the ability of the execution engine to reuse sub-query results when two sub-queries are mostly identical.
+This choke point tests the ability of the execution engine to reuse sub-query results when two sub-queries are mostly identical.
 Some queries have almost identical sub-queries, where some of their internal results can be reused in both sides of the execution plan, thus avoiding to repeat computations.
 
 \input{query-cards/cp-5-3}
@@ -240,7 +240,7 @@ Some queries have almost identical sub-queries, where some of their internal res
 
 \cpSection[6.3]{6.1}{QEXE}{Inter-query result reuse}
 
-This choke-point tests the ability of the query execution engine to reuse results from different queries. Sometimes with a high number of streams a significant amount of identical queries emerge in the resulting workload.
+This choke point tests the ability of the query execution engine to reuse results from different queries. Sometimes with a high number of streams a significant amount of identical queries emerge in the resulting workload.
 The reason is that certain parameters, as generated by the workload generator, have only a limited amount of parameters bindings.
 This weakness opens up the possibility of using a query result cache, to eliminate the repetitive part of the workload.
 A further opportunity that detects even more overlap is the work on recycling, which does not only cache final query results, but also intermediate query results of a "high worth".
@@ -258,7 +258,7 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 
 \cpSection{7.1}{QEXE}{Incremental path computation}
 
-This choke-point tests the ability of the execution engine to reuse work across
+This choke point tests the ability of the execution engine to reuse work across
 graph traversals. For example, when computing paths within a range of distances,
 it is often possible to incrementally compute longer paths by reusing paths of
 shorter distances that were already computed.
@@ -269,7 +269,7 @@ shorter distances that were already computed.
 
 \cpSection{7.2}{QOPT}{Cardinality estimation of transitive paths}
 
-This choke-point tests the ability of the query optimizer to properly estimate the cardinality of intermediate results when executing transitive paths. A transitive path may occur in a ``fact table'' or a ``dimension table'' position.
+This choke point tests the ability of the query optimizer to properly estimate the cardinality of intermediate results when executing transitive paths. A transitive path may occur in a ``fact table'' or a ``dimension table'' position.
 A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy vs. graph neighborhood or transitive closure in a many-to-many connected social network.
 In order to decide proper join order and type, the cardinality of the expansion of the transitive path needs to be correctly estimated.
 This could for example take the form of executing on a sample of the data in the
@@ -283,7 +283,7 @@ Such a plan will be on the other hand very bad for example if the hash table is 
 
 \cpSection{7.3}{QEXE}{Execution of a transitive step}
 
-This choke-point tests the ability of the query execution engine to efficiently execute transitive steps. Graph workloads may have transitive operations, for example finding a shortest path between nodes.
+This choke point tests the ability of the query execution engine to efficiently execute transitive steps. Graph workloads may have transitive operations, for example finding a shortest path between nodes.
 This involves repeated execution of a short lookup, often on many values at the
 same time, while usually having an end condition, \eg the target node being reached or having reached the border of a search going in the opposite direction.
 For the best efficiency, these operations can be merged or tightly coupled to
