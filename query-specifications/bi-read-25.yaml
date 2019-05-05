@@ -33,6 +33,7 @@ result:
 sort:
   - name: weight
     direction: desc
+    description: The order of paths with the same weight is unspecified
   - name: personIds
     direction: asc
     description: The ids in the paths are used for lexicographical sorting
