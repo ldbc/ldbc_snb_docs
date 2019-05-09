@@ -3,14 +3,10 @@ operation: complex
 number: 10
 title: Friend recommendation
 description: |
-  Given a start *Person* (`rootPerson`), find that *Person*'s friends of friends
-  (`person`) - excluding `rootPerson`, and immediate friends -, 
-  who were born on or after the 21st of a given month (in any year) and before the
-  22nd of the following month. Calculate the similarity between each
-  `person` and `rootPerson`, where `commonInterestScore` is defined as follows:
+  Given a start *Person* with id `personId`, find that *Person*'s friends of friends (`person`) -- excluding the start *Person* and his/her immediate friends --, who were born on or after the 21st of a given `month` (in any year) and before the 22nd of the following month. Calculate the similarity between each `person` and the start *Person*, where `commonInterestScore` is defined as follows:
 
-  * `common`   = number of *Posts* created by `person`, such that the *Post* has a  *Tag* that `rootPerson` is interested in
-  * `uncommon` = number of *Posts* created by `person`, such that the *Post* has no *Tag* that `rootPerson` is interested in
+  * `common`   = number of *Posts* created by `person`, such that the *Post* has a  *Tag* that the start *Person*, is interested in
+  * `uncommon` = number of *Posts* created by `person`, such that the *Post* has no *Tag* that the start *Person*, is interested in
   * `commonInterestScore` = `common` - `uncommon`
 parameters:
   - name: Person.id
@@ -47,8 +43,4 @@ sort:
 limit: 10
 choke_points: [2.3, 3.3, 4.1, 4.2, 5.1, 5.2, 6.1, 7.1, 8.6]
 relevance: |
-  This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does
-  widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired
-  over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join
-  for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the
-  tags of the candidate's posts to interests of self should be by hash.
+  This query looks for paths of length two, starting from a *Person* and ending at the friends of their friends. It does widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the *Tags* of the candidate's *Posts* to interests of self should be by hash.

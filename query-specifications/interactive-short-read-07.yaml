@@ -3,7 +3,7 @@ operation: short
 number: 7
 title: Message Replies
 description: |
-  Given a Message, retrieve the (1-hop) Comments that reply to it.
+  Given a *Message*, retrieve the (1-hop) *Comments* that reply to it.
 
   In addition, return a boolean flag `knows` indicating if the author of the reply knows the author of the original message.
   If author is same as original author, return false for `knows` flag.

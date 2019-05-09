@@ -3,12 +3,7 @@ operation: complex
 number: 5
 title: New groups
 description: |
-  Given a start Person, find the Forums which that Person's friends
-  and friends of friends (excluding start Person) became Members of
-  after a given date.  For each forum find the number of Posts
-  that were created by any of these Persons.
-  For each Forum and consider only those Persons which joined that particular
-  Forum after the given date.
+  Given a start *Person*, find the *Forums* which that *Person*'s friends and friends of friends (excluding start *Person*) became *Members* of after a given date. For each *Forum* find the number of *Posts* that were created by any of these *Persons*. For each *Forum* and consider only those *Persons* which joined that particular *Forum* after the given date (`minDate`).
 parameters:
   - name: Person.id
     type: ID
@@ -23,7 +18,7 @@ result:
   - name: postCount
     type: 32-bit Integer
     category: aggregated
-    description: "`postCount` -- Number of Posts made in Forum that were created by friends"
+    description: "`postCount` -- Number of *Posts* made in *Forum* that were created by friends"
 sort:
   - name: postCount
     direction: desc
@@ -32,8 +27,4 @@ sort:
 limit: 20
 choke_points: [2.3, 3.3, 8.2, 8.5]
 relevance: |
-  This query looks for paths of length two and three, starting from a given Person, moving to friends and friends of
-  friends, and then getting the Forums they are members of. Besides testing the ability of the query optimizer to select
-  the proper join operator, it rewards the usage of indexes, but their accesses will be presumably scattered due to the
-  two/three-hop search space of the query, leading to unpredictable and scattered index accesses. Having efficient
-  implementations of such indexes will be highly beneficial.
+  This query looks for paths of length two and three, starting from a given *Person*, moving to friends and friends of friends, and then getting the *Forums* they are members of. Besides testing the ability of the query optimizer to select the proper join operator, it rewards the usage of indexes, but their accesses will be presumably scattered due to the two/three-hop search space of the query, leading to unpredictable and scattered index accesses. Having efficient implementations of such indexes will be highly beneficial.

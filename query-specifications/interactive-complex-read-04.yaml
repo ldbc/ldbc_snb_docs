@@ -3,10 +3,7 @@ operation: complex
 number: 4
 title: New topics
 description: |
-  Given a start Person (`person`), find Tags that are attached to Posts that
-  were created by that Person's friends.  Only include Tags that were
-  attached to friends' Posts created within a given time interval, and that
-  were never attached to friends' Posts created before this interval.
+  Given a start *Person* (`personId`), find *Tags* that are attached to *Posts* that were created by that *Person*'s friends. Only include *Tags* that were attached to friends' *Posts* created within a given time interval, and that were never attached to friends' *Posts* created before this interval.
 parameters:
   - name: Person.id
     type: ID
@@ -33,7 +30,4 @@ sort:
 limit: 10
 choke_points: [2.3, 8.2, 8.5]
 relevance: |
-  This query looks for paths of length two, starting from a given Person, moving to Posts and then to Tags. It tests
-  the ability of the query optimizer to properly select the usage of hash joins or index based joins, depending on the
-  cardinality of the intermediate results. These cardinalities are clearly affected by the input Person, the number of
-  friends, the variety of Tags, the time interval and the number of Posts.
+  This query looks for paths of length two, starting from a given *Person*, moving to *Posts* and then to *Tags*. It tests the ability of the query optimizer to properly select the usage of hash joins or index based joins, depending on the cardinality of the intermediate results. These cardinalities are clearly affected by the input *Person*, the number of friends, the variety of *Tags*, the time interval and the number of *Posts*.

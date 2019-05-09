@@ -3,10 +3,7 @@ operation: short
 number: 6
 title: Message Forum
 description: |
-  Given a Message, retrieve the Forum that contains it
-  and the Person that moderates that forum. Since comments are not
-  directly contained in forums, for comments, return the forum containing
-  the original post in the thread which the comment is replying to.
+  Given a *Message*, retrieve the *Forum* that contains it and the *Person* that moderates that *Forum*. Since *Comments* are not directly contained in *Forums*, for *Comments*, return the *Forum* containing the original *Post* in the thread which the *Comment* is replying to.
 parameters:
   - name: Message.id
     type: ID

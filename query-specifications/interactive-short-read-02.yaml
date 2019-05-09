@@ -3,9 +3,7 @@ operation: short
 number: 2
 title: Person Recent Messages
 description: |
-  Given a start Person, retrieve the last 10 Messages created by that user.
-  For each message, return that message, the original post in its conversation, and the author of that post.
-  If any of the Messages is a Post, then the original Post will be the same Message, i.e. that Message will appear twice in that result.
+  Given a start *Person*, retrieve the last 10 *Messages* created by that user. For each *Message*, return that *Message*, the original *Post* in its conversation, and the author of that *Post*. If any of the *Messages* is a *Post*, then the original *Post* will be the same *Message*, i.e. that *Message* will appear twice in that result.
 parameters:
   - name: Person.id
     type: ID
