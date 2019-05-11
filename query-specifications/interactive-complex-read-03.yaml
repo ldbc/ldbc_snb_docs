@@ -1,7 +1,7 @@
 workload: Interactive
 operation: complex
 number: 3
-title: Friends and friends of friends that have been to countries X and Y
+title: Friends and friends of friends that have been to given countries
 description: |
   Given a start *Person*, find *Persons* that are their friends and friends of friends (excluding start *Person*) that have made *Posts* / *Comments* in both of the given *Countries*, `CountryX` and `CountryY`, within a given period. Only *Persons* that are foreign to *Countries* `CountryX` and `CountryY` are considered, that is *Persons* whose location is neither `CountryX` nor `CountryY`.
 parameters:
