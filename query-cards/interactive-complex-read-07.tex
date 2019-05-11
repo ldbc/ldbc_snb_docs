@@ -37,14 +37,16 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-07} \tabularnewline \hline
 %
-	desc. & Given a start Person, find (most recent) Likes on any of start Person's
-Messages. Find Persons that Liked any of start Person's Messages, the
-Messages they liked most recently, creation date of that Like, and the
-latency (in minutes) between creation of Messages and Like.
-Additionally, for each Person found return a flag indicating whether the
-liker is a friend of start Person. In the case that a Person Liked
-multiple Messages at the same time, return the Message with lowest
-identifier.
+	desc. & Given a start \emph{Person}, find (most recent) \texttt{likes} on any of
+start \emph{Person}'s \emph{Messages}. Find \emph{Persons} that liked
+(\texttt{likes} edge) any of start \emph{Person}'s \emph{Messages}, the
+\emph{Messages} they liked most recently, the creation date of that
+like, and the latency in minutes (\texttt{minutesLatency}) between
+creation of \emph{Messages} and like. Additionally, for each
+\emph{Person} found return a flag indicating (\texttt{isNew}) whether
+the liker is a friend of start \emph{Person}. In case that a
+\emph{Person} liked multiple \emph{Messages} at the same time, return
+the \emph{Message} with lowest identifier.
  \\ \hline
 %
 	
@@ -79,12 +81,12 @@ identifier.
 				\texttt{commentOrPostContent}
  \\ \hline
 		$\mathsf{7}$ & minutesLatency & 32-bit Integer & C &
-				\texttt{minutesLatency} -- Duration between creation of Message and
-Like, in minutes
+				\texttt{minutesLatency} -- Duration between creation of the
+\emph{Message} and the creation of the like, in minutes
  \\ \hline
 		$\mathsf{8}$ & isNew & Boolean & C &
-				\texttt{isNew} -- \texttt{false} if liker Person is friend of start
-Person, \texttt{true} otherwise
+				\texttt{isNew} -- \texttt{false} if liker \emph{Person} is friend of
+start \emph{Person}, \texttt{true} otherwise
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -113,14 +115,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two, starting from a given Person, moving
-to its published messages and then to Persons who liked them. It tests several aspects related to join optimization,
-both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for
-the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection
-until the end. This query implies accessing 2-hop data, and as a consequence, index accesses are expected to be
-scattered. We expect to observe variate cardinalities, depending on the characteristics of the input parameter, so
-properly selecting the join operators will be crucial. This query has a lot of correlated sub-queries, so it is testing
-the ability to flatten the query execution plans.
+		\footnotesize This query looks for paths of length two, starting from a given *Person*, moving to its published messages and then to *Persons* who liked them. It tests several aspects related to join optimization, both at query optimization plan level and execution engine level. On the one hand, many of the columns needed for the projection are only needed in the last stages of the query, so the optimizer is expected to delay the projection until the end. This query implies accessing two-hop data, and as a consequence, index accesses are expected to be scattered. We expect to observe variate cardinalities, depending on the characteristics of the input parameter, so properly selecting the join operators will be crucial. This query has a lot of correlated sub-queries, so it is testing the ability to flatten the query execution plans.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

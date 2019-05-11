@@ -37,9 +37,10 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-09} \tabularnewline \hline
 %
-	desc. & Given a start Person, find (the most recent) Messages created by that
-Person's friends or friends of friends (excluding start Person). Only
-consider the Messages created before a given date (excluding that date).
+	desc. & Given a start \emph{Person}, find (the most recent) \emph{Messages}
+created by that \emph{Person}'s friends or friends of friends (excluding
+start Person). Only consider the \emph{Messages} created before a given
+\texttt{date} (excluding that day).
  \\ \hline
 %
 	
@@ -105,10 +106,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two or three, starting from a given Person, moving to its friends and friends of
-friends, and ending at their created Messages. This is one of the most complex queries, as the list of choke points
-indicates. This query is expected to touch variable amounts of data with entities of different characteristics, and
-therefore, properly estimating cardinalities and selecting the proper operators will be crucial.
+		\footnotesize This query looks for paths of length two or three, starting from a given *Person*, moving to its friends and friends of friends, and ending at their created *Messages*. This is one of the most complex queries, as the list of choke points indicates. This query is expected to touch variable amounts of data with entities of different characteristics, and therefore, properly estimating cardinalities and selecting the proper operators will be crucial.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

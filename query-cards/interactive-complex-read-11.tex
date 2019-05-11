@@ -37,9 +37,10 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-11} \tabularnewline \hline
 %
-	desc. & Given a start Person, find that Person's friends and friends of friends
-(excluding start Person) who started Working in some Company in a given
-Country, before a given date (year).
+	desc. & Given a start \emph{Person}, find that \emph{Person}'s friends and
+friends of friends (excluding start \emph{Person}) who started working
+in some \emph{Company} in a given \emph{Country}, before a given date
+(\texttt{year}).
  \\ \hline
 %
 	
@@ -106,9 +107,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two or three, starting from a Person, moving to friends or friends of friends,
-and ending at a Company. In this query, there are selective joins and a top-k order by that can be exploited for
-optimizations.
+		\footnotesize This query looks for paths of length two or three, starting from a *Person*, moving to friends or friends of friends, and ending at a *Company*. In this query, there are selective joins and a top-k order by that can be exploited for optimizations.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

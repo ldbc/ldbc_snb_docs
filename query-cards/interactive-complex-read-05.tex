@@ -37,11 +37,13 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-05} \tabularnewline \hline
 %
-	desc. & Given a start Person, find the Forums which that Person's friends and
-friends of friends (excluding start Person) became Members of after a
-given date. For each forum find the number of Posts that were created by
-any of these Persons. For each Forum and consider only those Persons
-which joined that particular Forum after the given date.
+	desc. & Given a start \emph{Person}, find the \emph{Forums} which that
+\emph{Person}'s friends and friends of friends (excluding start
+\emph{Person}) became \emph{Members} of after a given date. For each
+\emph{Forum} find the number of \emph{Posts} that were created by any of
+these \emph{Persons}. For each \emph{Forum} and consider only those
+\emph{Persons} which joined that particular \emph{Forum} after the given
+date (\texttt{minDate}).
  \\ \hline
 %
 	
@@ -65,8 +67,8 @@ which joined that particular Forum after the given date.
 				\texttt{forumTitle}
  \\ \hline
 		$\mathsf{2}$ & postCount & 32-bit Integer & A &
-				\texttt{postCount} -- Number of Posts made in Forum that were created by
-friends
+				\texttt{postCount} -- Number of \emph{Posts} made in \emph{Forum} that
+were created by friends
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -93,11 +95,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two and three, starting from a given Person, moving to friends and friends of
-friends, and then getting the Forums they are members of. Besides testing the ability of the query optimizer to select
-the proper join operator, it rewards the usage of indexes, but their accesses will be presumably scattered due to the
-two/three-hop search space of the query, leading to unpredictable and scattered index accesses. Having efficient
-implementations of such indexes will be highly beneficial.
+		\footnotesize This query looks for paths of length two and three, starting from a given *Person*, moving to friends and friends of friends, and then getting the *Forums* they are members of. Besides testing the ability of the query optimizer to select the proper join operator, it rewards the usage of indexes, but their accesses will be presumably scattered due to the two/three-hop search space of the query, leading to unpredictable and scattered index accesses. Having efficient implementations of such indexes will be highly beneficial.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

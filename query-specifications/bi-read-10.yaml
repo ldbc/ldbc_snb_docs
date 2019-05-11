@@ -1,7 +1,7 @@
 workload: BI
 operation: read
 number: 10
-title: Central Person for a Tag
+title: Central person for a tag
 description: |
   Given a *Tag*, find all *Persons* that are interested in the *Tag* and/or have written a *Message* (*Post* or *Comment*) with a `creationDate` after a given `date` and that has a given *Tag*. For each *Person*, compute the `score` as the sum of the
   following two aspects\:

@@ -37,11 +37,12 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-06} \tabularnewline \hline
 %
-	desc. & Given a start Person and some Tag, find the other Tags that occur
-together with this Tag on Posts that were created by start Person's
-friends and friends of friends (excluding start Person). Return top 10
-Tags, and the count of Posts that were created by these Persons, which
-contain both this Tag and the given Tag.
+	desc. & Given a start \emph{Person} and some \emph{Tag}, find the other
+\emph{Tags} that occur together with this \emph{Tag} on \emph{Posts}
+that were created by start \emph{Person}'s friends and friends of
+friends (excluding start \emph{Person}). Return top 10 \emph{Tags}, and
+the count of \emph{Posts} that were created by these \emph{Persons},
+which contain both this \emph{Tag} and the given \emph{Tag}.
  \\ \hline
 %
 	
@@ -65,8 +66,8 @@ contain both this Tag and the given Tag.
 				\texttt{tagName}
  \\ \hline
 		$\mathsf{2}$ & postCount & 32-bit Integer & A &
-				\texttt{postCount} -- Number of Posts that were created by friends and
-friends of friends, which contain this Tag
+				\texttt{postCount} -- Number of \emph{Posts} that were created by
+friends and friends of friends, which contain this \emph{Tag}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
@@ -91,8 +92,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of lengths three or four, starting from a Given Person, moving to friends or friends of
-friends, then to Posts and finally ending at a given Tag.
+		\footnotesize This query looks for paths of lengths three or four, starting from a given *Person*, moving to friends or friends of friends, then to *Posts* and finally ending at a given *Tag*.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

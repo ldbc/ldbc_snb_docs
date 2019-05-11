@@ -37,24 +37,24 @@
 %
 	pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-complex-read-10} \tabularnewline \hline
 %
-	desc. & Given a start \emph{Person} (\texttt{rootPerson}), find that
-\emph{Person}'s friends of friends (\texttt{person}) - excluding
-\texttt{rootPerson}, and immediate friends -, who were born on or after
-the 21st of a given month (in any year) and before the 22nd of the
-following month. Calculate the similarity between each \texttt{person}
-and \texttt{rootPerson}, where \texttt{commonInterestScore} is defined
-as follows:
+	desc. & Given a start \emph{Person} with id \texttt{personId}, find that
+\emph{Person}'s friends of friends (\texttt{person}) -- excluding the
+start \emph{Person} and his/her immediate friends --, who were born on
+or after the 21st of a given \texttt{month} (in any year) and before the
+22nd of the following month. Calculate the similarity between each
+\texttt{person} and the start \emph{Person}, where
+\texttt{commonInterestScore} is defined as follows:
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{common} = number of \emph{Posts} created by \texttt{person},
-  such that the \emph{Post} has a \emph{Tag} that \texttt{rootPerson} is
-  interested in
+  such that the \emph{Post} has a \emph{Tag} that the start
+  \emph{Person}, is interested in
 \item
   \texttt{uncommon} = number of \emph{Posts} created by \texttt{person},
-  such that the \emph{Post} has no \emph{Tag} that \texttt{rootPerson}
-  is interested in
+  such that the \emph{Post} has no \emph{Tag} that the start
+  \emph{Person}, is interested in
 \item
   \texttt{commonInterestScore} = \texttt{common} - \texttt{uncommon}
 \end{itemize}
@@ -126,11 +126,7 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two, starting from a Person and ending at the friends of their friends. It does
-widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired
-over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join
-for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the
-tags of the candidate's posts to interests of self should be by hash.
+		\footnotesize This query looks for paths of length two, starting from a *Person* and ending at the friends of their friends. It does widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the *Tags* of the candidate's *Posts* to interests of self should be by hash.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
