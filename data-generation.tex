@@ -2,23 +2,23 @@
 \label{section:data_generation}
 
 \datagen uses Hadoop to implement the data generation. Detailed instructions
-to configure hadoop for running \datagen can be found at the DATAGEN project
+to configure hadoop for running \datagen can be found at the \datagen project
 software repository\footnote{ \datagen repository:
 https://github.com/ldbc/ldbc\_snb\_datagen}. 
 
 \subsection{\datagen Configuration, Compilation and Execution}
 
 \datagen is designed to be as easy to configure, compile and execute as
-possible. With this objective in mind, a \textit{run.sh} script is provided,
-which handles all the compilation and execution processes.  \textit{run.sh}
-is found in the \datagen root folder. DATAGEN uses Apache Maven to download any
-required dependencies and compile the sources.  \textit{run.sh} needs to be
+possible. With this objective in mind, a \texttt{run.sh} script is provided,
+which handles all the compilation and execution processes.  \texttt{run.sh}
+is found in the \datagen root folder. \datagen uses Apache Maven to download any
+required dependencies and compile the sources.  \texttt{run.sh} needs to be
 configured with two variables pointing to the proper folders. The following is
 the list of variables to set:
 
 \begin{itemize}
     \item \textbf{HADOOP\_HOME}: Points to your hadoop root folder.
-    \item \textbf{LDBC\_SNB\_\datagen\_HOME}: Points to your DATAGEN root folder.
+    \item \textbf{LDBC\_SNB\_DATAGEN\_HOME}: Points to your \datagen root folder.
 \end{itemize}
 
 Once these variables are properly set, by typing:
@@ -30,7 +30,7 @@ $ ./run.sh
 \datagen is compiled and executed, and a dataset with the default options is
 generated in the current folder.
 
-A file \textit{params.ini} is used to change the characteristics of the
+A file \texttt{params.ini} is used to change the characteristics of the
 generated network, as well as to set other options. \autoref{table:sndg_options}
 summarizes the different available options and their default values:
 
@@ -59,7 +59,7 @@ summarizes the different available options and their default values:
 \label{table:sndg_options}
 \end{table}
 
-An example of \textit{params.ini} for scale factor 30, ttl serializer, 4 threads,
+An example of \texttt{params.ini} for scale factor 30, ttl serializer, 4 threads,
 compressed output and a custom output dir, should look like:
 
 \begin{lstlisting}[backgroundcolor=\color{gray},frame=single]
@@ -70,17 +70,17 @@ outputDir:/home/user/output
 numThreads:4
 \end{lstlisting}
 
-\datagen outputs data into HDFS. The outputDir directory specified in
-\textit{params.ini} file, will be automatically created in HDFS if it does not
+\datagen outputs data into HDFS. The \texttt{outputDir} directory specified in
+\texttt{params.ini} file, will be automatically created in HDFS if it does not
 exist. If there is not an HDFS file system mounted, then data is output to your
 local file system. 
 
-\datagen creates two directories in the \textit{outputDir} directory: hadoop and
-social\_network.  The former is used to store temporary files used during the
+\datagen creates two directories in the \texttt{outputDir} directory: \texttt{hadoop} and
+\texttt{social\_network}.  The former is used to store temporary files used during the
 data generation process. The later stores the actual dataset created in the
 specified format.
 
-Additionally, \datagen creates a third directory in the DATAGEN home folder
-called \textit{substitution\_parameters}.  This folder contains the files with
+Additionally, \datagen creates a third directory in the \datagen home folder
+called \texttt{substitution\_parameters}.  This folder contains the files with
 the substitution parameters used by the driver to execute the workload.
 
