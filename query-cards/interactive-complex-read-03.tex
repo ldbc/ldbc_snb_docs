@@ -122,7 +122,20 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two and three, starting from a *Person*, going to friends or friends of friends, and then moving to *Messages*. This query tests the ability of the query optimizer to select the most efficient join ordering, which will depend on the cardinalities of the intermediate results. Many friends of friends can be duplicate, then it is expected to eliminate duplicates and those people prior to access the *Post* and *Comments*, as well as eliminate those friends from *Countries* `CountryX` and `CountryY`, as the size of the intermediate results can be severely affected. A possible structural optimization could be to materialize the number of *Posts* and *Comments* created by a *Person*, and progressively filter those people that could not even fall in the top 20 even having all their posts in the *Countries* `CountryX` and `CountryY`.
+		\footnotesize This query looks for paths of length two and three, starting from a
+\emph{Person}, going to friends or friends of friends, and then moving
+to \emph{Messages}. This query tests the ability of the query optimizer
+to select the most efficient join ordering, which will depend on the
+cardinalities of the intermediate results. Many friends of friends can
+be duplicate, then it is expected to eliminate duplicates and those
+people prior to access the \emph{Post} and \emph{Comments}, as well as
+eliminate those friends from \emph{Countries} \texttt{CountryX} and
+\texttt{CountryY}, as the size of the intermediate results can be
+severely affected. A possible structural optimization could be to
+materialize the number of \emph{Posts} and \emph{Comments} created by a
+\emph{Person}, and progressively filter those people that could not even
+fall in the top 20 even having all their posts in the \emph{Countries}
+\texttt{CountryX} and \texttt{CountryY}.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

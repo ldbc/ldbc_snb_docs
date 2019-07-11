@@ -77,11 +77,18 @@ for filename in glob.glob("query-specifications/*.yaml"):
     # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
     # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
     description_tex = convert_markdown_to_tex(description_markdown)
+    
+    # optional arguments 
     parameters = doc.get('parameters')
     results = doc.get('result')
     sort = doc.get('sort')
     limit = doc.get('limit')
-    relevance = doc.get('relevance')
+   
+    relevance_markdown = doc.get('relevance')
+    if relevance_markdown is None:
+        relevance_tex = None
+    else:
+        relevance_tex = convert_markdown_to_tex(relevance_markdown)
 
     parameter_file_text = parameters_template.render(
         parameters = parameters,
@@ -103,7 +110,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
         sort          = convert_map_list_to_tex(sort),
         limit         = limit,
         choke_points  = choke_points,
-        relevance     = relevance,
+        relevance     = relevance_tex,
     )
 
     with open("query-cards/%s.tex" % query_id, 'w') as query_card_file:

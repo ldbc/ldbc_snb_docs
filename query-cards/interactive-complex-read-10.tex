@@ -126,7 +126,15 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two, starting from a *Person* and ending at the friends of their friends. It does widely scattered graph traversal, and one expects no locality of in friends of friends, as these have been acquired over a long time and have widely scattered identifiers. The join order is simple but one must see that the anti-join for "not in my friends" is better with hash. Also the last pattern in the scalar sub-queries joining or anti-joining the *Tags* of the candidate's *Posts* to interests of self should be by hash.
+		\footnotesize This query looks for paths of length two, starting from a \emph{Person}
+and ending at the friends of their friends. It does widely scattered
+graph traversal, and one expects no locality of in friends of friends,
+as these have been acquired over a long time and have widely scattered
+identifiers. The join order is simple but one must see that the
+anti-join for ``not in my friends'' is better with hash. Also the last
+pattern in the scalar sub-queries joining or anti-joining the
+\emph{Tags} of the candidate's \emph{Posts} to interests of self should
+be by hash.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace

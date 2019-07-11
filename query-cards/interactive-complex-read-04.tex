@@ -97,7 +97,13 @@ $ &  \\ \hline
 		} \\ \hline
 	%
 	relevance &
-		\footnotesize This query looks for paths of length two, starting from a given *Person*, moving to *Posts* and then to *Tags*. It tests the ability of the query optimizer to properly select the usage of hash joins or index based joins, depending on the cardinality of the intermediate results. These cardinalities are clearly affected by the input *Person*, the number of friends, the variety of *Tags*, the time interval and the number of *Posts*.
+		\footnotesize This query looks for paths of length two, starting from a given
+\emph{Person}, moving to \emph{Posts} and then to \emph{Tags}. It tests
+the ability of the query optimizer to properly select the usage of hash
+joins or index based joins, depending on the cardinality of the
+intermediate results. These cardinalities are clearly affected by the
+input \emph{Person}, the number of friends, the variety of \emph{Tags},
+the time interval and the number of \emph{Posts}.
  \\ \hline%
 \end{tabularx}
 \queryCardVSpace
