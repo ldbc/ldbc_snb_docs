@@ -27,14 +27,25 @@ To get consistent formatting, query cards are generated from query specification
 1. To generate the TeX files for query cards, run the following command:
 
     ```bash
-    ./generate-tex.py
+    make generate_query_cards
     ```
 
 ### Building the document
 
 To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
 
-If you are using a Linux-based system, you can also check the [`.travis.yml`](.travis.yml) file as it provides a precise documentation of what you should do in order to build the docs.
+We also provide a Dockerfile for building the document. To create the Docker image, run the following command:
+
+```console
+docker build . --tag ldbc/docs
+```
+
+Once the image is created, you can compile the document by issuing:
+
+```console
+docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
+  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot create_query_cards"
+```
 
 ### Notations and conventions
 
