@@ -3,7 +3,10 @@ DOCUMENT=ldbc-snb-specification.tex
 all: $(DOCUMENT)
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
-query_cards: $(DOCUMENT)
+generate_query_cards: $(DOCUMENT)
+	./generate-tex.py
+
+compile_query_cards: $(DOCUMENT)
 	cd standalone-query-cards && \
 	for card in *.tex; do \
 		../texfot.pl latexmk -pdf --interaction=batchmode $$card ; \

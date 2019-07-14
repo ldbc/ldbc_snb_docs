@@ -23,9 +23,8 @@ addons:
       - texlive-latex-extra
       - texlive-science
 script:
-  - ./generate-tex.py
   #- cd patterns; ./crop.sh; git status .; cd ..
-  - make texfot query_cards
+  - make generate_query_cards texfot compile_query_cards
   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_STABLE;   deployment/deploy.sh; fi
   - if [ "$TRAVIS_BRANCH" = "dev"    -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_SNAPSHOT; deployment/deploy.sh; fi
 notifications:
