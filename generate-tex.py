@@ -55,7 +55,7 @@ for filename in glob.glob("query-specifications/*.yaml"):
     query_id = splitext(basename(filename))[0]
 
     with open(filename, 'r') as f:
-        doc = yaml.load(f)
+        doc = yaml.load(f, Loader=yaml.FullLoader)
 
     number = doc['number']
     number_string = "%02d" % (number)
