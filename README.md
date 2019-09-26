@@ -19,7 +19,7 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 * **LDBC Graphalytics:** _Alexandru Iosup, Tim Hegeman, Wing Lung Ngai, Stijn Heldens, Arnau Prat-Pérez, Thomas Manhardt, Hassan Chafi, Mihai Capota, Narayanan Sundaram, Michael J. Anderson, Ilie Gabriel Tanase, Yinglong Xia, Lifeng Nai, Peter A. Boncz: LDBC Graphalytics: A Benchmark for Large-Scale Graph Analysis on Parallel and Distributed Platforms. PVLDB 9(13): 1317-1328 (2016)_ [[bib](bib/graphalytics.bib)].
 * **LDBC Social Network Benchmark - Interactive workload:** _Orri Erling, Alex Averbuch, Josep-Lluís Larriba-Pey, Hassan Chafi, Andrey Gubichev, Arnau Prat-Pérez, Minh-Duc Pham, Peter A. Boncz: The LDBC Social Network Benchmark: Interactive Workload. SIGMOD Conference 2015: 619-630_ [[bib](bib/snb-interactive.bib)].
 * **LDBC Social Network Benchmark - BI workload:** _Gábor Szárnyas, Arnau Prat-Pérez, Alex Averbuch, József Marton, Marcus Paradies, Moritz Kaufmann, Orri Erling, Peter A. Boncz, Vlad Haprian, János Benjamin Antal: An early look at the LDBC social network benchmark's business intelligence workload. GRADES/NDA@SIGMOD/PODS 2018: 9:1-9:11_ [[bib](bib/snb-bi.bib)].
-* **The full specification:** _LDBC Social Network Benchmark task force: The LDBC Social Network Benchmark (version 0.3.2), Linked Data Benchmark Council, 2019, <https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf>_ [[bib](bib/specification.bib)].
+* **The full specification:** _LDBC Social Network Benchmark task force: The LDBC Social Network Benchmark (version 0.4.0-SNAPSHOT), Linked Data Benchmark Council, 2019, <https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf>_ [[bib](bib/specification.bib)].
 
 ## How to build the this document
 
