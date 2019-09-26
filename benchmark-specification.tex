@@ -620,17 +620,20 @@ information such as forums, posts and comments.
 \end{itemize}
 
 The SUT have to take care only of the generated Dataset to be bulk loaded.
-Three different formats are supported by \datagen:
+The formats currently supported by \datagen are the following:
 
 \begin{itemize}
-  \item \textbf{CSV:} Data output in CSV format, one file per different entity and on file
-    per different relation. Also, there is a file for those attributes whose
-    cardinality is larger than one (\ie Person.email, Person.speaks).
-  \item \textbf{CSVMergeForeign:} Similar to the CSV format, but in this case, those
-    relations of the form 1 to 1 and 1 to N, are stored in the tail entity file as
-    a foreign keys.
-  \item \textbf{CSVComposite:} Similar to the CSV format, but uses composite attributes for storing the Person.email, Person.speaks attributes.
-  \item \textbf{CSVCompositeMergeForeign:} Has the traits of both the CSVComposite and the CSVMergeForeign formats.
+  \item \textbf{CSV variants:}
+    \begin{itemize}
+      \item \textbf{CSVBasic:} Data output in CSV format, one file per different entity and on file
+        per different relation. Also, there is a file for those attributes whose
+        cardinality is larger than one (\ie Person.email, Person.speaks).
+      \item \textbf{CSVMergeForeign:} Similar to the CSV format, but in this case, those
+        relations of the form 1 to 1 and 1 to N, are stored in the tail entity file as
+        a foreign keys.
+      \item \textbf{CSVComposite:} Similar to the CSV format, but uses composite attributes for storing the Person.email, Person.speaks attributes.
+      \item \textbf{CSVCompositeMergeForeign:} Has the traits of both the CSVComposite and the CSVMergeForeign formats.
+    \end{itemize}
   \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
 \end{itemize}
 
