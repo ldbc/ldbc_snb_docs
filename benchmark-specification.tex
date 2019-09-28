@@ -639,7 +639,7 @@ The formats currently supported by \datagen are the following:
 
 
 
-\subsubsection{CSV}
+\subsubsection{CSVBasic}
 
 This is a comma separated format. Each entity, relation and properties with a
 cardinality larger than one, are output in a separate file. Generated files are
@@ -651,7 +651,7 @@ $\mathsf{NumberOfThreads}-1$.
 \input{table-csv}
 
 
-\subsubsection{CSV\_MERGE\_FOREIGN}
+\subsubsection{CSVMergeForeign}
 
 This is a comma separated format. It is similar to CSV, but those relations
 connecting two entities A and B, where an entity A has a cardinality of one, A
@@ -662,7 +662,15 @@ thread. The * in the file names indicates a number between 0 and $\mathsf{Number
 
 \input{table-csv-merge-foreign}
 
+\subsubsection{CSVComposite}
+
+TODO.
+
 \input{table-csv-composite}
+
+\subsubsection{CSVCompositeMergeForeign}
+
+TODO.
 
 \input{table-csv-composite-merge-foreign}
 
