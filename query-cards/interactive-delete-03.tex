@@ -1,0 +1,61 @@
+\renewcommand*{\arraystretch}{1.1}
+
+\subsection{Interactive / delete / 3}
+\label{sec:interactive-delete-03}
+
+% change \emph{} to use sans-serif font
+\let\oldemph\emph
+\renewcommand{\emph}[1]{{\footnotesize \sf #1}}
+
+\renewcommand{\currentQueryCard}{3}
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+	\queryRefCard{interactive-delete-01}{ID}{1}\\
+	\queryRefCard{interactive-delete-02}{ID}{2}\\ 
+	\queryRefCard{interactive-delete-03}{ID}{3}\\
+	\queryRefCard{interactive-delete-04}{ID}{4}\\
+	\queryRefCard{interactive-delete-05}{ID}{5}\\
+	\queryRefCard{interactive-delete-06}{ID}{6}\\
+	\queryRefCard{interactive-delete-07}{ID}{7}\\
+	\queryRefCard{interactive-delete-08}{ID}{8}\\
+}
+
+
+\noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
+	\hline
+	query & Interactive / delete / 3 \\ \hline
+%
+	title & Remove friendship \\ \hline
+%
+	% pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-01} \tabularnewline \hline
+%
+	desc. & Given two \emph{Person} \textbf{nodes}, remove a \emph{knows} edge between them. 
+ \\ \hline
+%
+	
+		params &
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		$\mathsf{1}$ & Person.id
+ & ID
+ & \texttt{person1Id}
+ \\ \hline
+		$\mathsf{2}$ & Person.id
+ & ID
+ & \texttt{person2Id}
+ \\ \hline
+		\end{tabularx}}\innerCardVSpace \\ \hline
+	
+%
+	
+%
+	%
+	%
+	%
+	%
+\end{tabularx}
+\queryCardVSpace
+
+% change \emph back to the old one
+\let\emph\oldemph
