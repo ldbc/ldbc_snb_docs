@@ -27,19 +27,19 @@
 	\hline
 	query & Interactive / delete / 7 \\ \hline
 %
-	title & Remove forum \\ \hline
+	title & Remove comment \\ \hline
 %
 	% pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-01} \tabularnewline \hline
 %
-	desc. & Remove a \emph{Forum} \textbf{node} and it's incident \textbf{edges} (\emph{hasModerator}, \emph{hasMember}, \emph{hasTag}) and all \emph{Post} in the \emph{Forum} (connected by \emph{containerOf}) and their direct and transitive comments. 
+	desc. & Remove a \emph{Comment} \textbf{node} and it's incident \textbf{edges} (\emph{isLocatedIn}, \emph{likes}, \emph{hasCreator}, \emph{hasTag}). In addition, remove all replies to the \emph{Comment} connected by \emph{replyOf} and their incident \textbf{edges}. 
  \\ \hline
 %
 	
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
-		$\mathsf{1}$ & Forum.id
+		$\mathsf{1}$ & Comment.id
  & ID
- & \texttt{forumId}
+ & \texttt{CommentId}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	

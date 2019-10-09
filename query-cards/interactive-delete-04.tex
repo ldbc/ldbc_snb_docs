@@ -27,11 +27,11 @@
 	\hline
 	query & Interactive / delete / 4 \\ \hline
 %
-	title & Remove forum membership \\ \hline
+	title & Remove forum \\ \hline
 %
 	% pattern & \centering \includegraphics[scale=\patternscale,margin=0cm .2cm]{patterns/interactive-update-01} \tabularnewline \hline
 %
-	desc. & Given a \emph{Forum} \textbf{node} and a \emph{Person} \textbf{node}, remove a \emph{hasMember} edge between them. 
+	desc. & Remove a \emph{Forum} \textbf{node} and it's incident \textbf{edges} (\emph{hasModerator}, \emph{hasMember}, \emph{hasTag}) and all \emph{Post} in the \emph{Forum} (connected by \emph{containerOf}) and their direct and transitive comments. 
  \\ \hline
 %
 	
@@ -40,10 +40,6 @@
 		$\mathsf{1}$ & Forum.id
  & ID
  & \texttt{forumId}
- \\ \hline
-		$\mathsf{2}$ & Person.id
- & ID
- & \texttt{personId}
  \\ \hline
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	
