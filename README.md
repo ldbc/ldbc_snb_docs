@@ -34,6 +34,7 @@ To get consistent formatting, query cards are generated from query specification
     ```bash
     sudo apt-get install -y pandoc
     sudo apt-get install -y python3 python3-pip python3-setuptools
+    sudo pip3 install -r requirements.txt
     ```
 
 1. To generate the TeX files for query cards, run the following command:
