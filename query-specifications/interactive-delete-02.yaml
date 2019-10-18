@@ -1,0 +1,15 @@
+workload: Interactive
+operation: delete
+number: 2
+title: Remove post like
+description:
+  TODO
+parameters:
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+  - name: Post.id
+    type: ID
+    description: "`postId`"
+relevance:
+  TODO

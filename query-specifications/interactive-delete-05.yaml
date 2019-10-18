@@ -1,0 +1,15 @@
+workload: Interactive
+operation: delete
+number: 5
+title: Remove forum membership
+description:
+  TODO
+parameters:
+  - name: Forum.id
+    type: ID
+    description: "`forumId`"
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+relevance:
+  TODO
