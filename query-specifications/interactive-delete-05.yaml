@@ -3,7 +3,7 @@ operation: delete
 number: 5
 title: Remove forum membership
 description:
-  TODO
+  Given a *Forum* **node** and a *Person* **node**, remove a *hasMember* edge between them.
 parameters:
   - name: Forum.id
     type: ID
@@ -12,4 +12,4 @@ parameters:
     type: ID
     description: "`personId`"
 relevance:
-  TODO
+  n/a

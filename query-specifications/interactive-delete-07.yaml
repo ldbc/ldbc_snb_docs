@@ -3,10 +3,10 @@ operation: delete
 number: 7
 title: Remove comment
 description:
-  TODO
+  Remove a *Comment* **node** and its incident **edges** (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*). In addition, remove all replies to the *Comment* connected by *replyOf* and their incident **edges**.
 parameters:
   - name: Comment.id
     type: ID
     description: "`CommentId`"
 relevance:
-  TODO
+  n/a

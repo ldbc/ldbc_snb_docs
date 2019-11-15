@@ -3,10 +3,10 @@ operation: delete
 number: 6
 title: Remove post
 description:
-  TODO
+  Remove a *Post* **node** and its incident **edges** (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*, *containerOf*). Remove all replies (connected by *replyOf*) to the *Post* and their incident **edges**. In addition, remove all transitive replies to the *Post* and their incident **edges**.
 parameters:
   - name: Post.id
     type: ID
     description: "`postId`"
 relevance:
-  TODO
+  n/a

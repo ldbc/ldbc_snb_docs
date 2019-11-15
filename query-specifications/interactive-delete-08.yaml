@@ -3,7 +3,7 @@ operation: delete
 number: 8
 title: Remove friendship
 description:
-  TODO
+  Given two *Person* **nodes**, remove a *knows* edge between them.
 parameters:
   - name: Person.id
     type: ID
@@ -12,4 +12,4 @@ parameters:
     type: ID
     description: "`person2Id`"
 relevance:
-  TODO
+  n/a

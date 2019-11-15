@@ -3,10 +3,10 @@ operation: delete
 number: 4
 title: Remove forum
 description:
-  TODO
+  Remove a *Forum* **node** and its incident **edges** (*hasModerator*, *hasMember*, *hasTag*) and all *Post* in the *Forum* (connected by *containerOf*) and their direct and transitive comments.
 parameters:
   - name: Forum.id
     type: ID
     description: "`forumId`"
 relevance:
-  TODO
+  n/a
