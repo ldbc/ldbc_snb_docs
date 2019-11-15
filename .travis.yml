@@ -2,13 +2,6 @@ sudo: required
 language: bash
 services:
   - docker
-#cache:
-#  directories:
-#  - docker
-#
-#before_install:
-# - mkdir -p docker
-# - if [[ -e docker/texbuilder.tar.gz  ]] ; then echo found ; gzip -dc docker/texbuilder.tar.gz | docker load ; else docker pull makisyu/texlive-2019 ; docker save makisyu/texlive-2019 | gzip > docker/texbuilder.tar.gz ; fi
 env:
   global:
     - REPOSITORY_STABLE=github.com/ldbc/ldbc_snb_docs.git
