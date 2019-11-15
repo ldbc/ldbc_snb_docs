@@ -4,12 +4,13 @@
 This workload consists of a set of relatively complex read-only queries, that touch a significant
 amount of data -- often the two-step friendship neighborhood and associated messages --, but typically in close proximity to a single node. Hence, the query complexity is sublinear to the dataset size.
 
-The LDBC SNB Interactive workload consists of three query classes:
+The LDBC SNB Interactive workload consists of four query classes:
 
 \begin{itemize}
 \item \textbf{Complex read-only queries.} See \autoref{sec:complex-reads}.
 \item \textbf{Short read-only queries.} See \autoref{sec:short-reads}.
-\item \textbf{Transactional update queries.} See \autoref{sec:updates}.
+\item \textbf{Transactional insert queries.} See \autoref{sec:inserts}.
+\item \textbf{Transactional delete queries.} See \autoref{sec:deletes}.
 \end{itemize}
 
 A detailed description of the workload is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}.
@@ -55,19 +56,19 @@ A detailed description of the workload is available in the paper published at \m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Updates}
-\label{sec:updates}
+\section{Inserts}
+\label{sec:inserts}
 
 Each insert query inserts either (1) a single node of a certain type, along with its edges to other existing nodes or (2) a single edge of a certain type between two existing nodes.
 
-\input{query-cards/interactive-update-01}
-\input{query-cards/interactive-update-02}
-\input{query-cards/interactive-update-03}
-\input{query-cards/interactive-update-04}
-\input{query-cards/interactive-update-05}
-\input{query-cards/interactive-update-06}
-\input{query-cards/interactive-update-07}
-\input{query-cards/interactive-update-08}
+\input{query-cards/interactive-insert-01}
+\input{query-cards/interactive-insert-02}
+\input{query-cards/interactive-insert-03}
+\input{query-cards/interactive-insert-04}
+\input{query-cards/interactive-insert-05}
+\input{query-cards/interactive-insert-06}
+\input{query-cards/interactive-insert-07}
+\input{query-cards/interactive-insert-08}
 
 \section{Deletes}
 \label{sec:deletes}

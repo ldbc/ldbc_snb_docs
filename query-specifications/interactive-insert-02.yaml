@@ -1,15 +1,15 @@
 workload: Interactive
-operation: update
-number: 3
-title: Add like to comment
-description: Add a *likes* **edge** to a *Comment*.
+operation: insert
+number: 2
+title: Add like to post
+description: Add a *likes* **edge** to a *Post*.
 parameters:
   - name: Person.id
     type: ID
     description: "`personId`"
-  - name: Comment.id
+  - name: Post.id
     type: ID
-    description: "`commentId`"
+    description: "`postId`"
   - name: Person-likes->.creationDate
     type: DateTime
     description: "`creationDate`"
