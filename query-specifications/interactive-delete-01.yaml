@@ -2,8 +2,8 @@ workload: Interactive
 operation: delete
 number: 1
 title: Remove person
-description:
-  Remove a *Person* **node** and its incident **edges** (*isLocatedIn*, *studyAt*, *workAt*, *hasInterest*, *likes*, *knows*, *hasMember*, *hasModerator*, *hasCreator*). The removal of a *Person* removes all *Forum* they are moderator of and all messages they have posted in other forums.
+description: |
+  Remove a *Person* and its edges (*isLocatedIn*, *studyAt*, *workAt*, *hasInterest*, *likes*, *knows*, *hasMember*, *hasModerator*, *hasCreator*). The removal of a *Person* removes all *Forum* they are moderator of and all *Messages* they have posted in other *Forums*.
 parameters:
   - name: Person.id
     type: ID
