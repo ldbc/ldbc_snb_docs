@@ -1,0 +1,19 @@
+workload: BI
+operation: read
+number: 26
+title: Number of persons in a continent per country (placeholder query)
+description: |
+  Given a *Continent* count the number of *Persons* living in each country of the continent.
+parameters:
+  - name: continentName
+    type: String
+result:
+  - name: countryName
+    type: String
+  - name: personCount
+    type: 32-bit Integer
+    category: aggregated
+sort:
+  - name: countryName
+    direction: asc
+choke_points: [1.1] #todo
