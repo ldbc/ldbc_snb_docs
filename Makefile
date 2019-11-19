@@ -1,7 +1,10 @@
 DOCUMENT=ldbc-snb-specification.tex
 
-all: $(DOCUMENT)
+spec: $(DOCUMENT)
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
+
+all: generate_query_cards compile_query_cards workloads texfot
+	ls *.pdf
 
 generate_query_cards: $(DOCUMENT)
 	./generate-tex.py
@@ -13,7 +16,7 @@ compile_query_cards: $(DOCUMENT)
 	done
 
 workloads: $(DOCUMENT)
-	for doc in *-workload.tex; do \
+	for doc in workload-*.tex; do \
 		./texfot.pl latexmk -pdf --interaction=batchmode $$doc ; \
 	done
 

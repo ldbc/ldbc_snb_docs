@@ -8,8 +8,12 @@
 
 ## Workloads
 
-* [BI](http://ldbc.github.io/ldbc_snb_docs_snapshot/bi-workload.pdf)
-* [Interactive](http://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-workload.pdf)
+* [BI / reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-bi-reads.pdf)
+* [Interactive / complex reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-complex-reads.pdf)
+* [Interactive / short reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-short-reads.pdf)
+* [Interactive / inserts](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-inserts.pdf)
+* [Interactive / deletes](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-deletes.pdf)
+
 
 ## BI query cards
 

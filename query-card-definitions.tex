@@ -16,11 +16,7 @@
 
 \reversemarginpar
 \newcommand{\currentQueryCard}{0}
-\newcommand{\queryRefCard}[3]{%
-	\queryRefCardInternal{#1}{#2}{#3}%
-}
-
-\newcommand{\queryRefCardInternal}[3]{%
+\newcommand{\queryRefCard}[3]{
 	\ifthenelse{
 		\equal{\currentQueryCard}{#3}
 	}{%
