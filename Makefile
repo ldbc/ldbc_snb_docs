@@ -12,6 +12,11 @@ compile_query_cards: $(DOCUMENT)
 		../texfot.pl latexmk -pdf --interaction=batchmode $$card ; \
 	done
 
+workloads: $(DOCUMENT)
+	for doc in *-workload.tex; do \
+		./texfot.pl latexmk -pdf --interaction=batchmode $$doc ; \
+	done
+
 texfot: $(DOCUMENT)
 	./texfot.pl latexmk -pdf --interaction=batchmode $(DOCUMENT)
 

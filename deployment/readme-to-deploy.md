@@ -1,7 +1,15 @@
 # LDBC SNB Documentation
 
 * Stable version: [[pdf](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/master)]
+
+# Snapshot builds
+
 * Latest snapshot: [[pdf](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
+
+## Workloads
+
+* [BI](http://ldbc.github.io/ldbc_snb_docs_snapshot/bi-workload.pdf)
+* [Interactive](http://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-workload.pdf)
 
 ## BI query cards
 
