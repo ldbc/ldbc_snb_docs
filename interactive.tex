@@ -22,20 +22,7 @@ A detailed description of the workload is available in the paper published at \m
 \section{Complex Reads}
 \label{sec:complex-reads}
 
-\input{query-cards/interactive-complex-read-01}
-\input{query-cards/interactive-complex-read-02}
-\input{query-cards/interactive-complex-read-03}
-\input{query-cards/interactive-complex-read-04}
-\input{query-cards/interactive-complex-read-05}
-\input{query-cards/interactive-complex-read-06}
-\input{query-cards/interactive-complex-read-07}
-\input{query-cards/interactive-complex-read-08}
-\input{query-cards/interactive-complex-read-09}
-\input{query-cards/interactive-complex-read-10}
-\input{query-cards/interactive-complex-read-11}
-\input{query-cards/interactive-complex-read-12}
-\input{query-cards/interactive-complex-read-13}
-\input{query-cards/interactive-complex-read-14}
+\input{interactive-complex-reads}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,13 +31,7 @@ A detailed description of the workload is available in the paper published at \m
 \section{Short Reads}
 \label{sec:short-reads}
 
-\input{query-cards/interactive-short-read-01}
-\input{query-cards/interactive-short-read-02}
-\input{query-cards/interactive-short-read-03}
-\input{query-cards/interactive-short-read-04}
-\input{query-cards/interactive-short-read-05}
-\input{query-cards/interactive-short-read-06}
-\input{query-cards/interactive-short-read-07}
+\input{interactive-short-reads}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,27 +42,11 @@ A detailed description of the workload is available in the paper published at \m
 
 Each insert query inserts either (1) a single node of a certain type, along with its edges to other existing nodes or (2) a single edge of a certain type between two existing nodes.
 
-\input{query-cards/interactive-insert-01}
-\input{query-cards/interactive-insert-02}
-\input{query-cards/interactive-insert-03}
-\input{query-cards/interactive-insert-04}
-\input{query-cards/interactive-insert-05}
-\input{query-cards/interactive-insert-06}
-\input{query-cards/interactive-insert-07}
-\input{query-cards/interactive-insert-08}
+\input{interactive-inserts}
 
 \section{Deletes}
 \label{sec:deletes}
 
-Each delete query removes either (1) a single edge between two existing vertices or (2) a vertex, all incident edges and transitive vertices (where appropriate).
+Each delete query removes either (1) a single edge between two existing nodes or (2) a node, all incident edges and transitive nodes (where appropriate).
 
-\input{query-cards/interactive-delete-01}
-\input{query-cards/interactive-delete-02}
-\input{query-cards/interactive-delete-03}
-\input{query-cards/interactive-delete-04}
-\input{query-cards/interactive-delete-05}
-\input{query-cards/interactive-delete-06}
-\input{query-cards/interactive-delete-07}
-\input{query-cards/interactive-delete-08}
-
-\renewcommand{\currentQueryCard}{0}
+\input{interactive-deletes}

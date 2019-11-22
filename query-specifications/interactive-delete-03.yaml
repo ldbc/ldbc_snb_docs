@@ -2,8 +2,8 @@ workload: Interactive
 operation: delete
 number: 3
 title: Remove comment like
-description:
-  Given a *Person* **node** and a *Comment* **node**, remove a *likes* edge between them.
+description: |
+  Given a *Person* and a *Comment*, remove the *likes* edge between them.
 parameters:
   - name: Person.id
     type: ID

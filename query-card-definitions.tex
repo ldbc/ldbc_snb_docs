@@ -16,11 +16,7 @@
 
 \reversemarginpar
 \newcommand{\currentQueryCard}{0}
-\newcommand{\queryRefCard}[3]{%
-	\queryRefCardInternal{#1}{#2}{#3}%
-}
-
-\newcommand{\queryRefCardInternal}[3]{%
+\newcommand{\queryRefCard}[3]{
 	\ifthenelse{
 		\equal{\currentQueryCard}{#3}
 	}{%
@@ -29,7 +25,8 @@
 		\ifthenelse{
 			\boolean{standalone}
 		}{%
-			\href{#1.pdf}{\colorbox{#2}{\tt #2 #3}}%
+			\href{https://ldbc.github.io/ldbc_snb_docs_snapshot/#1.pdf}{\colorbox{#2}{\tt #2 #3}}%
+			%\colorbox{#2}{\tt #2 #3}%
 		}{%
 			\hyperref[section:#1]{\colorbox{#2}{\tt #2 #3}}%
 		}

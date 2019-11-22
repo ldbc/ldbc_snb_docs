@@ -2,8 +2,8 @@ workload: Interactive
 operation: delete
 number: 5
 title: Remove forum membership
-description:
-  Given a *Forum* **node** and a *Person* **node**, remove a *hasMember* edge between them.
+description: |
+  Given a *Forum* and a *Person*, remove the *hasMember* edge between them.
 parameters:
   - name: Forum.id
     type: ID

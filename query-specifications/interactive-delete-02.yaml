@@ -2,8 +2,8 @@ workload: Interactive
 operation: delete
 number: 2
 title: Remove post like
-description:
-  Given a *Person* **node** and a *Post* **node**, remove the *likes* edge between them.
+description: |
+  Given a *Person* and a *Post*, remove the *likes* edge between them.
 parameters:
   - name: Person.id
     type: ID

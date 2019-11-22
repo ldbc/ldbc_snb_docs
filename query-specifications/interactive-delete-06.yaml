@@ -2,8 +2,10 @@ workload: Interactive
 operation: delete
 number: 6
 title: Remove post
-description:
-  Remove a *Post* **node** and its incident **edges** (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*, *containerOf*). Remove all replies (connected by *replyOf*) to the *Post* and their incident **edges**. In addition, remove all transitive replies to the *Post* and their incident **edges**.
+description: |
+  Remove a *Post* node and its edges (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*, *containerOf*).
+  Remove all replies to the *Post* and the connecting *replyOf* edges.
+  In addition, remove all transitive reply *Comments* to the *Post* and their edges.
 parameters:
   - name: Post.id
     type: ID

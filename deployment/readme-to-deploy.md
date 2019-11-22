@@ -3,7 +3,17 @@
 * Stable version: [[pdf](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/master)]
 * Latest snapshot: [[pdf](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
 
-## BI query cards
+## Queries per workload
+
+* [BI / reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-bi-reads.pdf)
+* [Interactive / complex reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-complex-reads.pdf)
+* [Interactive / short reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-short-reads.pdf)
+* [Interactive / inserts](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-inserts.pdf)
+* [Interactive / deletes](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-deletes.pdf)
+
+## Individual queries
+
+### BI reads
 
 * [BI Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-01.pdf)
 * [BI Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-02.pdf)
@@ -31,9 +41,7 @@
 * [BI Read 24](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-24.pdf)
 * [BI Read 25](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-25.pdf)
 
-## Interactive query cards
-
-### Complex reads
+### Interactive complex reads
 
 * [Interactive Complex Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-read-01.pdf)
 * [Interactive Complex Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-read-02.pdf)
@@ -50,7 +58,7 @@
 * [Interactive Complex Read 13](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-read-13.pdf)
 * [Interactive Complex Read 14](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-complex-read-14.pdf)
 
-### Short reads
+### Interactive short reads
 
 * [Interactive Short Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-short-read-01.pdf)
 * [Interactive Short Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-short-read-02.pdf)
@@ -60,7 +68,7 @@
 * [Interactive Short Read 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-short-read-06.pdf)
 * [Interactive Short Read 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-short-read-07.pdf)
 
-### Inserts
+### Interactive inserts
 
 * [Interactive Insert 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-01.pdf)
 * [Interactive Insert 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-02.pdf)
@@ -71,7 +79,7 @@
 * [Interactive Insert 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-07.pdf)
 * [Interactive Insert 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-08.pdf)
 
-### Deletes
+### Interactive deletes
 
 * [Interactive Delete 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-01.pdf)
 * [Interactive Delete 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-02.pdf)
