@@ -53,7 +53,8 @@ We also provide [an image on Docker Hub](https://hub.docker.com/r/ldbc/docs) for
 
 ```bash
 docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
-  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"
+  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"; \
+  sudo chown -R $USER:$USER .
 ```
 
 You can also compile the image manually by issuing:
