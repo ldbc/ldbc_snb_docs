@@ -56,7 +56,8 @@ Once the image is created, you can compile the document by issuing:
 
 ```console
 docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
-  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"
+  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"; \
+  sudo chown -R $USER:$USER .
 ```
 
 ### Notations and conventions
