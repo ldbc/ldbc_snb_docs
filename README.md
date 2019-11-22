@@ -49,17 +49,17 @@ To get consistent formatting, query cards are generated from query specification
 
 To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
 
-We also provide a Dockerfile for building the document. To create the Docker image, run the following command:
+We also provide [an image on Docker Hub](https://hub.docker.com/r/ldbc/docs) for building the document. To use it, run:
 
-```console
-docker build . --tag ldbc/docs
-```
-
-Once the image is created, you can compile the document by issuing:
-
-```console
+```bash
 docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
   "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"
+```
+
+You can also compile the image manually by issuing:
+
+```bash
+docker build . --tag ldbc/docs
 ```
 
 ### Notations and conventions
