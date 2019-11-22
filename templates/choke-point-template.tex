@@ -1,7 +1,17 @@
 \subsubsection{Queries}
 {\raggedright
 {% for query in queries -%}
-    \queryRefCard{ {{- query.0 -}} }{ {%- if query.1 == "Interactive" %}IC{% else %}{{ query.1 }}{% endif -%} }{ {{- query.3 -}} }
+    \queryRefCard{ {{- query.0 -}} }{
+      {%- if query.1 == "Interactive" and query.2 == "complex" -%}
+        IC
+      {%- elif query.1 == "Interactive" and query.2 == "insert" -%}
+        II
+      {%- elif query.1 == "Interactive" and query.2 == "delete" -%}
+        ID
+      {%- elif query.1 == "BI" -%}
+        BI
+      {%- endif -%}
+    }{ {{- query.3 -}} }
 {% endfor -%}
 {# this newline is required by \raggedright to work #}
 }
