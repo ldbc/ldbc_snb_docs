@@ -703,43 +703,30 @@ This serializers uses the standard Turtle format\footnote{Description of
 the Turtle RDF format http://www.w3.org/TR/turtle/}. It outputs
 two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_socialnet.ttl}, containing the static and the dynamic part of the graph, respectively.
 
-\subsection{Scale Factors}
+\subsubsection{Update Streams}
 
-\ldbcsnb defines a set of scale factors (SFs), targeting systems of different
-sizes and budgets.  SFs are computed based on the ASCII size in Gigabytes of
-the generated output files using the CSV serializer. For example, SF 1 weighs roughly 1~GB in CSV
-format, SF 3 weights roughly 3~GB and so on and so forth.  The proposed SFs are
-the following: 1, 3, 10, 30, 100, 300, 1000.
-Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
+\input{table-update-streams}
 
-The Test Sponsor may select the SF
-that better fits their needs, by properly configuring the \datagen,
-as described in \autoref{section:data_generation}.
-The size of the resulting dataset, is mainly affected by the following
-configuration parameters: the number of persons and the number of years
-simulated. Different SFs are computed by scaling the number of Persons in
-the network, while fixing the number of years simulated.
-\autoref{tab:snsize} shows the parameters used in each of the SFs.
+The generic schema is given in \autoref{table:update_stream_generic_schema}, while the concrete schema of each insert operation is given in \autoref{table:update_stream_schemas}.
+The update stream files are structured as follows:
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c||r|r|r|r|r|r|r|r|r|}
-	\hline
-	Scale Factor  &  0.1 &  0.3 &    1 &    3 &   10 &   30 &  100 &   300 & 1000 \\ \hline
-	\# of Persons & 1.5K & 3.5K &  11K &  27K &  73K & 182K & 499K & 1.25M & 3.6M \\ \hline
-	 \# of Years  &    3 &    3 &    3 &    3 &    3 &    3 &    3 &     3 &    3 \\ \hline
-	 Start Year   & 2010 & 2010 & 2010 & 2010 & 2010 & 2010 & 2010 &  2010 & 2010 \\ \hline
-\end{tabular}
-\centering
-\caption{Parameters of each scale factor.}
-\label{tab:snsize}
-\end{table}
+\begin{itemize}
+	\item \texttt{updateStream\_*\_person.csv} contains operation 1: \queryRefCard{interactive-insert-01}{II}{1}
+	\item \texttt{updateStream\_*\_forum.csv} contains operations 2--8: %
+	\queryRefCard{interactive-insert-02}{II}{2}
+	\queryRefCard{interactive-insert-03}{II}{3}
+	\queryRefCard{interactive-insert-04}{II}{4}
+	\queryRefCard{interactive-insert-05}{II}{5}
+	\queryRefCard{interactive-insert-06}{II}{6}
+	\queryRefCard{interactive-insert-07}{II}{7}
+	\queryRefCard{interactive-insert-08}{II}{8}
+\end{itemize}
 
-For example, SF 30 consists of the activity of a social network of 182K users
-during a period of three years, starting from 2010.
+Remark: update streams in version 0.3.0 only contain inserts. Delete operations are being designed and will be released in 2020.
 
-%In \autoref{appendix:scale_factors}, we show the statistics of each of the
-%proposed SFs in detail, including distributions for some of the relations.
+\subsubsection{Substitution Parameters}
+
+TODO.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
