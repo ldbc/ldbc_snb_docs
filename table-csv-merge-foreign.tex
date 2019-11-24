@@ -2,28 +2,37 @@
     \scriptsize
     \centerline{\begin{tabular}{|c|p{4.3cm}|p{12.4cm}|}
     	\hline
-    	\tableHeaderFirst{Ent.} & \tableHeader{File}                   & \tableHeader{Content}                                                                                               \\ \hline\hline
-        N                       & organisation\_*.csv                  & id | type({"university", "company"}) | name | url | place                                                           \\ \hline
-        N                       & place\_*.csv                         & id | name | url | type({"city", "country", "continent"}) | isPartOf                                                 \\ \hline
-        N                       & tag\_*.csv                           & id | name | url | hasType                                                                                           \\ \hline
-        N                       & tagclass\_*.csv                      & id | name | url | isSubclassOf                                                                                      \\ \hline\hline
-        N                       & comment\_*.csv                       & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment    \\ \hline
-        E                       & comment\_hasTag\_tag\_*.csv          & Comment.id | Tag.id                                                                                                 \\ \hline
-        N                       & forum\_*.csv                         & id | title | creationDate | moderator                                                                               \\ \hline
-        E                       & forum\_hasMember\_person\_*.csv      & Forum.id | Person.id | joinDate                                                                                     \\ \hline
-        E                       & forum\_hasTag\_tag\_*.csv            & Forum.id | Tag.id                                                                                                   \\ \hline
-        N                       & person\_*.csv                        & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed | place                     \\ \hline
-        A                       & person\_email\_emailaddress\_*.csv   & Person.id | email                                                                                                   \\ \hline
-        E                       & person\_hasInterest\_tag\_*.csv      & Person.id | Tag.id                                                                                                  \\ \hline
-        E                       & person\_knows\_person\_*.csv         & Person.id | Person.id | creationDate                                                                                \\ \hline
-        E                       & person\_likes\_comment\_*.csv        & Person.id | Post.id | creationDate                                                                                  \\ \hline
-        E                       & person\_likes\_post\_*.csv           & Person.id | Post.id | creationDate                                                                                  \\ \hline
-        A                       & person\_speaks\_language\_*.csv      & Person.id | language                                                                                                \\ \hline
-        E                       & person\_studyAt\_organisation\_*.csv & Person.id | Organisation.id | classYear                                                                             \\ \hline
-        E                       & person\_workAt\_organisation\_*.csv  & Person.id | Organisation.id | workFrom                                                                              \\ \hline
-        N                       & post\_*.csv                          & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place \\ \hline
-        E                       & post\_hasTag\_tag\_*.csv             & Post.id | Tag.id                                                                                                    \\ \hline
+    	\tableHeaderFirst{En.}  & \tableHeader{File}                   & \tableHeader{Content}                                                                                               \\
+    	\hline\hline
+        N                       & organisation\_*.csv                  & id | type({"university", "company"}) | name | url | place                                                           \\
+        \hline
+        N                       & place\_*.csv                         & id | name | url | type({"city", "country", "continent"}) | isPartOf                                                 \\
+        \hline
+        N                       & tag\_*.csv                           & id | name | url | hasType                                                                                           \\
+        \hline
+        N                       & tagclass\_*.csv                      & id | name | url | isSubclassOf                                                                                      \\
+        \hline\hline
+        N                       & comment\_*.csv                       & id | creationDate | locationIP | browserUsed | content | length | creator | place | replyOfPost | replyOfComment    \\
+        E                       & comment\_hasTag\_tag\_*.csv          & Comment.id | Tag.id                                                                                                 \\
+        \hline
+        N                       & forum\_*.csv                         & id | title | creationDate | moderator                                                                               \\
+        E                       & forum\_hasMember\_person\_*.csv      & Forum.id | Person.id | joinDate                                                                                     \\
+        E                       & forum\_hasTag\_tag\_*.csv            & Forum.id | Tag.id                                                                                                   \\
+        \hline
+        N                       & person\_*.csv                        & id | firstName | lastName | gender | birthday | creationDate | locationIP | browserUsed | place                     \\
+        A                       & person\_email\_emailaddress\_*.csv   & Person.id | email                                                                                                   \\
+        E                       & person\_hasInterest\_tag\_*.csv      & Person.id | Tag.id                                                                                                  \\
+        E                       & person\_knows\_person\_*.csv         & Person.id | Person.id | creationDate                                                                                \\
+        E                       & person\_likes\_comment\_*.csv        & Person.id | Post.id | creationDate                                                                                  \\
+        E                       & person\_likes\_post\_*.csv           & Person.id | Post.id | creationDate                                                                                  \\
+        A                       & person\_speaks\_language\_*.csv      & Person.id | language                                                                                                \\
+        E                       & person\_studyAt\_organisation\_*.csv & Person.id | Organisation.id | classYear                                                                             \\
+        E                       & person\_workAt\_organisation\_*.csv  & Person.id | Organisation.id | workFrom                                                                              \\
+        \hline
+        N                       & post\_*.csv                          & id | imageFile | creationDate | locationIP | browserUsed | language | content | length | creator | Forum.id | place \\
+        E                       & post\_hasTag\_tag\_*.csv             & Post.id | Tag.id                                                                                                    \\
+        \hline
     \end{tabular}}
-    \caption{Files output by the CsvMergeForeign serializer (20 in total). Notation -- N: Node, E: Edge, A: Attribute.}
+    \caption{Files output by the CsvMergeForeign serializer (20 in total). Notation -- K: entity kind, T: entity type, N: Node, E: Edge, A: Attribute.}
     \label{table:csv_merge_foreign}
 \end{table}
