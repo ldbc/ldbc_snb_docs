@@ -16,7 +16,7 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 ## How to cite LDBC benchmarks
 
 * **Social Network Benchmark**
-  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.4.0-SNAPSHOT)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
+  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.1)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
   * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
   * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://homepages.cwi.nl/~boncz/snb-challenge/snb-sigmod.pdf), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
 * **Other LDBC benchmarks**
