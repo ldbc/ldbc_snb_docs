@@ -3,7 +3,7 @@
     \centering
     \begin{tabular}{|c|p{4.6cm}|p{11.4cm}|}
     	\hline
-    	\tableHeaderFirst{K}    & \tableHeader{File}                      & \tableHeader{Content}                                                                                       \\
+    	\tableHeaderFirst{C}    & \tableHeader{File}                      & \tableHeader{Content}                                                                                       \\
     	\hline\hline
         N                       & organisation\_*.csv                     & id | type({"university", "company"}) | name | url                                                           \\
         E                       & organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id                                                                                  \\
@@ -45,6 +45,6 @@
         E                       & post\_isLocatedIn\_place.csv            & Post.id | Place.id                                                                                          \\
         \hline
     \end{tabular}
-    \caption{Files output by the CsvComposite serializer (31 in total). Notation -- K: entity kind, N: Node, E: Edge.}
+    \caption{Files output by the CsvComposite serializer (31 in total). Notation -- C: entity category, N: Node, E: Edge.}
     \label{table:csv_composite}
 \end{table}

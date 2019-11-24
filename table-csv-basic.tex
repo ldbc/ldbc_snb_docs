@@ -3,7 +3,7 @@
     \centering
     \begin{tabular}{|c|p{4.6cm}|p{9.8cm}|}
     	\hline
-    	\tableHeaderFirst{K}    & \tableHeader{File}                      & \tableHeader{Content}                                                                   \\
+    	\tableHeaderFirst{C}    & \tableHeader{File}                      & \tableHeader{Content}                                                                   \\
     	\hline\hline
         N                       & organisation\_*.csv                     & id | type({"university", "company"}) | name | url                                       \\
         E                       & organisation\_isLocatedIn\_place\_*.csv & Organisation.id | Place.id                                                              \\
@@ -47,6 +47,6 @@
         E                       & post\_isLocatedIn\_place.csv            & Post.id | Place.id                                                                      \\
         \hline
     \end{tabular}
-    \caption{Files output by the CsvBasic serializer (33 in total). Notation -- K: entity kind, N: Node, E: Edge, A: Attribute.}
+    \caption{Files output by the CsvBasic serializer (33 in total). Notation -- C: entity category, N: Node, E: Edge, A: Attribute.}
     \label{table:csv_basic}
 \end{table}
