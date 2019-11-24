@@ -623,56 +623,47 @@ The formats currently supported by \datagen are the following:
 
 \begin{itemize}
   \item \textbf{CSV variants:}
+      These serializers output comma-separated format. Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. This is indicated with ``*'' in the filenames of Tables~\ref{table:csv_basic}--\ref{table:csv_composite_merge_foreign}.
     \begin{itemize}
-      \item \textbf{CsvBasic:} Data output in CSV format, one file per different entity and on file
-        per different relation. Also, there is a file for those attributes whose
-        cardinality is larger than one, \ie \texttt{Person.email}, \texttt{Person.speaks}.
-      \item \textbf{CsvMergeForeign:} Similar to the CSV format, but the 
-        relations of the form 1-to-1 and 1-to-N are stored in the entity files as
-        a foreign keys.
+      \item \textbf{CsvBasic:} Data output in CSV format, one file per different entity and on file per different relation. Also, there is a file for those attributes whose cardinality is larger than one, \ie \texttt{Person.email}, \texttt{Person.speaks}.
+      \item \textbf{CsvMergeForeign:} Similar to the CsvBasic format, but the relations of the form 1-to-1 and 1-to-N are stored in the entity files as a foreign keys.
       \item \textbf{CsvComposite:} Similar to the CsvBasic format, but uses composite attributes for storing the \texttt{Person.email}, and \texttt{Person.speaks} attributes.
       \item \textbf{CsvCompositeMergeForeign:} Has the traits of both the CsvComposite and the CsvMergeForeign formats.
     \end{itemize}
   \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
 \end{itemize}
 
-
-
 \paragraph{CsvBasic}
 
-This is a comma separated format. Each entity, relation and properties with a
-cardinality larger than one, are output in a separate file. Generated files are
-summarized at \autoref{table:csv_basic}.  Depending on the number of threads used
-for generating the dataset, the number of files varies, since there is a file
-generated per thread. The * in the file names indicates a number between 0 and
-$\mathsf{NumberOfThreads}-1$.
+Each entity, relation and attributes with a cardinality larger than one, are output in a separate file.
+Generated files are summarized in \autoref{table:csv_basic}.
 
 \input{table-csv-basic}
 
-
 \paragraph{CsvMergeForeign}
 
-This is a comma separated format. It is similar to CSV, but those relations
-connecting two entities A and B, where an entity A has a cardinality of one, A
-is output as a column of entity B. Generated files are summarized at
-\autoref{table:csv_merge_foreign}. Depending on the number of threads used for generating
-the dataset, the number of files varies, since there is a file generated per
-thread. The * in the file names indicates a number between 0 and $\mathsf{NumberOfThreads}-1$.
+This serializer is similar to CsvBasic, but relations connecting two entities $A$ and $B$, where an entity $A$ has a cardinality of one, $A$ is output as a column of entity $B$.
+Generated files are summarized in \autoref{table:csv_merge_foreign}.
 
 \input{table-csv-merge-foreign}
 
 \paragraph{CsvComposite}
 
-TODO -- \autoref{table:csv_composite}.
+Each entity, and relations with a cardinality larger than one, are output in a separate file.
+Multi-valued attributes (email addresses, languages spoken) are stored as composite values.
+Generated files are summarized in \autoref{table:csv_composite}.
 
 \input{table-csv-composite}
 
 \paragraph{CsvCompositeMergeForeign}
 
-TODO -- \autoref{table:csv_composite_merge_foreign}.
+It is similar to CsvComposite and CsvMergeForeign.
+Relations connecting two entities $A$ and $B$, where an entity $A$ has a cardinality of one, $A$ is output as a column of entity $B$.
+Multi-valued attributes (email addresses, languages spoken) are stored as composite values.
+Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
+Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread.
 
 \input{table-csv-composite-merge-foreign}
-
 
 \paragraph{Turtle}
 
