@@ -603,7 +603,6 @@ next MapReduce pass.  This process can be successively repeated for additional
 correlation dimension.  Finally, the last reducer generates the remaining
 information such as forums, posts and comments.
 
-
 \subsection{Output Data}
 
 \datagen produces outputs three different items:
@@ -641,7 +640,7 @@ The formats currently supported by \datagen are the following:
 
 
 
-\subsubsection{CsvBasic}
+\paragraph{CsvBasic}
 
 This is a comma separated format. Each entity, relation and properties with a
 cardinality larger than one, are output in a separate file. Generated files are
@@ -653,7 +652,7 @@ $\mathsf{NumberOfThreads}-1$.
 \input{table-csv-basic}
 
 
-\subsubsection{CsvMergeForeign}
+\paragraph{CsvMergeForeign}
 
 This is a comma separated format. It is similar to CSV, but those relations
 connecting two entities A and B, where an entity A has a cardinality of one, A
@@ -664,20 +663,20 @@ thread. The * in the file names indicates a number between 0 and $\mathsf{Number
 
 \input{table-csv-merge-foreign}
 
-\subsubsection{CsvComposite}
+\paragraph{CsvComposite}
 
 TODO -- \autoref{table:csv_composite}.
 
 \input{table-csv-composite}
 
-\subsubsection{CsvCompositeMergeForeign}
+\paragraph{CsvCompositeMergeForeign}
 
 TODO -- \autoref{table:csv_composite_merge_foreign}.
 
 \input{table-csv-composite-merge-foreign}
 
 
-\subsubsection{Turtle}
+\paragraph{Turtle}
 
 This is the standard Turtle\footnote{Description of
 the Turtle RDF format http://www.w3.org/TR/turtle/} format. \datagen outputs

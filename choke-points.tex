@@ -312,7 +312,7 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \cpSection{8.1}{LANG}{Complex patterns}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 A natural requirement for graph query systems is to be able to express complex
 graph patterns.
@@ -324,7 +324,7 @@ and without fixed bounds
 
 \paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for negative patterns, also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions.
 
@@ -406,7 +406,7 @@ MINUS { xRoute ?routeDefinition ?xSensor } .
 
 \cpSection{8.2}{LANG}{Complex aggregations}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 BI workloads are heavy on aggregation, including queries with \emph{subsequent
 aggregations}, where the results of an aggregation serves as the input of
@@ -414,7 +414,7 @@ another aggregation. Expressing such operations requires some sort of query
 composition or chaining (see also CP-8.4). It is also common to \emph{filter on
 aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword of SQL).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher does not allow aggregations on aggregations, \eg \lstinline[language=cypher]{avg(count(x))}, as the semantics of such expressions is not meaningful. However, it allows multiple aggregations is subsequent \lstinline[language=cypher]{WITH} and  \lstinline[language=cypher]{RETURN} clauses. There were multiple discussion rounds on the aggregation semantics of the openCypher language.\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
@@ -430,7 +430,7 @@ aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword 
 
 \cpSection{8.3}{LANG}{Ranking-style queries}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Additionally to aggregations, BI workloads often use \emph{window functions},
 which perform aggregations without grouping input tuples to a single output
@@ -442,7 +442,7 @@ keyword to use aggregation functions as window functions, and the
 \url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html} for
 details.}
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.]
@@ -470,14 +470,14 @@ WITH xs[0] AS top, xs[0..5] AS top5
 
 \cpSection{8.4}{LANG}{Query composition}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Numerous use cases require \emph{composition} of queries, including the reuse of
 query results (\eg nodes, edges) or using scalar subqueries (\eg selecting a
 threshold value with a subquery and using it for subsequent filtering
 operations).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Nested subqueries were accepted in the openCypher language.\footnote{\url{https://github.com/petraselmer/openCypher/blob/1ca70bf8e3cea65ee47ce49eeabea83530eb529b/cip/1.accepted/CIP2016-06-22-nested-updating-and-chained-subqueries.adoc}}
@@ -491,13 +491,13 @@ operations).
 
 \cpSection{8.5}{LANG}{Dates and times}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Handling dates and times is a fundamental requirement for production-ready
 database systems. It is particularly important in the context of BI queries as
 these often calculate aggregations on certain periods of time (\eg on a month).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] The openCypher project has accepted a proposal to support dates and times.\footnote{\url{https://github.com/thobe/openCypher/blob/06accdb3e69820cdfac3dbd50a4f8eee73ba179a/cip/1.accepted/CIP2015-08-06-date-time.adoc}}
@@ -513,7 +513,7 @@ these often calculate aggregations on certain periods of time (\eg on a month).
 
 \cpSection{8.6}{LANG}{Handling paths}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 \paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of nodes and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of nodes or edges), depending on the source.''
 In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{DBLP:journals/csur/AnglesABHRV17}.
@@ -530,7 +530,7 @@ Also, some use cases specify uniqueness constraints on paths~\cite{DBLP:journals
 \emph{no-repeated-edge semantics} (also known as \emph{trails}).
 Other variants are also used in rare cases, such as \emph{maximal} (non-expandable) or \emph{minimal} (non-contractable) paths, and \emph{longest trails} and \emph{longest simple paths}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher uses \emph{no-repeated-edge matching semantics} (in return, this semantics is sometimes dubbed as \emph{cyphermorphism}).
