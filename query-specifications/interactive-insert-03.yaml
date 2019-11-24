@@ -1,0 +1,15 @@
+workload: Interactive
+operation: insert
+number: 3
+title: Add like to comment
+description: Add a *likes* **edge** to a *Comment*.
+parameters:
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+  - name: Comment.id
+    type: ID
+    description: "`commentId`"
+  - name: Person-likes->.creationDate
+    type: DateTime
+    description: "`creationDate`"

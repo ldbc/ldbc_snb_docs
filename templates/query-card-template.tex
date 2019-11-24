@@ -80,23 +80,39 @@
 }
 {%- endif %}
 
-{%- if workload == "Interactive" and operation == "update" -%}
+{%- if workload == "Interactive" and operation == "insert" -%}
 \renewcommand{\currentQueryCard}{ {{- number -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
 
-	\queryRefCard{interactive-update-01}{IU}{1}\\
-	\queryRefCard{interactive-update-02}{IU}{2}\\
-	\queryRefCard{interactive-update-03}{IU}{3}\\
-	\queryRefCard{interactive-update-04}{IU}{4}\\
-	\queryRefCard{interactive-update-05}{IU}{5}\\
-	\queryRefCard{interactive-update-06}{IU}{6}\\
-	\queryRefCard{interactive-update-07}{IU}{7}\\
-	\queryRefCard{interactive-update-08}{IU}{8}\\
+	\queryRefCard{interactive-insert-01}{II}{1}\\
+	\queryRefCard{interactive-insert-02}{II}{2}\\
+	\queryRefCard{interactive-insert-03}{II}{3}\\
+	\queryRefCard{interactive-insert-04}{II}{4}\\
+	\queryRefCard{interactive-insert-05}{II}{5}\\
+	\queryRefCard{interactive-insert-06}{II}{6}\\
+	\queryRefCard{interactive-insert-07}{II}{7}\\
+	\queryRefCard{interactive-insert-08}{II}{8}\\
 }
 {%- endif %}
 
+{%- if workload == "Interactive" and operation == "delete" -%}
+\renewcommand{\currentQueryCard}{ {{- number -}} }
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+	\queryRefCard{interactive-delete-01}{ID}{1}\\
+	\queryRefCard{interactive-delete-02}{ID}{2}\\
+	\queryRefCard{interactive-delete-03}{ID}{3}\\
+	\queryRefCard{interactive-delete-04}{ID}{4}\\
+	\queryRefCard{interactive-delete-05}{ID}{5}\\
+	\queryRefCard{interactive-delete-06}{ID}{6}\\
+	\queryRefCard{interactive-delete-07}{ID}{7}\\
+	\queryRefCard{interactive-delete-08}{ID}{8}\\
+}
+{%- endif %}
 
 \noindent\begin{tabularx}{\queryCardWidth}{|>{\queryPropertyCell}p{\queryPropertyCellWidth}|X|}
 	\hline

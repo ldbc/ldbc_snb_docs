@@ -16,7 +16,7 @@ Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP \
 
 {
 \setlength{\tabcolsep}{.1em}
-\input{query-cards/choke-points-queries}
+\input{choke-points/choke-points-queries}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,7 +32,7 @@ Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP \
 This choke point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indexes providing key order, other operators also preserve or even induce tuple orderings.
 Sort-based operators create new orderings, typically the probe-side of a hash join conserves its order, etc.
 
-\input{query-cards/cp-1-1}
+\input{choke-points/cp-1-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,7 +45,7 @@ Each partition would have its own thread so that only that thread would write th
 It is amenable to the same solution with intra query parallelization and partitioning as the group-by.
 We further note that scale-out systems have an extra incentive for partitioning since this will distribute the CPU and memory pressure over multiple machines, yielding better platform utilization and scalability.
 
-\input{query-cards/cp-1-2}
+\input{choke-points/cp-1-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -54,7 +54,7 @@ We further note that scale-out systems have an extra incentive for partitioning 
 This choke point tests the ability of the query optimizer to perform optimizations based on top-$k$ selections. Many times queries demand for returning the top-$k$ elements based on some property.
 Engines can exploit that once $k$ results are obtained, extra restrictions in a selection can be added based on the properties of the $k$th element currently in the top-$k$, being more restrictive as the query advances, instead of sorting all elements and picking the highest $k$.
 
-\input{query-cards/cp-1-3}
+\input{choke-points/cp-1-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,7 +64,7 @@ This choke point tests the ability to efficiently perform group by evaluation
 when only a very limited set of groups is available.  This can require special
 strategies for parallelization, \eg pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.
 
-\input{query-cards/cp-1-4}
+\input{choke-points/cp-1-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +80,7 @@ This choke point tests the ability of the query optimizer to find optimal join o
 The execution time of these orders may differ by orders of magnitude. Therefore, finding an efficient join (traversal) order is important, which in general, requires enumeration of all the possibilities.
 The enumeration is complicated by operators that are not freely re-orderable like semi-, \mbox{anti-,} and outer-joins. Because of this difficulty most join enumeration algorithms do not enumerate all possible plans, and therefore can miss the optimal join order. Therefore, this choke point tests the ability of the query optimizer to find optimal join (traversal) orders.
 
-\input{query-cards/cp-2-1}
+\input{choke-points/cp-2-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -92,7 +92,7 @@ Late projection does have a trade-off involving locality, since late in the plan
 Late projection specifically makes sense in queries where the late use of these columns happens at a moment where the amount of tuples involved has been considerably reduced;
 for example after an aggregation with only few unique group-by keys, or a top-$k$ operator.
 
-\input{query-cards/cp-2-2}
+\input{choke-points/cp-2-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -104,7 +104,7 @@ This is especially important with column stores, where one usually has an index 
 In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns.
 There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides
 
-\input{query-cards/cp-2-3}
+\input{choke-points/cp-2-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -112,7 +112,7 @@ There is a break even point between index and hash based plans, depending on the
 
 This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
 
-\input{query-cards/cp-2-4}
+\input{choke-points/cp-2-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +128,7 @@ This choke point tests the ability of the query optimizer to detect data correla
 In fact it should not matter which column is used, as range- propagation between correlated attributes of the same table is relatively easy. One way is through the creation of multi-attribute histograms after detection of attribute correlation.
 With MinMax indexes, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
 
-\input{query-cards/cp-3-1}
+\input{choke-points/cp-3-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -139,7 +139,7 @@ This choke point tests suitability of the identifiers assigned to entities by th
 The properties of the entity being identified may affect this, \eg type (label), other dependent properties,
 \eg geographic location, date, position in a hierarchy etc, depending on the application. Such identifier choice may create locality which in turn improves efficiency of compression or index access.
 
-\input{query-cards/cp-3-2}
+\input{choke-points/cp-3-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -149,7 +149,7 @@ This choke point tests the performance of indexes when scattered accesses are pe
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
 Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
 
-\input{query-cards/cp-3-3}
+\input{choke-points/cp-3-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,7 +164,7 @@ Also detecting absence of locality should turn off any locality dependent optimi
 This choke point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
 CSE should recognize also that average aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
 
-\input{query-cards/cp-4-1}
+\input{choke-points/cp-4-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,7 +173,7 @@ CSE should recognize also that average aggregates can be derived afterwards by d
 This choke point tests the ability of the query optimizer to reorder the execution of boolean expressions to improve the performance. Some boolean expressions are complex, with possibilities for alternative optimal evaluation orders.
 For instance, the optimizer may reorder conjunctions to test first those conditions with larger selectivity~\cite{DBLP:conf/vldb/Moerkotte98}.
 
-\input{query-cards/cp-4-2}
+\input{choke-points/cp-4-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,7 +181,7 @@ For instance, the optimizer may reorder conjunctions to test first those conditi
 
 This choke point tests the ability of efficiently evaluating simple expressions on a large number of values. A typical example could be simple arithmetic expressions, mathematical functions like floor and absolute or date functions like extracting a year.
 
-\input{query-cards/cp-4-3}
+\input{choke-points/cp-4-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -190,7 +190,7 @@ This choke point tests the ability of efficiently evaluating simple expressions 
 This choke point tests the ability of efficiently evaluating complex string
 matching expressions (\eg via regular expressions).
 
-%\input{query-cards/cp-4-4}
+%\input{choke-points/cp-4-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -208,7 +208,7 @@ Therefore, the execution layer of the database system will benefit from implemen
 The ill effects of repetitive tuple-at-a-time sub-query execution can also be mitigated if execution systems by using vectorized, or block-wise query execution, allowing to run sub-queries with thousands of input parameters instead of one.
 The ability to look up many keys in an index in one API call creates the opportunity to benefit from physical locality, if lookup keys exhibit some clustering.
 
-\input{query-cards/cp-5-1}
+\input{choke-points/cp-5-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -219,7 +219,7 @@ In this case, a non-tree, rather DAG-shaped~\cite{DBLP:conf/btw/NeumannM09} quer
 which higher up in the query plan are joined together (using normal query decorrelation rewrites).
 As such, the benchmark rewards systems where the optimizer can detect this and the execution engine supports an operator that can buffer intermediate results and provide them to multiple parent operators.
 
-\input{query-cards/cp-5-2}
+\input{choke-points/cp-5-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -228,7 +228,7 @@ As such, the benchmark rewards systems where the optimizer can detect this and t
 This choke point tests the ability of the execution engine to reuse sub-query results when two sub-queries are mostly identical.
 Some queries have almost identical sub-queries, where some of their internal results can be reused in both sides of the execution plan, thus avoiding to repeat computations.
 
-\input{query-cards/cp-5-3}
+\input{choke-points/cp-5-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -246,7 +246,7 @@ This weakness opens up the possibility of using a query result cache, to elimina
 A further opportunity that detects even more overlap is the work on recycling, which does not only cache final query results, but also intermediate query results of a "high worth".
 Here, worth is a combination of partial-query result size, partial-query evaluation cost, and observed (or estimated) frequency of the partial-query in the workload.
 
-\input{query-cards/cp-6-1}
+\input{choke-points/cp-6-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -263,7 +263,7 @@ graph traversals. For example, when computing paths within a range of distances,
 it is often possible to incrementally compute longer paths by reusing paths of
 shorter distances that were already computed.
 
-\input{query-cards/cp-7-1}
+\input{choke-points/cp-7-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -277,7 +277,7 @@ cost model or of gathering special statistics, \eg the depth and fan-out of a tr
 \eg geographic locations or other hierarchical classifications, detecting the cardinality of the transitive path will allow one to go to a star schema plan with scan of a fact table with a selective hash join.
 Such a plan will be on the other hand very bad for example if the hash table is much larger than the ``fact table'' being scanned.
 
-\input{query-cards/cp-7-2}
+\input{choke-points/cp-7-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -291,7 +291,7 @@ the index operations themselves. Also parallelization may be possible but may
 need to deal with a global state, \eg set of visited nodes.
 There are many possible tradeoffs between generality and performance
 
-\input{query-cards/cp-7-3}
+\input{choke-points/cp-7-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -299,7 +299,7 @@ There are many possible tradeoffs between generality and performance
 
 This tests the ability of a system to express termination criteria for transitive queries so that not the whole transitive relation has to be evaluated as well as efficient testing for termination.
 
-\input{query-cards/cp-7-4}
+\input{choke-points/cp-7-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,7 +312,7 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \cpSection{8.1}{LANG}{Complex patterns}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 A natural requirement for graph query systems is to be able to express complex
 graph patterns.
@@ -324,7 +324,7 @@ and without fixed bounds
 
 \paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for negative patterns, also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions.
 
@@ -400,13 +400,13 @@ MINUS { xRoute ?routeDefinition ?xSensor } .
 
 % https://stackoverflow.com/questions/10952332/return-node-if-relationship-is-not-present/14254214
 
-\input{query-cards/cp-8-1}
+\input{choke-points/cp-8-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{8.2}{LANG}{Complex aggregations}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 BI workloads are heavy on aggregation, including queries with \emph{subsequent
 aggregations}, where the results of an aggregation serves as the input of
@@ -414,7 +414,7 @@ another aggregation. Expressing such operations requires some sort of query
 composition or chaining (see also CP-8.4). It is also common to \emph{filter on
 aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword of SQL).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher does not allow aggregations on aggregations, \eg \lstinline[language=cypher]{avg(count(x))}, as the semantics of such expressions is not meaningful. However, it allows multiple aggregations is subsequent \lstinline[language=cypher]{WITH} and  \lstinline[language=cypher]{RETURN} clauses. There were multiple discussion rounds on the aggregation semantics of the openCypher language.\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
@@ -424,13 +424,13 @@ aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword 
 \item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sql]{GROUP BY} clause (similarly to SQL).
 \end{description}
 
-\input{query-cards/cp-8-2}
+\input{choke-points/cp-8-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{8.3}{LANG}{Ranking-style queries}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Additionally to aggregations, BI workloads often use \emph{window functions},
 which perform aggregations without grouping input tuples to a single output
@@ -442,7 +442,7 @@ keyword to use aggregation functions as window functions, and the
 \url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html} for
 details.}
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.]
@@ -464,20 +464,20 @@ WITH xs[0] AS top, xs[0..5] AS top5
 \item[SPARQL.] TODO
 \end{description}
 
-\input{query-cards/cp-8-3}
+\input{choke-points/cp-8-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{8.4}{LANG}{Query composition}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Numerous use cases require \emph{composition} of queries, including the reuse of
 query results (\eg nodes, edges) or using scalar subqueries (\eg selecting a
 threshold value with a subquery and using it for subsequent filtering
 operations).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Nested subqueries were accepted in the openCypher language.\footnote{\url{https://github.com/petraselmer/openCypher/blob/1ca70bf8e3cea65ee47ce49eeabea83530eb529b/cip/1.accepted/CIP2016-06-22-nested-updating-and-chained-subqueries.adoc}}
@@ -485,19 +485,19 @@ operations).
 \item[SPARQL.] SPARQL fully supports query composition.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#subqueries}}
 \end{description}
 
-\input{query-cards/cp-8-4}
+\input{choke-points/cp-8-4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{8.5}{LANG}{Dates and times}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Handling dates and times is a fundamental requirement for production-ready
 database systems. It is particularly important in the context of BI queries as
 these often calculate aggregations on certain periods of time (\eg on a month).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] The openCypher project has accepted a proposal to support dates and times.\footnote{\url{https://github.com/thobe/openCypher/blob/06accdb3e69820cdfac3dbd50a4f8eee73ba179a/cip/1.accepted/CIP2015-08-06-date-time.adoc}}
@@ -507,15 +507,15 @@ these often calculate aggregations on certain periods of time (\eg on a month).
 \item[SPARQL.] SPARQL supports dates and times extensively with timezones and functions for extracting a part of a given date.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#func-date-time}}
 \end{description}
 
-\input{query-cards/cp-8-5}
+\input{choke-points/cp-8-5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cpSection{8.6}{LANG}{Handling paths}
 
-\subsubsection{Description}
+\paragraph{Description}
 
-\paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of vertices and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of vertices or edges), depending on the source.''
+\paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of nodes and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of nodes or edges), depending on the source.''
 In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{DBLP:journals/csur/AnglesABHRV17}.
 
 Handling paths as first-class citizens is one of the key distinguishing features of graph database 
@@ -530,7 +530,7 @@ Also, some use cases specify uniqueness constraints on paths~\cite{DBLP:journals
 \emph{no-repeated-edge semantics} (also known as \emph{trails}).
 Other variants are also used in rare cases, such as \emph{maximal} (non-expandable) or \emph{minimal} (non-contractable) paths, and \emph{longest trails} and \emph{longest simple paths}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher uses \emph{no-repeated-edge matching semantics} (in return, this semantics is sometimes dubbed as \emph{cyphermorphism}).
@@ -542,6 +542,6 @@ Regular path queries (RPQs) are also proposed in the openCypher language as \emp
 \item[SPARQL.] SPARQL uses \emph{homomorphism-based matching semantics} and supports RPQs as \emph{property paths}. Isomorphism-based matching semantics can be expressed by introducing custom filtering condition, \eg \lstinline[language=sparql]{FILTER ( ?e1 != ?e2 )}.
 \end{description}
 
-\input{query-cards/cp-8-6}
+\input{choke-points/cp-8-6}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

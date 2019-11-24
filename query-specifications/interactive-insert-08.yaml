@@ -1,0 +1,15 @@
+workload: Interactive
+operation: insert
+number: 8
+title: Add friendship
+description: Add a friendship **edge** (*knows*) between two *Persons*.
+parameters:
+  - name: Person.id
+    type: ID
+    description: "`person1Id`"
+  - name: Person.id
+    type: ID
+    description: "`person2Id`"
+  - name: Person-knows->.creationDate
+    type: DateTime
+    description: "`creationDate`"

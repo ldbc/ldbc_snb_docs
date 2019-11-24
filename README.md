@@ -15,11 +15,13 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 
 ## How to cite LDBC benchmarks
 
-* **LDBC Semantic Publishing Benchmark:** [Benchmarking RDF Query Engines: The LDBC Semantic Publishing Benchmark](http://ceur-ws.org/Vol-1700/paper-01.pdf), BLINK at ISWC 2016 by V. Kotsev et al. [[bib](bib/spb.bib)]
-* **LDBC Graphalytics:** [LDBC Graphalytics: A Benchmark for Large-Scale Graph Analysis on Parallel and Distributed Platforms](http://www.vldb.org/pvldb/vol9/p1317-iosup.pdf) VLDB 2016 by A. Iosup et al. [[bib](bib/graphalytics.bib)]
-* **LDBC Social Network Benchmark – Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://homepages.cwi.nl/~boncz/snb-challenge/snb-sigmod.pdf), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
-* **LDBC Social Network Benchmark – BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
-* **The full specification:** [The LDBC Social Network Benchmark (version 0.4.0-SNAPSHOT)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
+* **Social Network Benchmark**
+  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.1)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
+  * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
+  * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://homepages.cwi.nl/~boncz/snb-challenge/snb-sigmod.pdf), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
+* **Other LDBC benchmarks**
+  * **LDBC Graphalytics:** [LDBC Graphalytics: A Benchmark for Large-Scale Graph Analysis on Parallel and Distributed Platforms](http://www.vldb.org/pvldb/vol9/p1317-iosup.pdf) VLDB 2016 by A. Iosup et al. [[bib](bib/graphalytics.bib)]
+  * **LDBC Semantic Publishing Benchmark:** [Benchmarking RDF Query Engines: The LDBC Semantic Publishing Benchmark](http://ceur-ws.org/Vol-1700/paper-01.pdf), BLINK at ISWC 2016 by V. Kotsev et al. [[bib](bib/spb.bib)]
 
 ## How to build the this document
 
@@ -34,6 +36,7 @@ To get consistent formatting, query cards are generated from query specification
     ```bash
     sudo apt-get install -y pandoc
     sudo apt-get install -y python3 python3-pip python3-setuptools
+    sudo pip3 install -r requirements.txt
     ```
 
 1. To generate the TeX files for query cards, run the following command:
@@ -46,18 +49,18 @@ To get consistent formatting, query cards are generated from query specification
 
 To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
 
-We also provide a Dockerfile for building the document. To create the Docker image, run the following command:
+We also provide [an image on Docker Hub](https://hub.docker.com/r/ldbc/docs) for building the document. To use it, run:
 
-```console
-docker build . --tag ldbc/docs
-```
-
-Once the image is created, you can compile the document by issuing:
-
-```console
+```bash
 docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
   "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"; \
   sudo chown -R $USER:$USER .
+```
+
+You can also compile the image manually by issuing:
+
+```bash
+docker build . --tag ldbc/docs
 ```
 
 ### Notations and conventions

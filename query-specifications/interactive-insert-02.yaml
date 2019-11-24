@@ -1,0 +1,15 @@
+workload: Interactive
+operation: insert
+number: 2
+title: Add like to post
+description: Add a *likes* **edge** to a *Post*.
+parameters:
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+  - name: Post.id
+    type: ID
+    description: "`postId`"
+  - name: Person-likes->.creationDate
+    type: DateTime
+    description: "`creationDate`"

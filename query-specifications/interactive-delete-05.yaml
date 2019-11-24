@@ -1,0 +1,15 @@
+workload: Interactive
+operation: delete
+number: 5
+title: Remove forum membership
+description: |
+  Given a *Forum* and a *Person*, remove the *hasMember* edge between them.
+parameters:
+  - name: Forum.id
+    type: ID
+    description: "`forumId`"
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+relevance:
+  n/a

@@ -1,0 +1,21 @@
+workload: Interactive
+operation: insert
+number: 4
+title: Add forum
+description: Add a *Forum* **node**, connected to the network by 2 possible **edge** types.
+parameters:
+  - name: Forum.id
+    type: ID
+    description: "`forumId`"
+  - name: Forum.title
+    type: String
+    description: "`forumTitle`"
+  - name: Forum.creationDate
+    type: DateTime
+    description: "`creationDate`"
+  - name: Forum-hasModerator->Person.id
+    type: ID
+    description: "`moderatorPersonId`"
+  - name: Forum-hasTag->Tag.id
+    type: \{ID\}
+    description: "`tagIds`"

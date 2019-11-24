@@ -1,0 +1,12 @@
+workload: Interactive
+operation: delete
+number: 4
+title: Remove forum
+description: |
+  Remove a *Forum* and its edges (*hasModerator*, *hasMember*, *hasTag*) and all *Posts* in the *Forum* (connected by *containerOf* edges) and their direct and transitive *Comments*.
+parameters:
+  - name: Forum.id
+    type: ID
+    description: "`forumId`"
+relevance:
+  n/a

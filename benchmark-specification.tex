@@ -28,9 +28,9 @@ convenient manner the test sponsor may decide.
 \section{Software and Useful Links}
 
 \begin{itemize}
-	\item \textbf{LDBC Driver 0.3 -- \url{https://github.com/ldbc/ldbc_driver}}: The driver
+	\item \textbf{LDBC Driver -- \url{https://github.com/ldbc/ldbc_driver}}: The driver
 	responsible for executing the \ldbcsnb workload.
-	\item \textbf{\datagen 0.2.5 -- \url{https://github.com/ldbc/ldbc_snb_datagen}}: The data
+	\item \textbf{\datagen -- \url{https://github.com/ldbc/ldbc_snb_datagen}}: The data
 	generator used to generate the datasets of the benchmark.
 \end{itemize}
 
@@ -46,7 +46,7 @@ data types, the data schema, how it is generated and the different scale
 factors.
 
 \subsection{Data Types}
-\autoref{table:types} describes the different types used in the whole benchmark.
+\autoref{table:types} describes the different data types used in the benchmark.
 
 \begin{table}[h]
 \centering
@@ -114,7 +114,7 @@ All of them are described in the following sections.
 
 {\flushleft \textbf{Textual Restrictions and Notes}}
 \begin{itemize}
-    \item Posts have content or imageFile. They have one of them but not both. The one they do not have is an empty string.
+    \item Posts have content or imageFile. They have one of them but not both. The one they do not have is an empty string.\footnote{Implementation can use other means to represent this value such as a \texttt{NULL}.}
     \item Posts in a forum can be created by a non-member person if and only if that person is a modeartor.
 \end{itemize}
 
@@ -298,9 +298,7 @@ interested in. \autoref{table:tag} shows the attributes of Tag entity.
     \label{table:tag}
 \end{table}
 
-{\flushleft \textbf{TagClass:}} a class or a category used to build
-a hierarchy of tags. \autoref{table:tagclass} shows the attributes of TagClass
-entity.
+{\flushleft \textbf{TagClass:}} a class used to build a hierarchy of tags. \autoref{table:tagclass} shows the attributes of TagClass entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -603,10 +601,9 @@ next MapReduce pass.  This process can be successively repeated for additional
 correlation dimension.  Finally, the last reducer generates the remaining
 information such as forums, posts and comments.
 
-
 \subsection{Output Data}
 
-\datagen produces outputs three different items:
+For each scale factor, \datagen produces three different artefacts:
 \begin{itemize}
   \item \textbf{Dataset}: The dataset to be bulk loaded by the SUT. It
     corresponds to roughly the 90\% of the total generated network.
@@ -619,105 +616,115 @@ information such as forums, posts and comments.
     read queries of the workloads.
 \end{itemize}
 
-The SUT has to take care only of the generated Dataset to be bulk loaded.
-The formats currently supported by \datagen are the following:
+\subsubsection{Scale Factors}
+
+\ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
+SFs are computed based on the ASCII size in Gigabytes of the generated output files using the CsvBasic serializer.
+For example, SF 1 takes roughly 1~GB in CSV format, SF 3 weights roughly 3~GB and so on and so forth.
+The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
+Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
+
+The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{section:data_generation}.
+The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
+By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
+\autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l||r|r|r|r|r|r|r|r|r|}
+		\hline
+		Scale Factor     &     0.1 &     0.3 &        1 &        3 &        10 &        30 &        100 &        300 &        1000 \\ \hline\hline
+		\# of Persons    &    1.5K &    3.5K &      11K &      27K &       73K &      182K &       499K &      1.25M &        3.6M \\ \hline\hline
+		%Number of nodes &  327588 &  908224 &  3181724 &  9281922 &  29987835 &  88789833 &  282637871 &  817316105 &  2686781095 \\ \hline
+		%Number of edges & 1477965 & 4583118 & 17256038 & 52695735 & 176623445 & 540915404 & 1775513811 & 5269286554 & 17788734714 \\ \hline
+		\# of nodes      &  327.6K &    908K &     3.2M &     9.3M &       30M &     88.8M &     282.6M &     817.3M &        2.7B \\ \hline
+		\# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B \\ \hline
+	\end{tabular}
+	\centering
+	\caption{Parameters of each scale factor.}
+	\label{tab:snsize}
+\end{table}
+
+%In \autoref{appendix:scale_factors}, we show the statistics of each of the
+%proposed SFs in detail, including distributions for some of the relations.
+
+\input{table-csv-basic}
+
+\input{table-csv-merge-foreign}
+
+\input{table-csv-composite}
+
+\input{table-csv-composite-merge-foreign}
+
+\subsubsection{Dataset}
+
+The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{figure:schema}).
+The SUT has to take care only of the generated Dataset to be bulk loaded. Using \texttt{NULL} values for storing optional values is allowed.
+
+The formats currently supported by \datagen serializers are the following:
 
 \begin{itemize}
   \item \textbf{CSV variants:}
+      These serializers produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (where applicable).
+      The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
+      Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
+      Currently, the following CSV variants are supported:
     \begin{itemize}
-      \item \textbf{CsvBasic:} Data output in CSV format, one file per different entity and on file
-        per different relation. Also, there is a file for those attributes whose
-        cardinality is larger than one, \ie \texttt{Person.email}, \texttt{Person.speaks}.
-      \item \textbf{CsvMergeForeign:} Similar to the CSV format, but the 
-        relations of the form 1-to-1 and 1-to-N are stored in the entity files as
-        a foreign keys.
-      \item \textbf{CsvComposite:} Similar to the CsvBasic format, but uses composite attributes for storing the \texttt{Person.email}, and \texttt{Person.speaks} attributes.
-      \item \textbf{CsvCompositeMergeForeign:} Has the traits of both the CsvComposite and the CsvMergeForeign formats.
+      \item \textbf{CsvBasic:}
+      Each entity, relation and attribute with a cardinality larger than one (including attributes \texttt{Person.email} and \texttt{Person.speaks}), are output in a separate file.
+      Generated files are summarized in \autoref{table:csv_basic}.
+
+      \item \textbf{CsvMergeForeign:}
+      This serializer is similar to CsvBasic, but relations that have a cardinality of 1-to-1 or 1-to-N are merged in the entity files as a foreign keys.
+      Generated files are summarized in \autoref{table:csv_merge_foreign}.
+
+      \item \textbf{CsvComposite:}
+      Similar to the CsvBasic format but each entity, and relations with a cardinality larger than one, are output in a separate file.
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
+      Generated files are summarized in \autoref{table:csv_composite}.
+
+      \item \textbf{CsvCompositeMergeForeign:}
+      Has the traits of both the CsvComposite and the CsvMergeForeign formats.
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
+      Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
     \end{itemize}
   \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
 \end{itemize}
 
+\paragraph{Turtle}
 
+This serializers uses the standard Turtle format\footnote{Description of
+the Turtle RDF format http://www.w3.org/TR/turtle/}. It outputs
+two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_socialnet.ttl}, containing the static and the dynamic part of the graph, respectively.
 
-\subsubsection{CsvBasic}
+\subsubsection{Update Streams}
 
-This is a comma separated format. Each entity, relation and properties with a
-cardinality larger than one, are output in a separate file. Generated files are
-summarized at \autoref{table:csv_basic}.  Depending on the number of threads used
-for generating the dataset, the number of files varies, since there is a file
-generated per thread. The * in the file names indicates a number between 0 and
-$\mathsf{NumberOfThreads}-1$.
+\input{table-update-streams}
 
-\input{table-csv-basic}
+The generic schema is given in \autoref{table:update_stream_generic_schema}, while the concrete schema of each insert operation is given in \autoref{table:update_stream_schemas}.
+The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
 
+\begin{itemize}
+	\item \texttt{updateStream\_*\_person.csv} contains operation 1: \queryRefCard{interactive-insert-01}{II}{1}
+	\item \texttt{updateStream\_*\_forum.csv} contains operations 2--8: %
+	\queryRefCard{interactive-insert-02}{II}{2}
+	\queryRefCard{interactive-insert-03}{II}{3}
+	\queryRefCard{interactive-insert-04}{II}{4}
+	\queryRefCard{interactive-insert-05}{II}{5}
+	\queryRefCard{interactive-insert-06}{II}{6}
+	\queryRefCard{interactive-insert-07}{II}{7}
+	\queryRefCard{interactive-insert-08}{II}{8}
+\end{itemize}
 
-\subsubsection{CsvMergeForeign}
+Remark: update streams in version 0.3.0 only contain inserts. Delete operations are being designed and will be released in 2020.
 
-This is a comma separated format. It is similar to CSV, but those relations
-connecting two entities A and B, where an entity A has a cardinality of one, A
-is output as a column of entity B. Generated files are summarized at
-\autoref{table:csv_merge_foreign}. Depending on the number of threads used for generating
-the dataset, the number of files varies, since there is a file generated per
-thread. The * in the file names indicates a number between 0 and $\mathsf{NumberOfThreads}-1$.
+\subsubsection{Substitution Parameters}
 
-\input{table-csv-merge-foreign}
-
-\subsubsection{CsvComposite}
-
-TODO -- \autoref{table:csv_composite}.
-
-\input{table-csv-composite}
-
-\subsubsection{CsvCompositeMergeForeign}
-
-TODO -- \autoref{table:csv_composite_merge_foreign}.
-
-\input{table-csv-composite-merge-foreign}
-
-
-\subsubsection{Turtle}
-
-This is the standard Turtle\footnote{Description of
-the Turtle RDF format http://www.w3.org/TR/turtle/} format. \datagen outputs
-two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_socialnet.ttl}.
-
-\subsection{Scale Factors}
-
-\ldbcsnb defines a set of scale factors (SFs), targeting systems of different
-sizes and budgets.  SFs are computed based on the ASCII size in Gigabytes of
-the generated output files using the CSV serializer. For example, SF 1 weighs roughly 1~GB in CSV
-format, SF 3 weights roughly 3~GB and so on and so forth.  The proposed SFs are
-the following: 1, 3, 10, 30, 100, 300, 1000.
-Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
-
-The Test Sponsor may select the SF
-that better fits their needs, by properly configuring the \datagen,
-as described in \autoref{section:data_generation}.
-The size of the resulting dataset, is mainly affected by the following
-configuration parameters: the number of persons and the number of years
-simulated. Different SFs are computed by scaling the number of Persons in
-the network, while fixing the number of years simulated.
-\autoref{tab:snsize} shows the parameters used in each of the SFs.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c||r|r|r|r|r|r|r|r|r|}
-	\hline
-	Scale Factor  &  0.1 &  0.3 &    1 &    3 &   10 &   30 &  100 &   300 & 1000 \\ \hline
-	\# of Persons & 1.5K & 3.5K &  11K &  27K &  73K & 182K & 499K & 1.25M & 3.6M \\ \hline
-	 \# of Years  &    3 &    3 &    3 &    3 &    3 &    3 &    3 &     3 &    3 \\ \hline
-	 Start Year   & 2010 & 2010 & 2010 & 2010 & 2010 & 2010 & 2010 &  2010 & 2010 \\ \hline
-\end{tabular}
-\centering
-\caption{Parameters of each scale factor.}
-\label{tab:snsize}
-\end{table}
-
-For example, SF 30 consists of the activity of a social network of 182K users
-during a period of three years, starting from 2010.
-
-%In \autoref{appendix:scale_factors}, we show the statistics of each of the
-%proposed SFs in detail, including distributions for some of the relations.
+The substitution parameters are generated in the \texttt{substitution\_parameters/} directory.
+Each parameter file is named \texttt{\{interactive|bi\}\_<id>\_param.txt}, corresponding to an operation of
+Interactive complex reads (\queryRefCard{interactive-complex-read-01}{IC}{1}--\queryRefCard{interactive-complex-read-14}{IC}{14}) and
+BI reads (\queryRefCard{bi-read-01}{BI}{1}--\queryRefCard{bi-read-25}{BI}{25}).
+The schemas of these files are defined by the operator, e.g. the schema of \queryRefCard{interactive-complex-read-01}{IC}{1} is ``\texttt{personId|firstName}''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -728,7 +735,7 @@ during a period of three years, starting from 2010.
 
 The workflow of the benchmark is shown in \autoref{figure:workflow}.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{figures/workflow}
 	\caption{Benchmark workflow.}

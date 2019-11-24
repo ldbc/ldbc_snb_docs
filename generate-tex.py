@@ -97,6 +97,9 @@ for filename in glob.glob("query-specifications/*.yaml"):
     with open("parameters/%s.parameters" % query_id, 'w') as parameter_file:
         parameter_file.write(parameter_file_text)
 
+    for p in parameters:
+        print(p.get('description'))
+
     query_card_text = query_card_template.render(
         number        = number,
         workload      = workload,
@@ -148,7 +151,7 @@ for choke_point in choke_point_references:
         queries = queries_sorted,
     )
 
-    with open("query-cards/cp-%s.tex" % choke_point_filename, 'w') as choke_point_file:
+    with open("choke-points/cp-%s.tex" % choke_point_filename, 'w') as choke_point_file:
         choke_point_file.write(choke_point_text)
 
 ##### table for choke points and queries
@@ -166,7 +169,7 @@ choke_points_queries_text = choke_points_queries_template.render(
     choke_points = all_choke_points_sorted,
 )
 
-with open("query-cards/choke-points-queries.tex", 'w') as choke_points_queries_template:
+with open("choke-points/choke-points-queries.tex", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)
 
 with open('templates/choke-points-queries.csv', 'r') as f:
@@ -179,5 +182,5 @@ choke_points_queries_text = choke_points_queries_template.render(
     choke_points=all_choke_points_sorted,
 )
 
-with open("query-cards/choke-points-queries.csv", 'w') as choke_points_queries_template:
+with open("choke-points/choke-points-queries.csv", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)

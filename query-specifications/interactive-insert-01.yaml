@@ -1,0 +1,48 @@
+workload: Interactive
+operation: insert
+number: 1
+title: Add person
+description: Add a *Person* **node**, connected to the network by 4 possible **edge** types.
+parameters:
+  - name: Person.id
+    type: ID
+    description: "`personId`"
+  - name: Person.firstName
+    type: String
+    description: "`personFirstName`"
+  - name: Person.lastName
+    type: String
+    description: "`personLastName`"
+  - name: Person.gender
+    type: String
+    description: "`gender`"
+  - name: Person.birthday
+    type: Date
+    description: "`birthday`"
+  - name: Person.creationDate
+    type: DateTime
+    description: "`creationDate`"
+  - name: Person.locationIP
+    type: String
+    description: "`locationIP`"
+  - name: Person.browserUsed
+    type: String
+    description: "`browserUsed`"
+  - name: Person-isLocatedIn->City.id
+    type: ID
+    description: "`cityId`"
+  - name: Person.speaks
+    type: \{String\}
+    description: "`languages`"
+  - name: Person.email
+    type: \{String\}
+    description: "`emails`"
+  - name: Person-hasInterest->Tag.id
+    type: \{ID\}
+    description: "`tagIds`"
+  - name: (Person-studyAt->University.id, Person-studyAt->.classYear)
+    type: \{(ID, 32-bit Integer)\}
+    description: "`studyAt`"
+  - name: (Person-workAt->Company.id, Person-workAt->.workFrom)
+    type: \{(ID, 32-bit Integer)\}
+    description: "`workAt`"
