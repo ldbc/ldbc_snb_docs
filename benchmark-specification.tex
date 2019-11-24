@@ -650,12 +650,16 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \subsubsection{Dataset}
 
+The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{figure:schema}).
 The SUT has to take care only of the generated Dataset to be bulk loaded.
 The formats currently supported by \datagen are the following:
 
 \begin{itemize}
   \item \textbf{CSV variants:}
-      These serializers output comma-separated format. Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. This is indicated with ``*'' in the filenames of Tables~\ref{table:csv_basic}--\ref{table:csv_composite_merge_foreign}.
+      These serializers produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (where applicable).
+      The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
+      Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
+      Currently, the following CSV variants are supported:
     \begin{itemize}
       \item \textbf{CsvBasic:} Data output in CSV format, one file per different entity and on file per different relation. Also, there is a file for those attributes whose cardinality is larger than one, \ie \texttt{Person.email}, \texttt{Person.speaks}.
       \item \textbf{CsvMergeForeign:} Similar to the CsvBasic format, but the relations of the form 1-to-1 and 1-to-N are stored in the entity files as a foreign keys.
@@ -708,7 +712,7 @@ two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_soc
 \input{table-update-streams}
 
 The generic schema is given in \autoref{table:update_stream_generic_schema}, while the concrete schema of each insert operation is given in \autoref{table:update_stream_schemas}.
-The update stream files are structured as follows:
+The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
 
 \begin{itemize}
 	\item \texttt{updateStream\_*\_person.csv} contains operation 1: \queryRefCard{interactive-insert-01}{II}{1}
