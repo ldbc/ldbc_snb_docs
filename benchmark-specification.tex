@@ -648,11 +648,20 @@ By default, all SFs are defined over a period of three years, starting from 2010
 %In \autoref{appendix:scale_factors}, we show the statistics of each of the
 %proposed SFs in detail, including distributions for some of the relations.
 
+\input{table-csv-basic}
+
+\input{table-csv-merge-foreign}
+
+\input{table-csv-composite}
+
+\input{table-csv-composite-merge-foreign}
+
 \subsubsection{Dataset}
 
 The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{figure:schema}).
-The SUT has to take care only of the generated Dataset to be bulk loaded.
-The formats currently supported by \datagen are the following:
+The SUT has to take care only of the generated Dataset to be bulk loaded. Using NULL values for storing optional values is allowed.
+
+The formats currently supported by \datagen serializers are the following:
 
 \begin{itemize}
   \item \textbf{CSV variants:}
@@ -661,45 +670,26 @@ The formats currently supported by \datagen are the following:
       Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
       Currently, the following CSV variants are supported:
     \begin{itemize}
-      \item \textbf{CsvBasic:} Data output in CSV format, one file per different entity and on file per different relation. Also, there is a file for those attributes whose cardinality is larger than one, \ie \texttt{Person.email}, \texttt{Person.speaks}.
-      \item \textbf{CsvMergeForeign:} Similar to the CsvBasic format, but the relations of the form 1-to-1 and 1-to-N are stored in the entity files as a foreign keys.
-      \item \textbf{CsvComposite:} Similar to the CsvBasic format, but uses composite attributes for storing the \texttt{Person.email}, and \texttt{Person.speaks} attributes.
-      \item \textbf{CsvCompositeMergeForeign:} Has the traits of both the CsvComposite and the CsvMergeForeign formats.
+      \item \textbf{CsvBasic:}
+      Each entity, relation and attribute with a cardinality larger than one (including attributes \texttt{Person.email} and \texttt{Person.speaks}), are output in a separate file.
+      Generated files are summarized in \autoref{table:csv_basic}.
+
+      \item \textbf{CsvMergeForeign:}
+      This serializer is similar to CsvBasic, but relations that have a cardinality of 1-to-1 or 1-to-N are merged in the entity files as a foreign keys.
+      Generated files are summarized in \autoref{table:csv_merge_foreign}.
+
+      \item \textbf{CsvComposite:}
+      Similar to the CsvBasic format but each entity, and relations with a cardinality larger than one, are output in a separate file.
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
+      Generated files are summarized in \autoref{table:csv_composite}.
+
+      \item \textbf{CsvCompositeMergeForeign:}
+      Has the traits of both the CsvComposite and the CsvMergeForeign formats.
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
+      Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
     \end{itemize}
   \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
 \end{itemize}
-
-\paragraph{CsvBasic}
-
-Each entity, relation and attributes with a cardinality larger than one, are output in a separate file.
-Generated files are summarized in \autoref{table:csv_basic}.
-
-\input{table-csv-basic}
-
-\paragraph{CsvMergeForeign}
-
-This serializer is similar to CsvBasic, but relations connecting two entities $A$ and $B$, where an entity $A$ has a cardinality of one, $A$ is output as a column of entity $B$.
-Generated files are summarized in \autoref{table:csv_merge_foreign}.
-
-\input{table-csv-merge-foreign}
-
-\paragraph{CsvComposite}
-
-Each entity, and relations with a cardinality larger than one, are output in a separate file.
-Multi-valued attributes (email addresses, languages spoken) are stored as composite values.
-Generated files are summarized in \autoref{table:csv_composite}.
-
-\input{table-csv-composite}
-
-\paragraph{CsvCompositeMergeForeign}
-
-It is similar to CsvComposite and CsvMergeForeign.
-Relations connecting two entities $A$ and $B$, where an entity $A$ has a cardinality of one, $A$ is output as a column of entity $B$.
-Multi-valued attributes (email addresses, languages spoken) are stored as composite values.
-Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
-Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread.
-
-\input{table-csv-composite-merge-foreign}
 
 \paragraph{Turtle}
 
@@ -745,7 +735,7 @@ The schemas of these files are defined by the operator, e.g. the schema of \quer
 
 The workflow of the benchmark is shown in \autoref{figure:workflow}.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{figures/workflow}
 	\caption{Benchmark workflow.}
