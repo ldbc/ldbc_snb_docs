@@ -13,7 +13,7 @@ The LDBC SNB Interactive workload consists of four query classes:
 \item \textbf{Transactional delete queries.} See \autoref{sec:deletes}.
 \end{itemize}
 
-A detailed description of the workload is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}.
+A detailed description of the workload (covering reads and inserts) is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,13 +40,13 @@ A detailed description of the workload is available in the paper published at \m
 \section{Inserts}
 \label{sec:inserts}
 
-Each insert query inserts either (1) a single node of a certain type, along with its edges to other existing nodes or (2) a single edge of a certain type between two existing nodes.
+Each insert query inserts either (1)~a single node of a certain type, along with its edges to other existing nodes or (2)~a single edge of a certain type between two existing nodes.
 
 \input{interactive-inserts}
 
 \section{Deletes}
 \label{sec:deletes}
 
-Each delete query removes either (1) a single edge between two existing nodes or (2) a node, all incident edges and transitive nodes (where appropriate).
+Each delete query removes either (1)~a single edge between two existing nodes or (2)~a node, all incident edges and transitive nodes (where appropriate).
 
 \input{interactive-deletes}
