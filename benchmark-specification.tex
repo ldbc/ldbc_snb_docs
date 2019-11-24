@@ -603,7 +603,7 @@ information such as forums, posts and comments.
 
 \subsection{Output Data}
 
-\datagen produces outputs three different items:
+For each scale factor, \datagen produces three different artefacts:
 \begin{itemize}
   \item \textbf{Dataset}: The dataset to be bulk loaded by the SUT. It
     corresponds to roughly the 90\% of the total generated network.
@@ -616,10 +616,42 @@ information such as forums, posts and comments.
     read queries of the workloads.
 \end{itemize}
 
-The SUT has to take care only of the generated Dataset to be bulk loaded.
-The formats currently supported by \datagen are the following:
+\subsubsection{Scale Factors}
+
+\ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
+SFs are computed based on the ASCII size in Gigabytes of the generated output files using the CsvBasic serializer.
+For example, SF 1 takes roughly 1~GB in CSV format, SF 3 weights roughly 3~GB and so on and so forth.
+The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
+Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
+
+The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{section:data_generation}.
+The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
+By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
+\autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l||r|r|r|r|r|r|r|r|r|}
+		\hline
+		Scale Factor     &     0.1 &     0.3 &        1 &        3 &        10 &        30 &        100 &        300 &        1000 \\ \hline\hline
+		\# of Persons    &    1.5K &    3.5K &      11K &      27K &       73K &      182K &       499K &      1.25M &        3.6M \\ \hline\hline
+		%Number of nodes &  327588 &  908224 &  3181724 &  9281922 &  29987835 &  88789833 &  282637871 &  817316105 &  2686781095 \\ \hline
+		%Number of edges & 1477965 & 4583118 & 17256038 & 52695735 & 176623445 & 540915404 & 1775513811 & 5269286554 & 17788734714 \\ \hline
+		\# of nodes      &  327.6K &    908K &     3.2M &     9.3M &       30M &     88.8M &     282.6M &     817.3M &        2.7B \\ \hline
+		\# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B \\ \hline
+	\end{tabular}
+	\centering
+	\caption{Parameters of each scale factor.}
+	\label{tab:snsize}
+\end{table}
+
+%In \autoref{appendix:scale_factors}, we show the statistics of each of the
+%proposed SFs in detail, including distributions for some of the relations.
 
 \subsubsection{Dataset}
+
+The SUT has to take care only of the generated Dataset to be bulk loaded.
+The formats currently supported by \datagen are the following:
 
 \begin{itemize}
   \item \textbf{CSV variants:}
