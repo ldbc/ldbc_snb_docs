@@ -1,19 +1,18 @@
 workload: BI
 operation: read
-number: 26
-title: Number of persons in a continent per country (placeholder query)
+number: 27
+title: Information propagation analysis
 description: |
-  Given a *Continent* count the number of *Persons* living in each country of the continent.
+  This query aims to identify instance of "information propagation" when a *Person* (`person1`) submits a *Message* (`message1`) with a given *Tag* (`tag`) to a *Forum* (`forum1`).
+  This is read by other members of `forum1`, *Persons* `person1` and `person2`.
+  Later, these *Persons* start a discussion with the same `tag` in a different *Forum* (`forum2`) where `person1` is not a member. The discussion consist of a *Message* (`message2`) and a direct reply *Comment* (`comment`), where `message2.creationDate > message1.creationDate`.
 parameters:
-  - name: continentName
+  - name: TBD
     type: String
 result:
-  - name: countryName
+  - name: TBD
     type: String
-  - name: personCount
-    type: 32-bit Integer
-    category: aggregated
 sort:
-  - name: countryName
+  - name: TBD
     direction: asc
-choke_points: [1.1] #todo
+choke_points: [1.1] #todo +WCOJs
