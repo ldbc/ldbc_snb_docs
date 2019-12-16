@@ -97,9 +97,6 @@ for filename in glob.glob("query-specifications/*.yaml"):
     with open("parameters/%s.parameters" % query_id, 'w') as parameter_file:
         parameter_file.write(parameter_file_text)
 
-    for p in parameters:
-        print(p.get('description'))
-
     query_card_text = query_card_template.render(
         number        = number,
         workload      = workload,
