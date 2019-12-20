@@ -361,8 +361,6 @@ RETURN source
 \end{lstlisting}
 \end{minipage}
 
-\item[G-CORE.] TODO
-
 \item[SPARQL.]
 Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
 
@@ -419,8 +417,6 @@ aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword 
 \begin{description}
 \item[Cypher.] Cypher does not allow aggregations on aggregations, \eg \lstinline[language=cypher]{avg(count(x))}, as the semantics of such expressions is not meaningful. However, it allows multiple aggregations is subsequent \lstinline[language=cypher]{WITH} and  \lstinline[language=cypher]{RETURN} clauses. There were multiple discussion rounds on the aggregation semantics of the openCypher language.\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
 
-\item[G-CORE.] TODO
-
 \item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sql]{GROUP BY} clause (similarly to SQL).
 \end{description}
 
@@ -446,7 +442,7 @@ details.}
 
 \begin{description}
 \item[Cypher.]
-Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-$k$ values of the result list.
+Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-$k$ values of the result list.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=cypher]
@@ -459,9 +455,10 @@ WITH xs[0] AS top, xs[0..5] AS top5
 \end{lstlisting}
 \end{minipage}
 
-\item[G-CORE.] TODO
+\item[SPARQL.] SPARQL~1.0 allows simple top-$k$ queries. SPARQL~1.1 introduced scoring functions that can be define a variable to be used for ordering~\cite{DBLP:conf/semweb/MagliacaneBV12}.
+\emph{Window functions} are not yet supported but are under consideration for SPARQL~1.2\footnote{\url{https://github.com/w3c/sparql-12/issues/47}}.
 
-\item[SPARQL.] TODO
+%Simple top-k queries can be expressed in SPARQL 1.0 by including the ORDER BY and LIMIT clauses, which impose an order on the result set and limit the number of results. SPARQL 1.1 additionally enables the specification of complex scoring functions through the use of projection expressions that can define a variable to be used in the ORDER BY clause.
 \end{description}
 
 \input{choke-points/cp-8-3}
@@ -481,7 +478,6 @@ operations).
 
 \begin{description}
 \item[Cypher.] Nested subqueries were accepted in the openCypher language.\footnote{\url{https://github.com/petraselmer/openCypher/blob/1ca70bf8e3cea65ee47ce49eeabea83530eb529b/cip/1.accepted/CIP2016-06-22-nested-updating-and-chained-subqueries.adoc}}
-\item[G-CORE.] TODO
 \item[SPARQL.] SPARQL fully supports query composition.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#subqueries}}
 \end{description}
 
@@ -501,8 +497,6 @@ these often calculate aggregations on certain periods of time (\eg on a month).
 
 \begin{description}
 \item[Cypher.] The openCypher project has accepted a proposal to support dates and times.\footnote{\url{https://github.com/thobe/openCypher/blob/06accdb3e69820cdfac3dbd50a4f8eee73ba179a/cip/1.accepted/CIP2015-08-06-date-time.adoc}}
-
-\item[G-CORE.] TODO
 
 \item[SPARQL.] SPARQL supports dates and times extensively with timezones and functions for extracting a part of a given date.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#func-date-time}}
 \end{description}
@@ -537,9 +531,9 @@ Other variants are also used in rare cases, such as \emph{maximal} (non-expandab
 Configurable matching semantics (\eg \lstinline[language=cypher]{MATCH ALL WALKS}) were proposed in the openCypher language.\footnote{\url{https://github.com/boggle/openCypher/blob/c139130b49aebe6a85fc395e2cf03cfeec8484c6/cip/1.accepted/CIP2017-01-18-configurable-pattern-matching-semantics.adoc}}
 Regular path queries (RPQs) are also proposed in the openCypher language as \emph{path patterns}.\footnote{\url{https://github.com/thobe/openCypher/blob/b95eec108ce4ec07eedfe13b3e5fff0e94f789a4/cip/1.accepted/CIP2017-02-06-Path-Patterns.adoc}}
 
-\item[G-CORE.] The \mbox{G-CORE} language~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
-
 \item[SPARQL.] SPARQL uses \emph{homomorphism-based matching semantics} and supports RPQs as \emph{property paths}. Isomorphism-based matching semantics can be expressed by introducing custom filtering condition, \eg \lstinline[language=sparql]{FILTER ( ?e1 != ?e2 )}.
+
+\item[G-CORE.] The \mbox{G-CORE} language~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
 \end{description}
 
 \input{choke-points/cp-8-6}
