@@ -14,6 +14,6 @@ For most research papers, fully audited results are unrealistic and even unaudit
 \item If the SUB is not your own system, did you contact its developers or experts to help optimizing the queries?\footnote{For a research prototype tool, the tuning knobs are usually not well documented. Hence, it is worth contacting the tool's authors, who are generally keen to help. For more mature systems (\eg most established RDBMSs), there is a large body of knowledge available, in the form of books and online forums, which should help your optimization efforts. It is also possible to contact experienced DBAs who can assist with fine tuning the system.}
 \end{itemize}
 
-These results will help the reader to put the results in context. For example, a non-ACID compliant, non-fault-tolerant system without a persistent storage is expected to have better results than a fully-fledged disk-based DBMS.
+These results will help the reader to put the results in context. For example, a non-ACID compliant, non-fault-tolerant system working on read-only graphs and offering no persistent storage is expected to have significantly better results than a fully-fledged disk-based DBMS.
 
-Additionally, we also suggest to take a look at the checklist presented in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
+We also suggest the reader to take a look at the checklist presented in~\cite{DBLP:conf/sigmod/RaasveldtHGM18}.
