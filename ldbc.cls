@@ -143,7 +143,7 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{0.3.1}
+\newcommand{\ldbcsnbdocversion}{0.3.2}
 \newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
 \delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
@@ -231,6 +231,14 @@
 %        \normalsize%
 %        \parbox{16cm}{\centering\bfseries 2\textsuperscript{nd} Quality Reviewer: \reviewerTwoText} \\%
         \end{tabular}%
+
+        \vspace{2cm}
+        {
+        \begin{center}
+        The specification was built on the source code available at \\
+        \url{https://github.com/ldbc/ldbc_snb_docs/releases/tag/v\ldbcsnbdocversion}
+        \end{center}
+        }
 
         \vspace{1cm}%
         \normalsize%
