@@ -3,7 +3,8 @@ operation: complex
 number: 2
 title: Recent messages by your friends
 description: |
-  Given a start *Person*, find (the most recent) *Messages* from all of that *Person*'s friends, that were created before (and including) a given date (`maxDate`).
+  Given a start *Person*, find (the most recent) *Messages* from all of that *Person*'s friends.
+  Only consider *Messages* created before the given `maxDate` (excluding that day).
 parameters:
   - name: Person.id
     type: ID
