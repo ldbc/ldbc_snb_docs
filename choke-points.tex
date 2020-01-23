@@ -147,7 +147,7 @@ The properties of the entity being identified may affect this, \eg type (label),
 
 This choke point tests the performance of indexes when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
-Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
+Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighbourhood traversal is an example of an operation with random access without predictable locality.
 
 \input{choke-points/cp-3-3}
 
@@ -270,7 +270,7 @@ shorter distances that were already computed.
 \cpSection{7.2}{QOPT}{Cardinality estimation of transitive paths}
 
 This choke point tests the ability of the query optimizer to properly estimate the cardinality of intermediate results when executing transitive paths. A transitive path may occur in a ``fact table'' or a ``dimension table'' position.
-A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy vs. graph neighborhood or transitive closure in a many-to-many connected social network.
+A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy \vs graph neighbourhood or transitive closure in a many-to-many connected social network.
 In order to decide proper join order and type, the cardinality of the expansion of the transitive path needs to be correctly estimated.
 This could for example take the form of executing on a sample of the data in the
 cost model or of gathering special statistics, \eg the depth and fan-out of a tree. In the case of hierarchical dimensions,
