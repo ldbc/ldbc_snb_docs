@@ -594,7 +594,7 @@ using clusters of machines.
 In the case of \datagen, the overall process is divided into three MapReduce jobs.
 In the first job, each mapper generates a subset of the persons of the graph. A
 key is assigned to each person using one of the similarity functions described
-above. Then, reducers receive the the key-value pairs sorted by the key,
+above. Then, reducers receive the key-value pairs sorted by the key,
 generate the knows relations following the described windowing process, and
 assign to each person a new key based on another similarity function, for the
 next MapReduce pass.  This process can be successively repeated for additional
