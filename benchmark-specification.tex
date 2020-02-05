@@ -137,9 +137,15 @@ comment made by a person to an existing message (either a Post or a Comment).
 post messages. Forums are characterized by the topics (represented as tags)
 people in the forum are talking about. Although from the schema's perspective
 it is not evident, there exist three different types of
-forums: persons' personal walls, image albums, and groups. They are
-distinguished by their titles. \autoref{table:forum} shows the attributes
-of Forum entity.
+forums.  They are distinguished by their titles:
+
+\begin{itemize}
+    \item persons' personal walls: ``Wall of \ldots''
+    \item image albums: ``Album $k$ of \ldots''
+    \item groups: ``Group for \ldots''
+\end{itemize}
+
+\autoref{table:forum} shows the attributes of Forum entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
