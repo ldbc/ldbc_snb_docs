@@ -24,7 +24,7 @@ result:
   - name: friendsScore
     type: 32-bit Integer
     category: aggregated
-    description: The sum of the score of the Person's friends
+    description: The sum of the score of the `person`'s friends
 sort:
   - name: score + friendsScore
     direction: desc
