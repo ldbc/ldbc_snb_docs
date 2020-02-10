@@ -28,10 +28,10 @@ convenient manner the test sponsor may decide.
 \section{Software and Useful Links}
 
 \begin{itemize}
-	\item \textbf{LDBC Driver -- \url{https://github.com/ldbc/ldbc_driver}}: The driver
-	responsible for executing the \ldbcsnb workload.
-	\item \textbf{\datagen -- \url{https://github.com/ldbc/ldbc_snb_datagen}}: The data
-	generator used to generate the datasets of the benchmark.
+    \item \textbf{LDBC Driver -- \url{https://github.com/ldbc/ldbc_driver}}: The driver
+    responsible for executing the \ldbcsnb workload.
+    \item \textbf{\datagen -- \url{https://github.com/ldbc/ldbc_snb_datagen}}: The data
+    generator used to generate the datasets of the benchmark.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,10 +103,10 @@ fit the needs of different types of systems, including RDF, relational DBMS and
 graph DBMS.
 
 \begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\linewidth]{figures/schema-comfortable}
-	\caption{The \ldbcsnb data schema}
-	\label{figure:schema}
+    \centering
+    \includegraphics[width=\linewidth]{figures/schema-comfortable}
+    \caption{The \ldbcsnb data schema}
+    \label{figure:schema}
 \end{figure}
 
 The schema specifies different entities, their attributes and their relations.
@@ -246,7 +246,7 @@ the attributes of Person entity.
 
 
 {\flushleft \textbf{Place:}} a place in the world.
-\autoref{table:place} shows the attributes of Place entity.
+\autoref{table:place} shows the attributes of Place entity. Note, each Place has additional parameters: longitude and latitude, which are not exposed. These are used internally for sorting places.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -375,7 +375,7 @@ Relations connect entities of different types. Entities are defined by their ''i
         \hline
         likes & Person[0..*] & Message[0..*] & D & A Person that likes a Message
 
-		\attributeTable{creationDate}{DateTime}{The date the like was issued}
+        \attributeTable{creationDate}{DateTime}{The date the like was issued}
 
         \\
         \hline
@@ -383,17 +383,17 @@ Relations connect entities of different types. Entities are defined by their ''i
         \hline
         studyAt & Person[0..*] & University[0..*] & D & A Person and a University it has studied
 
-		\attributeTable{classYear}{32-bit Integer}{The year the person graduated}
+        \attributeTable{classYear}{32-bit Integer}{The year the person graduated}
 
         \\
         \hline
         workAt & Person[0..*] & Company[0..*] & D & A Person and a Company it works
 
-		\attributeTable{workFrom}{32-bit Integer}{The year the person started to work at that company}
+        \attributeTable{workFrom}{32-bit Integer}{The year the person started to work at that company}
 
         \\
         \hline
-	\caption{Description of the data relations. \texttt{D}: directed edge, \texttt{U}: undirected edge.}
+    \caption{Description of the data relations. \texttt{D}: directed edge, \texttt{U}: undirected edge.}
         \label{table:relations}
 \end{longtable}
 
@@ -509,6 +509,10 @@ are described in \autoref{table:property_dictionaries}.
 \end{table}
 
 \subsubsection{Graph Generation}
+
+
+
+% also used to generate lcoation
 
 \autoref{figure:generation_process} conceptually depicts the full data
 generation process. The first step loads all the dictionaries and resource
@@ -636,19 +640,19 @@ By default, all SFs are defined over a period of three years, starting from 2010
 \autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000.
 
 \begin{table}[H]
-	\centering
-	\begin{tabular}{|l||r|r|r|r|r|r|r|r|r|}
-		\hline
-		Scale Factor     &     0.1 &     0.3 &        1 &        3 &        10 &        30 &        100 &        300 &        1000 \\ \hline\hline
-		\# of Persons    &    1.5K &    3.5K &      11K &      27K &       73K &      182K &       499K &      1.25M &        3.6M \\ \hline\hline
-		%Number of nodes &  327588 &  908224 &  3181724 &  9281922 &  29987835 &  88789833 &  282637871 &  817316105 &  2686781095 \\ \hline
-		%Number of edges & 1477965 & 4583118 & 17256038 & 52695735 & 176623445 & 540915404 & 1775513811 & 5269286554 & 17788734714 \\ \hline
-		\# of nodes      &  327.6K &    908K &     3.2M &     9.3M &       30M &     88.8M &     282.6M &     817.3M &        2.7B \\ \hline
-		\# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B \\ \hline
-	\end{tabular}
-	\centering
-	\caption{Parameters of each scale factor.}
-	\label{tab:snsize}
+    \centering
+    \begin{tabular}{|l||r|r|r|r|r|r|r|r|r|}
+        \hline
+        Scale Factor     &     0.1 &     0.3 &        1 &        3 &        10 &        30 &        100 &        300 &        1000 \\ \hline\hline
+        \# of Persons    &    1.5K &    3.5K &      11K &      27K &       73K &      182K &       499K &      1.25M &        3.6M \\ \hline\hline
+        %Number of nodes &  327588 &  908224 &  3181724 &  9281922 &  29987835 &  88789833 &  282637871 &  817316105 &  2686781095 \\ \hline
+        %Number of edges & 1477965 & 4583118 & 17256038 & 52695735 & 176623445 & 540915404 & 1775513811 & 5269286554 & 17788734714 \\ \hline
+        \# of nodes      &  327.6K &    908K &     3.2M &     9.3M &       30M &     88.8M &     282.6M &     817.3M &        2.7B \\ \hline
+        \# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B \\ \hline
+    \end{tabular}
+    \centering
+    \caption{Parameters of each scale factor.}
+    \label{tab:snsize}
 \end{table}
 
 %In \autoref{appendix:scale_factors}, we show the statistics of each of the
@@ -711,15 +715,15 @@ The generic schema is given in \autoref{table:update_stream_generic_schema}, whi
 The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
 
 \begin{itemize}
-	\item \texttt{updateStream\_*\_person.csv} contains update operation 1: \queryRefCard{interactive-insert-01}{II}{1}
-	\item \texttt{updateStream\_*\_forum.csv} contains update operations 2--8: %
-	\queryRefCard{interactive-insert-02}{II}{2}
-	\queryRefCard{interactive-insert-03}{II}{3}
-	\queryRefCard{interactive-insert-04}{II}{4}
-	\queryRefCard{interactive-insert-05}{II}{5}
-	\queryRefCard{interactive-insert-06}{II}{6}
-	\queryRefCard{interactive-insert-07}{II}{7}
-	\queryRefCard{interactive-insert-08}{II}{8}
+    \item \texttt{updateStream\_*\_person.csv} contains update operation 1: \queryRefCard{interactive-insert-01}{II}{1}
+    \item \texttt{updateStream\_*\_forum.csv} contains update operations 2--8: %
+    \queryRefCard{interactive-insert-02}{II}{2}
+    \queryRefCard{interactive-insert-03}{II}{3}
+    \queryRefCard{interactive-insert-04}{II}{4}
+    \queryRefCard{interactive-insert-05}{II}{5}
+    \queryRefCard{interactive-insert-06}{II}{6}
+    \queryRefCard{interactive-insert-07}{II}{7}
+    \queryRefCard{interactive-insert-08}{II}{8}
 \end{itemize}
 
 Remark: update streams in version 0.3.0 only contain inserts. Delete operations are being designed and will be released later.
@@ -742,8 +746,8 @@ The schemas of these files are defined by the operator, e.g. the schema of \quer
 The workflow of the benchmark is shown in \autoref{figure:workflow}.
 
 \begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{figures/workflow}
-	\caption{Benchmark workflow.}
-	\label{figure:workflow}
+    \centering
+    \includegraphics[width=\linewidth]{figures/workflow}
+    \caption{Benchmark workflow.}
+    \label{figure:workflow}
 \end{figure}
