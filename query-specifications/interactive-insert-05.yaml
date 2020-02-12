@@ -10,6 +10,6 @@ parameters:
   - name: Forum.id
     type: ID
     description: "`forumId`"
-  - name: Forum-hasMember->.joinDate
+  - name: Forum-hasMember->.creationDate
     type: DateTime
-    description: "`joinDate`"
+    description: "`creationDate`"
