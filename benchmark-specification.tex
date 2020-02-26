@@ -685,7 +685,16 @@ The formats currently supported by \datagen serializers are the following:
       Generated files are summarized in \autoref{table:csv_basic}.
 
       \item \textbf{CsvMergeForeign:}
-      This serializer is similar to CsvBasic, but relations that have a cardinality of 1-to-1 or 1-to-N are merged in the entity files as a foreign keys.
+      This serializer is similar to CsvBasic, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
+      There are 13~such relations in total:
+      comment\_hasCreator\_person, comment\_isLocatedIn\_place, comment\_replyOf\_comment, comment\_replyOf\_post (merged to Comment);
+      forum\_hasModerator\_person (merged to Forum);
+      organisation\_isLocatedIn\_place (merged to Organisation);
+      person\_isLocatedIn\_place (merged to Person);
+      place\_isPartOf\_place (merged to Place);
+      post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post);
+      tag\_hasType\_tagclass (merged to Tag);
+      tagclass\_isSubclassOf\_tagclass (merged to TagClass).
       Generated files are summarized in \autoref{table:csv_merge_foreign}.
 
       \item \textbf{CsvComposite:}
