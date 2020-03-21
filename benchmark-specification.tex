@@ -590,6 +590,35 @@ distributed along all the simulated time.
 
 Finally, in the last step the data is serialized into the output files.
 
+\subsubsection{Distributions, Parameters and Quirks}
+\label{sec:distr-param}
+
+Interesting quirks:
+\begin{itemize}
+\item A Person is not a member of their Wall but they are its moderator, they do not have a hasMember edge.
+\item Each Album generated for Person will have approximately 70\% of their friends as members.
+\item A given Person has a 5\% chance of being a moderator of a set of groups.
+\item Group membership is composed of 30\% from the moderator's friends and the remainder is chosen randomly (from the block the person is in).
+\item Comments are only made in Walls and Groups.
+\item Messages can only receive likes during a 7-day window after their creation.
+\item Comments always occur within one day of Message they are replying to. The creation date is generated following the power-law distribution in Figure \ref{figure:comments_dist}. The mean lag between Comments and their parent Message is 6.85 hours.
+\item Flashmob events span a 72 hour time window a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{figure:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=\patternscale]{figures/comments_power_law}
+  \caption{The power-law used to generate comments.}
+  \label{figure:comments_dist}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=\patternscale]{figures/flashmob_dist}
+  \caption{The distribution used to generate posts during flashmob events.}
+  \label{figure:flashmob_dist}
+\end{figure}
+
 \subsubsection{Implementation Details}
 
 \datagen is implemented using the MapReduce parallel paradigm. In MapReduce, a
