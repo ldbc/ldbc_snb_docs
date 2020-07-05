@@ -1,6 +1,6 @@
 # LDBC SNB Documentation
 
-* Stable version: [[pdf](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/master)]
+* Stable version: [[pdf](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/stable)]
 * Latest snapshot: [[pdf](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
 
 ## Queries per workload
