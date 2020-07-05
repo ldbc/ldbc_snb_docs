@@ -5,7 +5,7 @@
 
 PDF:
 [[Latest snapshot (`dev`)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
-[[Latest stable (`master`)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[Latest stable (`stable`)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)
 
 ## Benchmark specification
 
