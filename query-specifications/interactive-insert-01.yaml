@@ -35,14 +35,14 @@ parameters:
     type: \{String\}
     description: "`languages`"
   - name: Person.email
-    type: \{String\}
+    type: \{Long String\}
     description: "`emails`"
   - name: Person-hasInterest->Tag.id
     type: \{ID\}
     description: "`tagIds`"
-  - name: (Person-studyAt->University.id, Person-studyAt->.classYear)
-    type: \{(ID, 32-bit Integer)\}
+  - name: \{\<Person-studyAt->University.id, Person-studyAt->.classYear>\}
+    type: \{\<ID, 32-bit Integer>\}
     description: "`studyAt`"
-  - name: (Person-workAt->Company.id, Person-workAt->.workFrom)
-    type: \{(ID, 32-bit Integer)\}
+  - name: \{\<Person-workAt->Company.id, Person-workAt->.workFrom>\}
+    type: \{\<ID, 32-bit Integer>\}
     description: "`workAt`"

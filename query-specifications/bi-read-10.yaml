@@ -18,7 +18,7 @@ parameters:
   - name: country
     type: String
   - name: tagClass
-    type: String
+    type: Long String
   - name: minPathDistance
     type: 32-bit Integer
   - name: maxPathDistance
@@ -27,7 +27,7 @@ result:
   - name: person.id
     type: ID
   - name: tag.name
-    type: String
+    type: Long String
   - name: messageCount
     type: 32-bit Integer
     category: aggregated

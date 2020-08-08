@@ -9,7 +9,7 @@ parameters:
     type: ID
     description: "`personId`"
   - name: TagClass.name
-    type: String
+    type: Long String
     description: "`tagClassName`"
 result:
   - name: Person.id
@@ -22,7 +22,7 @@ result:
     type: String
     description: "`personLastName`"
   - name: \{Tag.name\}
-    type: \{String\}
+    type: \{Long String\}
     category: aggregated
     description: "`tagNames`"
   - name: replyCount

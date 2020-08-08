@@ -25,7 +25,7 @@ result:
     type: ID
     description: "`commentId`"
   - name: Comment.content
-    type: String
+    type: Text
     description: "`commentContent`"
 sort:
   - name: Comment.creationDate

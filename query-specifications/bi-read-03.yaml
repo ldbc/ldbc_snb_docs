@@ -8,14 +8,14 @@ description: |
   The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
   - name: tagClass
-    type: String
+    type: Long String
   - name: country
     type: String
 result:
   - name: forum.id
     type: ID
   - name: forum.title
-    type: String
+    type: Long String
   - name: forum.creationDate
     type: DateTime
   - name: person.id

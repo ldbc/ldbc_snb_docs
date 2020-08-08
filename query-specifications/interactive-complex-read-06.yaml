@@ -9,11 +9,11 @@ parameters:
     type: ID
     description: "`personId`"
   - name: Tag.name
-    type: String
+    type: Long String
     description: "`tagName` (`tag.name`)"
 result:
   - name: Tag.name
-    type: String
+    type: Long String
     description: "`tagName` (`otherTag.name`)"
   - name: postCount
     type: 32-bit Integer

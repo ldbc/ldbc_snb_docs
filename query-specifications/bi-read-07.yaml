@@ -9,10 +9,10 @@ description: |
   Group the *Tags* by name, and get the count of replies in each group.
 parameters:
   - name: tag
-    type: String
+    type: Long String
 result:
   - name: relatedTag.name
-    type: String
+    type: Long String
   - name: count
     type: 32-bit Integer
     category: aggregated

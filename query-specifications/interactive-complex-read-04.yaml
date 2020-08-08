@@ -16,7 +16,7 @@ parameters:
     description: "`durationDays` -- Duration of requested period, in days. The interval `[startDate, startDate + duration)` is closed-open"
 result:
   - name: Tag.name
-    type: String
+    type: Long String
     description: "`tagName`"
   - name: postCount
     type: 32-bit Integer
