@@ -99,15 +99,15 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\item Regular edges, \ie edges that must be present in the subgraph, are denoted with solid lines.
 	\item Negative edges, \ie edges that must not be present in the subgraph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines and the \guillemotleft neg\guillemotright\ keyword.
 	\item Optional edges, \ie edges that may or may not be in the subgraph, are denoted with \dashuline{dashed} lines and the \guillemotleft opt\guillemotright\ keyword.
-	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.
+	\item Edges without direction imply that there must be an edge in \emph{the least one of the (incoming, outgoing) directions}.
 	\item Filtering conditions are typeset in \textit{italic}, \eg $\textit{id = 
 	\textdollar tag}$.
-	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathit{name}$.
+	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathsf{name}$.
 	\item Variable length paths, \ie edges that can be traversed multiple times 
 	are denoted with $*\mathsf{min}...\mathsf{max}$, \eg $\mathsf{replyOf}*$ or 
 	$\mathsf{knows*1 \ldots 2}$. By default, the value of $\mathsf{min}$ is 1, 
 	and the value of $\mathsf{max}$ is unlimited.
-	\item Aggregations are shown in dashed boxes with a gray strip on their top and the type of aggregation ($\mathsf{count}$, $\mathsf{sum}$, $\mathsf{avg}$, etc.) in the upper right corner.
+	\item Aggregations are shown in boxes with a gray strip on their top describing the type of aggregation ($\mathsf{count}$, $\mathsf{sum}$, $\mathsf{avg}$, etc.).
 \end{itemize}
 
 \newcommand{\tuple}[1]{\langle #1 \rangle}
