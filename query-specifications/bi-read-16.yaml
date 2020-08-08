@@ -1,0 +1,23 @@
+workload: BI
+operation: read
+number: 16
+title: Fake news detection
+description: |
+  TODO
+parameters:
+  - name: tag1
+    type: Long String
+  - name: day1
+    type: Date
+  - name: tag2
+    type: Long String
+  - name: day2
+    type: Date
+  - name: maxKnowsLimit
+    type: 32-bit Integer
+result:
+  - name: messageCount
+    type: 32-bit Integer
+    category: aggregated
+    description: "`count(message1) + count(message2)`"
+choke_points: [1.1] #todo

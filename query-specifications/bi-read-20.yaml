@@ -1,0 +1,24 @@
+workload: BI
+operation: read
+number: 20
+title: Recruitment
+description: |
+  TODO
+parameters:
+  - name: company1
+    type: Long String
+  - name: company2
+    type: Long String
+result:
+  - name: person1.id
+    type: ID
+  - name: person2.id
+    type: ID
+  - name: weight
+    type: 32-bit Integer
+    category: calculated
+sort:
+  - name: weight
+    direction: desc
+    description: The order of paths with the same weight is unspecified
+choke_points: [1.1] #todo

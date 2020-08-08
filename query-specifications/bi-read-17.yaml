@@ -1,18 +1,27 @@
 workload: BI
 operation: read
-number: 27
+number: 17
 title: Information propagation analysis
 description: |
   This query aims to identify instance of "information propagation" when a *Person* (`person1`) submits a *Message* (`message1`) with a given *Tag* (`tag`) to a *Forum* (`forum1`).
   This is read by other members of `forum1`, *Persons* `person1` and `person2`.
   Later, these *Persons* start a discussion with the same `tag` in a different *Forum* (`forum2`) where `person1` is not a member. The discussion consist of a *Message* (`message2`) and a direct reply *Comment* (`comment`), where `message2.creationDate > message1.creationDate`.
 parameters:
-  - name: TBD
-    type: String
+  - name: tag
+    type: Long String
+  - name: delta
+    type: 32-bit Integer
+    description: Measured in hours
 result:
-  - name: TBD
-    type: String
+  - name: person1.id
+    type: ID
+  - name: messageCount
+    type: 32-bit Integer
+    category: aggregated
 sort:
-  - name: TBD
+  - name: messageCount
+    direction: desc
+  - name: person1.id
     direction: asc
+limit: 20
 choke_points: [1.1] #todo +WCOJs

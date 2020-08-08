@@ -1,0 +1,24 @@
+workload: BI
+operation: read
+number: 18
+title: Friend recommendation
+description: |
+  TODO
+parameters:
+  - name: person1Id
+    type: ID
+  - name: tag
+    type: Long String
+result:
+  - name: person4.id
+    type: ID
+  - name: mutualFriendCount
+    type: 32-bit Integer
+    category: aggregated
+sort:
+  - name: mutualFriendCount
+    direction: desc
+  - name: person4.id
+    direction: asc
+limit: 20
+choke_points: [1.1] #todo

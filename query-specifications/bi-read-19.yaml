@@ -1,0 +1,24 @@
+workload: BI
+operation: read
+number: 19
+title: Interaction path between cities
+description: |
+  TODO
+parameters:
+  - name: city1Id
+    type: ID
+  - name: city2Id
+    type: ID
+result:
+  - name: person1.id
+    type: ID
+  - name: person2.id
+    type: ID
+  - name: weight
+    type: 32-bit Float
+    category: calculated
+sort:
+  - name: weight
+    direction: desc
+    description: The order of paths with the same weight is unspecified
+choke_points: [1.1] #todo
