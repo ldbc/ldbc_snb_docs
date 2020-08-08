@@ -69,7 +69,6 @@
     </node>
     <node id="n1" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -103,7 +102,7 @@ compute person.score = (if hasInterest edge exists then 100 else 0) + count(mess
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="702.1600694444442" y="557.3055555555559"/>
               <y:Fill color="#FCCDE5" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="line" width="3.0"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="2.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="26.30078125" x="68.849609375" xml:space="preserve" y="6.015625">Tag<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
@@ -114,7 +113,7 @@ compute person.score = (if hasInterest edge exists then 100 else 0) + count(mess
             <y:ShapeNode>
               <y:Geometry height="30.0" width="163.99999999999997" x="702.1600694444442" y="587.3055555555558"/>
               <y:Fill hasColor="false" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="line" width="3.0"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="2.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.025390625" x="4.0" xml:space="preserve" y="6.015625">name = $tag</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
@@ -176,7 +175,7 @@ compute person.score = (if hasInterest edge exists then 100 else 0) + count(mess
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="164.0" x="926.1600694444442" y="633.865972222222"/>
                   <y:Fill color="#BEBADA" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.380859375" x="22.8095703125" xml:space="preserve" y="6.015625">message: Message<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -187,7 +186,7 @@ compute person.score = (if hasInterest edge exists then 100 else 0) + count(mess
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="164.0" x="926.1600694444442" y="663.865972222222"/>
                   <y:Fill hasColor="false" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
                   <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="134.3125" x="4.0" xml:space="preserve" y="6.015625">creationDate &gt; $date</y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -228,7 +227,6 @@ compute person.score = (if hasInterest edge exists then 100 else 0) + count(mess
       </data>
     </edge>
     <edge id="n1::e1" source="n1::n2" target="n1::n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
