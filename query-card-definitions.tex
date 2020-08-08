@@ -33,6 +33,7 @@
 	}%
 }
 
+\newcommand{\attributeNumberWidth}{0.33cm}
 \newcommand{\attributeColumnWidth}{2.5cm}
 \newcommand{\typeColumnWidth}{2.7cm}
 \newcommand{\descriptionColumnWidth}{10.3cm}
@@ -76,8 +77,10 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 % https://tex.stackexchange.com/questions/252385/mixing-m-and-x-in-tabularx#comment602205_252388
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
-% https://tex.stackexchange.com/a/4712/71109
-%\newcolumntype{M}{>{\begin{varwidth}{7.8cm}}l<{\end{varwidth}}}
+
+%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 
 % https://tex.stackexchange.com/a/385069/71109
 \setlength\cellspacetoplimit{3pt}

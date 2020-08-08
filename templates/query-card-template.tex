@@ -121,7 +121,7 @@
 %
 	{% if parameters %}
 		params &
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		{% for entry in parameters -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {{ entry.description }} \\ \hline
 		{% endfor -%}
@@ -130,7 +130,7 @@
 %
 	{% if result %}
 		result &
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		{% for entry in result -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name|trim() }} & {{ entry.type|trim() }} & {% set cat = entry.category|trim() -%}
 					{%- if   cat == "aggregated" -%} A
@@ -145,7 +145,7 @@
 %
 	{% if sort %}
 		sort		&
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		{% for entry in sort -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & $\{{ entry.direction }}$ & {{ entry.description }} \\ \hline
 		{% endfor -%}
