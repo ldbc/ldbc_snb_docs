@@ -36,4 +36,4 @@ sort:
 limit: 20
 choke_points: [3.3, 7.2, 7.3, 8.2]
 relevance: |
-  This query looks for paths of length three, starting at a *Person*, moving to its friends, the to their *Comments* and ending at the *Post* the *Comments* are replying. The chain from original post to the reply is transitive. The traversal may be initiated at either end, the system may note that this is a tree, hence leaf to root is always best. Additionally, a hash table can be built from either end, e.g. from the friends of self, from the tags in the category, from the or other.
+  This query starts at a *Person*, moves to its friends, and the to their *Comments* and their root *Posts*. Then, it gets the *Tag* of each *Post* and checks whether it (directly or transitively) belongs to the specified *TagClass*. This can be thought of a bidirectional search between the *Person* and the *TagClass*. The difficulty of this query is determining the optimal direction of this traversal.
