@@ -115,10 +115,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \paragraph{Keywords.} The pattern notation uses a small set of keywords:
 
 \begin{itemize}
-	\item $\mathsf{UNWIND}$ unnests a list, \ie produces a set of one-tuples. For 
-	example, $\mathsf{UNWIND} [1, 2, 3]$ results in $ \{ \tuple{1}, \tuple{2}, 
-	\tuple{3} \} $.
-	\item Aggregation operations: \lstinline{count}, \lstinline{avg}. % \lstinline{sum} - sum is not used in the figures as we always sum some derived value
+	\item Aggregation operations: \lstinline{count}, \lstinline{avg}, \lstinline{sum}
 	\item Functions:
 	\begin{itemize}
 		\item \lstinline{floor(x)} (returns $\lfloor x \rfloor$),
