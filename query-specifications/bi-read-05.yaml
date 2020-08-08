@@ -1,33 +1,37 @@
 workload: BI
 operation: read
 number: 5
-title: Top posters in a country
+title: Most active posters of a given topic
 description: |
-  Find the most popular *Forums* for a given *Country*, where the popularity of a *Forum*
-  is measured by the number of members that *Forum* has from the given *Country*.
+  Get each *Person* (`person`) who has created a *Message* (`message`) with a given *Tag* (direct relation, not transitive). Considering only these messages, for each *Person*\ node:
 
-  Calculate the top 100 most popular *Forums*. In case of a tie, the *Forum*(s) with the smaller id value(s) should be selected.
+  * Count its `message`s (`messageCount`).
+  * Count *likes* (`likeCount`) to its `message`s.
+  * Count *Comments* (`replyCount`) in reply to it `message`s.
 
-  For each member *Person* of the 100 most popular *Forums*, count the number of *Posts* (`postCount`) they made in any of those (most popular) *Forums*. Also include those member *Persons* who have not posted any *Posts* (have a `postCount` of 0).
+  The `score` is calculated according to the following formula: `1 * messageCount + 2 * replyCount + 10 * likeCount`.
 parameters:
-  - name: country
+  - name: tag
     type: String
 result:
   - name: person.id
     type: 64-bit Integer
-  - name: person.firstName
-    type: String
-  - name: person.lastName
-    type: String
-  - name: person.creationDate
-    type: DateTime
-  - name: postCount
+  - name: replyCount
+    type: 32-bit Integer
+    category: aggregated
+  - name: likeCount
+    type: 32-bit Integer
+    category: aggregated
+  - name: messageCount
+    type: 32-bit Integer
+    category: aggregated
+  - name: score
     type: 32-bit Integer
     category: aggregated
 sort:
-  - name: postCount
+  - name: score
     direction: desc
   - name: person.id
     direction: asc
 limit: 100
-choke_points: [1.2, 1.3, 2.1, 2.2, 2.3, 2.4, 3.3, 5.3, 6.1, 8.2, 8.4]
+choke_points: [1.2, 2.3, 8.2]

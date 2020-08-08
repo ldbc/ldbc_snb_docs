@@ -1,0 +1,35 @@
+workload: BI
+operation: read
+number: 2
+title: Tag evolution
+description: |
+  Find the *Tags* that were used in *Messages* during the given `month` of the given `year` and the *Tags* that were used during the next month.
+
+  For the *Tags* and for both months, compute the count of *Messages*.
+parameters:
+  - name: year
+    type: 32-bit Integer
+  - name: month
+    type: 32-bit Integer
+result:
+  - name: tag.name
+    type: String
+  - name: countMonth1
+    type: 32-bit Integer
+    category: aggregated
+    description: Occurrences of the tag during the given `year` and `month`
+  - name: countMonth2
+    type: 32-bit Integer
+    category: aggregated
+    description: Occurrences of the tag during the next month after the given `year` and `month`
+  - name: diff
+    type: 32-bit Integer
+    category: aggregated
+    description: Absolute difference of `countMonth1` and `countMonth2`
+sort:
+  - name: diff
+    direction: desc
+  - name: tag.name
+    direction: asc
+limit: 100
+choke_points: [2.4, 3.1, 3.2, 4.1, 4.3, 5.3, 6.1, 8.2, 8.5]
