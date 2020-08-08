@@ -19,7 +19,7 @@ parameters:
     type: Date
 result:
   - name: zombie.id
-    type: 64-bit Integer
+    type: ID
   - name: zombieLikeCount
     type: 32-bit Integer
     category: aggregated

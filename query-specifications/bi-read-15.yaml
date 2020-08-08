@@ -17,19 +17,21 @@ description: |
   Return all paths with the *Person* ids ordered by their weights descending.
 parameters:
   - name: person1Id
-    type: 64-bit Integer
+    type: ID
   - name: person2Id
-    type: 64-bit Integer
+    type: ID
   - name: startDate
     type: Date
   - name: endDate
     type: Date
 result:
   - name: person.id
-    type: 64-bit Integer[]
+    type: ID[]
+    category: calculated
     description: Identifiers representing an ordered sequence of the *Persons* in the path weight
   - name: weight
-    type: 64-bit Double
+    category: calculated
+    type: 64-bit Float
 sort:
   - name: weight
     direction: desc

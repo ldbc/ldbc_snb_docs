@@ -14,7 +14,7 @@ description: |
   (Note: it is not yet decided whether a *Person* connected to the start *Person* on a trail with a length smaller than `minPathDistance`, but also on a trail with the length in `[minPathDistance, maxPathDistance]` should be included. The current reference implementations allow such *Persons*, but this might be subject to change in the future.)
 parameters:
   - name: personId
-    type: 64-bit Integer
+    type: ID
   - name: country
     type: String
   - name: tagClass
@@ -25,7 +25,7 @@ parameters:
     type: 32-bit Integer
 result:
   - name: person.id
-    type: 64-bit Integer
+    type: ID
   - name: tag.name
     type: String
   - name: messageCount

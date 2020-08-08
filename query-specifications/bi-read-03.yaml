@@ -13,13 +13,13 @@ parameters:
     type: String
 result:
   - name: forum.id
-    type: 64-bit Integer
+    type: ID
   - name: forum.title
     type: String
   - name: forum.creationDate
     type: DateTime
   - name: person.id
-    type: 64-bit Integer
+    type: ID
   - name: postCount
     category: aggregated
     type: 32-bit Integer

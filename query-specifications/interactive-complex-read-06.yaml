@@ -10,11 +10,11 @@ parameters:
     description: "`personId`"
   - name: Tag.name
     type: String
-    description: "`tagName`"
+    description: "`tagName` (`tag.name`)"
 result:
   - name: Tag.name
     type: String
-    description: "`tagName`"
+    description: "`tagName` (`otherTag.name`)"
   - name: postCount
     type: 32-bit Integer
     category: aggregated
