@@ -1,9 +1,11 @@
 ![LDBC_LOGO](https://raw.githubusercontent.com/wiki/ldbc/ldbc_snb_datagen/images/ldbc-logo.png)
 # LDBC SNB Documentation
 
-[![Build Status](https://travis-ci.org/ldbc/ldbc_snb_docs.svg?branch=master)](https://travis-ci.org/ldbc/ldbc_snb_docs)
+[![Build Status](https://travis-ci.org/ldbc/ldbc_snb_docs.svg?branch=stable)](https://travis-ci.org/ldbc/ldbc_snb_docs)
 
-[[Latest stable build (PDF)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) [[Latest snapshot build (PDF)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
+PDF:
+[[Latest snapshot (`dev`)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
+[[Latest stable (`stable`)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)
 
 ## Benchmark specification
 
@@ -16,7 +18,7 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 ## How to cite LDBC benchmarks
 
 * **Social Network Benchmark**
-  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.4.0-SNAPSHOT)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
+  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.1)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
   * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
   * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://homepages.cwi.nl/~boncz/snb-challenge/snb-sigmod.pdf), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
 * **Other LDBC benchmarks**

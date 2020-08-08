@@ -8,8 +8,8 @@
 \section{Motivation for the Benchmark}
 
 The new era of data economy, based on large, distributed, and complexly
-structured data sets, has brought on new and complex challenges in the field of
-data management and analytics. These data sets, usually modeled as large
+structured datasets, has brought on new and complex challenges in the field of
+data management and analytics. These datasets, usually modeled as large
 graphs, have attracted both industry and academia, due to new
 opportunities in research and innovation they offer. This situation has also
 opened the door for new companies to emerge, offering new non-relational and
@@ -95,7 +95,7 @@ conceivably use to perform social network data management tasks:
      a vertex-centric paradigm, and their architecture targets both single-machine and
      cluster systems. These systems will likely implement the Graph Analytics workload.
  \item \textbf{RDF database systems} (\eg OWLIM, Virtuoso, BigData, Jena TDB,
-     Stardog, Allegrograph) are systems that implement the SPARQL~1.1 query
+     Stardog, AllegroGraph) are systems that implement the SPARQL~1.1 query
      language, similar in complexity to \mbox{SQL-92}, which allows for structured
      queries, and simple traversals. RDF database systems often come with
      additional support for simple reasoning (sameAs, subClass), text search, and
@@ -146,7 +146,8 @@ conceivably use to perform social network data management tasks:
      threshold for entry.
  \item \textbf{Reproducibility and documentation of results}. \ldbcsnb
      will specify the rules for full disclosure of benchmark execution and for
-     auditing of benchmark runs. The workloads may be run on any equipment
+     auditing of benchmark runs in accordance with the LDBC ByeLaws~\cite{ldbc_byelaws}.
+     The workloads may be run on any equipment
      but the exact configuration and price of the hardware and software must be
      disclosed.
 \end{itemize}
@@ -212,7 +213,7 @@ benchmark's entry point as much as possible.
 Along the Social Network Benchmark, LDBC~\cite{DBLP:journals/sigmod/AnglesBLF0ENMKT14} provides other benchmarks as well:
 
 \begin{itemize}
-	\item The Semantic Publishing Benchmark (SPB)~\cite{DBLP:conf/semweb/SpasicJP16} measures the performance of \emph{semantic databases} operating on RDF data sets.
+	\item The Semantic Publishing Benchmark (SPB)~\cite{DBLP:conf/semweb/SpasicJP16} measures the performance of \emph{semantic databases} operating on RDF datasets.
 	\item The Graphalytics benchmark~\cite{DBLP:journals/pvldb/IosupHNHPMCCSAT16} measures the performance of \emph{graph analysis} operations (\eg PageRank, local clustering coefficient).
 \end{itemize}
 

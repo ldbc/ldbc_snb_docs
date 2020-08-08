@@ -3,12 +3,11 @@ operation: read
 number: 7
 title: Most authoritative users on a given topic
 description: |
-  Given a *Tag*, find all *Persons* (`person`) that ever created a *Message* (`message1`) with the given *Tag*.
+  Given a *Tag* (`tag`), find all *Persons* (`person`) that ever created a *Message* with the *Tag*.
   For each of these *Persons* (`person`) compute their "authority score" as follows\:
 
-  * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* (`message2`)
-    with the given *Tag*.
-  * A *Person*'s (`person2`) "popularity score" is defined as the total number of likes on all of their *Messages* (`message3`).
+  * The "authority score" is the sum of "popularity scores" of the *Persons* (`p2`) that liked any of that *Person*'s *Messages* with the given *Tag* (same criterion as for `message1`).
+  * A *Person*'s (`p2`) "popularity score" is defined as the total number of likes on all of their *Messages* (`message2`).
 parameters:
   - name: tag
     type: String

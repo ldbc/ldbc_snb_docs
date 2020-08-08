@@ -1,0 +1,28 @@
+\begin{table}[htb]
+    \scriptsize
+    \centerline{\begin{tabular}{|c|c|c|c|}
+   		\hline
+    	timestamp ($t$) & dependant timestamp ($t_\textrm{d}$) & operation id & \ldots \\
+        \hline
+    \end{tabular}}
+    \caption{Generic schema of update stream files}
+    \label{table:update_stream_generic_schema}
+\end{table}
+
+\begin{table}[htb]
+	\scriptsize
+	\centerline{\begin{tabular}{|l|}
+		\hline
+		$t$ | $t_\textrm{d}$ | 1 | personId | personFirstName | personLastName | gender | birthday | creationDate | locationIP | browserUsed | cityId | languages | emails | tagIds | studyAt | workAt \\\hline
+		$t$ | $t_\textrm{d}$ | 2 | personId | postId | creationDate \\\hline
+		$t$ | $t_\textrm{d}$ | 3 | personId | commentId | creationDate \\\hline
+		$t$ | $t_\textrm{d}$ | 4 | forumId | forumTitle | creationDate | moderatorPersonId | tagIds \\\hline
+		$t$ | $t_\textrm{d}$ | 5 | personId | forumId | creationDate \\\hline
+		$t$ | $t_\textrm{d}$ | 6 | postId | imageFile | creationDate | locationIP | browserUsed | language | content | length | authorPersonId | forumId | countryId | tagIds \\\hline
+		$t$ | $t_\textrm{d}$ | 7 | commentId | creationDate | locationIP | browserUsed | content | length | authorPersonId | countryId | replyToPostId | replyToCommentId | tagIds \\\hline
+		$t$ | $t_\textrm{d}$ | 8 | person1Id | person2Id | creationDate \\
+		\hline
+	\end{tabular}}
+	\caption{Schemas of the lines in the update stream files}
+	\label{table:update_stream_schemas}
+\end{table}

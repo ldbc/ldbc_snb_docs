@@ -38,49 +38,34 @@
 %pricing divided by the Reported Throughput is price/tpsE. This is also known as
 %the Price/Performance Metric.
 
+{\flushleft \textbf{\ldbcsnb:}} The Linked Data Benchmark Council Social Network Benchmark. 
 
-{\flushleft \textbf{\datagen:}} Is the data generator provided by the \ldbcsnb, which
-is responsible for generating the data needed to run the benchmark.
 
-{\flushleft \textbf{DBMS:}} A DataBase Management System. 
+% {\flushleft \textbf{DBMS:}} A DataBase Management System. 
 
-{\flushleft \textbf{\ldbcsnb:}} Linked Data Benchmark Council Social Network Benchmark. 
+{\flushleft \textbf{System Under Test (SUT):}} This is the totality of the hardware and software that participates in a benchmark run, excluding parts that are exclusively used for driving the workload. If the parts driving the workload are collocated on the same operating system instance as the SUT, then this is also considered a part of the SUT. In client-server configurations where the test driver is not on a machine hosting any DBMS function the SUT is not considered to encompass the hardware or software which exclusively serves to drive the test workload.
 
-{\flushleft \textbf{Query Mix:}} Refers to the ratio between read and update queries
+{\flushleft \textbf{\datagen:}} This module is provided by LDBC SNB and produces the standard benchmark datasets to be loaded into the SUT for the benchmark. The data generation phase is not part of running the benchmark.
+
+{\flushleft \textbf{Test Driver (Benchmark Driver):}} The test driver refers to the parts of the benchmark run that coordinate query execution and, if prescribed by a given benchmark, data loading.
+
+{\flushleft \textbf{Workload (Benchmark):}} This is the totality of the tasks a particular benchmark does against an SUT. This includes data loading as well as the query/update workload. This does not include preparatory stages such as generating benchmark data with a data generator or transferring the data to the platform constituting the SUT.
+The terms workload and benchmark are synonyms in this context. 
+
+{\flushleft \textbf{Query Mix:}} The ratio of read and update queries
 of a workload, and the frequency at which they are issued.
 
-{\flushleft \textbf{SF (Scale Factor):}} The \ldbcsnb is designed to target systems of
-different size and scale. The scale factor determines the size of the data used
-to run the benchmark, measured in Gigabytes.
+{\flushleft \textbf{Scale Factor (SF):}} The \ldbcsnb is designed to target systems of different size and scale. The scale factor determines the size of the data used to run the benchmark. The scale factor refers to the measured size of the data in Gigabytes when serialized in CsvBasic.
 
-
-{\flushleft \textbf{SUT:}} The System Under Test  is defined
-to be the database system where the benchmark is executed.
-
-
-{\flushleft \textbf{Test Driver:}}  A program provided by the \ldbcsnb, which
-is responsible for executing the different workloads and gathering the results.
-
-{\flushleft \textbf{Full Disclosure Report (FDR):}} The FDR is a document which allows reproduction of any benchmark result by a third party. This contains complete description of the SUT and the circumstances of the benchmark run, \eg configuration of SUT, dataset and test driver, \etc
-
-{\flushleft \textbf{Test Sponsor:}} The Test Sponsor is the company officially
-submitting the Result with the FDR and will be charged the filing fee. Although
-multiple companies may sponsor a Result together, for the purposes of the LDBC
-processes the Test Sponsor must be a single company. A Test Sponsor need not be
-a LDBC member. The Test Sponsor is responsible for maintaining the FDR with any
-necessary updates or corrections. The Test Sponsor is also the name used to
-identify the Result.
+{\flushleft \textbf{Test Sponsor:}} The party which initiates an audit of a benchmark implementation over an SUT. This is typically the vendor of a key component of the SUT, \eg DBMS or hardware.
+{\flushleft \textbf{Full Disclosure Report (FDR):}} It is a document which allows reproduction of any audited benchmark result by a third party. This contains complete description of the circumstances of the benchmark run, including version and configuration of SUT, dataset and test driver.
 
 %{\flushleft \textbf{Test Run:}} The entire period of time during which Drivers
 %submit and the SUT completes Transactions other than Trade-Cleanup.
 %
-%{\flushleft \textbf{Transaction:}}  A Database Transaction is an ACID unit of work.
-
+%{\flushleft \textbf{Transaction:}} A Database Transaction is an ACID unit of work.
 
 %{\flushleft \textbf{Valid Transaction:}} The term Valid Transaction refers to
 %any Transaction for which input data has been sent in full by the Driver, whose
 %processing has been successfully completed on the SUT and whose correct output
 %data has been received in full by the Driver.
-
-{\flushleft \textbf{Workload:}} A workload refers to a set of queries of a given nature
-(\ie interactive, analytical, business), how they are issued and at which rate.

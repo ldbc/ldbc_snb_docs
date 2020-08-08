@@ -232,6 +232,14 @@
 %        \parbox{16cm}{\centering\bfseries 2\textsuperscript{nd} Quality Reviewer: \reviewerTwoText} \\%
         \end{tabular}%
 
+        \vspace{2cm}
+        {
+        \begin{center}
+        The specification was built on the source code available at \\
+        \url{https://github.com/ldbc/ldbc_snb_docs/tree/dev}
+        \end{center}
+        }
+
         \vspace{1cm}%
         \normalsize%
 %        \noindent\begin{tabular}{|p{4.0cm};{1pt/1pt}p{12.2cm}|}%

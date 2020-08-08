@@ -62,8 +62,7 @@ closed on the left and open on the right.
 
 \paragraph{Comparing Date and DateTime values.}
 
-Some query specifications (\eg \queryRefCard{bi-read-01}{BI}{1}, 
-\queryRefCard{bi-read-02}{BI}{2}, etc.) require implementations to compare a 
+Some query specifications (\eg \queryRefCard{bi-read-01}{BI}{1}) require implementations to compare a
 $\mathsf{DateTime}$ value with a $\mathsf{Date}$ value. In these cases, the 
 $\mathsf{Date}$ value should be implicitly converted $\mathsf{DateTime}$ value 
 with a time of 00:00:00.000+0000 (\ie with the timezone of GMT).
@@ -97,12 +96,13 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	uppercase character for the second). If the $\mathsf{entityName}$ is not used 
 	in the query results, aggregations or calculations, and not referenced in the 
 	query specification, the $\mathsf{entityName}$ can be omitted.
-	\item Positive conditions for edges are denoted with solid lines.
-	\item Negative conditions for edges, \ie edges that are not allowed in the graph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines.
+	\item Regular edges, \ie edges that must be present in the subgraph, are denoted with solid lines.
+	\item Negative edges, \ie edges that must not be present in the subgraph, are denoted with \textcolor{red}{\dashuline{dashed red}} lines and the \guillemotleft neg\guillemotright\ keyword.
+	\item Optional edges, \ie edges that may or may not be in the subgraph, are denoted with \dashuline{dashed} lines and the \guillemotleft opt\guillemotright\ keyword.
 	\item Edges without direction imply that there must be an edge in \emph{at least one of the directions}.
-	\item Filtering conditions are typeset in \textit{italic}, \eg $\mathit{id} = 
-	\mathit{\textdollar tag}$.
-	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathsf{name}$.
+	\item Filtering conditions are typeset in \textit{italic}, \eg $\textit{id = 
+	\textdollar tag}$.
+	\item Attributes that should be returned are denoted in sans-serif font, \eg $\mathit{name}$.
 	\item Variable length paths, \ie edges that can be traversed multiple times 
 	are denoted with $*\mathsf{min}...\mathsf{max}$, \eg $\mathsf{replyOf}*$ or 
 	$\mathsf{knows*1 \ldots 2}$. By default, the value of $\mathsf{min}$ is 1, 
