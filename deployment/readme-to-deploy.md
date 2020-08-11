@@ -16,20 +16,25 @@
 ### BI reads
 
 * [BI Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-01.pdf)
+* [BI Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-02.pdf)
 * [BI Read 3](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-03.pdf)
 * [BI Read 4](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-04.pdf)
 * [BI Read 5](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-05.pdf)
 * [BI Read 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-06.pdf)
 * [BI Read 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-07.pdf)
 * [BI Read 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-08.pdf)
+* [BI Read 9](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-09.pdf)
 * [BI Read 10](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-10.pdf)
+* [BI Read 11](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-11.pdf)
+* [BI Read 12](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-12.pdf)
+* [BI Read 13](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-13.pdf)
 * [BI Read 14](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-14.pdf)
+* [BI Read 15](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-15.pdf)
 * [BI Read 16](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-16.pdf)
 * [BI Read 17](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-17.pdf)
 * [BI Read 18](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-18.pdf)
-* [BI Read 21](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-21.pdf)
-* [BI Read 22](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-22.pdf)
-* [BI Read 25](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-25.pdf)
+* [BI Read 19](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-19.pdf)
+* [BI Read 20](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-20.pdf)
 
 ### Interactive complex reads
 
