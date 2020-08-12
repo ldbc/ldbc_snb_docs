@@ -18,9 +18,9 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 ## How to cite LDBC benchmarks
 
 * **Social Network Benchmark**
-  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.1)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2019. [[bib](bib/specification.bib)]
+  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.2)](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) by the LDBC Social Network Benchmark task force, 2020. [[bib](bib/specification.bib)]
   * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
-  * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://homepages.cwi.nl/~boncz/snb-challenge/snb-sigmod.pdf), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
+  * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://ir.cwi.nl/pub/23380), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
 * **Other LDBC benchmarks**
   * **LDBC Graphalytics:** [LDBC Graphalytics: A Benchmark for Large-Scale Graph Analysis on Parallel and Distributed Platforms](http://www.vldb.org/pvldb/vol9/p1317-iosup.pdf) VLDB 2016 by A. Iosup et al. [[bib](bib/graphalytics.bib)]
   * **LDBC Semantic Publishing Benchmark:** [Benchmarking RDF Query Engines: The LDBC Semantic Publishing Benchmark](http://ceur-ws.org/Vol-1700/paper-01.pdf), BLINK at ISWC 2016 by V. Kotsev et al. [[bib](bib/spb.bib)]
