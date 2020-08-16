@@ -1,5 +1,5 @@
 \chapter{Benchmark Specification}
-\label{section:benchmark-specification}
+\label{sec:benchmark-specification}
 
 \section{Requirements}
 
@@ -39,7 +39,7 @@ convenient manner the test sponsor may decide.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data}
-\label{section:data}
+\label{sec:data}
 
 This section introduces the data used by \ldbcsnb. This includes the different
 data types, the data schema, how it is generated and the different scale
@@ -97,7 +97,7 @@ represented as tags.
 \ldbcsnb has been designed to be flexible and to target systems of different
 nature and characteristics. As such, it does not force any particular internal
 representation of the schema. The \datagen component
-% described in \autoref{section:data_generation}
+% described in \autoref{sec:data_generation}
 supports multiple output data formats to
 fit the needs of different types of systems, including RDF, relational DBMS and
 graph DBMS.
@@ -408,7 +408,7 @@ Relations connect entities of different types. Entities are defined by their ``i
 A \emph{thread} consists of Messages, starting with a single Post and Comments that transitively reply to that Post.
 
 \subsection{Data Generation}
-\label{section:data_generation}
+\label{sec:data_generation}
 
 \ldbcsnb provides \datagen (Data Generator), which produces synthetic
 datasets following the schema described above. Data
@@ -669,7 +669,7 @@ For example, SF 1 takes roughly 1~GB in CSV format, SF 3 weights roughly 3~GB an
 The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
 Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
 
-The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{section:data_generation}.
+The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
 \autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000.
@@ -787,7 +787,7 @@ The schemas of these files are defined by the operator, e.g. the schema of \quer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Benchmark Workflow}
-\label{section:workflow}
+\label{sec:workflow}
 
 The workflow of the benchmark is shown in \autoref{figure:workflow}.
 
