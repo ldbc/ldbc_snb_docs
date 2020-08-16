@@ -4,13 +4,12 @@
 This workload consists of a set of relatively complex read-only queries, that touch a significant
 amount of data -- often the two-step friendship neighbourhood and associated messages --, but typically in close proximity to a single node. Hence, the query complexity is sublinear to the dataset size.
 
-The LDBC SNB Interactive workload consists of four query classes:
+The LDBC SNB Interactive workload consists of three query classes:
 
 \begin{itemize}
 \item \textbf{Complex read-only queries.} See \autoref{sec:complex-reads}.
 \item \textbf{Short read-only queries.} See \autoref{sec:short-reads}.
-\item \textbf{Transactional update queries inserting new entities.} See \autoref{sec:inserts}.
-\item \textbf{Transactional delete queries.} See \autoref{sec:deletes}.
+\item \textbf{Transactional update queries inserting new entities.} See \autoref{sec:interactive-inserts}.
 \end{itemize}
 
 A detailed description of the workload (covering reads and inserts) is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}.
@@ -37,16 +36,16 @@ A detailed description of the workload (covering reads and inserts) is available
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Updates}
-\label{sec:inserts}
+\section{Inserts (Formerly: Updates)}
+\label{sec:interactive-inserts}
 
-Each update query inserts either (1)~a single node of a certain type, along with its edges to other existing nodes or (2)~a single edge of a certain type between two existing nodes.
+Each insert query inserts
+
+\begin{enumerate}
+    \item either a single node of a certain type, along with its edges to other existing nodes
+    \item or a single edge of a certain type between two existing nodes.
+\end{enumerate}
+In versions 0.3.x, these operations were called ``Interactive updates''.
+From 0.4.0 onwards, these are called ``Interactive inserts''.
 
 \input{interactive-inserts}
-
-\section{Deletes}
-\label{sec:deletes}
-
-Each delete query removes either (1)~a single edge between two existing nodes or (2)~a node, all incident edges and transitive nodes (where appropriate).
-
-\input{interactive-deletes}
