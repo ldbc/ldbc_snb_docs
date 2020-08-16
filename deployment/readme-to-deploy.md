@@ -5,36 +5,13 @@
 
 ## Queries per workload
 
-* [BI / reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-bi-reads.pdf)
 * [Interactive / complex reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-complex-reads.pdf)
 * [Interactive / short reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-short-reads.pdf)
 * [Interactive / inserts](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-inserts.pdf)
-* [Interactive / deletes](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-interactive-deletes.pdf)
+* [BI / reads](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-bi-reads.pdf)
+* [BI / deletes](http://ldbc.github.io/ldbc_snb_docs_snapshot/workload-bi-deletes.pdf)
 
 ## Individual queries
-
-### BI reads
-
-* [BI Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-01.pdf)
-* [BI Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-02.pdf)
-* [BI Read 3](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-03.pdf)
-* [BI Read 4](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-04.pdf)
-* [BI Read 5](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-05.pdf)
-* [BI Read 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-06.pdf)
-* [BI Read 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-07.pdf)
-* [BI Read 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-08.pdf)
-* [BI Read 9](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-09.pdf)
-* [BI Read 10](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-10.pdf)
-* [BI Read 11](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-11.pdf)
-* [BI Read 12](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-12.pdf)
-* [BI Read 13](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-13.pdf)
-* [BI Read 14](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-14.pdf)
-* [BI Read 15](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-15.pdf)
-* [BI Read 16](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-16.pdf)
-* [BI Read 17](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-17.pdf)
-* [BI Read 18](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-18.pdf)
-* [BI Read 19](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-19.pdf)
-* [BI Read 20](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-20.pdf)
 
 ### Interactive complex reads
 
@@ -74,13 +51,36 @@
 * [Interactive Insert 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-07.pdf)
 * [Interactive Insert 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-insert-08.pdf)
 
-### Interactive deletes
+### BI reads
 
-* [Interactive Delete 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-01.pdf)
-* [Interactive Delete 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-02.pdf)
-* [Interactive Delete 3](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-03.pdf)
-* [Interactive Delete 4](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-04.pdf)
-* [Interactive Delete 5](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-05.pdf)
-* [Interactive Delete 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-06.pdf)
-* [Interactive Delete 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-07.pdf)
-* [Interactive Delete 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/interactive-delete-08.pdf)
+* [BI Read 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-01.pdf)
+* [BI Read 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-02.pdf)
+* [BI Read 3](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-03.pdf)
+* [BI Read 4](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-04.pdf)
+* [BI Read 5](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-05.pdf)
+* [BI Read 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-06.pdf)
+* [BI Read 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-07.pdf)
+* [BI Read 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-08.pdf)
+* [BI Read 9](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-09.pdf)
+* [BI Read 10](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-10.pdf)
+* [BI Read 11](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-11.pdf)
+* [BI Read 12](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-12.pdf)
+* [BI Read 13](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-13.pdf)
+* [BI Read 14](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-14.pdf)
+* [BI Read 15](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-15.pdf)
+* [BI Read 16](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-16.pdf)
+* [BI Read 17](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-17.pdf)
+* [BI Read 18](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-18.pdf)
+* [BI Read 19](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-19.pdf)
+* [BI Read 20](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-read-20.pdf)
+
+### BI deletes
+
+* [BI Delete 1](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-01.pdf)
+* [BI Delete 2](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-02.pdf)
+* [BI Delete 3](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-03.pdf)
+* [BI Delete 4](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-04.pdf)
+* [BI Delete 5](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-05.pdf)
+* [BI Delete 6](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-06.pdf)
+* [BI Delete 7](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-07.pdf)
+* [BI Delete 8](https://ldbc.github.io/ldbc_snb_docs_snapshot/bi-delete-08.pdf)
