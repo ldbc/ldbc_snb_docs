@@ -16,16 +16,16 @@ description: |
   To break ties, order by (1) `person1.id` ascending and (2) `person2.id` ascending.
 parameters:
   - name: country1
-    type: String
+    type: Long String
   - name: country2
-    type: String
+    type: Long String
 result:
   - name: person1.id
     type: ID
   - name: person2.id
     type: ID
   - name: city1.name
-    type: String
+    type: Long String
   - name: score
     type: 32-bit Integer
     category: calculated

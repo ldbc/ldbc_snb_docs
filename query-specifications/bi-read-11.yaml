@@ -12,7 +12,7 @@ description: |
   Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
   - name: country
-    type: String
+    type: Long String
 result:
   - name: count
     type: 32-bit Integer

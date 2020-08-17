@@ -14,7 +14,7 @@ description: |
   For both `zombieLikeCount` and `totalLikeCount`, only consider *likes* received from profiles that were created before the given `endDate`.
 parameters:
   - name: country
-    type: String
+    type: Long String
   - name: endDate
     type: Date
 result:

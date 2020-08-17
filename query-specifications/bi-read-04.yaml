@@ -11,7 +11,7 @@ description: |
   For each member *Person* of the 100 most popular *Forums*, count the number of *Posts* (`postCount`) they made in any of those (most popular) *Forums*. Also include those member *Persons* who have not posted any *Posts* (have a `postCount` of 0).
 parameters:
   - name: country
-    type: String
+    type: Long String
 result:
   - name: person.id
     type: ID

@@ -10,7 +10,7 @@ description: |
   * A *Person*'s (`p2`) "popularity score" is defined as the total number of likes on all of their *Messages* (`message2`).
 parameters:
   - name: tag
-    type: String
+    type: Long String
 result:
   - name: person.id
     type: ID
