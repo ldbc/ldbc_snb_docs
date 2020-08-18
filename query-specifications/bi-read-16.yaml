@@ -6,10 +6,10 @@ description: |
   Given two *Tag*/day pairs (`tagA`/`dayA` and `tagB`/`dayB`), for each pair `tagX`/`dayX`:
 
   * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dayX` with *Tag* `tagX`.
-  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends in the induced subraph.
-  * In the resulting graph, add the number of *Messages* created by each *Person*, resulting in graph G.
+  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (the number of friends is defined in the induced subgraph).
+  * In the resulting graph, add the number of *Messages* created by each *Person*, resulting in graphs **Ga** and **Gb**.
   
-  Compute the intersection of graphs G for `tagA`/`dayA` and `tagB`/`dayB`, return 
+  Compute the intersection of graphs **Ga** and **Gb** for `tagA`/`dayA` and `tagB`/`dayB`, return top pairs of *Persons* ordered by `<scoreA, scoreB>` descending.
 parameters:
   - name: tagA
     type: Long String
