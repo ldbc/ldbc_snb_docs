@@ -7,6 +7,8 @@ description: |
   This is read by other members of `forum1`, *Persons* `person2` and `person3`.
   Some time later (specified by the `delta` parameter), these persons have a discussion with the same `tag` in a different *Forum* (`forum2`) where `person1` is not a member.
   The discussion consists of a *Message* (`message2`) by `person2` and a direct reply *Comment* (`comment`) by `person3`.
+
+  Return IDs of `person1` with the number of interactions their *Messages* (might have) caused.
 parameters:
   - name: tag
     type: Long String

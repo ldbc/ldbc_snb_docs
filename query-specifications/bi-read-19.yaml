@@ -22,5 +22,7 @@ result:
 sort:
   - name: weight
     direction: desc
+  - name: person1.id
+    direction: asc
     description: The order of paths with the same weight is unspecified
 choke_points: [1.1] #todo
