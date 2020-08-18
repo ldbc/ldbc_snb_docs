@@ -3,7 +3,10 @@ operation: read
 number: 18
 title: Friend recommendation
 description: |
-  TODO
+  For a given *Person* (`person1`) and a *Tag* (`tag`), recommend new friends (`person4`) who
+  * do not yet know `person1`
+  * have many mutual friends with `person1`
+  * are interested in `tag.
 parameters:
   - name: person1Id
     type: ID

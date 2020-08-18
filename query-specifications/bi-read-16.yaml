@@ -3,21 +3,34 @@ operation: read
 number: 16
 title: Fake news detection
 description: |
-  TODO
+  Given two *Tag*/day pairs (`tagA`/`dayA` and `tagB`/`dayB`), for each pair `tagX`/`dayX`:
+
+  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dayX` with *Tag* `tagX`.
+  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends in the induced subraph.
+  * In the resulting graph, add the number of *Messages* created by each *Person*, resulting in graph G.
+  
+  Compute the intersection of graphs G for `tagA`/`dayA` and `tagB`/`dayB`, return 
 parameters:
-  - name: tag1
+  - name: tagA
     type: Long String
-  - name: day1
+  - name: dayA
     type: Date
-  - name: tag2
+  - name: tagB
     type: Long String
-  - name: day2
+  - name: dayB
     type: Date
   - name: maxKnowsLimit
     type: 32-bit Integer
 result:
-  - name: messageCount
-    type: 32-bit Integer
+  - name: person1.id
+    type: ID
+  - name: person2.id
+    type: ID
+  - name: \<scoreA, scoreB>
+    type: \<32-bit Integer, 32-bit Integer>
     category: aggregated
-    description: "`count(message1) + count(message2)`"
+    description: "`scoreX = count(message1) + count(message2)`, computed for `tagA`/`dayA` and `tagB`/`dayB`"
+sort:
+  - name: scoreA + scoreB
+    direction: desc
 choke_points: [1.1] #todo

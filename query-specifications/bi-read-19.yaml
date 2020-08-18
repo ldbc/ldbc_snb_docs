@@ -3,7 +3,9 @@ operation: read
 number: 19
 title: Interaction path between cities
 description: |
-  TODO
+  Given two *Cities* `city1`, `city2`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them.
+
+  The shortest path is computed using a weight between two *Persons* defined as the reciprocal of the number of interactions (direct reply *Comments* to a *Message* by the other *Person*). Therefore, more interactions imply a smaller weight.
 parameters:
   - name: city1Id
     type: ID
