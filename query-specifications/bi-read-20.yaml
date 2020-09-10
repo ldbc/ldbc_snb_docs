@@ -1,10 +1,10 @@
-workload: BI
+orkload: BI
 operation: read
 number: 20
 title: Recruitment
 description: |
-  Given two *Companies* `company1` and `company2`, find pairs of *Persons* `person1` and `person2` with the shortest path based on university attendance.
-  On this path, we only consider edges between *Persons* who know each other and attended the same university, and set the weight of the edge to the absolute difference between the year of enrolment `studyAt.studyYear`.
+  Given two *Companies* `company1` and `company2`, find pairs of *Persons* `person1` and `person2` with the shortest path through people who have pairwise studied together.
+  On this path, we only consider edges between *Persons* who know each other and attended the same university and set the weight of the edge to the absolute difference between the year of enrolment `studyAt.studyYear` plus 1.
 parameters:
   - name: company1
     type: Long String
@@ -25,3 +25,6 @@ sort:
     direction: asc
     description: The order of paths with the same weight is unspecified
 choke_points: [1.1] #todo
+relevance: |
+  Implementations can both pre-compute edge weights or compute them on-the-fly.
+  To find a weighted shortest path efficiently, implementations can use e.g. a bidirectional Dijkstra algorithm.
