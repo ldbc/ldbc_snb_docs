@@ -26,10 +26,14 @@ result:
     type: ID
   - name: person2.id
     type: ID
-  - name: \<scoreA, scoreB>
-    type: \<32-bit Integer, 32-bit Integer>
+  - name: scoreA
+    type: 32-bit Integer
     category: aggregated
-    description: "`scoreX = count(message1) + count(message2)`, computed for `tagA`/`dayA` and `tagB`/`dayB`"
+    description: "`count(message1) + count(message2)`, for `tagA`/`dayA`"
+  - name: scoreB
+    type: 32-bit Integer
+    category: aggregated
+    description: "`count(message1) + count(message2)`, for `tagB`/`dayB`"
 sort:
   - name: scoreA + scoreB
     direction: desc
