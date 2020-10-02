@@ -1,0 +1,61 @@
+\tikzstyle{vertex} = [circle, minimum width=40pt,draw,inner sep=0pt]
+\tikzstyle{edge} = [thick,->,>=stealth,out=180,in=0]
+\usetikzlibrary{positioning}
+
+\centering
+\begin{tikzpicture}[node distance=4cm,scale=0.85,every node/.style={transform shape}]
+  % nodes
+  \node (forum) [vertex,xshift=0cm,yshift=0cm,fill=Forum] {\small{$\instance{F_{1}}:\type{Forum}$}};
+  \node (post) [vertex,xshift=0cm,yshift=0cm,fill=Post,right of=forum] {\small{$\instance{Post_{1}}:\type{Post}$}};
+  \node (comment1) [vertex,xshift=0cm,yshift=0cm,fill=Comment,right of=post] {\small{$\instance{C_{1}}:\type{Comm}$}};
+  \node (comment2) [vertex,xshift=0cm,yshift=0cm,fill=Comment,right of=comment1] {\small{$\instance{C_{2}}:\type{Comm}$}};
+
+  \node (person1) [vertex,xshift=0cm,yshift=2cm,fill=Person,left of=forum] {\small{$\instance{P_{1}}:\type{Person}$}};
+  \node (person2) [vertex,xshift=0cm,yshift=0cm,fill=Person,left of=forum] {\small{$\instance{P_{2}}:\type{Person}$}};
+  \node (person3) [vertex,xshift=0cm,yshift=0.5cm,fill=Person,below of=forum] {\small{$\instance{P_{3}}:\type{Person}$}};
+
+  % edges
+  \draw [edge] (forum) -- node [midway,above,sloped,grey] {\small{$\instance{HMD_{1}} : \type{hasModerator}$}} (person1);
+  \draw [edge] (forum) --
+  node [midway,above] {\small{$\instance{HM_{2}} : \type{hasMember}$}}
+  node [midway,below,yshift=0cm,align=center,text width=2.5cm] {\scriptsize{\texttt{$\instc{HM}{2}$: Jun 15 2010}}}
+  node [midway,below,yshift=-0.4cm,align=center,text width=2.5cm] {\scriptsize{\texttt{$\instd{HM}{2}$: Jul 26 2012}}}
+  (person2);
+
+  \draw [edge] (forum) --
+  node [midway,above,xshift=1.2cm,yshift=0.5cm] {\small{$\instance{HM_{3}} : \type{hasMember}$}}
+  node [midway,above,xshift=1cm,yshift=0.1cm,align=right,text width=2.2cm] {\scriptsize{\texttt{$\instc{HM}{3}$: Dec 08 2010}}}
+  node [midway,above,xshift=1cm,yshift=-0.3cm,align=right,text width=2.2cm] {\scriptsize{\texttt{$\instd{HM}{3}$: Feb 29 2012}}} (person3);
+
+  \draw [edge] (forum) -- node [midway,above,grey] {\small{$\instance{CO} : \type{containerOf}$}} (post);
+
+  \draw [edge] (post) -- node [midway,above,grey] {\small{$\instance{ROF_{1}} : \type{replyOf}$}} (comment1);
+  \draw [edge] (comment1) -- node [midway,above,grey] {\small{$\instance{ROF_{2}} : \type{replyOf}$}} (comment2);
+  \draw [edge] (comment1)  to [out=145,in=12]  node [near start,above,grey,sloped] {\small{$\instance{HC_{1}} : \type{hasCreator}$}} (person1);
+  \draw [edge] (comment2) to [out=-135,in=-90] node [near start,above,grey,sloped] {\small{$\instance{HC_{2}} : \type{hasCreator}$}} (person2);
+  \draw [edge] (post) to [out=-90,in=45] node [midway,below,grey,sloped,xshift=0.2cm] {\small{$\instance{HC_{3}} : \type{hasCreator}$}}  (person3);
+
+
+  \node [below of=comment1,yshift=3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{C}{1}$: Dec 17 2010}}};
+  \node [below of=comment1,yshift=2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{C}{1}$: Dec 18 2010}}};
+
+  \node [above of=comment2,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{C}{2}$: Dec 18 2010}}};
+  \node [above of=comment2,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{C}{2}$: Dec 18 2010}}};
+
+  \node [above of=post,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{Post}{1}$: Dec 16 2010}}};
+  \node [above of=post,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{Post}{1}$: Dec 12 2011}}};
+
+  \node [above of=forum,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{F}{1}$: Apr 01 2010}}};
+  \node [above of=forum,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{F}{1}$: Oct 02 2012}}};
+
+  \node [left of=person2,xshift=2.25cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{2}$: Jan 29 2010}}};
+  \node [left of=person2,xshift=2.25cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{2}$: Nov 15 2012}}};
+
+  \node [left of=person1,xshift=2.25cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{1}$: Feb 08 2010}}};
+  \node [left of=person1,xshift=2.25cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{1}$: Dec 23 2016}}};
+
+  \node [right of=person3,xshift=-2.25cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{3}$: Jul 21 2010}}};
+  \node [right of=person3,xshift=-2.25cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{3}$: Apr 17 2012}}};
+
+\end{tikzpicture}
+\vspace{-12ex} % not the most elegant approach but you can chop off the whitespace with this

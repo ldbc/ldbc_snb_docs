@@ -4,7 +4,7 @@
 \usepackage{rotating}
 \usepackage{pifont}
 \usepackage{rotating}
-\usepackage{subfigure}
+\usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{tabularx}
@@ -16,8 +16,10 @@
 \usepackage[export]{adjustbox}
 \usepackage{array}
 \usepackage{enumitem}
+
 \usepackage{todonotes}
 \presetkeys{todonotes}{inline}{}
+
 \usepackage[normalem]{ulem}
 \usepackage{cellspace}
 \usepackage{rotate}
@@ -27,7 +29,14 @@
 \usepackage[numbers]{natbib}
 % for a proper tt font 
 \usepackage[scale=0.78,ttdefault=true]{AnonymousPro}
+
 \usepackage{bm}
 \newcommand{\+}{\discretionary{\mbox{${\bm\cdot}\mkern-1mu$}}{}{}}
+
 \usepackage{caption}
-\captionsetup[figure]{width=0.9\linewidth,aboveskip=8pt}
+\captionsetup[figure]{width=\linewidth,aboveskip=8pt}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}

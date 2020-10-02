@@ -44,7 +44,7 @@ factors.
 
 \section{Data Schema}
 
-\autoref{figure:schema} shows the data schema in UML. The schema defines the
+\autoref{fig:schema} shows the data schema in UML. The schema defines the
 structure of the data used in the benchmark in terms of entities and their
 relations. Data represents a snapshot of the activity of a social network
 during a period of time. Data includes entities such as Persons, Organisations,
@@ -66,7 +66,7 @@ graph DBMS.
     \centering
     \includegraphics[width=\linewidth]{figures/schema-comfortable}
     \caption{UML class diagram-style depiction of the \ldbcsnb graph schema. Note that the \textsf{knows} edges are represented as directed but should be treated as undirected. The cardinality of the \textsf{hasModerator} edge has changed between version 0.3.x (where it was exactly 1) and version 0.4.x (where it is 0..1).}
-    \label{figure:schema}
+    \label{fig:schema}
 \end{figure}
 
 The schema specifies different entities, their attributes and their relations.
@@ -484,11 +484,7 @@ are described in \autoref{table:property_dictionaries}.
 
 \subsection{Graph Generation}
 
-
-
-% also used to generate lcoation
-
-\autoref{figure:generation_process} conceptually depicts the full data
+\autoref{fig:generation_process} conceptually depicts the full data
 generation process. The first step loads all the dictionaries and resource
 files, and initializes the \datagen parameters.  Second, it generates all the
 Persons in the graph, and the minimum necessary information to operate. Part of
@@ -513,7 +509,7 @@ exploited by \datagen to reproduce correlations.
     \centering
     \includegraphics[scale=\patternscale]{figures/datagen-workflow}
     \caption{The \datagen generation process.}
-    \label{figure:generation_process}
+    \label{fig:generation_process}
 \end{figure}
 
 Given a similarity function $M(p) : p \rightarrow [0, \infty]$ that gives a score to a person,
@@ -575,22 +571,22 @@ Interesting quirks:
 \item Group membership is composed of 30\% from the moderator's friends and the remainder is chosen randomly (from the block the person is in).
 \item Comments are only made in Walls and Groups.
 \item Messages can only receive likes during a 7-day window after their creation.
-\item Comments always occur within one day of Message they are replying to. The creation date is generated following the power-law distribution in Figure \ref{figure:comments_dist}. The mean lag between Comments and their parent Message is 6.85 hours.
-\item Flashmob events span a 72 hour time window with a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{figure:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
+\item Comments always occur within one day of Message they are replying to. The creation date is generated following the power-law distribution in Figure \ref{fig:comments_dist}. The mean lag between Comments and their parent Message is 6.85 hours.
+\item Flashmob events span a 72 hour time window with a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{fig:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
 \end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=\patternscale]{figures/comments_power_law}
   \caption{The power-law used to generate comments.}
-  \label{figure:comments_dist}
+  \label{fig:comments_dist}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=\patternscale]{figures/flashmob_dist}
   \caption{The distribution used to generate posts during flashmob events.}
-  \label{figure:flashmob_dist}
+  \label{fig:flashmob_dist}
 \end{figure}
 
 \subsection{Implementation Details}
@@ -673,7 +669,7 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \subsection{Dataset}
 
-The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{figure:schema}).
+The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{fig:schema}).
 The SUT has to take care only of the generated Dataset to be bulk loaded. Using \texttt{NULL} values for storing optional values is allowed.
 
 The formats currently supported by \datagen serializers are the following:
@@ -754,11 +750,254 @@ The schemas of these files are defined by the operator, e.g. the schema of \quer
 \section{Benchmark Workflow}
 \label{sec:workflow}
 
-The workflow of the benchmark is shown in \autoref{figure:workflow}.
+The workflow of the benchmark is shown in \autoref{fig:workflow}.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{figures/workflow}
     \caption{Benchmark workflow.}
-    \label{figure:workflow}
+    \label{fig:workflow}
 \end{figure}
+
+
+\section{Introducing Deletions to Datagen}
+
+\paragraph{Challenge for systems}
+
+To support deletions, graph processing systems need to solve numerous technical challenges:
+%
+\begin{enumerate}
+    \item Users should be able to \emph{express deletion operations} using the database API, preferably using a high-level declarative query language with clear semantics~\cite{Green2019}.
+    \item Deletion operations \emph{limit the algorithms and data structures} that can be used by a system.
+    Certain dynamic graph algorithms are significantly more expensive to recompute in the presence of deletes~\cite{DBLP:conf/soda/Roditty13} or only support either insertions or deletions but not both~\cite{DBLP:conf/esa/RodittyZ04}.
+    A number of updatable matrix storage formats only support efficient insertions but not deletions~\cite{DBLP:conf/hpec/BusatoGBB18}.
+    Meanwhile some graph databases might be able to exploit indexes to speed up deletions~\cite{Besta2019}.
+    \item \emph{Distributed graph databases} need to employ specialized protocols to enforce consistency of deletions~\cite{Waudby2020}.
+\end{enumerate}
+
+% the actual citation is: ~\cite[Sec.~4.4.2]{Besta2019}
+
+\paragraph{Challenge for benchmarks}
+Due to their importance and challenging nature, we found it necessary to incorporate delete operations into LDBC benchmarks.
+However, doing so is a non-trivial task as it impacts on each component in the benchmark workflow:
+workload specifications, data generation, parameter curation, and the workload driver.
+This paper focuses on the challenge of generating deletion operations within LDBC's synthetic data generator, specifically, to extend the generator with support for dynamic entities.
+Dynamic entities have a \emph{creation date} and a \emph{deletion date}, which together comprise an entity's \emph{lifespan}.
+Once generated this allows for the extraction of deletion operations, which can be utilized by LDBC workloads. 
+Supporting the generation of dynamic entities poses numerous challenges:
+\begin{enumerate}
+\item \textbf{Validity.} The generator should produce \emph{valid lifespans},
+where each generated dynamic entity guarantees that
+(a)~events in the graph follow a logical order: e.g. in a social network, two people can become friends only after both persons joined the network and before either person leaves the network,
+(b)~the graph never violates the cardinality constraints prescribed by its schema, and
+(c)~the graph continuously satisfies the semantic constraints required by the application domain (e.g. no isolated comments in a social network).
+\item \textbf{Realism.} The generator should create a graph with a realistic correlations and distribution of entities over time.
+For example, in a social network the distribution of activity is non-uniform over time, real-world events such as elections or controversial posts %by celebrities
+can drive spikes of posts and unfollowings respectively~\cite{DBLP:conf/www/MyersL14}.
+In addition, deletions can be correlated with certain attributes: e.g. the likelihood a person leaves the network may be correlated with their number of friends~\cite{Lorincz2019}.
+Also, there are often temporal correlations between entity creation and deletion: e.g. posts have an increased chance of deletion immediately following creation compared to after a 3~month period.
+\item \textbf{Scalability.} A graph with dynamic entities should be generated at scale (up to billions of edges).
+\end{enumerate}
+
+%%% [JACK: commented out]
+% \subsection{Challenge}
+
+% \paragraph{Deletions in graph generators}
+
+% Supporting deletions within graph generators poses numerous challenges.
+% First, they should produce \emph{valid deletions},
+% where each generated deletion operation guarantees that
+% (a)~the entity targeted for deletion exists at the time of the execution of the operation (even when multiple deletion operations are executed concurrently),
+% (b)~the graph never violates the cardinality constraints prescribed by its schema, and
+% (c)~the graph continuously satisfies the semantic constraints required by the application domain (e.g. no isolated comments in a social network).
+% Second, deletions should be generated at scale (up to billions of edges).
+% % our solution: building on top of LDBC Datagen -- this uses a Hadoop implementation, which 'scales'
+% Third, they should create a graph with a realistic distribution of entities over time.
+% For example, in a social network it is reasonable to assume that events do not follow a uniform distribution but there are a number of bursty events.
+
+
+% Moreover, the probability of a given entity in the
+% We intend to specify deletion probabilities for each entity in the graph.
+% That is, the probability a given entity is explicitly deleted in simulation period.
+% This probability may be a function of several attributes.
+% For example, the probability a person leaves the network is a function of their number of connections -- the more friends, more social capital and less likely to leave.
+% A second dimension we intend to consider is the distribution within the intervals.
+% For example, if a post is selected for deletion, the interval we sample from may not be uniformly distributed.
+% Posts may have a higher chance of deletion straight after they have been posted rather than 3 months after they have been posted or if other posts have already been deleted.
+% Thirdly, it would be interesting to model flashmob-like unfollowings/deletions, a famous person posts a racist tweet for example
+
+% [Gabor] the "VaSCo properties" -- valid, scalable, correlated
+% valid
+% scalable (future work = Datagen migration)
+% correlations, flash delete (future work)
+
+\section{Lifespan Management}
+\label{sec:lifespan-management}
+
+This section is based on the paper at the GRADES-NDA~2020 workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} by the task force members.
+
+%Such are generated from the intervals below, which capture the dependencies between entities. For example, a \tPost cannot be created until the \tPerson that creates that message, joins the network, the forum is created and the \tPerson joins the \tForum.
+
+In this section, we define the the constraints for generating dynamic entities in a social network. Each dynamic entity gets a \emph{lifespan}, represented by two \emph{lifespan attributes}, a \emph{creation date} and a \emph{deletion date}.
+% Entities exist in the network within this lifespan.
+We first briefly review the data generator, introduce our notation and define the parameters of the generation process. Then, we define the semantic constraints which regulate the participation in certain relationships along with the constraints for selecting intervals. We illustrate an application of these with two examples, shown in \autoref{fig:example-graph} and \autoref{fig:example-graph-complex}.
+
+\paragraph{Graph schema}
+
+The LDBC Datagen component~\cite{Pham2012,Datagen} is responsible for generating the graph used in the benchmarks. It produces a synthetic dataset modelling a social network's activity. Its graph schema has 11~concrete node types connected by 20~edge types, and its entities (nodes/edges) are classified as either dynamic or static (\autoref{fig:schema}).
+The dynamic part of the graph comprises of a fully connected \tPerson graph and a number of \tMessage trees under \tForums.
+
+\paragraph{Notation}
+To describe lifespans and related constraints, we use the following notation.
+Constants are uppercase bold, e.g. $\constant{NC}$.
+Entity types are monospaced, e.g. \tPerson, \tHasMember.
+Variables are lowercase italic, e.g. $\variable{pers}, \variable{hm}$.
+Entities are sans-serif, e.g. $\instance{P_1}, \instance{HM}$.
+For an entity $x$, $\varc{x}{}$ denotes its creation date, while $\vard{x}{}$ denotes its deletion date.
+In most cases, both the creation and the deletion date are selected from an interval, e.g. $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive). 
+The selected creation and deletion dates together form an interval that represents the lifespan of its entity.
+If any of the intervals for selecting the lifespan attributes of an entity are empty, i.e. $d_2 \leq d_1$, the entity should be discarded.
+As illustrated later, this interval is often used to determine the intervals where the creation and deletion dates of dependant entities are selected.
+
+\paragraph{Parameters} % maybe comes later?
+We parameterize the generator as follows.
+The network is created in 2010 and exists for 10~years at which point the network collapses ($\xNC = 2020$).
+Data is simulated for a 3-year period, between the simulation start, $\xSS = 2010$ and the simulation end, $\xSE = 2013$.
+In order to allow \emph{windowed execution} by the LDBC SNB driver~\cite{Erling2015} (used for multi-threaded and distributed operation), we define a sufficiently large amount of time that needs to pass between consecutive operations on an entity as $\Delta = 10\text{s}$.
+
+%\paragraph{Examples}
+%\autoref{fig:example-graph} shows an example illustrating the lifespans of two $\type{\tPerson}$ nodes and a $\type{knows}$ edge.
+%A complex example that includes $\type{Forum}$, $\type{Post}$ and $\type{Comment}$ nodes is shown in  \autoref{fig:example-graph-2}.
+
+\subsection{General Rules}
+
+In this section, we define general rules that must be satisfied by all entities in the graph. In subsequent sections, we refine these with domain-specific constraints.
+For a node $\varn{1}$, we always require that:
+\begin{itemize}
+    \item $\varcn{1} \in \interval{\xSS}{\xSE}$, the node must be created between the simulation start and the simulation end.
+    \item $\vardn{1} \in \interval{\varcn{1} + \Delta}{\xNC}$, the node must exist for at least $\Delta$ time and must be deleted before the network collapse.
+\end{itemize}
+
+
+To enforce referential integrity constraints (i.e. prevent dangling edges), the lifespan of edge $\variable{e}$ between nodes $\varn{1}$ and $\varn{2}$ must always satisfy the following criteria:
+
+\begin{itemize}
+    \item $ \varc{e} \in \interval
+        {\max(\varcn{1}, \varcn{2})}
+        {\min(\vardn{1}, \vardn{2}, \xSE)} $,
+        in other terms,
+        the edge must be created no sooner than both of its endpoints
+        but before 
+        any of its endpoints are deleted.
+        %creation date of and edge must be larger than or equal to those of its endpoints.
+    \item $ \vard{e} \in \interval
+        {\varc{e} + \Delta}
+        {\min(\vardn{1}, \vardn{2})} $,
+        i.e. the edge must exist for at least $\Delta$ time and
+        deleted no later than 
+        any of its endpoints.
+\end{itemize}
+
+To further refine the constraints for edges, we distinguish between two main cases.
+
+(1)~The endpoints of edge $\variable{e}$ are existing node $\varn{1}$ and node $\varn{2}$ which is inserted at the same time as the edge:
+\begin{itemize}
+    \item $ \varc{e} = \varcn{2} $ % \quad (we know that $\varcn{1} \geq \varcn{2} + \Delta$)
+    \item $ \vard{e} = \min(\vardn{1}, \vardn{2}) $.
+    In case of edges with \emph{containment semantics} (node $\varn{1}$ contains $\varn{2}$ through edge $e$), 
+    node $\varn{2}$ must always be deleted at the same time as edge $\variable{e}$,
+    therefore
+    $\vard{e} = \vardn{2}$ and $\vardn{2} \leq \vardn{1}$.
+    %
+%\footnote{We require each entity to exist for at least $\Delta$ time, so $\vardn{1} \geq \varcn{1} + \Delta $. Therefore, given $\varc{e} = \varcn{1}$, assigning $\vard{e} = \vardn{1}$ confirms $ \vard{e} \in \interval{\varc{e} + \Delta}{\min(\vardn{1}, \vardn{2})}$.}
+\end{itemize}
+
+(2)~In other cases, the edge must be created when both of its endpoints already exist and must be deleted no later than them:
+
+\begin{itemize}
+    \item $ \varc{e} \in \interval
+        {\max(\varcn{1}, \varcn{2}) + \Delta}
+        {\min(\vardn{1}, \vardn{2}, \xSE)} $
+    \item $ \vard{e} \in \interval
+        {\varc{e} + \Delta}
+        {\min(\vardn{1}, \vardn{2})} $
+\end{itemize}
+
+These constraints capture the ``minimum'' (i.e. most relaxed) set of constraints that must be enforced in all domains.
+Next, we introduce additional constraints specific to our social network schema.
+
+\subsection{Person}
+
+A \tPerson $\ePerson$ is the avatar a real-world person creates when they join the network. A \tPerson joins the network, $\varc{\ePerson}$, during the simulation period and they leave the network, $\vard{\ePerson}$, during the network lifetime:
+%provided the following conditions hold:
+
+\begin{itemize}
+    \item $\varc{\ePerson} \in \interval{\xSS}{\xSE}$
+    \item $\vard{\ePerson} \in \interval{\varc{\ePerson} + \Delta}{\xNC}$
+\end{itemize}
+%When most users leave a network they do so without deleting their profiles; around 22\% explicitly delete their profiles~\cite{Lorincz2019}. Also, the probability of a given \tPerson leaving the network varies depending on the amount of \emph{social capital} they stand to lose~\cite{Lorincz2019}. Social capital is the utility an individual gains from human interaction, this is captured at a coarse-grain by the number of connections an individual has in the network - \tPersons with higher \tKnows  degrees are less willing leave the network as they have more social capital to lose. These two phenomenon are captured when $\vard{\ePerson}$ is selected from the above interval.
+
+For the edges of \tPerson nodes pointing to a static node
+($\type{isLocatedIn}$,
+$\type{studyAt}$,
+$\type{workAt}$, and
+$\type{hasInterest}$), 
+we assign the creation and deletion date from $\varc{\ePerson}$ and $\vard{\ePerson}$, resp.
+
+% \begin{itemize}
+% \item maybe make creation date non-uniform across simulation period? Or we assume the network is in the middle of its life?
+% \item when probability of deletion based on connection distribution has been defined should we include it?
+% \end{itemize}
+
+%\input{figures/graph-person-knows}
+\input{figures/fig-person-knows}
+
+\subsubsection{Knows}
+
+The \tKnows edge connects two \tPersons $p_i$ and $p_j$ that know each other in the network.
+%When assigning \tKnows a creation date and deletion date the lifespans of the \tPersons being connected must be carefully considered, as both \tPersons must exist in the network at some point in time for them to connect.
+The intervals where the creation and deletion dates can be generated in are illustrated in \autoref{fig:person-knows} and defined below:
+\begin{itemize}
+    \item $\varc{\eKnows_{i,j}} \in \interval{\max(\varc{\ePerson}_{i},\varc{\ePerson}_{j}) + \Delta}{\min(\vard{\ePerson}_{i},\vard{\ePerson}_{j}, \xSE)}$
+    \item $\vard{\eKnows_{i,j}} \in \interval{\varc{\eKnows_{i,j}} + \Delta}{\min (\vard{\ePerson}_{i}, \vard{\ePerson}_{j})}$
+\end{itemize}
+
+
+\subsection{Forum and Message}
+
+The rules for \tForum and \tMessage nodes along with their edges are given in \autoref{sec:forum} and \autoref{sec:message}, respectively, and illustrated in \autoref{fig:example-graph-complex}.
+
+
+% \begin{figure*}[ht]
+%   \centering
+%   \includegraphics[width=\textwidth]{figures/degree-average-through-time-white}
+%   \caption{Average $\type{know}$ degree for $\type{Person}$s in the network, measured once per day throughout the simulation period. For each scale factor, measurements were taken on four graphs built from the generated updates varying the deletions included. Experiment repeated across Scale Factors 1, 10, and 30.}
+%   \label{fig:degrees}
+% \end{figure*}
+
+
+
+\input{albums-walls}
+
+\input{complex-example}
+
+
+
+
+
+%As of version 0.4.0 Datagen produced a graph that was monotonically increasing in size over the simulation period, once a \tPerson joined the network they never left, they never deleted a post nor unliked a picture. In reality this far from the case, people regularly remove friends, delete comments and unlike pictures. Analysis of the now defunct social network iWiW~\cite{Lorincz2019} discovered across the network's lifetime 22\% of users deleted their accounts. Moreover, recent analysis of Facebook data found an average user has removed around 5\% of their cumulative friends [REF].
+
+
+% See spec:
+% \begin{itemize}
+% \item forum\_hasModerator\_person (merged to Forum)
+% \item organisation\_isLocatedIn\_place (merged to Organisation)
+% \item person\_isLocatedIn\_place (merged to Person)
+% \item place\_isPartOf\_place (merged to Place)
+% \item post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post)
+% \item tag\_hasType\_tagclass (merged to Tag)
+% \item tagclass\_isSubclassOf\_tagclass (merged to TagClass).
+% \item comment\_hasCreator\_person, comment\_isLocatedIn\_place,
+%   comment\_replyOf\_comment,
+%   comment\_replyOf\_post (merged to Comment)
+% \end{itemize}

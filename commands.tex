@@ -25,3 +25,98 @@
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
 \renewcommand{\subsubsectionautorefname}{Section}
+
+
+\newcommand{\interval}[2]{\ensuremath{\textcolor{green}{\big[ #1}, \ \textcolor{red}{#2 \big)} }}
+
+\newcommand{\type}[1]{\texttt{#1}}
+%\newcommand{\constant}[1]{\mathbb{#1}} % no mathbf/mathcal due to MnSymbol & mathfrak looks terrible
+\newcommand{\constant}[1]{\textbf{#1}}
+\newcommand{\variable}[1]{\mathit{#1}}
+\newcommand{\instance}[1]{\mathsf{#1}}
+
+\newcommand{\created}{\ast}
+\newcommand{\deleted}{\dagger}
+
+% italic numbers look bad -- no \variable for the underscored bit
+% \newcommand{\varbound}[3]{{#3}\variable{#1}_{#2}}
+% \newcommand{\varc}[2]{\varbound{#1}{#2}{\created}}
+% \newcommand{\vard}[2]{\varbound{#1}{#2}{\deleted}}
+\newcommand{\varbound}[2]{{#2}\variable{#1}}
+\newcommand{\varc}[1]{\varbound{#1}{\created}}
+\newcommand{\vard}[1]{\varbound{#1}{\deleted}}
+
+\newcommand{\varn}[1]{\variable{n}_\mathrm{#1}}
+\newcommand{\varcn}[1]{\varbound{\varn{#1}}{\created}}
+\newcommand{\vardn}[1]{\varbound{\varn{#1}}{\deleted}}
+
+\newcommand{\instbound}[3]{{#3}\instance{#1}_\instance{#2}}
+\newcommand{\instc}[2]{\instbound{#1}{#2}{\created}}
+\newcommand{\instd}[2]{\instbound{#1}{#2}{\deleted}}
+
+\newcommand{\xSS}{\constant{SS}\xspace}
+%\newcommand{\xNS}{\constant{NS}\xspace} % unused
+\newcommand{\xSE}{\constant{SE}\xspace}
+\newcommand{\xNC}{\constant{NC}\xspace}
+
+\newcommand{\eComment}{\variable{comm}\xspace}
+\newcommand{\eFlashmobEvent}{\variable{fme}\xspace}
+\newcommand{\eForum}{\variable{forum}\xspace}
+\newcommand{\eHasMember}{\variable{hm}\xspace}
+\newcommand{\eHasModerator}{\variable{hmd}\xspace}
+\newcommand{\eKnows}{\variable{knows}\xspace}
+\newcommand{\eLikes}{\variable{likes}\xspace}
+\newcommand{\eMessage}{\variable{m}\xspace}
+\newcommand{\ePerson}{\variable{p}\xspace}
+\newcommand{\ePost}{\variable{post}\xspace}
+
+\newcommand{\tComment}{\type{Comment}\xspace}
+\newcommand{\tComments}{\type{Comments}\xspace}
+\newcommand{\tContainerOf}{\type{containerOf}\xspace}
+\newcommand{\tFlashmobEvent}{\type{FlashmobEvent}\xspace}
+\newcommand{\tForum}{\type{Forum}\xspace}
+\newcommand{\tForums}{\type{Forums}\xspace}
+\newcommand{\tHasCreator}{\type{hasCreator}\xspace}
+\newcommand{\tHasMember}{\type{hasMember}\xspace}
+\newcommand{\tHasModerator}{\type{hasModerator}\xspace}
+\newcommand{\tHasTag}{\type{hasTag}\xspace}
+\newcommand{\tKnows}{\type{knows}\xspace}
+\newcommand{\tLikes}{\type{likes}\xspace}
+\newcommand{\tMessage}{\type{Message}\xspace}
+\newcommand{\tMessages}{\type{Messages}\xspace}
+\newcommand{\tPerson}{\type{Person}\xspace}
+\newcommand{\tPersons}{\type{Persons}\xspace}
+\newcommand{\tPost}{\type{Post}\xspace}
+\newcommand{\tPosts}{\type{Posts}\xspace}
+\newcommand{\tTag}{\type{Tag}\xspace}
+\newcommand{\tTags}{\type{Tags}\xspace}
+\newcommand{\tPhoto}{\type{Photo}\xspace}
+\newcommand{\tPhotos}{\type{Photos}\xspace}
+\newcommand{\tReplyOf}{\type{replyOf}\xspace}
+
+\def\shadedBox(#1,#2,#3){
+
+  \fill[pattern=north west lines,pattern color=grey] (#1,#2) --  (#1,#2 - #3) -- (#1 + 0.3,#2 - #3) --  (#1 + 0.3,#2);
+   \draw [grey,thin,dashed] (#1,#2)  -- (#1,#2 - #3);
+   \draw [grey,thin,dashed] (#1 + 0.3,#2) -- (#1 + 0.3,#2 - #3);
+   \draw [grey,line width=0.6mm] (#1,#2 - #3) -- node[midway,below,grey] {$\Delta$} (#1 + 0.3,#2 - #3);
+
+}
+
+% LDBC schema colours
+\definecolor{Person}{HTML}{fdb462}
+\definecolor{Message}{HTML}{bebada}
+\definecolor{Forum}{HTML}{b3de69}
+\definecolor{Comment}{HTML}{80b1d3}
+\definecolor{Post}{HTML}{fb8072}
+\definecolor{Company}{HTML}{ccebc5}
+\definecolor{University}{HTML}{ffed6f}
+\definecolor{City}{HTML}{8dd3c7}
+\definecolor{Tag}{HTML}{fccde5}
+\definecolor{Country}{HTML}{ffffb3}
+
+% interval colours
+\definecolor{grey}{rgb}{0.52, 0.52, 0.51}
+\definecolor{red}{rgb}{0.7, 0.11, 0.11}
+\definecolor{blue}{rgb}{0.0, 0.0, 0.55}
+\definecolor{green}{rgb}{0.0, 0.42, 0.24}

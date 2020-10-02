@@ -1,0 +1,160 @@
+
+\section{Lifespan Management for Forum and Message Nodes}
+
+\subsection{Forum}
+\label{sec:forum}
+\label{sec:hasModerator}
+
+A \tForum is a meeting point where people post \tMessages.
+There exists three categories of \tForums:
+Wall ($\eForum_\textsf{w}$),
+Album ($\eForum_\textsf{a}$),
+and Group ($\eForum_\textsf{g}$).
+Each \tForum has a set of \tPersons connected via \tHasMember edges, a set of \tTags connected via \tHasTag edges, a single moderator connected by a \tHasModerator edge and a set of \tMessages (discussed in Section \ref{sec:message}).
+For all \tForums the outgoing \tHasTag edges get their creation date and deletion date from $\varc{\eForum}$ and $\vard{\eForum}$, respectively.
+%Here, we present the lifespans of Groups and discuss Walls/Albums in \autoref{sec:walls-albums}.
+
+\subsubsection{Groups}
+Groups are public places for people that share interests, any \tPerson can create a Group $\eForum_\textsf{g}$ during their lifespan. A Group can be deleted anytime after it was created.
+\begin{itemize}
+    \item $\varc{\eForum}_{\mathsf{g}} \in \interval{\varc{\ePerson} + \Delta}{\min (\vard{\ePerson}, \xSE)}$
+    \item $\vard{\eForum}_{\mathsf{g}} \in \interval{\varc{\eForum}_{\mathsf{g}} + \Delta}{\xNC}$
+\end{itemize}
+
+\paragraph{Group Moderator}
+The initial \tHasModerator $\eHasModerator_{\mathsf{g}}$ is the Group creator. If the moderator leaves the Group, the Group will have no moderator (this is allowed in the schema of version 0.4.0+, see \autoref{fig:schema}).
+\begin{itemize}
+\item $\varc{\eHasModerator}_{\mathsf{g}} \in \interval{\varc{\eForum}_{\mathsf{g}} + \Delta}{\min (\vard{\eForum}_{\mathsf{g}}, \vard{\ePerson}, \xSE)}$
+\item $\vard{\eHasModerator}_{\mathsf{g}} \in \interval{ \varc{\eHasModerator}_{\mathsf{g}} + \Delta}{\min (\vard{\eForum}_{\mathsf{g}}, \vard{\ePerson})}$ %,\xNC
+\end{itemize}
+
+\paragraph{Group Membership}
+Any \tPerson $\ePerson$ can become a member of a given group. The \tHasMember $\eHasMember_{\mathsf{g}}$ creation is generated from the interval in which the \tPerson and \tForum lifespans overlap. The deletion date is generated from the interval between the membership creation date (incremented by $\Delta$) and the minimum of the \tPerson and \tForum deletion dates.
+\begin{itemize}
+    \item $\varc{\eHasMember}_{\mathsf{g}} \in \interval{\max ( \varc{\eForum}_{\mathsf{g}}, \varc{\ePerson}) + \Delta}{\min (\vard{\eForum}, \vard{\ePerson}, \xSE)} $
+    \item $\vard{\eHasMember}_{\mathsf{g}} \in \interval{\varc{\eHasMember}_{\mathsf{g}} + \Delta}{\min (\vard{\eForum}_{\mathsf{g}}, \vard{\ePerson})}$
+\end{itemize}
+
+\subsubsection{Walls}
+Every \tPerson $\ePerson$, has a Wall $\eForum_\textsf{w}$ which is created when the \tPerson joins the social network. The wall is deleted when the \tPerson is deleted.
+\begin{itemize}
+    \item $\varc{\eForum}_{\mathsf{w}} = \varc{\ePerson} + \Delta$
+    \item $\vard{\eForum}_{\mathsf{w}} = \vard{\ePerson}$
+\end{itemize}
+
+\paragraph{Wall Moderator}
+Each \tPerson has a \tHasModerator $\eHasModerator_{\mathsf{w}}$ edge to their wall, which gets the creation date (incremented by $\Delta$) and deletion date from $\eForum_\textsf{w}$.
+Note, only the moderator can create \tPost nodes on the wall and the connecting \tTag nodes are set based on the interest of the moderator.
+\begin{itemize}
+    \item $\varc{\eHasModerator}_{\mathsf{w}} = \varc{\eForum}_{\mathsf{w}} + \Delta$
+    \item $\vard{\eHasModerator}_{\mathsf{w}} = \vard{\eForum}_{\mathsf{w}}$
+\end{itemize}
+
+\paragraph{Wall Membership}
+For a \tPerson $p_i$, all their friends $p_j$ (\tPerson nodes connected via a \tKnows edge) become members of $\eForum_\textsf{w}$ at the time the \tKnows edge is created. Hence, a \tHasMember $\eHasMember_{\mathsf{w}}$ edge gets the creation date of \tKnows incremented by $\Delta$. The deletion date is derived from the minimum of the \tForum deletion date and \tKnows deletion date.
+\begin{itemize}
+    \item $\varc{\eHasMember}_{\mathsf{w}} = \varc{\eKnows_{i,j}} + \Delta$
+    \item $\vard{\eHasMember}_{\mathsf{w}} = \min(\vard{\eForum}_{\mathsf{w}}, \vard{\eKnows_{i,j}})$
+\end{itemize}
+
+\subsubsection{Albums}
+A \tPerson can create multiple Albums ($\eForum_\textsf{a}$) containing a set of \tPhotos{}. Albums can be created and then deleted at any point during the lifespan of the \tPerson.
+\begin{itemize}
+    \item $\varc{\eForum}_\textsf{a} \in \interval{\varc{\ePerson} + \Delta}{\min (\vard{\ePerson}, \xSE)}$
+    \item $\vard{\eForum}_\textsf{a} \in \interval{ \varc{\eForum}_\textsf{a} + \Delta}{\vard{\ePerson}}$
+\end{itemize}
+
+\paragraph{Album Moderator}
+The \tPerson is the moderator for any Album they create. Album ownership cannot change hence \tHasModerator $\eHasModerator_{\mathsf{a}}$ gets the creation date (incremented by $\Delta$) and deletion date from $\varc{\eForum}_\textsf{a}$ and $\vard{\eForum}_\textsf{a}$ respectively.
+\begin{itemize}
+\item $\varc{\eHasModerator}_{\mathsf{a}} = \varc{\eForum}_{\mathsf{a}} + \Delta$
+\item $\vard{\eHasModerator}_{\mathsf{a}} = \vard{\eForum}_{\mathsf{a}}$
+\end{itemize}
+
+\paragraph{Album Membership}
+Only friends $\ePerson_i$ of a \tPerson $\ePerson_j$ can become members of Albums created by $\ePerson_j$. The \tHasMember $\eHasMember_{\mathsf{a}}$ edge creation date is derived from the Album and $\type{knows}$ creation dates. The deletion is derived from the $\type{Forum}$ and $\type{knows}$ deletion dates.
+\begin{itemize}
+    \item $\varc{\eHasMember}_\textsf{a} = \max ( \varc{\eForum}_\textsf{a}, \varc{\eKnows}_{i,j} ) + \Delta $ %, where $\varc{\eKnows}_{i,j}$ is the creation date of the \tKnows edge between $\ePerson_i$ and $\ePerson_j$.
+    \item $\vard{\eHasMember}_{\mathsf{w}} = \min ( \vard{\eForum}_\textsf{a}, \vard{\eKnows}_{i,j} ) $ %, where $\vard{\eKnows}_{i,j}$ is the deletion date of the \tKnows edge between $\ePerson_i$ and $\ePerson_j$.
+\end{itemize}
+
+\subsection{Message}
+\label{sec:message}
+
+A \tMessage is an abstract entity that represents a message created by a \tPerson.
+There are two \tMessage subtypes: \tPost and \tComment.
+A \tPost is created in a \tForum and a \tComment represents a comment made by a \tPerson to an existing \tMessage (either a \tPost or a \tComment).
+In a \tForum the set of \tMessage nodes form a \emph{tree} with a \tPost node at the root and \tComment nodes for the rest.
+
+\subsubsection{Post}
+
+A \tPost can be created by a \tPerson in a \tForum.
+%is the creation date of the \tHasMember edge between
+%$\varc{\eHasMember}$ 
+Only the moderator (i.e. owner) can post on a Wall or in an Album (\tHasModerator),
+whereas all members including the moderator (\tHasMember/\tHasModerator) can post in a Group.
+These relationships are captured with the $\eHasMember$ variable in the formulas.
+\tPosts are divided in three categories, \emph{regular posts}, \emph{photos}, and \emph{flashmob posts}.
+
+\paragraph{Regular posts and photos}
+
+Regular posts capture the standard daily activity in a Group or on a Wall.
+Photos are created in Albums. (Interaction with Photos is limited to \tLikes, see details in \autoref{sec:likes}). The creation date for these is determined as follows:
+$$\varc{\ePost} \in \interval{\varc{\eHasMember} + \Delta}{\min (\vard{\eHasMember}, \xSE) }$$
+
+\paragraph{Flashmob posts}
+
+Flashmob posts are generated around events that attract significant interest
+(such as elections) that result in a spike in activity.
+These events span a $2\phi$-hour time window centered around a specific event time, %\tFlashmobEvent
+flashmob event $\eFlashmobEvent$, in the middle of the window; there are $\phi$ hours each side of the specific event time.
+$$
+\varc{\ePost} \in \interval{\max(\varc{\eHasMember} + \Delta,\eFlashmobEvent - \phi\textrm{\,h})}{\min (\vard{\eHasMember},\eFlashmobEvent + \phi\textrm{\,h},\xSE)}
+$$
+
+The deletion dates for all categories of \tPosts are determined as:
+$$\vard{\ePost} \in \interval{\varc{\ePost} + \Delta}{\vard{\eHasMember}}$$
+
+% \paragraph{Photo}
+% \begin{itemize}
+%     \item $\varc{\ePost} \in \interval{\varc{\eHasMember} + \Delta}{\min (\vard{\eHasMember}, \xSE) }$
+%     % where $\varc{\eHasMember}$ is the creation date of the \tHasMember edge between \tPerson $\ePerson$ and \tForum $\eForum$.
+%     \item $\vard{\ePost} \in \interval{\varc{\ePost} + \Delta}{\min (\vard{\eHasMember}, \xNC)}$
+% \end{itemize}
+
+\paragraph{containerOf edge}
+
+Each \tPost node has an incoming $\type{containerOf}$ edge which gets the same lifespan attributes as the \tPost.
+
+%SNB treats some \tPost nodes as \emph{Photos}. This is a non-trivial -- here is some background information from our documents:
+
+% \begin{itemize}
+%     \item The SNB specification states that ``\textsf{Photos} contain either \texttt{content} or \texttt{imageFile}, always one of them but never both.''
+%     \item The graph schema does not distinguish \textsf{Photos} from \textsf{Posts}.
+%     \item The current Datagen implementation treats \textsf{Photos} as a subclass of \tMessage (\texttt{Photo extends Message}) for simplicity.
+%     \item Based on the code, Photos do not have any \textsf{Comments}.
+% \end{itemize}
+
+\subsubsection{Comment}
+
+A \tComment $\eComment$ is created by \tPerson $\ePerson$ as a reply to \tMessage $\eMessage$. \tComments are only made in Walls and Groups. \tComment always occur within %1
+$\gamma$~days of their parent message. % following a power-law distribution with mean 6.85 hours.
+
+\begin{itemize}
+    \item $\varc{\eComment} \in \interval{\max (\varc{\eMessage}, \varc{\eHasMember}) + \Delta}{\min (\varc{\eMessage} + \gamma\textrm{\,d}, \vard{\eHasMember}, \xSE)}$
+    \item $\vard{\eComment} \in \interval{\varc{\eComment} + \Delta}{\min (\vard{\eMessage}, \vard{\eHasMember})}$
+\end{itemize}
+
+\paragraph{replyOf edge}
+
+\tComments always have an outgoing \tReplyOf edge with containment semantics, i.e. the target \tMessage contains the \tComment. These edges get the same lifespan as their source \tComment.
+
+\subsubsection{likes}
+\label{sec:likes}
+
+A \tLikes edge $\eLikes$ can exist between \tPerson $\ePerson$ and \tMessage $\eMessage$. Messages can only receive likes during a $\mu$-day window after their creation at which point no more activity is generated.
+
+\begin{itemize}
+    \item $\varc{\eLikes} \in \interval{\max(\varc{\ePerson}, \varc{\eMessage}) + \Delta}{\min (\vard{\ePerson}, \vard{\eMessage}, \varc{\eMessage} + \mu\textrm{\,d}, \xSE)}$
+    \item $\vard{\eLikes} \in \interval{\varc{\eLikes} + \Delta}{\min (\vard{\ePerson}, \vard{\eMessage})}$
+\end{itemize}
