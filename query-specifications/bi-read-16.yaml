@@ -3,38 +3,44 @@ operation: read
 number: 16
 title: Fake news detection
 description: |
-  Given two *Tag*/day pairs (`tagA`/`dayA` and `tagB`/`dayB`), for each pair `tagX`/`dayX`:
+  Given two *Tag*/date pairs (`tagA`/`dateA` and `tagB`/`dateB`), for each pair `tagX`/`dateX`:
 
-  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dayX` with *Tag* `tagX`.
-  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (the number of friends is defined in the induced subgraph).
-  * In the resulting graph, add the number of *Messages* created by each *Person*, resulting in graphs **Ga** and **Gb**.
+  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dateX` with *Tag* `tagX`.
+  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (in the induced subgraph).
+  * For these *Persons*, count the number of *Messages* created on `dateX` with *Tag* `tagX`.
   
-  Compute the intersection of graphs **Ga** and **Gb** for `tagA`/`dayA` and `tagB`/`dayB`, return top pairs of *Persons* ordered by `<scoreA, scoreB>` descending.
+  Return *Persons* who had at least one messages for both `tagA`/`dateA` and `tagB`/`dateB` ranked by their total number of messages (descending).
 parameters:
   - name: tagA
     type: Long String
-  - name: dayA
+  - name: dateA
     type: Date
   - name: tagB
     type: Long String
-  - name: dayB
+  - name: dateB
     type: Date
   - name: maxKnowsLimit
     type: 32-bit Integer
 result:
-  - name: person1.id
+  - name: person.id
     type: ID
-  - name: person2.id
-    type: ID
-  - name: scoreA
+  - name: messageCountA
     type: 32-bit Integer
     category: aggregated
-    description: "`count(message1) + count(message2)`, for `tagA`/`dayA`"
-  - name: scoreB
+    description: "message count for `tagA`/`dateA`"
+  - name: messageCountB
     type: 32-bit Integer
     category: aggregated
-    description: "`count(message1) + count(message2)`, for `tagB`/`dayB`"
+    description: "message count for `tagB`/`dateB`"
 sort:
-  - name: scoreA + scoreB
+  - name: messageCountA + messageCountB
     direction: desc
+  - name: person.id
+    direction: asc
+limit: 20
 choke_points: [1.1] #todo
+relevance: |
+  There are two major ways to compute this query:
+  (1) create the induced subgraph as suggested by the specification (either as a view or in materialized form), or
+  (2) skip creating the induced subgraph and perform on-the-fly check for the number of friends (who also posted at least one *Message* with the given *Tag* on the given date).
+  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations (the query engine will might repeatedly check whether a *Person* has at least one *Message* that satifies the conditions).

@@ -16,13 +16,14 @@ result:
     type: ID
   - name: person2.id
     type: ID
-  - name: weight
+  - name: totalWeight
     type: 32-bit Float
     category: calculated
 sort:
-  - name: weight
+  - name: totalWeight
     direction: desc
   - name: person1.id
     direction: asc
-    description: The order of paths with the same weight is unspecified
+    description: The order of paths with the same totalWeight is unspecified
+limit: 20
 choke_points: [1.1] #todo
