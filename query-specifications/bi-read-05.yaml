@@ -12,7 +12,7 @@ description: |
   The `score` is calculated according to the following formula: `1 * messageCount + 2 * replyCount + 10 * likeCount`.
 parameters:
   - name: tag
-    type: String
+    type: Long String
 result:
   - name: person.id
     type: ID
