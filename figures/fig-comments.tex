@@ -1,16 +1,15 @@
 \begin{figure*}[htp]
   \centering
   \begin{subfigure}{\linewidth}
-    \vspace{-2ex}
-    \input{figures/fig-comments-graph-replica}
+    \input{figures/fig-comments-graph}
     \caption{Example graph with an instance of a \tForum containing a \tMessage tree of depth 3 and its \tPerson members. Lifespan attributes (\emph{creation} and \emph{deletion dates}) are shown for each dynamic entity. Edges in grey get their lifespan attributes as per \autoref{fig:schema} and \autoref{sec:hasModerator}.}
-    \label{fig:comments-graph-replica}
+    \label{fig:comments-graph}
   \end{subfigure}
   %
   \begin{subfigure}{\linewidth}
     \centering
     \footnotesize
-    \begin{tikzpicture}[node distance=2cm,thick,scale=0.75,every node/.style={transform shape}]
+    \begin{tikzpicture}[node distance=2cm,thick,scale=0.78,every node/.style={transform shape}]
       % timeline
       \draw [thick,->,>=stealth] node [above,black] {} (-1,0/1.8) -- (13,0/1.8);
       \draw [grey,thin] (-0.5,0/1.8) node [above,black] {$\xSS$} -- (-0.5,-22/1.8);

@@ -747,19 +747,6 @@ The schemas of these files are defined by the operator, e.g. the schema of \quer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Benchmark Workflow}
-\label{sec:workflow}
-
-The workflow of the benchmark is shown in \autoref{fig:workflow}.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=\linewidth]{figures/workflow}
-    \caption{Benchmark workflow.}
-    \label{fig:workflow}
-\end{figure}
-
-
 \section{Introducing Deletions to Datagen}
 
 \paragraph{Challenge for systems}
@@ -781,7 +768,7 @@ To support deletions, graph processing systems need to solve numerous technical 
 Due to their importance and challenging nature, we found it necessary to incorporate delete operations into LDBC benchmarks.
 However, doing so is a non-trivial task as it impacts on each component in the benchmark workflow:
 workload specifications, data generation, parameter curation, and the workload driver.
-This paper focuses on the challenge of generating deletion operations within LDBC's synthetic data generator, specifically, to extend the generator with support for dynamic entities.
+This chapter focuses on the challenge of generating deletion operations within LDBC's synthetic data generator, specifically, to extend the generator with support for dynamic entities.
 Dynamic entities have a \emph{creation date} and a \emph{deletion date}, which together comprise an entity's \emph{lifespan}.
 Once generated this allows for the extraction of deletion operations, which can be utilized by LDBC workloads. 
 Supporting the generation of dynamic entities poses numerous challenges:
@@ -834,7 +821,7 @@ Also, there are often temporal correlations between entity creation and deletion
 \section{Lifespan Management}
 \label{sec:lifespan-management}
 
-This section is based on the paper at the GRADES-NDA~2020 workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} by the task force members.
+This section is based on the short paper published at the GRADES-NDA~2020 workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} authored by the task force members.
 
 %Such are generated from the intervals below, which capture the dependencies between entities. For example, a \tPost cannot be created until the \tPerson that creates that message, joins the network, the forum is created and the \tPerson joins the \tForum.
 
