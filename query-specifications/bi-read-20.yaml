@@ -25,5 +25,5 @@ sort:
 limit: 20
 choke_points: [1.1] #todo
 relevance: |
-  Implementations can both pre-compute edge weights or compute them on-the-fly.
+  Implementations can either pre-compute edge weights or compute them on-the-fly.
   To find a weighted shortest path efficiently, implementations can use e.g. a bidirectional Dijkstra algorithm.
