@@ -29,3 +29,5 @@ sort:
     description: The order of paths with the same `totalWeight` is unspecified
 limit: 20
 choke_points: [1.1] #todo
+relevance: |
+  Finding shortest paths between pairs of *Persons* in *Cities* can be implemented in theory with an _all-pair shortest paths_ algorithm. However, this needs to be executed on the whole *Person-knows-Person* graph (with edge weights derived from the number of interactions) so it is expected to be prohibitively slow. A better approach is using multiple _single-source shortest path algorithms_ (e.g. from the *City* with fewer inhibitants).
