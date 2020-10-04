@@ -3,8 +3,10 @@ operation: read
 number: 20
 title: Recruitment
 description: |
-  Given a *Company* `company` and a *Person* `person2` (presumably working at another company), find a *Persons* (`person1`) working the in the `company` who have the top-20 shortest path to `person2` through people who have studied together.
+  Given a *Company* `company` and a *Person* `person2` (presumably working at another company), find a *Person* (`person1`) working the in the `company` who have the top-20 shortest path to `person2` through people who have studied together.
   On this path, we only consider edges between *Persons* who know each other and attended the same university and set the weight of the edge to the absolute difference between the year of enrolment plus 1 (`studyAt.classYear + 1`).
+
+  If there are multiple *Person* `person1` nodes with the same shortest path, return all of them.
 parameters:
   - name: company
     type: Long String
@@ -17,12 +19,8 @@ result:
     type: 32-bit Integer
     category: calculated
 sort:
-  - name: totalWeight
-    direction: desc
   - name: person1.id
     direction: asc
-    description: The order of paths with the same `totalWeight` is unspecified
-limit: 20
 choke_points: [1.1] #todo
 relevance: |
   Implementations can either pre-compute edge weights or compute them on-the-fly.
