@@ -7,7 +7,7 @@
 \let\oldemph\emph
 \renewcommand{\emph}[1]{{ '{{' }}\footnotesize \sf #1}}
 \let\oldtextbf\textbf
-\renewcommand{\textbf}[1]{{ '{{' }}\footnotesize \it #1}}
+\renewcommand{\textbf}[1]{{ '{{' }}\it #1}}
 
 {%- if workload == "Interactive" and operation == "complex" -%}
 \renewcommand{\currentQueryCard}{ {{- number -}} }
