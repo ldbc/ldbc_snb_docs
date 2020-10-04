@@ -6,6 +6,8 @@
 % change \emph{} to use sans-serif font
 \let\oldemph\emph
 \renewcommand{\emph}[1]{{ '{{' }}\footnotesize \sf #1}}
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{{ '{{' }}\footnotesize \it #1}}
 
 {%- if workload == "Interactive" and operation == "complex" -%}
 \renewcommand{\currentQueryCard}{ {{- number -}} }
@@ -173,5 +175,6 @@
 \end{tabularx}
 \queryCardVSpace
 
-% change \emph back to the old one
+% change \emph and \textbf back to the old ones
 \let\emph\oldemph
+\let\textbf\oldtextbf
