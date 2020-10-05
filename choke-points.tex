@@ -42,10 +42,10 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 \cpSection[1.1]{1.2}{QEXE}{High cardinality group-by performance}
 
 This choke point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
-In such a case, if an aggregation produces a significant number of groups, intra query parallelization can be exploited as each thread may make its own partial aggregation.
+In such a case, if an aggregation produces a significant number of groups, intra-query parallelization can be exploited as each thread may make its own partial aggregation.
 Then, to produce the result, these have to be re-aggregated. In order to avoid this, the tuples entering the aggregation operator may be partitioned by a hash of the grouping key and be sent to the appropriate partition.
 Each partition would have its own thread so that only that thread would write the aggregation, hence avoiding costly critical sections as well. A high cardinality distinct modifier in a query is a special case of this choke point.
-It is amenable to the same solution with intra query parallelization and partitioning as the group-by.
+It is amenable to the same solution with intra-query parallelization and partitioning as the group-by.
 We further note that scale-out systems have an extra incentive for partitioning since this will distribute the CPU and memory pressure over multiple machines, yielding better platform utilization and scalability.
 
 \input{choke-points/cp-1-2}
@@ -63,7 +63,7 @@ Engines can exploit that once $k$ results are obtained, extra restrictions in a 
 
 \cpSection[1.3]{1.4}{QEXE}{Low cardinality group-by performance}
 
-This choke point tests the ability to efficiently perform group by evaluation
+This choke point tests the ability to efficiently perform group-by evaluation
 when only a very limited set of groups is available.  This can require special
 strategies for parallelization, \eg pre-aggregation when possible. This case also allows using special strategies for grouping like using array lookup if the domain of keys is small.
 
@@ -93,7 +93,7 @@ This choke point tests the ability of the query optimizer to delay the projectio
 In such a situation, it is better to omit them from initial table scans, as fetching them later by row-id with a separate scan operator, which is joined to the intermediate query result, can save temporal space, and therefore I/O.
 Late projection does have a trade-off involving locality, since late in the plan the tuples may be in a different order, and scattered I/O in terms of tuples/second is much more expensive than sequential I/O.
 Late projection specifically makes sense in queries where the late use of these columns happens at a moment where the amount of tuples involved has been considerably reduced;
-for example after an aggregation with only few unique group-by keys, or a top-$k$ operator.
+for example after an aggregation with only few unique group-by keys or a top-$k$ operator.
 
 \input{choke-points/cp-2-2}
 
@@ -102,7 +102,7 @@ for example after an aggregation with only few unique group-by keys, or a top-$k
 \cpSection{2.3}{QOPT}{Join type selection}
 
 This choke point tests the ability of the query optimizer to select the proper join operator type, which implies accurate estimates of cardinalities.
-Depending on the cardinalities of both sides of a join, a hash or an index index based join operator is more appropriate.
+Depending on the cardinalities of both sides of a join, a hash or an index-based join operator is more appropriate.
 This is especially important with column stores, where one usually has an index on everything. Deciding to use a hash join requires a good estimation of cardinalities on both the probe and build sides.
 In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns.
 There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides.
@@ -136,7 +136,7 @@ This choke point tests the query engine's ability to use multi-way joins to eval
 \cpSection[3.3]{3.1}{QOPT}{Detecting correlation}
 
 This choke point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indexes, the question then is which of the date or data columns to use as key.
-In fact it should not matter which column is used, as range- propagation between correlated attributes of the same table is relatively easy. One way is through the creation of multi-attribute histograms after detection of attribute correlation.
+In fact it should not matter which column is used, as range-propagation between correlated attributes of the same table is relatively easy. One way is through the creation of multi-attribute histograms after detection of attribute correlation.
 With MinMax indexes, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
 
 \input{choke-points/cp-3-1}
@@ -173,7 +173,7 @@ Also detecting absence of locality should turn off any locality dependent optimi
 \cpSection[4.2a]{4.1}{QOPT}{Common subexpression elimination}
 
 This choke point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
-CSE should recognize also that average aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
+CSE should recognize also that AVERAGE aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
 
 \input{choke-points/cp-4-1}
 
@@ -219,7 +219,7 @@ In TPC-H Q21, for instance, there is an \lstinline{EXISTS} clause (for orders wi
 To execute this query well, systems need to flatten both sub-queries, the first into an equi-join plan, the second into an anti-join plan.
 Therefore, the execution layer of the database system will benefit from implementing these extended join variants.
 
-The ill effects of repetitive tuple-at-a-time sub-query execution can also be mitigated if execution systems by using vectorized, or block-wise query execution, allowing to run sub-queries with thousands of input parameters instead of one.
+The ill effects of repetitive tuple-at-a-time sub-query execution can also be mitigated if execution systems by using vectorized, or blockwise query execution, allowing to run sub-queries with thousands of input parameters instead of one.
 The ability to look up many keys in an index in one API call creates the opportunity to benefit from physical locality, if lookup keys exhibit some clustering.
 
 \input{choke-points/cp-5-1}
@@ -257,7 +257,7 @@ Some queries have almost identical sub-queries, where some of their internal res
 This choke point tests the ability of the query execution engine to reuse results from different queries. Sometimes with a high number of streams a significant amount of identical queries emerge in the resulting workload.
 The reason is that certain parameters, as generated by the workload generator, have only a limited amount of parameters bindings.
 This weakness opens up the possibility of using a query result cache, to eliminate the repetitive part of the workload.
-A further opportunity that detects even more overlap is the work on recycling, which does not only cache final query results, but also intermediate query results of a "high worth".
+A further opportunity that detects even more overlap is the work on recycling, which does not only cache final query results, but also intermediate query results of a ``high worth''.
 Here, worth is a combination of partial-query result size, partial-query evaluation cost, and observed (or estimated) frequency of the partial-query in the workload.
 
 \input{choke-points/cp-6-1}
@@ -334,9 +334,9 @@ graph patterns.
 \paragraph{Transitive edges.} Transitive closure-style computations are common in graph query systems, both with fixed bounds
 (\eg get nodes that can be reached through at least 3 and at most 5 \textsf{knows} edges),
 and without fixed bounds
-(\eg get all \texttt{messages} that a \texttt{comment} replies to).
+(\eg get all \textsf{Messages} that a \textsf{Comment} replies to).
 
-\paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for negative patterns, also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}.
+\paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \textsf{Message} does not have a certain \textsf{Tag} is represented in the graph as the absence of a \textsf{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for negative patterns, also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}.
 
 \paragraph{Language-specific notes}
 
@@ -376,7 +376,7 @@ RETURN source
 \end{minipage}
 
 \item[SPARQL.]
-Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
+Prior to SPARQL 1.1, queries with negative edge conditions could be expressed with the following approach:
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=sparql]
@@ -398,7 +398,7 @@ FILTER NOT EXISTS { xRoute ?routeDefinition ?xSensor } .
 \end{lstlisting}
 \end{minipage}
 
-The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between \lstinline[language=sparql]{NOT EXISTS} and \lstinline[language=sparql]{MINUS}'' section in the SPARQL 1.1 specification: \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
+The \lstinline{MINUS} construct can also be used for defining a negative condition for a single edge.\footnote{For details, see the ``Relationship and differences between \lstinline[language=sparql]{NOT EXISTS} and \lstinline[language=sparql]{MINUS}'' section in the SPARQL 1.1 specification at \url{https://www.w3.org/TR/sparql11-query/\#neg-notexists-minus}}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=sparql]
@@ -469,7 +469,7 @@ WITH xs[0] AS top, xs[0..5] AS top5
 \end{lstlisting}
 \end{minipage}
 
-\item[SPARQL.] SPARQL~1.0 allows simple top-$k$ queries. SPARQL~1.1 introduced scoring functions that can be define a variable to be used for ordering~\cite{DBLP:conf/semweb/MagliacaneBV12}.
+\item[SPARQL.] SPARQL~1.0 allows simple top-$k$ queries. SPARQL~1.1 introduced scoring functions that can define a variable to be used for ordering~\cite{DBLP:conf/semweb/MagliacaneBV12}.
 \emph{Window functions} are not yet supported but are under consideration for SPARQL~1.2\footnote{\url{https://github.com/w3c/sparql-12/issues/47}}.
 
 %Simple top-k queries can be expressed in SPARQL 1.0 by including the ORDER BY and LIMIT clauses, which impose an order on the result set and limit the number of results. SPARQL 1.1 additionally enables the specification of complex scoring functions through the use of projection expressions that can define a variable to be used in the ORDER BY clause.
@@ -505,7 +505,7 @@ operations).
 
 Handling dates and times is a fundamental requirement for production-ready
 database systems. It is particularly important in the context of BI queries as
-these often calculate aggregations on certain periods of time (\eg on a month).
+these often calculate aggregations on certain periods of time (\eg on entities created during the course of a month).
 
 \paragraph{Language-specific notes}
 
