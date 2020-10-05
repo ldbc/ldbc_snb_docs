@@ -96,13 +96,13 @@ whereas all members including the moderator (\tHasMember/\tHasModerator) can pos
 These relationships are captured with the $\eHasMember$ variable in the formulas.
 \tPosts are divided in three categories, \emph{regular posts}, \emph{photos}, and \emph{flashmob posts}.
 
-\paragraph{Regular posts and photos}
+\paragraph{Regular Posts and Photos}
 
 Regular posts capture the standard daily activity in a Group or on a Wall.
 Photos are created in Albums. (Interaction with Photos is limited to \tLikes, see details in \autoref{sec:likes}). The creation date for these is determined as follows:
 $$\varc{\ePost} \in \interval{\varc{\eHasMember} + \Delta}{\min (\vard{\eHasMember}, \xSE) }$$
 
-\paragraph{Flashmob posts}
+\paragraph{Flashmob Posts}
 
 Flashmob posts are generated around events that attract significant interest
 (such as elections) that result in a spike in activity.

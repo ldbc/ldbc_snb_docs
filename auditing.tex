@@ -53,22 +53,22 @@ made.
 \section{Auditing Rules Overview}
 
 
-\subsection{Auditor training, certification, and selection}
-\subsubsection{Auditor training}
+\subsection{Auditor Training, Certification, and Selection}
+\subsubsection{Auditor Training}
 Auditor training consists of familiarisation with the benchmark and existing implementations thereof. This involves the auditor candidate running the reference implementations of the benchmark in order to see what is normal behaviour and practice in the workload. The training and practice may involve communication with the benchmark task force for clarifying intent and details of the benchmark rules. This produces feedback for the task force for further specification of the rules.
 
-\subsubsection{Auditor certification}
+\subsubsection{Auditor Certification}
 The auditor certification and qualification is done in the form of an examination administered by the task force responsible for the benchmark being audited. The examination may be carried out by teleconference. The task force will subsequently vote on accepting each auditor, by simple majority. An auditor is certified for a particular benchmark by the task force maintaining the benchmark in question.
 
-\subsubsection{Auditor selection}
+\subsubsection{Auditor Selection}
 In the default auditor selection, the task force responsible for the benchmark being audited appoints a third party, impartial auditor. The task force may in special cases appoint itself as auditor of a particular result. This is not, however, the preferred course of action but may be done if no suitable third party auditor is available
 
 
-\subsection{Auditing process stages}
-\subsubsection{Performing a benchmark audit}
+\subsection{Auditing Process Stages}
+\subsubsection{Performing a Benchmark Audit}
 A benchmark result is to be audited by an LDBC appointed auditor or the LDBC task force managing the benchmark. An LDBC audit may be performed by remote login and does not require the auditor's physical presence on site. The test sponsor shall grant the auditor any access necessary for validating the benchmark run. This will typically include administrator access to the SUT hardware.
     
-\subsubsection{Benchmark-specific checklist}
+\subsubsection{Benchmark-Specific Checklist}
 Each benchmark specifies a checklist to be verified by the auditor. The benchmark run shall be performed by the auditor. The auditor shall take copies of relevant configuration files and test results for future checking and insertion into the full disclosure report.
     
 \subsubsection{Producing the FDR}
@@ -78,7 +78,7 @@ The auditor produces an attestation letter that verifies authenticity of the pre
 \subsubsection{Publishing the FDR}
 The FDR and any benchmark specific summaries thereof shall be published on the LDBC website.
 
-\subsection{Other procedures}
+\subsection{Other Procedures}
 
 \subsubsection{Challenges}
 A benchmark result may be challenged for non-compliance with LDBC rules. The benchmark task force responsible for maintenance of the benchmark will rule on matters of compliance. A result found to be non-compliant will be withdrawn from the list of official LDBC benchmark results.
@@ -179,7 +179,7 @@ all parts must survive. %This is a special concern in distributed systems which 
 
 A benchmark may specify restrictions on schema. For example, TPC-H and TPC-DS specify that only certain indices may be declared. In the LDBC context, the matter is more complex since the range of possible SUTs is much broader, including diverse combinations of schema first and schema-less systems and configurations.
 
-\subsubsection{Schema declaration}
+\subsubsection{Schema Declaration}
 By default, a system may declare no schema at all, as may be the case with RDF or graph DBMSs. If EADSs are declared, then these must be consistently applied to all data within the same workload for a given scale factor. The nature of prohibited EADSs, if any, depends on the benchmark and may be stated in the benchmark specification.
 
 \subsubsection{Schema-Optional}
@@ -203,10 +203,10 @@ A benchmark may specify that an implementation is not allowed the use of explici
 \label{sec:query-declarativity}
 
 
-\subsubsection{Query declarativity in online transaction processing benchmarks}
+\subsubsection{Query Declarativity in Online Transaction Processing Benchmarks}
 Online transaction processing (OLTP) benchmarks typically allow implementation via stored procedures, effectively amounting to explicit query plans. 
 
-\subsubsection{Query declarativity in online analytical processing benchmarks}
+\subsubsection{Query Declarativity in Online Analytical Processing Benchmarks}
 Generally, online analytical processing (OLAP) benchmarks prohibit the use of imperative query implementations. 
 
 If a benchmark is analytical and a query is declaratively stated, explicit control of join order, join type, etc. should be prohibited. These may still be allowed in a declarative query if the application has a clear OLTP nature. Consider for example TPC-C, where implementations are known to specify join orders and indices.
@@ -218,13 +218,13 @@ Individual benchmarks are expected to specify their policy concerning declarativ
     The LDBC situation regarding declarativity is not as simple as that of for example the TPC. With the TPC, declarativity with no hints is required for OLAP and is not required for OLTP. With LDBC, the systems are more heterogeneous and the analytics workloads more diverse.
 \end{quote}
 
-\subsubsection{Rules for imperative query implementations}
+\subsubsection{Rules for Imperative Query Implementations}
 An imperative (\eg API-based) implementation may choose between semantically equivalent implementations of an operation based on parameters. This simulates the behaviour of a query optimiser in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard coded threshold values in the implementation.
 
 The auditor must be able to reliably assess the compliance of an implementation to guidelines specifying these matters. The actual specification remains benchmark dependent. Borderline cases may be brought to the task force responsible for arbitration.
 
 
-\subsubsection{Disclosure of query implementations in the FDR}
+\subsubsection{Disclosure of Query Implementations in the FDR}
 Benchmarks allowing imperative expression of workload should require full disclosure of all query implementation code.
 
 \subsection{Materialisation}
@@ -235,7 +235,7 @@ The mix of read and update operations in a workload will determine to which degr
 
 An online workload must be able to indefinitely keep up the reported throughput. The benchmark definition may put specific restrictions on the duration of individual parts of the workload.
 
-\subsubsection{Bringing the SUT into steady state} One implication of this is that an SUT must be able to accommodate inserts at a specific rate for a realistic length of time. For example, if the workload is of an online nature then the SUT should be sized so as not to run out of space for new data for a reasonable duration of time. The TPC-C 180-day rule is an example of this. An analytical benchmark that primarily bulk loads data does not need to reserve as much space for new data. Each benchmark shall state its specific requirements in this respect.
+\subsubsection{Bringing the SUT into Steady State} One implication of this is that an SUT must be able to accommodate inserts at a specific rate for a realistic length of time. For example, if the workload is of an online nature then the SUT should be sized so as not to run out of space for new data for a reasonable duration of time. The TPC-C 180-day rule is an example of this. An analytical benchmark that primarily bulk loads data does not need to reserve as much space for new data. Each benchmark shall state its specific requirements in this respect.
 
 \subsection{Query Mix}
 
@@ -255,7 +255,7 @@ execution.
 
 A benchmark execution shall produce a full disclosure report which specifies the hardware and software of the SUT, the benchmark implementation version and any specifics that are detailed in the benchmark specification. This clause gives a general minimum for disclosure for the SUT.
 
-\subsubsection{Details of machines driving and running the workload}
+\subsubsection{Details of Machines Driving and Running the Workload}
 An SUT may consist of one or more pieces of physical hardware. An SUT may include virtual or bare-metal machines in a cloud service.
 For each distinct configuration, the FDR shall disclose the number of units of the type as well as the following:
 
@@ -275,7 +275,7 @@ For each distinct configuration, the FDR shall disclose the number of units of t
 The price of the hardware in question must be disclosed. For cloud setups, the price of a dedicated instance for 3 years must be disclosed. The price should reflect the single quantity list price that any buyer could expect when purchasing one system with the given specification. The price may be either an item by item price or a package price if the system is sold as a package.
 Reported prices should adhere the TPC Pricing Specification 2.5.0~\cite{pricing,tpc-pricing}.
 
-\subsubsection{Details of software components in the system}
+\subsubsection{Details of Software Components in the System}
 The SUT software must be described at least as follows:
 \begin{enumerate}
     \item The units of the SUT software are typically the DBMS and operating system.
@@ -299,7 +299,7 @@ The configuration of the SUT must be reported so as to include the following:
 \end{enumerate}
 
 
-\subsubsection{Audit of system configuration}
+\subsubsection{Audit of System Configuration}
 The auditor must ascertain that a reported run has indeed taken place on the SUT in the disclosed configuration.
 The full disclosure shall contain any relevant parameters of the benchmark execution itself, including:
 \begin{enumerate}
@@ -346,7 +346,7 @@ This section specifies a checklist (in the form of individual sections) that a b
 
 \subsection{Scaling}
 
-\subsubsection{Scale factors}
+\subsubsection{Scale Factors}
 The scale factor of a SNB dataset is the size of the dataset in GB of csv (comma-separated values) files. All dataset scales contain data for three years of social network activity. The scaling is done in buckets. The size of the dataset is either 10~GB or 30~GB or a power of ten multiple of either. Thus scales are 10, 30 100, 300, 1000~GB and so forth. This scaling is identical to the scaling of TPC-H and TPC-DS. 
 
 % \begin{quote}
@@ -357,7 +357,7 @@ The scale factor of a SNB dataset is the size of the dataset in GB of csv (comma
 %which is correct but we can ran out of updates due to the 2.5-hr simulation requirement
 %so its (implied) conclusion does not hold fully hold for SNB interactive
 
-\subsubsection{Social network datasets}
+\subsubsection{Social Network Datasets}
 \label{sec:sn-datasets}
 
 \paragraph{Initial dataset}
@@ -371,12 +371,12 @@ The update stream may be broken into arbitrarily many sub-streams. The partition
 
 \subsection{Data Model}
 
-\subsubsection{Supported data models}
+\subsubsection{Supported Data Models}
 
 SNB may be implemented with different data models (\eg relational, RDF, and different graph data models). The reference schema is provided in the specification using a UML-like notation. 
 
 
-\subsubsection{Generated input data}
+\subsubsection{Generated Input Data}
 \label{sec:generated-data}
 
 \paragraph{Storage}
@@ -397,16 +397,16 @@ above in the case of conflict.
 
 A single attribute in the reference schema may not be divided into multiple attributes in the target schema.
 
-\paragraph{Database Schema}
+\paragraph{Database schema}
 A schema on the DBMS is optional. An RDF implementation for example may work without one. An RDF implementation is allowed to load the RDF reference schema and to take advantage of the data type and cardinality statements therein. 
 
 \paragraph{Configuration parameters}
 \datagen configuration parameters, including SF, distributions, number of persons, serialiser (\eg CsvMergeForeign) should be reported.
 
-\paragraph{Primary Data Structures}
+\paragraph{Primary data structures}
 An RDF, relational, or graph schema may specify system specific options affecting DBMS storage layout. These may for example specify vertical partitioning. Vertical partitioning means anything from a column store layout with per-column allocated storage space to use of explicit column groups. Any mix of row or column-wise storage structures is allowed as long as this is declaratively specified on a per data structure-basis.
 
-\paragraph{Auxiliary Data Structures}
+\paragraph{Auxiliary data structures}
 Covering indices and clustered indices are allowed. If these are defined, then all replications of data implied by these must be maintained statement by statement, i.e. each auxiliary data structure must be consistent with any other data structures of the table after each data manipulation operation.
 
 A covering index is an index which materialises a specific order of a specific subset or possibly all columns of a table. 
@@ -418,18 +418,18 @@ Any subset of the columns on a covering or clustered index may be used for order
 
 Precomputation of query results (both interim and end results) is allowed. However, systems must ensure that precomputed results (e.g. materialized views) are kept consistent upon updates.
 
-\subsection{Benchmark software components}
+\subsection{Benchmark Software Components}
 \label{sec:snb-software-components}
 LDBC provides a test driver, data generator, and summary reporting scripts. 
 
-\subsubsection{Adaptation of the test driver to a DBMS}
+\subsubsection{Adaptation of the Test Driver to a DBMS}
 \label{sec:test-driver}
 A qualifying run must use a test driver that adapts the provided test driver to interface with the SUT. Such an implementation, if needed, must be provided by the test sponsor. The parameter generation, result recording, and workload scheduling parts of the test driver should not be changed. The auditor must be given access to the test driver source code used in the reported run.
 
 The test driver produces the following artefacts for each execution as a by product of the run: Start and end timestamps in wall clock time, recorded with microsecond precision. The identifier of the operation and any substitution parameters.
 
 
-\subsubsection{Summary of benchmark results}
+\subsubsection{Summary of Benchmark Results}
 \label{sec:performance-metrics}
 A separate test summary tool provided with the test driver analyses the test driver log(s) after a measurement window is completed. 
 
@@ -452,7 +452,7 @@ The tool produces for the complete run the following summary:
 
 The queries and updates may be implemented in a declarative query language or as procedural code using an API.
 
-\subsubsection{Declarative implementations}
+\subsubsection{Declarative Implementations}
 \label{sec:snb-declarative-implementations}
 
 If a declarative query language is used, \eg SPARQL or SQL, then explicit query plans are prohibited in all the read-only queries. The update transactions may still consist of multiple statements, effectively amounting to explicit plans.
@@ -468,11 +468,11 @@ Explicit query plans include but are not limited to:
     \emph{Rationale behind the applied restrictions.} The updates are effectively OLTP and, therefore, the customary freedoms apply, including the use of stored procedures, however subject to access transparency. Declarative queries in a benchmark implementation should be such that they could plausibly be written by an application developer. Therefore, their formulation should not contain system specific aspects that an application developer would be unlikely to know. In other words, making a benchmark implementation should not require uncommon sophistication on behalf of the developer. This is regular practice in analytical benchmarks, \eg TPC-H.
 \end{quote}
 
-\subsubsection{Imperative implementations}
+\subsubsection{Imperative Implementations}
 
 Imperative implementations are expected to respect the rules described in \autoref{sec:query-declarativity}. For these implementations, the rules in \autoref{sec:snb-declarative-implementations} do not apply.
 
-\subsection{Correctness of benchmark implementation}
+\subsection{Correctness of Benchmark Implementation}
 
 \subsubsection{Validation data set}
 \label{sec:validation-data-set}
@@ -490,7 +490,7 @@ See the related section for definitions in \autoref{sec:acid}.
 If a transaction reads the database with intent to update, the DBMS must guarantee that repeating the same read within the same transaction will return the same data. This also means that no more and no less data rows must be returned. In other words, this corresponds to snapshot or to serialisable isolation. If the database is accessed without transaction context or without intent to update, then the DBMS should provide read committed semantics, \eg repeating the same read may produce different results but these results may never include effects of pending uncommitted transactions.
 
 
-\paragraph{Durability and Checkpoints}
+\paragraph{Durability and checkpoints}
 % TODO initially this was way below this point; it was the last part of the benchmark workflow, so it uses definitions from the upcoming parts
 
 A checkpoint is defined as the operation which causes data persisted in a transaction log to become durable outside of the transaction log. Specifically, this means that an SUT restart after instantaneous failure following the completion of the checkpoint may not have recourse to transaction log entries written before the end of the checkpoint.
@@ -520,7 +520,7 @@ Once an official run has been validated, the recovery capabilities of the system
 At an arbitrary point close to 2 hours of wall clock time during the run, the machine will be shut down. Then, the auditor will restart the database system and will check that the last committed update (in the driver log file) is actually in the database. The auditor will measure the time taken by the system to recover from the failure. Also, all the information about how durability is ensured must be disclosed. If checkpoints are used, these must be performed with a period of 10 minutes at most.
 
 
-\subsection{Benchmarking workflow}
+\subsection{Benchmarking Workflow}
 \label{sec:benchmark-workflow}
 
 A benchmark execution is divided into the following processes (these processes are also shown in \autoref{fig:audit-workflow}):
@@ -538,7 +538,7 @@ A benchmark execution is divided into the following processes (these processes a
     when the driver starts. Also, make sure that the \verb|-rl/--results_log| is enabled. Make sure that all operations are enabled and the frequencies are those for the selected scale factor (see the exact specification of the frequencies in the specification appendix B.1. Scale Factor Statistics for the Interactive Workload).
 \end{description}
 
-\subsubsection{Query timing during benchmark run}
+\subsubsection{Query Timing During Benchmark Run}
 \label{sec:ontime-requirements}
 A valid benchmark run must last at least 2 hours of wall clock time.
 In order to be valid, a benchmark run needs to meet the ``95\% on-time requirement''.
@@ -550,7 +550,7 @@ The \texttt{results\_log.csv} file contains the $\mathsf{actual\_start\_time}$ a
 
 If the execution of the benchmark is valid, the auditor must retrieve all the files from directory specified by \verb|--results_dir| which includes configuration settings used, results log and results summary. All of which must be disclosed.
 
-\subsubsection{Measurement window}
+\subsubsection{Measurement Window}
 
 Benchmark runs execute the workload on the SUT in two phases (\autoref{fig:measurement-window-selection}).
 First, the SUT must undergo a warm-up period that takes at least 30 minutes. The goal of this is to put the system in a steady state which reflects how it would behave in a normal operating environment. The performance of the operations during warm-up is not considered.

@@ -39,7 +39,7 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection[1.1]{1.2}{QEXE}{High Cardinality group-by performance}
+\cpSection[1.1]{1.2}{QEXE}{High cardinality group-by performance}
 
 This choke point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
 In such a case, if an aggregation produces a significant number of groups, intra query parallelization can be exploited as each thread may make its own partial aggregation.
@@ -61,7 +61,7 @@ Engines can exploit that once $k$ results are obtained, extra restrictions in a 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection[1.3]{1.4}{QEXE}{Low Cardinality group-by performance}
+\cpSection[1.3]{1.4}{QEXE}{Low cardinality group-by performance}
 
 This choke point tests the ability to efficiently perform group by evaluation
 when only a very limited set of groups is available.  This can require special
@@ -105,7 +105,7 @@ This choke point tests the ability of the query optimizer to select the proper j
 Depending on the cardinalities of both sides of a join, a hash or an index index based join operator is more appropriate.
 This is especially important with column stores, where one usually has an index on everything. Deciding to use a hash join requires a good estimation of cardinalities on both the probe and build sides.
 In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns.
-There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides
+There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides.
 
 \input{choke-points/cp-2-3}
 
