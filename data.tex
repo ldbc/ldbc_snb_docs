@@ -52,7 +52,8 @@ and Places. The schema also models the way persons interact, by means of the
 friendship relations established with other persons, and the sharing of content
 such as messages (both textual and images), replies to messages and likes to
 messages.  People form groups to talk about specific topics, which are
-represented as tags.
+represented as tags\footnote{Tags are basically equivalent to \emph{hashtags}
+on contemporary social media sites.}.
 
 \ldbcsnb has been designed to be flexible and to target systems of different
 nature and characteristics. As such, it does not force any particular internal
@@ -105,7 +106,7 @@ forums.  They are distinguished by their titles:
     \item groups: ``Group for \ldots''
 \end{itemize}
 
-\autoref{table:forum} shows the attributes of Forum entity.
+\autoref{table:forum} shows the attributes of the Forum entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -119,12 +120,12 @@ forums.  They are distinguished by their titles:
         creationDate & DateTime  & The date the forum was created.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Forum entity.}
+    \caption{Attributes of the Forum entity.}
     \label{table:forum}
 \end{table}
 
 {\flushleft \textbf{Message:}} an abstract entity that represents a message
-created by a person. \autoref{table:message} shows the attributes of Message
+created by a person. \autoref{table:message} shows the attributes of the Message
 abstract entity.
 
 \begin{table}[H]
@@ -145,12 +146,12 @@ abstract entity.
         length & 32-bit Integer  & The length of the content.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Message interface.}
+    \caption{Attributes of the Message interface.}
     \label{table:message}
 \end{table}
 
 {\flushleft \textbf{Organisation:}} an institution of the real
-world. \autoref{table:organisation} shows the attributes of Organisation
+world. \autoref{table:organisation} shows the attributes of the Organisation
 entity.
 
 \begin{table}[H]
@@ -165,14 +166,14 @@ entity.
         url & Long String  & The URL of the organisation.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Organisation entity.}
+    \caption{Attributes of the Organisation entity.}
     \label{table:organisation}
 \end{table}
 
 {\flushleft \textbf{Person:}} the avatar a real world person creates
 when he/she joins the network, and contains various information about the
 person as well as network related information. \autoref{table:person} shows
-the attributes of Person entity.
+the attributes of the Person entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -200,13 +201,13 @@ the attributes of Person entity.
         creationDate & DateTime  & The date the person joined the social network.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Person entity.}
+    \caption{Attributes of the Person entity.}
     \label{table:person}
 \end{table}
 
 
 {\flushleft \textbf{Place:}} a place in the world.
-\autoref{table:place} shows the attributes of Place entity. Note, each Place has additional parameters: longitude and latitude, which are not exposed. These are used internally for sorting places.
+\autoref{table:place} shows the attributes of the Place entity. Note, each Place has additional parameters: longitude and latitude, which are not exposed. These are used internally for sorting places.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -220,7 +221,7 @@ the attributes of Person entity.
         url & Long String  & The URL of the place.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Place entity.}
+    \caption{Attributes of the Place entity.}
     \label{table:place}
 \end{table}
 
@@ -228,7 +229,7 @@ the attributes of Person entity.
 forum. Posts are created by persons into the forums where they belong.
 Posts contain either content or imageFile, always one of them but never both.
 The one they do not have is an empty string.
-\autoref{table:post} shows the attributes of Post entity.
+\autoref{table:post} shows the attributes of the Post entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -240,13 +241,13 @@ The one they do not have is an empty string.
         imageFile & String[0..1]  & The image file of the post.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Post entity.}
+    \caption{Attributes of the Post entity.}
     \label{table:post}
 \end{table}
 
 {\flushleft \textbf{Tag:}} a topic or a concept. Tags are used to
 specify the topics of forums and posts, as well as the topics a person is
-interested in. \autoref{table:tag} shows the attributes of Tag entity.
+interested in. \autoref{table:tag} shows the attributes of the Tag entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -260,11 +261,11 @@ interested in. \autoref{table:tag} shows the attributes of Tag entity.
         url & Long String  &  The URL of the tag.\\
         \hline
     \end{tabular}
-    \caption{Attributes of Tag entity.}
+    \caption{Attributes of the Tag entity.}
     \label{table:tag}
 \end{table}
 
-{\flushleft \textbf{TagClass:}} a class used to build a hierarchy of tags. \autoref{table:tagclass} shows the attributes of TagClass entity.
+{\flushleft \textbf{TagClass:}} a class used to build a hierarchy of tags. \autoref{table:tagclass} shows the attributes of the TagClass entity.
 
 \begin{table}[H]
     \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
@@ -278,7 +279,7 @@ interested in. \autoref{table:tag} shows the attributes of Tag entity.
         url & Long String  &  The URL of the tagclass.\\
         \hline
     \end{tabular}
-    \caption{Attributes of TagClass entity.}
+    \caption{Attributes of the TagClass entity.}
     \label{table:tagclass}
 \end{table}
 
@@ -373,7 +374,7 @@ Relations connect entities of different types. Entities are defined by their ``i
 
 \subsection{Domain Concepts}
 
-A \emph{thread} consists of Messages, starting with a single Post and Comments that transitively reply to that Post.
+A \emph{thread} consists of Messages, starting with a single Post and the Comments that -- either directly or transitively -- reply to that Post.
 
 \section{Data Generation}
 \label{sec:data_generation}
@@ -390,7 +391,7 @@ following characteristics:
         characteristics of those found in a real social network. In \datagen,
         output attributes, cardinalities, correlations and distributions have
         been finely tuned to reproduce a real social network in each of its
-        aspects On the one hand, it is aware of the  data and link distributions
+        aspects. On the one hand, it is aware of the  data and link distributions
         found in a real social network such as Facebook. On the other hand, it
         uses real data from DBpedia, such as property dictionaries, which are
         used to ensure that attribute values are realistic and correlated.
@@ -424,15 +425,15 @@ values following a property dictionary model that is defined by
     \item a probability function $F$
 \end{itemize}
 
-Dictionary D is a fixed set of values. The ranking function R is a bijection
-that assigns to each value in a dictionary a unique rank between 1 and |$D$|.
+Dictionary $D$ is a fixed set of values. The ranking function $R$ is a bijection
+that assigns to each value in a dictionary a unique rank between 1 and $|D|$.
 The probability density function $F$ specifies how the data generator chooses
 values from dictionary $D$ using the rank for each term in the dictionary. The
 idea to have a separate ranking and probability function is motivated by the
 need of generating correlated values: in particular, the ranking function is
 typically parameterized by some parameters: different parameter values result
 in different rankings. For example, in the case of a dictionary of property
-firstName, the popularity of first names, might depend on the gender, country
+firstName, the popularity of first names might depend on the gender, country
 and birthday properties. Thus, the fact that the popularity of first names in
 different countries and times is different, is reflected by the different ranks
 produced by function $R$ over the full dictionary of names.  \datagen uses a
@@ -488,7 +489,7 @@ are described in \autoref{table:property_dictionaries}.
 generation process. The first step loads all the dictionaries and resource
 files, and initializes the \datagen parameters.  Second, it generates all the
 Persons in the graph, and the minimum necessary information to operate. Part of
-these information are the interests of the persons, and the number of knows
+this information are the interests of the persons, and the number of knows
 relationships of every person, which is guided by a degree distribution
 function similar to that found in Facebook~\cite{facebook_anatomy}.
 
@@ -515,7 +516,7 @@ exploited by \datagen to reproduce correlations.
 Given a similarity function $M(p) : p \rightarrow [0, \infty]$ that gives a score to a person,
 with the characteristic that two similar persons will have similar scores, we
 can sort all the persons by function $M$ and compare a person $p$ against only the
-$K$ neighboring persons in the sorted array. The consequence of this approach is
+$K$ neighbouring persons in the sorted array. The consequence of this approach is
 that similar persons are grouped together, and the larger the
 distance between two persons indicates a monotonic increase in their similarity
 difference. In order to choose the persons to connect, \datagen uses a geometric
@@ -538,11 +539,11 @@ noise present in real data). Thus, \datagen has a Facebook-like distributed node
 degree, and a predictable (but not fixed) average split between the reasons for
 creating edges.
 
-In the next step, person's activity, in the form of forums, posts and comments
+In the next step, a person's activity, in the form of forums, posts and comments
 is created. \datagen reproduces the fact that people with a larger number of
 friends have a higher activity, and hence post more photos and comments to a
-larger number of posts. Another important characteristic of real users'
-activity in social network, are time correlations.  Usually, users' posts
+larger number of posts. Another important characteristic of real persons'
+activity in social network, are time correlations.  Usually, person' posts
 creation in a social network is driven by real world events.  For
 instance, one may think about an important event such as the elections in a
 country, or a natural disaster. Around the time these events occur, network
@@ -555,7 +556,7 @@ When persons' posts are created, some of them are classified as flashmob posts,
 and their topics and dates are assigned based on the generated flashmob events.
 The volume of activity around this events is modeled following a model similar
 to that described in~\cite{DBLP:conf/kdd/LeskovecBKT08}. Furthermore, in order to reproduce the
-more uniform every day's user activity, \datagen also generates post uniformly
+more uniform every day person activity, \datagen also generates posts uniformly
 distributed along all the simulated time.
 
 Finally, in the last step the data is serialized into the output files.
@@ -568,11 +569,11 @@ Interesting quirks:
 \item A Person is not a member of their Wall but they are its moderator, they do not have a hasMember edge.
 \item Each Album generated for Person will have approximately 70\% of their friends as members.
 \item A given Person has a 5\% chance of being a moderator of a set of groups.
-\item Group membership is composed of 30\% from the moderator's friends and the remainder is chosen randomly (from the block the person is in).
+\item Group membership is composed of 30\% from the moderator's friends and the remainder is chosen randomly (from the block the person is in).\todo{what is a block? explain}
 \item Comments are only made in Walls and Groups.
 \item Messages can only receive likes during a 7-day window after their creation.
-\item Comments always occur within one day of Message they are replying to. The creation date is generated following the power-law distribution in Figure \ref{fig:comments_dist}. The mean lag between Comments and their parent Message is 6.85 hours.
-\item Flashmob events span a 72 hour time window with a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{fig:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
+\item Comments always occur within one day of Message they are replying to. The creation date is generated following the power-law distribution in Figure \ref{fig:comments_dist}. The mean delay between Comments and their parent Message is 6.85 hours.
+\item Flashmob events span a 72-hour time window with a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{fig:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
 \end{itemize}
 
 \begin{figure}[H]
@@ -614,8 +615,7 @@ information such as forums, posts and comments.
 
 For each scale factor, \datagen produces three different artefacts:
 \begin{itemize}
-  \item \textbf{Dataset:} The dataset to be bulk loaded by the SUT. It
-    corresponds to roughly the 90\% of the total generated network.
+  \item \textbf{Dataset:} The dataset to be bulk loaded by the SUT. In the Interactive workload, it corresponds to roughly the 90\% of the total generated network.
   \item \textbf{Update Streams:} A set of update streams containing update
     queries, which are used by the driver to generate the update queries of the
     workloads. This update
@@ -629,14 +629,14 @@ For each scale factor, \datagen produces three different artefacts:
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
 SFs are computed based on the ASCII size in Gigabytes of the generated output files using the CsvBasic serializer.
-For example, SF1 takes roughly 1~GB in CSV format, SF3 weights roughly 3~GB and so on and so forth.
+For example, SF1 takes roughly 1~GB in CSV format, SF3 weighs roughly 3~GB and so on and so forth.
 The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
 Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
 
 The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
-\autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000.
+\autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000 data sets.
 
 \begin{table}[H]
     \small
@@ -652,7 +652,7 @@ By default, all SFs are defined over a period of three years, starting from 2010
         \# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B & & \\ \hline
     \end{tabular}
     \centering
-    \caption{Parameters of each scale factor.}
+    \caption{Properties of data sets for each scale factor.}
     \label{tab:snsize}
 \end{table}
 
@@ -672,14 +672,12 @@ By default, all SFs are defined over a period of three years, starting from 2010
 The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{fig:schema}).
 The SUT has to take care only of the generated Dataset to be bulk loaded. Using \texttt{NULL} values for storing optional values is allowed.
 
-The formats currently supported by \datagen serializers are the following:
+\datagen currently only supports CSV-based serializers.
+These produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (for the composite serializers).
+The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
+Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
 
-\begin{itemize}
-  \item \textbf{CSV variants:}
-      These serializers produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (where applicable).
-      The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
-      Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
-      Currently, the following CSV variants are supported:
+The following CSV variants are supported:
     \begin{itemize}
       \item \textbf{CsvBasic:}
       Each entity, relation and attribute with a cardinality larger than one (including attributes \texttt{Person.email} and \texttt{Person.speaks}), are output in a separate file.
@@ -688,14 +686,16 @@ The formats currently supported by \datagen serializers are the following:
       \item \textbf{CsvMergeForeign:}
       This serializer is similar to CsvBasic, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
       There are 13~such relations in total:
-      comment\_hasCreator\_person, comment\_isLocatedIn\_place, comment\_replyOf\_comment, comment\_replyOf\_post (merged to Comment);
-      forum\_hasModerator\_person (merged to Forum);
-      organisation\_isLocatedIn\_place (merged to Organisation);
-      person\_isLocatedIn\_place (merged to Person);
-      place\_isPartOf\_place (merged to Place);
-      post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post);
-      tag\_hasType\_tagclass (merged to Tag);
-      tagclass\_isSubclassOf\_tagclass (merged to TagClass).
+      \begin{itemize}
+          \item comment\_hasCreator\_person, comment\_isLocatedIn\_place, comment\_replyOf\_comment, comment\_replyOf\_post (merged to Comment);
+          \item forum\_hasModerator\_person (merged to Forum);
+          \item organisation\_isLocatedIn\_place (merged to Organisation);
+          \item person\_isLocatedIn\_place (merged to Person);
+          \item place\_isPartOf\_place (merged to Place);
+          \item post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post);
+          \item tag\_hasType\_tagclass (merged to Tag);
+          \item tagclass\_isSubclassOf\_tagclass (merged to TagClass)
+      \end{itemize}
       Generated files are summarized in \autoref{table:csv_merge_foreign}.
 
       \item \textbf{CsvComposite:}
@@ -708,11 +708,6 @@ The formats currently supported by \datagen serializers are the following:
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
       Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
     \end{itemize}
-  \item \textbf{Turtle:} Dataset in Turtle format for RDF systems.
-    This serializers uses the standard Turtle format\footnote{Description of
-    the Turtle RDF format http://www.w3.org/TR/turtle/}. It outputs
-    two files: \texttt{0\_ldbc\_socialnet\_static\_dbp.ttl} and \texttt{0\_ldbc\_socialnet.ttl}, containing the static and the dynamic part of the graph, respectively.
-\end{itemize}
 
 \subsection{Update Streams}
 
@@ -722,8 +717,8 @@ The generic schema is given in \autoref{table:update_stream_generic_schema}, whi
 The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
 
 \begin{itemize}
-    \item \texttt{updateStream\_*\_person.csv} contains update operation 1: \queryRefCard{interactive-insert-01}{II}{1}
-    \item \texttt{updateStream\_*\_forum.csv} contains update operations 2--8: %
+    \item \texttt{updateStream\_*\_person.csv} files contain update operation 1: \queryRefCard{interactive-insert-01}{II}{1}
+    \item \texttt{updateStream\_*\_forum.csv} files contain update operations 2--8: %
     \queryRefCard{interactive-insert-02}{II}{2}
     \queryRefCard{interactive-insert-03}{II}{3}
     \queryRefCard{interactive-insert-04}{II}{4}

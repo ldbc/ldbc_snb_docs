@@ -11,40 +11,40 @@ Queries are described in natural language using a well-defined structure that co
 \textit{description}, a concise textual description of the query;
 \textit{parameters}, a list of input parameters and their types;
 and \textit{results}, a list of expected results and their types.
-The syntax used in \textit{parameters} and \textit{results} sections is as follows:
+We use the following notation:
 
 \begin{itemize}
     \item \textbf{Entity}: entity type in the dataset.\\
         One word, possibly constructed by appending multiple words together, starting with uppercase character and following the camel case notation,
-        \eg \texttt{TagClass} represents an entity of type ``TagClass''.
+        \eg \textsf{TagClass} represents an entity of type ``TagClass''.
     \item \textbf{Relationship}: relationship type in the dataset.\\
         One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
         and surrounded by arrow to communicate direction,
-        \eg \mbox{\texttt{-workAt->}} represents a directed relationship of type ``workAt''.
+        \eg \mbox{\textsf{-workAt->}} represents a directed relationship of type ``workAt''.
     \item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
         One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
         and prefixed by a ``.'' to dereference the entity/relationship,
-        \eg \texttt{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity,
-        and \mbox{\texttt{-studyAt->.classYear}} refers to ``classYear'' attribute on the ``studyAt'' relationship.
+        \eg \textsf{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity,
+        and \mbox{\textsf{-studyAt->.classYear}} refers to ``classYear'' attribute on the ``studyAt'' relationship.
     \item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
         Surrounded by \{ and \} braces, with the element type between them,
-        \eg \texttt{\{String\}} refers to a set of strings.
+        \eg \textsf{\{String\}} refers to a set of strings.
     \item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.\\
         Surrounded by [ and ] braces, with the element type between them,
-        \eg \texttt{[String]} refers to a list of strings.
-    \item \textbf{Ordered Tuple}: a fixed length, fixed order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
+        \eg \textsf{[String]} refers to a list of strings.
+    \item \textbf{Ordered Tuple}: a fixed-length, fixed-order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
         Surrounded by < and > braces, with the element types between them in a specific order
-        \eg \texttt{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
-        and \texttt{\{<String, Boolean>\}} is an ordered list of those 2-tuples.
+        \eg \textsf{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
+        and \textsf{\{<String, Boolean>\}} is an ordered list of those 2-tuples.
 \end{itemize}
 
 \paragraph{Categorization of results.} Results are categorized according to their source of origin:
 
 \begin{itemize}
-	\item \textbf{Raw} (\texttt{R}), if the result is returned with an unmodified value and type.
-	\item \textbf{Calculated} (\texttt{C}), if the result is calculated from other values and conditions.
+	\item \textbf{Raw} (\texttt{R}), if the result attribute is returned with an unmodified value and type.
+	\item \textbf{Calculated} (\texttt{C}), if the result is calculated from attributes using arithmetic operators, functions, boolean conditions, etc.
 	\item \textbf{Aggregated} (\texttt{A}), if the result is an aggregated value, \eg a count or a sum of another value. If a result is both calculated and aggregated (\eg $\mathsf{count(x) + count(y)}$ or $\mathsf{avg(x + y)}$), it is considered an aggregated result.
-	\item \textbf{Meta} (\texttt{M}), if the result is based on type information, \eg the type of the node.
+	\item \textbf{Meta} (\texttt{M}), if the result is based on type information, \eg the type of a node.
 \end{itemize}
 
 
@@ -57,7 +57,7 @@ The syntax used in \textit{parameters} and \textit{results} sections is as follo
 \paragraph{Interval notations.} Closed interval boundaries are denoted with 
 \texttt{[} 
 and \texttt{]}, while open interval boundaries are denoted with \texttt{(} and 
-\texttt{)}. For example, \texttt{[0, 1)} denoted an interval between 0 and 1, 
+\texttt{)}. For example, \texttt{[0, 1)} denotes an interval between 0 and 1, 
 closed on the left and open on the right.
 
 \paragraph{Comparing Date and DateTime values.}
@@ -71,7 +71,7 @@ with a time of 00:00:00.000+0000 (\ie with the timezone of GMT).
 
 Unless noted otherwise, the specification uses \emph{homomorphic} matching 
 semantics~\cite{DBLP:journals/csur/AnglesABHRV17}, \ie both nodes and edges can 
-occur multiple times in a match. Note that for variable length path, duplicate 
+occur multiple times in a match. Note that for variable-length path, duplicate 
 edges are not allowed.
 
 \paragraph{Aggregation semantics.}
@@ -118,9 +118,10 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\item Aggregation operations: \lstinline{count}, \lstinline{avg}, \lstinline{sum}
 	\item Functions:
 	\begin{itemize}
-		\item \lstinline{floor(x)} (returns $\lfloor x \rfloor$),
-		\item \lstinline{year(date)} (extracts the year from a given date),
-		\item \lstinline{month(date)} (extracts the month from a given date).
+		\item \lstinline{floor(x)}: returns $\lfloor x \rfloor$,
+		\item \lstinline{year(date)}: extracts the year from a given date,
+		\item \lstinline{month(date)}: extracts the month from a given date.
+		\item \lstinline{day(date)}: extracts the day (of the month) from a given date.
 	\end{itemize}
 \end{itemize}
 
