@@ -554,28 +554,44 @@ Regular path queries (RPQs) are also proposed in the openCypher language as \emp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Delete operations}
+\section{Refresh operations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection{9.1}{UPD}{Delete node}
+\cpSection{9.1}{REF}{Insert node}
 
-This choke point tests the ability of the database to delete a node.
+This choke point tests the ability of the database to insert a node.
 
 \input{choke-points/cp-9-1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection{9.2}{UPD}{Delete node}
+\cpSection{9.2}{REF}{Delete node}
 
-This choke point tests the ability of the database to delete an edge.
+This choke point tests the ability of the database to insert an edge.
 
 \input{choke-points/cp-9-2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection{9.3}{UPD}{Delete recursively}
+\cpSection{9.3}{REF}{Delete node}
+
+This choke point tests the ability of the database to delete a node.
+
+\input{choke-points/cp-9-3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{9.4}{REF}{Delete edge}
+
+This choke point tests the ability of the database to delete an edge.
+
+\input{choke-points/cp-9-4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{9.5}{REF}{Delete recursively}
 
 This choke point tests the ability of the database to recursively perform a delete operation.
 
-\input{choke-points/cp-9-3}
+\input{choke-points/cp-9-5}
