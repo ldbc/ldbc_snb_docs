@@ -153,6 +153,8 @@ for choke_point in choke_point_references:
 
 ##### table for choke points and queries
 
+print('Processing choke points... ', end='')
+
 all_queries_sorted = sorted(all_queries, key=lambda tup: tup[0])
 all_choke_points_sorted = sorted(all_choke_points)
 
@@ -183,3 +185,5 @@ choke_points_queries_text = choke_points_queries_template.render(
 
 with open("choke-points/choke-points-queries.csv", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)
+
+print('Done')
