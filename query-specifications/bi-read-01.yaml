@@ -26,7 +26,7 @@ result:
     category: meta
     description: " `true` for *Comments*, `false` for *Posts*"
   - name: lengthCategory
-    type: String
+    type: 32-bit Integer
     category: calculated
     description: " `0` for short, `1` for one-liner, `2` for tweet, `3` for long"
   - name: messageCount

@@ -1,5 +1,5 @@
 \chapter{Introduction}
-\label{section:introduction}
+\label{sec:introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,8 +8,8 @@
 \section{Motivation for the Benchmark}
 
 The new era of data economy, based on large, distributed, and complexly
-structured data sets, has brought on new and complex challenges in the field of
-data management and analytics. These data sets, usually modeled as large
+structured datasets, has brought on new and complex challenges in the field of
+data management and analytics. These datasets, usually modeled as large
 graphs, have attracted both industry and academia, due to new
 opportunities in research and innovation they offer. This situation has also
 opened the door for new companies to emerge, offering new non-relational and
@@ -95,7 +95,7 @@ conceivably use to perform social network data management tasks:
      a vertex-centric paradigm, and their architecture targets both single-machine and
      cluster systems. These systems will likely implement the Graph Analytics workload.
  \item \textbf{RDF database systems} (\eg OWLIM, Virtuoso, BigData, Jena TDB,
-     Stardog, Allegrograph) are systems that implement the SPARQL~1.1 query
+     Stardog, AllegroGraph) are systems that implement the SPARQL~1.1 query
      language, similar in complexity to \mbox{SQL-92}, which allows for structured
      queries, and simple traversals. RDF database systems often come with
      additional support for simple reasoning (sameAs, subClass), text search, and
@@ -110,7 +110,7 @@ conceivably use to perform social network data management tasks:
      PL/SQL. Both single-machine and cluster systems exist. They do not
      normally support recursion or stateful recursive algorithms, which makes     them not at home in the Graph Analytics workloads.
  \item \textbf{NoSQL database systems} (\eg key-value stores such as HBase,
-     REDIS, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
+     Redis, MongoDB, CouchDB, or even MapReduce systems like Hadoop and Pig)
      are cluster-based and scalable. Key-value stores could possibly implement
      the Interactive Workload, though its navigational aspects would pose some
      problems as potentially many key-value lookups are needed. MapReduce
@@ -130,23 +130,24 @@ conceivably use to perform social network data management tasks:
 \ldbcsnb aims at being a complete benchmark, designed with the following goals in mind:
 
 \begin{itemize}
- \item \textbf{Rich coverage}. \ldbcsnb is intended to cover most demands
+ \item \textbf{Rich coverage.} \ldbcsnb is intended to cover most demands
      encountered in the management of complexly structured data.
- \item \textbf{Modularity}. \ldbcsnb is broken into parts that can be
+ \item \textbf{Modularity.} \ldbcsnb is broken into parts that can be
      individually addressed. In this manner \ldbcsnb
      stimulates innovation without imposing an overly high threshold for
      participation.
- \item \textbf{Reasonable implementation cost}. For a product offering relevant
+ \item \textbf{Reasonable implementation cost.} For a product offering relevant
      functionality, the effort for obtaining initial results with SNB should be
      small, in the order of days.
- \item \textbf{Relevant selection of challenges}. Benchmarks are known to
+ \item \textbf{Relevant selection of challenges.} Benchmarks are known to
      direct product development in certain directions. \ldbcsnb is informed by
      the state-of-the-art in database research so as to offer optimization
      challenges for years to come while not having a prohibitively high
      threshold for entry.
- \item \textbf{Reproducibility and documentation of results}. \ldbcsnb
+ \item \textbf{Reproducibility and documentation of results.} \ldbcsnb
      will specify the rules for full disclosure of benchmark execution and for
-     auditing of benchmark runs. The workloads may be run on any equipment
+     auditing of benchmark runs in accordance with the LDBC Byelaws~\cite{ldbc_byelaws}.
+     The workloads may be run on any equipment
      but the exact configuration and price of the hardware and software must be
      disclosed.
 \end{itemize}
@@ -165,7 +166,7 @@ reasons:
         scalable benchmark targeting systems of different sizes and budgets.
 \end{itemize}
 
-In \autoref{section:data}, \ldbcsnb defines the schema of the data used in
+In \autoref{sec:data}, \ldbcsnb defines the schema of the data used in
 the benchmark. The schema represents a realistic social network, including
 people and their activities in the social network during a period of time.
 Personal information of each person, such as name, birthday, interests
@@ -178,7 +179,7 @@ in a real social network. Furthermore, the data generator is designed to be
 user-friendly. The proposed data schema is shared by all the different proposed
 workloads, those we currently have, and those that will be proposed in the future.
 
-In \autoref{section:workloads}, the Interactive Workload and the first draft of
+In \autoref{sec:workloads}, the Interactive Workload and the first draft of
 the Business Intelligence workload are proposed. Workloads are designed to mimic
 the different usage scenarios found in operating a real social network site, and
 each of them targets one or more types of systems.  Each workload defines a set
@@ -212,7 +213,7 @@ benchmark's entry point as much as possible.
 Along the Social Network Benchmark, LDBC~\cite{DBLP:journals/sigmod/AnglesBLF0ENMKT14} provides other benchmarks as well:
 
 \begin{itemize}
-	\item The Semantic Publishing Benchmark (SPB)~\cite{DBLP:conf/semweb/SpasicJP16} measures the performance of \emph{semantic databases} operating on RDF data sets.
+	\item The Semantic Publishing Benchmark (SPB)~\cite{DBLP:conf/semweb/SpasicJP16} measures the performance of \emph{semantic databases} operating on RDF datasets.
 	\item The Graphalytics benchmark~\cite{DBLP:journals/pvldb/IosupHNHPMCCSAT16} measures the performance of \emph{graph analysis} operations (\eg PageRank, local clustering coefficient).
 \end{itemize}
 

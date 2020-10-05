@@ -1,35 +1,32 @@
 workload: BI
 operation: read
 number: 3
-title: Tag evolution
+title: Popular topics in a country
 description: |
-  Find the *Tags* that were used in *Messages* during the given `month` of the given `year` and the *Tags* that were used during the next month.
+  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Post* with *Tags* belonging directly to the given *TagClass*.
 
-  For the *Tags* and for both months, compute the count of *Messages*.
+  The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
-  - name: year
-    type: 32-bit Integer
-  - name: month
-    type: 32-bit Integer
+  - name: tagClass
+    type: Long String
+  - name: country
+    type: Long String
 result:
-  - name: tag.name
-    type: String
-  - name: countMonth1
-    type: 32-bit Integer
+  - name: forum.id
+    type: ID
+  - name: forum.title
+    type: Long String
+  - name: forum.creationDate
+    type: DateTime
+  - name: person.id
+    type: ID
+  - name: postCount
     category: aggregated
-    description: Occurrences of the tag during the given `year` and `month`
-  - name: countMonth2
     type: 32-bit Integer
-    category: aggregated
-    description: Occurrences of the tag during the next month after the given `year` and `month`
-  - name: diff
-    type: 32-bit Integer
-    category: aggregated
-    description: Absolute difference of `countMonth1` and `countMonth2`
 sort:
-  - name: diff
+  - name: postCount
     direction: desc
-  - name: tag.name
+  - name: forum.id
     direction: asc
-limit: 100
-choke_points: [2.4, 3.1, 3.2, 4.1, 4.3, 5.3, 6.1, 8.2, 8.5]
+limit: 20
+choke_points: [1.1, 1.2, 1.3, 2.1, 2.2, 2.4, 3.3, 8.2]

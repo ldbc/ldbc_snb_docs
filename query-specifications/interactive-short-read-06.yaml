@@ -13,7 +13,7 @@ result:
     type: ID
     description: "`forumId`"
   - name: Message<-containerOf-Forum.title
-    type: String
+    type: Long String
     description: "`forumTitle`"
   - name: Message<-containerOf-Forum-hasModerator->Person.id
     type: ID

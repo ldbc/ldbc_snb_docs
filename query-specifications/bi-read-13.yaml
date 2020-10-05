@@ -1,34 +1,39 @@
 workload: BI
 operation: read
 number: 13
-title: Popular tags per month in a country
+title: Zombies in a country
 description: |
-  Find all *Messages* in a given *Country*, as well as their *Tags*.
+  Find zombies within the given `country`, and return their zombie scores. A `zombie` is a *Person* created before the given `endDate`, which has created an average of `[0, 1)` *Messages* per month, during the time range between profile's `creationDate` and the given `endDate`. The number of months spans the time range from the `creationDate` of the profile to the `endDate` with partial months on both end counting as one month (e.g. a `creationDate` of Jan 31 and an `endDate` of Mar 1 result in 3 months).
 
-  Group *Messages* by creation `year` and `month`.
-  For each group, find the 5 most popular *Tags*, where popularity is the number of *Messages* (from within the same group) where the *Tag* appears.
+  For each `zombie`, calculate the following\:
 
-  Note\: even if there are no *Tags* for *Messages* in a given `year` and `month`, the result should include the `year` and `month` with an empty `popularTags` list.
+  * `zombieLikeCount`: the number of *likes* received from other zombies.
+  * `totalLikeCount`: the total number of *likes* received.
+  * `zombieScore`: `zombieLikeCount` / `totalLikeCount`. If the value of `totalLikeCount` is 0, the `zombieScore` of the `zombie` should be 0.0.
+
+  For both `zombieLikeCount` and `totalLikeCount`, only consider *likes* received from profiles that were created before the given `endDate`.
 parameters:
   - name: country
-    type: String
+    type: Long String
+  - name: endDate
+    type: Date
 result:
-  - name: year
+  - name: zombie.id
+    type: ID
+  - name: zombieLikeCount
     type: 32-bit Integer
-    category: calculated
-    description: "`year(message.creationDate)`"
-  - name: month
+    category: aggregated
+  - name: totalLikeCount
     type: 32-bit Integer
-    category: calculated
-    description: "`month(message.creationDate)`"
-  - name: popularTags
-    type: TagPairs
-    category: calculated
-    description: "`(tag.name [String], popularity [32-bit Integer])` pairs, sorted descending by `popularity`, then ascending by `tag.name`"
+    category: aggregated
+  - name: zombieScore
+    type: 64-bit Float
+    category: aggregated
+    description: "`zombieLikeCount` / `totalLikeCount`"
 sort:
-  - name: year
+  - name: zombieScore
     direction: desc
-  - name: month
+  - name: zombie.id
     direction: asc
 limit: 100
-choke_points: [1.2, 2.2, 2.3, 3.2, 6.1, 8.3, 8.5]
+choke_points: [1.2, 2.1, 2.3, 2.4, 3.2, 3.3, 5.1, 5.3, 8.2, 8.4, 8.5]

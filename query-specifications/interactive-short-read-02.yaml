@@ -10,10 +10,10 @@ parameters:
     description: "`personId`"
 result:
   - name: Message.id
-    type: 64-bit Integer
+    type: ID
     description: "`messageId`"
   - name: Message.content or Post.imageFile
-    type: String
+    type: Text
     description: "`messageContent`"
   - name: Message.creationDate
     type: DateTime

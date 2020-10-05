@@ -1,35 +1,20 @@
 workload: BI
 operation: read
 number: 11
-title: Unrelated replies
+title: Friend triangles
 description: |
-  Find those *Persons* of a given *Country* that replied to any *Message*, such that the reply does not have any *Tag* in common with the *Message* (only direct replies are considered, transitive ones are not). Consider only those replies that do no contain any word from a given `blacklist`. For each *Person* and valid reply, retrieve the *Tags* associated with the reply, and retrieve the number of *likes* on the reply.
+  For a given `country`, count all the distinct triples of *Persons* such that:
 
-  The detailed conditions for checking blacklisted words are currently as follows. Words do _not_ have to stand separately, i.e. if the word "Green" is blacklisted, "South-Greenland" cannot be included in the results. Also, comparison should be done in a case-sensitive way. These conditions are preliminary and might be changed in later versions of the benchmark.
+  * `a` is friend of `b`,
+  * `b` is friend of `c`,
+  * `c` is friend of `a`.
+
+  Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
   - name: country
-    type: String
-  - name: blacklist
-    type: String[]
+    type: Long String
 result:
-  - name: person.id
-    type: 64-bit Integer
-  - name: tag.name
-    type: String
-  - name: likeCount
+  - name: count
     type: 32-bit Integer
     category: aggregated
-    description: The count of likes to replies with that Tag
-  - name: replyCount
-    type: 32-bit Integer
-    category: aggregated
-    description: The count of replies with that Tag
-sort:
-  - name: likeCount
-    direction: desc
-  - name: person.id
-    direction: asc
-  - name: tag.name
-    direction: asc
-limit: 100
-choke_points: [1.1, 2.1, 2.2, 2.3, 3.1, 3.2, 6.1, 8.1, 8.3]
+choke_points: [1.1, 2.3] # why is CP1.1 applicable here? WCOJs?

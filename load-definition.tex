@@ -1,4 +1,4 @@
-\ldbcsnb Test Driver is in charge of the execution of the Interactive Workload.
+The \emph{Test Driver} is in charge of the execution of the Interactive Workload.
 At the beginning of the execution, the Test Driver creates a query mix by
 assigning to each query instance, a query issue time and a set of parameters
 taken from the generated substitution parameter set described above.  
@@ -18,35 +18,11 @@ data generator. These are the times where the actual event happened during the
 simulation of the social network. Complex reads' times are expressed in terms
 of update operations. For each complex read query type, a frequency value is
 assigned which specifies the relation between the number of updates performed
-per complex read.  \autoref{table:freqs} shows the frequencies assigned to
-each query type for SF1. The frequencies of the different scale factors can be
-found in~\autoref{appendix:scale_factors}.
+per complex read. \autoref{table:freqs} shows the frequencies for each complex query and SF used in the Interactive workload (\autoref{sec:interactive}).
 
-\begin{table}[H]
-\centering
-    \begin{tabular}{|c|c||c|c|}
-    \hline
-    Query Type & freq & Query Type & freq \\ 
-    \hline
-    \hline
-    Query 1 & 26 & Query 8 & 45 \\ 
-    \hline       
-    Query 2 & 37 & Query 9 & 157 \\  
-    \hline        
-    Query 3 & 69 & Query 10 & 30 \\ 
-    \hline        
-    Query 4 & 36 & Query 11 & 16 \\ 
-    \hline        
-    Query 5 & 57 & Query 12 & 44 \\ 
-    \hline        
-    Query 6 & 129 & Query 13 & 19 \\  
-    \hline        
-    Query 7 & 87 & Query 14 & 49 \\ 
-    \hline
-    \end{tabular}
-    \caption{Frequencies for each query type for SF1.}
-    \label{table:freqs}
-\end{table}
+%\todo{Should we define frequencies for SF0.1 and SF0.3? No, those are for testing, not benchmarking.}
+
+\input{table-interactive-frequencies}
 
 Finally, short reads are inserted in order to balance the ratio between reads
 and writes, and to simulate the behavior of a real user of the social network.
@@ -66,10 +42,10 @@ executions, the workload is deterministic.
 
 
 The specified frequencies, implicitly define the query ratios between queries
-of different types, as well as a default target throughput. However the Test
+of different types, as well as a default target throughput. However, the Test
 Sponsor may specify a different target throughput to test,  by ``squeezing''
 together or ``stretching'' apart the queries of the workload. This is
-achieved  by means of the ``Time Compression Ratio'' that is multiplied by the
+achieved by means of the ``Time Compression Ratio'' that is multiplied by the
 frequencies (see \autoref{table:freqs}).  Therefore, different
 throughputs can be tested while maintaining the relative ratios between the
 different query types.

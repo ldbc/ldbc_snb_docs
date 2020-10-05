@@ -1,58 +1,35 @@
 workload: BI
 operation: read
 number: 2
-title: Top tags for country, age, gender, time
+title: Tag evolution
 description: |
-  Select all *Messages* created in the range of `[startDate, endDate]` by *Persons* located in `country1` or `country2`.
-  Select the creator *Persons* and the *Tags* of these *Messages*.
-  Split these *Persons*, *Tags* and *Messages* into a 5-level grouping\:
+  Find the *Tags* that were used in *Messages* during the given `month` of the given `year` and the *Tags* that were used during the next month.
 
-  1. name of country of *Person*,
-  2. month the *Message* was created,
-  3. gender of *Person*,
-  4. age group of *Person*, defined as years between person's birthday and end of simulation (2013-01-01), divided by 5, rounded down (partial years do not count),
-  5. name of tag attached to *Message*.
-
-  Consider only those groups where number of *Messages* is greater than 100.
+  For the *Tags* and for both months, compute the count of *Messages*.
 parameters:
-  - name: startDate
-    type: Date
-  - name: endDate
-    type: Date
-  - name: country1
-    type: String
-  - name: country2
-    type: String
+  - name: year
+    type: 32-bit Integer
+  - name: month
+    type: 32-bit Integer
 result:
-  - name: country.name
-    type: String
-  - name: messageMonth
-    type: 32-bit Integer
-    description: 1--12
-  - name: person.gender
-    type: String
-    description: "`male` or `female`"
-  - name: ageGroup
-    type: 32-bit Integer
-    category: calculated
   - name: tag.name
-    type: String
-  - name: messageCount
-    type: 64-bit Integer
+    type: Long String
+  - name: countMonth1
+    type: 32-bit Integer
     category: aggregated
-    description: The number of messages in the group
+    description: Occurrences of the tag during the given `year` and `month`
+  - name: countMonth2
+    type: 32-bit Integer
+    category: aggregated
+    description: Occurrences of the tag during the next month after the given `year` and `month`
+  - name: diff
+    type: 32-bit Integer
+    category: aggregated
+    description: Absolute difference of `countMonth1` and `countMonth2`
 sort:
-  - name: messageCount
+  - name: diff
     direction: desc
   - name: tag.name
     direction: asc
-  - name: ageGroup
-    direction: asc
-  - name: person.gender
-    direction: asc
-  - name: messageMonth
-    direction: asc
-  - name: country.name
-    direction: asc
 limit: 100
-choke_points: [1.1, 1.2, 1.3, 2.1, 2.3, 3.1, 3.2, 8.2, 8.5]
+choke_points: [2.4, 3.1, 3.2, 4.1, 4.3, 5.3, 6.1, 8.2, 8.5]

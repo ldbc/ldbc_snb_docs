@@ -12,6 +12,8 @@ description: |
   * Every direct reply (by one of the *Persons*) to a *Post* (by the other *Person*) contributes 1.0.
   * Every direct reply (by one of the *Persons*) to a *Comment* (by the other *Person*) contributes 0.5.
 
+  Note that interactions are counted both ways (e.g. if Alice writes 2 *Post* replies and 1 *Comment* reply to Bob, while Bob writes 3 *Post* replies and 4 *Comment* replies to Alice, their interaction score is $2 \times 1.0 + 1 \times 0.5 + 3 \times 1.0 + 4 \times 0.5 = 7.5$).
+
   Return all the paths with shortest length, and their weights. Do not return any rows if there is no path between the two *Persons*.
 parameters:
   - name: person1.id
@@ -23,7 +25,7 @@ parameters:
 result:
   - name: '[Person.id]'
     type: '[ID]'
-    description: "`personIdsInPath` -- identifiers representing an ordered sequence of the Persons in the path"
+    description: "`personIdsInPath` -- identifiers representing an ordered sequence of the *Persons* in the path"
     category: calculated
   - name: weight
     type: 64-bit Float

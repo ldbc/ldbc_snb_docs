@@ -1,6 +1,5 @@
 % !TeX spellcheck = en_GB
 % !TeX encoding = UTF-8
-% !TeX program = pdflatex
 \documentclass{ldbc}
 
 \input{packages}
@@ -20,14 +19,14 @@
 
 \chapter*{Acknowledgments}
 \input{special-thanks}
-%\listoffigures
-%\listoftables
 
 \input{defs}
 
 \input{introduction}
 
 \input{benchmark-specification}
+
+\input{data}
 
 \input{workloads}
 
@@ -37,22 +36,18 @@
 
 \input{auditing}
 
+\input{acid}
+
 \input{related-work}
 
 \bibliographystyle{abbrvnat}
-\bibliography{bib/references,bib/graphalytics,bib/snb-interactive,bib/snb-bi,bib/spb,bib/specification}
+\bibliography{bib/references,bib/graphalytics,bib/snb-interactive,bib/snb-bi,bib/spb,bib/datagen-deletes,bib/acid,bib/specification}
 
 \appendix
 
-\chapter{Choke Points}
-
 \input{choke-points}
 
-\chapter{Scale Factor Statistics}
-
 \input{sf-statistics}
-
-\chapter{Benchmark Checklist}
 
 \input{benchmark-checklist}
 
