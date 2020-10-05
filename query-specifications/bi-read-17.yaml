@@ -21,10 +21,4 @@ result:
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
-sort:
-  - name: messageCount
-    direction: desc
-  - name: person1.id
-    direction: asc
-limit: 20
-choke_points: [1.1] #todo +WCOJs
+choke_points: [1.1, 2.3, 2.5]
