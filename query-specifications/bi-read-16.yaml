@@ -5,7 +5,7 @@ title: Fake news detection
 description: |
   Given two *Tag*/date pairs (`tagA`/`dateA` and `tagB`/`dateB`), for each pair `tagX`/`dateX`:
 
-  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dateX` with *Tag* `tagX`.
+  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on the day of `dateX` with *Tag* `tagX`.
   * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (in the induced subgraph).
   * For these *Persons*, count the number of *Messages* created on `dateX` with *Tag* `tagX`.
   
@@ -38,7 +38,7 @@ sort:
   - name: person.id
     direction: asc
 limit: 20
-choke_points: [1.1] #todo
+choke_points: [1.1, 4.2] #todo
 relevance: |
   There are two major ways to compute this query:
   (1) create the induced subgraph as suggested by the specification (either as a view or in materialized form), or
