@@ -214,8 +214,11 @@ matching expressions (\eg via regular expressions).
 \cpSection[5.1]{5.1}{QOPT}{Flattening sub-queries}
 
 This choke point tests the ability of the query optimizer to flatten execution plans when there are correlated sub-queries. Many queries have correlated sub-queries and their query plans can be flattened,
-such that the correlated sub-query is handled using an equi-join, outer-join or anti-join. To execute queries well, systems need to flatten both sub-queries, the first into an equi-join plan, the second into an anti-join plan.
+such that the correlated sub-query is handled using an equi-join, outer-join or anti-join.
+In TPC-H Q21, for instance, there is an \lstinline{EXISTS} clause (for orders with more than one supplier) and a \lstinline{NOT EXISTS} clauses (looking for an item that was received too late).
+To execute this query well, systems need to flatten both sub-queries, the first into an equi-join plan, the second into an anti-join plan.
 Therefore, the execution layer of the database system will benefit from implementing these extended join variants.
+
 The ill effects of repetitive tuple-at-a-time sub-query execution can also be mitigated if execution systems by using vectorized, or block-wise query execution, allowing to run sub-queries with thousands of input parameters instead of one.
 The ability to look up many keys in an index in one API call creates the opportunity to benefit from physical locality, if lookup keys exhibit some clustering.
 
