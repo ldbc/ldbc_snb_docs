@@ -38,7 +38,7 @@ result:
     type: String
     description: "`friendLocationIp`"
   - name: \{Person.email\}
-    type: \{String\}
+    type: \{Long String\}
     description: "`friendEmails`"
   - name: \{Person.speaks\}
     type: \{String\}
@@ -46,11 +46,11 @@ result:
   - name: Person-isLocatedIn->City.name
     type: String
     description: "`friendCityName`"
-  - name: \{Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name\}
+  - name: \{\<Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name>\}
     type: \{\<String, 32-bit Integer, String>\}
     description: "`friendUniversities`"
     category: aggregated
-  - name: \{Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name\}
+  - name: \{\<Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name>\}
     type: \{\<String, 32-bit Integer, String>\}
     description: "`friendCompanies`"
     category: aggregated

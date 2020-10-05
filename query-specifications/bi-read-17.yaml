@@ -1,20 +1,24 @@
 workload: BI
 operation: read
 number: 17
-title: Friend triangles
+title: Information propagation analysis
 description: |
-  For a given `country`, count all the distinct triples of *Persons* such that:
+  This query aims to identify instances of "information propagation" when a *Person* (`person1`) submits a *Message* (`message1`) with a given *Tag* (`tag`) to a *Forum* (`forum1`).
+  This is read by other members of `forum1`, *Persons* `person2` and `person3`.
+  Some time later (specified by the `delta` parameter), these persons have a discussion with the same `tag` in a different *Forum* (`forum2`) where `person1` is not a member.
+  The discussion consists of a *Message* (`message2`) by `person2` and a direct reply *Comment* (`comment`) by `person3`.
 
-  * `a` is friend of `b`,
-  * `b` is friend of `c`,
-  * `c` is friend of `a`.
-
-  Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
+  Return IDs of `person1` with the number of interactions their *Messages* (might have) caused.
 parameters:
-  - name: country
-    type: String
+  - name: tag
+    type: Long String
+  - name: delta
+    type: 32-bit Integer
+    description: Measured in hours
 result:
-  - name: count
+  - name: person1.id
+    type: ID
+  - name: messageCount
     type: 32-bit Integer
     category: aggregated
 choke_points: [1.1, 2.3, 2.5]

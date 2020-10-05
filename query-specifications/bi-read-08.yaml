@@ -1,25 +1,39 @@
 workload: BI
 operation: read
 number: 8
-title: Related topics
+title: Central person for a tag
 description: |
-  Find all *Messages* that have a given *Tag*.
-  Find the related *Tags* attached to (direct) reply *Comments* of these *Messages*, but only of those reply *Comments* that do not have the given *Tag*.
+  Given a *Tag*, find all *Persons* that are interested in the *Tag* and/or have written a *Message* (*Post* or *Comment*) with a `creationDate` after a given `date` and that has a given *Tag*. For each *Person*, compute the `score` as the sum of the
+  following two aspects\:
 
-  Group the *Tags* by name, and get the count of replies in each group.
+  * 100, if the *Person* has this *Tag* as their interest, or 0 otherwise
+  * number of *Messages* by this *Person* with the given *Tag*
+
+  Also, for each *Person*, compute the sum of the score of the *Person*'s friends (`friendsScore`).
 parameters:
   - name: tag
-    type: String
+    type: Long String
+  - name: date
+    type: Date
 result:
-  - name: relatedTag.name
-    type: String
-  - name: count
+  - name: person.id
+    type: ID
+  - name: score
     type: 32-bit Integer
     category: aggregated
+  - name: friendsScore
+    type: 32-bit Integer
+    category: aggregated
+    description: The sum of the score of the `person`'s friends
 sort:
-  - name: count
+  - name: score + friendsScore
     direction: desc
-  - name: relatedTag.name
+  - name: person.id
     direction: asc
 limit: 100
-choke_points: [1.4, 3.3, 5.2, 8.1]
+choke_points: [1.2, 2.1, 2.3, 3.2, 5.3, 8.2, 8.4, 8.5]
+relevance: |
+  Similarly to BI Q16, there are two major ways to compute this query:
+  (1) creating an induced subgraph of the interested *Persons* and their friends and performing the scoring on this graph or
+  (2) performing the scoring without creating an induced subgraph and scoring the friends of a *Person* on-the-fly.
+  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations.

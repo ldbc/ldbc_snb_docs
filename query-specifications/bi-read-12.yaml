@@ -1,33 +1,41 @@
 workload: BI
 operation: read
 number: 12
-title: Trending posts
+title: How many persons have a given number of messages
 description: |
-  Find all *Messages* created after a given `date` (exclusive), that received more than a given number of likes (`likeThreshold`).
+  For each *Person*, count the number of *Messages* they made (`messageCount`). Only count *Messages* with the following attributes:
+
+  * Its `content` is not empty (and consequently, the `imageFile` attribute is empty for *Posts*).
+  * Its `length` is below the `lengthThreshold` (exclusive, equality is not allowed).
+  * Its `creationDate` is after `date` (exclusive, equality is not allowed).
+  * It is written in any of the given `languages`.
+
+      * The language of a *Post* is defined by its `language` attribute.
+      * The language of a *Comment* is that of the *Post* that initiates the thread where the *Comment* replies to.
+
+      The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length` and `creationDate`.
+
+
+  For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
   - name: date
     type: Date
-  - name: likeThreshold
+  - name: lengthThreshold
     type: 32-bit Integer
+  - name: languages
+    type: String[]
 result:
-  - name: message.id
-    type: 64-bit Integer
-  - name: message.creationDate
-    type: DateTime
-  - name: creator.firstName
-    type: String
-    description: The first name of the *Post*'s `creator`
-  - name: creator.lastName
-    type: String
-    description: The last name of the *Post*'s `creator`
-  - name: likeCount
+  - name: messageCount
     type: 32-bit Integer
     category: aggregated
-    description: The number of *likes* the *Post* received
+    description: Number of *Messages* created
+  - name: personCount
+    type: 32-bit Integer
+    category: aggregated
+    description: Number of *Persons* with `messageCount` messages
 sort:
-  - name: likeCount
+  - name: personCount
     direction: desc
-  - name: message.id
-    direction: asc
-limit: 100
-choke_points: [1.2, 2.2, 3.1, 6.1, 8.5]
+  - name: messageCount
+    direction: desc
+choke_points: [1.1, 1.2, 1.4, 3.2, 4.2, 4.3, 8.1, 8.2, 8.3, 8.4, 8.5]

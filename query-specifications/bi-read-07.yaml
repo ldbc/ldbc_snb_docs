@@ -1,27 +1,25 @@
 workload: BI
 operation: read
 number: 7
-title: Most authoritative users on a given topic
+title: Related topics
 description: |
-  Given a *Tag*, find all *Persons* (`person`) that ever created a *Message* (`message1`) with the given *Tag*.
-  For each of these *Persons* (`person`) compute their "authority score" as follows\:
+  Find all *Messages* that have a given *Tag*.
+  Find the related *Tags* attached to (direct) reply *Comments* of these *Messages*, but only of those reply *Comments* that do not have the given *Tag*.
 
-  * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* (`message2`)
-    with the given *Tag*.
-  * A *Person*'s (`person2`) "popularity score" is defined as the total number of likes on all of their *Messages* (`message3`).
+  Group the *Tags* by name, and get the count of replies in each group.
 parameters:
   - name: tag
-    type: String
+    type: Long String
 result:
-  - name: person.id
-    type: 64-bit Integer
-  - name: authorityScore
+  - name: relatedTag.name
+    type: Long String
+  - name: count
     type: 32-bit Integer
     category: aggregated
 sort:
-  - name: authorityScore
+  - name: count
     direction: desc
-  - name: person1.id
+  - name: relatedTag.name
     direction: asc
 limit: 100
-choke_points: [1.2, 2.3, 3.2, 3.3, 6.1, 8.2]
+choke_points: [1.4, 3.3, 5.2, 8.1]

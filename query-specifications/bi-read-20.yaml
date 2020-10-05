@@ -1,23 +1,27 @@
 workload: BI
 operation: read
 number: 20
-title: High-level topics
+title: Recruitment
 description: |
-  For all given *TagClasses*, count number of *Messages* that have a *Tag* that belongs to that *TagClass* or any of its children (all descendants through a transitive relation).
+  Given a *Company* `company` and a *Person* `person2` (presumably working at another company), find a *Person* (`person1`) working the in the `company` who have the top-20 shortest path to `person2` through people who have studied together.
+  On this path, we only consider edges between *Persons* who know each other and attended the same university and set the weight of the edge to the absolute difference between the year of enrolment plus 1 (`studyAt.classYear + 1`).
+
+  If there are multiple *Person* `person1` nodes with the same shortest path, return all of them.
 parameters:
-  - name: tagClasses
-    type: String[]
+  - name: company
+    type: Long String
+  - name: person2Id
+    type: ID
 result:
-  - name: tagClass.name
-    type: String
-    description: The *TagClass* of the root
-  - name: messageCount
+  - name: person1.id
+    type: ID
+  - name: totalWeight
     type: 32-bit Integer
-    category: aggregated
+    category: calculated
 sort:
-  - name: messageCount
-    direction: desc
-  - name: tagClass.name
+  - name: person1.id
     direction: asc
-limit: 100
-choke_points: [1.4, 2.1, 6.1, 8.1]
+choke_points: [1.1] #todo
+relevance: |
+  Implementations can either pre-compute edge weights or compute them on-the-fly.
+  To find a weighted shortest path efficiently, implementations can use e.g. a bidirectional Dijkstra algorithm.

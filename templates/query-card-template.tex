@@ -1,45 +1,13 @@
 \renewcommand*{\arraystretch}{1.1}
 
 \subsection*{ {{- workload }} / {{ operation }} / {{ number -}} }
-\label{section: {{- query_id -}} }
+\label{sec: {{- query_id -}} }
 
 % change \emph{} to use sans-serif font
 \let\oldemph\emph
 \renewcommand{\emph}[1]{{ '{{' }}\footnotesize \sf #1}}
-
-{% if workload == "BI" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
-\marginpar{
-	\raggedleft
-	\vspace{0.22ex}
-
-	\queryRefCard{bi-read-01}{BI}{1}\\
-	\queryRefCard{bi-read-02}{BI}{2}\\
-	\queryRefCard{bi-read-03}{BI}{3}\\
-	\queryRefCard{bi-read-04}{BI}{4}\\
-	\queryRefCard{bi-read-05}{BI}{5}\\
-	\queryRefCard{bi-read-06}{BI}{6}\\
-	\queryRefCard{bi-read-07}{BI}{7}\\
-	\queryRefCard{bi-read-08}{BI}{8}\\
-	\queryRefCard{bi-read-09}{BI}{9}\\
-	\queryRefCard{bi-read-10}{BI}{10}\\
-	\queryRefCard{bi-read-11}{BI}{11}\\
-	\queryRefCard{bi-read-12}{BI}{12}\\
-	\queryRefCard{bi-read-13}{BI}{13}\\
-	\queryRefCard{bi-read-14}{BI}{14}\\
-	\queryRefCard{bi-read-15}{BI}{15}\\
-	\queryRefCard{bi-read-16}{BI}{16}\\
-	\queryRefCard{bi-read-17}{BI}{17}\\
-	\queryRefCard{bi-read-18}{BI}{18}\\
-	\queryRefCard{bi-read-19}{BI}{19}\\
-	\queryRefCard{bi-read-20}{BI}{20}\\
-	\queryRefCard{bi-read-21}{BI}{21}\\
-	\queryRefCard{bi-read-22}{BI}{22}\\
-	\queryRefCard{bi-read-23}{BI}{23}\\
-	\queryRefCard{bi-read-24}{BI}{24}\\
-	\queryRefCard{bi-read-25}{BI}{25}\\
-}
-{% endif -%}
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{{ '{{' }}\it #1}}
 
 {%- if workload == "Interactive" and operation == "complex" -%}
 \renewcommand{\currentQueryCard}{ {{- number -}} }
@@ -97,20 +65,49 @@
 }
 {%- endif %}
 
-{%- if workload == "Interactive" and operation == "delete" -%}
+{% if workload == "BI" and operation == "read" -%}
+\renewcommand{\currentQueryCard}{ {{- number -}} }
+\marginpar{
+	\vspace{0.22ex}
+	\raggedleft
+
+	\queryRefCard{bi-read-01}{BI}{1}\\
+	\queryRefCard{bi-read-02}{BI}{2}\\
+	\queryRefCard{bi-read-03}{BI}{3}\\
+	\queryRefCard{bi-read-04}{BI}{4}\\
+	\queryRefCard{bi-read-05}{BI}{5}\\
+	\queryRefCard{bi-read-06}{BI}{6}\\
+	\queryRefCard{bi-read-07}{BI}{7}\\
+	\queryRefCard{bi-read-08}{BI}{8}\\
+	\queryRefCard{bi-read-09}{BI}{9}\\
+	\queryRefCard{bi-read-10}{BI}{10}\\
+	\queryRefCard{bi-read-11}{BI}{11}\\
+	\queryRefCard{bi-read-12}{BI}{12}\\
+	\queryRefCard{bi-read-13}{BI}{13}\\
+	\queryRefCard{bi-read-14}{BI}{14}\\
+	\queryRefCard{bi-read-15}{BI}{15}\\
+	\queryRefCard{bi-read-16}{BI}{16}\\
+	\queryRefCard{bi-read-17}{BI}{17}\\
+	\queryRefCard{bi-read-18}{BI}{18}\\
+	\queryRefCard{bi-read-19}{BI}{19}\\
+	\queryRefCard{bi-read-20}{BI}{20}\\
+}
+{% endif -%}
+
+{%- if workload == "BI" and operation == "delete" -%}
 \renewcommand{\currentQueryCard}{ {{- number -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
 
-	\queryRefCard{interactive-delete-01}{ID}{1}\\
-	\queryRefCard{interactive-delete-02}{ID}{2}\\
-	\queryRefCard{interactive-delete-03}{ID}{3}\\
-	\queryRefCard{interactive-delete-04}{ID}{4}\\
-	\queryRefCard{interactive-delete-05}{ID}{5}\\
-	\queryRefCard{interactive-delete-06}{ID}{6}\\
-	\queryRefCard{interactive-delete-07}{ID}{7}\\
-	\queryRefCard{interactive-delete-08}{ID}{8}\\
+	\queryRefCard{bi-delete-01}{BD}{1}\\
+	\queryRefCard{bi-delete-02}{BD}{2}\\
+	\queryRefCard{bi-delete-03}{BD}{3}\\
+	\queryRefCard{bi-delete-04}{BD}{4}\\
+	\queryRefCard{bi-delete-05}{BD}{5}\\
+	\queryRefCard{bi-delete-06}{BD}{6}\\
+	\queryRefCard{bi-delete-07}{BD}{7}\\
+	\queryRefCard{bi-delete-08}{BD}{8}\\
 }
 {%- endif %}
 
@@ -126,7 +123,7 @@
 %
 	{% if parameters %}
 		params &
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		{% for entry in parameters -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {{ entry.description }} \\ \hline
 		{% endfor -%}
@@ -135,7 +132,7 @@
 %
 	{% if result %}
 		result &
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}c|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\resultNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|>{\resultOriginCell}c|Y|} \hline
 		{% for entry in result -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name|trim() }} & {{ entry.type|trim() }} & {% set cat = entry.category|trim() -%}
 					{%- if   cat == "aggregated" -%} A
@@ -150,7 +147,7 @@
 %
 	{% if sort %}
 		sort		&
-		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}c|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
+		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\sortNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\directionCell}c|Y|} \hline
 		{% for entry in sort -%}
 			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & $\{{ entry.direction }}$ & {{ entry.description }} \\ \hline
 		{% endfor -%}
@@ -178,5 +175,6 @@
 \end{tabularx}
 \queryCardVSpace
 
-% change \emph back to the old one
+% change \emph and \textbf back to the old ones
 \let\emph\oldemph
+\let\textbf\oldtextbf

@@ -1,0 +1,161 @@
+\begin{figure*}[htp]
+  \centering
+  \begin{subfigure}{\linewidth}
+    \input{figures/fig-comments-graph}
+    \caption{Example graph with an instance of a \tForum containing a \tMessage tree of depth 3 and its \tPerson members. Lifespan attributes (\emph{creation} and \emph{deletion dates}) are shown for each dynamic entity. Edges in grey get their lifespan attributes as per \autoref{fig:schema} and \autoref{sec:hasModerator}.}
+    \label{fig:comments-graph}
+  \end{subfigure}
+  %
+  \begin{subfigure}{\linewidth}
+    \centering
+    \footnotesize
+    \begin{tikzpicture}[node distance=2cm,thick,scale=0.78,every node/.style={transform shape}]
+      % timeline
+      \draw [thick,->,>=stealth] node [above,black] {} (-1,0/1.8) -- (13,0/1.8);
+      \draw [grey,thin] (-0.5,0/1.8) node [above,black] {$\xSS$} -- (-0.5,-22/1.8);
+      \draw [grey,thin] (12.5,0/1.8) node [above,black] {$\xNC$} -- (12.5,-22/1.8);
+      \draw [grey,thin] (11.8,0/1.8) node [above,black] {$\xSE$} -- (11.8,-22/1.8);
+
+      % P_1
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(0.5,-1/1.8)} node [left] {$\instance{P_1}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(12,-1/1.8)};
+      \shadedBox(0.5,-1/1.8,1/1.8);
+
+      % forum^c_{g,1}
+      \draw[thin,grey,<->] plot coordinates {(0.8,-2/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{F}{1}$}} node [align=right,xshift=-3.5cm,text width=4cm] {{\textcolor{green}{$\instc{P}{1} + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(1,-2/1.8)}
+      -- plot coordinates {(11.8,-2/1.8)} node [xshift=3.0cm,text width=4cm] {{\textcolor{red}{$\min(\instd{P}{1},\xSE)$}}};
+      \shadedBox(1,-2/1.8,1/1.8);
+
+      % forum^d_{g,1}
+      \draw[thin,grey,<->] plot coordinates {(1.3,-3/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{F}{1}$}} node [align=right,xshift=-4cm,text width=4cm] {{\textcolor{green}{$\instc{F}{1} + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(11,-3/1.8)}
+      -- plot coordinates {(12.5,-3/1.8)} node [xshift=2.3cm,text width=4cm] {{\textcolor{red}{$\xNC$}}};
+      \draw [grey,thin,dashed] (1,-3/1.8) -- (1,-4/1.8);
+      \draw [grey,thin,dashed] (11,-3/1.8) -- (11,-4/1.8);
+
+      % F_{g,1}
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(1,-4/1.8)}  node [left] {$\instance{F_{1}}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(11,-4/1.8)};
+      \draw [thin,dashed,grey]   (1.0,-4/1.8) -- (1,-5/1.8);
+
+      \draw [thin,dashed,gray] (2.5,-4/1.8) -- (2.5,-9/1.8);
+      \draw [thin,dashed,gray] (10.5,-4/1.8) -- (10.5,-11/1.8);
+      \draw [thin,dashed,gray]   (11.0,-4/1.8) -- (11,-7/1.8);
+
+      % P_2
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(0.2,-5/1.8)}  node [left] {$\instance{P_2}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(11.25,-5/1.8)};
+      \shadedBox(1,-5/1.8,1/1.8)
+
+      % hasMember^c_{g,2}
+      \draw[thin,grey,<->] plot coordinates {(1.3,-6/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{HM}{2}$}} node [align=right,xshift=-4cm,text width=4cm] {{\textcolor{green}{{$\max ( \instc{F}{1}, \instc{P}{2}) + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(1.7,-6/1.8)}
+      -- plot coordinates {(11,-6/1.8)} node [xshift=3.8cm,text width=4cm] {{\textcolor{red}{$\min(\instd{F}{1},\instd{P}{2},\xSE)$}}};
+      \shadedBox(1.7,-6/1.8,1/1.8);
+
+      % hasMember^d_{g,2}
+      \draw[thin,grey,<->] plot coordinates {(2,-7/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{HM}{2}$}} node [align=right,xshift=-4.7cm,text width=4cm] {{\textcolor{green}{$\instc{HM}{2} + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(10.7,-7/1.8)}
+      -- plot coordinates {(11,-7/1.8)} node [xshift=3.8cm,text width=4cm] {{\textcolor{red}{$\min(\instd{F}{1}, \instd{P}{2})$}}};
+      \draw [grey,thin,dashed] (1.7,-7/1.8) -- (1.7,-8/1.8);
+      \draw [grey,thin,dashed] (10.7,-7/1.8) -- (10.7,-8/1.8);
+
+      % HM_{g,2}
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(1.7,-8/1.8)}  node [left] {$\instance{HM_{2}}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(10.7,-8/1.8)};
+
+      % P_3
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(2.5,-9/1.8)}  node [left] {$\instance{P_3}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(10.5,-9/1.8)};
+      \shadedBox(2.5,-9/1.8,1/1.8);
+
+      % hasMember^c_{g,3}
+      \draw[thin,grey,<->] plot coordinates {(2.8,-10/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{HM}{3}$}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(3.5,-10/1.8)} node [align=right,xshift=-6.2cm,text width=4cm] {{\textcolor{green}{{$\max ( \instc{F}{1}, \instc{P}{3}) + \Delta$}}}}
+      -- plot coordinates {(10.5,-10/1.8)} node [xshift=4.3cm,text width=4cm] {{\textcolor{red}{$\min(\instd{F}{1}, \instd{P}{3}, \xSE)$}}};
+      \shadedBox(3.5,-10/1.8,1/1.8);
+
+      % hasMember^d_{g,3}
+      \draw[thin,grey,<->] plot coordinates {(3.8,-11/1.8)} node [left,xshift=-0.2cm,black] {\textcolor{grey}{$\instd{HM}{3}$}} node [align=right,xshift=-6.5cm,text width=4cm] {{\textcolor{green}{$\instc{HM}{3} + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(10,-11/1.8)}
+      -- plot coordinates {(10.5,-11/1.8)} node [xshift=4.3cm,text width=4cm] {{\textcolor{red}{$\min(\instd{F}{1}, \instd{P}{3})$}}};
+      \draw [grey,thin,dashed] (3.5,-11/1.8) -- (3.5,-12/1.8);
+      \draw [grey,thin,dashed] (10,-11/1.8) -- (10,-12/1.8);
+
+      % HM_{g_3}
+
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(3.5,-12/1.8)}  node [left] {$\instance{HM_{3}}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(10,-12/1.8)};
+      \shadedBox(3.5,-12/1.8,1/1.8);
+      \draw [thin,dashed,grey] (10,-12/1.8)  -- (10,-14/1.8);
+
+      % post^c_{g,3}
+      \draw[thin,grey,<->] plot coordinates {(3.8,-13/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{Post}{1}$}} node [align=right,xshift=-6.5cm,text width=4cm] {{\textcolor{green}{{$\instc{HM}{3} + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(4,-13/1.8)}
+      -- plot coordinates {(10,-13/1.8)} node [xshift=4.8cm,text width=4cm] {{\textcolor{red}{$\min (\instd{HM}{3}, \xSE)$}}};
+      \shadedBox(4,-13/1.8,1/1.8);
+
+      % post^d_{g,3}
+      \draw[thin,grey,<->] plot coordinates {(4.3,-14/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{Post}{1}$}} node [align=right,xshift=-7cm,text width=4cm] {{\textcolor{green}{$\instc{Post}{1} + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(9.5,-14/1.8)}
+      %-- plot coordinates {(10,-14/1.8)} node [xshift=4.8cm,text width=4cm] {{\textcolor{red}{$\min (\instd{HM}{3})$}}}; %, \xNC
+      -- plot coordinates {(10,-14/1.8)} node [xshift=4.8cm,text width=4cm] {{\textcolor{red}{$\instd{HM}{3}$}}}; %, \xNC
+      \draw [grey,thin,dashed] (4,-14/1.8) -- (4,-15/1.8);
+      \draw [grey,thin,dashed] (9.5,-14/1.8) -- (9.5,-15/1.8);
+
+      % Post_{3}
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(4,-15/1.8)}  node [left] {$\instance{Post_1}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(9.5,-15/1.8)};
+      \draw [thin,dashed,grey] (5.3,-15/1.8)  -- (5.3,-16/1.8);
+
+      % comment^c_{g,1}
+      \draw[thin,grey,<->] plot coordinates {(4.3,-16/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{C}{1}$}} node [align=right,xshift=-7cm,text width=4cm] {{\textcolor{green}{{$\max (\instc{Post}{1}, \instc{HM}{1}) + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(4.8,-16/1.8)}
+      -- plot coordinates {(5.3,-16/1.8)} node [xshift=9.5cm,text width=4cm] {{\textcolor{red}{$\min (\instc{Post}{1} + \gamma\,\mathrm{d}, \instd{HM}{1}, \xSE)$}}};
+      \shadedBox(4,-15/1.8,1/1.8);
+
+      % comment^d_{g,1}
+      \draw[thin,grey,<->] plot coordinates {(5.1,-17/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{C}{1}$}} node [align=right,xshift=-7.8cm,text width=4cm] {{\textcolor{green}{{$\instc{Post}{1} + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(7.8,-17/1.8)}
+      -- plot coordinates {(9.5,-17/1.8)} node [xshift=5.3cm,text width=4cm] {{\textcolor{red}{$\min (\instd{Post}{1}, \instd{HM}{1})$}}}; %,\xNC
+      \draw [grey,thin,dashed] (4.8,-17/1.8) -- (4.8,-18/1.8);
+      \draw [grey,thin,dashed] (7.8,-17/1.8) -- (7.8,-18/1.8);
+
+      \shadedBox(4.8,-16/1.8,1/1.8);
+      \draw [thin,dashed,grey] (9.5,-15/1.8)  -- (9.5,-17/1.8);
+
+      % C_{1}
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(4.8,-18/1.8)}  node [left] {$\instance{C_1}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(7.8,-18/1.8)};
+
+      % comment^c_{g,2}
+      \draw[thin,grey,<->] plot coordinates {(5.1,-19/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{C}{2}$}} node[align=right,xshift=-7.8cm,text width=4cm] {{\textcolor{green}{{$\max (\instc{C}{1}, \instc{HM}{2}) + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(5.5,-19/1.8)}
+      -- plot coordinates {(6.1,-19/1.8)}  node [xshift=8.7cm,text width=4cm] {{\textcolor{red}{$\min (\instc{C}{1} + \gamma\,\mathrm{d}, \instd{HM}{2}, \xSE)$}}};
+
+      \shadedBox(4.8,-18/1.8,1/1.8);
+      \draw [thin,dashed,grey] (6.1,-18/1.8)  -- (6.1,-19/1.8);
+      \draw [thin,dashed,grey] (7.8,-18/1.8)  -- (7.8,-20/1.8);
+
+      % comment^d_{g,2}
+      \draw[thin,grey,<->] plot coordinates {(5.8,-20/1.8)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{C}{2}$}} node [align=right,xshift=-8.5cm,text width=4cm] {{\textcolor{green}{{$\instc{C}{1} + \Delta$}}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(6.5,-20/1.8)}
+      -- plot coordinates {(7.8,-20/1.8)} node [xshift=7cm,text width=4cm] {{\textcolor{red}{$\min (\instd{C}{1}, \instd{HM}{2})$}}}; %,\xNC
+      \shadedBox(5.5,-19/1.8,1/1.8);
+      \draw [grey,thin,dashed] (5.5,-20/1.8) -- (5.5,-21/1.8);
+      \draw [grey,thin,dashed] (6.5,-20/1.8) -- (6.5,-21/1.8);
+
+      % C_{2}
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(5.5,-21/1.8)}  node [left] {$\instance{C_2}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(6.5,-21/1.8)};
+
+    \end{tikzpicture}
+    \caption{Illustration of the intervals in which the \emph{creation} \textcolor{green}{$\bullet$} and \emph{deletion} \textcolor{red}{$\bullet$} dates of entities can be selected. Thick black lines represent entity lifespans and thin grey lines represent valid intervals that dates can be selected in; \textcolor{blue}{$\bullet$} indicates the selected times (spanning the lifespan interval of the given entity). On the thin grey lines, thicker sections represent the minimal amount of time that must pass before selecting a value. In case of creation dates, this is used to ensure that the dependant entity exists for at least $\Delta$ time. In case of deletion dates, it is used to ensure that the entity exists for at least $\Delta$ time.}
+    % the \CIRCLE is from package wasysym
+    \label{fig:comment-interval}
+  \end{subfigure}
+  %
+  \caption{Example graph and time intervals for selecting lifespan attributes, \emph{creation} and \emph{deletion dates}.}
+  \label{fig:example-graph-complex}
+\end{figure*}

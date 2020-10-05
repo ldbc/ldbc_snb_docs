@@ -1,3 +1,6 @@
+\chapter{Choke Points}
+\label{sec:choke-points}
+
 \newcommand{\tpcCard}[1]{\colorbox{lightgray}{\tt TPC-H #1}}
 \newcommand{\cpSection}[4][]{%
 	\subsection*{%
@@ -36,7 +39,7 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection[1.1]{1.2}{QEXE}{High Cardinality group-by performance}
+\cpSection[1.1]{1.2}{QEXE}{High cardinality group-by performance}
 
 This choke point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
 In such a case, if an aggregation produces a significant number of groups, intra query parallelization can be exploited as each thread may make its own partial aggregation.
@@ -58,7 +61,7 @@ Engines can exploit that once $k$ results are obtained, extra restrictions in a 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection[1.3]{1.4}{QEXE}{Low Cardinality group-by performance}
+\cpSection[1.3]{1.4}{QEXE}{Low cardinality group-by performance}
 
 This choke point tests the ability to efficiently perform group by evaluation
 when only a very limited set of groups is available.  This can require special
@@ -102,7 +105,7 @@ This choke point tests the ability of the query optimizer to select the proper j
 Depending on the cardinalities of both sides of a join, a hash or an index index based join operator is more appropriate.
 This is especially important with column stores, where one usually has an index on everything. Deciding to use a hash join requires a good estimation of cardinalities on both the probe and build sides.
 In TPC-H, the use of hash join is almost a foregone conclusion in many cases, since an implementation will usually not even define an index on foreign key columns.
-There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides
+There is a break even point between index and hash based plans, depending on the cardinality on the probe and build sides.
 
 \input{choke-points/cp-2-3}
 
@@ -155,7 +158,7 @@ The properties of the entity being identified may affect this, \eg type (label),
 
 This choke point tests the performance of indexes when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
-Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighborhood traversal is an example of an operation with random access without predictable locality.
+Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighbourhood traversal is an example of an operation with random access without predictable locality.
 
 \input{choke-points/cp-3-3}
 
@@ -278,7 +281,7 @@ shorter distances that were already computed.
 \cpSection{7.2}{QOPT}{Cardinality estimation of transitive paths}
 
 This choke point tests the ability of the query optimizer to properly estimate the cardinality of intermediate results when executing transitive paths. A transitive path may occur in a ``fact table'' or a ``dimension table'' position.
-A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy vs. graph neighborhood or transitive closure in a many-to-many connected social network.
+A transitive path may cover a tree or a graph, \eg descendants in a geographical hierarchy \vs graph neighbourhood or transitive closure in a many-to-many connected social network.
 In order to decide proper join order and type, the cardinality of the expansion of the transitive path needs to be correctly estimated.
 This could for example take the form of executing on a sample of the data in the
 cost model or of gathering special statistics, \eg the depth and fan-out of a tree. In the case of hierarchical dimensions,
@@ -320,7 +323,7 @@ This tests the ability of a system to express termination criteria for transitiv
 
 \cpSection{8.1}{LANG}{Complex patterns}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 A natural requirement for graph query systems is to be able to express complex
 graph patterns.
@@ -332,7 +335,7 @@ and without fixed bounds
 
 \paragraph{Negative edge conditions.} Some queries define \emph{negative pattern conditions}. For example, the condition that a certain \texttt{message} does not have a certain \texttt{tag} is represented in the graph as the absence of a \texttt{hasTag} edge between the two nodes. Thus, queries looking for cases where this condition is satisfied check for negative patterns, also known as negative application conditions (NACs) in graph transformation literature~\cite{DBLP:journals/fuin/HabelHT96}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 Negative edge conditions are often difficult to express in early stage graph query languages. Notably, this is showcased by the fact that early versions of both the SPARQL and Cypher languages used cumbersome syntax to express such conditions.
 
@@ -368,8 +371,6 @@ WHERE NOT (source)-[:someType]->(target)
 RETURN source
 \end{lstlisting}
 \end{minipage}
-
-\item[G-CORE.] TODO
 
 \item[SPARQL.]
 Prior to SPARQL 1.1, queries with negative edge conditions used the following syntax:
@@ -414,7 +415,7 @@ MINUS { xRoute ?routeDefinition ?xSensor } .
 
 \cpSection{8.2}{LANG}{Complex aggregations}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 BI workloads are heavy on aggregation, including queries with \emph{subsequent
 aggregations}, where the results of an aggregation serves as the input of
@@ -422,12 +423,10 @@ another aggregation. Expressing such operations requires some sort of query
 composition or chaining (see also CP-8.4). It is also common to \emph{filter on
 aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword of SQL).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher does not allow aggregations on aggregations, \eg \lstinline[language=cypher]{avg(count(x))}, as the semantics of such expressions is not meaningful. However, it allows multiple aggregations is subsequent \lstinline[language=cypher]{WITH} and  \lstinline[language=cypher]{RETURN} clauses. There were multiple discussion rounds on the aggregation semantics of the openCypher language.\footnote{\url{http://www.opencypher.org/blog/2017/07/27/ocig1-aggregations-blog/}}
-
-\item[G-CORE.] TODO
 
 \item[SPARQL.] SPARQL requires users to explicitly enumerate variables in the \lstinline[language=sql]{GROUP BY} clause (similarly to SQL).
 \end{description}
@@ -438,7 +437,7 @@ aggregation results} (similarly to the \lstinline[language=sql]{HAVING} keyword 
 
 \cpSection{8.3}{LANG}{Ranking-style queries}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Additionally to aggregations, BI workloads often use \emph{window functions},
 which perform aggregations without grouping input tuples to a single output
@@ -450,11 +449,11 @@ keyword to use aggregation functions as window functions, and the
 \url{https://www.postgresql.org/docs/9.1/static/tutorial-window.html} for
 details.}
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.]
-Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-$k$ values of the result list.
+Ranking can be expressed in Cypher as a sequence of ordering, collecting results and taking the top-$k$ values of the result list.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=cypher]
@@ -467,9 +466,10 @@ WITH xs[0] AS top, xs[0..5] AS top5
 \end{lstlisting}
 \end{minipage}
 
-\item[G-CORE.] TODO
+\item[SPARQL.] SPARQL~1.0 allows simple top-$k$ queries. SPARQL~1.1 introduced scoring functions that can be define a variable to be used for ordering~\cite{DBLP:conf/semweb/MagliacaneBV12}.
+\emph{Window functions} are not yet supported but are under consideration for SPARQL~1.2\footnote{\url{https://github.com/w3c/sparql-12/issues/47}}.
 
-\item[SPARQL.] TODO
+%Simple top-k queries can be expressed in SPARQL 1.0 by including the ORDER BY and LIMIT clauses, which impose an order on the result set and limit the number of results. SPARQL 1.1 additionally enables the specification of complex scoring functions through the use of projection expressions that can define a variable to be used in the ORDER BY clause.
 \end{description}
 
 \input{choke-points/cp-8-3}
@@ -478,18 +478,17 @@ WITH xs[0] AS top, xs[0..5] AS top5
 
 \cpSection{8.4}{LANG}{Query composition}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Numerous use cases require \emph{composition} of queries, including the reuse of
 query results (\eg nodes, edges) or using scalar subqueries (\eg selecting a
 threshold value with a subquery and using it for subsequent filtering
 operations).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Nested subqueries were accepted in the openCypher language.\footnote{\url{https://github.com/petraselmer/openCypher/blob/1ca70bf8e3cea65ee47ce49eeabea83530eb529b/cip/1.accepted/CIP2016-06-22-nested-updating-and-chained-subqueries.adoc}}
-\item[G-CORE.] TODO
 \item[SPARQL.] SPARQL fully supports query composition.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#subqueries}}
 \end{description}
 
@@ -499,18 +498,16 @@ operations).
 
 \cpSection{8.5}{LANG}{Dates and times}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 Handling dates and times is a fundamental requirement for production-ready
 database systems. It is particularly important in the context of BI queries as
 these often calculate aggregations on certain periods of time (\eg on a month).
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] The openCypher project has accepted a proposal to support dates and times.\footnote{\url{https://github.com/thobe/openCypher/blob/06accdb3e69820cdfac3dbd50a4f8eee73ba179a/cip/1.accepted/CIP2015-08-06-date-time.adoc}}
-
-\item[G-CORE.] TODO
 
 \item[SPARQL.] SPARQL supports dates and times extensively with timezones and functions for extracting a part of a given date.\footnote{\url{https://www.w3.org/TR/sparql11-query/\#func-date-time}}
 \end{description}
@@ -521,7 +518,7 @@ these often calculate aggregations on certain periods of time (\eg on a month).
 
 \cpSection{8.6}{LANG}{Handling paths}
 
-\subsubsection{Description}
+\paragraph{Description}
 
 \paragraph{Note on terminology.} The \emph{Glossary of graph theory terms} page of Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms}} defines \emph{paths} as follows: ``A path may either be a walk (a sequence of nodes and edges, with both endpoints of an edge appearing adjacent to it in the sequence) or a simple path (a walk with no repetitions of nodes or edges), depending on the source.''
 In this work, we use the first definition, which is more common in modern graph database systems and is also followed in a recent survey on graph query languages~\cite{DBLP:journals/csur/AnglesABHRV17}.
@@ -538,16 +535,16 @@ Also, some use cases specify uniqueness constraints on paths~\cite{DBLP:journals
 \emph{no-repeated-edge semantics} (also known as \emph{trails}).
 Other variants are also used in rare cases, such as \emph{maximal} (non-expandable) or \emph{minimal} (non-contractable) paths, and \emph{longest trails} and \emph{longest simple paths}.
 
-\subsubsection{Language-specific notes}
+\paragraph{Language-specific notes}
 
 \begin{description}
 \item[Cypher.] Cypher uses \emph{no-repeated-edge matching semantics} (in return, this semantics is sometimes dubbed as \emph{cyphermorphism}).
 Configurable matching semantics (\eg \lstinline[language=cypher]{MATCH ALL WALKS}) were proposed in the openCypher language.\footnote{\url{https://github.com/boggle/openCypher/blob/c139130b49aebe6a85fc395e2cf03cfeec8484c6/cip/1.accepted/CIP2017-01-18-configurable-pattern-matching-semantics.adoc}}
 Regular path queries (RPQs) are also proposed in the openCypher language as \emph{path patterns}.\footnote{\url{https://github.com/thobe/openCypher/blob/b95eec108ce4ec07eedfe13b3e5fff0e94f789a4/cip/1.accepted/CIP2017-02-06-Path-Patterns.adoc}}
 
-\item[G-CORE.] The \mbox{G-CORE} language~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
-
 \item[SPARQL.] SPARQL uses \emph{homomorphism-based matching semantics} and supports RPQs as \emph{property paths}. Isomorphism-based matching semantics can be expressed by introducing custom filtering condition, \eg \lstinline[language=sparql]{FILTER ( ?e1 != ?e2 )}.
+
+\item[G-CORE.] The \mbox{G-CORE} language~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} treats paths as \emph{first-order citizens}: its \emph{path property graph data model} can store paths in the graph model with labels and properties. However, it only supports shortest path semantics (for tractability reasons) and does not allow enumeration of all paths. \mbox{G-CORE} uses \emph{homomorphism-based matching semantics}.
 \end{description}
 
 \input{choke-points/cp-8-6}

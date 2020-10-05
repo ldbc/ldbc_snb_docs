@@ -1,43 +1,46 @@
 workload: BI
 operation: read
 number: 16
-title: Experts in social circle
+title: Fake news detection
 description: |
-  Given a *Person*, find all other *Persons* that live in a given *Country* and are connected to given *Person* by a transitive trail with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
+  Given two *Tag*/date pairs (`tagA`/`dateA` and `tagB`/`dateB`), for each pair `tagX`/`dateX`:
 
-  In the trail, an edge can be only traversed once while nodes can be traversed multiple times (as opposed to a path which allows repetitions of both nodes and edges).
-
-  For each of these *Persons*, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given *TagClass* (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
-
-  Group the results by *Persons* and *Tags*, then count the *Messages* by a certain *Person* having a certain *Tag*.
-
-  (Note: it is not yet decided whether a *Person* connected to the start *Person* on a trail with a length smaller than `minPathDistance`, but also on a trail with the length in `[minPathDistance, maxPathDistance]` should be included. The current reference implementations allow such *Persons*, but this might be subject to change in the future.)
+  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on `dateX` with *Tag* `tagX`.
+  * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (in the induced subgraph).
+  * For these *Persons*, count the number of *Messages* created on `dateX` with *Tag* `tagX`.
+  
+  Return *Persons* who had at least one messages for both `tagA`/`dateA` and `tagB`/`dateB` ranked by their total number of messages (descending).
 parameters:
-  - name: personId
-    type: 64-bit Integer
-  - name: country
-    type: String
-  - name: tagClass
-    type: String
-  - name: minPathDistance
-    type: 32-bit Integer
-  - name: maxPathDistance
+  - name: tagA
+    type: Long String
+  - name: dateA
+    type: Date
+  - name: tagB
+    type: Long String
+  - name: dateB
+    type: Date
+  - name: maxKnowsLimit
     type: 32-bit Integer
 result:
   - name: person.id
-    type: 64-bit Integer
-  - name: tag.name
-    type: String
-  - name: messageCount
+    type: ID
+  - name: messageCountA
     type: 32-bit Integer
     category: aggregated
-    description: Number of *Messages* created by that *Person* containing that *Tag*
+    description: "message count for `tagA`/`dateA`"
+  - name: messageCountB
+    type: 32-bit Integer
+    category: aggregated
+    description: "message count for `tagB`/`dateB`"
 sort:
-  - name: messageCount
+  - name: messageCountA + messageCountB
     direction: desc
-  - name: tag.name
-    direction: asc
   - name: person.id
     direction: asc
-limit: 100
-choke_points: [1.2, 1.3, 2.3, 2.4, 3.3, 7.1, 7.2, 7.3, 8.1, 8.6]
+limit: 20
+choke_points: [1.1] #todo
+relevance: |
+  There are two major ways to compute this query:
+  (1) create the induced subgraph as suggested by the specification (either as a view or in materialized form), or
+  (2) skip creating the induced subgraph and perform on-the-fly check for the number of friends (who also posted at least one *Message* with the given *Tag* on the given date).
+  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations (the query engine will might repeatedly check whether a *Person* has at least one *Message* that satifies the conditions).

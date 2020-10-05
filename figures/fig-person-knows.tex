@@ -1,0 +1,77 @@
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{\linewidth}
+    \tikzstyle{vertex} = [circle, minimum width=45pt,draw,inner sep=2pt]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+      \node (v1) [vertex,xshift=0cm,yshift=0cm,fill=Person] {\small{$\instance{P_1}:\type{Person}$}};
+      \node (v2) [vertex,xshift=5cm,yshift=0cm,fill=Person] {\small{$\instance{P_2}:\type{Person}$}};
+      \node [below of=v1,yshift=1cm] {\tiny{\texttt{$\instc{P}{1}$: Feb 22 2010}}};
+      \node [below of=v1,yshift=0.7cm] {\tiny{\texttt{$\instd{P}{1}$: Jul 26 2014}}};
+      \node [below of=v2,yshift=1cm] {\tiny{\texttt{$\instc{P}{2}$: Mar 07 2010}}};
+      \node [below of=v2,yshift=0.7cm] {\tiny{\texttt{$\instd{P}{2}$: Oct 17 2012}}};
+      \draw[thick,->,>=stealth] (v1) --
+      node [midway,above] {\small{$\instance{knows_{1,2}} : \type{Knows}$}}
+      node [midway,below,align=right,text width=2.5cm] {\tiny{\texttt{$\instc{knows}{1,2}$: Dec 01 2011}}}
+      node [midway,below,yshift=-0.3cm,align=right,text width=2.5cm] {\tiny{\texttt{$\instd{knows}{1,2}$: Jun 05 2012}}} (v2);
+    \end{tikzpicture}
+    \caption{An instance of a \tKnows edge connecting two \tPerson nodes. \emph{Creation} and \emph{deletion} dates are shown for each entity.}
+    \label{fig:person-knows-graph}
+    \end{subfigure}
+  %
+    \begin{subfigure}{\linewidth}
+    \footnotesize
+    \centering
+    \begin{tikzpicture}[node distance=2cm,thick,every node/.style={transform shape}]
+      %\tikzset{grid/.style={grey,very thin,opacity=1}} \draw[grid] (-3,0/1.5) grid (9,-6/1.5);
+
+      \draw [thick,->,>=stealth] node [above,black] {} (-1,0/1.5) -- (6,0/1.5); % timeline
+      \draw [grey,thin] (-0.5,0/1.5) node [above,black] {$\xSS$} -- (-0.5,-6/1.5);
+      \draw [grey,thin]  (5.5,0/1.5) node [above,black] {$\xNC$} -- (5.5,-6/1.5);
+      \draw [grey,thin]  (4.5,0/1.5) node [above,black] {$\xSE$} -- (4.5,-6/1.5);
+
+      %P_1
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(0.5,-1/1.5)} node [left] {$\instance{P_1}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(5.0,-1/1.5)};
+
+      %P_2
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(1,-2/1.5)}  node [left] {$\instance{P_2}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(4.0,-2/1.5)};
+
+      % knows-c
+      \draw[thin,grey,<->] plot coordinates {(1.3,-3/1.5)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instc{knows}{1,2}$}} node [align=right,xshift=-3.2cm,text width=2.55cm] {{\textcolor{green}{$\max(\instc{P}{1}, \instc{P}{2}) + \Delta$}}}
+      -- plot[mark=*,mark size=2pt,mark options={color=blue}] coordinates {(2.5,-3/1.5)}
+      -- plot coordinates {(4.0,-3/1.5)} node [xshift=3cm,text width=2.5cm] {{\textcolor{red}{$\min(\instd{P}{1}, \instd{P}{2}, \xSE)$}}};
+
+     \draw [grey,thin,dashed] (4.0,-2/1.5) -- (4.0,-3/1.5);
+     \shadedBox(1,-2/1.5,1/1.5);
+
+
+     % knows-d
+     \draw[thin,grey,<->] plot coordinates {(2.8,-4/1.5)} node [left,black,xshift=-0.2cm] {\textcolor{grey}{$\instd{knows}{1,2}$}} node [align=right,xshift=-4.7cm,text width=2.55cm] {{\textcolor{green}{$\instc{knows}{1,2} + \Delta$}}}
+     -- plot[mark=*,mark options={color=blue}] coordinates {(3.5,-4/1.5)}
+     -- plot coordinates {(4.0,-4/1.5)} node [xshift=3cm,text width=2.5cm] {{\textcolor{red}{$\min (\instd{P}{1},  \instd{P}{2})$}}}; %, \xNC
+
+     \draw [grey,thin,dashed] (4.0,-3/1.5) -- (4.0,-4/1.5);
+     \shadedBox(2.5,-3/1.5,1/1.5);
+
+     % knows
+      \draw[mark=*,mark size=2pt,mark options={color=green}] plot coordinates {(2.5,-5/1.5)}  node [left] {$\instance{knows_{1,2}}$}
+      -- plot[mark=*,mark size=2pt,mark options={color=red}] coordinates {(3.5,-5/1.5)};
+     \draw [thin,dashed,grey] (2.5,-4/1.5) -- (2.5,-5/1.5);
+     \draw [thin,dashed,grey] (3.5,-4/1.5) -- (3.5,-5/1.5);
+
+    \end{tikzpicture}
+    \caption{
+      Illustration of the intervals in which the \emph{creation} \textcolor{green}{$\bullet$} and \emph{deletion} \textcolor{red}{$\bullet$} dates can be selected.
+      Thick black lines represent entity lifespans and thin grey lines represent valid intervals that dates can be selected in; \textcolor{blue}{$\bullet$} indicates the selected times (spanning the lifespan interval of the given entity).
+      On the thin grey lines, thicker sections represent the minimal amount of time that must pass before selecting a value.
+      In case of creation dates, this is used to ensure that the dependant entity exists for at least $\Delta$ time.
+      In case of deletion dates, it is used to ensure that the entity exists for at least $\Delta$ time.
+    }
+    \label{fig:person-knows}
+  \end{subfigure}
+
+  \caption{Example graph and its intervals.}
+  \label{fig:example-graph}
+\end{figure}

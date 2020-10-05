@@ -1,41 +1,30 @@
 workload: BI
 operation: read
 number: 18
-title: How many persons have a given number of messages
+title: Friend recommendation
 description: |
-  For each *Person*, count the number of *Messages* they made (`messageCount`). Only count *Messages* with the following attributes:
+  For a given *Person* (`person1`) and a *Tag* (`tag`), recommend new friends (`person2`) who
 
-  * Its `content` is not empty (and consequently, `imageFile` empty for *Posts*).
-  * Its `length` is below the `lengthThreshold` (exclusive, equality is not allowed).
-  * Its `creationDate` is after `date` (exclusive, equality is not allowed).
-  * It is written in any of the given `languages`.
+  * do not yet know `person1`
+  * have many mutual friends with `person1`
+  * are interested in `tag`.
 
-      * The language of a *Post* is defined by its `language` attribute.
-      * The language of a *Comment* is that of the *Post* that initiates the thread where the *Comment* replies to.
-
-      The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length` and `creationDate`.
-
-
-  For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
+  Rank *Persons* `person2` based on the number of mutual friends.
 parameters:
-  - name: date
-    type: Date
-  - name: lengthThreshold
-    type: 32-bit Integer
-  - name: languages
-    type: String[]
+  - name: person1Id
+    type: ID
+  - name: tag
+    type: Long String
 result:
-  - name: messageCount
+  - name: person2.id
+    type: ID
+  - name: mutualFriendCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of *Messages* created
-  - name: personCount
-    type: 32-bit Integer
-    category: aggregated
-    description: Number of *Persons* with `messageCount` messages
 sort:
-  - name: personCount
+  - name: mutualFriendCount
     direction: desc
-  - name: messageCount
-    direction: desc
-choke_points: [1.1, 1.2, 1.4, 3.2, 4.2, 4.3, 8.1, 8.2, 8.3, 8.4, 8.5]
+  - name: person2.id
+    direction: asc
+limit: 20
+choke_points: [1.1] #todo

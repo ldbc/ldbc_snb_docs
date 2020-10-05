@@ -16,7 +16,7 @@ result:
     type: ID
     description: "`commentId`"
   - name: Message<-replyOf-Comment.content
-    type: String
+    type: Text
     description: "`commentContent`"
   - name: Message<-replyOf-Comment.creationDate
     type: DateTime

@@ -1,86 +1,51 @@
 \chapter*{Definitions}
 
-%{\flushleft \textbf{ACID}}: The transactional properties of Atomicity,
-%Consistency, Isolation and Durability.
-%
-%
-%{\flushleft \textbf{Commit:}} a control operation that:
-%        \begin{itemize}
-%            \item Is initiated by a unit of work (a Transaction) 
-%            \item Is implemented by the DBMS 
-%            \item Signifies that the unit of work has completed successfully
-%and all tentatively modified data are to persist (until modified by some other
-%operation or unit of work)   Upon successful completion of this control
-%operation both the Transaction and the data are said to be Committed. 
-%        \end{itemize}
-%
-%
-%{\flushleft \textbf{DBMS:}} A Data Base Management System is a collection
-%of programs that enable you to store, modify, and extract information from a
-%database.
-%
-%
-%
-%{\flushleft \textbf{Durability:}} In general, state that persists
-%across failures is said to be Durable and an implementation that ensures state
-%persists across failures is said to provide Durability. In the context of the
-%benchmark, Durability is more tightly defined as the SUT‘s ability to ensure
-%all Committed data persist across any Single Point of Failure.
-%
-%{\flushleft \textbf{Measurement Window:}} This is the time window when the
-%benchmark records statistics. It must fulfill the requirements defined in 
-%\alert{Section XX}.
-%
-%{\flushleft \textbf{Performance Metric:}} The \ldbcsnb Reported Throughput as
-%expressed in tps. This is known as the Performance Metric.
-%
-%{\flushleft \textbf{Price/Performance Metric:}} The \ldbcsnb total 3-year
-%pricing divided by the Reported Throughput is price/tpsE. This is also known as
-%the Price/Performance Metric.
+This section defines fundamental concepts used in the LDBC benchmark terminology. Part of the definitions below are repeated from the LDBC benchmark specification document.
 
+\begin{description}
+    \item[\ldbcsnb] The Linked Data Benchmark Council's Social Network Benchmark suite which currently consists of the Interactive workload (SNB-I) and a preliminary version of the Business Intelligence workload (SNB-BI).
+    
+    \item[System Under Test (SUT)] This is the totality of the hardware and software that participates in a benchmark run, excluding parts that are exclusively used for driving the workload. If the parts driving the workload are collocated on the same operating system instance as the SUT, then this is also considered a part of the SUT. In client-server configurations where the test driver is not on a machine hosting any DBMS function the SUT is not considered to encompass the hardware or software which exclusively serves to drive the test workload.
+    
+    \item[\datagen] This module is provided by LDBC SNB and produces the standard benchmark datasets to be loaded into the SUT for the benchmark. The data generation phase is not part of running the benchmark.
+ 
+    \item[Test Driver (Benchmark Driver, Driver)] The test driver refers to the parts of the benchmark run that coordinate query execution and, if prescribed by a given benchmark, data loading.
+    
+    \item[Workload (Benchmark)] This is the totality of the tasks a particular benchmark performs against an SUT. This includes data loading as well as the query/update workload. This does not include preparatory stages such as generating benchmark data with a data generator or transferring the data to the platform constituting the SUT. 
+    The terms workload and benchmark are synonyms in this context. 
 
-{\flushleft \textbf{\datagen:}} Is the data generator provided by the \ldbcsnb, which
-is responsible for generating the data needed to run the benchmark.
+    \item[Time Compression Ratio (TCR)]
+    This parameter compresses (or stretches) durations between operation start times to increase (or decrease) operation rate, thereby allowing systems to reach their maximum throughput for a given workload. The smaller this number is, the higher compression ratio it represents (\eg 2.0 means run benchmark 2x slower, while 0.1 = run benchmark 10x faster). Systems are expected to compete on achieving high $\text{TCR}^{-1}=\frac{1}{\text{TCR}}$.
+    
+    \item[Query mix] The ratio of read and update queries of a workload, and the frequency at which they are issued.
+    
+    \item[Scale Factor (SF)] The \ldbcsnb is designed to target systems of different size and scale. The scale factor determines the size of the data used to run the benchmark. The scale factor refers to the measured size of the data in Gigabytes when serialised in CsvBasic.
 
-{\flushleft \textbf{DBMS:}} A DataBase Management System. 
+    \item[Validation Step] The benchmark specifies a scale factor for which ACID test cases are executed and the query results are compared to a reference result set (i.e. expected output). This step is required to use the very same set of queries and data structures (this includes both PDS, IADS and EADS -- defined below) that are used in the actual benchmark runs. 
+    
+    \item[Schema (Database Schema)] A schema is the totality of the non-built-in declarations which are fed into the SUT prior to running a workload. For a relational system, the schema consists of tables, indices, views, materialised views and declarative constraints (\eg foreign key and not null constraints). An ontology for an RDF system counts as a schema if it is loaded on the SUT. An RDF SUT may have no schema at all and still run the workload. However, any declaration or setting (\eg indices) that is not on by default in the SUT, but is used in at least one case of the benchmark run counts as part of the schema.
+    The schema does not include stored procedures, triggers, or other imperative (procedural) application specific code that may reside on the SUT and could impact the benchmark results. The schema is required to be the same across all benchmark runs using the same scale factor for a given workload.
 
-{\flushleft \textbf{\ldbcsnb:}} Linked Data Benchmark Council Social Network Benchmark. 
+    \item[Primary Data Structure (PDS)] 
+    This is anything that may influence the result of a database query or may be changed by an update of the database. These may be resident in RAM or durable media or both. Examples of data structures are database base tables and adjacency lists.
 
-{\flushleft \textbf{Query Mix:}} Refers to the ratio between read and update queries
-of a workload, and the frequency at which they are issued.
+    \item[Implicit Auxiliary Data Structure (IADS)] This is a data structure for providing more efficient access to all or parts of the primary data structure. IADS are created by the DBMS automatically and the system may allow them to be turned off. 
+    \begin{quote}
+        Some systems, such as many RDF stores have multiple covering indices on the primary data structure. The definition in this case is that the primary data structure consists of all the differently ordered full copies of the base table; a table of subject predicate object graph (SPOG) in the RDF case. In this same instance, Auxiliary data structures comprise any data structure which materialise a subset of the SPOG.    
+    \end{quote}
+    
+    \item[Explicit Auxiliary Data Structure (EADS)] These are any application or workload profile specific structures that are declared in addition to the PDSs and IADSs managed by the SUT. These duplicate the data and are created with explicit statements. Secondary indices, materialised views, with or without aggregates, are all examples of this in a relational context. 
+    %In an RDF context an EADS is a data structure which holds some of the triples/quads in whole or in part but does not hold some others. 
+    The decision about the used EADS is always part of the schema declaration.
+    \begin{quote}
+        In the case of relational systems, an ADS may be an index from primary key values to a heap table, if the system in question has such concepts. 
+        A secondary index of a relational table, in its memory based and durable media based manifestations is an example for EADS. Such a secondary index is not considered an ADS since it must be declared, which makes its creation explicit. An ADS must be implicit and not created by any specific DDL statement or directive. In the case of RDF systems, if the implementation supports user definable index schemes, as long as these are defined once and apply to all triples/quads, such structures are designated as ADS. If an RDF system selectively makes data structures which apply to some quads but not to others, then such structures are designated as EADS.
+    \end{quote}
 
-{\flushleft \textbf{SF (Scale Factor):}} The \ldbcsnb is designed to target systems of
-different size and scale. The scale factor determines the size of the data used
-to run the benchmark, measured in Gigabytes.
+    \item[SUT-Resident Logic] This is any application specific code that is resident on the SUT, whether by static linking, dynamic loading, JIT, interpretation or any other means of embedding application specific logic into a generic DBMS. Examples of this are stored procedures, hosting Java, CLR or other run times in the SUT process (or processes), loading application specific libraries to extend native functions or data structures etc. A special case is that of a database exclusively accessed via an in-process API. In these cases, any code that is not the test driver or a workload implementation expressed against a generally supported API of the DBMS is deemed SUT resident logic in addition to any other code which may fit the above definitions.
 
+    \item[Test Sponsor] The party which initiates an audit of a benchmark implementation over an SUT. This is typically the vendor of a key component of the SUT, \eg DBMS or hardware.
 
-{\flushleft \textbf{SUT:}} The System Under Test  is defined
-to be the database system where the benchmark is executed.
-
-
-{\flushleft \textbf{Test Driver:}}  A program provided by the \ldbcsnb, which
-is responsible for executing the different workloads and gathering the results.
-
-{\flushleft \textbf{Full Disclosure Report (FDR):}} The FDR is a document which allows reproduction of any benchmark result by a third party. This contains complete description of the SUT and the circumstances of the benchmark run, \eg configuration of SUT, dataset and test driver, \etc
-
-{\flushleft \textbf{Test Sponsor:}} The Test Sponsor is the company officially
-submitting the Result with the FDR and will be charged the filing fee. Although
-multiple companies may sponsor a Result together, for the purposes of the LDBC
-processes the Test Sponsor must be a single company. A Test Sponsor need not be
-a LDBC member. The Test Sponsor is responsible for maintaining the FDR with any
-necessary updates or corrections. The Test Sponsor is also the name used to
-identify the Result.
-
-%{\flushleft \textbf{Test Run:}} The entire period of time during which Drivers
-%submit and the SUT completes Transactions other than Trade-Cleanup.
-%
-%{\flushleft \textbf{Transaction:}}  A Database Transaction is an ACID unit of work.
-
-
-%{\flushleft \textbf{Valid Transaction:}} The term Valid Transaction refers to
-%any Transaction for which input data has been sent in full by the Driver, whose
-%processing has been successfully completed on the SUT and whose correct output
-%data has been received in full by the Driver.
-
-{\flushleft \textbf{Workload:}} A workload refers to a set of queries of a given nature
-(\ie interactive, analytical, business), how they are issued and at which rate.
+    \item[Full Disclosure Report (FDR)] This is a document which allows reproduction of any audited benchmark result by a third party. It contains complete description of the circumstances of the benchmark run, including version and configuration of SUT, dataset and test driver.
+    
+\end{description}
