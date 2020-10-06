@@ -101,7 +101,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 		\item Regular edges, \ie edges that must be present in the subgraph, are denoted with \uline{solid black lines}.
 		\item Negative edges, \ie edges that must not be present in the subgraph, are denoted with \textcolor{red}{\dashuline{dashed red lines}} and the \guillemotleft neg\guillemotright\ keyword.
 		\item Optional edges, \ie edges that may or may not be in the subgraph, are denoted with \dashuline{dashed black lines}, the \guillemotleft opt\guillemotright\ keyword, and a circle symbol $\circ$ at the optional end of the edge.
-		\item Edges without direction use not arrows and imply that there must be an edge in \emph{the least one of the (incoming, outgoing) directions}.
+		\item Edges without direction have no arrows. Their semantics is that there must be an edge in \emph{the least one of the (incoming, outgoing) directions}.
 	\end{itemize}
 
 	\begin{center}
@@ -153,7 +153,10 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \paragraph{Keywords.} The pattern notation uses a small set of keywords:
 
 \begin{itemize}
-	\item Aggregation operations: \lstinline{count}, \lstinline{avg}, \lstinline{sum}
+	\item Aggregation operations:
+	\lstinline{avg},
+	\lstinline{count}, 
+	\lstinline{sum}.
 	\item Functions:
 	\begin{itemize}
 		\item \lstinline{floor(x)}: returns $\lfloor x \rfloor$,

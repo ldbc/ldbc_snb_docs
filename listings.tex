@@ -28,14 +28,21 @@
 \lstdefinelanguage{cypher}
 {
 	morekeywords={
-		MATCH, OPTIONAL, WHERE, NOT, AND, OR, XOR, RETURN, DISTINCT, ORDER, BY, ASC, ASCENDING, DESC, DESCENDING, UNWIND, AS, UNION, WITH, ALL, CREATE, DELETE, DETACH, REMOVE, SET, MERGE, SET, SKIP, LIMIT, IN, IS, NULL,
+		MATCH, OPTIONAL, WHERE, NOT, AND, OR, XOR, RETURN, DISTINCT, ORDER, BY, ASC, ASCENDING, DESC, DESCENDING, UNWIND, AS, UNION, WITH, ALL, CREATE, DELETE, DETACH, REMOVE, SET, MERGE, SET, SKIP, LIMIT, IN, CALL, CASE, WHEN,
 		% some legacy rules
-		INDEX, DROP, UNIQUE, CONSTRAINT, EXPLAIN, PROFILE, START, CASE, WALKS, TRAILS, OPEN, CLOSED
+		INDEX, DROP, UNIQUE, CONSTRAINT, EXPLAIN, PROFILE, START, FOREACH, %THEN, ELSE, END,
+		% some SQL-only keywords
+		GROUP, HAVING,
+		% transaction-handling keywords
+		%COMMIT, BEGIN, ABORT,
+		% pseudocode
+		%IF,
 	},
 	sensitive=true,
 	morecomment=[l]{//},
 	morecomment=[s]{/*}{*/},
 	morestring=[b]{"},
+	literate=*{<<}{\guillemotleft{}}{1}{>>}{\guillemotright{}}{1},
 }
 
 \lstdefinelanguage{sparql}{

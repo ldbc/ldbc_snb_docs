@@ -173,7 +173,7 @@ Also detecting absence of locality should turn off any locality dependent optimi
 \cpSection[4.2a]{4.1}{QOPT}{Common subexpression elimination}
 
 This choke point tests the ability of the query optimizer to detect common sub-expressions and reuse their results. A basic technique helpful in multiple queries is common subexpression elimination (CSE).
-CSE should recognize also that AVERAGE aggregates can be derived afterwards by dividing a SUM by the COUNT when those have been computed.
+CSE should recognize also that \lstinline{avg} aggregates can be derived afterwards by dividing a \lstinline{sum} by the \lstinline{count} when those have been computed.
 
 \input{choke-points/cp-4-1}
 
