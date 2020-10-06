@@ -11,7 +11,6 @@
 \RequirePackage{ifthen}
 \RequirePackage{amssymb}
 \RequirePackage{longtable}
-\RequirePackage{helvet}
 \RequirePackage{tgtermes}
 \RequirePackage{relsize}
 \RequirePackage[T1]{fontenc}
