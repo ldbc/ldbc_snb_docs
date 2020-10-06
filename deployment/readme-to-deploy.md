@@ -3,6 +3,10 @@
 * Stable version: [[pdf](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/stable)]
 * Latest snapshot: [[pdf](https://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
 
+## Schema
+
+* Schema [[PDF](schema.pdf)] [[PNG](schema.png)]
+
 ## Queries per workload
 
 * [Interactive / complex reads](workload-interactive-complex-reads.pdf)

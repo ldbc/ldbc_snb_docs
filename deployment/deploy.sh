@@ -9,7 +9,8 @@ mkdir out
 # run our compile script, discussed above
 cp *.pdf out/
 cp standalone-query-cards/*.pdf out/
-cp figures/schema.pdf out/
+cp figures/schema-comfortable.pdf out/schema.pdf
+cp figures/schema-comfortable.png out/schema.png
 cp deployment/readme-to-deploy.md out/README.md
 
 # go to the out directory and create a *new* Git repo
