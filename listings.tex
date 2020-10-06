@@ -1,7 +1,7 @@
 \definecolor{lightgray}{RGB}{242,242,242}
 \definecolor{keywordcolor}{RGB}{0,0,160}
 \definecolor{commentcolor}{RGB}{0,128,64}
-
+\definecolor{instruction}{HTML}{107762}
 
 \lstset{
 %	numbers=left,
@@ -42,9 +42,12 @@
 	morecomment=[l]{//},
 	morecomment=[s]{/*}{*/},
 	morestring=[b]{"},
-	literate=*{<<}{\guillemotleft{}}{1}{>>}{\guillemotright{}}{1},
+	literate=*
+	  {<<}{\color{instruction}\guillemotleft{}}{1}
+	  {>>}{\textcolor{instruction}{\guillemotright{}}\color{black}}{1}
 }
 
 \lstdefinelanguage{sparql}{
 	morekeywords={SELECT, DISTINCT, WHERE, OPTIONAL, FILTER, NOT, EXISTS, MINUS, sameTerm, bound},
 }
+
