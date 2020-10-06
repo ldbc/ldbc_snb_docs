@@ -736,7 +736,7 @@ The substitution parameters are generated in the \texttt{substitution\_parameter
 Each parameter file is named \texttt{\{interactive|bi\}\_<id>\_param.txt}, corresponding to an operation of
 Interactive complex reads (\queryRefCard{interactive-complex-read-01}{IC}{1}--\queryRefCard{interactive-complex-read-14}{IC}{14}) and
 BI reads (\queryRefCard{bi-read-01}{BI}{1}--\queryRefCard{bi-read-20}{BI}{20}).
-The schemas of these files are defined by the operator, e.g. the schema of \queryRefCard{interactive-complex-read-01}{IC}{1} is ``\texttt{personId|firstName}''.
+The schemas of these files are defined by the operator, \eg the schema of \queryRefCard{interactive-complex-read-01}{IC}{1} is ``\texttt{personId|firstName}''.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -770,14 +770,14 @@ Supporting the generation of dynamic entities poses numerous challenges:
 \begin{enumerate}
 \item \textbf{Validity.} The generator should produce \emph{valid lifespans},
 where each generated dynamic entity guarantees that
-(a)~events in the graph follow a logical order: e.g. in a social network, two people can become friends only after both persons joined the network and before either person leaves the network,
+(a)~events in the graph follow a logical order: \eg in a social network, two people can become friends only after both persons joined the network and before either person leaves the network,
 (b)~the graph never violates the cardinality constraints prescribed by its schema, and
-(c)~the graph continuously satisfies the semantic constraints required by the application domain (e.g. no isolated comments in a social network).
+(c)~the graph continuously satisfies the semantic constraints required by the application domain (\eg no isolated comments in a social network).
 \item \textbf{Realism.} The generator should create a graph with a realistic correlations and distribution of entities over time.
 For example, in a social network the distribution of activity is non-uniform over time, real-world events such as elections or controversial posts %by celebrities
 can drive spikes of posts and unfollowings respectively~\cite{DBLP:conf/www/MyersL14}.
-In addition, deletions can be correlated with certain attributes: e.g. the likelihood a person leaves the network may be correlated with their number of friends~\cite{Lorincz2019}.
-Also, there are often temporal correlations between entity creation and deletion: e.g. posts have an increased chance of deletion immediately following creation compared to after a 3~month period.
+In addition, deletions can be correlated with certain attributes: \eg the likelihood a person leaves the network may be correlated with their number of friends~\cite{Lorincz2019}.
+Also, there are often temporal correlations between entity creation and deletion: \eg posts have an increased chance of deletion immediately following creation compared to after a 3~month period.
 \item \textbf{Scalability.} A graph with dynamic entities should be generated at scale (up to billions of edges).
 \end{enumerate}
 
@@ -791,7 +791,7 @@ Also, there are often temporal correlations between entity creation and deletion
 % where each generated deletion operation guarantees that
 % (a)~the entity targeted for deletion exists at the time of the execution of the operation (even when multiple deletion operations are executed concurrently),
 % (b)~the graph never violates the cardinality constraints prescribed by its schema, and
-% (c)~the graph continuously satisfies the semantic constraints required by the application domain (e.g. no isolated comments in a social network).
+% (c)~the graph continuously satisfies the semantic constraints required by the application domain (\eg no isolated comments in a social network).
 % Second, deletions should be generated at scale (up to billions of edges).
 % % our solution: building on top of LDBC Datagen -- this uses a Hadoop implementation, which 'scales'
 % Third, they should create a graph with a realistic distribution of entities over time.
@@ -831,14 +831,14 @@ The dynamic part of the graph comprises of a fully connected \tPerson graph and 
 
 \paragraph{Notation}
 To describe lifespans and related constraints, we use the following notation.
-Constants are uppercase bold, e.g. $\constant{NC}$.
-Entity types are monospaced, e.g. \tPerson, \tHasMember.
-Variables are lowercase italic, e.g. $\variable{pers}, \variable{hm}$.
-Entities are sans-serif, e.g. $\instance{P_1}, \instance{HM}$.
+Constants are uppercase bold, \eg $\constant{NC}$.
+Entity types are monospaced, \eg \tPerson, \tHasMember.
+Variables are lowercase italic, \eg $\variable{pers}, \variable{hm}$.
+Entities are sans-serif, \eg $\instance{P_1}, \instance{HM}$.
 For an entity $x$, $\varc{x}{}$ denotes its creation date, while $\vard{x}{}$ denotes its deletion date.
-In most cases, both the creation and the deletion date are selected from an interval, e.g. $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive). 
+In most cases, both the creation and the deletion date are selected from an interval, \eg $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive). 
 The selected creation and deletion dates together form an interval that represents the lifespan of its entity.
-If any of the intervals for selecting the lifespan attributes of an entity are empty, i.e. $d_2 \leq d_1$, the entity should be discarded.
+If any of the intervals for selecting the lifespan attributes of an entity are empty, \ie $d_2 \leq d_1$, the entity should be discarded.
 As illustrated later, this interval is often used to determine the intervals where the creation and deletion dates of dependant entities are selected.
 
 \paragraph{Parameters} % maybe comes later?
@@ -861,7 +861,7 @@ For a node $\varn{1}$, we always require that:
 \end{itemize}
 
 
-To enforce referential integrity constraints (i.e. prevent dangling edges), the lifespan of edge $\variable{e}$ between nodes $\varn{1}$ and $\varn{2}$ must always satisfy the following criteria:
+To enforce referential integrity constraints (\ie prevent dangling edges), the lifespan of edge $\variable{e}$ between nodes $\varn{1}$ and $\varn{2}$ must always satisfy the following criteria:
 
 \begin{itemize}
     \item $ \varc{e} \in \interval
@@ -875,7 +875,7 @@ To enforce referential integrity constraints (i.e. prevent dangling edges), the 
     \item $ \vard{e} \in \interval
         {\varc{e} + \Delta}
         {\min(\vardn{1}, \vardn{2})} $,
-        i.e. the edge must exist for at least $\Delta$ time and
+        \ie the edge must exist for at least $\Delta$ time and
         deleted no later than 
         any of its endpoints.
 \end{itemize}
@@ -905,7 +905,7 @@ To further refine the constraints for edges, we distinguish between two main cas
         {\min(\vardn{1}, \vardn{2})} $
 \end{itemize}
 
-These constraints capture the ``minimum'' (i.e. most relaxed) set of constraints that must be enforced in all domains.
+These constraints capture the ``minimum'' (\ie most relaxed) set of constraints that must be enforced in all domains.
 Next, we introduce additional constraints specific to our social network schema.
 
 \subsection{Person}

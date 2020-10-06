@@ -321,7 +321,7 @@ All parameters included in this section must be reported in the full disclosure 
 
 \subsection{Benchmark Specifics}
 
-Similarly to TPC benchmarks, the LDBC benchmarks prohibit so-called benchmark specials (i.e. extra software modules implemented in the core DBMS logic just to make a selected benchmark run faster are disallowed). Furthermore, upon request of the auditor, the test sponsor must provide all the source code relevant to the benchmark.
+Similarly to TPC benchmarks, the LDBC benchmarks prohibit so-called benchmark specials (\ie extra software modules implemented in the core DBMS logic just to make a selected benchmark run faster are disallowed). Furthermore, upon request of the auditor, the test sponsor must provide all the source code relevant to the benchmark.
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -407,7 +407,7 @@ A schema on the DBMS is optional. An RDF implementation for example may work wit
 An RDF, relational, or graph schema may specify system specific options affecting DBMS storage layout. These may for example specify vertical partitioning. Vertical partitioning means anything from a column store layout with per-column allocated storage space to use of explicit column groups. Any mix of row or column-wise storage structures is allowed as long as this is declaratively specified on a per data structure-basis.
 
 \paragraph{Auxiliary data structures}
-Covering indices and clustered indices are allowed. If these are defined, then all replications of data implied by these must be maintained statement by statement, i.e. each auxiliary data structure must be consistent with any other data structures of the table after each data manipulation operation.
+Covering indices and clustered indices are allowed. If these are defined, then all replications of data implied by these must be maintained statement by statement, \ie each auxiliary data structure must be consistent with any other data structures of the table after each data manipulation operation.
 
 A covering index is an index which materialises a specific order of a specific subset or possibly all columns of a table. 
 A clustered index is an index which materialises all columns of a table in a specific order, which order may or may not be that of the primary key of the table. A clustered or covering index may be the primary or only representation of a table.
@@ -416,7 +416,7 @@ Any subset of the columns on a covering or clustered index may be used for order
 
 \subsection{Precomputation}
 
-Precomputation of query results (both interim and end results) is allowed. However, systems must ensure that precomputed results (e.g. materialized views) are kept consistent upon updates.
+Precomputation of query results (both interim and end results) is allowed. However, systems must ensure that precomputed results (\eg materialized views) are kept consistent upon updates.
 
 \subsection{Benchmark Software Components}
 \label{sec:snb-software-components}

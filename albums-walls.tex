@@ -91,7 +91,7 @@ In a \tForum the set of \tMessage nodes form a \emph{tree} with a \tPost node at
 A \tPost can be created by a \tPerson in a \tForum.
 %is the creation date of the \tHasMember edge between
 %$\varc{\eHasMember}$ 
-Only the moderator (i.e. owner) can post on a Wall or in an Album (\tHasModerator),
+Only the moderator (\ie owner) can post on a Wall or in an Album (\tHasModerator),
 whereas all members including the moderator (\tHasMember/\tHasModerator) can post in a Group.
 These relationships are captured with the $\eHasMember$ variable in the formulas.
 \tPosts are divided in three categories, \emph{regular posts}, \emph{photos}, and \emph{flashmob posts}.
@@ -147,7 +147,7 @@ $\gamma$~days of their parent message. % following a power-law distribution with
 
 \paragraph{replyOf edge}
 
-\tComments always have an outgoing \tReplyOf edge with containment semantics, i.e. the target \tMessage contains the \tComment. These edges get the same lifespan as their source \tComment.
+\tComments always have an outgoing \tReplyOf edge with containment semantics, \ie the target \tMessage contains the \tComment. These edges get the same lifespan as their source \tComment.
 
 \subsubsection{likes}
 \label{sec:likes}
