@@ -508,7 +508,7 @@ exploited by \datagen to reproduce correlations.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=\patternscale]{figures/datagen-workflow}
+    \includegraphics[scale=\yedscale]{figures/datagen-workflow}
     \caption{The \datagen generation process.}
     \label{fig:generation_process}
 \end{figure}
@@ -578,14 +578,14 @@ Interesting quirks:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=\patternscale]{figures/comments_power_law}
+  \includegraphics[scale=\yedscale]{figures/comments_power_law}
   \caption{The power-law used to generate comments.}
   \label{fig:comments_dist}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=\patternscale]{figures/flashmob_dist}
+  \includegraphics[scale=\yedscale]{figures/flashmob_dist}
   \caption{The distribution used to generate posts during flashmob events.}
   \label{fig:flashmob_dist}
 \end{figure}
@@ -843,7 +843,7 @@ As illustrated later, this interval is often used to determine the intervals whe
 We parameterize the generator as follows.
 The network is created in 2010 and exists for 10~years at which point the network collapses ($\xNC = 2020$).
 Data is simulated for a 3-year period, between the simulation start, $\xSS = 2010$ and the simulation end, $\xSE = 2013$.
-In order to allow \emph{windowed execution} by the LDBC SNB driver~\cite{Erling2015} (used for multi-threaded and distributed operation), we define a sufficiently large amount of time that needs to pass between consecutive operations on an entity as $\Delta = 10\text{s}$.
+In order to allow \emph{windowed execution} by the LDBC SNB driver (used for multi-threaded and distributed operation), we define a sufficiently large amount of time that needs to pass between consecutive operations on an entity as $\Delta = 10\text{s}$.
 
 %\paragraph{Examples}
 %\autoref{fig:example-graph} shows an example illustrating the lifespans of two $\type{\tPerson}$ nodes and a $\type{knows}$ edge.

@@ -15,7 +15,9 @@
 \newcommand{\xmark}{\ding{55}}
 
 
-\emph{This chapter is based on the TPCTC~2020 conference paper ``Towards Testing ACID Compliance in the LDBC Social Network Benchmark''~\cite{tpctc_acid}, co-authored by several members of the SNB task force.}
+\begin{quote}
+  \textit{This chapter is based on the TPCTC~2020 conference paper ``Towards Testing ACID Compliance in the LDBC Social Network Benchmark''~\cite{tpctc_acid}, co-authored by several members of the SNB task force.}
+\end{quote}
 
 As part of the auditing process, the auditors ascertain that the SUT satisfies ``the ACID properties'', \ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
 
@@ -24,10 +26,10 @@ As part of the auditing process, the auditors ascertain that the SUT satisfies `
 Verifying ACID compliance is an important step in the benchmarking process for enabling fair comparison between systems.
 The performance benefits of operating with weaker safety guarantees are well established~\cite{DBLP:conf/ds/GrayLPT76} but this can come at the cost of application correctness.
 To enable apples vs. apples performance comparisons between systems it is expected they uphold the ACID properties.
-Currently, LDBC provides no mechanism for validating ACID compliance within the SNB-I workflow.
+Currently, LDBC provides no mechanism for validating ACID compliance within the SNB Interactive workflow.
 A simple solution would be to outsource the responsibility of demonstrating ACID compliance to benchmark implementors.
 However, the safety properties claimed by a system often do not match observable behaviour~\cite{kingsbury}.
-%which could cast doubt on any performance results obtained from SNB-I.
+%which could cast doubt on any performance results obtained from SNB Interactive.
 To mitigate this problem, benchmarks such as \mbox{TPC-C}~\cite{tpcc} include a number of ACID tests to be executed as part of the benchmarking auditing process.
 However, we found these tests cannot readily be applied to our context, as they assume lock-based concurrency control and an interactive query API that provides clients with explicit control over a transaction's lifecyle.
 Modern data systems often use optimistic concurrency control mechanisms~\cite{DBLP:journals/sigmod/PavloA16} and offer a restricted query API, such as only executing transactions as stored procedures~\cite{DBLP:conf/vldb/StonebrakerMAHHH07}.
@@ -53,14 +55,15 @@ A conscious decision was made to keep tests relatively lightweight, as to not ad
 The tests presented in this chapter are defined on a small core of LDBC SNB schema (extended with properties for versioning) given in \autoref{fig:core-schema}.
 
 \begin{figure}
-    \centering
-    \includegraphics[scale=\yedscale]{figures/acid/core-schema}
-    \caption{Graph schema.}
-    \label{fig:core-schema}
+  \centering
+  \includegraphics[scale=\yedscale]{figures/acid/core-schema}
+  \caption{Graph schema.}
+  \label{fig:core-schema}
 \end{figure}
 
 \begin{figure}
-\input{figures/acid/bailis}
+  \centering
+  \input{figures/acid/bailis}
 \end{figure}
 
 \section{Atomicity}
@@ -131,7 +134,7 @@ Thus systems offer numerous weak isolation levels such as \level{Read Committed}
 As such, isolation levels are defined in terms of the anomalies they prevent~\cite{DBLP:conf/ds/GrayLPT76,DBLP:journals/pvldb/BailisDFGHS13}.
 \autoref{fig:isolation} relates isolation levels to the anomalies they proscribe.
 
-SNB-I does not require systems to provide \level{Serializability}~\cite{Angles2020}.
+SNB Interactive does not require systems to provide \level{Serializability}.
 However, to allow fair comparison systems must disclose the isolation level used during benchmark execution.
 The purpose of these isolation tests is to verify that the claimed isolation level matches the expected behaviour.
 To this end, tests have been developed for each anomaly presented in~\cite{DBLP:journals/tods/BailisFGHS16}.
@@ -375,7 +378,7 @@ Thus a \anomaly{G1c} anomaly has been detected.
 
 Informally, an \anolong{Item-Many-Preceders} (\anomaly{IMP}) anomaly~\cite{DBLP:journals/pvldb/BailisDFGHS13} occurs if a transaction observes multiple versions of the same item (\eg transaction $\tx{T_i}$ reads versions $x_1$ and $x_2$).
 In a graph database this can be multiple reads of a node, edge, property or label.
-Local transactions (involving a single data item) occur frequently in graph databases, \eg in \emph{``Retrieve content of a message''} (SNB-I Short Read 4~\cite{Angles2020}).
+Local transactions (involving a single data item) occur frequently in graph databases, \eg in \emph{``Retrieve content of a message''} \queryRefCard{interactive-short-read-04}{IS}{4}.
 
 \paragraph{Definition.}
 A history $H$ exhibits \anomaly{IMP} if $\textit{DSG}(H)$ contains a transaction $\tx{T_i}$ such that $\tx{T_i}$ directly \emph{item-read-depends} on $x$ by more than one other transaction.
@@ -436,7 +439,7 @@ Informally, a \anolong{Predicate-Many-Preceders} (\anomaly{PMP}) anomaly~\cite{D
 (\eg $\tx{T_i}$ reads
 $\textit{Vset}(P_i) =  \{x_1\}$ and
 $\textit{Vset}(P_i) = \{x_1,y_2\}$).
-Pattern matching is a common predicate read operation in a graph database, \eg query \emph{``Find friends and friends of friends that have been to given countries''} (SNB-I Complex Read 3~\cite{Angles2020}).
+Pattern matching is a common predicate read operation in a graph database, \eg query \emph{``Find friends and friends of friends that have been to given countries''} \queryRefCard{interactive-complex-read-03}{IC}{3}.
 
 \paragraph{Definition.}
 A history $H$ exhibits the phenomenon \anomaly{PMP} if, for all predicate-based reads $r_i(P_i : \textit{Vset}(P_i))$ and $r_j(P_j : \textit{Vset}(P_j))$ in $\tx{T_k}$ such that the logical ranges of $P_i$ and $P_j$ overlap (call it $P_o$), the set of transactions that change the matches of $P_o$ for $r_i$ and $r_j$ differ.
@@ -641,7 +644,7 @@ RETURN
 
 % Taking motivation from \cite{DBLP:journals/tods/FeketeLOOS05} this tests covers a \anolong{predicate-based write skew} (\anomaly{P-WS}) anomaly.
 % Systems often permit the declaration of edge cardinality constraints, which can be violated under concurrent modification.
-% For example, in the SNB-I schema~\cite{Angles2020} a \texttt{Forum} can only have a single \texttt{MODERATOR} edge.
+% For example, in the SNB Interactive schema~\cite{Angles2020} a \texttt{Forum} can only have a single \texttt{MODERATOR} edge.
 % % This constraint is not explicitly declared in the system (doing so would require a similar construct to SQL's \texttt{CHECK CONTRAINTS}) but is required to maintain application consistency.
 
 % \paragraph{Test.}
@@ -662,11 +665,10 @@ RETURN
 \label{sec:cd}
 
 While this paper mainly focused on \emph{atomicity} and \emph{isolation} from the ACID properties, we provide a short overview of the other two aspects.
-\emph{Durability} tests are already part of the benchmark specification~\cite{Angles2020}, while adding complex \emph{consistency} checks is left for future work.
 
-{\bf Durability} is a hard requirement for SNB-I and checking it is part of the 
+{\bf Durability} is a hard requirement for SNB Interactive and checking it is part of the 
 auditing process. 
-The durability test requires the execution of the SNB-I workload and uses the LDBC workload driver.
+The durability test requires the execution of the SNB Interactive workload and uses the LDBC workload driver.
 Note, the database and the driver must be configured in the same way as would be used in the performance run.
 First, the database is subject to a warm-up period.
 Then after 2 hours of simulation execution, the database processes will be terminated, possibly by disconnecting the entire machine or by a hard process kill.

@@ -1,11 +1,42 @@
 \chapter{Related Work}
 \label{sec:related-work}
 
+\begin{quote}
+    \textit{A detailed list of LDBC publications is curated at~\url{http://ldbcouncil.org/publications}.}
+\end{quote}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\paragraph*{Graph processing benchmarks.}
+\section{ACID Tests in Other Benchmarks}
+
+% TPC-C
+The challenge of verifying ACID-compliance has been addressed before by transactional benchmarks.
+For example, TPC-C~\cite{tpcc} provides a suite of ACID tests.
+However, the isolation tests are reliant on lock-based concurrency control, hence are not generalizable across systems.
+Also, the transactional anomaly test coverage is limited to only four anomalies.
+% YCSB+T
+The authors of~\cite{DBLP:conf/icde/DeyFNR14} augment the popular YCSB framework for benchmarking transactional NewSQL systems, including a \emph{validation phase} that detects and quantifies consistency anomalies.
+They permit the definition of arbitrary integrity constraints, checking they hold before and after a benchmark run.
+% Note, there are parallels between this and the TPC-C consistency tests.
+Such an approach is not possible within SNB Interactive due to the restrictive nature of transactional updates and the distinct lack of application-level constraints.
+
+% Hermitage
+The Hermitage project~\cite{Hermitage} with the goal of improving understanding of weak isolation, developed a range of hand-crafted isolation tests.
+This test suite has much higher anomaly coverage but suffers from a problem similar to TPC-C.
+Test execution is performed by hand, opening multiple terminals to step through the tests.\footnote{We initially experimented with Hermitage but found it difficult to induce anomalies that relied on fast timings due to some graph databases offering limited client-side control over transactions, with all statements submitted in one batch.}
+% Jepsen + Elle
+The Jepsen project~\cite{kingsbury} is not a benchmark rather it addresses correctness testing, traditionally focusing on distributed systems under various failure modes.
+Most of Jepsen's transactional tests adopt a similar approach to us, executing a suite of transactions with hand-proven invariants.
+However recently, the project has spawned Elle~\cite{DBLP:journals/corr/abs-2003-10554} a black-box transactional anomaly checker.
+Elle does not rely on hand-crafted tests and can detect every anomaly in \cite{adya1999weak} (except for predicate-based anomalies) from an arbitrary transaction history.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Graph Processing Benchmarks}
 
 Recent graph benchmarking initiatives focus on three key areas:
 
@@ -23,14 +54,11 @@ The Interactive queries were used in paper~\cite{DBLP:conf/grades/PacaciZLO17} t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section{Scalable Graph Generators}
+\section{Scalable Graph Generators}
 
 %The \datagen component of SNB is a fork of the generator described in~\cite{DBLP:conf/tpctc/PhamBE12}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\paragraph*{LDBC publications.}
-
-A detailed list of LDBC publications is curated at~\url{http://ldbcouncil.org/publications}.
+A recent survey~\cite{DBLP:journals/csur/BonifatiHPS20} studied 38 graph generators, finding that only 4 of them supported generating updates and, intriguingly, even these generators only yield insertions and simple deletions at best.
+\emph{LinkBench}~\cite{DBLP:conf/sigmod/ArmstrongPBC13} defines primitive delete operations targeting a single node or a single edge.
+\emph{XGDBench}~\cite{DBLP:journals/ase/DayarathnaS14} defines an operation that deletes a single node.
+The \emph{Social Network Intelligence BenchMark} (SIB)~\cite{SIB} (a precursor to LDBC SNB) requires the deletion of individual nodes (posts/photos).
