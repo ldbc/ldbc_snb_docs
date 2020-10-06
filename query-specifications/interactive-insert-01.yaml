@@ -4,46 +4,34 @@ number: 1
 title: Add person
 description: Add a *Person* **node**, connected to the network by 4 possible **edge** types.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: personFirstName
     type: String
-    description: "`personFirstName`"
-  - name: Person.lastName
+  - name: personLastName
     type: String
-    description: "`personLastName`"
-  - name: Person.gender
+  - name: gender
     type: String
-    description: "`gender`"
-  - name: Person.birthday
+  - name: birthday
     type: Date
-    description: "`birthday`"
-  - name: Person.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
-  - name: Person.locationIP
+  - name: locationIP
     type: String
-    description: "`locationIP`"
-  - name: Person.browserUsed
+  - name: browserUsed
     type: String
-    description: "`browserUsed`"
-  - name: Person-isLocatedIn->City.id
+  - name: cityId
     type: ID
-    description: "`cityId`"
-  - name: Person.speaks
+  - name: languages
     type: \{String\}
-    description: "`languages`"
-  - name: Person.email
+  - name: emails
     type: \{Long String\}
-    description: "`emails`"
-  - name: Person-hasInterest->Tag.id
+  - name: tagIds
     type: \{ID\}
-    description: "`tagIds`"
-  - name: \{\<Person-studyAt->University.id, Person-studyAt->.classYear>\}
+  - name: studyAt
     type: \{\<ID, 32-bit Integer>\}
-    description: "`studyAt`"
-  - name: \{\<Person-workAt->Company.id, Person-workAt->.workFrom>\}
+    description: "`{<universityId, classYear>}`"
+  - name: workAt
     type: \{\<ID, 32-bit Integer>\}
-    description: "`workAt`"
+    description: "`{<companyId, workFrom>}`"
 choke_points: [9.1, 9.2]

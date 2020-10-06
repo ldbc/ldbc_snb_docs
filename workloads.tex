@@ -8,31 +8,32 @@
 \section{Query Description Format}
 \label{sub:queries_structure}
 Queries are described in natural language using a well-defined structure that consists of three sections:
-\textit{description}, a concise textual description of the query;
+\textit{description}, a concise textual description of the query,
 \textit{parameters}, a list of input parameters and their types;
-and \textit{results}, a list of expected results and their types.
+\textit{results}, a list of expected results and their types.
+Additionally, queries returning multiple results need to specify \emph{sorting criteria} and a \emph{limit} (to return top-$k$ results).
+
 We use the following notation:
 
 \begin{itemize}
-    \item \textbf{Entity}: entity type in the dataset.\\
-        One word, possibly constructed by appending multiple words together, starting with uppercase character and following the camel case notation,
+	\item \textbf{Node type}: node type in the dataset.
+		One word, possibly constructed by appending multiple words together, starting with an uppercase character and following the camel case notation,
         \eg \textsf{TagClass} represents an entity of type ``TagClass''.
-    \item \textbf{Relationship}: relationship type in the dataset.\\
-        One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-        and surrounded by arrow to communicate direction,
-        \eg \mbox{\textsf{-workAt->}} represents a directed relationship of type ``workAt''.
-    \item \textbf{Attribute}: attribute of an entity or relationship in the dataset.\\
-        One word, possibly constructed by appending multiple words together, starting with lowercase character and following the camel case notation,
-        and prefixed by a ``.'' to dereference the entity/relationship,
-        \eg \textsf{Person.firstName} refers to ``firstName'' attribute on the ``Person'' entity,
-        and \mbox{\textsf{-studyAt->.classYear}} refers to ``classYear'' attribute on the ``studyAt'' relationship.
-    \item \textbf{Unordered Set}: an unordered collection of distinct elements.\\
+    \item \textbf{Edge type}: edge type in the dataset.
+        One word, possibly constructed by appending multiple words together, starting with a lowercase character and following the camel case notation
+        \eg \mbox{\textsf{workAt}} represents an edge of type ``workAt''.
+    \item \textbf{Attribute}: attribute of a node or an edge in the dataset.
+        One word, possibly constructed by appending multiple words together, starting with a lowercase character and following the camel case notation,
+        and prefixed by a ``.'' to dereference the node/edge,
+        \eg \textsf{person.firstName} refers to ``firstName'' attribute on the ``person'' entity,
+        and \mbox{\textsf{studyAt.classYear}} refers to ``classYear'' attribute on the ``studyAt'' edge.
+    \item \textbf{Unordered Set}: an unordered collection of distinct elements.
         Surrounded by \{ and \} braces, with the element type between them,
         \eg \textsf{\{String\}} refers to a set of strings.
-    \item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.\\
+    \item \textbf{Ordered List}: an ordered collection where duplicate elements are allowed.
         Surrounded by [ and ] braces, with the element type between them,
         \eg \textsf{[String]} refers to a list of strings.
-    \item \textbf{Ordered Tuple}: a fixed-length, fixed-order list of elements, where elements at each position of the tuple have predefined, possibly different, types. \\
+    \item \textbf{Ordered Tuple}: a fixed-length, fixed-order list of elements, where elements at each position of the tuple have predefined, possibly different, types.
         Surrounded by < and > braces, with the element types between them in a specific order
         \eg \textsf{<String, Boolean>} refers to a 2-tuple containing a string value in the first element and a boolean value in the second,
         and \textsf{\{<String, Boolean>\}} is an ordered list of those 2-tuples.
@@ -142,8 +143,8 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\textdollar tag}$.
 	\item Attributes that should be returned are denoted in sans-serif font, \eg \textsf{name}.
 	\item Variable length paths, \ie edges that can be traversed multiple times 
-	are denoted with \textsf{*min \ldots max}, \eg \textsf{replyOf*} or 
-	\textsf{knows*1 \ldots 2}. By default, the value of \textsf{min} is 1, 
+	are denoted with \textsf{*min\ldots{}max}, \eg \textsf{replyOf*} or 
+	\textsf{knows*1\ldots{}2}. By default, the value of \textsf{min} is 1, 
 	and the value of \textsf{max} is unlimited.
 	\item Aggregations are shown in boxes with a grey strip on their top describing the type of aggregation (\lstinline{count}, \lstinline{sum}, \lstinline{average}, etc.).
 \end{itemize}

@@ -5,39 +5,33 @@ title: Friends and friends of friends that have been to given countries
 description: |
   Given a start *Person*, find *Persons* that are their friends and friends of friends (excluding start *Person*) that have made *Posts* / *Comments* in both of the given *Countries*, `CountryX` and `CountryY`, within a given period. Only *Persons* that are foreign to *Countries* `CountryX` and `CountryY` are considered, that is *Persons* whose location is neither `CountryX` nor `CountryY`.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: CountryX.name
+  - name: countryXName
     type: String
-    description: "`countryXName`"
-  - name: CountryY.name
+  - name: countryYName
     type: String
-    description: "`countryYName`"
   - name: startDate
     type: Date
-    description: "`startDate` -- Beginning of requested period"
-  - name: duration
+    description: Beginning of requested period
+  - name: durationDays
     type: 32-bit Integer
-    description: "`durationDays` -- Duration of requested period, in days the interval `[startDate, startDate + duration)` is closed-open"
+    description: Duration of requested period, in days. The interval `[startDate, startDate + durationDays)` is closed-open
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`personFirstName`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`personLastName`"
   - name: xCount
     type: 32-bit Integer
     category: aggregated
-    description: "`xCount` -- Number of *Messages* from *Country* `CountryX` created by the *Person* within the given time"
+    description: Number of *Messages* from *Country* `CountryX` created by the *Person* within the given time
   - name: yCount
     type: 32-bit Integer
     category: aggregated
-    description: "`yCount` -- Number of *Messages* from *Country* `CountryY` created by the *Person* within the given time"
+    description: Number of *Messages* from *Country* `CountryY` created by the *Person* within the given time
   - name: count
     type: 32-bit Integer
     category: aggregated
@@ -45,7 +39,7 @@ result:
 sort:
   - name: xCount
     direction: desc
-  - name: Person.id
+  - name: friend.id
     direction: asc
 limit: 20
 choke_points: [2.1, 3.1, 5.1, 8.2, 8.5]

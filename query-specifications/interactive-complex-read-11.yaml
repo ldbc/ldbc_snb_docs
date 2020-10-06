@@ -5,37 +5,29 @@ title: Job referral
 description: |
   Given a start *Person*, find that *Person*'s friends and friends of friends (excluding start *Person*) who started working in some *Company* in a given *Country*, before a given date (`year`).
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Country.name
+  - name: countryName
     type: String
-    description: "`countryName`"
-  - name: year
+  - name: workFromYear
     type: 32-bit Integer
-    description: "`workFromYear`"
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`personFirstName`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`personLastName`"
-  - name: Person-workAt->Company.name
+  - name: company.name
     type: String
-    description: "`organizationName`"
-  - name: Person-workAt->.worksFrom
+  - name: workAt.workFrom
     type: 32-bit Integer
-    description: "`organizationWorkFromYear`"
 sort:
-  - name: Person-workAt->.worksFrom
+  - name: workAt.workFrom
     direction: asc
-  - name: Person.id
+  - name: friend.id
     direction: asc
-  - name: Person-workAt->Company.name
+  - name: company.name
     direction: desc
 limit: 10
 choke_points: [1.3, 2.3, 2.4, 3.3, 4.2]

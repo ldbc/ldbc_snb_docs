@@ -6,35 +6,27 @@ description: |
   Given a start *Person*, find (the most recent) *Messages* created by that *Person*'s friends or friends of friends (excluding start Person).
   Only consider *Messages* created before the given `maxDate` (excluding that day).
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
   - name: maxDate
     type: Date
-    description: "`maxDate`"
 result:
-  - name: Message-hasCreator->Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Message-hasCreator->Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`personFirstName`"
-  - name: Message-hasCreator->Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`personLastName`"
-  - name: Message.id
+  - name: message.id
     type: ID
-    description: "`messageId`"
-  - name: Message.content or Post.imageFile
+  - name: message.content or message.imageFile (for photos)
     type: Text
-    description: "`messageContent`"
-  - name: Message.creationDate
+  - name: message.creationDate
     type: DateTime
-    description: "`messageCreationDate`"
 sort:
-  - name: Message.creationDate
+  - name: message.creationDate
     direction: desc
-  - name: Message.id
+  - name: message.id
     direction: asc
 limit: 20
 choke_points: [1.1, 1.2, 2.2, 2.3, 3.2, 3.3, 8.5]

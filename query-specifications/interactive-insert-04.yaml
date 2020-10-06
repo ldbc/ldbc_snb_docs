@@ -4,19 +4,14 @@ number: 4
 title: Add forum
 description: Add a *Forum* **node**, connected to the network by 2 possible **edge** types.
 parameters:
-  - name: Forum.id
+  - name: forumId
     type: ID
-    description: "`forumId`"
-  - name: Forum.title
+  - name: forumTitle
     type: Long String
-    description: "`forumTitle`"
-  - name: Forum.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
-  - name: Forum-hasModerator->Person.id
+  - name: moderatorId
     type: ID
-    description: "`moderatorPersonId`"
-  - name: Forum-hasTag->Tag.id
+  - name: tagIds
     type: \{ID\}
-    description: "`tagIds`"
 choke_points: [9.1, 9.2]

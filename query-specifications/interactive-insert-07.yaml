@@ -4,39 +4,30 @@ number: 7
 title: Add comment
 description: Add a *Comment* **node** replying to a *Post*/*Comment*, connected to the network by 4 possible **edge** types (*replyOf*, *hasCreator*, *isLocatedIn*, *hasTag*).
 parameters:
-  - name: Comment.id
+  - name: commentId
     type: ID
-    description: "`commentId`"
-  - name: Comment.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
-  - name: Comment.locationIP
+  - name: locationIP
     type: String
-    description: "`locationIP`"
-  - name: Comment.browserUsed
+  - name: browserUsed
     type: String
-    description: "`browserUsed`"
-  - name: Comment.content
+  - name: content
     type: Text
-    description: "`content`"
-  - name: Comment.length
+  - name: length
     type: 32-bit Integer
-    description: "`length`"
-  - name: Comment-hasCreator->Person.id
+  - name: authorPersonId
     type: ID
-    description: "`authorPersonId`"
-  - name: Comment-isLocatedIn->Country.id
+  - name: countryId
     type: ID
-    description: "`countryId`"
-  - name: Comment-replyOf->Post.id
+  - name: replyToPostId
     type: ID
     category: calculated
-    description: "`replyToPostId`, $-1$ if the *Comment* is a reply of a *Comment*"
-  - name: Comment-replyOf->Comment.id
+    description: $-1$ if the *Comment* is a reply of a *Comment*
+  - name: replyToCommentId
     type: ID
     category: calculated
-    description: "`replyToCommentId`, $-1$ if the *Comment* is a reply of a *Post*"
-  - name: Comment-hasTag->Tag.id
+    description: $-1$ if the *Comment* is a reply of a *Post*
+  - name: tagIds
     type: \{ID\}
-    description: "`tagIds`"
 choke_points: [9.1, 9.2]

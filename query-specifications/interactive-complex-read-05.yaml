@@ -5,24 +5,21 @@ title: New groups
 description: |
   Given a start *Person*, find the *Forums* which that *Person*'s friends and friends of friends (excluding start *Person*) became *Members* of after a given date. For each *Forum* find the number of *Posts* that were created by any of these *Persons*. For each *Forum* and consider only those *Persons* which joined that particular *Forum* after the given date (`minDate`).
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: date
+  - name: minDate
     type: Date
-    description: "`minDate`"
 result:
-  - name: Forum.title
+  - name: forum.title
     type: Long String
-    description: "`forumTitle`"
   - name: postCount
     type: 32-bit Integer
     category: aggregated
-    description: "`postCount` -- Number of *Posts* made in *Forum* that were created by friends"
+    description: Number of *Posts* made in `forum` that were created by friends
 sort:
   - name: postCount
     direction: desc
-  - name: Forum.id
+  - name: forum.id
     direction: asc
 limit: 20
 choke_points: [2.3, 3.3, 8.2, 8.5]

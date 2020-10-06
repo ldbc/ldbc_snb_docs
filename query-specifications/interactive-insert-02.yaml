@@ -4,13 +4,10 @@ number: 2
 title: Add like to post
 description: Add a *likes* **edge** to a *Post*.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Post.id
+  - name: postId
     type: ID
-    description: "`postId`"
-  - name: Person-likes->.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
 choke_points: [9.2]

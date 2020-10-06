@@ -5,24 +5,19 @@ title: Friends of a person
 description: |
   Given a start *Person*, retrieve all of their friends, and the date at which they became friends.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`firstName`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`lastName`"
-  - name: Knows.creationDate
+  - name: knows.creationDate
     type: DateTime
-    description: "`friendshipCreationDate`"
 sort:
-  - name: Knows.creationDate
+  - name: knows.creationDate
     direction: desc
-  - name: Person.id
+  - name: friend.id
     direction: asc

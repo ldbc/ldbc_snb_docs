@@ -5,40 +5,33 @@ title: Recent likers
 description: |
   Given a start *Person*, find (most recent) `likes` on any of start *Person*'s *Messages*. Find *Persons* that liked (`likes` edge) any of start *Person*'s *Messages*, the *Messages* they liked most recently, the creation date of that like, and the latency in minutes (`minutesLatency`) between creation of *Messages* and like. Additionally, for each *Person* found return a flag indicating (`isNew`) whether the liker is a friend of start *Person*. In case that a *Person* liked multiple *Messages* at the same time, return the *Message* with lowest identifier.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`personFirstName`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`personLastName`"
-  - name: Like.creationDate
+  - name: likes.creationDate
     type: DateTime
-    description: "`likeCreationDate`"
-  - name: Message.id
+  - name: message.id
     type: ID
-    description: "`commentOrPostId`"
-  - name: Message.content or Post.imageFile
+  - name: message.content or message.imageFile (for photos)
     type: Text
-    description: "`commentOrPostContent`"
   - name: minutesLatency
     type: 32-bit Integer
     category: calculated
-    description: "`minutesLatency` -- Duration between creation of the *Message* and the creation of the like, in minutes"
+    description: Duration between creation of the *Message* and the creation of the like, in minutes
   - name: isNew
     type: Boolean
     category: calculated
-    description: "`isNew` -- `false` if liker *Person* is friend of start *Person*, `true` otherwise"
+    description: "`false` if `person` and `friend` know each other, `true` otherwise"
 sort:
-  - name: Like.creationDate
+  - name: likes.creationDate
     direction: desc
-  - name: Person.id
+  - name: friend.id
     direction: asc
 limit: 20
 choke_points: [2.2, 2.3, 3.3, 5.1, 8.1, 8.3]

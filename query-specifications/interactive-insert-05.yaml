@@ -4,13 +4,10 @@ number: 5
 title: Add forum membership
 description: Add a *Forum* membership **edge** (*hasMember*) to a *Person*.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Forum.id
+  - name: forumId
     type: ID
-    description: "`forumId`"
-  - name: Forum-hasMember->.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
 choke_points: [9.1, 9.2]

@@ -4,40 +4,28 @@ number: 6
 title: Add post
 description: Add a *Post* **node** to the social network connected by 4 possible **edge** types (*hasCreator*, *containerOf*, *isLocatedIn*, *hasTag*).
 parameters:
-  - name: Post.id
+  - name: postId
     type: ID
-    description: "`postId`"
-  - name: Post.imageFile
+  - name: imageFile
     type: String
-    description: "`imageFile`"
-  - name: Post.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
-  - name: Post.locationIP
+  - name: locationIP
     type: String
-    description: "`locationIP`"
-  - name: Post.browserUsed
+  - name: browserUsed
     type: String
-    description: "`browserUsed`"
-  - name: Post.language
+  - name: language
     type: String
-    description: "`language`"
-  - name: Post.content
+  - name: content
     type: Text
-    description: "`content`"
-  - name: Post.length
+  - name: length
     type: 32-bit Integer
-    description: "`length`"
-  - name: Post-hasCreator->Person.id
+  - name: authorPersonId
     type: ID
-    description: "`authorPersonId`"
-  - name: Post<-containerOf-Forum.id
+  - name: forumId
     type: ID
-    description: "`forumId`"
-  - name: Post-isLocatedIn->Country.id
+  - name: countryId
     type: ID
-    description: "`countryId`"
-  - name: Post-hasTag->Tag.id
+  - name: tagIds
     type: \{ID\}
-    description: "`tagIds`"
 choke_points: [9.1, 9.2]

@@ -5,31 +5,22 @@ title: Profile of a person
 description: |
   Given a start *Person*, retrieve their first name, last name, birthday, IP address, browser, and city of residence.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 result:
-  - name: Person.firstName
+  - name: person.firstName
     type: String
-    description: "`firstName`"
-  - name: Person.lastName
+  - name: person.lastName
     type: String
-    description: "`lastName`"
-  - name: Person.birthday
+  - name: person.birthday
     type: Date
-    description: "`birthday`"
-  - name: Person.locationIP
+  - name: person.locationIP
     type: String
-    description: "`locationIP`"
-  - name: Person.browserUsed
+  - name: person.browserUsed
     type: String
-    description: "`browserUsed`"
-  - name: Person-isLocatedIn->City.id
+  - name: city.id
     type: ID
-    description: "`cityId`"
-  - name: Person.gender
+  - name: person.gender
     type: String
-    description: "`gender`"
-  - name: Person.creationDate
+  - name: person.creationDate
     type: DateTime
-    description: "`creationDate`"

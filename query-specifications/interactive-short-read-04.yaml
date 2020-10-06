@@ -5,13 +5,12 @@ title: Content of a message
 description: |
   Given a *Message*, retrieve its content and creation date.
 parameters:
-  - name: Message.id
+  - name: messageId
     type: ID
-    description: "`messageId`"
 result:
-  - name: Message.creationDate
+  - name: message.creationDate
     type: DateTime
     description: "`messageCreationDate`"
-  - name: Message.content or Post.imageFile
+  - name: message.content or message.imageFile (for photos)
     type: Text
     description: "`messageContent`"

@@ -5,24 +5,21 @@ title: Tag co-occurrence
 description: |
   Given a start *Person* and some *Tag*, find the other *Tags* that occur together with this *Tag* on *Posts* that were created by start *Person*'s friends and friends of friends (excluding start *Person*). Return top 10 *Tags*, and the count of *Posts* that were created by these *Persons*, which contain both this *Tag* and the given *Tag*.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Tag.name
+  - name: tagName
     type: Long String
-    description: "`tagName` (`tag.name`)"
 result:
-  - name: Tag.name
+  - name: otherTag.name
     type: Long String
-    description: "`tagName` (`otherTag.name`)"
   - name: postCount
     type: 32-bit Integer
     category: aggregated
-    description: "`postCount` -- Number of *Posts* that were created by friends and friends of friends, which contain this *Tag*"
+    description: Number of *Posts* that were created by friends and friends of friends, which have the *Tag* `otherTag`
 sort:
   - name: postCount
     direction: desc
-  - name: Tag.name
+  - name: otherTag.name
     direction: asc
 limit: 10
 choke_points: [5.1, 8.2]

@@ -4,13 +4,10 @@ number: 3
 title: Add like to comment
 description: Add a *likes* **edge** to a *Comment*.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Comment.id
+  - name: commentId
     type: ID
-    description: "`commentId`"
-  - name: Person-likes->.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
 choke_points: [9.2]

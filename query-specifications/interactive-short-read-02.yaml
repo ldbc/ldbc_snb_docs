@@ -3,35 +3,27 @@ operation: short
 number: 2
 title: Recent messages of a person
 description: |
-  Given a start *Person*, retrieve the last 10 *Messages* created by that user. For each *Message*, return that *Message*, the original *Post* in its conversation, and the author of that *Post*. If any of the *Messages* is a *Post*, then the original *Post* will be the same *Message*, i.e. that *Message* will appear twice in that result.
+  Given a start *Person*, retrieve the last 10 *Messages* created by that user. For each *Message*, return that *Message*, the original *Post* in its conversation (`post`), and the author of that *Post* (`op`). If any of the *Messages* is a *Post*, then the original *Post* (`op`) will be the same *Message*, i.e. that *Message* will appear twice in that result.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 result:
-  - name: Message.id
+  - name: message.id
     type: ID
-    description: "`messageId`"
-  - name: Message.content or Post.imageFile
+  - name: message.content or message.imageFile (for photos)
     type: Text
-    description: "`messageContent`"
-  - name: Message.creationDate
+  - name: message.creationDate
     type: DateTime
-    description: "`messageCreationDate`"
-  - name: Post.id or Comment-replyOf*->Post.id
+  - name: post.id
     type: ID
-    description: "`originalPostId`"
-  - name: Post-hasCreator->Person.id or Comment-replyOf*->Post-hasCreator->Person.id
+  - name: op.id
     type: ID
-    description: "`originalPostAuthorId`"
-  - name: Post-hasCreator->Person.firstName or Comment-replyOf*->Post-hasCreator->Person.firstName
+  - name: op.firstName
     type: String
-    description: "`original??Post??Author??First??Name`"
-  - name: Post-hasCreator->Person.lastName or Comment-replyOf*->Post-hasCreator->Person.lastName
+  - name: op.lastName
     type: String
-    description: "`original??Post??Author??Last??Name`"
 sort:
-  - name: Message.creationDate
+  - name: message.creationDate
     direction: desc
-  - name: Message.id
+  - name: message.id
     direction: desc

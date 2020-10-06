@@ -5,37 +5,30 @@ title: Replies of a message
 description: |
   Given a *Message*, retrieve the (1-hop) *Comments* that reply to it.
 
-  In addition, return a boolean flag `knows` indicating if the author of the reply knows the author of the original message.
+  In addition, return a boolean flag `knows` indicating if the author of the reply (`replyAuthor`) knows the author of the original message (`messageAuthor`).
   If author is same as original author, return false for `knows` flag.
 parameters:
-  - name: Message.id
+  - name: messageId
     type: ID
-    description: "`messageId`"
 result:
-  - name: Message<-replyOf-Comment.id
+  - name: comment.id
     type: ID
-    description: "`commentId`"
-  - name: Message<-replyOf-Comment.content
+  - name: comment.content
     type: Text
-    description: "`commentContent`"
-  - name: Message<-replyOf-Comment.creationDate
+  - name: comment.creationDate
     type: DateTime
-    description: "`commentCreationDate`"
-  - name: Comment-hasCreator->Person.id
+  - name: replyAuthor.id
     type: ID
-    description: "`replyAuthorId`"
-  - name: Comment-hasCreator->Person.firstName
+  - name: replyAuthor.firstName
     type: String
-    description: "`replyAuthorFirstName`"
-  - name: Comment-hasCreator->Person.lastName
+  - name: replyAuthor.lastName
     type: String
-    description: "`replyAuthorLastName`"
   - name: knows
     type: Boolean
     category: calculated
-    description: "`reply??Author??Knows??Original??Message??Author`"
+    description: "true if the *knows* edge exists between the `replyAuthor` and the `messageAuthor` nodes, false otherwise (including the case when the two nodes are the same)"
 sort:
-  - name: Message<-replyOf-Comment.creationDate
+  - name: comment.creationDate
     direction: desc
-  - name: Comment-hasCreator->Person.id
+  - name: replyAuthor.id
     direction: asc

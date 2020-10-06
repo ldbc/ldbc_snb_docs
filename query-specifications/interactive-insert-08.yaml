@@ -4,13 +4,10 @@ number: 8
 title: Add friendship
 description: Add a friendship **edge** (*knows*) between two *Persons*.
 parameters:
-  - name: Person.id
+  - name: person1Id
     type: ID
-    description: "`person1Id`"
-  - name: Person.id
+  - name: person2Id
     type: ID
-    description: "`person2Id`"
-  - name: Person-knows->.creationDate
+  - name: creationDate
     type: DateTime
-    description: "`creationDate`"
 choke_points: [9.2]

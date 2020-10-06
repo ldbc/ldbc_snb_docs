@@ -5,61 +5,48 @@ title: Friends with certain name
 description: |
   Given a start *Person*, find *Persons* with a given first name (`firstName`) that the start *Person* is connected to (excluding start *Person*) by at most 3 steps via the *knows* relationships. Return *Persons*, including the distance (1..3), summaries of the *Persons* workplaces and places of study.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: firstName
     type: String
-    description: "`firstName`"
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`friendId`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`friendLastName`"
   - name: distanceFromPerson
     type: 32-bit Integer
-    description: "`distanceFromPerson`"
     category: calculated
-  - name: Person.birthday
+  - name: friend.birthday
     type: Date
-    description: "`friendBirthday`"
-  - name: Person.creationDate
+  - name: friend.creationDate
     type: DateTime
-    description: "`friendCreationDate`"
-  - name: Person.gender
+  - name: friend.gender
     type: String
-    description: "`friendGender`"
-  - name: Person.browserUsed
+  - name: friend.browserUsed
     type: String
-    description: "`friendBrowserUsed`"
-  - name: Person.locationIP
+  - name: friend.locationIP
     type: String
-    description: "`friendLocationIp`"
-  - name: \{Person.email\}
+  - name: friend.email
     type: \{Long String\}
-    description: "`friendEmails`"
-  - name: \{Person.speaks\}
+  - name: friend.speaks
     type: \{String\}
-    description: "`friendLanguages`"
-  - name: Person-isLocatedIn->City.name
+  - name: friendCity.name
     type: String
-    description: "`friendCityName`"
-  - name: \{\<Person-studyAt->University.name, Person-studyAt->.classYear, Person-studyAt->University-isLocatedIn->City.name>\}
+  - name: friendUniversities
     type: \{\<String, 32-bit Integer, String>\}
-    description: "`friendUniversities`"
+    description: "`{<university.name, studyAt.classYear, universityCity.name>}`"
     category: aggregated
-  - name: \{\<Person-workAt->Company.name, Person-workAt->.workFrom, Person-workAt->Company-isLocatedIn->Country.name>\}
+  - name: friendCompanies
     type: \{\<String, 32-bit Integer, String>\}
-    description: "`friendCompanies`"
+    description: "`{<company.name, workAt.workFrom, companyCountry.name>}`"
     category: aggregated
 sort:
   - name: distanceFromPerson
     direction: asc
-  - name: Person.lastName
+  - name: friend.lastName
     direction: asc
-  - name: Person.id
+  - name: friend.id
     direction: asc
 limit: 20
 choke_points: [2.1, 5.3, 8.2]

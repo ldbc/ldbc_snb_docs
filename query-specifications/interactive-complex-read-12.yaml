@@ -5,34 +5,27 @@ title: Expert search
 description: |
   Given a start *Person*, find the *Comments* that this *Person*'s friends made in reply to *Posts*, considering only those *Comments* that are direct (single-hop) replies to *Posts*, not the transitive (multi-hop) ones. Only consider *Posts* with a *Tag* in a given *TagClass* or in a descendent of that *TagClass*. Count the number of these reply *Comments*, and collect the *Tags* that were attached to the *Posts* they replied to, but only collect *Tags* with the given *TagClass* or with a descendant of that *TagClass*. Return *Persons* with at least one reply, the reply count, and the collection of *Tags*.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: TagClass.name
+  - name: tagClassName
     type: Long String
-    description: "`tagClassName`"
 result:
-  - name: Person.id
+  - name: friend.id
     type: ID
-    description: "`personId`"
-  - name: Person.firstName
+  - name: friend.firstName
     type: String
-    description: "`personFirstName`"
-  - name: Person.lastName
+  - name: friend.lastName
     type: String
-    description: "`personLastName`"
-  - name: \{Tag.name\}
+  - name: tagNames
     type: \{Long String\}
     category: aggregated
-    description: "`tagNames`"
   - name: replyCount
     type: 32-bit Integer
     category: aggregated
-    description: "`replyCount` -- Number of reply Comments"
 sort:
-  - name: count
+  - name: replyCount
     direction: desc
-  - name: Person.id
+  - name: friend.id
     direction: asc
 limit: 20
 choke_points: [3.3, 7.2, 7.3, 8.2]

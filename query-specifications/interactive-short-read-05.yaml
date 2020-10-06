@@ -5,16 +5,12 @@ title: Creator of a message
 description: |
   Given a *Message*, retrieve its author.
 parameters:
-  - name: Message.id
+  - name: messageId
     type: ID
-    description: "`messageId`"
 result:
-  - name: Message-hasCreator->Person.id
+  - name: person.id
     type: ID
-    description: "`personId`"
-  - name: Message-hasCreator->Person.firstName
+  - name: person.firstName
     type: String
-    description: "`firstName`"
-  - name: Message-hasCreator->Person.lastName
+  - name: person.lastName
     type: String
-    description: "`lastName`"

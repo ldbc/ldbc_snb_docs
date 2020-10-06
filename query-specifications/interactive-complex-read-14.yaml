@@ -16,23 +16,20 @@ description: |
 
   Return all the paths with shortest length, and their weights. Do not return any rows if there is no path between the two *Persons*.
 parameters:
-  - name: person1.id
+  - name: person1Id
     type: ID
-    description: "`person1Id`"
-  - name: person2.id
+  - name: person2Id
     type: ID
-    description: "`person2Id`"
 result:
-  - name: '[Person.id]'
+  - name: personIdsInPath
     type: '[ID]'
-    description: "`personIdsInPath` -- identifiers representing an ordered sequence of the *Persons* in the path"
+    description: identifiers representing an ordered sequence of the *Persons* in the path
     category: calculated
-  - name: weight
+  - name: pathWeight
     type: 64-bit Float
     category: calculated
-    description: "`pathWeight`"
 sort:
-  - name: weight
+  - name: pathWeight
     direction: desc
     description: The order of paths with the same weight is unspecified
 choke_points: [3.3, 7.2, 7.3, 8.1, 8.2, 8.3, 8.6]
