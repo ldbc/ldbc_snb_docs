@@ -14,7 +14,7 @@ description: |
 
   Only consider *Messages* that were created in a *Forum* that was created within the timeframe `[startDate, endDate]`. Note that for *Comments*, the containing *Forum* is that of the *Post* that the comment (transitively) replies to. Also note that interactions are counted both ways.
 
-  Return all paths with the *Person* ids ordered by their weights descending.
+  Return all paths with the *Person* IDs ordered by their weights descending.
 parameters:
   - name: person1Id
     type: ID
@@ -26,9 +26,9 @@ parameters:
     type: Date
 result:
   - name: person.id
-    type: ID[]
+    type: \[ID\]
     category: calculated
-    description: Identifiers representing an ordered sequence of the *Persons* in the path weight
+    description: Ordered sequence of the *Person* IDs in the path
   - name: weight
     category: calculated
     type: 64-bit Float
@@ -38,5 +38,5 @@ sort:
     description: The order of paths with the same weight is unspecified
   - name: personIds
     direction: asc
-    description: The ids in the paths are used for lexicographical sorting
+    description: The IDs in the paths are used for lexicographical sorting
 choke_points: [1.2, 2.1, 2.2, 2.4, 3.3, 5.1, 5.3, 7.2, 7.3, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6]

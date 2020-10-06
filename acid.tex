@@ -19,10 +19,6 @@
   \textit{This chapter is based on the TPCTC~2020 conference paper ``Towards Testing ACID Compliance in the LDBC Social Network Benchmark''~\cite{tpctc_acid}, co-authored by several members of the SNB task force.}
 \end{quote}
 
-As part of the auditing process, the auditors ascertain that the SUT satisfies ``the ACID properties'', \ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
-
-\section{Introduction}
-
 Verifying ACID compliance is an important step in the benchmarking process for enabling fair comparison between systems.
 The performance benefits of operating with weaker safety guarantees are well established~\cite{DBLP:conf/ds/GrayLPT76} but this can come at the cost of application correctness.
 To enable apples vs. apples performance comparisons between systems it is expected they uphold the ACID properties.
@@ -446,7 +442,7 @@ A history $H$ exhibits the phenomenon \anomaly{PMP} if, for all predicate-based 
 
 \paragraph{Test.}
 Load a test graph containing \texttt{Person} and \texttt{Post} nodes.
-Within each node type assign unique \texttt{ids}.
+Within each node type assign unique IDs.
 During execution write clients execute a sequence of \tx{PMP $T_\mathrm{W}$} instances, inserting a \texttt{LIKES} edge between a randomly selected \texttt{Person} and \texttt{Post}, shown in \autoref{fig:pc1}.
 Concurrently read clients execute a sequence of \tx{PMP $T_\mathrm{R}$} instances, \autoref{fig:pc2}.
 Performing multiple reads of the pattern \texttt{(po:Post)<-[:LIKES]-(p:Person)} and counting the number of \texttt{LIKES} edges; successive reads can be separated by some artificially injected wait time to make conditions more favourable for detecting an anomaly.
@@ -598,7 +594,7 @@ It is referred to as \anomaly{G2-Item} in~\cite{adya1999weak,DBLP:journals/tods/
 A history $H$ exhibits \anomaly{WS} if $\textit{DSG}(H)$ contains a directed cycle having one or more antidependency edges.
 
 \paragraph{Test.}
-Load a test graph containing $n$ pairs of \texttt{Person} nodes \texttt{(p1, p2)} for $k = 0, \ldots, n-1$, where the $k$th pair gets ids \texttt{p1.id = 2*k+1} and \texttt{p2.id = 2*k+2}, and values \texttt{p1.value = 70} and \texttt{p2.value = 80}.
+Load a test graph containing $n$ pairs of \texttt{Person} nodes \texttt{(p1, p2)} for $k = 0, \ldots, n-1$, where the $k$th pair gets IDs \texttt{p1.id = 2*k+1} and \texttt{p2.id = 2*k+2}, and values \texttt{p1.value = 70} and \texttt{p2.value = 80}.
 There is a constraint: \texttt{p1.value + p2.value > 0}.
 During execution write clients execute a sequence of \tx{WS $T_\mathrm{W}$} instances, \autoref{fig:ws1}.
 Selecting a random \texttt{Person} pair and decrementing the \texttt{value} property of one \texttt{Person} provided doing so would not violate the constraint.
@@ -664,7 +660,7 @@ RETURN
 \section{Consistency and Durability Tests}
 \label{sec:cd}
 
-While this paper mainly focused on \emph{atomicity} and \emph{isolation} from the ACID properties, we provide a short overview of the other two aspects.
+While this chapter mainly focused on \emph{atomicity} and \emph{isolation} from the ACID properties, we provide a short overview of the other two aspects.
 
 {\bf Durability} is a hard requirement for SNB Interactive and checking it is part of the 
 auditing process. 

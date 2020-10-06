@@ -308,13 +308,13 @@ url: Long String</y:NodeLabel>
               <y:Geometry height="136.71414930555557" width="172.0" x="-144.55261002839543" y="1088.8369639961875"/>
               <y:Fill color="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="129.71875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.455078125" x="4.0" xml:space="preserve" y="4.0">id: ID
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="129.71875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="129.09765625" x="4.0" xml:space="preserve" y="4.0">id: ID
 firstName: String
 lastName: String
 gender: String
 birthday: Date
-email: Long String[1..*]
-speaks: String[1..*]
+email: {Long String}
+speaks: {String}
 browserUsed: String
 locationIP: String</y:NodeLabel>
               <y:Shape type="rectangle"/>
@@ -327,8 +327,8 @@ locationIP: String</y:NodeLabel>
               <y:Geometry height="42.5" width="172.0" x="431.39218234116765" y="1154.2037340086104"/>
               <y:Fill color="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.26171875" x="4.0" xml:space="preserve" y="4.0">language: String[0..1]
-imageFile: String[0..1]</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="167.810546875" x="4.0" xml:space="preserve" y="4.0">language: String (optional)
+imageFile: String (optional)</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
           </data>
@@ -362,10 +362,10 @@ title: Long String</y:NodeLabel>
               <y:Geometry height="82.03414930555527" width="172.0" x="525.200633045393" y="1003.1209561851922"/>
               <y:Fill color="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="73.84375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="132.34375" x="4.0" xml:space="preserve" y="4.0">id: ID
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="73.84375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="146.130859375" x="4.0" xml:space="preserve" y="4.0">id: ID
 browserUsed: String
 locationIP: String
-content: Text[0..1]
+content: Text (optional)
 length: 32-bit Integer</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>

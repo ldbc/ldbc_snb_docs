@@ -15,7 +15,6 @@ description: |
 
       The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length` and `creationDate`.
 
-
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
   - name: date
@@ -23,7 +22,7 @@ parameters:
   - name: lengthThreshold
     type: 32-bit Integer
   - name: languages
-    type: String[]
+    type: \{String\}
 result:
   - name: messageCount
     type: 32-bit Integer

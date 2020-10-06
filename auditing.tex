@@ -7,13 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-This document is divided in the following parts:
+This chapter is divided in the following parts:
 \begin{itemize}
     \item Motivation of benchmark result auditing
     \item General discussion of auditable aspects of benchmarks
@@ -108,6 +102,7 @@ In certain cases the results may be approximate. This may happen in cases of non
 
 \subsubsection{ACID Compliance}
 \label{sec:acid}
+As part of the auditing process, the auditors ascertain that the SUT satisfies ``the ACID properties'', \ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
 This section outlines transactional behaviours of SUTs which are checked in the course of auditing an SUT in a given benchmark.
 
 A benchmark specifies transactional semantics that may be required for different parts of the workload. The requirements will typically be different for initial bulk load of data and for the workload itself. Different sections of the workload may further be subject to different transactionality requirements.
@@ -135,11 +130,6 @@ two threads insert into the same table at the same time in the same transaction 
 not see a consistent image of (E)ADS for the parts affected by the other thread. All things will be
 consistent after the commit or rollback, however, regardless of the number of threads, implicit or explicit
 that have participated in the transaction.
-
-% \item Consistency: If a database object, \eg table, has auxiliary data structures, \eg indices, the content of these
-% must be consistent after the commit or rollback of a transaction. If multiple client application threads share
-% one transaction context, these may transiently see inconsistent states, \eg there may be a time when an
-% insert of a row is reflected in one index of a table but not in another.
 
 \paragraph{Isolation}
 Isolation is defined as the set of phenomena that may (or may not) be observed by operations running within a single transaction context. The levels of isolation are defined as follows:
