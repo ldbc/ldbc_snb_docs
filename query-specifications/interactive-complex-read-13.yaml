@@ -8,7 +8,7 @@ description: |
 
   * $-1$: no path found
   * $0$: start person = end person
-  * $> 0$: regular case
+  * $> 0$: path found (start person $\neq$ end person)
 parameters:
   - name: person1.id
     type: ID

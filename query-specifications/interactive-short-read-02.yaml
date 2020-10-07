@@ -3,7 +3,7 @@ operation: short
 number: 2
 title: Recent messages of a person
 description: |
-  Given a start *Person*, retrieve the last 10 *Messages* created by that user. For each *Message*, return that *Message*, the original *Post* in its conversation (`post`), and the author of that *Post* (`op`). If any of the *Messages* is a *Post*, then the original *Post* (`op`) will be the same *Message*, i.e. that *Message* will appear twice in that result.
+  Given a start *Person*, retrieve the last 10 *Messages* created by that user. For each *Message*, return that *Message*, the original *Post* in its conversation (`post`), and the author of that *Post* (`originalPoster`). If any of the *Messages* is a *Post*, then the original *Post* (`post`) will be the same *Message*, i.e. that *Message* will appear twice in that result.
 parameters:
   - name: personId
     type: ID
@@ -16,11 +16,11 @@ result:
     type: DateTime
   - name: post.id
     type: ID
-  - name: op.id
+  - name: originalPoster.id
     type: ID
-  - name: op.firstName
+  - name: originalPoster.firstName
     type: String
-  - name: op.lastName
+  - name: originalPoster.lastName
     type: String
 sort:
   - name: message.creationDate

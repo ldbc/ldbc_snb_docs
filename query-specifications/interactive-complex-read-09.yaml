@@ -11,11 +11,11 @@ parameters:
   - name: maxDate
     type: Date
 result:
-  - name: friend.id
+  - name: otherPerson.id
     type: ID
-  - name: friend.firstName
+  - name: otherPerson.firstName
     type: String
-  - name: friend.lastName
+  - name: otherPerson.lastName
     type: String
   - name: message.id
     type: ID

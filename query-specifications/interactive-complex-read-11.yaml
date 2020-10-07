@@ -12,11 +12,11 @@ parameters:
   - name: workFromYear
     type: 32-bit Integer
 result:
-  - name: friend.id
+  - name: otherPerson.id
     type: ID
-  - name: friend.firstName
+  - name: otherPerson.firstName
     type: String
-  - name: friend.lastName
+  - name: otherPerson.lastName
     type: String
   - name: company.name
     type: String
@@ -25,7 +25,7 @@ result:
 sort:
   - name: workAt.workFrom
     direction: asc
-  - name: friend.id
+  - name: otherPerson.id
     direction: asc
   - name: company.name
     direction: desc

@@ -1,7 +1,7 @@
 workload: Interactive
 operation: complex
 number: 1
-title: Friends with certain name
+title: Transitive friends with certain name
 description: |
   Given a start *Person*, find *Persons* with a given first name (`firstName`) that the start *Person* is connected to (excluding start *Person*) by at most 3 steps via the *knows* relationships. Return *Persons*, including the distance (1..3), summaries of the *Persons* workplaces and places of study.
 parameters:
@@ -10,43 +10,43 @@ parameters:
   - name: firstName
     type: String
 result:
-  - name: friend.id
+  - name: otherPerson.id
     type: ID
-  - name: friend.lastName
+  - name: otherPerson.lastName
     type: String
   - name: distanceFromPerson
     type: 32-bit Integer
     category: calculated
-  - name: friend.birthday
+  - name: otherPerson.birthday
     type: Date
-  - name: friend.creationDate
+  - name: otherPerson.creationDate
     type: DateTime
-  - name: friend.gender
+  - name: otherPerson.gender
     type: String
-  - name: friend.browserUsed
+  - name: otherPerson.browserUsed
     type: String
-  - name: friend.locationIP
+  - name: otherPerson.locationIP
     type: String
-  - name: friend.email
+  - name: otherPerson.email
     type: \{Long String\}
-  - name: friend.speaks
+  - name: otherPerson.speaks
     type: \{String\}
-  - name: friendCity.name
+  - name: locationCity.name
     type: String
-  - name: friendUniversities
+  - name: universities
     type: \{\<String, 32-bit Integer, String>\}
     description: "`{<university.name, studyAt.classYear, universityCity.name>}`"
     category: aggregated
-  - name: friendCompanies
+  - name: companies
     type: \{\<String, 32-bit Integer, String>\}
     description: "`{<company.name, workAt.workFrom, companyCountry.name>}`"
     category: aggregated
 sort:
   - name: distanceFromPerson
     direction: asc
-  - name: friend.lastName
+  - name: otherPerson.lastName
     direction: asc
-  - name: friend.id
+  - name: otherPerson.id
     direction: asc
 limit: 20
 choke_points: [2.1, 5.3, 8.2]
