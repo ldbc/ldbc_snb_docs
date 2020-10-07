@@ -5,12 +5,10 @@ title: Remove post like
 description: |
   Given a *Person* and a *Post*, remove the *likes* edge between them.
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
-  - name: Post.id
+  - name: postId
     type: ID
-    description: "`postId`"
 choke_points: [9.4]
 relevance:
   Removal of a *likes* edge is a rare event, e.g. people accidently liking a *Post*, this can be reflected by the relative frequency of the operation.

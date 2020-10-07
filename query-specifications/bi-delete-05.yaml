@@ -5,12 +5,10 @@ title: Remove forum membership
 description: |
   Given a *Forum* and a *Person*, remove the *hasMember* edge between them.
 parameters:
-  - name: Forum.id
+  - name: forumId
     type: ID
-    description: "`forumId`"
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 choke_points: [9.4]
 relevance:
   n/a

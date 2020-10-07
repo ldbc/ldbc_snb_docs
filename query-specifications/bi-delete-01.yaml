@@ -6,9 +6,8 @@ description: |
   Remove a *Person* and its edges (*isLocatedIn*, *studyAt*, *workAt*, *hasInterest*, *likes*, *knows*, *hasMember*, *hasModerator*, *hasCreator*).
   Additionally, remove the Album and Wall *Forums* whose moderator is the *Person* and remove all *Messages* the *Person* has created in the rest of the *Forums* (Groups).
 parameters:
-  - name: Person.id
+  - name: personId
     type: ID
-    description: "`personId`"
 choke_points: [9.3, 9.4, 9.5]
 relevance: |
   * Removal of a *Person* removes *Forums* of type "Walls" and "Albums" but not "Groups", which can continue if even the founder has left the network. For Groups, the *hasModerator* edge is deleted. We have discussed various approaches to appoint a new moderator, e.g.

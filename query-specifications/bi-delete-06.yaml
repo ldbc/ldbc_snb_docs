@@ -7,9 +7,8 @@ description: |
   Remove all replies to the *Post* and the connecting *replyOf* edges.
   In addition, remove all transitive reply *Comments* to the *Post* and their edges.
 parameters:
-  - name: Post.id
+  - name: postId
     type: ID
-    description: "`postId`"
 choke_points: [9.3, 9.4, 9.5]
 relevance:
   n/a

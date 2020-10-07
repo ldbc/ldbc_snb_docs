@@ -5,12 +5,10 @@ title: Remove friendship
 description:
   Given two *Person* nodes, remove the *knows* edge between them.
 parameters:
-  - name: Person.id
+  - name: person1Id
     type: ID
-    description: "`person1Id`"
-  - name: Person.id
+  - name: person2Id
     type: ID
-    description: "`person2Id`"
 choke_points: [9.4]
 relevance:
   n/a
