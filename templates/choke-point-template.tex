@@ -5,11 +5,11 @@
       {%- if query.1 == "Interactive" and query.2 == "complex" -%}
         IC
       {%- elif query.1 == "Interactive" and query.2 == "insert" -%}
-        II
-      {%- elif query.1 == "Interactive" and query.2 == "delete" -%}
-        ID
-      {%- elif query.1 == "BI" -%}
+        INS
+      {%- elif query.1 == "BI" and query.2 == "read" -%}
         BI
+      {%- elif query.1 == "BI" and query.2 == "delete" -%}
+        DEL
       {%- endif -%}
     }{ {{- query.3 -}} }
 {% endfor -%}
