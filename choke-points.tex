@@ -18,7 +18,7 @@
 Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP \chokePoint{7.1}, which was removed and replaced with a new choke point. The correlations between choke points and queries are displayed in \autoref{tab:query_choke_point}.
 
 {
-\setlength{\tabcolsep}{.1em}
+\setlength{\tabcolsep}{.05em}
 \input{choke-points/choke-points-queries}
 }
 
@@ -195,11 +195,18 @@ This choke point tests the ability of efficiently evaluating simple expressions 
 \input{choke-points/cp-4-3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        currently not used                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\cpSection{4.4}{QEXE}{String matching performance}
+%This choke point tests the ability of efficiently evaluating complex string
+%matching expressions (\eg via regular expressions).
+%
+%\input{choke-points/cp-4-4}
 
-\cpSection{4.4}{QEXE}{String matching performance}
-
-This choke point tests the ability of efficiently evaluating complex string
-matching expressions (\eg via regular expressions).
+\cpSection{4.4}{QOPT}{Betweenness composition}
+ 
+TODO: consider ``betwenness composition'' suggested in~\cite{DBLP:journals/pvldb/DreselerBRU20}
 
 %\input{choke-points/cp-4-4}
 
@@ -266,7 +273,7 @@ Here, worth is a combination of partial-query result size, partial-query evaluat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{RDF and Graph Specifics}
+\section{Graph Specifics}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -314,6 +321,38 @@ There are many possible tradeoffs between generality and performance
 This tests the ability of a system to express termination criteria for transitive queries so that not the whole transitive relation has to be evaluated as well as efficient testing for termination.
 
 \input{choke-points/cp-7-4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{7.5}{QEXE}{Unweighted shortest paths}
+
+TODO
+
+%\input{choke-points/cp-7-5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{7.6}{QEXE}{Weighted shortest paths}
+
+TODO
+
+%\input{choke-points/cp-7-6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{7.7}{QEXE}{Composition of graph queries}
+
+TODO
+
+%\input{choke-points/cp-7-7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cpSection{7.8}{QEXE}{Regular path queries}
+
+TODO
+
+%\input{choke-points/cp-7-8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

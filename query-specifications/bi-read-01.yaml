@@ -9,10 +9,10 @@ description: |
   1. by year of creation
   2. for each year, group into *Message* types: is *Comment* or not
   3. for each year-type group, split into four groups based on length of their content
-      * `0`: 0 <= length < 40\ (short)
-      * `1`: 40 <= length < 80\ (one liner)
-      * `2`: 80 <= length < 160\ (tweet)
-      * `3`: 160 <= length\ (long)
+      * `0`: $0 \leq \text{length} < 40$ (short)
+      * `1`: $40 \leq \text{length} < 80$ (one liner)
+      * `2`: $80 \leq \text{length} < 160$ (tweet)
+      * `3`: $160 \leq \text{length}$ (long)
 
 parameters:
   - name: date
@@ -24,7 +24,7 @@ result:
   - name: isComment
     type: Boolean
     category: meta
-    description: " `true` for *Comments*, `false` for *Posts*"
+    description: True for *Comments*, False for *Posts*
   - name: lengthCategory
     type: 32-bit Integer
     category: calculated
@@ -50,8 +50,8 @@ sort:
     direction: desc
   - name: isComment
     direction: asc
-    description: " `false < true`, i.e. the ordering puts *Posts* first, and *Comments* second"
+    description: False < True, i.e. *Posts* come first and *Comments* second
   - name: lengthCategory
     direction: asc
-    description: order based on the length of the category, `0` (short), `1` (one liner), etc.
+    description: order based on the `lengthCategory` value
 choke_points: [1.2, 3.2, 4.1, 4.2, 8.5]

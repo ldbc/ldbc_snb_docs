@@ -171,7 +171,7 @@ choke_points_queries_text = choke_points_queries_template.render(
 with open("choke-points/choke-points-queries.tex", 'w') as choke_points_queries_template:
     choke_points_queries_template.write(choke_points_queries_text)
 
-#### CSV for choke points and queries
+#### CSV for choke points and queries (to be pasted in a spreadsheet)
 
 with open('templates/choke-points-queries.csv', 'r') as f:
     choke_points_queries_template = Template(f.read())

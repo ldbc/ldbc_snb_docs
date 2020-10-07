@@ -9,7 +9,7 @@ description: |
   * Count *likes* (`likeCount`) to its `message`s.
   * Count *Comments* (`replyCount`) in reply to it `message`s.
 
-  The `score` is calculated according to the following formula: `1 * messageCount + 2 * replyCount + 10 * likeCount`.
+  The `score` is calculated according to the following formula: $1 \times \texttt{messageCount} + 2 \times \texttt{replyCount} + 10 \times \texttt{likeCount}$.
 parameters:
   - name: tag
     type: Long String
