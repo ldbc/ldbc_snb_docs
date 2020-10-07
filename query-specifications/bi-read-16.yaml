@@ -33,12 +33,12 @@ result:
     category: aggregated
     description: "message count for `tagB`/`dateB`"
 sort:
-  - name: messageCountA + messageCountB
+  - name: messageCountA + \mbox{messageCountB}
     direction: desc
   - name: person.id
     direction: asc
 limit: 20
-choke_points: [1.1, 4.2] #todo
+choke_points: [5.3, 8.4, 8.5] # 2.5 WCOJs?
 relevance: |
   There are two major ways to compute this query:
   (1) create the induced subgraph as suggested by the specification (either as a view or in materialized form), or
