@@ -26,6 +26,6 @@ sort:
     direction: asc
   - name: person2.id
     direction: asc
-choke_points: [3.3, 7.2, 7.7, 8.4, 8.6]
+choke_points: [3.3, 7.6, 7.7, 8.4, 8.6]
 relevance: |
   Finding shortest paths between pairs of *Persons* in *Cities* can be implemented in theory with an **all-pairs shortest paths** algorithm. However, this needs to be executed on the whole *Person-knows-Person* graph (with edge weights derived from the number of interactions) so it is expected to be prohibitively expensive. A better approach is using multiple **single-source shortest path algorithms** (e.g. from the *City* with fewer inhibitants).
