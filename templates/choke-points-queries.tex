@@ -1,3 +1,5 @@
+% Template-based generation of the table showing choke point coverage by queries.
+% Note that 'refresh' queries (DEL, INS) and their choke points (CP-9.x) are omitted from the table
 \begin{table}[htbp]
 \scriptsize
 \centering
@@ -7,21 +9,24 @@
     {%- endfor -%}
 } \hline
 {% for choke_point in choke_points -%}
-    & \chokePoint{ {{- choke_point -}} }
+    {%- if choke_point < "9" -%}
+        & \chokePoint{ {{- choke_point -}} }
+    {%- endif -%}
 {% endfor %} \\ \hline
 
 {%- for query in queries -%}
     {#- only list queries that have at least on choke point -#}
-    {%- if query_choke_point[query.0] -%}
+    {%- if query_choke_point[query.0] and query.2 != "insert" and query.2 != "delete" -%}
         {%- if queries[loop.index0 - 1].0[0] != queries[loop.index0].0[0] %}\hline{% endif %}
         \queryRefCard{ {{- query.0 -}} }{
             {%- if query.1 == "Interactive" and query.2 == "complex"%}IC{% else %}
-            {%- if query.1 == "Interactive" and query.2 == "insert"%}INS{% else %}
             {%- if query.1 == "BI" and query.2 == "read"%}BI{% else %}
-            {%- if query.1 == "BI" and query.2 == "delete"%}DEL{% endif -%}{% endif -%}{% endif -%}{% endif -%}
+            {% endif -%}{% endif -%}
         }{ {{- query.3 -}} }
         {% for choke_point in choke_points -%}
-            & {% if choke_point in query_choke_point[query.0] %} \yes {%- else %} {% endif %}
+            {%- if choke_point < "9" -%}
+                & {% if choke_point in query_choke_point[query.0] %} \yes {%- else %} {% endif %}
+            {%- endif -%}
         {% endfor %} \\ \hline
     {%- endif -%}
 {% endfor %}
