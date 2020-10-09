@@ -344,7 +344,7 @@ Computing single-source shortest path is a fundamental problem in graph queries.
 \cpSection{7.7}{QEXE}{Composition of graph queries}
 
 In many cases, it is desirable to specify multiple graph queries, where the first one defines an induced subgraph or an overlay graph on the original graph, which is then passed two the next query, and so on.
-Expressing such queries as a sequence of composable graph queries would be desirable from both usability, optimization, and execution aspects. However, currently many graph dabases lack support for composable graph queries.
+Expressing such computations as a sequence of composable graph queries would be desirable from both usability, optimization, and execution aspects. However, currently many graph dabases lack support for composable graph queries.
 
 The \mbox{G-CORE}~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} design language tackled problem this by introducing the \emph{path property graph} data model (consisting of nodes, edges, and paths) and defining queries such that they return a graph (while also providing means to return a tabular output).
 
