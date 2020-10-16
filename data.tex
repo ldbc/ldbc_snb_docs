@@ -629,8 +629,8 @@ For each scale factor, \datagen produces three different artefacts:
 \subsection{Scale Factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
-SFs are computed based on the ASCII size in Gigabytes of the generated output files using the CsvBasic serializer.
-For example, SF1 takes roughly 1~GB in CSV format, SF3 weighs roughly 3~GB and so on and so forth.
+SFs are computed based on the ASCII size in Gibibytes of the generated output files using the CsvMergeForeign serializer and default settings (both the 90\% initial data and the 10\% update streams count towards the total size).
+For example, SF1 takes roughly 1~GiB in CSV format, SF3 weighs roughly 3~GiB and so on and so forth.
 The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
 Additionally, two small SFs, 0.1 and 0.3 are provided to help initial validation efforts.
 

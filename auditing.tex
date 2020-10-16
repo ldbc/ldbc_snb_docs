@@ -339,7 +339,7 @@ This section specifies a checklist (in the form of individual sections) that a b
 \subsection{Scaling}
 
 \subsubsection{Scale Factors}
-The scale factor of a SNB dataset is the size of the dataset in GB of csv (comma-separated values) files. All dataset scales contain data for three years of social network activity. The scaling is done in buckets. The size of the dataset is either 10~GB or 30~GB or a power of ten multiple of either. Thus scales are 10, 30 100, 300, 1000~GB and so forth. This scaling is identical to the scaling of TPC-H and TPC-DS. 
+The scale factor of a SNB dataset is the size of the dataset in GiB of CSV (comma-separated values) files. All dataset scales contain data for three years of social network activity. The scaling is done in buckets. The size of the dataset is either 10~GiB or 30~GiB or a power of ten multiple of either. Thus scales are 10, 30 100, 300, 1000~GiB and so forth. This scaling is identical to the scaling of TPC-H and TPC-DS. 
 
 % \begin{quote}
 %     \emph{Rationale behind scaling.} The authors are aware that the prevalent practice for online benchmarks is to tie the reported throughput to the scale, \eg max 12.5 tpmC per warehouse in TPC-C. The authors depart from this practice here because with throughput tied to scale, test systems with interesting throughput rapidly become very expensive, raising the entry barrier for publishing a result. It is thought that scaling in buckets lowers the barrier of entry and reduces incentive to use hardware configurations that would be unusual in a production environment.
