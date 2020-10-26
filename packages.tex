@@ -26,7 +26,6 @@
 \usepackage{wasysym}
 \usepackage{xifthen}
 \usepackage{numprint}
-\usepackage[numbers]{natbib}
 % for a proper tt font 
 \usepackage[scale=0.78,ttdefault=true]{AnonymousPro}
 
@@ -40,3 +39,16 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{patterns}
+
+\usepackage[eprint=false]{biblatex}
+\renewbibmacro*{doi+eprint+url}{%
+	\printfield{doi}%
+	\newunit\newblock%
+	\iftoggle{bbx:eprint}{%
+		\usebibmacro{eprint}%
+	}{}%
+	\newunit\newblock%
+	\iffieldundef{doi}{%
+		\usebibmacro{url+urldate}}%
+	{}%
+}
