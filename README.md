@@ -64,4 +64,4 @@ docker build . --tag ldbc/docs
 #### Naming conventions
 
 * If an attribute exists in the graph as part of an entity (node/edge) and is returned unchanged, name it `entity.attributeName`.
-* If it is computed or aggregated, use `camelCase` notation.
+* If an attribute is computed or aggregated, use `camelCase` notation.
