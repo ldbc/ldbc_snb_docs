@@ -1,12 +1,12 @@
 DOCUMENT=ldbc-snb-specification.tex
 
-spec: $(DOCUMENT)
+spec: choke-points/choke-points-queries.tex $(DOCUMENT)
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
 all: generate_query_cards compile_query_cards workloads texfot
 	ls *.pdf
 
-generate_query_cards: $(DOCUMENT)
+choke-points/choke-points-queries.tex: $(wildcard query-specifications/*.yaml)
 	./generate-tex.py
 
 compile_query_cards: $(DOCUMENT)

@@ -31,21 +31,15 @@ The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org)
 
 ### Generating query cards
 
-To get consistent formatting, query cards are generated from query specifications defined in [YAML](http://yaml.org/) format. To regenerate them, follow these steps.
+To get consistent formatting, query cards are generated from query specifications defined in [YAML](http://yaml.org/) format. This is a necessary step to compile to the document.
 
-1. Install Pandoc and Python3 following dependencies:
+Install Pandoc and Python3 following dependencies:
 
-    ```bash
-    sudo apt-get install -y pandoc
-    sudo apt-get install -y python3 python3-pip python3-setuptools
-    sudo pip3 install -r requirements.txt
-    ```
-
-1. To generate the TeX files for query cards, run the following command:
-
-    ```bash
-    make generate_query_cards
-    ```
+```bash
+sudo apt-get install -y pandoc
+sudo apt-get install -y python3 python3-pip python3-setuptools
+sudo pip3 install -r requirements.txt
+```
 
 ### Building the document
 
