@@ -8,7 +8,7 @@ env:
     - REPOSITORY_SNAPSHOT=github.com/ldbc/ldbc_snb_docs_snapshot.git
     - secure: H/QaDPPacT6wJsGNyDbD934OjGVBVx7XhR/lz+fe/8709sWLy/r7Bzc5sJIW7RezQTaCRd/6pSLwvwvnRBWN0Cd83Pxn5aLwfLq1v8m0fElMEdG0jQHXpYXfUyhcemTH0pvc4BA0RBET00xid08TSuXek5Olys700s5SMJ89St7hbrRiW4cMdS5yWI6tzVjC+ndv+JjeHABcqXf+IIQqdv+FZ/845x7mQqaLs6u70pQaIWEf5ktT1Qqj7WEuGpSOg3M+Ipn870T9msK6QUsOlj1+p3AcVY79F2Ybt+X7fghRLZGH/F970nYa0t1tGR3T99WQFxUxJ22GS+jTfyx5o2eVBRL9zYUsLmTy01Y3/IO9vC16yNBh8KviWfNobvCKmpqGdOalJ7UvyIJ6Tj4fQ/ytgonDGCzY5MiwPPvyJRwAKwtWTIo3EcV8DoE7lc1uwHTqsOX7CtyyMm4s4RSdXMfcLbYST4TgS+hKnOmOBywTtOKRR2a4Odgc9ZQeKA1rHcdv8rJQJ6uJANymJxUJZEj4FyZmOz1NNJMQENVBTBhPdc1rKoyOQ8KpSHdAXOCfe1KmVmcgFQYMTcEfnfWGpOQgWOtBjP2SwSyt8YE10wHLkHcpNQSagsGqs4z6NGNMW8wBzg4fkZlUMyYxA/rVm2i9HpzhVnvZYfgKtHGcTwk=
 script:
-  - docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards workloads"
+  - docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c "cd /mnt/ && ./generate-tex.py && make texfot compile_query_cards workloads"
   - mkdir out
   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_STABLE;   deployment/deploy.sh; fi
   - if [ "$TRAVIS_BRANCH" = "dev"    -a "$TRAVIS_PULL_REQUEST" = "false" ]; then export GH_REF=$REPOSITORY_SNAPSHOT; deployment/deploy.sh; fi

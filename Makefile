@@ -1,15 +1,15 @@
 DOCUMENT=ldbc-snb-specification.tex
 
-spec: choke-points/choke-points-queries.tex $(DOCUMENT)
+spec: $(DOCUMENT) choke-points/choke-points-queries.tex
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
-all: generate_query_cards compile_query_cards workloads texfot
+all: choke-points/choke-points-queries.tex compile_query_cards workloads texfot
 	ls *.pdf
 
 choke-points/choke-points-queries.tex: $(wildcard query-specifications/*.yaml)
 	./generate-tex.py
 
-compile_query_cards: $(DOCUMENT)
+compile_query_cards: $(DOCUMENT) choke-points/choke-points-queries.tex
 	cd standalone-query-cards && \
 	for card in *.tex; do \
 		../texfot.pl latexmk -pdf --interaction=batchmode $$card ; \
