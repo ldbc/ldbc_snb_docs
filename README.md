@@ -1,19 +1,19 @@
 # LDBC SNB Documentation
 
-* Stable version: [[pdf](https://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/stable)]
-* Latest snapshot: [[pdf](https://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
+* Latest snapshot: [[PDF](https://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)] [[Source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
+* Stable version (updated every few months): [arXiv](https://arxiv.org/abs/2001.02299)
 
 ## Schema
 
-* Schema [[PDF](schema.pdf)] [[PNG](schema.png)]
+* Schema: [[PDF](schema.pdf)] [[PNG](schema.png)]
 
 ## Queries per workload
 
-* [Interactive / complex reads](workload-interactive-complex-reads.pdf)
-* [Interactive / short reads](workload-interactive-short-reads.pdf)
-* [Interactive / inserts](workload-interactive-inserts.pdf)
-* [BI / reads](workload-bi-reads.pdf)
-* [BI / deletes](workload-bi-deletes.pdf)
+* [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
+* [Interactive / Short Reads](workload-interactive-short-reads.pdf)
+* [Interactive / Inserts](workload-interactive-inserts.pdf)
+* [BI / Reads](workload-bi-reads.pdf)
+* [BI / Deletes](workload-bi-deletes.pdf)
 
 ## Individual queries
 
