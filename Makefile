@@ -20,7 +20,7 @@ workloads: $(DOCUMENT)
 		./texfot.pl latexmk -pdf --interaction=batchmode $$doc ; \
 	done
 
-texfot: $(DOCUMENT)
+texfot: $(DOCUMENT) choke-points/choke-points-queries.tex
 	./texfot.pl latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
 clean:
