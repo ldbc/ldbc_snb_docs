@@ -6,7 +6,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - compile_docs
+      - compile_docs:
+          filters:
+            branches:
+              ignore:
+                - stable
 
 jobs:
   compile_docs:
