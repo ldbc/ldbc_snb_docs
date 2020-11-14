@@ -190,7 +190,6 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
     </node>
     <node id="n2" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -292,36 +291,6 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="137.96875" width="477.87223090277814" x="163.98414149305327" y="-137.96875"/>
-              <y:Fill hasColor="false" transparent="false"/>
-              <y:BorderStyle color="#808080" type="line" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="477.87223090277814" x="0.0" xml:space="preserve" y="0.0">Case 1: Replies from PersonA</y:NodeLabel>
-              <y:Shape type="roundrectangle"/>
-              <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-            </y:GroupNode>
-            <y:GroupNode>
-              <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
-              <y:Fill color="#F5F5F5" transparent="false"/>
-              <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="65.201171875" x="-7.6005859375" xml:space="preserve" y="0.0">Folder 1</y:NodeLabel>
-              <y:Shape type="roundrectangle"/>
-              <y:State closed="true" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-              <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-            </y:GroupNode>
-          </y:Realizers>
-        </y:ProxyAutoBoundsNode>
-      </data>
-      <graph edgedefault="directed" id="n3:"/>
-    </node>
-    <node id="n4" yfiles.foldertype="group">
-      <data key="d4" xml:space="preserve"/>
-      <data key="d6">
-        <y:ProxyAutoBoundsNode>
-          <y:Realizers active="0">
-            <y:GroupNode>
               <y:Geometry height="137.96875" width="449.946115451389" x="368.1442569444423" y="607.166666666677"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
@@ -344,8 +313,8 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n4:">
-        <node id="n4::n0">
+      <graph edgedefault="directed" id="n3:">
+        <node id="n3::n0">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="639.0903723958313" y="700.135416666677"/>
@@ -356,7 +325,7 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n4::n1">
+        <node id="n3::n1">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="383.14425694444236" y="640.135416666677"/>
@@ -367,7 +336,7 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n4::n2">
+        <node id="n3::n2">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="639.0903723958313" y="640.135416666677"/>
@@ -378,7 +347,7 @@ knows.weight = 1 / (count(i1)+count(i2))</y:NodeLabel>
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n4::n3">
+        <node id="n3::n3">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="30.0" width="164.0" x="383.14425694444236" y="700.135416666677"/>
@@ -522,7 +491,7 @@ knows.weight<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" def
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n4::e0" source="n4::n0" target="n4::n2">
+    <edge id="n3::e0" source="n3::n0" target="n3::n2">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -533,7 +502,7 @@ knows.weight<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" def
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n4::e1" source="n4::n1" target="n4::n2">
+    <edge id="n3::e1" source="n3::n1" target="n3::n2">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -544,7 +513,7 @@ knows.weight<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" def
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n4::e2" source="n4::n3" target="n4::n1">
+    <edge id="n3::e2" source="n3::n3" target="n3::n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -555,7 +524,7 @@ knows.weight<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" def
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n4::e3" source="n4::n0" target="n4::n3">
+    <edge id="n3::e3" source="n3::n0" target="n3::n3">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
