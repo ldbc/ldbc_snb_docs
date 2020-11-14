@@ -9,8 +9,7 @@ workflows:
       - compile_docs:
           filters:
             branches:
-              ignore:
-                - stable
+              only: dev
 
 jobs:
   compile_docs:
