@@ -1,0 +1,29 @@
+\begin{table}[H]
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
+        \hline
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
+        \hline
+        id & ID  & The identifier of the person.\\
+        \hline
+        firstName & String  & The first name of the person.\\
+        \hline
+        lastName & String  & The last name of the person.\\
+        \hline
+        gender & String  & The gender of the person.\\
+        \hline
+        birthday & Date  & The birthday of the person.\\
+        \hline
+        email & \{Long String\}  & The set of emails the person has (cardinality: at least one).\\
+        \hline
+        speaks & \{String\}  & The set of languages the person speaks (cardinality: at least one).\\
+        \hline
+        browserUsed & String  & The browser used by the person when he/she registered to the social network.\\
+        \hline
+        locationIP & String  & The IP of the location from which the person was registered to the social network.\\
+        \hline
+        creationDate & DateTime  & The date the person joined the social network.\\
+        \hline
+    \end{tabular}
+    \caption{Attributes of the Person entity.}
+    \label{table:person}
+\end{table}

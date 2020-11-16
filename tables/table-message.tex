@@ -1,0 +1,21 @@
+\begin{table}[H]
+    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
+        \hline
+        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
+        \hline
+        id & ID  & The identifier of the message.\\
+        \hline
+        browserUsed & String  & The browser used by the Person to create the message.\\
+        \hline
+        creationDate & DateTime  & The date the message was created.\\
+        \hline
+        locationIP & String  & The IP of the location from which the message was created.\\
+        \hline
+        content & Text (optional)  & The content of the message.\\
+        \hline
+        length & 32-bit Integer  & The length of the content.\\
+        \hline
+    \end{tabular}
+    \caption{Attributes of the Message interface.}
+    \label{table:message}
+\end{table}

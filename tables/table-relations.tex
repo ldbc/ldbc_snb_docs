@@ -1,0 +1,81 @@
+\begin{longtable}{|>{\varNameCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\edgeDirectionCell}c|p{6.5cm}|}
+    \hline
+     \tableHeaderFirst{Name} & \tableHeader{Tail} & \tableHeader{Head} & \tableHeader{Type} & \tableHeader{Description} \\
+     \hline
+     containerOf & Forum[1] & Post[1..*] & D & A Forum and a Post contained in it\\
+     \hline
+     hasCreator & Message[0..*] & Person[1] & D & A Message and its creator (Person)\\
+     \hline
+     hasInterest & Person[0..*] & Tag[0..*] & D & A Person and a Tag representing a topic the person is interested in\\
+     \hline
+     hasMember & Forum[0..*] &  Person[1..*] & D & A Forum and its member (Person)
+
+     In version 0.3.x:
+
+     \attributeTable{joinDate}{DateTime}{The Date the person joined the Forum}
+
+     In version 0.4.0+:
+
+     \attributeTable{creationDate}{DateTime}{The Date the person joined the Forum}
+
+     \\
+     \hline
+     hasModerator & Forum[0..*] &
+     \textrm{In version 0.3.x:}
+     
+     Person[1]
+     
+     \textrm{In version 0.4.0+:}
+
+     Person[0..1]
+     & D & A Forum and its moderator (Person) \\
+     \hline
+     hasTag & Message[0..*] & Tag[0..*] & D & A Message and a Tag representing the message's topic \\
+     \hline
+     hasTag & Forum[0..*] & Tag[0..*] & D & A Forum and a Tag representing the forum's topic \\
+     \hline
+     hasType & Tag[0..*] & TagClass[1] & D & A Tag and a TagClass the tag belongs to \\
+     \hline
+     isLocatedIn & Company[0..*] & Country[1] & D & A Company and its home Country \\
+     \hline
+     isLocatedIn & Message[0..*] & Country[1] & D & A Message and the Country from which it was issued \\
+     \hline
+     isLocatedIn & Person[0..*] & City[1] & D & A Person and their home City \\
+     \hline
+     isLocatedIn & University[0..*] & City[1] & D &  A University and the City where the university is \\
+     \hline
+     isPartOf & City[1..*] & Country[1] & D & A City and the Country it is part of \\
+     \hline
+     isPartOf & Country[1..*] & Continent[1] & D & A Country and the Continent it is part of \\
+     \hline
+     isSubclassOf & TagClass[0..*] & TagClass[0..1] & D & A TagClass and its parent TagClass \\
+     \hline
+     knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other
+
+     \attributeTable{creationDate}{DateTime}{The date the knows relation was established}
+
+     \\
+     \hline
+     likes & Person[0..*] & Message[0..*] & D & A Person that likes a Message
+
+     \attributeTable{creationDate}{DateTime}{The date the like was issued}
+
+     \\
+     \hline
+     replyOf & Comment[0..*] & Message[1] & D & A Comment and the Message it replies \\
+     \hline
+     studyAt & Person[0..*] & University[0..*] & D & A Person and a University it has studied
+
+     \attributeTable{classYear}{32-bit Integer}{The year the person graduated}
+
+     \\
+     \hline
+     workAt & Person[0..*] & Company[0..*] & D & A Person and a Company it works
+
+     \attributeTable{workFrom}{32-bit Integer}{The year the person started to work at that Company}
+
+     \\
+     \hline
+ \caption{Description of the data relations. \texttt{D}: directed edge, \texttt{U}: undirected edge.}
+ \label{table:relations}
+\end{longtable}

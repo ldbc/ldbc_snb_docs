@@ -8,39 +8,7 @@ factors.
 \section{Data Types}
 \autoref{table:types} describes the different data types used in the benchmark.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|>{\typeCell}p{\attributeColumnWidth}|p{\largeDescriptionColumnWidth}|}
-    \hline
-    \tableHeaderFirst{Type} & \tableHeader{Description} \\
-    \hline
-    ID &  integer type with 64-bit precision. All IDs within a single entity type (\eg Post) are unique, but different entity types (\eg a Forum and a Post) might have the same ID.\\
-    \hline
-    32-bit Integer &  integer type with 32-bit precision\\
-    \hline
-    64-bit Integer &  integer type with 64-bit precision\\
-    \hline
-    String & variable length text of size 40 Unicode characters\\
-    \hline
-    Long String & variable length text of size 256 Unicode characters\\
-    \hline
-    Text &  variable length text of size 2000 Unicode characters\\
-    \hline
-    Date &  date with a precision of a day, encoded as a string with the following format: \textit{yyyy-mm-dd}, where \textit{yyyy} is a four-digit integer representing the year,
-    the year, \textit{mm} is a two-digit integer representing the month and \textit{dd} is a two-digit integer representing the day. \\
-    \hline
-    DateTime &  date with a precision of milliseconds, encoded as a string with the following format: \textit{yyyy-mm-ddTHH:MM:ss.sss+0000}, where \textit{yyyy} is a four-digit integer representing the year,
-    the year, \textit{mm} is a two-digit integer representing the month and \textit{dd} is a two-digit integer representing the day, \textit{HH} is a two-digit integer representing the hour, \textit{MM} is a two
-    digit integer representing the minute and \textit{ss.sss} is a five digit fixed point real number representing the seconds up to millisecond precision. Finally, the \textit{+0000} of the end represents the
-    timezone, which in this case is always GMT.\\
-    \hline
-    Boolean &  logical type, taking the value of either True of False\\
-    \hline
-\end{tabular}
-\caption{Description of the data types.}
-\label{table:types}
-\end{table}
-
+\input{tables/types}
 
 \section{Data Schema}
 
@@ -109,122 +77,31 @@ forums.  They are distinguished by their titles:
 
 \autoref{table:forum} shows the attributes of the Forum entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the forum.\\
-        \hline
-        title & Long String  & The title of the forum.\\
-        \hline
-        creationDate & DateTime  & The date the forum was created.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Forum entity.}
-    \label{table:forum}
-\end{table}
+\input{tables/table-forum}
 
 {\flushleft \textbf{Message:}} an abstract entity that represents a message
 created by a person. \autoref{table:message} shows the attributes of the Message
 abstract entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the message.\\
-        \hline
-        browserUsed & String  & The browser used by the Person to create the message.\\
-        \hline
-        creationDate & DateTime  & The date the message was created.\\
-        \hline
-        locationIP & String  & The IP of the location from which the message was created.\\
-        \hline
-        content & Text (optional)  & The content of the message.\\
-        \hline
-        length & 32-bit Integer  & The length of the content.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Message interface.}
-    \label{table:message}
-\end{table}
+\input{tables/table-message}
 
 {\flushleft \textbf{Organisation:}} an institution of the real
 world. \autoref{table:organisation} shows the attributes of the Organisation
 entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the organisation.\\
-        \hline
-        name & Long String  & The name of the organisation.\\
-        \hline
-        url & Long String  & The URL of the organisation.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Organisation entity.}
-    \label{table:organisation}
-\end{table}
+\input{tables/table-organisation}
 
 {\flushleft \textbf{Person:}} the avatar a real world person creates
 when he/she joins the network, and contains various information about the
 person as well as network related information. \autoref{table:person} shows
 the attributes of the Person entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the person.\\
-        \hline
-        firstName & String  & The first name of the person.\\
-        \hline
-        lastName & String  & The last name of the person.\\
-        \hline
-        gender & String  & The gender of the person.\\
-        \hline
-        birthday & Date  & The birthday of the person.\\
-        \hline
-        email & \{Long String\}  & The set of emails the person has (cardinality: at least one).\\
-        \hline
-        speaks & \{String\}  & The set of languages the person speaks (cardinality: at least one).\\
-        \hline
-        browserUsed & String  & The browser used by the person when he/she registered to the social network.\\
-        \hline
-        locationIP & String  & The IP of the location from which the person was registered to the social network.\\
-        \hline
-        creationDate & DateTime  & The date the person joined the social network.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Person entity.}
-    \label{table:person}
-\end{table}
-
+\input{tables/table-person}
 
 {\flushleft \textbf{Place:}} a place in the world.
 \autoref{table:place} shows the attributes of the Place entity. Note, each Place has additional parameters: longitude and latitude, which are not exposed. These are used internally for sorting places.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the place.\\
-        \hline
-        name & Long String  & The name of the place.\\
-        \hline
-        url & Long String  & The URL of the place.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Place entity.}
-    \label{table:place}
-\end{table}
+\input{tables/table-place}
 
 {\flushleft \textbf{Post:}} a sub-class of Message, that is posted in a
 forum. Posts are created by persons into the forums where they belong.
@@ -232,57 +109,17 @@ Posts contain either content or imageFile, always one of them but never both.
 The one they do not have is an empty string.
 \autoref{table:post} shows the attributes of the Post entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        language & String (optional) & The language of the post. Mutually exclusive with \texttt{imageFile}. \\
-        \hline
-        imageFile & String (optional) & The image file of the post. Mutually exclusive with \texttt{language}.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Post entity.}
-    \label{table:post}
-\end{table}
+\input{tables/table-post}
 
 {\flushleft \textbf{Tag:}} a topic or a concept. Tags are used to
 specify the topics of forums and posts, as well as the topics a person is
-interested in. \autoref{table:tag} shows the attributes of the Tag entity.
+interested in. \autoref{table:tag} shows the atltributes of the Tag entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the tag.\\
-        \hline
-        name & Long String  &  The name of the tag.\\
-        \hline
-        url & Long String  &  The URL of the tag.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the Tag entity.}
-    \label{table:tag}
-\end{table}
+\input{tables/table-tag}
 
 {\flushleft \textbf{TagClass:}} a class used to build a hierarchy of tags. \autoref{table:tagclass} shows the attributes of the TagClass entity.
 
-\begin{table}[H]
-    \begin{tabular}{|>{\varNameCell}p{\attributeColumnWidth}|>{\typeCell}p{\typeColumnWidth}|p{\descriptionColumnWidth}|}
-        \hline
-        \tableHeaderFirst{Attribute} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        id & ID  & The identifier of the tagclass.\\
-        \hline
-        name & Long String  &  The name of the tagclass.\\
-        \hline
-        url & Long String  &  The URL of the tagclass.\\
-        \hline
-    \end{tabular}
-    \caption{Attributes of the TagClass entity.}
-    \label{table:tagclass}
-\end{table}
+\input{tables/table-tagclass}
 
 {\flushleft \textbf{University:}} a sub-class of Organisation,
 and represents an institution where persons study.
@@ -291,87 +128,7 @@ and represents an institution where persons study.
 
 Relations connect entities of different types. Entities are defined by their ``id'' attribute.
 
-\begin{longtable}{|>{\varNameCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\typeCell}p{2.5cm}|>{\edgeDirectionCell}c|p{6.5cm}|}
-       \hline
-        \tableHeaderFirst{Name} & \tableHeader{Tail} & \tableHeader{Head} & \tableHeader{Type} & \tableHeader{Description} \\
-        \hline
-        containerOf & Forum[1] & Post[1..*] & D & A Forum and a Post contained in it\\
-        \hline
-        hasCreator & Message[0..*] & Person[1] & D & A Message and its creator (Person)\\
-        \hline
-        hasInterest & Person[0..*] & Tag[0..*] & D & A Person and a Tag representing a topic the person is interested in\\
-        \hline
-        hasMember & Forum[0..*] &  Person[1..*] & D & A Forum and its member (Person)
-
-        In version 0.3.x:
-
-        \attributeTable{joinDate}{DateTime}{The Date the person joined the Forum}
-
-        In version 0.4.0+:
-
-        \attributeTable{creationDate}{DateTime}{The Date the person joined the Forum}
-
-        \\
-        \hline
-        hasModerator & Forum[0..*] &
-        \textrm{In version 0.3.x:}
-        
-        Person[1]
-        
-        \textrm{In version 0.4.0+:}
-
-        Person[0..1]
-        & D & A Forum and its moderator (Person) \\
-        \hline
-        hasTag & Message[0..*] & Tag[0..*] & D & A Message and a Tag representing the message's topic \\
-        \hline
-        hasTag & Forum[0..*] & Tag[0..*] & D & A Forum and a Tag representing the forum's topic \\
-        \hline
-        hasType & Tag[0..*] & TagClass[1] & D & A Tag and a TagClass the tag belongs to \\
-        \hline
-        isLocatedIn & Company[0..*] & Country[1] & D & A Company and its home Country \\
-        \hline
-        isLocatedIn & Message[0..*] & Country[1] & D & A Message and the Country from which it was issued \\
-        \hline
-        isLocatedIn & Person[0..*] & City[1] & D & A Person and their home City \\
-        \hline
-        isLocatedIn & University[0..*] & City[1] & D &  A University and the City where the university is \\
-        \hline
-        isPartOf & City[1..*] & Country[1] & D & A City and the Country it is part of \\
-        \hline
-        isPartOf & Country[1..*] & Continent[1] & D & A Country and the Continent it is part of \\
-        \hline
-        isSubclassOf & TagClass[0..*] & TagClass[0..1] & D & A TagClass and its parent TagClass \\
-        \hline
-        knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other
-
-        \attributeTable{creationDate}{DateTime}{The date the knows relation was established}
-
-        \\
-        \hline
-        likes & Person[0..*] & Message[0..*] & D & A Person that likes a Message
-
-        \attributeTable{creationDate}{DateTime}{The date the like was issued}
-
-        \\
-        \hline
-        replyOf & Comment[0..*] & Message[1] & D & A Comment and the Message it replies \\
-        \hline
-        studyAt & Person[0..*] & University[0..*] & D & A Person and a University it has studied
-
-        \attributeTable{classYear}{32-bit Integer}{The year the person graduated}
-
-        \\
-        \hline
-        workAt & Person[0..*] & Company[0..*] & D & A Person and a Company it works
-
-        \attributeTable{workFrom}{32-bit Integer}{The year the person started to work at that Company}
-
-        \\
-        \hline
-    \caption{Description of the data relations. \texttt{D}: directed edge, \texttt{U}: undirected edge.}
-    \label{table:relations}
-\end{longtable}
+\input{tables/table-relations}
 
 \subsection{Domain Concepts}
 
@@ -442,47 +199,7 @@ dictionary for each literal property, as well as ranking functions for all
 literal properties. These are materialized in a set of resource files, which
 are described in \autoref{table:property_dictionaries}.
 
-\begin{table}[H]
-\begin{tabular}{|p{4cm}|p{12cm}|}
-    \hline
-    \tableHeaderFirst{Resource Name} & \tableHeader{Description} \\
-    \hline
-    Browsers & Contains a list of web browsers and their probability to be used. It is used to set the browsers used by the users.\\
-    \hline
-    Cities by Country & Contains a list of cites and the country they belong. It is used to assign cities to users and universities.\\
-    \hline
-    Companies by Country & Contains the set of companies per country. It is used to set the countries where companies operate.\\
-    \hline
-    Countries & Contains a list of countries and their populations. It is used to obtain the amount of people generated for each country.\\
-    \hline
-    Emails & Contains the set of email providers. It is used to generate the email accounts of persons.\\
-    \hline
-    IP Zones & Contains the set of IP ranges assigned to each country. It is used to assign the IP addresses to users.\\
-    \hline
-    Languages by Country & Contains the set of languages spoken in each country. It is used to set the languages spoken by each user.\\
-    \hline
-    Name by Country & Contains the set of names and the probability to appear in each country. It is used to assign names to persons, correlated with their countries.\\
-    \hline
-    Popular places by Country & Contains the set of popular places per country. These are used to set where images attached to posts are taken from.\\
-    \hline
-    Surnames' by Country & Contains the set of surnames and the probability to appear in each country. It is used to assign surnames to persons, correlated with their countries.\\
-    \hline
-    Tags by Country & Contains a set of tags and their probability to appear in each country. It is used to assign the interests to persons and forums.\\
-    \hline
-    Tag Classes & Contains, for each tag, the classes it belongs to.\\
-    \hline
-    Tag Hierarchies & Contains, for each tagClass, their parent tagClass.\\
-    \hline
-    Tag Matrix & Contains, for each tag, the correlation probability with the other tags. It is used enrich the tags associated to messages.\\
-    \hline
-    Tag Text & Contains, for each tag, a text. This is used to generate the text for messages.\\
-    \hline
-    Universities by City & Contains the set of universities per city. It is used to set the cities where universities operate.\\
-    \hline
-\end{tabular}
-    \caption{Resource files.}
-    \label{table:property_dictionaries}
-\end{table}
+\input{tables/table-property-dictionaries}
 
 \subsection{Graph Generation}
 
@@ -641,34 +358,18 @@ The size of the resulting dataset is mainly affected by the following configurat
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
 \autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000 data sets.
 
-\begin{table}[H]
-    \small
-    \setlength{\tabcolsep}{.5em}
-    \centering
-    \begin{tabular}{|l||r|r|r|r|r|r|r|r|r|r|r|}
-        \hline
-        Scale Factor     &     0.1 &     0.3 &        1 &        3 &        10 &        30 &        100 &        300 & \numprint{1000} & \numprint{3000} & \numprint{10000} \\ \hline\hline
-        \# Persons       &    1.5K &    3.5K &      11K &      27K &       73K &      182K &       499K &      1.25M &        3.6M & TBD & TBD \\ \hline\hline
-        %Number of nodes &  327588 &  908224 &  3181724 &  9281922 &  29987835 &  88789833 &  282637871 &  817316105 &  2686781095 & & \\ \hline
-        %Number of edges & 1477965 & 4583118 & 17256038 & 52695735 & 176623445 & 540915404 & 1775513811 & 5269286554 & 17788734714 & & \\ \hline
-        \# of nodes      &  327.6K &    908K &     3.2M &     9.3M &       30M &     88.8M &     282.6M &     817.3M &        2.7B & & \\ \hline
-        \# of edges      &    1.5M &    4.6M &    17.3M &    52.7M &    176.6M &    540.9M &       1.8B &       5.3B &         17B & & \\ \hline
-    \end{tabular}
-    \centering
-    \caption{Properties of data sets for each scale factor.}
-    \label{tab:snsize}
-\end{table}
+\input{tables/table-snsize}
 
 %In \autoref{appendix:scale_factors}, we show the statistics of each of the
 %proposed SFs in detail, including distributions for some of the relations.
 
-\input{table-csv-basic}
+\input{tables/table-csv-basic}
 
-\input{table-csv-merge-foreign}
+\input{tables/table-csv-merge-foreign}
 
-\input{table-csv-composite}
+\input{tables/table-csv-composite}
 
-\input{table-csv-composite-merge-foreign}
+\input{tables/table-csv-composite-merge-foreign}
 
 \subsection{Dataset}
 
@@ -714,7 +415,7 @@ The following CSV variants are supported:
 
 \subsection{Update Streams}
 
-\input{table-update-streams}
+\input{tables/table-update-streams}
 
 The generic schema is given in \autoref{table:update_stream_generic_schema}, while the concrete schema of each insert operation is given in \autoref{table:update_stream_schemas}.
 The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
