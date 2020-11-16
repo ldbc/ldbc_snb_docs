@@ -371,6 +371,8 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \input{tables/table-csv-composite-merge-foreign}
 
+\input{tables/table-csv-basic-rawdata}
+
 \subsection{Dataset}
 
 The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{fig:schema}).
@@ -411,6 +413,12 @@ The following CSV variants are supported:
       Has the traits of both the CsvComposite and the CsvMergeForeign formats.
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
       Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
+
+      \item \textbf{CsvBasic using ``raw data'' mode:}
+      The file names are the same as in CsvBasic but there are two important differences:
+      (1)~additional attributes (e.g. \texttt{deletionDate}, \texttt{isExplicitlyDeleted}, \texttt{weight}) are included mainly for debugging,
+      (2)~all data is included, i.e. if a Forum is created and deleted before sampling the initial data set, it is included in this data set.
+      Generated files are summarized in \autoref{table:csv_basic_rawdata}.
     \end{itemize}
 
 \subsection{Update Streams}
