@@ -380,6 +380,7 @@ By default, all SFs are defined over a period of three years, starting from 2010
 \subsection{Dataset}
 
 The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{fig:schema}).
+The filenames (without the extension) end in \texttt{\_i\_j} where \texttt{i} is the reducer id and \texttt{j} is the partitioner id.
 The SUT has to take care only of the generated Dataset to be bulk loaded. Using \texttt{NULL} values for storing optional values is allowed.
 
 \datagen currently only supports CSV-based serializers.
