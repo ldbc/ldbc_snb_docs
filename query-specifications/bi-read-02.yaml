@@ -3,29 +3,27 @@ operation: read
 number: 2
 title: Tag evolution
 description: |
-  Find the *Tags* that were used in *Messages* during the given `month` of the given `year` and the *Tags* that were used during the next month.
-
+  Find the *Tags* that were used in *Messages* during in the 100-day period starting at `date` and compare it with the 100-day period that follows.
   For the *Tags* and for both months, compute the count of *Messages*.
+
 parameters:
-  - name: year
-    type: 32-bit Integer
-  - name: month
-    type: 32-bit Integer
+  - name: date
+    type: Date
 result:
   - name: tag.name
     type: Long String
-  - name: countMonth1
+  - name: countWindow1
     type: 32-bit Integer
     category: aggregated
-    description: Occurrences of the tag during the given `year` and `month`
-  - name: countMonth2
+    description: Occurrences of the tag during the first time window
+  - name: countWindow2
     type: 32-bit Integer
     category: aggregated
-    description: Occurrences of the tag during the next month after the given `year` and `month`
+    description: Occurrences of the tag during the second time window
   - name: diff
     type: 32-bit Integer
     category: aggregated
-    description: Absolute difference of `countMonth1` and `countMonth2`
+    description: Absolute difference of `countWindow1` and `countWindow2`
 sort:
   - name: diff
     direction: desc

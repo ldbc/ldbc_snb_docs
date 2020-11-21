@@ -3,7 +3,7 @@ operation: read
 number: 3
 title: Popular topics in a country
 description: |
-  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Post* with *Tags* belonging directly to the given *TagClass*.
+  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Message* with *Tags* belonging directly to the given *TagClass*, and count the **Messages** by the **Person** who created it and the **Forum** where they were posted.
 
   The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
@@ -20,11 +20,11 @@ result:
     type: DateTime
   - name: person.id
     type: ID
-  - name: postCount
+  - name: messageCount
     category: aggregated
     type: 32-bit Integer
 sort:
-  - name: postCount
+  - name: messageCount
     direction: desc
   - name: forum.id
     direction: asc

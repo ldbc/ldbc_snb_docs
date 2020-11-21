@@ -7,12 +7,16 @@ description: |
 
   * `a` is friend of `b`,
   * `b` is friend of `c`,
-  * `c` is friend of `a`.
+  * `c` is friend of `a`,
+
+  and these friendships were created after a given `startDate`.
 
   Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
   - name: country
     type: Long String
+  - name: startDate
+    type: Date
 result:
   - name: count
     type: 32-bit Integer

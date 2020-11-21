@@ -3,7 +3,7 @@ operation: read
 number: 1
 title: Posting summary
 description: |
-  Given a date, find all *Messages* created before that date.
+  Given a datetime, find all *Messages* created before that moment.
   Group them by a 3-level grouping\:
 
   1. by year of creation
@@ -15,8 +15,8 @@ description: |
       * `3`: $160 \leq \text{length}$ (long)
 
 parameters:
-  - name: date
-    type: Date
+  - name: datetime
+    type: DateTime
 result:
   - name: year
     type: 32-bit Integer
