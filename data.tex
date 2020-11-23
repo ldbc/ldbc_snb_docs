@@ -344,9 +344,10 @@ For each scale factor, \datagen produces three different artefacts:
 \end{itemize}
 
 \subsection{Scale Factors}
+\label{sec:scale-factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
-SFs are computed based on the ASCII size in Gibibytes of the generated output files using the CsvMergeForeign serializer and default settings (both the 90\% initial data and the 10\% update streams count towards the total size).
+SFs are computed based on the ASCII size in Gibibytes of the generated output files using the CsvMergeForeign serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.
 For example, SF1 takes roughly 1~GiB in CSV format, SF3 weighs roughly 3~GiB and so on and so forth.
 It is important to note that for a given scale factor, data sets generated using different serializers contain exaclty the same data, the only difference is in how they are represented.%
 \footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the CsvBasic serializer is expected to be higher, while with the CsvMergeForeignComposite, it is expected to be lower.}
@@ -356,7 +357,7 @@ Additionally, three small SFs, 0.003 (for quick tests of data loader components)
 The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
-\autoref{tab:snsize} shows some metrics of SFs 0.1 \ldots 1000 data sets.
+\autoref{tab:snsize} shows some metrics of SFs 0.1, \ldots, 1000 data sets.
 
 \input{tables/table-snsize}
 
@@ -377,7 +378,8 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \input{tables/table-csv-basic-rawdata}
 
-\subsection{Dataset}
+\subsection{Serializers}
+\label{sec:serializers}
 
 The datasets are generated in the \texttt{social\_network/} directory, split into static and dynamic parts (\autoref{fig:schema}).
 The filenames (without the extension) end in \texttt{\_i\_j} where \texttt{i} is the reducer id and \texttt{j} is the partitioner id.
@@ -421,10 +423,25 @@ The following CSV variants are supported:
 
       \item \textbf{CsvBasic using ``raw data'' mode:}
       The file names are the same as in CsvBasic but there are two important differences:
-      (1)~additional attributes (e.g. \texttt{deletionDate}, \texttt{isExplicitlyDeleted}, \texttt{weight}) are included mainly for debugging,
-      (2)~all data is included, i.e. if a Forum is created and deleted before sampling the initial data set, it is included in this data set.
+      (1)~additional attributes (\eg \texttt{deletionDate}, \texttt{isExplicitlyDeleted}, \texttt{weight}) are included mainly for debugging,
+      (2)~all data is included, \ie if a Forum is created and deleted before sampling the initial data set, it is included in this data set.
       Generated files are summarized in \autoref{table:csv_basic_rawdata}.
     \end{itemize}
+
+The inheritance hierarchies in the schema have two important characteristics
+(1)~all subclasses use the same id space, \eg there cannot be a Comment and a Post with id 1 at the same time,
+(2)~they are serialized to CSVs using either the \emph{map hierarchy to single table} or \emph{map each concrete class to its own table} strategies\footnote{\url{http://www.agiledata.org/essays/mappingObjects.html}}:
+
+\begin{description}
+    \item[Message = Comment | Post]
+    \emph{Map each concrete class to its own table} is used \ie separate CSV files are used for the Comment and the Post classes.
+
+    \item[Place = City | Country | Continent]
+    \emph{Map hierarchy to single table} is used, \ie all Place node are serialized in a single file. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Country''.
+
+    \item[Organisation = Company | University]
+    \emph{Map hierarchy to single table} is used, \ie all Organisation nodes are serialized in a single fiel. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Company''.
+\end{description}
 
 \subsection{Update Streams}
 
