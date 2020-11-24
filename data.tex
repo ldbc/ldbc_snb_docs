@@ -793,3 +793,12 @@ The target proportion of group memberships that are deleted across the simulatio
 
 \section{Converting Delete Events into Delete Operations}
 \label{sec:conv-delete-events}
+\todo{describe the backwards compatibility to support interactive (insert-only) workload}
+Datagen supports 3 modes, each having different output:
+\begin{itemize}
+\item \textbf{Interactive}, produces the data necessary for the interactive workload. Includes a set of bulk load csv files and a number of update streams, which contain only insert operations.
+\item \textbf{BI}, produces the data necessary for the business intelligence workload. Includes a set of bulk load csv files and a number of refresh batches, which contain insert and delete operations.
+\item \textbf{Raw}, produces a fully dynamic graph without insert or delete operations. Includes a set of bulk load csv files (covering whole simulation period), with each dynamic entity having creation and deletion date attributes serialized. This mode is not intended for use with any LDBC workload.
+\end{itemize}
+
+\input{figures/fig-serialization-conds}
