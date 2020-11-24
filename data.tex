@@ -459,29 +459,52 @@ The schemas of these files are defined by the operator, \eg the schema of \query
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introducing Deletions to Datagen}
+\section{Introducing Delete Operations}
 
 \paragraph{Challenge for systems}
-
-To support deletions, graph processing systems need to solve numerous technical challenges:
+To support deletion operations graph processing systems need to solve numerous technical challenges:
 %
 \begin{enumerate}
-    \item Users should be able to \emph{express deletion operations} using the database API, preferably using a high-level declarative query language with clear semantics~\cite{Green2019}.
-    \item Deletion operations \emph{limit the algorithms and data structures} that can be used by a system.
-    Certain dynamic graph algorithms are significantly more expensive to recompute in the presence of deletes~\cite{DBLP:conf/soda/Roditty13} or only support either insertions or deletions but not both~\cite{DBLP:conf/esa/RodittyZ04}.
-    A number of updatable matrix storage formats only support efficient insertions but not deletions~\cite{DBLP:conf/hpec/BusatoGBB18}.
-    Meanwhile some graph databases might be able to exploit indexes to speed up deletions~\cite[Sec.~4.4.2]{Besta2019}
-    \item \emph{Distributed graph databases} need to employ specialized protocols to enforce consistency of deletions~\cite{Waudby2020}.
+\item Users should be able to \emph{express deletion operations} using the database API, preferably using a high-level declarative query language with clear semantics~\cite{Green2019}.
+\item Deletion operations \emph{limit the algorithms and data structures} that can be used by a system. Certain dynamic graph algorithms are significantly more expensive to recompute in the presence of deletes~\cite{DBLP:conf/soda/Roditty13} or only support either insert or deletions but not both~\cite{DBLP:conf/esa/RodittyZ04}. A number of updatable matrix storage formats only support efficient insertions but not deletions~\cite{DBLP:conf/hpec/BusatoGBB18}. Meanwhile some graph databases might be able to exploit indexes to speed up deletions~\cite[Sec.~4.4.2]{Besta2019}
+\item \emph{Distributed graph databases} need to employ specialized protocols to enforce consistency of deletions~\cite{Waudby2020}.
 \end{enumerate}
 
 \paragraph{Challenge for benchmarks}
 Due to their importance and challenging nature, we found it necessary to incorporate delete operations into LDBC benchmarks.
 However, doing so is a non-trivial task as it impacts on each component in the benchmark workflow:
 workload specifications, data generation, parameter curation, and the workload driver.
-This chapter focuses on the challenge of generating deletion operations within LDBC's synthetic data generator, specifically, to extend the generator with support for dynamic entities.
+
+The initial step in generating delete operations is to define the semantics of the desired operations.
+To understand common behaviour of deletes we informally surveyed several social networks, the findings of which motivated the design of 8 delete operations described in~\autoref{sec:bi-refreshes}.
+
+The next step was to generate \emph{delete events} within LDBC's synthetic data generator and ensure that they follow a logic order in the social network.
+For example, a delete \tKnows edge event can only occur after both \tPersons join the network and become friends, but before either \tPerson leaves the network.
+To achieve this Datagen was extended to support \emph{dynamic entities}.
 Dynamic entities have a \emph{creation date} and a \emph{deletion date}, which together comprise an entity's \emph{lifespan}.
-Once generated this allows for the extraction of deletion operations, which can be utilized by LDBC workloads. 
-Supporting the generation of dynamic entities poses numerous challenges:
+Once generated this allows for the extraction of deletion operations, which can be utilized by LDBC workloads.
+Deriving valid lifespans for dynamic entities was the subject of a short paper published at the GRADES-NDA~2020 workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} and is presented in~\autoref{sec:lifespan-management}.
+
+Next it was important to distinguish between \emph{implicit} and \emph{explicit} delete events.
+Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network, at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
+Alternatively, at any time up until this event, the friendship can be explicitly deleted, i.e., two people have a disagreement and “unfriend” each other, but both continue using the social network.
+Distinguishing between these types of events is important as only explicit delete events should become delete operations in the workload.
+To achieve this each dynamic entity is assigned a probability of being explicitly deleted, if selected the entity is marked as such; this is used to ensure the correct serialization of delete events into delete operations.
+For entities selected for explicit deletion the next step is to determine a realistic time at which the event occurs.
+For example, a post has a higher probability of being deleted soon after it was posted compared to after 5 days.
+To achieve this each dynamic entity is assigned a realistic distribution to select delete event timestamps from, which respects the bounds imposed by the valid lifespans.
+The probability distributions used determine if a dynamic entities is explicitly deleted and then when that event occurs is discussed in~\autoref{sec:ensuring-realism}.
+
+Once generated dynamic entities must be correctly serialized.
+Depending on its creation date, deletion date, and if the entity is explicitly deleted it can,
+(i) spawn an insert and delete operation,
+(ii) be included in the bulk load component and spawn a delete operation,
+(iii) just be included in the bulk load component,
+(iv) spawn only an insert operation, and
+(v) not be serialized at all!
+The approach for doing this is presented in~\autoref{sec:conv-delete-events}.
+
+We summarize the numerous challenges supporting the generation of dynamic entities and thus delete operations poses below:
 \begin{enumerate}
 \item \textbf{Validity.} The generator should produce \emph{valid lifespans},
 where each generated dynamic entity guarantees that
@@ -493,6 +516,7 @@ For example, in a social network the distribution of activity is non-uniform ove
 can drive spikes of posts and unfollowings respectively~\cite{DBLP:conf/www/MyersL14}.
 In addition, deletions can be correlated with certain attributes: \eg the likelihood a person leaves the network may be correlated with their number of friends~\cite{Lorincz2019}.
 Also, there are often temporal correlations between entity creation and deletion: \eg posts have an increased chance of deletion immediately following creation compared to after a 3~month period.
+\item \textbf{Serialization.} Care must be taken to distinguish between implicit and explicit delete events when creating the bulk load component, insert operations, and delete operations.
 \item \textbf{Scalability.} A graph with dynamic entities should be generated at scale (up to billions of edges).
 \end{enumerate}
 
@@ -551,7 +575,7 @@ Entity types are monospaced, \eg \tPerson, \tHasMember.
 Variables are lowercase italic, \eg $\variable{pers}, \variable{hm}$.
 Entities are sans-serif, \eg $\instance{P_1}, \instance{HM}$.
 For an entity $x$, $\varc{x}{}$ denotes its creation date, while $\vard{x}{}$ denotes its deletion date.
-In most cases, both the creation and the deletion date are selected from an interval, \eg $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive). 
+In most cases, both the creation and the deletion date are selected from an interval, \eg $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive).
 The selected creation and deletion dates together form an interval that represents the lifespan of its entity.
 If any of the intervals for selecting the lifespan attributes of an entity are empty, \ie $d_2 \leq d_1$, the entity should be discarded.
 As illustrated later, this interval is often used to determine the intervals where the creation and deletion dates of dependant entities are selected.
@@ -584,14 +608,14 @@ To enforce referential integrity constraints (\ie prevent dangling edges), the l
         {\min(\vardn{1}, \vardn{2}, \xSE)} $,
         in other terms,
         the edge must be created no sooner than both of its endpoints
-        but before 
+        but before
         any of its endpoints are deleted.
         %creation date of and edge must be larger than or equal to those of its endpoints.
     \item $ \vard{e} \in \interval
         {\varc{e} + \Delta}
         {\min(\vardn{1}, \vardn{2})} $,
         \ie the edge must exist for at least $\Delta$ time and
-        deleted no later than 
+        deleted no later than
         any of its endpoints.
 \end{itemize}
 
@@ -601,7 +625,7 @@ To further refine the constraints for edges, we distinguish between two main cas
 \begin{itemize}
     \item $ \varc{e} = \varcn{2} $ % \quad (we know that $\varcn{1} \geq \varcn{2} + \Delta$)
     \item $ \vard{e} = \min(\vardn{1}, \vardn{2}) $.
-    In case of edges with \emph{containment semantics} (node $\varn{1}$ contains $\varn{2}$ through edge $e$), 
+    In case of edges with \emph{containment semantics} (node $\varn{1}$ contains $\varn{2}$ through edge $e$),
     node $\varn{2}$ must always be deleted at the same time as edge $\variable{e}$,
     therefore
     $\vard{e} = \vardn{2}$ and $\vardn{2} \leq \vardn{1}$.
@@ -638,7 +662,7 @@ For the edges of \tPerson nodes pointing to a static node
 ($\type{isLocatedIn}$,
 $\type{studyAt}$,
 $\type{workAt}$, and
-$\type{hasInterest}$), 
+$\type{hasInterest}$),
 we assign the creation and deletion date from $\varc{\ePerson}$ and $\vard{\ePerson}$, resp.
 
 % \begin{itemize}
@@ -698,3 +722,10 @@ The rules for \tForum and \tMessage nodes along with their edges are given in \a
 %   comment\_replyOf\_comment,
 %   comment\_replyOf\_post (merged to Comment)
 % \end{itemize}
+
+\section{Ensuring Realism}
+\label{sec:ensuring-realism}
+
+
+\section{Converting Delete Events into Delete Operations}
+\label{sec:conv-delete-events}
