@@ -736,41 +736,52 @@ The rules for \tForum and \tMessage nodes along with their edges are given in \a
 \section{Ensuring Realism}
 \label{sec:ensuring-realism}
 
+Capturing realistic deletion behaviour was broken down into two dimensions.
+Firstly, each dynamic is assigned a probability of being explicitly deleted.
+Second, if selected for explicit deletion, a deletion date is selected using a distribution bound by the valid lifespan of that entity.
+To make informed choices of deletion probabilities and deletion date distribution where possible real-world data was used.
+
 \paragraph{Delete Person}
 
 \cite{Lorincz2019} identifies people with more connections are less likely to leave a social network.
 When a \tPerson is generated they are assigned a \emph{maxKnows} value which indicates the amount of \tKnows connections they will make across the lifetime of the network.
-This is then used to determine the probability a person is deleted, using the distribution given below.
-A deletion date is then selected uniformly from the person's lifespan.
-On average 3.5\% of persons are deleted across the simulation period.
+This is then used to determine the probability a person is explicitly deleted, using the distribution given below.
+A deletion date is then selected uniformly from the person's valid lifespan.
+On average 3.5\% of \tPersons are deleted across the simulation period.
 \todo{add plot}
 
 \paragraph{Delete Knows}
 
 \cite{DBLP:conf/www/MyersL14} analysed 1.2 billion tweets from 13.1 million Twitter users.
 These users made 112.3 million new connections, and deleted 39.2 million connections; a 3:1 follow:unfollow ratio.
-As Datagen models a generic social media platform we have chosen a different ratio of 20:1, rather than overcapture behavior that may be unique to a single site.
-They also find a constant background flux of follows and unfollows interleaved with bursts in such activity.
+As Datagen models a generic social media platform we have chosen a different ratio of 20:1 (on average 5\% of \tKnows edges are deleted), rather than overcapture behavior that may be unique to a single site.
+\cite{DBLP:conf/www/MyersL14} also finds a constant background flux of follows and unfollows interleaved with bursts in such activity.
 Currently, Datagen has no follow bursts, thus, we have decided not to incorporate follow bursts.
 They also find less similar friends have a high probability of being unfollowed.
+\todo{modelling this is work in progress}
+If a \tKnows edge is selected for explicit deletion then a deletion date is then selected uniformly from the edges valid lifespan.
 
 \paragraph{Delete Post/Comment and Delete Post/Comment Like}
-\todo{add ref}
-Almuhimedi et al. (2013) tracked 292K Twitter users for 1 week finding 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that were not replies.
-In order to apply these findings to Datagen, tweet categories were mapped to Datagen message types.
-The table below shows the mapping and the percentage deleted within each category.
-\todo{add table}
-Additionally, Almuhimedi et al. (2013) identified not all users delete messages, with around 50\% of users doing so.
-Thus, each person in the network has a 50\% chance of being marked a “deleter”, who subsequently, may or may not, delete messages or likes.
 
-Almuhimedi et al. (2013) also identify a relationship between the depth of comments on a post and the chance the post is removed, less comments, more likely a post is deleted.
+\cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week finding 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that were not replies.
+In order to apply these findings to Datagen, tweet categories were mapped to Datagen message types.
+\autoref{table:almuhimedi-mapping} the entity mapping and the percentage deleted across the simulation period within each category.
+
+\input{tables/table-almuhimedi-mapping}
+
+Additionally,~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
+Thus, each \tPerson in the network has a 50\% chance of being marked a ``deleter'', who subsequently, may or may not, delete post, comments, or likes.
+\cite{DBLP:conf/cscw/AlmuhimediWLSA13} also identify a relationship between the depth of comments on a post and the chance the post is removed, less comments, more likely a post is deleted.
 We model this relationship using the distribution above.
 \todo{add plot}
-Posts in groups and walls are produced via a uniform generator and a flash mob generator, capturing background events and bursts in events respectively. A comment generator is then used to produce a tree of comments on each post.
-Posts in albums are referred to as photos. They are produced by a different generator and do not have flash mob events nor do they have comment trees.
+
+Posts in groups and walls are produced via a uniform generator and a flash mob generator, capturing background events and bursts in events respectively.
+A comment generator is then used to produce a tree of comments on each post.
+Posts in albums are referred to as photos.
+They are produced by a different generator and do not have flash mob events nor do they have comment trees.
 Additionally, each post and comment have a number of likes generated for it.
 Almuhimedi et al. (2013) observes a temporal relationship for when a tweet is deleted.
-We have recreated this distribution and use it to generate deletion dates for posts, comments, and likes.
+We have recreated this distribution and use it to generate deletion dates for posts, comments, and likes that are selected for explicit deletion.
 \todo{add plot}
 
 \paragraph{Delete Forum and Delete Forum Membership}
