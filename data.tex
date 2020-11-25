@@ -506,6 +506,7 @@ Next it was important to distinguish between \emph{implicit} and \emph{explicit}
 Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network, at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
 Alternatively, at any time up until this event, the friendship can be explicitly deleted, i.e., two people have a disagreement and “unfriend” each other, but both continue using the social network.
 Distinguishing between these types of events is important as only explicit delete events should become delete operations in the workload.
+
 To achieve this each dynamic entity is assigned a probability of being explicitly deleted, if selected the entity is marked as such; this is used to ensure the correct serialization of delete events into delete operations.
 For entities selected for explicit deletion the next step is to determine a realistic time at which the event occurs.
 For example, a post has a higher probability of being deleted soon after it was posted compared to after 5 days.
@@ -713,18 +714,10 @@ The rules for \tForum and \tMessage nodes along with their edges are given in \a
 %   \label{fig:degrees}
 % \end{figure*}
 
-
-
 \input{albums-walls}
-
 \input{complex-example}
 
-
-
-
-
 %As of version 0.4.0 Datagen produced a graph that was monotonically increasing in size over the simulation period, once a \tPerson joined the network they never left, they never deleted a post nor unliked a picture. In reality this far from the case, people regularly remove friends, delete comments and unlike pictures. Analysis of the now defunct social network iWiW~\cite{Lorincz2019} discovered across the network's lifetime 22\% of users deleted their accounts. Moreover, recent analysis of Facebook data found an average user has removed around 5\% of their cumulative friends [REF].
-
 
 % See spec:
 % \begin{itemize}
@@ -791,14 +784,25 @@ Additionally, we currently do not have empirical evidence to motivate realistic 
 Only membership of groups can be explicitly deleted.
 The target proportion of group memberships that are deleted across the simulation period is 5\%.
 
-\section{Converting Delete Events into Delete Operations}
+\section{Serialization Constraints: Converting Delete Events into Delete Operations}
 \label{sec:conv-delete-events}
-\todo{describe the backwards compatibility to support interactive (insert-only) workload}
 Datagen supports 3 modes, each having different output:
 \begin{itemize}
-\item \textbf{Interactive}, produces the data necessary for the interactive workload. Includes a set of bulk load csv files and a number of update streams, which contain only insert operations.
-\item \textbf{BI}, produces the data necessary for the business intelligence workload. Includes a set of bulk load csv files and a number of refresh batches, which contain insert and delete operations.
-\item \textbf{Raw}, produces a fully dynamic graph without insert or delete operations. Includes a set of bulk load csv files (covering whole simulation period), with each dynamic entity having creation and deletion date attributes serialized. This mode is not intended for use with any LDBC workload.
+\item \textbf{Interactive}. Produces the data necessary for the interactive workload. Includes a set of bulk load csv files and a number of update streams, which contain only insert operations.
+\item \textbf{BI}. Produces the data necessary for the business intelligence workload. Includes a set of bulk load csv files and a number of refresh batches, which contain insert and delete operations.
+\item \textbf{Raw}. Produces a fully dynamic graph without insert or delete operations. Includes a set of bulk load csv files (covering whole simulation period), with each dynamic entity having creation and deletion date attributes serialized. This mode is not intended for use with any LDBC workload.
 \end{itemize}
+
+When run in Interactive mode Datagen produces a graph that monotonically increases in size over the simulation period with insert-only operations, e.g., once \tPerson joins the network they never leave, not delete a post nor unlike a picture.
+This is mode is supported for backward compatibility with the interactive workload.
+
+The modes BI and raw use the dynamic graph containing creation events and deletion events.
+Raw mode effectively serializes the graph to a bulk component and has a slightly different schema, with each entity having creation date and deletion date fields.
+This mode was developed for testing, yet may be useful to users that require a dynamic graph data set for purposes other than benchmarking.
+
+For the BI mode the generated data must be converted into a bulk load component and a series of refresh batches (containing insert and d delete operations.
+\autoref{fig:serialization-conds} displays the possible creation and deletion dates a dynamic entity can have with respect to the bulk load cut off, simulation end, and network collapse, which determines the target file the entity should be serialized to.
+For example, if a \tPost is created after the bulk load and deleted before the simulation end this should result in a insert and a delete operation in the refresh batch data set.
+If an entity is marked for explicit deletion then, if the conditions in \autoref{fig:serialization-conds} are satisfied then a deletion operation is serialized into the refresh batches.
 
 \input{figures/fig-serialization-conds}
