@@ -763,13 +763,13 @@ If a \tKnows edge is selected for explicit deletion then a deletion date is then
 
 \paragraph{Delete Post/Comment and Delete Post/Comment Like}
 
-\cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week finding 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that were not replies.
+Paper \cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week finding 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that were not replies.
 In order to apply these findings to Datagen, tweet categories were mapped to Datagen message types.
 \autoref{table:almuhimedi-mapping} the entity mapping and the percentage deleted across the simulation period within each category.
 
 \input{tables/table-almuhimedi-mapping}
 
-Additionally,~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
+Additionally, paper~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
 Thus, each \tPerson in the network has a 50\% chance of being marked a ``deleter'', who subsequently, may or may not, delete post, comments, or likes.
 \cite{DBLP:conf/cscw/AlmuhimediWLSA13} also identify a relationship between the depth of comments on a post and the chance the post is removed, less comments, more likely a post is deleted.
 We model this relationship using the distribution above.
@@ -780,7 +780,7 @@ A comment generator is then used to produce a tree of comments on each post.
 Posts in albums are referred to as photos.
 They are produced by a different generator and do not have flash mob events nor do they have comment trees.
 Additionally, each post and comment have a number of likes generated for it.
-Almuhimedi et al. (2013) observes a temporal relationship for when a tweet is deleted.
+Almuhimedi et al. (2013) observe a temporal relationship for when a tweet is deleted.
 We have recreated this distribution and use it to generate deletion dates for posts, comments, and likes that are selected for explicit deletion.
 \todo{add plot}
 
@@ -795,7 +795,7 @@ Additionally, we currently do not have empirical evidence to motivate realistic 
 Only membership of groups can be explicitly deleted.
 The target proportion of group memberships that are deleted across the simulation period is 5\%.
 
-\section{Serialization Constraints: Converting Delete Events into Delete Operations}
+\section{Converting Delete Events into Delete Operations}
 \label{sec:conv-delete-events}
 Datagen supports 3 modes, each having different output:
 \begin{itemize}
@@ -805,7 +805,7 @@ Datagen supports 3 modes, each having different output:
 \end{itemize}
 
 When run in Interactive mode Datagen produces a graph that monotonically increases in size over the simulation period with insert-only operations, \eg once \tPerson joins the network they never leave, not delete a post nor unlike a picture.
-This is mode is supported for backward compatibility with the interactive workload.
+This is mode is supported for backward compatibility with the Interactive workload.
 
 The modes BI and raw use the dynamic graph containing creation events and deletion events.
 Raw mode effectively serializes the graph to a bulk component and has a slightly different schema, with each entity having creation date and deletion date fields.
