@@ -504,14 +504,14 @@ Deriving valid lifespans for dynamic entities was the subject of a short paper p
 
 Next it was important to distinguish between \emph{implicit} and \emph{explicit} delete events.
 Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network, at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
-Alternatively, at any time up until this event, the friendship can be explicitly deleted, i.e., two people have a disagreement and “unfriend” each other, but both continue using the social network.
+Alternatively, at any time up until this event, the friendship can be explicitly deleted, \ie two people have a disagreement and “unfriend” each other, but both continue using the social network.
 Distinguishing between these types of events is important as only explicit delete events should become delete operations in the workload.
 
 To achieve this each dynamic entity is assigned a probability of being explicitly deleted, if selected the entity is marked as such; this is used to ensure the correct serialization of delete events into delete operations.
 For entities selected for explicit deletion the next step is to determine a realistic time at which the event occurs.
 For example, a post has a higher probability of being deleted soon after it was posted compared to after 5 days.
 To achieve this each dynamic entity is assigned a realistic distribution to select delete event timestamps from, which respects the bounds imposed by the valid lifespans.
-The probability distributions used determine if a dynamic entities is explicitly deleted and then when that event occurs is discussed in~\autoref{sec:ensuring-realism}.
+The probability distributions used to determine if a dynamic entities is explicitly deleted and then when that event occurs is discussed in~\autoref{sec:ensuring-realism}.
 
 Once generated dynamic entities must be correctly serialized.
 Depending on its creation date, deletion date, and if the entity is explicitly deleted it can,
@@ -804,14 +804,14 @@ Datagen supports 3 modes, each having different output:
 \item \textbf{Raw}. Produces a fully dynamic graph without insert or delete operations. Includes a set of bulk load csv files (covering whole simulation period), with each dynamic entity having creation and deletion date attributes serialized. This mode is not intended for use with any LDBC workload.
 \end{itemize}
 
-When run in Interactive mode Datagen produces a graph that monotonically increases in size over the simulation period with insert-only operations, e.g., once \tPerson joins the network they never leave, not delete a post nor unlike a picture.
+When run in Interactive mode Datagen produces a graph that monotonically increases in size over the simulation period with insert-only operations, \eg once \tPerson joins the network they never leave, not delete a post nor unlike a picture.
 This is mode is supported for backward compatibility with the interactive workload.
 
 The modes BI and raw use the dynamic graph containing creation events and deletion events.
 Raw mode effectively serializes the graph to a bulk component and has a slightly different schema, with each entity having creation date and deletion date fields.
 This mode was developed for testing, yet may be useful to users that require a dynamic graph data set for purposes other than benchmarking.
 
-For the BI mode the generated data must be converted into a bulk load component and a series of refresh batches (containing insert and d delete operations.
+For the BI mode the generated data must be converted into a bulk load component and a series of refresh batches (containing insert and delete operations).
 \autoref{fig:serialization-conds} displays the possible creation and deletion dates a dynamic entity can have with respect to the bulk load cut off, simulation end, and network collapse, which determines the target file the entity should be serialized to.
 For example, if a \tPost is created after the bulk load and deleted before the simulation end this should result in a insert and a delete operation in the refresh batch data set.
 If an entity is marked for explicit deletion then, if the conditions in \autoref{fig:serialization-conds} are satisfied then a deletion operation is serialized into the refresh batches.
