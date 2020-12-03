@@ -491,27 +491,38 @@ To support deletion operations graph processing systems need to solve numerous t
 Due to their importance and challenging nature, we found it necessary to incorporate delete operations into LDBC benchmarks.
 However, doing so is a non-trivial task as it impacts on each component in the benchmark workflow:
 workload specifications, data generation, parameter curation, and the workload driver.
+This section focuses primarily data generation.
 
 The initial step in generating delete operations is to define the semantics of the desired operations.
-To understand common behaviour of deletes we informally surveyed several social networks, the findings of which motivated the design of 8 delete operations described in~\autoref{sec:bi-refreshes}.
+To understand common behaviour of deletes we informally surveyed several social networks, the findings of which motivated the design
+of 8 delete operations described in~\autoref{sec:bi-refreshes}.
 
-The next step was to generate \emph{delete events} within LDBC's synthetic data generator and ensure that they follow a logic order in the social network.
-For example, a delete \tKnows edge event can only occur after both \tPersons join the network and become friends, but before either \tPerson leaves the network.
+The next step was to generate \emph{delete events} within LDBC's synthetic data generator and ensure that they follow a logic order in
+the social network.
+For example, a delete \tKnows edge event can only occur after both \tPersons join the network and become friends,
+but before either \tPerson leaves the network.
 To achieve this Datagen was extended to support \emph{dynamic entities}.
 Dynamic entities have a \emph{creation date} and a \emph{deletion date}, which together comprise an entity's \emph{lifespan}.
 Once generated this allows for the extraction of deletion operations, which can be utilized by LDBC workloads.
-Deriving valid lifespans for dynamic entities was the subject of a short paper published at the GRADES-NDA~2020 workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} and is presented in~\autoref{sec:lifespan-management}.
+Deriving valid lifespans for dynamic entities was the subject of a short paper published at the GRADES-NDA~2020
+workshop~\cite{DBLP:conf/sigmod/WaudbySPS20} and is presented in~\autoref{sec:lifespan-management}.
 
 Next it was important to distinguish between \emph{implicit} and \emph{explicit} delete events.
-Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network, at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
-Alternatively, at any time up until this event, the friendship can be explicitly deleted, \ie two people have a disagreement and “unfriend” each other, but both continue using the social network.
-Distinguishing between these types of events is important as only explicit delete events should become delete operations in the workload.
+Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network,
+at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
+Alternatively, at any time up until this event, the friendship can be explicitly deleted,
+\ie two people have a disagreement and “unfriend” each other, but both continue using the social network.
+Distinguishing between these types of events is important as only explicit delete events should become delete operations
+in the workload.
 
-To achieve this each dynamic entity is assigned a probability of being explicitly deleted, if selected the entity is marked as such; this is used to ensure the correct serialization of delete events into delete operations.
+To achieve this each dynamic entity is assigned a probability of being explicitly deleted, if selected the entity is marked as such;
+this is used to ensure the correct serialization of delete events into delete operations.
 For entities selected for explicit deletion the next step is to determine a realistic time at which the event occurs.
 For example, a post has a higher probability of being deleted soon after it was posted compared to after 5 days.
-To achieve this each dynamic entity is assigned a realistic distribution to select delete event timestamps from, which respects the bounds imposed by the valid lifespans.
-The probability distributions used to determine if a dynamic entities is explicitly deleted and then when that event occurs is discussed in~\autoref{sec:ensuring-realism}.
+To achieve this each dynamic entity is assigned a realistic distribution to select delete event timestamps from,
+which respects the bounds imposed by the valid lifespans.
+The probability distributions used to determine if a dynamic entities is explicitly deleted and then when that event occurs is discussed
+in~\autoref{sec:ensuring-realism}.
 
 Once generated dynamic entities must be correctly serialized.
 Depending on its creation date, deletion date, and if the entity is explicitly deleted it can,
@@ -737,52 +748,82 @@ The rules for \tForum and \tMessage nodes along with their edges are given in \a
 \label{sec:ensuring-realism}
 
 Capturing realistic deletion behaviour was broken down into two dimensions.
-Firstly, each dynamic is assigned a probability of being explicitly deleted.
-Second, if selected for explicit deletion, a deletion date is selected using a distribution bound by the valid lifespan of that entity.
-To make informed choices of deletion probabilities and deletion date distribution where possible real-world data was used.
+Firstly, each dynamic entity is assigned a probability of being explicitly deleted.
+Second, if selected for explicit deletion, a deletion event date is selected using a distribution bound by the valid lifespan of that entity.
+To make informed choices of deletion probabilities and deletion date distributions, where possible, real-world data was used.
 
 \paragraph{Delete Person}
 
-\cite{Lorincz2019} identifies people with more connections are less likely to leave a social network.
-When a \tPerson is generated they are assigned a \emph{maxKnows} value which indicates the amount of \tKnows connections they will make across the lifetime of the network.
-This is then used to determine the probability a person is explicitly deleted, using the distribution given below.
-A deletion date is then selected uniformly from the person's valid lifespan.
+Lorincz et al.~\cite{Lorincz2019} observes people with more connections are less likely to leave a social network.
+When a \tPerson is generated they are assigned a \emph{maxKnows} value which indicates the amount of \tKnows connections they
+will make across the lifetime of the network.
+This information is then utilized to determine the probability a person is explicitly deleted using the distribution provided
+in~\cite{Lorincz2019}, reproduced in~\autoref{fig:if-person}.
+A deletion event date is then selected uniformly from the person's valid lifespan.
 On average 3.5\% of \tPersons are deleted across the simulation period.
-\todo{add plot}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=\yedscale]{figures/fig-if-person}
+  \caption{Distribution for determining the probability a \tPerson is deleted given their number of connections.}
+  \label{fig:if-person}
+\end{figure}
 
 \paragraph{Delete Knows}
 
-\cite{DBLP:conf/www/MyersL14} analysed 1.2 billion tweets from 13.1 million Twitter users.
+Myers and Leskovec~\cite{DBLP:conf/www/MyersL14} analysed 1.2 billion tweets from 13.1 million Twitter users.
 These users made 112.3 million new connections, and deleted 39.2 million connections; a 3:1 follow:unfollow ratio.
-As Datagen models a generic social media platform we have chosen a different ratio of 20:1 (on average 5\% of \tKnows edges are deleted), rather than overcapture behavior that may be unique to a single site.
+As Datagen models a generic social media platform we have chosen a different ratio of 20:1
+(on average 5\% of \tKnows edges are deleted), rather than overcapture behavior that may be unique to a single site.
 \cite{DBLP:conf/www/MyersL14} also finds a constant background flux of follows and unfollows interleaved with bursts in such activity.
-Currently, Datagen has no follow bursts, thus, we have decided not to incorporate follow bursts.
-They also find less similar friends have a high probability of being unfollowed.
-\todo{modelling this is work in progress}
-If a \tKnows edge is selected for explicit deletion then a deletion date is then selected uniformly from the edges valid lifespan.
+Currently, Datagen has no follow bursts, thus, we have decided not to incorporate unfollow bursts.
+They also find less similar friends have a high probability of being unfollowed; modelling this relationship is work in progress.
+If a \tKnows edge is selected for explicit deletion then a deletion date is then selected uniformly from the edge's valid lifespan.
 
 \paragraph{Delete Post/Comment and Delete Post/Comment Like}
 
-Paper \cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week finding 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that were not replies.
-In order to apply these findings to Datagen, tweet categories were mapped to Datagen message types.
-\autoref{table:almuhimedi-mapping} the entity mapping and the percentage deleted across the simulation period within each category.
+Posts in groups and walls are produced via a uniform generator and a flashmob generator, capturing background events and bursts in
+events respectively.
+A comment generator is then used to produce a tree of comments on each post.
+Posts in albums are referred to as photos, they are produced by a different generator and do not have flashmob events nor do they have comment trees.
+Additionally, all posts and comments have a number of likes generated for it.
+
+Almuhimedi et al.~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week.
+They found 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that
+were not replies.
+In order to apply these findings to Datagen and obtain the average percentage of \tMessages and \tLikes deleted across the simulation
+period, tweet categories were mapped to Datagen \tMessage types.
+\autoref{table:almuhimedi-mapping} gives the mapping and the percentage deleted across the simulation period within each category.
 
 \input{tables/table-almuhimedi-mapping}
 
-Additionally, paper~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
-Thus, each \tPerson in the network has a 50\% chance of being marked a ``deleter'', who subsequently, may or may not, delete post, comments, or likes.
-\cite{DBLP:conf/cscw/AlmuhimediWLSA13} also identify a relationship between the depth of comments on a post and the chance the post is removed, less comments, more likely a post is deleted.
-We model this relationship using the distribution above.
-\todo{add plot}
+Additionally, \cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
+Thus, each \tPerson in the network has a 50\% chance of being marked a \emph{messageDeleter}, who subsequently, may or may not, delete post, comments, or likes.
+\cite{DBLP:conf/cscw/AlmuhimediWLSA13} also identify a relationship between the depth of replies to a tweet and the chance the tweet
+is deleted - a tweet with less replies is more likely to be deleted.
+We apply this relationship to the number of  \tComments in a \tPosts thread using the distribution in \autoref{fig:if-post}.
+Note, this distribution has an average of 2.7\% aligning with \autoref{table:almuhimedi-mapping}.
 
-Posts in groups and walls are produced via a uniform generator and a flash mob generator, capturing background events and bursts in events respectively.
-A comment generator is then used to produce a tree of comments on each post.
-Posts in albums are referred to as photos.
-They are produced by a different generator and do not have flash mob events nor do they have comment trees.
-Additionally, each post and comment have a number of likes generated for it.
-Almuhimedi et al. (2013) observe a temporal relationship for when a tweet is deleted.
-We have recreated this distribution and use it to generate deletion dates for posts, comments, and likes that are selected for explicit deletion.
-\todo{add plot}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=\yedscale]{figures/fig-if-post}
+  \caption{Probability a post is deleted given the number of comments in its thread.}
+  \label{fig:if-post}
+\end{figure}
+
+Almuhimedi et al also observe a temporal relationship for when a tweet is deleted - a tweet has a higher chance of being deleted soon
+after it was created.
+They found 50\% of all deleted tweets where removed within 8 minutes of creation.
+We have recreated the temporal distribution in~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} and use it to generate deletion dates from
+the valid lifespan intervals for posts, comments, and likes that are selected for explicit deletion~\autoref{fig:when-activity}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=\yedscale]{figures/fig-when-activity}
+  \caption{Cumulative probability density function of when a post, comment, or like is deleted after it is created (x = 0).}
+  \label{fig:when-activity}
+\end{figure}
+
 
 \paragraph{Delete Forum and Delete Forum Membership}
 
