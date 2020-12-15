@@ -3,12 +3,14 @@ operation: read
 number: 2
 title: Tag evolution
 description: |
-  Find the *Tags* that were used in *Messages* during in the 100-day period starting at `date` and compare it with the 100-day period that follows.
+  Find the *Tags* under a given *TagClass* that were used in *Messages* during in the 100-day period starting at `date` and compare it with the 100-day period that follows.
   For the *Tags* and for both months, compute the count of *Messages*.
-
 parameters:
   - name: date
     type: Date
+  - name: tagClass
+    type: Long String
+    description: "*TagClasses* with a similar amount of *Messages* are selected"
 result:
   - name: tag.name
     type: Long String

@@ -3,7 +3,7 @@ operation: read
 number: 9
 title: Top thread initiators
 description: |
-  For each *Person*, count the number of *Posts* they created in the time interval `[startDate, endDate]` (equivalent to the number of threads they initiated) and the number of *Messages* in each of their (transitive) reply trees, including the root *Post* of each tree. When calculating *Message* counts only consider messages created within the given time interval.
+  For each *Person*, count the number of *Posts* they created in the time interval `[startDate, endDate]` (equivalent to the number of threads they initiated) and the number of *Messages* in each of their (transitive) reply trees, including the root *Post* of each tree. When calculating *Message* counts only consider *Messages* created within the given time interval.
 
   Return each *Person*, number of *Posts* they created, and the count of all *Messages* that appeared in the reply trees (including the *Post* at the root of tree) they created.
 parameters:

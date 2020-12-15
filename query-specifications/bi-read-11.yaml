@@ -15,8 +15,10 @@ description: |
 parameters:
   - name: country
     type: Long String
+    parameter: "Selected from large *Countries*"
   - name: startDate
     type: Date
+    parameter: Similar dates shall be selected
 result:
   - name: count
     type: 32-bit Integer

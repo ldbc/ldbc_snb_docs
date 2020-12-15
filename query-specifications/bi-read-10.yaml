@@ -11,10 +11,13 @@ description: |
 parameters:
   - name: personId
     type: ID
+    description: "*Persons* with a similar degree of *knows* edges are selected"
   - name: country
     type: String
+    description: "*Countries* with a similar degree of incoming *isPartOf* edges are selected"
   - name: tagClass
     type: Long String
+    description: "*TagClasses* with a similar degree of *hasType* edges are selected"
   - name: minPathDistance
     type: 32-bit Integer
   - name: maxPathDistance

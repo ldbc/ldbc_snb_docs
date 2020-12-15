@@ -9,7 +9,7 @@ description: |
   * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (in the induced subgraph).
   * For these *Persons*, count the number of *Messages* created on `dateX` with *Tag* `tagX`.
   
-  Return *Persons* who had at least one messages for both `tagA`/`dateA` and `tagB`/`dateB` ranked by their total number of messages (descending).
+  Return *Persons* who had at least one *Messages* for both `tagA`/`dateA` and `tagB`/`dateB` ranked by their total number of *Messages* (descending).
 parameters:
   - name: tagA
     type: Long String
@@ -27,11 +27,11 @@ result:
   - name: messageCountA
     type: 32-bit Integer
     category: aggregated
-    description: "message count for `tagA`/`dateA`"
+    description: "Message count for `tagA`/`dateA`"
   - name: messageCountB
     type: 32-bit Integer
     category: aggregated
-    description: "message count for `tagB`/`dateB`"
+    description: "Message count for `tagB`/`dateB`"
 sort:
   - name: messageCountA + \mbox{messageCountB}
     direction: desc

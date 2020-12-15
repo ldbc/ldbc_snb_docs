@@ -21,17 +21,19 @@ parameters:
     type: Date
   - name: lengthThreshold
     type: 32-bit Integer
+    description: "Selected as balanced against `date` to filter around 30% of the *Messages* within a language and keep the variance low."
   - name: languages
     type: \{String\}
+    description: "Only the most frequently spoken languages (`en`, `cn`) are selected"
 result:
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of *Messages* created
+    description: "Number of *Messages* created"
   - name: personCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of *Persons* with `messageCount` messages
+    description: "Number of *Persons* with `messageCount` *Messages*"
 sort:
   - name: personCount
     direction: desc
