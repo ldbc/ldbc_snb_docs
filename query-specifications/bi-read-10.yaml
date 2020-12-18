@@ -3,15 +3,15 @@ operation: read
 number: 10
 title: Experts in social circle
 description: |
-  Given a *Person*, find all other *Persons* that live in a given *Country* and are connected to given *Person* by a **shortest path** with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
+  Given a *Person* (`startPerson`), find all other *Persons* (`expertCandidatePerson`) that live in a given *Country* and are connected to given *Person* by a **shortest path** with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
 
-  For each of these *Persons*, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given *TagClass* (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
+  For each of these `expertCandidatePerson` nodes, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given *TagClass* (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
 
   Group the results by *Persons* and *Tags*, then count the *Messages* by a certain *Person* having a certain *Tag*.
 parameters:
   - name: personId
     type: ID
-    description: "*Persons* with a similar degree of *knows* edges are selected"
+    description: "The ID of the `startPerson`. *Persons* with a similar degree of *knows* edges are selected"
   - name: country
     type: String
     description: "*Countries* with a similar degree of incoming *isPartOf* edges are selected"
@@ -23,7 +23,7 @@ parameters:
   - name: maxPathDistance
     type: 32-bit Integer
 result:
-  - name: person.id
+  - name: expertCandidatePerson.id
     type: ID
   - name: tag.name
     type: Long String
@@ -36,7 +36,7 @@ sort:
     direction: desc
   - name: tag.name
     direction: asc
-  - name: person.id
+  - name: expertCandidatePerson.id
     direction: asc
 limit: 100
 choke_points: [1.2, 1.3, 2.3, 2.4, 3.3, 5.3, 7.1, 7.2, 7.3, 8.1, 8.6]
