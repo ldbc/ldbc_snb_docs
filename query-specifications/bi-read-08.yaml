@@ -33,7 +33,7 @@ sort:
 limit: 100
 choke_points: [1.2, 2.1, 2.3, 3.2, 5.3, 8.2, 8.4, 8.5]
 relevance: |
-  Similarly to BI Q16, there are two major ways to compute this query:
+  Similarly to BI 16, there are two major ways to compute this query:
   (1) creating an induced subgraph of the interested *Persons* and their friends and performing the scoring on this graph or
   (2) performing the scoring without creating an induced subgraph and scoring the friends of a *Person* on-the-fly.
-  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations.
+  The first approach is more efficient as it avoids redundant computations, however, specifying it needs support for composable graph queries.
