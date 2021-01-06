@@ -8,7 +8,7 @@ factors.
 \section{Data Types}
 \autoref{table:types} describes the different data types used in the benchmark.
 
-\input{tables/types}
+\input{tables/table-types}
 
 \section{Data Schema}
 
@@ -726,7 +726,13 @@ The rules for \tForum and \tMessage nodes along with their edges are given in \a
 % \end{figure*}
 
 \input{albums-walls}
-\input{complex-example}
+\subsection{Complex Example}
+\label{sec:complex-example}
+
+In \autoref{fig:example-graph-complex}, a complex example graph is shown with the corresponding intervals.
+Both \emph{the intervals for selecting the creation and deletion date} attributes and the selected \emph{lifespan intervals} are shown.
+
+\input{figures/fig-comments}
 
 %As of version 0.4.0 Datagen produced a graph that was monotonically increasing in size over the simulation period, once a \tPerson joined the network they never left, they never deleted a post nor unliked a picture. In reality this far from the case, people regularly remove friends, delete comments and unlike pictures. Analysis of the now defunct social network iWiW~\cite{Lorincz2019} discovered across the network's lifetime 22\% of users deleted their accounts. Moreover, recent analysis of Facebook data found an average user has removed around 5\% of their cumulative friends [REF].
 
