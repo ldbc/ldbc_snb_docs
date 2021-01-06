@@ -36,7 +36,7 @@ Install Pandoc and Python3 following dependencies:
 ```bash
 sudo apt-get install -y pandoc
 sudo apt-get install -y python3 python3-pip python3-setuptools
-sudo pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Building the document
