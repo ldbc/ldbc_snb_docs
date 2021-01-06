@@ -19,25 +19,25 @@
   node [midway,above,xshift=1.2cm,yshift=0.6cm,align=center,text width=2.8cm] {\scriptsize{\texttt{$\instc{hmod}{}$: Apr 01 2010}}}
   node [midway,above,xshift=1.2cm,yshift=0.2cm,align=center,text width=2.8cm] {\scriptsize{\texttt{$\instd{hmod}{}$: Oct 02 2012}}}
   (person1);
-  \draw [edge] (forum) to [out=175,in=-45] node [midway,above,sloped] {\scriptsize{$\instance{hmem_{1}} : \type{hasMember}$}} (person1);
+  \draw [edge] (forum) to [out=175,in=-45] node [midway,below,sloped] {\scriptsize{$\instance{hmem_{1}} : \type{hasMember}$}} (person1);
   \draw [edge] (forum) to [out=-155,in=-25]
-  node [midway,above] {\scriptsize{$\instance{hmem_{2}} : \type{hasMember}$}}
-  node [midway,below,yshift=0cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instc{hmem}{2}$: Jun 15 2010}}}
-  node [midway,below,yshift=-0.4cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instd{hmem}{2}$: Jul 26 2012}}}
+  node [midway,below] {\scriptsize{$\instance{hmem_{2}} : \type{hasMember}$}}
+  node [midway,below,yshift=-0.5cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instc{hmem}{2}$: Jun 15 2010}}}
+  node [midway,below,yshift=-0.9cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instd{hmem}{2}$: Jul 26 2012}}}
   (person2);
 
   \draw [edge] (forum) --
-  node [midway,above,xshift=1.2cm,yshift=0.5cm] {\scriptsize{$\instance{hmem_{3}} : \type{hasMember}$}}
-  node [midway,above,xshift=1cm,yshift=0.1cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instc{hmem}{3}$: Dec 08 2010}}}
-  node [midway,above,xshift=1cm,yshift=-0.3cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instd{hmem}{3}$: Feb 29 2012}}} (person3);
+  node [midway,above,xshift=1.5cm,yshift=0.5cm] {\scriptsize{$\instance{hmem_{3}} : \type{hasMember}$}}
+  node [midway,above,xshift=1.5cm,yshift=0.1cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instc{hmem}{3}$: Dec 08 2010}}}
+  node [midway,above,xshift=1.5cm,yshift=-0.3cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instd{hmem}{3}$: Feb 29 2012}}} (person3);
 
-  \draw [edge] (forum) -- node [midway,above,grey] {\scriptsize{$\instance{CO} : \type{containerOf}$}} (post);
+  \draw [edge] (forum) -- node [midway,above,grey] {\scriptsize{$\instance{cO} : \type{containerOf}$}} (post);
 
-  \draw [edge] (post) -- node [midway,above,grey] {\scriptsize{$\instance{ROF_{1}} : \type{replyOf}$}} (comment1);
-  \draw [edge] (comment1) to [out=0,in=180] node [midway,above,grey] {\scriptsize{$\instance{ROF_{2}} : \type{replyOf}$}} (comment2);
-  \draw [edge] (comment1) to [out=145,in=12]  node [near start,above,grey,sloped] {\scriptsize{$\instance{HC_{1}} : \type{hasCreator}$}} (person1);
-  \draw [edge] (comment2) to [out=-135,in=-90] node [near start,above,grey,sloped] {\scriptsize{$\instance{HC_{2}} : \type{hasCreator}$}} (person2);
-  \draw [edge] (post) to [out=-90,in=45] node [midway,below,grey,sloped,xshift=0.2cm] {\scriptsize{$\instance{HC_{3}} : \type{hasCreator}$}}  (person3);
+  \draw [edge] (post) -- node [midway,above,grey] {\scriptsize{$\instance{rO_{1}} : \type{replyOf}$}} (comment1);
+  \draw [edge] (comment1) to [out=0,in=180] node [midway,above,grey] {\scriptsize{$\instance{rO_{2}} : \type{replyOf}$}} (comment2);
+  \draw [edge] (comment1) to [out=145,in=12]  node [near start,above,grey,sloped] {\scriptsize{$\instance{hC_{1}} : \type{hasCreator}$}} (person1);
+  \draw [edge] (comment2) to [out=-135,in=-90] node [near start,above,grey,sloped] {\scriptsize{$\instance{hC_{2}} : \type{hasCreator}$}} (person2);
+  \draw [edge] (post) to [out=-90,in=45] node [midway,below,grey,sloped,xshift=0.2cm] {\scriptsize{$\instance{hC_{3}} : \type{hasCreator}$}}  (person3);
 
 
   \node [below of=comment1,yshift=3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{C}{1}$: Dec 17 2010}}};
