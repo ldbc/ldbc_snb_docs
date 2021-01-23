@@ -393,7 +393,7 @@ A single attribute in the reference schema may not be divided into multiple attr
 A schema on the DBMS is optional. An RDF implementation for example may work without one. An RDF implementation is allowed to load the RDF reference schema and to take advantage of the data type and cardinality statements therein. 
 
 \paragraph{Configuration parameters}
-\datagen configuration parameters, including SF, distributions, number of persons, serialiser (\eg CsvMergeForeign) should be reported.
+\datagen configuration parameters, including SF, distributions, number of persons, serialiser (\eg CsvSingularMergedFK) should be reported.
 
 \paragraph{Primary data structures}
 An RDF, relational, or graph schema may specify system specific options affecting DBMS storage layout. These may for example specify vertical partitioning. Vertical partitioning means anything from a column store layout with per-column allocated storage space to use of explicit column groups. Any mix of row or column-wise storage structures is allowed as long as this is declaratively specified on a per data structure-basis.

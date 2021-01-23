@@ -4,10 +4,10 @@
         \hline
         \multicolumn{1}{|c|}{\multirow{2}{*}{\bf Serializer}} & \multirow{2}{*}{\bf Nodes} & \multicolumn{2}{c|}{\bf Attributes} & \multicolumn{2}{c|}{\bf Edges}                                      \\
                                                               &                            & \bf single-valued                   & \bf multi-valued               & \bf one-to-many & \bf many-to-many \\ \hline
-        CsvBasic                                              & \yes                       & \no                                 & \yes                           & \yes            & \yes             \\
-        CsvComposite                                          & \yes                       & \no                                 & \no                            & \yes            & \yes             \\
-        CsvMergeForeign                                       & \yes                       & \no                                 & \yes                           & \no             & \yes             \\
-        CsvCompositeMergeForeign                              & \yes                       & \no                                 & \no                            & \no             & \yes             \\ \hline
+        CsvSingularProjectedFK                                & \yes                       & \no                                 & \yes                           & \yes            & \yes             \\
+        CsvCompositeProjectedFK                               & \yes                       & \no                                 & \no                            & \yes            & \yes             \\
+        CsvSingularMergedFK                                   & \yes                       & \no                                 & \yes                           & \no             & \yes             \\
+        CsvCompositeMergedFK                                  & \yes                       & \no                                 & \no                            & \no             & \yes             \\ \hline
     \end{tabular}
     \centering
     \caption{Attributes and edges serialized to separate files the different CSV serializers.}
