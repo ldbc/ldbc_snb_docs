@@ -143,7 +143,7 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{0.3.2}
+\newcommand{\ldbcsnbdocversion}{0.3.3}
 \newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
 \delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
