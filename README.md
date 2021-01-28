@@ -7,11 +7,21 @@
 
 ## Benchmark specification
 
-**For an architectural overview and guide on how to develop benchmark implementations, please visit the [wiki of this repository](https://github.com/ldbc/ldbc_snb_docs/wiki).**
+For an quick guide on how to develop benchmark implementations, please check out the [Benchmark Workflow](workflow.md) file.**
 
-## Related repositories
+## Compatibility
 
-The documentation of the [LDBC Graphalytics benchmark](https://graphalytics.org) is maintained in a [separate repository](https://github.com/ldbc/ldbc_graphalytics_docs).
+The LDBC Social Network Benchmark suite is continuously maintained with improvements in the specification, the data generator, the driver, and the reference implementation.
+To ensure that you are using compatible LDBC repositories, use the following table:
+
+| project | v0.3.x | v0.4.x |
+| ------- | ------ | ------ |
+| [Documentation](https://github.com/ldbc/ldbc_snb_docs) | [`v0.3.3`](https://github.com/ldbc/ldbc_snb_docs/releases/tag/v0.3.3) | [`dev`](https://github.com/ldbc/ldbc_snb_docs/tree/dev) |
+| [Datagen](https://github.com/ldbc/ldbc_snb_datagen) | [`v0.3.3`](https://github.com/ldbc/ldbc_snb_datagen/releases/tag/v0.3.3) | [`dev`](https://github.com/ldbc/ldbc_snb_datagen/tree/dev) |
+| [Driver](https://github.com/ldbc/ldbc_snb_driver) | [`v0.3.3`](https://github.com/ldbc/ldbc_snb_driver/releases/tag/0.3.3) | [`dev`](https://github.com/ldbc/ldbc_snb_driver/tree/dev) |
+| [Implementations](https://github.com/ldbc/ldbc_snb_implementations) | [`stable`](https://github.com/ldbc/ldbc_snb_implementations/tree/stable) | [`dev`](https://github.com/ldbc/ldbc_snb_implementations/tree/dev) |
+
+The `stable` branches of the repositories correspond to the `v0.3.x`, and the `dev` branches correspond to the `v0.4.x` releases.
 
 ## How to cite LDBC benchmarks
 
