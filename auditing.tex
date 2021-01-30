@@ -473,17 +473,14 @@ The scale factor 10 shall be used as validation data set.
 \subsubsection{ACID Compliance}
 \label{sec:snb-acid}
 
-% TODO what does it mean? What consistency level is expected? Is it going to be tested at all?
-The interactive workload requires full ACID support from the SUT.
+The Interactive workload requires full ACID support from the SUT.
 See the related section for definitions in \autoref{sec:acid}.
 
-% TODO this was here in the original list for isolation
 \paragraph{Expected level of isolation}
 If a transaction reads the database with intent to update, the DBMS must guarantee that repeating the same read within the same transaction will return the same data. This also means that no more and no less data rows must be returned. In other words, this corresponds to snapshot or to serializable isolation. If the database is accessed without transaction context or without intent to update, then the DBMS should provide read committed semantics, \eg repeating the same read may produce different results but these results may never include effects of pending uncommitted transactions.
 
 
 \paragraph{Durability and checkpoints}
-% TODO initially this was way below this point; it was the last part of the benchmark workflow, so it uses definitions from the upcoming parts
 
 A checkpoint is defined as the operation which causes data persisted in a transaction log to become durable outside of the transaction log. Specifically, this means that an SUT restart after instantaneous failure following the completion of the checkpoint may not have recourse to transaction log entries written before the end of the checkpoint.
 
