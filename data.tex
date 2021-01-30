@@ -63,9 +63,10 @@ comment made by a person to an existing message (either a Post or a Comment).
 
 {\flushleft \textbf{Company:}} a sub-class of an Organisation, and represents a company where persons work.
 
+{\flushleft \textbf{Continent:}} a sub-class of a Place, and represents a continent of the real world.
 
-{\flushleft \textbf{Country:}} a sub-class of a Place, and represents a continent of the real world.
-
+{\flushleft \textbf{Country:}} a sub-class of a Place, and represents a country of the real world.
+Countries are selected as the place of operation for Companies as well as the location of Messages.
 
 {\flushleft \textbf{Forum:}} a meeting point where people
 post messages. Forums are characterized by the topics (represented as tags)
@@ -130,7 +131,9 @@ and represents an institution where persons study.
 
 \subsection{Relations}
 
-Relations connect entities of different types. Entities are defined by their ``id'' attribute.
+Relations (edges) connect entities of different types. The endpoint entities are defined by their ``id'' attribute.
+Edge instances starting from or ending in a given node are treated as a set, \ie no ordering is defined on the edges.
+Multiple edges (\ie edges of the same type between two entity instances) are not allowed in SNB graphs.
 
 \input{tables/table-relations}
 
