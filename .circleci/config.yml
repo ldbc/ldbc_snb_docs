@@ -27,6 +27,8 @@ jobs:
           cp standalone-query-cards/*.pdf dist/
           cp figures/schema-comfortable.pdf dist/schema.pdf
           cp figures/schema-comfortable.png dist/schema.png
+          cp figures/example-graph-with-refreshes.pdf dist/example-graph-with-refreshes.pdf
+          cp figures/example-graph-without-refreshes.pdf dist/example-graph-without-refreshes.pdf
           cp deployment/readme-to-deploy.md dist/README.md
       - gh-pages/deploy:
           ssh-fingerprints: '9a:14:6d:5a:d6:43:73:dd:fb:d8:a1:bf:6b:1b:db:18'
