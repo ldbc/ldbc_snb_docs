@@ -50,7 +50,7 @@
      \hline
      isSubclassOf & TagClass[0..*] & TagClass[0..1] & D & A TagClass and its parent TagClass \\
      \hline
-     knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other
+     knows & Person[0..*] & Person[0..*] & U & Two Persons that know each other. Note that {\tt knows} edges are undirected (all other edge types are directed).
 
      \attributeTable{creationDate}{DateTime}{The date the knows relation was established}
 
@@ -76,6 +76,6 @@
 
      \\
      \hline
- \caption{Description of the data relations. \texttt{D}: directed edge, \texttt{U}: undirected edge.}
+ \caption{Description of the data relations. Type -- \texttt{D}: directed edge, \texttt{U}: undirected edge.}
  \label{table:relations}
 \end{longtable}
