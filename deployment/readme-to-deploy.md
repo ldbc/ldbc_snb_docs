@@ -6,6 +6,8 @@
 ## Schema
 
 * Schema: [[PDF](schema.pdf)] [[PNG](schema.png)]
+* Example graph without refresh operations: [[PDF](https://ldbc.github.io/ldbc_snb_docs/example-graph-without-refreshes.pdf)]
+* Example graph with refresh operations: [[PDF](https://ldbc.github.io/ldbc_snb_docs/example-graph-with-refreshes.pdf)]
 
 ## Queries per workload
 
