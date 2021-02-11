@@ -39,7 +39,7 @@ graph DBMS.
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=\yedscale]{figures/schema-comfortable}
-    \caption{UML class diagram-style depiction of the \ldbcsnb graph schema. Note that the \textsf{knows} edges are represented as directed but should be treated as undirected. The cardinality of the \textsf{hasModerator} edge has changed between version 0.3.x (where it was exactly 1) and version 0.4.x (where it is 0..1).}
+    \caption{UML class diagram-style depiction of the \ldbcsnb graph schema. Note that the \textsf{knows} edges should be treated as undirected (but are serialized only in a single direction). The cardinality of the \textsf{hasModerator} edge has changed between version 0.3.x (where it was exactly 1) and version 0.4.x (where it is 0..1).}
     \label{fig:schema}
 \end{figure}
 
@@ -52,7 +52,7 @@ All of them are described in the following sections.
     \item Posts in a forum can be created by a non-member person if and only if that person is a moderator.
 \end{itemize}
 
-\subsection{Entities}
+\subsection{Entities (nodes)}
 
 {\flushleft \textbf{City:}} a sub-class of a Place, and represents a
 city of the real world. City entities are used to specify where persons live,
@@ -129,7 +129,7 @@ interested in. \autoref{table:tag} shows the atltributes of the Tag entity.
 {\flushleft \textbf{University:}} a sub-class of Organisation,
 and represents an institution where persons study.
 
-\subsection{Relations}
+\subsection{Relations (edges)}
 
 Relations (edges) connect entities of different types. The endpoint entities are defined by their ``id'' attribute.
 Edge instances starting from or ending in a given node are treated as a set, \ie no ordering is defined on the edges.
