@@ -22,6 +22,7 @@ The driver can operate in multiple modes. For most relevant modes are the follow
 2. `validate_database`: validates a database against an existing validation data sets (testing).
 3. default: runs the performance measurements for the workload (benchmarking).
 
+Make sure you reload the database between multiple runs as updates change the state of the database.
 #### Generating the validation data set
 
 _This step is only required if you are working on an implementation that you want to use as a basis for validation._

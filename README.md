@@ -7,7 +7,9 @@
 
 ## Benchmark specification
 
-For an quick guide on how to develop benchmark implementations, please check out the [Benchmark Workflow](workflow.md) file.**
+For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1p-nuHarSOKCldZ9iEz__6_V3sJ5kbGWlzZHusudW_Cc/).
+
+For a guide on how to develop benchmark implementations, please check out the [Benchmark Workflow](workflow.md) file.
 
 ## Compatibility
 
