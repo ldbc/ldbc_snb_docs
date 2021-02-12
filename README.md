@@ -3,12 +3,13 @@
 
 [![Build Status](https://travis-ci.org/ldbc/ldbc_snb_docs.svg?branch=stable)](https://travis-ci.org/ldbc/ldbc_snb_docs)
 
-[[Latest stable build (PDF)]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) [[Latest snapshot build (PDF)]](http://ldbc.github.io/ldbc_snb_docs_snapshot/ldbc-snb-specification.pdf)
+[[PDF]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)
 
 ## Benchmark specification
 
-For an quick guide on how to develop benchmark implementations, please check out the [Benchmark Workflow](workflow.md) file.**
+For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1p-nuHarSOKCldZ9iEz__6_V3sJ5kbGWlzZHusudW_Cc/).
 
+For a guide on how to develop benchmark implementations, please check out the [benchmark workflow](workflow.md) file.
 ## Compatibility
 
 The LDBC Social Network Benchmark suite is continuously maintained with improvements in the specification, the data generator, the driver, and the reference implementation.
