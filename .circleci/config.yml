@@ -19,6 +19,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          sed -i "s/-SNAPSHOT/-SNAPSHOT (`git rev-parse --short HEAD`)/" ldbc.cls
           make texfot compile_query_cards workloads
           mkdir dist/
           # deploy CircleCI configuration provide 'filters' instructions (and prevent failed build on gh-pages)
