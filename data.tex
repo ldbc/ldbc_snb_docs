@@ -743,20 +743,6 @@ Both \emph{the intervals for selecting the creation and deletion date} attribute
 
 %As of version 0.4.0 Datagen produced a graph that was monotonically increasing in size over the simulation period, once a \tPerson joined the network they never left, they never deleted a post nor unliked a picture. In reality this far from the case, people regularly remove friends, delete comments and unlike pictures. Analysis of the now defunct social network iWiW~\cite{Lorincz2019} discovered across the network's lifetime 22\% of users deleted their accounts. Moreover, recent analysis of Facebook data found an average user has removed around 5\% of their cumulative friends [REF].
 
-% See spec:
-% \begin{itemize}
-% \item forum\_hasModerator\_person (merged to Forum)
-% \item organisation\_isLocatedIn\_place (merged to Organisation)
-% \item person\_isLocatedIn\_place (merged to Person)
-% \item place\_isPartOf\_place (merged to Place)
-% \item post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post)
-% \item tag\_hasType\_tagclass (merged to Tag)
-% \item tagclass\_isSubclassOf\_tagclass (merged to TagClass).
-% \item comment\_hasCreator\_person, comment\_isLocatedIn\_place,
-%   comment\_replyOf\_comment,
-%   comment\_replyOf\_post (merged to Comment)
-% \end{itemize}
-
 \section{Ensuring Realism}
 \label{sec:ensuring-realism}
 
@@ -767,7 +753,7 @@ To make informed choices of deletion probabilities and deletion date distributio
 
 \paragraph{Delete Person}
 
-Lorincz et al.~\cite{Lorincz2019} observes people with more connections are less likely to leave a social network.
+Lorincz et al.~\cite{Lorincz2019} have analyzed iWiW, a now-defunct Hungarian social network, observing that people with more connections are less likely to leave a social network.
 When a \tPerson is generated they are assigned a \emph{maxKnows} value which indicates the amount of \tKnows connections they
 will make across the lifetime of the network.
 This information is then utilized to determine the probability a person is explicitly deleted using the distribution provided
