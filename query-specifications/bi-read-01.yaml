@@ -17,7 +17,7 @@ description: |
 parameters:
   - name: datetime
     type: DateTime
-    description: "For later microbatches, later `datetime` parameters are selected keep the variance low (<0.5%)."
+    description: For later microbatches, later `datetime` parameters are selected keep the variance low (<0.5%).
 result:
   - name: year
     type: 32-bit Integer
@@ -29,7 +29,7 @@ result:
   - name: lengthCategory
     type: 32-bit Integer
     category: calculated
-    description: " `0` for short, `1` for one-liner, `2` for tweet, `3` for long"
+    description: "`0` for short, `1` for one-liner, `2` for tweet, `3` for long"
   - name: messageCount
     type: 32-bit Integer
     category: aggregated
