@@ -20,8 +20,10 @@ parameters:
     description: "*TagClasses* with a similar degree of *hasType* edges are selected"
   - name: minPathDistance
     type: 32-bit Integer
+    description: TODO
   - name: maxPathDistance
     type: 32-bit Integer
+    description: TODO
 result:
   - name: expertCandidatePerson.id
     type: ID

@@ -13,8 +13,10 @@ description: |
 parameters:
   - name: tag
     type: Long String
+    description: "*Tags* with a similar amount of *Messages* are selected"
   - name: date
     type: Date
+    description: Dates from around the same day are selected. (TODO - how exactly? what distribution?)
 result:
   - name: person.id
     type: ID

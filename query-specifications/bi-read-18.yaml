@@ -13,8 +13,10 @@ description: |
 parameters:
   - name: person1Id
     type: ID
+    description: "*Persons* with a similar amount of friends are selected"
   - name: tag
     type: Long String
+    description: "*Tags* with a similar amount of *Messages* are selected"
 result:
   - name: person2.id
     type: ID

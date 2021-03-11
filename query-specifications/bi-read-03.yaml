@@ -9,8 +9,10 @@ description: |
 parameters:
   - name: tagClass
     type: Long String
+    description: "*TagClasses* with a similar amount of *Messages* are selected"
   - name: country
     type: Long String
+    description: Big Countries are selected
 result:
   - name: forum.id
     type: ID

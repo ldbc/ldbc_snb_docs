@@ -12,9 +12,10 @@ description: |
 parameters:
   - name: tag
     type: Long String
+    description: "*Tags* with a similar amount of *Messages* are selected"
   - name: delta
     type: 32-bit Integer
-    description: Measured in hours
+    description: Measured in hours. TODO - how many, what distribution?
 result:
   - name: person1.id
     type: ID

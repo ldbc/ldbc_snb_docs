@@ -11,6 +11,7 @@ description: |
 parameters:
   - name: tag
     type: Long String
+    description: "*Tags* with a similar amount of *Messages* are selected"
 result:
   - name: person.id
     type: ID
