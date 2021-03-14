@@ -1,15 +1,15 @@
 \begin{table}
+    \footnotesize
     \centering
-    \begin{tabular}{|l|c|cc|cc|}
+    \begin{tabular}{|l|l|c|C{1.2cm}C{1.2cm}|C{1.2cm}C{1.2cm}|}
         \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\bf Serializer}} & \multirow{2}{*}{\bf Nodes} & \multicolumn{2}{c|}{\bf Attributes} & \multicolumn{2}{c|}{\bf Edges}                                      \\
-                                                              &                            & \bf single-valued                   & \bf multi-valued               & \bf one-to-many & \bf many-to-many \\ \hline
-        CsvSingularProjectedFK                                & \yes                       & \no                                 & \yes                           & \yes            & \yes             \\
-        CsvCompositeProjectedFK                               & \yes                       & \no                                 & \no                            & \yes            & \yes             \\
-        CsvSingularMergedFK                                   & \yes                       & \no                                 & \yes                           & \no             & \yes             \\
-        CsvCompositeMergedFK                                  & \yes                       & \no                                 & \no                            & \no             & \yes             \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\bf Serializer name}} & \multicolumn{1}{c|}{\multirow{2}{*}{\bf Legacy name (v0.3)}} & \multirow{2}{*}{\bf Nodes} & \multicolumn{2}{c|}{\bf Attributes} & \multicolumn{2}{c|}{\bf Edges}                            \\
+                                                              &                                                       &                            & \bf single-valued                   & \bf multi-valued               & \bf one- to-many & \bf many- to-many \\ \hline
+        CsvSingularProjectedFK                                & CsvBasic                                              & \yes                       & \no                                 & \yes                           & \yes            & \yes               \\
+        CsvCompositeProjectedFK                               & CsvComposite                                          & \yes                       & \no                                 & \no                            & \yes            & \yes               \\
+        CsvSingularMergedFK                                   & CsvMergeForeign                                       & \yes                       & \no                                 & \yes                           & \no             & \yes               \\
+        CsvCompositeMergedFK                                  & CsvCompositeMergeForeign                              & \yes                       & \no                                 & \no                            & \no             & \yes               \\ \hline
     \end{tabular}
-    \centering
     \caption{Attributes and edges serialized to separate files the different CSV serializers.}
     \label{tab:csv-serializers}
 \end{table}
