@@ -14,16 +14,16 @@ parameters:
     description: "The ID of the `startPerson`. *Persons* with a similar degree of *knows* edges are selected"
   - name: country
     type: String
-    description: "*Countries* with a similar degree of incoming *isPartOf* edges are selected"
+    description: "*Countries* with a similar number of *Persons* are selected"
   - name: tagClass
     type: Long String
     description: "*TagClasses* with a similar degree of *hasType* edges are selected"
   - name: minPathDistance
     type: 32-bit Integer
-    description: TODO
+    description: "1 or 2"
   - name: maxPathDistance
     type: 32-bit Integer
-    description: TODO
+    description: "2 or 3"
 result:
   - name: expertCandidatePerson.id
     type: ID

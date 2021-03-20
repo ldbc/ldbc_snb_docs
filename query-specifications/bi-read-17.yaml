@@ -15,7 +15,7 @@ parameters:
     description: "*Tags* with a similar amount of *Messages* are selected"
   - name: delta
     type: 32-bit Integer
-    description: Measured in hours. TODO - how many, what distribution?
+    description: Measured in hours, selected to be between 8 and 16 hours.
 result:
   - name: person1.id
     type: ID

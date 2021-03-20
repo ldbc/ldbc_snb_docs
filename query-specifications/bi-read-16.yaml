@@ -21,6 +21,7 @@ parameters:
     type: Date
   - name: maxKnowsLimit
     type: 32-bit Integer
+    description: Selected between 3 and 6
 result:
   - name: person.id
     type: ID
