@@ -48,7 +48,7 @@
             <y:ShapeNode>
               <y:Geometry height="30.0" width="179.36000000000007" x="309.60972743055595" y="770.1755642361111"/>
               <y:Fill color="#FDB462" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.2734375" x="41.543281250000064" xml:space="preserve" y="6.015625">zombie: Person<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
@@ -70,8 +70,8 @@
             <y:ShapeNode>
               <y:Geometry height="30.0" width="179.36" x="54.56895833333351" y="704.5845854716646"/>
               <y:Fill hasColor="false" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="line" width="2.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="109.240234375" x="4.0" xml:space="preserve" y="6.015625">name = $country</y:NodeLabel>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bolditalic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="119.962890625" x="4.0" xml:space="preserve" y="6.015625">name = $country</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
           </data>
@@ -81,7 +81,7 @@
             <y:ShapeNode>
               <y:Geometry height="30.0" width="179.36000000000007" x="54.56895833333354" y="674.5845854716646"/>
               <y:Fill color="#FFFFB3" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="line" width="2.0"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.671875" x="63.844062500000035" xml:space="preserve" y="6.015625">Country<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
@@ -92,7 +92,7 @@
             <y:ShapeNode>
               <y:Geometry height="55.92000000000007" width="179.36" x="309.6097274305559" y="800.1755642361111"/>
               <y:Fill hasColor="false" transparent="false"/>
-              <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="45.90625" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="162.35546875" x="4.0" xml:space="preserve" y="5.006875000000036">creationDate &lt; $endDate 
 and (messageCount 
 / months) &lt; 1</y:NodeLabel>
@@ -135,7 +135,7 @@ count(message)</y:NodeLabel>
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="179.36000000000007" x="586.061199652778" y="770.1755642361111"/>
                   <y:Fill color="#BEBADA" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.380859375" x="30.489570312500064" xml:space="preserve" y="6.015625">message: Message<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -146,7 +146,7 @@ count(message)</y:NodeLabel>
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="179.36000000000007" x="586.061199652778" y="800.1755642361111"/>
                   <y:Fill hasColor="false" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="158.541015625" x="4.0" xml:space="preserve" y="6.015625">creationDate &lt; $endDate</y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -191,15 +191,15 @@ count(message)</y:NodeLabel>
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GroupNode>
-                  <y:Geometry height="136.9374999999999" width="213.01070312499985" x="567.4104965277783" y="960.111189236111"/>
+                  <y:Geometry height="136.9374999999999" width="209.36" x="571.0611996527781" y="960.111189236111"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#808080" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="213.01070312499985" x="0.0" xml:space="preserve" y="0.0">zombieLikeCount =
+                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="209.36" x="0.0" xml:space="preserve" y="0.0">zombieLikeCount =
 count(likerZombie)</y:NodeLabel>
                   <y:Shape type="roundrectangle"/>
                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                   <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="4" rightF="3.6507031249998363" top="0" topF="2.2737367544323206E-13"/>
+                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="2.2737367544323206E-13"/>
                 </y:GroupNode>
                 <y:GroupNode>
                   <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -218,9 +218,9 @@ count(likerZombie)</y:NodeLabel>
             <node id="n1::n0::n0">
               <data key="d6">
                 <y:ShapeNode>
-                  <y:Geometry height="30.0" width="179.36000000000007" x="582.4104965277783" y="1007.0486892361113"/>
+                  <y:Geometry height="30.0" width="179.36000000000007" x="586.0611996527781" y="1007.0486892361113"/>
                   <y:Fill color="#FDB462" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="124.12890625" x="27.615546875000064" xml:space="preserve" y="6.015625000000114">likerZombie: Person<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -229,9 +229,9 @@ count(likerZombie)</y:NodeLabel>
             <node id="n1::n0::n1">
               <data key="d6">
                 <y:ShapeNode>
-                  <y:Geometry height="45.0" width="179.36" x="582.4104965277783" y="1037.048689236111"/>
+                  <y:Geometry height="45.0" width="179.36" x="586.0611996527781" y="1037.048689236111"/>
                   <y:Fill hasColor="false" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="171.970703125" x="4.0" xml:space="preserve" y="6.53125">creationDate &lt; $endDate
 and likerZombie IN zombies</y:NodeLabel>
                   <y:Shape type="rectangle"/>
@@ -297,7 +297,7 @@ count(likerPerson)</y:NodeLabel>
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="179.36000000000007" x="60.898958333333354" y="1007.0486892361113"/>
                   <y:Fill color="#FDB462" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="119.294921875" x="30.032539062500035" xml:space="preserve" y="6.015625000000114">likerPerson: Person<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -308,7 +308,7 @@ count(likerPerson)</y:NodeLabel>
                 <y:ShapeNode>
                   <y:Geometry height="30.0" width="179.36" x="60.898958333333354" y="1037.048689236111"/>
                   <y:Fill hasColor="false" transparent="false"/>
-                  <y:BorderStyle color="#000000" raised="false" type="dashed" width="2.0"/>
+                  <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
                   <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="158.541015625" x="4.0" xml:space="preserve" y="6.015625">creationDate &lt; $endDate</y:NodeLabel>
                   <y:Shape type="rectangle"/>
                 </y:ShapeNode>
@@ -346,9 +346,9 @@ count(likerPerson)</y:NodeLabel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="dashed" width="3.0"/>
           <y:Arrows source="white_circle" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="38.34765625" x="-62.72923860677065" xml:space="preserve" y="-15.968766818576341">«opt»
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="38.34765625" x="-64.55458284505198" xml:space="preserve" y="-15.968766818576114">«opt»
 likes<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="14.514179276800093" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -381,7 +381,7 @@ hasCreator<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defau
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="dashed" width="3.0"/>
           <y:Arrows source="white_circle" target="standard"/>
           <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="38.34765625" x="18.666557847764807" xml:space="preserve" y="-15.968766818576114">«opt»
 likes<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="15.073279999999933" distanceToCenter="true" position="center" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
