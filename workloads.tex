@@ -96,7 +96,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 
 \begin{itemize}
 	\item Nodes in the pattern are shown with rectangular boxes with their type name stated at the top and emphasized with colour coding.
-	Thick solid borders denote that the node is uniquely specified by the query parameters (\eg by using an identifier or a unique attribute such as \textsf{name} and \textsf{URL} for certain types). Thick dashed borders denote that the query parameters filter for instances of the type (\eg ones created in a certain time period).
+	A black square $\blacksquare$ in the node's top left corner and a \emph{\textbf{bold italic}} condition denote that the node is uniquely specified by the query parameters (\eg by using an identifier or a unique attribute such as \textsf{URL}).
 	\item Nodes in the pattern are captioned with \textsf{entityName: EntityType} (camel case 
 	notation for both, starting with a lowercase character for the first and an 
 	uppercase character for the second). If the \textsf{entityName} is neither returned in the query results (in raw, aggregated, or calculated form), nor referenced in the query specification, the \textsf{entityName} can be omitted.
@@ -107,7 +107,6 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 		\item Optional edges, \ie edges that may or may not be in the subgraph, are denoted with \dashuline{dashed black lines}, the \guillemotleft opt\guillemotright\ keyword, and a circle symbol $\circ$ at the optional end of the edge.
 		\item Edges without direction have no arrows. Their semantics is that there must be an edge in \emph{the least one of the (incoming, outgoing) directions}.
 	\end{itemize}
-
 	\begin{center}
 		\tikzstyle{vertex} = [rectangle,minimum height=3mm,minimum width=6mm]
 		\begin{tikzpicture}[node distance=15mm]
@@ -141,7 +140,7 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 		(v1) -- node [midway,above] {} (v2);
 		\end{tikzpicture}
 	\end{center}
-	
+	\item Edges with many-to-many cardinalities are denoted with thicker lines, emphasizing that they may contribute more results in the result set.
 	\item Filtering conditions are typeset in \textit{italic}, \eg $\textit{id = 
 	\textdollar tag}$.
 	\item Attributes that should be returned are denoted in sans-serif font, \eg \textsf{name}.
