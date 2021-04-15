@@ -572,3 +572,17 @@ Upon successful completion of the audit, an FDR is compiled. In addition to the 
     \item List of supplementary materials
 \end{itemize}
 
+To ensure reproducibility of the audited results, a supplementary package is attached to the full disclosure report. This package should contain:
+
+\begin{itemize}
+    \item A README file with instructions specifying how to set up the system and run the benchmark
+    \item Configuration files of the database, including database-level configuration such as buffer size and schema descriptors (if necessary)
+    \item Source code or binary of a generic driver that can be used to interact with the DBMS
+    \item SUT-specific LDBC Java driver implementation (similarly to the projects in \url{https://github.com/ldbc/ldbc_snb_implementations})
+    \item Script or instructions to compile the LDBC Java driver implementation
+    \item LDBC configuration files (\texttt{.properties}), including the \texttt{time\_compression\_ratio} values used in the audited runs
+    \item Scripts required to preprocess the input files (if necessary) and to load the data sets into the database
+    \item The implementations of the queries (IC/IS) and the update operations, including the query specifications (\eg declarative queries, stored procedures, \etc)
+    \item Implementation of the ACID test suite
+    \item Binary package of the DBMS (\eg \texttt{.deb} or \texttt{.rpm})
+\end{itemize}
