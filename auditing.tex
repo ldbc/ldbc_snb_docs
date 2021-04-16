@@ -271,8 +271,8 @@ The SUT software must be described at least as follows:
     \item The units of the SUT software are typically the DBMS and operating system.
     \item Name and version of each separately priced piece of the SUT software.
     \item If the price of the SUT software is tied to platform or count of concurrent users, these parameters must be disclosed.
-    \item Price of the SUT software
-    \item Date of availability
+    \item Price of the SUT software.
+    \item Date of availability.
 \end{enumerate}
 Reported prices should adhere the TPC Pricing Specification 2.5.0~\cite{pricing,tpc-pricing}.
 
@@ -282,8 +282,8 @@ The configuration of the SUT must be reported so as to include the following:
     \item Complete configuration files of the DBMS, including any general server configuration files, any configuration scripts run on the DBMS for setting up the benchmark run etc.
     \item Complete schema of the DBMS, including eventual specification of storage layout.
     \item Any OS configuration parameters if other than default, \eg \verb+vm.swappiness+, \verb+vm.max_map_count+ in Linux.
-    \item Complete text of any server-side logic, \eg stored procedures, triggers.
-    \item Complete text of driver side benchmark implementation.
+    \item Complete source code of any server-side logic, \eg stored procedures, triggers.
+    \item Complete source code of driver-side benchmark implementation.
     \item Description of system architecture (including software versions, including OS kernel version, DBMS version, Docker version).
     %\item Use of partitioning or replication across multiple machines shall be disclosed if used. The specific partitioning keys or replication criteria, as well as the transactional behaviour of said partitioning or replication shall be described. This shall not be inconsistent with the ACID behaviours specified in the benchmark.
 \end{enumerate}
@@ -582,7 +582,7 @@ To ensure reproducibility of the audited results, a supplementary package is att
     \item Script or instructions to compile the LDBC Java driver implementation
     \item LDBC configuration files (\texttt{.properties}), including the \texttt{time\_compression\_ratio} values used in the audited runs
     \item Scripts required to preprocess the input files (if necessary) and to load the data sets into the database
-    \item The implementations of the queries (IC/IS) and the update operations, including the query specifications (\eg declarative queries, stored procedures, \etc)
+    \item The implementations of the queries and the update operations, including their complete source code (\eg declarative queries specifications, stored procedures, \etc)
     \item Implementation of the ACID test suite
     \item Binary package of the DBMS (\eg \texttt{.deb} or \texttt{.rpm})
 \end{itemize}
