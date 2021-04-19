@@ -7,6 +7,7 @@
 
 \section{Query Description Format}
 \label{sub:queries_structure}
+
 Queries are described in natural language using a well-defined structure that consists of three sections:
 \textit{description}, a concise textual description of the query,
 \textit{parameters}, a list of input parameters and their types;
@@ -42,7 +43,9 @@ We use the following notation:
         and \textsf{\{<String, Boolean>\}} is an ordered list of those 2-tuples.
 \end{itemize}
 
-\paragraph{Categorization of results.} Results are categorized according to their source of origin:
+\paragraph{Categorization of results.}
+
+Results are categorized according to their source of origin:
 
 \begin{itemize}
 	\item \textbf{Raw} (\texttt{R}), if the result attribute is returned with an unmodified value and type.
@@ -58,7 +61,9 @@ We use the following notation:
 
 \section{Conventions for Query Definitions}
 
-\paragraph{Interval notations.} Closed interval boundaries are denoted with 
+\paragraph{Interval notations.}
+
+Closed interval boundaries are denoted with 
 \texttt{[} 
 and \texttt{]}, while open interval boundaries are denoted with \texttt{(} and 
 \texttt{)}. For example, \texttt{[0, 1)} denotes an interval between 0 and 1, 
@@ -170,10 +175,12 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 \end{itemize}
 
 \paragraph{Deletions.}
+Deletions of a single element are denoted with a red cross~\includegraphics[scale=0.25]{patterns/delete-single},
+while recursive deletions are denoted with a purple cross~\includegraphics[scale=0.25]{patterns/delete-recursively}.
 
-Deletions of a single element (node or edge) are denoted with a red cross \includegraphics[scale=0.14]{patterns/delete-single}, while recursive deletions are denoted with a purple cross \includegraphics[scale=0.14]{patterns/delete-recursively} and the $\circlearrowright$ symbol.
+\paragraph{Resolving ambiguity.}
 
-\paragraph{Resolving ambiguity.} Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.
+Note that if the textual description and the graph pattern are different for a particular query (either due to an error or the lack of sophistication in the graphical syntax), \emph{the textual description takes precedence}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
