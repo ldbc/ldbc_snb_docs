@@ -11,7 +11,7 @@ parameters:
 choke_points: [9.3, 9.4, 9.5]
 relevance: |
   * Removal of a *Person* removes *Forums* of type "Walls" and "Albums" but not "Groups", which can continue if even the founder has left the network. For Groups, the *hasModerator* edge is deleted. We have discussed various approaches to appoint a new moderator, e.g.
-  (1) choose member at random from the set of existing group members or
-  (2) the member with the oldest group join date becomes the moderator.
+    1. choose member at random from the set of existing group members or
+    2. the member with the oldest group join date becomes the moderator.
   However, to keep the generator and the workload simple, currently no moderator is selected, leaving the group without a moderator.
   * Removal of a *Person* removes all *Posts*/*Comments* they are creator of this could result in the removal of a *Comment* in the middle of a thread.
