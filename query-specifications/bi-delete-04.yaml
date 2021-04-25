@@ -1,7 +1,7 @@
 workload: BI
 operation: delete
 number: 4
-title: Remove forum
+title: Remove forum and its content
 description: |
   Remove a *Forum* and its edges (*hasModerator*, *hasMember*, *hasTag*) and all *Posts* in the *Forum* (connected by *containerOf* edges) and their direct and transitive *Comments*.
 parameters:
