@@ -28,7 +28,7 @@ The `stable` branches of the repositories correspond to the `v0.3.x`, and the `d
 ## How to cite LDBC benchmarks
 
 * **Social Network Benchmark**
-  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.3)](https://arxiv.org/pdf/2001.02299.pdf) by the LDBC Social Network Benchmark task force, 2020. [[bib](bib/specification.bib)]
+  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.3)](https://arxiv.org/pdf/2001.02299.pdf) by the LDBC Social Network Benchmark task force, arXiv/CoRR abs/2001.02299, 2020. [[bib](bib/specification.bib)]
   * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](http://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
   * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://ir.cwi.nl/pub/23380), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
 * **Other LDBC benchmarks**
