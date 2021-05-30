@@ -13,16 +13,15 @@ For a guide on how to develop benchmark implementations, please check out the [b
 
 ## Compatibility
 
-The LDBC Social Network Benchmark suite is continuously maintained with improvements in the specification, the data generator, the driver, and the reference implementation.
-To ensure that you are using compatible LDBC repositories, use the following table:
+The two SNB workloads (Interactive/BI) are stored in different repositories:
 
-| project | v0.3.x | v0.4.x |
-| ------- | ------ | ------ |
-| [Datagen](https://github.com/ldbc/ldbc_snb_datagen) | [`v0.3.3`](https://github.com/ldbc/ldbc_snb_datagen/releases/tag/v0.3.3) | [`dev`](https://github.com/ldbc/ldbc_snb_datagen/tree/dev) |
-| [Driver](https://github.com/ldbc/ldbc_snb_driver) | [`v0.3.3`](https://github.com/ldbc/ldbc_snb_driver/releases/tag/0.3.3) | [`dev`](https://github.com/ldbc/ldbc_snb_driver/tree/dev) |
-| [Implementations](https://github.com/ldbc/ldbc_snb_implementations) | [`stable`](https://github.com/ldbc/ldbc_snb_implementations/tree/stable) | [`dev`](https://github.com/ldbc/ldbc_snb_implementations/tree/dev) |
-
-The `stable` branches of the repositories correspond to the `v0.3.x`, and the `dev` branches correspond to the `v0.4.x` releases.
+* Interactive:
+  * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
+  * Driver: https://github.com/ldbc/ldbc_snb_driver
+  * Implementations: https://github.com/ldbc/ldbc_snb_interactive
+* BI:
+  * Data generator: https://github.com/ldbc/ldbc_snb_datagen
+  * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
 
 ## How to cite LDBC benchmarks
 
