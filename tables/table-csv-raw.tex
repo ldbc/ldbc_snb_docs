@@ -32,6 +32,8 @@
             \hline
         \end{tabular}}
     \caption{Files output by the CsvCompositeMergedFKRaw serializer (18 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge.
-        The entities with the \texttt{explicitlyDeleted} attribute -- Comment, Forum, Post nodes, and hasMember, knows, likes (Comment/Post) edges -- denote whether the entity is deleted as part of an explicit delete operation (\texttt{DEL 2}--\texttt{DEL 8}) or implicitly through a cascading delete operation. Deletions targeting Person nodes (\texttt{DEL 1}) are always explicit, hence Person nodes have no \texttt{explicitlyDeleted} attribute.}
+        The entities with the \texttt{explicitlyDeleted} attribute -- Comment, Forum, Post nodes, and hasMember, knows, likes (Comment/Post) edges -- denote whether the entity is deleted as part of an explicit delete operation (\texttt{DEL 2}--\texttt{DEL 8}) or implicitly through a cascading delete operation. Deletions targeting Person nodes (\texttt{DEL 1}) are always explicit, hence Person nodes have no \texttt{explicitlyDeleted} attribute.
+        Warning: column names have been changed in Datagen. This document will be updated later. Until then, check the Datagen code/output for column names.
+        }
     \label{table:csv-raw}
 \end{table}
