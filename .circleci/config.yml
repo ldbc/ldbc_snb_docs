@@ -22,7 +22,6 @@ jobs:
           sed -i "s/-SNAPSHOT/-SNAPSHOT (`git rev-parse --short HEAD`)/" ldbc.cls
           make texfot compile_query_cards workloads
           mkdir dist/
-          # deploy CircleCI configuration provide 'filters' instructions (and prevent failed build on gh-pages)
           cp -r .circleci dist/
           cp *.pdf dist/
           cp standalone-query-cards/*.pdf dist/
