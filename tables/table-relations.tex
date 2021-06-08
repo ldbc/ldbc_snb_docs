@@ -6,7 +6,7 @@
      \hline
      hasCreator & Message[0..*] & Person[1] & D & A Message and its creator (Person)\\
      \hline
-     hasInterest & Person[0..*] & Tag[0..*] & D & A Person and a Tag representing a topic the person is interested in\\
+     hasInterest & Person[0..*] & Tag[1..*] & D & A Person and a Tag representing a topic the person is interested in\\
      \hline
      hasMember & Forum[0..*] &  Person[1..*] & D & A Forum and its member (Person)
 
@@ -32,7 +32,7 @@
      \hline
      hasTag & Message[0..*] & Tag[0..*] & D & A Message and a Tag representing the message's topic \\
      \hline
-     hasTag & Forum[0..*] & Tag[0..*] & D & A Forum and a Tag representing the forum's topic \\
+     hasTag & Forum[0..*] & Tag[1..*] & D & A Forum and a Tag representing the forum's topic \\
      \hline
      hasType & Tag[0..*] & TagClass[1] & D & A Tag and a TagClass the tag belongs to \\
      \hline
