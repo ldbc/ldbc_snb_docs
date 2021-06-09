@@ -1,4 +1,4 @@
-![LDBC_LOGO](https://raw.githubusercontent.com/wiki/ldbc/ldbc_snb_docs/images/ldbc-logo.png)
+![LDBC_LOGO](https://raw.githubusercontent.com/ldbc/ldbc_snb_docs/main/figures/ldbc-logo.png)
 # LDBC SNB Documentation
 
 [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_docs.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_docs)
