@@ -1,4 +1,4 @@
-![LDBC_LOGO](https://raw.githubusercontent.com/wiki/ldbc/ldbc_snb_datagen/images/ldbc-logo.png)
+![LDBC_LOGO](https://raw.githubusercontent.com/wiki/ldbc/ldbc_snb_docs/images/ldbc-logo.png)
 # LDBC SNB Documentation
 
 [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_docs.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_docs)
@@ -20,7 +20,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
   * Driver: https://github.com/ldbc/ldbc_snb_driver
   * Implementations: https://github.com/ldbc/ldbc_snb_interactive
 * BI:
-  * Data generator: https://github.com/ldbc/ldbc_snb_datagen
+  * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
 
 ## How to cite LDBC benchmarks
