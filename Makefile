@@ -1,6 +1,6 @@
 DOCUMENT=ldbc-snb-specification.tex
 
-spec: $(DOCUMENT) choke-points/choke-points-queries.tex
+spec: $(DOCUMENT) choke-points/choke-points-queries.tex $(wildcard query-specifications/*.yaml)
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
 all: choke-points/choke-points-queries.tex compile_query_cards workloads texfot
@@ -16,7 +16,7 @@ compile_query_cards: $(DOCUMENT) choke-points/choke-points-queries.tex
 		pdflatex --interaction=batchmode $$card ; \
 	done
 
-workloads: $(DOCUMENT)
+workloads: $(DOCUMENT) $(wildcard query-specifications/*.yaml)
 	for doc in workload-*.tex; do \
 		./texfot.pl latexmk -pdf --interaction=batchmode $$doc ; \
 	done
