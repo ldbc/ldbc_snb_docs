@@ -41,5 +41,6 @@ sort:
   - name: personIds
     direction: asc
     description: The IDs in the paths are used for lexicographical sorting
+limit: n/a
 choke_points: [1.2, 2.1, 2.2, 2.4, 3.3, 5.1, 5.3, 7.2, 7.3, 7.5, 7.7, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6]
 # why is this 2.2 late projection? there aren't even any attributes other than for filtering
