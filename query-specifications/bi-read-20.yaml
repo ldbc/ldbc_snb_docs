@@ -3,8 +3,8 @@ operation: read
 number: 20
 title: Recruitment
 description: |
-  Given a *Company* `company` and a *Person* `person2` (who is known to be working at another *Company*), find a *Person* (`person1`) working the in the `company` who have the top-20 shortest path to `person2` through people who have studied together.
-  On this path, we only consider edges between *Persons* who know each other and attended the same university and set the weight of the edge to the absolute difference between the year of enrolment plus 1 (`studyAt.classYear + 1`).
+  Given a *Company* `company` and a *Person* `person2` (who is known to be working at another *Company*), find a different *Person* (`person1`) who works in `company` and is reachable by from `person2` through people who have studied together.
+  On this path, we only consider edges between *Persons* who know each other and attended the same university and set the weight of the edge to the absolute difference between the year of enrolment plus 1 (`studyAt.classYear + 1`). We return the 20 shortest paths.
 
   If there are multiple *Person* `person1` nodes with the same shortest path, return all of them.
 parameters:
@@ -21,7 +21,7 @@ result:
     category: calculated
 sort:
   - name: totalWeight
-    direction: desc
+    direction: asc
   - name: person1.id
     direction: asc
 limit: 20
