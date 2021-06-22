@@ -2,7 +2,7 @@
     \hline
      \tableHeaderFirst{Name} & \tableHeader{Source} & \tableHeader{Destination} & \tableHeader{Type} & \tableHeader{Description} \\
      \hline
-     containerOf & Forum[1] & Post[1..*] & D & A Forum and a Post contained in it\\
+     containerOf & Forum[1] & Post[0..*] & D & A Forum and a Post contained in it\\
      \hline
      hasCreator & Message[0..*] & Person[1] & D & A Message and its creator (Person)\\
      \hline
