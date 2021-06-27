@@ -1,37 +1,38 @@
 \begin{table}[htb]
     \tiny
-    \centerline{\begin{tabular}{|c|l|l|}
+    \centering
+        \begin{tabularx}{\textwidth}{|c|l|X|}
             \hline
             \tableHeaderFirst{C} & \tableHeader{File}                   & \tableHeader{Content}                                                                                                                                                                    \\
             \hline\hline
-            N                    & organisation\_*.csv                  & id | type | name | url | isLocatedIn\_Place                                                                                                                                              \\
+            N                    & static/Organisation/part\_*\_*.csv                   & id | type | name | url | LocationPlaceId \\
             \hline
-            N                    & place\_*.csv                         & id | name | url | type | isPartOf\_Place                                                                                                                                                 \\
+            N                    & static/Place/part\_*\_*.csv                          & id | name | url | type | PartOfPlaceId \\
             \hline
-            N                    & tag\_*.csv                           & id | name | url | hasType\_TagClass                                                                                                                                                      \\
+            N                    & static/Tag/part\_*\_*.csv                            & id | name | url | SubclassOfTagClassId \\
             \hline
-            N                    & tagclass\_*.csv                      & id | name | url | isSubclassOf\_TagClass                                                                                                                                                 \\
+            N                    & static/TagClass/part\_*\_*.csv                       & id | name | url | TypeTagClassId \\
             \hline\hline
-            N                    & comment\_*.csv                       & creationDate | deletionDate | explicitlyDeleted | id | locationIP | browserUsed | content | length | hasCreator\_Person | isLocatedIn\_Place | replyOf\_Post | replyOf\_Comment          \\
-            E                    & comment\_hasTag\_tag\_*.csv          & creationDate | deletionDate | id | hasTag\_Tag                                                                                                                                           \\
+            N                    & dynamic/Comment/part\_*\_*.csv                       & creationDate | deletionDate | explicitlyDeleted | id | locationIP | browserUsed | content | length | CreatorPersonId | LocationCountryId | ParentPostId | ParentCommentId \\
+            E                    & dynamic/Comment\_hasTag\_Tag/part\_*\_*.csv          & creationDate | deletionDate | CommentId | TagId \\
             \hline
-            N                    & forum\_*.csv                         & creationDate | deletionDate | explicitlyDeleted | id | title | hasModerator\_Person                                                                                                      \\
-            E                    & forum\_hasMember\_person\_*.csv      & creationDate | deletionDate | explicitlyDeleted | id | hasMember\_Person                                                                                                                 \\
-            E                    & forum\_hasTag\_tag\_*.csv            & creationDate | deletionDate | id | hasTag\_Tag                                                                                                                                           \\
+            N                    & dynamic/Forum/part\_*\_*.csv                         & creationDate | deletionDate | explicitlyDeleted | id | title | ModeratorPersonId \\
+            E                    & dynamic/Forum\_hasMember\_Person/part\_*\_*.csv      & creationDate | deletionDate | explicitlyDeleted | ForumId | PersonId \\
+            E                    & dynamic/Forum\_hasTag\_Tag/part\_*\_*.csv            & creationDate | deletionDate | ForumId | TagId \\
             \hline
-            N                    & person\_*.csv                        & creationDate | deletionDate | id | firstName | lastName | gender | birthday | locationIP | browserUsed | isLocatedIn\_Place | speaks | email                                             \\
-            E                    & person\_hasInterest\_tag\_*.csv      & creationDate | deletionDate | id | hasInterest\_Tag                                                                                                                                      \\
-            E                    & person\_knows\_person\_*.csv         & creationDate | deletionDate | explicitlyDeleted | person1id | person2id                                                                                                                  \\
-            E                    & person\_likes\_comment\_*.csv        & creationDate | deletionDate | explicitlyDeleted | id | likes\_Comment                                                                                                                    \\
-            E                    & person\_likes\_post\_*.csv           & creationDate | deletionDate | explicitlyDeleted | id | likes\_Post                                                                                                                       \\
-            E                    & person\_studyAt\_organisation\_*.csv & creationDate | deletionDate | id | studyAt\_University | classYear                                                                                                                       \\
-            E                    & person\_workAt\_organisation\_*.csv  & creationDate | deletionDate | id | workAt\_Company | workFrom                                                                                                                            \\
+            N                    & dynamic/Person/part\_*\_*.csv                        & creationDate | deletionDate | explicitlyDeleted | id | firstName | lastName | gender | birthday | locationIP | browserUsed | LocationCityId | language | email \\
+            E                    & dynamic/Person\_hasInterest\_Tag/part\_*\_*.csv      & creationDate | deletionDate | PersonId | TagId \\
+            E                    & dynamic/Person\_knows\_Person/part\_*\_*.csv         & creationDate | deletionDate | explicitlyDeleted | Person1Id | Person2Id \\
+            E                    & dynamic/Person\_likes\_Comment/part\_*\_*.csv        & creationDate | deletionDate | explicitlyDeleted | PersonId | CommentId \\
+            E                    & dynamic/Person\_likes\_Post/part\_*\_*.csv           & creationDate | deletionDate | explicitlyDeleted | PersonId | PostId \\
+            E                    & dynamic/Person\_studyAt\_University/part\_*\_*.csv   & creationDate | deletionDate | PersonId | UniversityId | classYear \\
+            E                    & dynamic/Person\_workAt\_Company/part\_*\_*.csv       & creationDate | deletionDate | PersonId | CompanyId | workFrom \\
             \hline
-            N                    & post\_*.csv                          & creationDate | deletionDate | explicitlyDeleted | id | imageFile | locationIP | browserUsed | language | content | length | hasCreator\_Person | Forum\_containerOf | isLocatedIn\_Place \\
-            E                    & post\_hasTag\_tag\_*.csv             & creationDate | deletionDate | id | hasTag\_Tag                                                                                                                                           \\
+            N                    & dynamic/Post/part\_*\_*.csv                          & creationDate | deletionDate | explicitlyDeleted | id | imageFile | locationIP | browserUsed | language | content | length | CreatorPersonId | ContainerForumId | LocationCountryId \\
+            E                    & dynamic/Post\_hasTag\_Tag/part\_*\_*.csv             & creationDate | deletionDate | PostId | TagId \\
             \hline
-        \end{tabular}}
-    \caption{Files output by the CsvCompositeMergedFKRaw serializer (18 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge.
+        \end{tabularx}
+    \caption{Directories created by the raw serializer (18 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge.
         The entities with the \texttt{explicitlyDeleted} attribute -- Comment, Forum, Post nodes, and hasMember, knows, likes (Comment/Post) edges -- denote whether the entity is deleted as part of an explicit delete operation (\texttt{DEL 2}--\texttt{DEL 8}) or implicitly through a cascading delete operation. Deletions targeting Person nodes (\texttt{DEL 1}) are always explicit, hence Person nodes have no \texttt{explicitlyDeleted} attribute.
         Warning: column names have been changed in Datagen. This document will be updated later. Until then, check the Datagen code/output for column names.
         }

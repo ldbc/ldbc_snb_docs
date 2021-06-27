@@ -376,13 +376,9 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \autoref{tab:csv-serializers} shows how each CSV serializer handles attributes/edges of different cardinalities, demonstrating why CsvSingularProjectedFK has the most files and CsvCompositeMergedFK has the least number of files.
 
-\input{tables/table-csv-singular-projectedfk}
+\input{tables/table-csv-composite-projected-fk}
 
-\input{tables/table-csv-singular-mergedfk}
-
-\input{tables/table-csv-composite-projectedfk}
-
-\input{tables/table-csv-composite-mergedfk}
+\input{tables/table-csv-composite-merged-fk}
 
 \input{tables/table-csv-raw}
 
@@ -400,38 +396,35 @@ Depending on the number of threads used for generating the dataset, the number o
 
 The following CSV variants are supported:
     \begin{itemize}
-      \item \textbf{CsvSingularProjectedFK:}
-      Each entity, relation and attribute with a cardinality larger than one (including attributes \texttt{Person.email} and \texttt{Person.speaks}), are output in a separate file.
-      Generated files are summarized in \autoref{table:csv-singular-projectedfk}.
+      \item \texttt{composite-projected-fk:}
+      Each relation with a cardinality larger than one are output in a separate file.
+      Generated files are summarized in \autoref{table:csv-composite-projected-fk}.
 
-      \item \textbf{CsvSingularMergedFK:}
+      \item \texttt{composite-merged-fk:}
       This serializer is similar to CsvSingularProjectedFK, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
       There are 13~such relations in total:
       \begin{itemize}
-          \item comment\_hasCreator\_person, comment\_isLocatedIn\_place, comment\_replyOf\_comment, comment\_replyOf\_post (merged to Comment);
-          \item forum\_hasModerator\_person (merged to Forum);
-          \item organisation\_isLocatedIn\_place (merged to Organisation);
-          \item person\_isLocatedIn\_place (merged to Person);
-          \item place\_isPartOf\_place (merged to Place);
-          \item post\_hasCreator\_person, post\_isLocatedIn\_place, forum\_containerOf\_post (merged to Post);
-          \item tag\_hasType\_tagclass (merged to Tag);
-          \item tagclass\_isSubclassOf\_tagclass (merged to TagClass)
+        \item Comment\_hasCreator\_Person, Comment\_isLocatedIn\_Country, Comment\_replyOf\_Comment, Comment\_replyOf\_Post (merged to Comment);
+        \item Forum\_hasModerator\_Person (merged to Forum);
+        \item Organisation\_isLocatedIn\_Place (merged to Organisation);
+        \item Person\_isLocatedIn\_City (merged to Person);
+        \item Place\_isPartOf\_Place (merged to Place);
+        \item Post\_hasCreator\_Person, Post\_isLocatedIn\_Country, Forum\_containerOf\_Post (merged to Post);
+        \item Tag\_hasType\_TagClass (merged to Tag);
+        \item TagClass\_isSubclassOf\_TagClass (merged to TagClass)
       \end{itemize}
-      Generated files are summarized in \autoref{table:csv-singular-mergedfk}.
-
-      \item \textbf{CsvCompositeProjectedFK:}
+      Generated files are summarized in \autoref{table:csv-composite-merged-fk}.
+    
+      \item \texttt{singular-merged-fk}:
       Similar to the CsvSingularProjectedFK format but each entity, and relations with a cardinality larger than one, are output in a separate file.
-      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
-      Generated files are summarized in \autoref{table:csv-composite-projectedfk}.
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
+    
+      \item \texttt{singular-projected-fk}:
+      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
 
-      \item \textbf{CsvCompositeMergedFK:}
-      Has both composite attributes and merged FKs.
-      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
-      Generated files are summarized in \autoref{table:csv-composite-mergedfk}.
-
-      \item \textbf{CsvSingularProjectedFK using ``raw data'' mode:}
-      The file names are the same as in CsvSingularProjectedFK but there are two important differences:
-      (1)~additional attributes, \eg \texttt{deletionDate}, \texttt{explicitlyDeleted}, and \texttt{weight} (used for weighted graphs in Graphalytics~\cite{DBLP:journals/corr/abs-2011-15028}), are included mainly for debugging,
+      \item \texttt{raw} mode:
+      The file names are the same as in \texttt{composite-merged-fk} but there are two important differences:
+      (1)~additional attributes, \eg \texttt{deletionDate}, \texttt{explicitlyDeleted}, and \texttt{weight} (used for weighted graphs in Graphalytics~\cite{DBLP:journals/corr/abs-2011-15028}), are included,
       (2)~all data is included, \ie if a Forum is created and deleted before sampling the initial data set, it is included in this data set.
       Generated files are summarized in \autoref{table:csv-raw}.
     \end{itemize}
@@ -451,11 +444,9 @@ The inheritance hierarchies in the schema have two important characteristics
     \emph{Map hierarchy to single table} is used, \ie all Organisation nodes are serialized in a single fiel. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Company''.
 \end{description}
 
-\subsection{Update Streams}
+\subsection{Interactive Update Streams (inserts)}
 
-\input{tables/table-update-streams}
-
-The generic schema is given in \autoref{table:update_stream_generic_schema}, while the concrete schema of each insert operation is given in \autoref{table:update_stream_schemas}.
+The generic schema for the Interactive update streams is given in \autoref{table:update_stream_generic_schema}, while the concrete schemas of each insert operations is given in \autoref{table:update_stream_schemas}.
 The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
 
 \begin{itemize}
@@ -519,7 +510,7 @@ Next it was important to distinguish between \emph{implicit} and \emph{explicit}
 Continuing with the \tKnows edge example, once created the connection exists until either \tPerson leaves the network,
 at which point the connection is implicitly deleted, as per the semantics of delete \tPerson~(\autoref{sec:bi-delete-01}).
 Alternatively, at any time up until this event, the friendship can be explicitly deleted,
-\ie two people have a disagreement and “unfriend” each other, but both continue using the social network.
+\ie two people have a disagreement and ``unfriend'' each other, but both continue using the social network.
 Distinguishing between these types of events is important as only explicit delete events should become delete operations
 in the workload.
 

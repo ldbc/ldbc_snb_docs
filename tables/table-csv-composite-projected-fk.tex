@@ -1,0 +1,50 @@
+\begin{table}[htb]
+    \scriptsize
+    \centering
+    \begin{tabularx}{\linewidth}{|c|l|X|}
+        \hline
+        \tableHeaderFirst{C} & \tableHeader{File}                      & \tableHeader{Content}                                                                                      \\
+        \hline\hline
+        N                    & static/Organisation\_*.csv                      & id | type | name | url \\
+        E                    & static/Organisation\_isLocatedIn\_Place\_*.csv  & OrganisationId | PlaceId \\
+        \hline
+        N                    & static/Place\_*.csv                             & id | name | url | type \\
+        E                    & static/Place\_isPartOf\_Place\_*.csv            & Place1Id | Place2Id \\
+        \hline
+        N                    & static/Tag\_*.csv                               & id | name | url \\
+        E                    & static/Tag\_hasType\_TagClass\_*.csv            & TagClass1Id | TagClass2Id \\
+        \hline
+        N                    & static/TagClass\_*.csv                          & id | name | url \\
+        E                    & static/TagClass\_isSubclassOf\_TagClass\_*.csv  & TagId | TagClassId \\
+        \hline\hline
+        N                    & dynamic/Comment\_*.csv                          & creationDate | id | locationIP | browserUsed | content | length \\
+        E                    & dynamic/Comment\_hasCreator\_Person\_*.csv      & creationDate | CommentId | PersonId \\
+        E                    & dynamic/Comment\_hasTag\_Tag\_*.csv             & creationDate | CommentId | TagId \\
+        E                    & dynamic/Comment\_isLocatedIn\_Country\_*.csv    & creationDate | CommentId | CountryId \\
+        E                    & dynamic/Comment\_replyOf\_Comment\_*.csv        & creationDate | Comment1Id | Comment2Id \\
+        E                    & dynamic/Comment\_replyOf\_Post\_*.csv           & creationDate | CommentId | PostId \\
+        \hline
+        N                    & dynamic/Forum\_*.csv                            & creationDate | id | title \\
+        E                    & dynamic/Forum\_containerOf\_Post\_*.csv         & creationDate | ForumId | PostId \\
+        E                    & dynamic/Forum\_hasMember\_Person\_*.csv         & creationDate | ForumId | PersonId \\
+        E                    & dynamic/Forum\_hasModerator\_Person\_*.csv      & creationDate | ForumId | PersonId \\
+        E                    & dynamic/Forum\_hasTag\_Tag\_*.csv               & creationDate | ForumId | TagId \\
+        \hline
+        N                    & dynamic/Person\_*.csv                           & creationDate | id | firstName | lastName | gender | birthday | locationIP | browserUsed | language | email \\
+        E                    & dynamic/Person\_hasInterest\_Tag\_*.csv         & creationDate | PersonId | TagId \\
+        E                    & dynamic/Person\_isLocatedIn\_City\_*.csv        & creationDate | PersonId | CityId \\
+        E                    & dynamic/Person\_knows\_Person\_*.csv            & creationDate | Person1Id | Person2Id \\
+        E                    & dynamic/Person\_likes\_Comment\_*.csv           & creationDate | PersonId | CommentId \\
+        E                    & dynamic/Person\_likes\_Post\_*.csv              & creationDate | PersonId | PostId \\
+        E                    & dynamic/Person\_studyAt\_University\_*.csv      & creationDate | PersonId | UniversityId | classYear \\
+        E                    & dynamic/Person\_workAt\_Company\_*.csv          & creationDate | PersonId | CompanyId | workFrom \\
+        \hline
+        N                    & dynamic/Post\_*.csv                             & creationDate | id | imageFile | locationIP | browserUsed | language | content | length \\
+        E                    & dynamic/Post\_hasCreator\_Person\_*.csv         & creationDate | PostId | PersonId \\
+        E                    & dynamic/Post\_hasTag\_Tag\_*.csv                & creationDate | PostId | TagId \\
+        E                    & dynamic/Post\_isLocatedIn\_Country.csv          & creationDate | PostId | CountryId \\
+        \hline
+    \end{tabularx}
+    \caption{Files output by the \texttt{csv-composite-projected-fk} serializer (31 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge. Warning: column names have been changed in Datagen. This document will be updated later. Until then, check the Datagen code/output for column names.}
+    \label{table:csv-composite-projected-fk}
+\end{table}

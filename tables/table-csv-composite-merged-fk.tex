@@ -1,0 +1,37 @@
+\begin{table}[htb]
+    \scriptsize
+    \centering
+        \begin{tabularx}{\linewidth}{|c|l|X|}
+            \hline
+            \tableHeaderFirst{C} & \tableHeader{File}                   & \tableHeader{Content}                                                                                               \\
+            \hline\hline
+            N                    & static/Organisation\_*.csv                   & id | type | name | url | LocationPlaceId \\
+            \hline
+            N                    & static/Place\_*.csv                          & id | name | url | type | PartOfPlaceId \\
+            \hline
+            N                    & static/Tag\_*.csv                            & id | name | url | TypeTagClassId \\
+            \hline
+            N                    & static/TagClass\_*.csv                       & id | name | url | SubclassOfTagClassId \\
+            \hline\hline
+            N                    & dynamic/Comment\_*.csv                       & creationDate | id | locationIP | browserUsed | content | length | CreatorPersonId | LocationCountryId | ParentPostId | ParentCommentId \\
+            E                    & dynamic/Comment\_hasTag\_Tag\_*.csv          & creationDate | CommentId | TagId \\
+            \hline
+            N                    & dynamic/Forum\_*.csv                         & creationDate | id | title | ModeratorPersonId \\
+            E                    & dynamic/Forum\_hasMember\_Person\_*.csv      & creationDate | ForumId | PersonId \\
+            E                    & dynamic/Forum\_hasTag\_Tag\_*.csv            & creationDate | ForumId | TagId \\
+            \hline
+            N                    & dynamic/Person\_*.csv                        & creationDate | id | firstName | lastName | gender | birthday | locationIP | browserUsed | LocationCityId | language | email \\
+            E                    & dynamic/Person\_hasInterest\_Tag\_*.csv      & creationDate | PersonId | TagId \\
+            E                    & dynamic/Person\_knows\_Person\_*.csv         & creationDate | Person1Id | Person2Id \\
+            E                    & dynamic/Person\_likes\_Comment\_*.csv        & creationDate | PersonId | CommentId \\
+            E                    & dynamic/Person\_likes\_Post\_*.csv           & creationDate | PersonId | PostId \\
+            E                    & dynamic/Person\_studyAt\_University\_*.csv   & creationDate | PersonId | UniversityId | classYear \\
+            E                    & dynamic/Person\_workAt\_Company\_*.csv       & creationDate | PersonId | CompanyId | workFrom \\
+            \hline
+            N                    & dynamic/Post\_*.csv                          & creationDate | id | imageFile | locationIP | browserUsed | language | content | length | CreatorPersonId | ContainerForumId | LocationCountryId \\
+            E                    & dynamic/Post\_hasTag\_Tag\_*.csv             & creationDate | PostId | TagId \\
+            \hline
+        \end{tabularx}
+    \caption{Files output by the \texttt{csv-composite-merged-fk} serializer (18 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge. Warning: column names have been changed in Datagen. This document will be updated later. Until then, check the Datagen code/output for column names.}
+    \label{table:csv-composite-merged-fk}
+\end{table}
