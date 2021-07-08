@@ -3,7 +3,7 @@
 
 [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_docs.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_docs)
 
-[[PDF]](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[PDF]](http://www.ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
 
 ## Benchmark specification
 
@@ -36,7 +36,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
 
 ## How to build the this document
 
-**This repository contains the LaTeX source for the specification** of the LDBC Social Network Benchmark. This README discusses how to build the [specification PDF](http://ldbc.github.io/ldbc_snb_docs/ldbc-snb-specification.pdf) from source.
+**This repository contains the LaTeX source for the specification** of the LDBC Social Network Benchmark. This README discusses how to build the [specification PDF](http://www.ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf) from source.
 
 ### Generating query cards
 
