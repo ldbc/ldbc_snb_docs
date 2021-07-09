@@ -1,4 +1,4 @@
-\subsection{Forum}
+ \subsection{Forum}
 \label{sec:forum}
 \label{sec:hasModerator}
 
@@ -117,7 +117,7 @@ Each \tPost node has an incoming $\type{containerOf}$ edge which gets the same l
 A \tComment $\eComment$ is created by \tPerson $\ePerson$ as a reply to \tMessage $\eMessage$. \tComments are only made in Walls and Groups. \tComment always occur within $\gamma$~days of their parent message following a power-law distribution with mean 6.85 hours.
 
 \begin{itemize}
-    \item $\varc{\eComment} \in \interval{\max (\varc{\eMessage}, \varc{\eHasMember}) + \Delta}{\min (\varc{\eMessage} + \gamma\textrm{\,d}, \vard{\eHasMember}, \xSE)}$
+    \item $\varc{\eComment} \in \interval{\max (\varc{\eMessage}, \varc{\eHasMember}) + \Delta}{\min (\vard{\eMessage}, \vard{\eHasMember}, \varc{\eMessage} + \gamma\textrm{\,d}, \xSE)}$
     \item $\vard{\eComment} \in \interval{\varc{\eComment} + \Delta}{\min (\vard{\eMessage}, \vard{\eHasMember})}$
 \end{itemize}
 
