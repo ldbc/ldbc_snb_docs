@@ -16,20 +16,20 @@
 
   % edges
   \draw [edge] (forum) to [out=145,in=-15] node [midway,above,sloped] {\scriptsize{$\instance{hmod} : \type{hasModerator}$}}
-  node [midway,above,xshift=1.2cm,yshift=0.6cm,align=center,text width=2.8cm] {\scriptsize{\texttt{$\instc{hmod}{}$: Apr 01 2010}}}
-  node [midway,above,xshift=1.2cm,yshift=0.2cm,align=center,text width=2.8cm] {\scriptsize{\texttt{$\instd{hmod}{}$: Oct 02 2012}}}
+  node [midway,above,xshift=1.2cm,yshift=0.6cm,align=center,text width=2.8cm] {\scriptsize{$\instc{hmod}{}$: \texttt{Apr 01 2010}}}
+  node [midway,above,xshift=1.2cm,yshift=0.2cm,align=center,text width=2.8cm] {\scriptsize{$\instd{hmod}{}$: \texttt{Oct 02 2012}}}
   (person1);
   \draw [edge] (forum) to [out=175,in=-45] node [midway,below,sloped] {\scriptsize{$\instance{hmem_{1}} : \type{hasMember}$}} (person1);
   \draw [edge] (forum) to [out=-155,in=-25]
   node [midway,below] {\scriptsize{$\instance{hmem_{2}} : \type{hasMember}$}}
-  node [midway,below,yshift=-0.5cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instc{hmem}{2}$: Jun 15 2010}}}
-  node [midway,below,yshift=-0.9cm,align=center,text width=3.5cm] {\scriptsize{\texttt{$\instd{hmem}{2}$: Jul 26 2012}}}
+  node [midway,below,yshift=-0.5cm,align=center,text width=3.5cm] {\scriptsize{$\instc{hmem}{2}$: \texttt{Jun 15 2010}}}
+  node [midway,below,yshift=-0.9cm,align=center,text width=3.5cm] {\scriptsize{$\instd{hmem}{2}$: \texttt{Jul 26 2012}}}
   (person2);
 
   \draw [edge] (forum) --
   node [midway,above,xshift=1.5cm,yshift=0.5cm] {\scriptsize{$\instance{hmem_{3}} : \type{hasMember}$}}
-  node [midway,above,xshift=1.5cm,yshift=0.1cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instc{hmem}{3}$: Dec 08 2010}}}
-  node [midway,above,xshift=1.5cm,yshift=-0.3cm,align=right,text width=2.8cm] {\scriptsize{\texttt{$\instd{hmem}{3}$: Feb 29 2012}}} (person3);
+  node [midway,above,xshift=1.5cm,yshift=0.1cm,align=right,text width=2.8cm] {\scriptsize{$\instc{hmem}{3}$: \texttt{Dec 08 2010}}}
+  node [midway,above,xshift=1.5cm,yshift=-0.3cm,align=right,text width=2.8cm] {\scriptsize{$\instd{hmem}{3}$: \texttt{Feb 29 2012}}} (person3);
 
   \draw [edge] (forum) -- node [midway,above,grey] {\scriptsize{$\instance{cO} : \type{containerOf}$}} (post);
 
@@ -40,25 +40,25 @@
   \draw [edge] (post) to [out=-90,in=45] node [midway,below,grey,sloped,xshift=0.2cm] {\scriptsize{$\instance{hC_{3}} : \type{hasCreator}$}}  (person3);
 
 
-  \node [below of=comment1,yshift=3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{C}{1}$: Dec 17 2010}}};
-  \node [below of=comment1,yshift=2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{C}{1}$: Dec 18 2010}}};
+  \node [below of=comment1,yshift=3cm,text width=2.5cm,align=center] {\scriptsize{$\instc{C}{1}$: \texttt{Dec 17 2010}}};
+  \node [below of=comment1,yshift=2.6cm,text width=2.5cm,align=center] {\scriptsize{$\instd{C}{1}$: \texttt{Dec 18 2010}}};
 
-  \node [above of=comment2,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{C}{2}$: Dec 18 2010}}};
-  \node [above of=comment2,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{C}{2}$: Dec 18 2010}}};
+  \node [above of=comment2,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{$\instc{C}{2}$: \texttt{Dec 18 2010}}};
+  \node [above of=comment2,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{$\instd{C}{2}$: \texttt{Dec 18 2010}}};
 
-  \node [above of=post,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{Post}{1}$: Dec 16 2010}}};
-  \node [above of=post,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{Post}{1}$: Dec 12 2011}}};
+  \node [above of=post,yshift=-2.6cm,text width=2.5cm,align=center] {\scriptsize{$\instc{Post}{1}$: \texttt{Dec 16 2010}}};
+  \node [above of=post,yshift=-3cm,text width=2.5cm,align=center] {\scriptsize{$\instd{Post}{1}$: \texttt{Dec 12 2011}}};
 
-  \node [above right=0.6 cm and -0.5cm of forum,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{F}{1}$: Apr 01 2010}}};
-  \node [above right=0.2 cm and -0.5cm of forum,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{F}{1}$: Oct 02 2012}}};
+  \node [above right=0.6 cm and -0.5cm of forum,text width=2.5cm,align=center] {\scriptsize{$\instc{F}{1}$: \texttt{Apr 01 2010}}};
+  \node [above right=0.2 cm and -0.5cm of forum,text width=2.5cm,align=center] {\scriptsize{$\instd{F}{1}$: \texttt{Oct 02 2012}}};
 
-  \node [left of=person2,xshift=2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{2}$: Jan 29 2010}}};
-  \node [left of=person2,xshift=2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{2}$: Nov 15 2012}}};
+  \node [left of=person2,xshift=2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{$\instc{P}{2}$: \texttt{Jan 29 2010}}};
+  \node [left of=person2,xshift=2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{$\instd{P}{2}$: \texttt{Nov 15 2012}}};
 
-  \node [left of=person1,xshift=2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{1}$: Feb 08 2010}}};
-  \node [left of=person1,xshift=2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{1}$: Dec 23 2016}}};
+  \node [left of=person1,xshift=2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{$\instc{P}{1}$: \texttt{Feb 08 2010}}};
+  \node [left of=person1,xshift=2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{$\instd{P}{1}$: \texttt{Dec 23 2016}}};
 
-  \node [right of=person3,xshift=-2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instc{P}{3}$: Jul 21 2010}}};
-  \node [right of=person3,xshift=-2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{\texttt{$\instd{P}{3}$: Apr 17 2012}}};
+  \node [right of=person3,xshift=-2cm,yshift=0cm,text width=2.5cm,align=center] {\scriptsize{$\instc{P}{3}$: \texttt{Jul 21 2010}}};
+  \node [right of=person3,xshift=-2cm,yshift=-0.4cm,text width=2.5cm,align=center] {\scriptsize{$\instd{P}{3}$: \texttt{Apr 17 2012}}};
 
 \end{tikzpicture}
