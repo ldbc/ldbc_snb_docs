@@ -1,13 +1,13 @@
 # LDBC SNB Documentation
 
-* Latest snapshot: [[PDF](https://www.ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[Source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
+* Latest snapshot: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[Source](https://github.com/ldbc/ldbc_snb_docs/tree/dev)]
 * Stable version (updated every few months): [[arXiv]](https://arxiv.org/abs/2001.02299)
 
 ## Schema
 
 * Schema: [[PDF](schema.pdf)] [[PNG](schema.png)]
-* Example graph without refresh operations: [[PDF](https://www.ldbcouncil.org/ldbc_snb_docs/example-graph-without-refreshes.pdf)]
-* Example graph with refresh operations: [[PDF](https://www.ldbcouncil.org/ldbc_snb_docs/example-graph-with-refreshes.pdf)]
+* Example graph without refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-without-refreshes.pdf)]
+* Example graph with refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-with-refreshes.pdf)]
 
 ## Queries per workload
 
