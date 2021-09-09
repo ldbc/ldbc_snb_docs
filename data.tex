@@ -355,10 +355,10 @@ For each scale factor, \datagen produces three different artefacts:
 \label{sec:scale-factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
-SFs are computed based on the ASCII size in Gibibytes of the generated output files using the CsvSingularMergedFK serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.
+SFs are computed based on the ASCII size in Gibibytes of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.
 For example, SF1 takes roughly 1~GiB in CSV format, SF3 weighs roughly 3~GiB and so on and so forth.
 It is important to note that for a given scale factor, data sets generated using different serializers contain exaclty the same data, the only difference is in how they are represented.%
-\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the CsvSingularProjectedFK serializer is expected to be higher, while with the CsvCompositeMergedFK, it is expected to be lower.}
+\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
 The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
 Additionally, three small SFs, 0.003 (for quick tests of data loader components), 0.1, and 0.3 are provided to help initial validation efforts.
 
@@ -374,7 +374,7 @@ By default, all SFs are defined over a period of three years, starting from 2010
 
 \input{tables/table-csv-serializers}
 
-\autoref{tab:csv-serializers} shows how each CSV serializer handles attributes/edges of different cardinalities, demonstrating why CsvSingularProjectedFK has the most files and CsvCompositeMergedFK has the least number of files.
+\autoref{tab:csv-serializers} shows how each CSV serializer handles attributes/edges of different cardinalities, demonstrating why \textsf{csv-singular-projected-fk} has the most files and \textsf{csv-composite-merged-fk} has the least number of files.
 
 \input{tables/table-csv-composite-projected-fk}
 
@@ -401,7 +401,7 @@ The following CSV variants are supported:
       Generated files are summarized in \autoref{table:csv-composite-projected-fk}.
 
       \item \texttt{composite-merged-fk:}
-      This serializer is similar to CsvSingularProjectedFK, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
+      This serializer is similar to \textsf{csv-singular-projected-fk}, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
       There are 13~such relations in total:
       \begin{itemize}
         \item Comment\_hasCreator\_Person, Comment\_isLocatedIn\_Country, Comment\_replyOf\_Comment, Comment\_replyOf\_Post (merged to Comment);
@@ -416,7 +416,7 @@ The following CSV variants are supported:
       Generated files are summarized in \autoref{table:csv-composite-merged-fk}.
     
       \item \texttt{singular-merged-fk}:
-      Similar to the CsvSingularProjectedFK format but each entity, and relations with a cardinality larger than one, are output in a separate file.
+      Similar to the \textsf{csv-singular-projected-fk} format but each entity, and relations with a cardinality larger than one, are output in a separate file.
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
     
       \item \texttt{singular-projected-fk}:
