@@ -396,11 +396,11 @@ Depending on the number of threads used for generating the dataset, the number o
 
 The following CSV variants are supported:
     \begin{itemize}
-      \item \texttt{composite-projected-fk:}
+      \item \textsf{csv-composite-projected-fk:}
       Each relation with a cardinality larger than one are output in a separate file.
       Generated files are summarized in \autoref{table:csv-composite-projected-fk}.
 
-      \item \texttt{composite-merged-fk:}
+      \item \textsf{csv-composite-merged-fk:}
       This serializer is similar to \textsf{csv-singular-projected-fk}, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
       There are 13~such relations in total:
       \begin{itemize}
@@ -415,11 +415,11 @@ The following CSV variants are supported:
       \end{itemize}
       Generated files are summarized in \autoref{table:csv-composite-merged-fk}.
     
-      \item \texttt{singular-merged-fk}:
+      \item \textsf{csv-singular-merged-fk}:
       Similar to the \textsf{csv-singular-projected-fk} format but each entity, and relations with a cardinality larger than one, are output in a separate file.
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
     
-      \item \texttt{singular-projected-fk}:
+      \item \textsf{csv-singular-projected-fk}:
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
 
       \item \texttt{raw} mode:
