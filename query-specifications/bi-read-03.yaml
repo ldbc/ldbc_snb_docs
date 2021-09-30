@@ -3,7 +3,7 @@ operation: read
 number: 3
 title: Popular topics in a country
 description: |
-  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Message* with *Tags* belonging directly to the given *TagClass*, and count the *Messages* by the *Person* who created it and by the *Forum* which contains them.
+  Given a *TagClass* and a *Country*, find all the *Forums* created in the given *Country*, containing at least one *Message* with *Tags* belonging directly to the given *TagClass*, and count the *Messages* by the *Forum* which contains them.
 
   The location of a *Forum* is identified by the location of the *Forum*'s moderator.
 parameters:
