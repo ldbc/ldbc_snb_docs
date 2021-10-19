@@ -552,8 +552,8 @@ Next, the SUT is benchmarked during a two-hour measurement window. Operation tim
     \label{fig:measurement-window-selection}
 \end{figure}
 
-The SNB \datagen produces 3~years worth data of which 10\% is used for updates (\autoref{sec:sn-datasets}).
-To ensure that the 2.5~hour wall clock period has enough input data, the lower bound of TCR is defined as 0.001. System that can achieve a better (\ie lower) TCR values on a certain scale factors are encouraged to use larger SF.
+The SNB \datagen produces 3~years worth data of which 10\% is used for updates (\autoref{sec:sn-datasets}), \ie approximately $3 \times 365 \times 0.1 = 109.5~\text{days} = 2628~\text{hours}$.
+To ensure that the 2.5~hour wall clock period has enough input data, the lower bound of TCR is defined as 0.001 (if $2628$ hours of updates are played back at more than $1000\times$ speed, the benchmark framework runs out of updates to execute). System that can achieve a better compression (\ie lower TCR value) on a given scale factor should use larger SFs for their benchmark runs -- otherwise their total runs will be less than 2.5~hours, making them unsuitable for auditing.
 
 %The test summary tool may be used for reading the logs created by a test driver.
 
