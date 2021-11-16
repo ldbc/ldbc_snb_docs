@@ -189,29 +189,25 @@ In any case, a benchmark must state its policy concerning presence or absence of
 
 A benchmark may specify that an implementation is not allowed the use of explicit access paths. For example, explicitly specifying which EADS or IADS should be used for any given operation may be prohibited. Furthermore, in scale-out systems, explicit references to data location (other than via values of partitioning keys) may be prohibited. In general, references to internal data representation of an entity, \eg row in a table, should be prohibited. Reference should take place via column names in a schema or property URIs in RDF, not via physical offsets or the like.
 
-\subsection{Query Declarativity}
-\label{sec:query-declarativity}
+\subsection{Query Languages}
+\label{sec:query-languages}
 
+In general, online transaction processing (OLTP) benchmarks allow implementation via stored procedures, effectively amounting to explicit query plans.
+Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of using general-purpose programming languages (\eg C, C\texttt{++}, Java) for query implementations and only allow domain-specific query languages.
+Additionally, if a benchmark is analytical and a query is stated using a declarative, explicit control of join order, join type, \etc should be prohibited.
+% Explicit join orders are allowed in a declarative query if the application has a clear OLTP nature.
+% Consider for example TPC-C, where implementations are known to specify join orders and indices.
 
-\subsubsection{Query Declarativity in Online Transaction Processing Benchmarks}
-Online transaction processing (OLTP) benchmarks typically allow implementation via stored procedures, effectively amounting to explicit query plans. 
+In the graph processing space, there is currently (as of 2021) no standard query language and the systems are more heterogeneous.
+%Additionally, the analytics workloads more diverse due to the rich set of operations executable on a property graph.
+Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the TPC where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads.
 
-\subsubsection{Query Declarativity in Online Analytical Processing Benchmarks}
-Generally, online analytical processing (OLAP) benchmarks prohibit the use of imperative query implementations. 
+Individual benchmarks are expected to specify their policy concerning using a domain-specific query language or implementing the queries in a general-purpose programming language.
 
-If a benchmark is analytical and a query is declaratively stated, explicit control of join order, join type, etc. should be prohibited. These may still be allowed in a declarative query if the application has a clear OLTP nature. Consider for example TPC-C, where implementations are known to specify join orders and indices.
-In the LDBC Social Network Benchmark, the OLTP and OLAP workload are distinct, and different rules may apply.
-Individual benchmarks are expected to specify their policy concerning declarativity.
+\subsubsection{Rules for Imperative Implementations Using a General-Purpose Programming Language}
+An implementation where the queries are written in a general-purpose programming language (including imperative and ``API-based'' implementations) may choose between semantically equivalent implementations of an operation based on the query parameters. This simulates the behaviour of a query optimizer in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard-coded threshold values in the implementation.
 
-\begin{quote}
-    \emph{Rationale behind allowing exceptions for OLAP queries.}
-    The LDBC situation regarding declarativity is not as simple as that of for example the TPC. With the TPC, declarativity with no hints is required for OLAP and is not required for OLTP. With LDBC, the systems are more heterogeneous and the analytics workloads more diverse.
-\end{quote}
-
-\subsubsection{Rules for Imperative Query Implementations}
-An imperative (\eg API-based) implementation may choose between semantically equivalent implementations of an operation based on parameters. This simulates the behaviour of a query optimiser in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard coded threshold values in the implementation.
-
-The auditor must be able to reliably assess the compliance of an implementation to guidelines specifying these matters. The actual specification remains benchmark dependent. Borderline cases may be brought to the task force responsible for arbitration.
+The auditor must be able to reliably assess the compliance of an implementation to guidelines specifying these matters. The actual specification remains benchmark-dependent. Borderline cases may be brought to the task force responsible for arbitration.
 
 
 \subsubsection{Disclosure of Query Implementations in the FDR}
@@ -442,12 +438,14 @@ The tool produces for the complete run the following summary:
 
 \subsection{Implementation Language and Data Access Transparency}
 
-The queries and updates may be implemented in a declarative query language or as procedural code using an API.
+The queries and updates may be implemented in a domain-specific query language or as procedural code written in a general-purpose programming language (\eg using the API of the database).
 
-\subsubsection{Declarative Implementations}
-\label{sec:snb-declarative-implementations}
+\subsubsection{Implementations Using a Domain-Specific Query Language}
+\label{sec:snb-domain-specific-query-language}
 
-If a declarative query language is used, \eg SPARQL or SQL, then explicit query plans are prohibited in all the read-only queries. The update transactions may still consist of multiple statements, effectively amounting to explicit plans.
+If a domain-specific query language is used, \eg SPARQL, SQL, Cypher, or Gremlin, then explicit query plans are prohibited in all the read-only queries.%
+\footnote{If the queries are not clearly declarative, the auditor must ensure that they do not specify explicit query plans by investigating their source code and experimenting with the query planner of the system (\eg using SQL's \texttt{EXPLAIN} command).}
+The update transactions may still consist of multiple statements, effectively amounting to explicit plans.
 
 Explicit query plans include but are not limited to:
 \begin{itemize}
@@ -460,9 +458,11 @@ Explicit query plans include but are not limited to:
     \emph{Rationale behind the applied restrictions.} The updates are effectively OLTP and, therefore, the customary freedoms apply, including the use of stored procedures, however subject to access transparency. Declarative queries in a benchmark implementation should be such that they could plausibly be written by an application developer. Therefore, their formulation should not contain system specific aspects that an application developer would be unlikely to know. In other words, making a benchmark implementation should not require uncommon sophistication on behalf of the developer. This is regular practice in analytical benchmarks, \eg TPC-H.
 \end{quote}
 
-\subsubsection{Imperative Implementations}
+\subsubsection{Implementations Using a General-Purpose Programming Language}
+\label{sec:snb-general-purpose-programming-language}
 
-Imperative implementations are expected to respect the rules described in \autoref{sec:query-declarativity}. For these implementations, the rules in \autoref{sec:snb-declarative-implementations} do not apply.
+Implementations using a general-purpose programming language for specifying the queries (including procedural, imperative, and API-based implementations) are expected to respect the rules described in \autoref{sec:query-languages}.
+For these implementations, the rules in \autoref{sec:snb-domain-specific-query-language} do not apply.
 
 \subsection{Correctness of Benchmark Implementation}
 
@@ -478,7 +478,6 @@ See the related section for definitions in \autoref{sec:acid}.
 
 \paragraph{Expected level of isolation}
 If a transaction reads the database with intent to update, the DBMS must guarantee that repeating the same read within the same transaction will return the same data. This also means that no more and no less data rows must be returned. In other words, this corresponds to snapshot or to serializable isolation. If the database is accessed without transaction context or without intent to update, then the DBMS should provide read committed semantics, \eg repeating the same read may produce different results but these results may never include effects of pending uncommitted transactions.
-
 
 \paragraph{Durability and checkpoints}
 
