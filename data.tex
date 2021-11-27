@@ -482,7 +482,7 @@ To support deletion operations graph processing systems need to solve numerous t
 %
 \begin{enumerate}
 \item Users should be able to \emph{express deletion operations} using the database API, preferably using a high-level declarative query language with clear semantics~\cite{Green2019}.
-\item Deletion operations \emph{limit the algorithms and data structures} that can be used by a system. Certain dynamic graph algorithms are significantly more expensive to recompute in the presence of deletes~\cite{DBLP:conf/soda/Roditty13} or only support either insert or deletions but not both~\cite{DBLP:conf/esa/RodittyZ04}. A number of updatable matrix storage formats only support efficient insertions but not deletions~\cite{DBLP:conf/hpec/BusatoGBB18}. Meanwhile some graph databases might be able to exploit indexes to speed up deletions~\cite[Sec.~4.4.2]{Besta2019}
+\item Deletion operations \emph{limit the algorithms and data structures} that can be used by a system. Certain dynamic graph algorithms are significantly more expensive to recompute in the presence of deletes~\cite{DBLP:conf/soda/Roditty13} or only support either insert or deletions but not both~\cite{DBLP:conf/esa/RodittyZ04}. A number of updatable matrix storage formats only support efficient insertions but not deletions~\cite{DBLP:conf/hpec/BusatoGBB18}. Meanwhile some graph databases might be able to exploit indices to speed up deletions~\cite[Sec.~4.4.2]{Besta2019}
 \item \emph{Distributed graph databases} need to employ specialized protocols to enforce consistency of deletions~\cite{Waudby2020}.
 \end{enumerate}
 

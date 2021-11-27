@@ -32,7 +32,7 @@ Choke points are a superset of~\cite{LdbcDeliverable} with the exception of CP \
 
 \cpSection[1.2]{1.1}{QOPT}{Interesting orders}
 
-This choke point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indexes providing key order, other operators also preserve or even induce tuple orderings.
+This choke point tests the ability of the query optimizer to exploit the interesting orders induced by some operators. Apart from clustered indices providing key order, other operators also preserve or even induce tuple orderings.
 Sort-based operators create new orderings, typically the probe-side of a hash join conserves its order, etc.
 
 \input{choke-points/cp-1-1}
@@ -113,7 +113,7 @@ There is a break even point between index and hash based plans, depending on the
 
 \cpSection[2.2]{2.4}{QOPT}{Sparse foreign key joins}
 
-This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indexes or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
+This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indices or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
 
 \input{choke-points/cp-2-4}
 
@@ -135,9 +135,9 @@ This choke point tests the query engine's ability to use multi-way joins to eval
 
 \cpSection[3.3]{3.1}{QOPT}{Detecting correlation}
 
-This choke point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indexes, the question then is which of the date or data columns to use as key.
+This choke point tests the ability of the query optimizer to detect data correlations and exploiting them. If a schema rewards creating clustered indices, the question then is which of the date or data columns to use as key.
 In fact it should not matter which column is used, as range-propagation between correlated attributes of the same table is relatively easy. One way is through the creation of multi-attribute histograms after detection of attribute correlation.
-With MinMax indexes, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
+With MinMax indices, range-predicates on any column can be translated into qualifying tuple position ranges. If an attribute value is correlated with tuple position, this reduces the area to scan roughly equally to predicate selectivity.
 
 \input{choke-points/cp-3-1}
 
@@ -156,7 +156,7 @@ The properties of the entity being identified may affect this, \eg type (label),
 
 \cpSection{3.3}{QEXE}{Scattered index access patterns}
 
-This choke point tests the performance of indexes when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
+This choke point tests the performance of indices when scattered accesses are performed. The efficiency of index lookup is very different depending on the locality of keys coming to the indexed access.
 Techniques like vectoring non-local index accesses by simply missing the cache in parallel on multiple lookups vectored on the same thread may have high impact.
 Also detecting absence of locality should turn off any locality dependent optimizations if these are costly when there is no locality. A graph neighbourhood traversal is an example of an operation with random access without predictable locality.
 
