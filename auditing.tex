@@ -357,7 +357,7 @@ The update stream contains the latest 10\% of the events in the simulated social
 \paragraph{Parallel updates}
 The update stream may be broken into arbitrarily many sub-streams. The partition scheme is created by the \datagen. During benchmark execution, the driver preserves dependencies between update operations, such as ensuring not to refer to non-existent entities in updates (\eg a like is not added to a message which has not been inserted yet).
 
-\subsection{Data Model}
+\subsection{Data Model and Data Loading}
 
 \subsubsection{Supported Data Models}
 
@@ -368,7 +368,7 @@ SNB may be implemented with different data models (\eg relational, RDF, and diff
 \label{sec:generated-data}
 
 \paragraph{Storage}
-The data generator produces comma-separated values (csv) for all data models.
+The data generator produces comma-separated values (CSV) for all data models.
 
 \paragraph{Data format}
 A single attribute has a single data type, as follows:
@@ -401,6 +401,18 @@ A covering index is an index which materialises a specific order of a specific s
 A clustered index is an index which materialises all columns of a table in a specific order, which order may or may not be that of the primary key of the table. A clustered or covering index may be the primary or only representation of a table.
 
 Any subset of the columns on a covering or clustered index may be used for ordering the data. A hash based index or a combination of a hash based and tree based index are all allowed, in row or column-wise or hybrid forms.
+
+\paragraph{Loading the Data}
+
+We expect the SUT to provide some means to bulk load the data set either in the form of a dedicated offline loader component or an online loader that allows bulk inserting into a database.
+The total of the bulk load time and the time for subsequent operations (indexing, computing statistics, \etc) must be reported in the FDR (see \autoref{sec:benchmark-workflow}).
+As loading can be an expensive operation, it is allowed to conduct the audit such that the loading is only performend once, and the validation/benchmarking phases use the resulting database instance.
+In practice, this can look like as follows:
+(1)~load the data,
+(2)~compute statistics, uniqueness constraints, keys, indices, \etc,
+(3)~shut down the SUT,
+(4)~create a backup of the database (\eg by copying the directory of the database).
+For all subsequent runs, the databse shall be restored from the backup.
 
 \subsection{Precomputation}
 
@@ -522,7 +534,7 @@ A benchmark execution is divided into the following processes (these processes a
     The system under test must support the different data types needed by the benchmark for each of the attributes at their specified precision. No data can be filtered out, everything must be loaded. The test sponsor must provide a tool to perform arbitrary checks of the data or a shell to issue queries in a declarative language if the system supports it.
     \item[Run cross-validation] This step uses the data loader to populate the database, but the load is not timed. The validation data set is used to verify the correctness of the SUT. The auditor must load the provided dataset and run the driver in validation mode, which will test that the queries provide the official results.  The benchmarking workflow will not go beyond this point unless results match the expected output.
     \item[Warm-up] Benchmark runs are preceded by a warm-up which must be performed using the LDBC driver.
-    \item[Run benchmark]  The bulk load time is reported and is equal to the amount of elapsed wall clock time between starting the schema definition and receiving the confirmation message of the end of statistics gathering. The workflow runs begin after the bulk load is completed. If the run does not directly follow the bulk load, it must start at a point in the update stream that has not previously been played into the database. In other words, a run may only include update events whose timestamp is later than the latest message creation date in the database prior to start of run. The run starts when the first of the test drivers send its first message to the SUT. If the SUT is running in the same process as the driver, the window starts
+    \item[Run benchmark] The bulk load time is reported and is equal to the amount of elapsed wall clock time between starting the schema definition and receiving the confirmation message of the end of statistics gathering. The workflow runs begin after the bulk load is completed. If the run does not directly follow the bulk load, it must start at a point in the update stream that has not previously been played into the database. In other words, a run may only include update events whose timestamp is later than the latest message creation date in the database prior to start of run. The run starts when the first of the test drivers send its first message to the SUT. If the SUT is running in the same process as the driver, the window starts
     when the driver starts. Also, make sure that the \verb|-rl/--results_log| is enabled. Make sure that all operations are enabled and the frequencies are those for the selected scale factor (see the exact specification of the frequencies in the specification appendix B.1. Scale Factor Statistics for the Interactive Workload).
 \end{description}
 
