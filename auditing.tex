@@ -335,7 +335,14 @@ This section specifies a checklist (in the form of individual sections) that a b
 \subsection{Scaling}
 
 \subsubsection{Scale Factors}
-The scale factor of a SNB dataset is the size of the dataset in GiB of CSV (comma-separated values) files. All dataset scales contain data for three years of social network activity. The scaling is done in buckets. The size of the dataset is either 10~GiB or 30~GiB or a power of ten multiple of either. Thus scales are 10, 30 100, 300, 1000~GiB and so forth. This scaling is identical to the scaling of TPC-H and TPC-DS. 
+
+The scale factor of an SNB dataset is the size of the dataset in GiB of CSV (comma-separated values) files.
+The size of a dataset is characterized by scale factors: SF10, SF30, SF100 \etc. (see \autoref{sec:scale-factors}).
+All datasets contain data for three years of social network activity.
+
+The \emph{validation run} shall be performed on the SF10 dataset (see \autoref{sec:validation-data-set}). Note that the auditor may perform additional validation runs of the benchmark implementation using smaller datasets (\eg SF1).
+
+Audited \emph{benchmark runs} shall use SF30 or larger datasets. The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee 2.5~hours of continuous execution (see \autoref{sec:measurement-window}).
 
 % \begin{quote}
 %     \emph{Rationale behind scaling.} The authors are aware that the prevalent practice for online benchmarks is to tie the reported throughput to the scale, \eg max 12.5 tpmC per warehouse in TPC-C. The authors depart from this practice here because with throughput tied to scale, test systems with interesting throughput rapidly become very expensive, raising the entry barrier for publishing a result. It is thought that scaling in buckets lowers the barrier of entry and reduces incentive to use hardware configurations that would be unusual in a production environment.
@@ -539,6 +546,7 @@ The \texttt{results\_log.csv} file contains the $\mathsf{actual\_start\_time}$ a
 If the execution of the benchmark is valid, the auditor must retrieve all the files from directory specified by \verb|--results_dir| which includes configuration settings used, results log and results summary. All of which must be disclosed.
 
 \subsubsection{Measurement Window}
+\label{sec:measurement-window}
 
 Benchmark runs execute the workload on the SUT in two phases (\autoref{fig:measurement-window-selection}).
 First, the SUT must undergo a warm-up period that takes at least 30 minutes. The goal of this is to put the system in a steady state which reflects how it would behave in a normal operating environment. The performance of the operations during warm-up is not considered.
