@@ -355,7 +355,8 @@ For each scale factor, \datagen produces three different artefacts:
 \label{sec:scale-factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
-SFs are computed based on the ASCII size in Gibibytes of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.
+SFs are computed based on the ASCII size in Gibibytes of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.%
+\footnote{This way of characterizing the size of the data set is identical to the scaling of TPC-H and TPC-DS.}
 For example, SF1 takes roughly 1~GiB in CSV format, SF3 weighs roughly 3~GiB and so on and so forth.
 It is important to note that for a given scale factor, data sets generated using different serializers contain exaclty the same data, the only difference is in how they are represented.%
 \footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
