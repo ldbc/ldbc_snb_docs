@@ -3,7 +3,8 @@
 
 [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_docs.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_docs)
 
-[[PDF]](http://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[latest PDF (0.4.0-SNAPSHOT)]](http://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[stable PDF (0.3.3)]](https://arxiv.org/pdf/2001.02299.pdf)
 
 ## Benchmark specification
 
@@ -15,11 +16,11 @@ For a guide on how to develop benchmark implementations, please check out the [b
 
 The two SNB workloads (Interactive/BI) are stored in different repositories:
 
-* Interactive:
+* Interactive (auditable since v0.3.2):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
   * Driver: https://github.com/ldbc/ldbc_snb_driver
   * Implementations: https://github.com/ldbc/ldbc_snb_interactive
-* BI:
+* BI (WIP, will be release in v0.4.0+):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
 
@@ -42,11 +43,10 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
 
 To get consistent formatting, query cards are generated from query specifications defined in [YAML](http://yaml.org/) format. This is a necessary step to compile to the document.
 
-Install Pandoc and Python3 following dependencies:
+Install Pandoc, Python3, and the required packages:
 
 ```bash
-sudo apt-get install -y pandoc
-sudo apt-get install -y python3 python3-pip python3-setuptools
+sudo apt-get install -y pandoc python3 python3-pip python3-setuptools
 pip3 install -r requirements.txt
 ```
 
@@ -59,7 +59,7 @@ We also provide [an image on Docker Hub](https://hub.docker.com/r/ldbc/docs) for
 ```bash
 docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
   "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"; \
-  sudo chown -R $USER:$USER .
+  sudo chown -R ${USER}:${USER} .
 ```
 
 You can also compile the image manually by issuing:
