@@ -15,10 +15,13 @@ description: |
 parameters:
   - name: country
     type: Long String
-    parameter: Selected from large *Countries*
+    description: Selected from large *Countries* (India, China)
   - name: startDate
     type: Date
-    parameter: Selected from around the same day
+    description: Selected from around the same day
+  - name: endDate
+    type: Date
+    description: Selected to yield around a 100-day interval
 result:
   - name: count
     type: 32-bit Integer

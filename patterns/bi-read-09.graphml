@@ -84,9 +84,27 @@ lastName</y:NodeLabel>
               <y:Geometry height="40.0" width="194.2400000000001" x="852.9250173611111" y="463.5310763888889"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="184.931640625" x="4.0" xml:space="preserve" y="4.03125">$startDate ≤ creationDate
-and creationDate ≤ $endDate</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.1796875" x="4.0" xml:space="preserve" y="4.03125">creationDate in 
+[$startDate, $endDate]</y:NodeLabel>
               <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n2::n2">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="13.360000000000014" width="13.360000000000014" x="858.8232573611114" y="433.5310763888889"/>
+              <y:Fill color="#000000" transparent="false"/>
+              <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="4.67999999999995" y="4.680000000000007">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:Shape type="triangle2"/>
             </y:ShapeNode>
           </data>
         </node>
@@ -127,8 +145,8 @@ and creationDate ≤ $endDate</y:NodeLabel>
               <y:Geometry height="40.0" width="194.2400000000001" x="545.6402777777776" y="463.5310763888889"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="184.931640625" x="4.0" xml:space="preserve" y="4.03125">$startDate ≤ creationDate
-and creationDate ≤ $endDate</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" height="31.9375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.1796875" x="4.0" xml:space="preserve" y="4.03125">creationDate in 
+[$startDate, $endDate]</y:NodeLabel>
               <y:Shape type="rectangle"/>
             </y:ShapeNode>
           </data>
@@ -145,6 +163,24 @@ and creationDate ≤ $endDate</y:NodeLabel>
           </data>
         </node>
       </graph>
+    </node>
+    <node id="n4">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="13.360000000000014" width="13.360000000000014" x="550.2513907377776" y="433.5310763888889"/>
+          <y:Fill color="#000000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="4.680000000000064" y="4.680000000000007">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="triangle2"/>
+        </y:ShapeNode>
+      </data>
     </node>
     <edge id="e0" source="n2::n0" target="n3::n1">
       <data key="d10">

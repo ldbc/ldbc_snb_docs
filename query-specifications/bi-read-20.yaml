@@ -13,6 +13,7 @@ parameters:
     description: "*Companies* with a similar number of employees (former or current) are selected"
   - name: person2Id
     type: ID
+    description: "`person2` is selected so that there is no direct (1-hop) path to any `person1` working at `company`"
 result:
   - name: person1.id
     type: ID

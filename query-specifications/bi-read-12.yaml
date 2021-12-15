@@ -7,7 +7,7 @@ description: |
 
   * Its `content` is not empty (and consequently, the `imageFile` attribute is empty for *Posts*).
   * Its `length` is below the `lengthThreshold` (exclusive, equality is not allowed).
-  * Its `creationDate` is after `date` (exclusive, equality is not allowed).
+  * Its `creationDate` is after `startDate` (exclusive, equality is not allowed).
   * It is written in any of the given `languages`.
 
       * The language of a *Post* is defined by its `language` attribute.
@@ -17,7 +17,7 @@ description: |
 
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
-  - name: date
+  - name: startDates
     type: Date
   - name: lengthThreshold
     type: 32-bit Integer
