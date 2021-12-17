@@ -61,10 +61,10 @@ In the default auditor selection, the task force responsible for the benchmark b
 \subsection{Auditing Process Stages}
 \subsubsection{Performing a Benchmark Audit}
 A benchmark result is to be audited by an LDBC appointed auditor or the LDBC task force managing the benchmark. An LDBC audit may be performed by remote login and does not require the auditor's physical presence on site. The test sponsor shall grant the auditor any access necessary for validating the benchmark run. This will typically include administrator access to the SUT hardware.
-    
+
 \subsubsection{Benchmark-Specific Checklist}
 Each benchmark specifies a checklist to be verified by the auditor. The benchmark run shall be performed by the auditor. The auditor shall take copies of relevant configuration files and test results for future checking and insertion into the full disclosure report.
-    
+
 \subsubsection{Producing the FDR}
 The FDR is produced by the auditor or auditors, with any required input from the test sponsor. Each non-default configuration parameter needs to be included in the FDR and justification needs to be provided why the given parameter was changed.
 The auditor produces an attestation letter that verifies authenticity of the presented results. This letter is to be included into the FDR as an addendum. The attestation letter has no specific format requirements but shall state that the auditor has established compliance with a specified version of the benchmark specification.
@@ -92,7 +92,7 @@ A benchmark result may be challenged for non-compliance with LDBC rules. The ben
 \subsubsection{Correctness of Results}
 
 A benchmark should be published with a deterministically reproducible validation dataset. Validation queries applied to the validation dataset will deterministically produce a set of correct answers. This is used in the first stage of benchmark run to test for the correctness of an SUT or benchmark implementation. This validation stage is not timed.
-                          
+
 \paragraph{Inputs for validation}
 The validation takes the form of a set of data generator parameters, a set of test queries that at least include one instance of each of the workload query templates and the expected results.
 
@@ -107,7 +107,7 @@ This section outlines transactional behaviours of SUTs which are checked in the 
 
 A benchmark specifies transactional semantics that may be required for different parts of the workload. The requirements will typically be different for initial bulk load of data and for the workload itself. Different sections of the workload may further be subject to different transactionality requirements.
 
-No finite series of tests can prove that the ACID properties are fully supported. Passing the specified tests is a necessary, but not sufficient, condition for meeting the ACID requirements. However, for fairness of reporting, only the tests specified here are required  and  must appear in  the FDR for  a benchmark. (This is taken exactly from the TPC-C specification~\cite{tpcc}.)
+No finite series of tests can prove that the ACID properties are fully supported. Passing the specified tests is a necessary, but not sufficient, condition for meeting the ACID requirements. However, for fairness of reporting, only the tests specified here are required and must appear in the FDR for a benchmark. (This is taken exactly from the \mbox{TPC-C} specification~\cite{tpcc}.)
 
 The properties for ACID compliance are defined as follows:
 
@@ -167,7 +167,7 @@ all parts must survive. %This is a special concern in distributed systems which 
 
 \subsection{Data Schema}
 
-A benchmark may specify restrictions on schema. For example, TPC-H and TPC-DS specify that only certain indices may be declared. In the LDBC context, the matter is more complex since the range of possible SUTs is much broader, including diverse combinations of schema first and schema-less systems and configurations.
+A benchmark may specify restrictions on schema. For example, \mbox{TPC-H} and \mbox{TPC-DS} specify that only certain indices may be declared. In the LDBC context, the matter is more complex since the range of possible SUTs is much broader, including diverse combinations of schema first and schema-less systems and configurations.
 
 \subsubsection{Schema Declaration}
 By default, a system may declare no schema at all, as may be the case with RDF or graph DBMSs. If EADSs are declared, then these must be consistently applied to all data within the same workload for a given scale factor. The nature of prohibited EADSs, if any, depends on the benchmark and may be stated in the benchmark specification.
@@ -192,17 +192,15 @@ A benchmark may specify that an implementation is not allowed the use of explici
 \subsection{Query Languages}
 \label{sec:query-languages}
 
-In general, online transaction processing (OLTP) benchmarks allow implementation via stored procedures, effectively amounting to explicit query plans.
+In general, online transaction processing (OLTP) benchmarks allow implementation via stored procedures, effectively amounting to explicit query plans.\footnote{Consider for example \mbox{TPC-C}, where implementations are known to specify join orders and indices.}
 Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of using general-purpose programming languages (\eg C, C\texttt{++}, Java) for query implementations and only allow domain-specific query languages.
-Additionally, if a benchmark is analytical and a query is stated using a declarative, explicit control of join order, join type, \etc should be prohibited.
-% Explicit join orders are allowed in a declarative query if the application has a clear OLTP nature.
-% Consider for example TPC-C, where implementations are known to specify join orders and indices.
+Additionally, if a benchmark is analytical and a query is stated using a declarative language, explicit control of join order, join type, \etc should be prohibited.
 
 In the graph processing space, there is currently (as of 2021) no standard query language and the systems are more heterogeneous.
-%Additionally, the analytics workloads more diverse due to the rich set of operations executable on a property graph.
-Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the TPC where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads.
+Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the \mbox{TPC-H} where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads.
 
-Individual benchmarks are expected to specify their policy concerning using a domain-specific query language or implementing the queries in a general-purpose programming language.
+Individual benchmarks are expected to specify their policy of either using a domain-specific query language or implementing the queries in a general-purpose programming language.
+
 
 \subsubsection{Rules for Imperative Implementations Using a General-Purpose Programming Language}
 An implementation where the queries are written in a general-purpose programming language (including imperative and ``API-based'' implementations) may choose between semantically equivalent implementations of an operation based on the query parameters. This simulates the behaviour of a query optimizer in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard-coded threshold values in the implementation.
@@ -221,7 +219,7 @@ The mix of read and update operations in a workload will determine to which degr
 
 An online workload must be able to indefinitely keep up the reported throughput. The benchmark definition may put specific restrictions on the duration of individual parts of the workload.
 
-\subsubsection{Bringing the SUT into Steady State} One implication of this is that an SUT must be able to accommodate inserts at a specific rate for a realistic length of time. For example, if the workload is of an online nature then the SUT should be sized so as not to run out of space for new data for a reasonable duration of time. The TPC-C 180-day rule is an example of this. An analytical benchmark that primarily bulk loads data does not need to reserve as much space for new data. Each benchmark shall state its specific requirements in this respect.
+\subsubsection{Bringing the SUT into Steady State} One implication of this is that an SUT must be able to accommodate inserts at a specific rate for a realistic length of time. For example, if the workload is of an online nature then the SUT should be sized so as not to run out of space for new data for a reasonable duration of time. The \mbox{TPC-C} 180-day rule is an example of this. An analytical benchmark that primarily bulk loads data does not need to reserve as much space for new data. Each benchmark shall state its specific requirements in this respect.
 
 \subsection{Query Mix}
 
@@ -229,7 +227,7 @@ A benchmark consists of multiple different operations that may vary in frequency
 instances of each operation may vary in function of parameter selection. A benchmark must specify an operation
 mix and a minimum count of operations that constitutes a compliant benchmark execution.
 
-The auditor must ascertain from the records of a benchmark execution that a sufficient number of operations has indeed taken place for the report. For example, a 1000~GB TPC-H must have at least 7 streams in the throughput test and the workload is to be run twice following bulk load. For LDBC SNB, the run must be at least 2 hours of wall clock, measured time and the count of successful transactions of each type must be in a strictly set ratio with the count of other operations. 
+The auditor must ascertain from the records of a benchmark execution that a sufficient number of operations has indeed taken place for the report. For example, a 1000~GB \mbox{TPC-H} must have at least 7 streams in the throughput test and the workload is to be run twice following bulk load. For LDBC SNB, the run must be at least 2 hours of wall clock, measured time and the count of successful transactions of each type must be in a strictly set ratio with the count of other operations.
 
 Benchmarks shall each specify a minimum count of operations and relative frequencies of operations for a qualifying
 execution.
@@ -308,7 +306,7 @@ All parameters included in this section must be reported in the full disclosure 
 \subsection{Benchmark Specifics}
 
 Similarly to TPC benchmarks, the LDBC benchmarks prohibit so-called benchmark specials (\ie extra software modules implemented in the core DBMS logic just to make a selected benchmark run faster are disallowed). Furthermore, upon request of the auditor, the test sponsor must provide all the source code relevant to the benchmark.
-    
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,11 +317,11 @@ Similarly to TPC benchmarks, the LDBC benchmarks prohibit so-called benchmark sp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This section specifies a checklist (in the form of individual sections) that a benchmark audit shall cover in case of the SNB Interactive workload. An overview of the benchmark audit workflow is shown in \autoref{fig:audit-workflow}. The three major phases of the audit are preparing the input data and validation query results (captured by \emph{Preparations} in the figure), validating the correctness of query results returned by the SUT using the validation scale factor and running the benchmark with all the prescribed workloads (\emph{Benchmarking}), and creating the FDR (\emph{Finalisation}). The colour codes capture the responsibilities of performing a step or providing some data in the workflow.
+This section specifies a checklist (in the form of individual sections) that a benchmark audit shall cover in case of the SNB Interactive workload. An overview of the benchmark audit workflow is shown in \autoref{fig:audit-workflow}. The three major phases of the audit are preparing the input data and validation query results (captured by \emph{Preparations} in the figure), validating the correctness of query results returned by the SUT using the validation scale factor and running the benchmark with all the prescribed workloads (\emph{Benchmarking}), and creating the FDR (\emph{Finalization}). The colour codes capture the responsibilities of performing a step or providing some data in the workflow.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=\yedscale]{figures/auditing-workflow}    
+    \includegraphics[scale=\yedscale]{figures/auditing-workflow}
     \caption{Benchmark execution and auditing workflow. For non-audited runs, the implementers perform the steps of the auditor.}
     \label{fig:audit-workflow}
 \end{figure}
@@ -345,7 +343,7 @@ The \emph{validation run} shall be performed on the SF10 dataset (see \autoref{s
 Audited \emph{benchmark runs} shall use SF30 or larger datasets. The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee 2.5~hours of continuous execution (see \autoref{sec:measurement-window}).
 
 % \begin{quote}
-%     \emph{Rationale behind scaling.} The authors are aware that the prevalent practice for online benchmarks is to tie the reported throughput to the scale, \eg max 12.5 tpmC per warehouse in TPC-C. The authors depart from this practice here because with throughput tied to scale, test systems with interesting throughput rapidly become very expensive, raising the entry barrier for publishing a result. It is thought that scaling in buckets lowers the barrier of entry and reduces incentive to use hardware configurations that would be unusual in a production environment.
+%     \emph{Rationale behind scaling.} The authors are aware that the prevalent practice for online benchmarks is to tie the reported throughput to the scale, \eg max 12.5 tpmC per warehouse in \mbox{TPC-C}. The authors depart from this practice here because with throughput tied to scale, test systems with interesting throughput rapidly become very expensive, raising the entry barrier for publishing a result. It is thought that scaling in buckets lowers the barrier of entry and reduces incentive to use hardware configurations that would be unusual in a production environment.
 % \end{quote}
 %COMMENTS FROM PAST GABOR TO FUTURE GABOR
 %what it wants to say is that unlike TPC-C, you can get a large throughput (lots of ops) even on a small data set
@@ -474,7 +472,7 @@ Explicit query plans include but are not limited to:
 \end{itemize}
 
 \begin{quote}
-    \emph{Rationale behind the applied restrictions.} The updates are effectively OLTP and, therefore, the customary freedoms apply, including the use of stored procedures, however subject to access transparency. Declarative queries in a benchmark implementation should be such that they could plausibly be written by an application developer. Therefore, their formulation should not contain system specific aspects that an application developer would be unlikely to know. In other words, making a benchmark implementation should not require uncommon sophistication on behalf of the developer. This is regular practice in analytical benchmarks, \eg TPC-H.
+    \emph{Rationale behind the applied restrictions.} The updates are effectively OLTP and, therefore, the customary freedoms apply, including the use of stored procedures, however subject to access transparency. Declarative queries in a benchmark implementation should be such that they could plausibly be written by an application developer. Therefore, their formulation should not contain system specific aspects that an application developer would be unlikely to know. In other words, making a benchmark implementation should not require uncommon sophistication on behalf of the developer. This is regular practice in analytical benchmarks, \eg \mbox{TPC-H}.
 \end{quote}
 
 \subsubsection{Implementations Using a General-Purpose Programming Language}
