@@ -14,9 +14,13 @@ parameters:
   - name: tag
     type: Long String
     description: "*Tags* with a similar amount of *Messages* are selected"
-  - name: date
+  - name: startDate
     type: Date
-    description: Dates from around the same day are selected. (TODO - how exactly? what distribution?)
+    description: |
+      `(A)`: regular range (no flashmob event)
+      `(B)`: a flashmob event happened during the range (should yield at least a 5x difference)
+  - name: endDate
+    type: Date
 result:
   - name: person.id
     type: ID
