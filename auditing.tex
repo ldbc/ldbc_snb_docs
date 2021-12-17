@@ -605,3 +605,19 @@ To ensure reproducibility of the audited results, a supplementary package is att
     \item Implementation of the ACID test suite
     \item Binary package of the DBMS (\eg \texttt{.deb} or \texttt{.rpm})
 \end{itemize}
+
+\subsection{Business Intelligence workload}
+\label{sec:bi-workload-audit}
+
+\subsubsection{Query declarativity}
+
+Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
+General-purpose programming languages (\eg C, C\texttt{++}, Java) are not allowed.
+Using stored procedures is not allowed except for the ``standard libraries'' available for the SUT. (These libraries often include features such as weighted shortest path algorithms.)
+
+Checking whether an implementation is only using a domain-specific language and its standard stored procedure libraries is the responsibility of the author.
+
+\subsubsection{Query variants}
+
+Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use multiple variants with different sets of input parameters.
+These should be run in a mix and the SUT should not be informed on which variant it is currently evaluating (\eg 14(A) or 14(B)).
