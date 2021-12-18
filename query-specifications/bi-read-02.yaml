@@ -8,9 +8,14 @@ description: |
 parameters:
   - name: date
     type: Date
+    description: |
+      Based on the date-TagClass-#messages factor table:
+      `(A)` Select a flashmob date
+      `(B)` Select a non-flashmob date
   - name: tagClass
     type: Long String
-    description: "*TagClasses* with a similar amount of *Messages* are selected"
+    description: |
+      For both `(A)` and `(B)`, *TagClasses* with a similar amount of *Messages* are selected
 result:
   - name: tag.name
     type: Long String
@@ -33,3 +38,4 @@ sort:
     direction: asc
 limit: 100
 choke_points: [2.4, 3.1, 3.2, 4.1, 4.2, 4.3, 5.3, 6.1, 8.2, 8.5]
+# Choke point 3.1 (Detecting correlations) is applicable because of flashmobs

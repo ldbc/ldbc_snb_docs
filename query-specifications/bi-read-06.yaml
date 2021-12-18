@@ -11,7 +11,9 @@ description: |
 parameters:
   - name: tag
     type: Long String
-    description: "*Tags* with a similar amount of *Messages* are selected"
+    description: |
+      *Tags* with a similar amount of *Messages* are selected.
+      To avoid caching, different *Tags* should be used than the ones in Q7.
 result:
   - name: person.id
     type: ID

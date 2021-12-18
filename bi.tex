@@ -11,6 +11,32 @@ The LDBC SNB BI workload consists of two sets of operations:
 \item \textbf{Microbatches of refresh operations.} A set of insert and delete operations, batched for a given time period (\eg an hour, a day, \etc). See \autoref{sec:bi-refreshes}.
 \end{itemize}
 
+\section{Benchmark scenario}
+\label{sec:bi-benchmark-scenario}
+
+\section{Parameter selection}
+\label{sec:bi-paramgen}
+
+During data generation, a sequence of \emph{substitution parameters} (\autoref{sec:substitution-parameters}) is generated.
+Similarly to the Interactive workload, the parameter generation of the BI workload uses \emph{parameter curation}~\cite{DBLP:conf/tpctc/GubichevB14} to ensure that the query runtimes are  predictable (to some extent).
+
+Several queries use multiple variants with different sets of input parameters.
+\Eg for \queryRefCard{bi-read-14}{BI}{14}, 14(A) uses close countries while 14(B) uses countries that are far from each other.
+
+In principle, query parameters are selected so that the query touches on a similar amounts of data.
+For queries which are only constrained by one parameter, we select ranges in the distribution where the starting node has a similar amount of neighbours.
+For example, if the query looks for \tMessages with a given \tTag:
+(1) the Datagen computes the frequency of \tMessages per \tTags as a factor table,
+(2) for each \tTag, we compute its distance (absolute difference) from a given percentile of the distribution is selected (\eg the \tTag on the 75th percentile),
+(3) we pick the $k$ parameters with the lowest distance.
+
+\section{Target metric}
+\label{sec:bi-target-metric}
+
+The performance of a system is characterized by two metrics:
+the geometric mean of the read query execution times and
+the geometric mean of the time required to load daily batches.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

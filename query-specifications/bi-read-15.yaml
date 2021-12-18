@@ -18,12 +18,16 @@ description: |
 parameters:
   - name: person1Id
     type: ID
-    desc: TODO - how?
+    description: |
+      `(A)` Length of 2,
+      `(B)` Length of 4.
   - name: person2Id
     type: ID
-    desc: TODO - how?
   - name: startDate
     type: Date
+    description: |
+      `(A)` Big interval (almost everything)
+      `(B)` Small interval (approx. one week)
   - name: endDate
     type: Date
 result:
