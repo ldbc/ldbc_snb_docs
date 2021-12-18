@@ -17,7 +17,7 @@ description: |
 
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
-  - name: startDates
+  - name: startDate
     type: Date
   - name: lengthThreshold
     type: 32-bit Integer
