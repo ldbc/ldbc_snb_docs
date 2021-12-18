@@ -24,6 +24,8 @@ result:
 sort:
   - name: mutualFriendCount
     direction: desc
+  - name: person1.id
+    direction: asc
   - name: person2.id
     direction: asc
 limit: 20
