@@ -21,10 +21,13 @@ parameters:
     type: Date
   - name: lengthThreshold
     type: 32-bit Integer
-    description: Selected as balanced against `date` to filter around 30% of the *Messages* within a language and keep the variance low
+    description: |
+      Selected as balanced against `date` to filter around 30% of the *Messages* within a language and keep the variance low.
+
+      Factor table of bucketed lengths and dates.
   - name: languages
     type: \{String\}
-    description: Only the most frequently used languages are selected
+    description: Only the most frequently used languages
 result:
   - name: messageCount
     type: 32-bit Integer
