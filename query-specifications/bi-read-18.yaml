@@ -3,20 +3,18 @@ operation: read
 number: 18
 title: Friend recommendation
 description: |
-  For a given *Person* (`person1`) and a *Tag* (`tag`), recommend new friends (`person2`) who
+  For a given *Tag* (`tag`), for each `person1` interested in `tag`, recommend new friends (`person2`) who
 
   * do not yet know `person1`
-  * have many mutual friends with `person1`
-  * are interested in `tag`.
+  * at least one mutual friend with `person1`
+  * are also interested in `tag`.
 
-  Rank *Persons* `person2` based on the number of mutual friends.
+  Rank *Persons* `person2` based on the number of mutual friends with `person1`.
 parameters:
-  - name: person1Id
-    type: ID
-    description: "*Persons* with a similar amount of friends are selected"
   - name: tag
     type: Long String
-    description: "*Tags* with a similar amount of *Messages* are selected"
+    description: |
+      *Tags* with a similar amount of *Persons* are selected
 result:
   - name: person2.id
     type: ID
