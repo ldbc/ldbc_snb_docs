@@ -9,7 +9,7 @@ description: |
   * `b` is friend of `c`,
   * `c` is friend of `a`,
 
-  and these friendships were created after a given `startDate`.
+  and these friendships were created in the range [`startDate`, `endDate`].
 
   Distinct means that given a triple $t_1$ in the result set $R$ of all qualified triples, there is no triple $t_2$ in $R$ such that $t_1$ and $t_2$ have the same set of elements.
 parameters:
