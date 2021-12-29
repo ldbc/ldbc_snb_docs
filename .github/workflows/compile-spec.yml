@@ -16,7 +16,6 @@ jobs:
     - name: Create package
       run: |
           mkdir out/
-          cp -r .circleci out/
           cp *.pdf out/
           cp standalone-query-cards/*.pdf out/
           cp figures/schema-comfortable.pdf out/schema.pdf
