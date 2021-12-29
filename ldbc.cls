@@ -235,7 +235,7 @@
         {
         \begin{center}
         The specification was built on the source code available at \\
-        \url{https://github.com/ldbc/ldbc_snb_docs/tree/dev}
+        \url{https://github.com/ldbc/ldbc_snb_docs/tree/main}
         \end{center}
         }
 
