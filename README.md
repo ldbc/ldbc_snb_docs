@@ -33,7 +33,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
 * **Related benchmarks:**
   * **LDBC Graphalytics:** [LDBC Graphalytics: A Benchmark for Large-Scale Graph Analysis on Parallel and Distributed Platforms](http://www.vldb.org/pvldb/vol9/p1317-iosup.pdf), VLDB 2016 paper by A. Iosup et al. [[bib](bib/graphalytics.bib)], [The LDBC Graphalytics Benchmark](https://arxiv.org/pdf/2011.15028.pdf), technical report [[bib](bib/graphalytics-specification.bib)]
   * **LDBC Semantic Publishing Benchmark:** [Benchmarking RDF Query Engines: The LDBC Semantic Publishing Benchmark](http://ceur-ws.org/Vol-1700/paper-01.pdf), BLINK at ISWC 2016 by V. Kotsev et al. [[bib](bib/spb.bib)]
-  * **LSQB (Labelled Subgraph Query Benchmark):** a [microbenchmark](https://github.com/ldbc/lsqb/) focusing on subgraph queries (graph pattern matching) using labelled graphs produced by the LDBC data generator.
+  * **LSQB (Labelled Subgraph Query Benchmark):** a [microbenchmark](https://github.com/ldbc/lsqb) focusing on subgraph queries (graph pattern matching) using labelled graphs produced by the LDBC data generator.
 
 ## How to build the this document
 
@@ -52,18 +52,12 @@ pip3 install -r requirements.txt
 
 ### Building the document
 
-To build the document, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
+To build the document locally, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
 
-We also provide [an image on Docker Hub](https://hub.docker.com/r/ldbc/docs) for building the document. To use it, run:
-
-```bash
-docker run -v `pwd`/:/mnt/ ldbc/docs /bin/bash -c \
-  "cd /mnt/ && ./generate-tex.py && make generate_query_cards texfot compile_query_cards"; \
-  sudo chown -R ${USER}:${USER} .
-```
-
-You can also compile the image manually by issuing:
+We also provide a [GitHub Action repository and a Docker container](https://github.com/ldbc/document-builder) and [images on Docker Hub](https://hub.docker.com/r/ldbc/document-builder). To use this locally, run:
 
 ```bash
-docker build . --tag ldbc/docs
+docker run --rm --volume=`pwd`:"/github/workspace" ldbc/document-builder:2021 texfot compile_query_cards workloads && sudo chown -R ${USER}:${USER} .
 ```
+
+For the GitHub Actions configuration, check out the content of the [`.github/workflows/`](.github/workflows/ directory).
