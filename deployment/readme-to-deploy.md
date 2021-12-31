@@ -9,13 +9,15 @@
 * Example graph without refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-without-refreshes.pdf)]
 * Example graph with refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-with-refreshes.pdf)]
 
-## Queries per workload
+## Workloads
 
-* [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
-* [Interactive / Short Reads](workload-interactive-short-reads.pdf)
-* [Interactive / Inserts](workload-interactive-inserts.pdf)
-* [BI / Reads](workload-bi-reads.pdf)
-* [BI / Deletes](workload-bi-deletes.pdf)
+* [Interactive](workload-interactive.pdf)
+    * [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
+    * [Interactive / Short Reads](workload-interactive-short-reads.pdf)
+    * [Interactive / Inserts](workload-interactive-inserts.pdf)
+* [BI](workload-bi.pdf)
+    * [BI / Reads](workload-bi-reads.pdf)
+    * [BI / Deletes](workload-bi-deletes.pdf)
 
 ## Individual queries
 
