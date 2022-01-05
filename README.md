@@ -46,8 +46,7 @@ To get consistent formatting, query cards are generated from query specification
 Install Pandoc, Python3, and the required packages:
 
 ```bash
-sudo apt-get install -y pandoc python3 python3-pip python3-setuptools
-pip3 install -r requirements.txt
+scripts/install-dependencies.sh
 ```
 
 ### Building the document
