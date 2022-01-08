@@ -6,7 +6,7 @@ description: |
   Given a start *Person*, denote their friends and friends of friends (excluding the start *Person*) as `otherPerson`s.
 
   Find *Forums* that any of the `otherPerson`s became a *member* of after a given date (`minDate`).
-  For each *Forum* count the number of *Posts* that were created by `otherPerson`s.
+  For each of those *Forums*, count the number of *Posts* that were created by `otherPerson`s.
 parameters:
   - name: personId
     type: ID
