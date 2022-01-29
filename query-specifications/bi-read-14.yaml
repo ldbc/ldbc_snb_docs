@@ -19,9 +19,9 @@ parameters:
   - name: country1
     type: Long String
     description: |
-      `(A)` Correlated with parameter `country2`, i.e. the countries are close and there are many *Persons* knowing each other.
+      `(A)` Correlated with parameter `country2`, i.e. the *Countries* are close and there are many *Persons* knowing each other.
       
-      `(B)` Uncorrelated with parameter `country2`, i.e. the countries are afar and there are few *Persons* knowing each other.
+      `(B)` Uncorrelated with parameter `country2`, i.e. the *Countries* are afar and there are few *Persons* knowing each other.
   - name: country2
     type: Long String
 result:
