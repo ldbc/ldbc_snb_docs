@@ -13,6 +13,7 @@ parameters:
     type: ID
     description: |
       `(A)` *Persons* with an average degree of *knows* edges are selected.
+
       `(B)` *Persons* who have only one friend who has two friends in total (incl. the original *Person*).
   - name: country
     type: String

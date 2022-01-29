@@ -19,8 +19,9 @@ parameters:
   - name: person1Id
     type: ID
     description: |
-      `(A)` Length of 2,
-      `(B)` Length of 4.
+      `(A)` `person1Id` -- `person2Id` pair with a distance of exactly 2 hops.
+
+      `(B)` `person1Id` -- `person2Id` pair with a distance of exactly 4 hops.
   - name: person2Id
     type: ID
   - name: startDate

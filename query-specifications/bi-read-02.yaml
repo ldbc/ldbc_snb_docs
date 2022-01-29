@@ -9,9 +9,11 @@ parameters:
   - name: date
     type: Date
     description: |
-      Based on the date -- *TagClass* -- number of messages factor table:
-      `(A)` Select a flashmob date
-      `(B)` Select a non-flashmob date
+      Based on the date -- *TagClass* -- number of *Messages* factor table:
+
+      `(A)` A flashmob date.
+
+      `(B)` A non-flashmob date.
   - name: tagClass
     type: Long String
     description: |
