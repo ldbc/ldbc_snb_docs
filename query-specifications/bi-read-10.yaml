@@ -12,21 +12,25 @@ parameters:
   - name: personId
     type: ID
     description: |
-      `(A)` *Persons* with an average degree of *knows* edges are selected.
+      `(A)` *Persons* with an average degree of *knows* edges are selected
 
-      `(B)` *Persons* who have only one friend who has two friends in total (incl. the original *Person*).
+      `(B)` *Persons* who have only one friend who has two friends in total (incl. the original *Person*)
   - name: country
     type: String
-    description: "Select mid-sized countries."
+    description: |
+      Select mid-sized *Countries*.
   - name: tagClass
     type: Long String
-    description: "*TagClasses* with a similar degree of *hasType* edges are selected."
+    description: |
+      *TagClasses* with a similar degree of *hasType* edges are selected.
   - name: minPathDistance
     type: 32-bit Integer
-    description: "3"
+    description: |
+      3
   - name: maxPathDistance
     type: 32-bit Integer
-    description: "4"
+    description: |
+      4
 result:
   - name: expertCandidatePerson.id
     type: ID

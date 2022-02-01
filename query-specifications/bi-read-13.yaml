@@ -15,10 +15,12 @@ description: |
 parameters:
   - name: country
     type: Long String
-    description: Only the largest *Countries* are selected (China, India)
+    description: |
+      Only the largest *Countries* are selected (China, India)
   - name: endDate
     type: Date
-    description: Selected from the last days of the initial data set
+    description: |
+      Selected from the last days of the initial data set
 result:
   - name: zombie.id
     type: ID

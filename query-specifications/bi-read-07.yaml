@@ -12,7 +12,7 @@ parameters:
     type: Long String
     description: |
       *Tags* with a similar amount of *Messages* are selected.
-      To avoid caching, different *Tags* should be used than the ones in Q6.
+      To avoid caching, different *Tags* should be used than the ones in Q5 and Q6.
 result:
   - name: relatedTag.name
     type: Long String

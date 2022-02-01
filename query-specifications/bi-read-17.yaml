@@ -12,10 +12,12 @@ description: |
 parameters:
   - name: tag
     type: Long String
-    description: "*Tags* with a similar amount of *Messages* are selected"
+    description: |
+      *Tags* with a similar amount of *Messages* are selected
   - name: delta
     type: 32-bit Integer
-    description: Measured in hours, selected to be between 8 and 16 hours.
+    description: |
+      Measured in hours, selected to be between 8 and 16 hours.
 result:
   - name: person1.id
     type: ID

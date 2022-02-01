@@ -14,7 +14,8 @@ description: |
 parameters:
   - name: date
     type: Date
-    description: Selected from the first 30 days of the network
+    description: |
+      Selected from the first 30 days of the network
 result:
   - name: person.id
     type: ID

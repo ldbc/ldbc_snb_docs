@@ -17,7 +17,8 @@ description: |
 parameters:
   - name: datetime
     type: DateTime
-    description: For later microbatches, later `datetime` parameters are selected keep the variance low (<0.5%)
+    description: |
+      For later microbatches, later `datetime` parameters are selected keep the variance low (<0.5%)
 result:
   - name: year
     type: 32-bit Integer

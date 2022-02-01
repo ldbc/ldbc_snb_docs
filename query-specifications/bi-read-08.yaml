@@ -13,13 +13,14 @@ description: |
 parameters:
   - name: tag
     type: Long String
-    description: "*Tags* with a similar amount of *Messages* are selected"
+    description: |
+      *Tags* with a similar amount of *Messages* are selected
   - name: startDate
     type: Date
     description: |
-      `(A)`: A regular range (does not include a flashmob event).
+      `(A)`: A regular range (does not include a flashmob event)
       
-      `(B)`: A range during which a flashmob event happened (it should yield at least a 5x difference).
+      `(B)`: A range during which a flashmob event happened (it should yield at least a 5× difference)
   - name: endDate
     type: Date
 result:
