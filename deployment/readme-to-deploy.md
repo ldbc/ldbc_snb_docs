@@ -15,6 +15,7 @@
     * [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
     * [Interactive / Short Reads](workload-interactive-short-reads.pdf)
     * [Interactive / Inserts](workload-interactive-inserts.pdf)
+    * [SIGMOD 2015 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
 * [BI](workload-bi.pdf)
     * [BI / Reads](workload-bi-reads.pdf)
     * [BI / Deletes](workload-bi-deletes.pdf)
