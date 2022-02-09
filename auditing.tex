@@ -192,13 +192,11 @@ A benchmark may specify that an implementation is not allowed the use of explici
 \subsection{Query Languages}
 \label{sec:query-languages}
 
-In general, online transaction processing (OLTP) benchmarks allow implementation via stored procedures, effectively amounting to explicit query plans.
+In typical RDBMS benchmarks, online transaction processing (OLTP) benchmarks are allowed to be implementated via stored procedures, effectively amounting to explicit query plans.
 Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of using general-purpose programming languages (\eg C, C\texttt{++}, Java) for query implementations and only allow domain-specific query languages.
 
-In the graph processing space, there is currently (as of 2021) no standard query language and the systems are more heterogeneous.
-Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the \mbox{TPC-H} (where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads).
-
-Individual SNB workloads are expected to specify their policy of either using a domain-specific query language or implementing the queries in a general-purpose programming language.
+In the graph processing space, there is currently (as of 2022) no standard query language and the systems are considerably more heterogeneous.
+Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the \mbox{TPC-H} (where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads) and individual SNB workloads specify their policy of either requiring a domain-specific query language or allowing the implementation of the queries in a general-purpose programming language.
 
 
 \subsubsection{Rules for Imperative Implementations Using a General-Purpose Programming Language}
@@ -609,9 +607,15 @@ To ensure reproducibility of the audited results, a supplementary package is att
 
 Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
 General-purpose programming languages (\eg C, C\texttt{++}, Java) are not allowed.
-Using stored procedures is not allowed except for the ``standard libraries'' available for the SUT. (These libraries often include features such as weighted shortest path algorithms.)
 
-Checking whether an implementation is only using a domain-specific language and its standard stored procedure libraries is the responsibility of the author.
+Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure implementing BI Q5). Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed. (These libraries often include features such as weighted shortest path algorithms.) Implementations may use \emph{stored procedures written in a domain-specific language}.
+
+The auditor's responsibility is to enforce this requirement, \ie they should verify whether query implementations only use the following implementation techniques:
+\begin{enumerate}
+    \item the domain-specific language of the SUT,
+    \item the SUT's standard stored procedure library or libraries, and
+    \item stored procedures written in a domain-specific language,
+\end{enumerate}
 
 \subsubsection{Query variants}
 
