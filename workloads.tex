@@ -101,7 +101,8 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 
 \begin{itemize}
 	\item Nodes in the pattern are shown with rectangular boxes with their type name stated at the top and emphasized with colour coding.
-	A black square $\blacksquare$ in the node's top left corner and a \emph{\textbf{bold italic}} condition denote that the node is uniquely specified by the query parameters (\eg by using an identifier or a unique attribute such as \textsf{URL}).
+	\item A black square $\blacksquare$ in the node's top left corner and a \emph{\textbf{bold italic}} condition denote that the node is uniquely specified by the query parameters (\eg by using an identifier or a unique attribute such as \textsf{URL}).
+	\item Attributes of nodes and edges can be subject to range constraints (\eg date within a given range, birthday larger than a given date, \etc). These are denoted with the \raisebox{0.3ex}{$\blacktriangledown$} symbol.
 	\item Nodes in the pattern are captioned with \textsf{entityName: EntityType} (camel case 
 	notation for both, starting with a lowercase character for the first and an 
 	uppercase character for the second). If the \textsf{entityName} is neither returned in the query results (in raw, aggregated, or calculated form), nor referenced in the query specification, the \textsf{entityName} can be omitted.
@@ -154,7 +155,6 @@ To illustrate queries, we use graph patterns such as \autoref{fig:example-graph-
 	\textsf{knows*1\ldots{}2}. By default, the value of \textsf{min} is 1, 
 	and the value of \textsf{max} is unlimited.
 	\item Aggregations are shown in boxes with a grey strip on their top describing the type of aggregation (\lstinline{count}, \lstinline{sum}, \lstinline{average}, etc.).
-	\item Attributes of nodes and edges can be subject to range constraints (\eg date within a given range, birthday larger than a given date, \etc). These are denoted with the \raisebox{0.3ex}{$\blacktriangledown$} symbol.
 \end{itemize}
 
 \newcommand{\tuple}[1]{\langle #1 \rangle}
