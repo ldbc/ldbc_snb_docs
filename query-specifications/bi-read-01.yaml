@@ -26,7 +26,7 @@ result:
   - name: isComment
     type: Boolean
     category: meta
-    description: True for *Comments*, False for *Posts*
+    description: `True` for *Comments*, `False` for *Posts*
   - name: lengthCategory
     type: 32-bit Integer
     category: calculated
@@ -52,7 +52,7 @@ sort:
     direction: desc
   - name: isComment
     direction: asc
-    description: False < True, i.e. *Posts* come first and *Comments* second
+    description: `False` < `True`, i.e. *Posts* come first and *Comments* second
   - name: lengthCategory
     direction: asc
 limit: n/a

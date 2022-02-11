@@ -14,9 +14,9 @@ parameters:
   - name: tagA
     type: Long String
     description: |
-      `(A)` Flashmob *Tag* -- date combination
+      `(A)` `tagA`--`dateA`, `tagB`--`dateB` are both selected to be a flashmob *Tag* -- date combination
 
-      `(B)` Non-flashmob *Tag* -- date combination
+      `(B)` `tagA`--`dateA`, `tagB`--`dateB` are both selected to be a non-flashmob *Tag* -- date combination
   - name: dateA
     type: Date
   - name: tagB
@@ -48,4 +48,4 @@ relevance: |
   There are two major ways to compute this query:
   (1) create the induced subgraph as suggested by the specification (either as a view or in materialized form), or
   (2) skip creating the induced subgraph and perform on-the-fly check for the number of friends (who also posted at least one *Message* with the given *Tag* on the given date).
-  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations (the query engine will might repeatedly check whether a *Person* has at least one *Message* that satifies the conditions).
+  The latter approach is easier to express in systems which do not provide graph views but might result in redundant computations (the query engine might repeatedly check whether a *Person* has at least one *Message* that satifies the conditions).

@@ -13,7 +13,7 @@ description: |
       * The language of a *Post* is defined by its `language` attribute.
       * The language of a *Comment* is that of the *Post* that initiates the thread where the *Comment* replies to.
 
-      The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length` and `creationDate`.
+      The *Post* and *Comments* in the reply tree's path (from the *Message* to the *Post*) do not have to satisfy the constraints for `content`, `length`, and `creationDate`.
 
   For each `messageCount` value, count the number of *Persons* with exactly `messageCount` *Messages* (with the required attributes).
 parameters:
@@ -22,9 +22,9 @@ parameters:
   - name: lengthThreshold
     type: 32-bit Integer
     description: |
-      Selected as balanced against `date` to filter around 30% of the *Messages* within a language and keep the variance low.
+      Balanced against `startDate` to filter around 30% of the *Messages* within a language and keep the variance low.
 
-      Factor table of bucketed lengths and dates.
+      The selection of this parameter uses a factor table of bucketed *Message* lengths and creation dates.
   - name: languages
     type: \{String\}
     description: Only the most frequently used languages

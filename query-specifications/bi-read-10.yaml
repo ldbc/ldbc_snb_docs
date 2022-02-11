@@ -14,15 +14,15 @@ parameters:
     description: |
       `(A)` *Persons* with an average degree of *knows* edges are selected
 
-      `(B)` *Persons* who have only one friend who has two friends in total (incl. the original *Person*)
+      `(B)` *Persons* who have only one friend and that *Person* has two friends in total (including the original *Person*)
   - name: country
     type: String
     description: |
-      Select mid-sized *Countries*.
+      Select mid-sized *Countries*
   - name: tagClass
     type: Long String
     description: |
-      *TagClasses* with a similar degree of *hasType* edges are selected.
+      *TagClasses* with a similar degree of *hasType* edges are selected
   - name: minPathDistance
     type: 32-bit Integer
     description: |

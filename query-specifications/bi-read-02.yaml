@@ -3,13 +3,13 @@ operation: read
 number: 2
 title: Tag evolution
 description: |
-  Find the *Tags* under a given *TagClass* that were used in *Messages* during in the 100-day period starting at `date` and compare it with the 100-day period that follows.
-  For the *Tags* and for both months, compute the count of *Messages*.
+  Find the *Tags* under a given *TagClass* that were used in *Messages* during in the 100-day time window starting at `date` and compare it with the 100-day time window that follows.
+  For the *Tags* and for both time windows, compute the count of *Messages*.
 parameters:
   - name: date
     type: Date
     description: |
-      Based on the date -- *TagClass* -- number of *Messages* factor table:
+      Based on the creation day -- *TagClass* -- number of *Messages* factor table:
 
       `(A)` A flashmob date
 
