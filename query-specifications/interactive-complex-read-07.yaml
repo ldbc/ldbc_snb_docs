@@ -30,7 +30,7 @@ result:
   - name: isNew
     type: Boolean
     category: calculated
-    description: False if `person` and `friend` know each other, True otherwise
+    description: `False` if `person` and `friend` know each other, `True` otherwise
 sort:
   - name: likes.creationDate
     direction: desc
