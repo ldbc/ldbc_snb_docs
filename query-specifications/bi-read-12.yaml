@@ -19,6 +19,8 @@ description: |
 parameters:
   - name: startDate
     type: Date
+    description: |
+      Selected randomly from a 60-day interval.
   - name: lengthThreshold
     type: 32-bit Integer
     description: |
