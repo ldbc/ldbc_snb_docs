@@ -12,9 +12,9 @@ parameters:
   - name: city1Id
     type: ID
     description: |
-      `(A)` Small *Cities* within the same *Country*
+      `(A)` Small *Cities* within the same *Country* with many direct relationships between their inhabitants
 
-      `(B)` Small *Cities* from far *Countries*
+      `(B)` Small *Cities* from different *Countries* with only a few direct relationships between their inhabitants
   - name: city2Id
     type: ID
 result:
