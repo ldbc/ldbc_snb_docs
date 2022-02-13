@@ -16,6 +16,8 @@ parameters:
     description: |
       *Tags* with a similar amount of *Persons* are selected
 result:
+  - name: person1.id
+    type: ID
   - name: person2.id
     type: ID
   - name: mutualFriendCount
