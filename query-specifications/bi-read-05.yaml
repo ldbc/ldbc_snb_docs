@@ -5,9 +5,9 @@ title: Most active posters of a given topic
 description: |
   Get each *Person* (`person`) who has created a *Message* (`message`) with a given *Tag* (direct relation, not transitive). Considering only these *Messages*, for each *Person*\ node:
 
-  * Count its `message`s (`messageCount`).
-  * Count *likes* (`likeCount`) to its `message`s.
-  * Count *Comments* (`replyCount`) in reply to it `message`s.
+  * Count its *Messages* (`messageCount`).
+  * Count *likes* (`likeCount`) to its *Messages*.
+  * Count *Comments* (`replyCount`) in reply to it *Messages*.
 
   The `score` is calculated according to the following formula: $1 \times \texttt{messageCount} + 2 \times \texttt{replyCount} + 10 \times \texttt{likeCount}$.
 parameters:

@@ -3,10 +3,10 @@ operation: complex
 number: 5
 title: New groups
 description: |
-  Given a start *Person*, denote their friends and friends of friends (excluding the start *Person*) as `otherPerson`s.
+  Given a start *Person*, denote their friends and friends of friends (excluding the start *Person*) as `otherPerson`.
 
-  Find *Forums* that any of the `otherPerson`s became a *member* of after a given date (`minDate`).
-  For each of those *Forums*, count the number of *Posts* that were created by `otherPerson`s.
+  Find *Forums* that any *Person* `otherPerson` became a *member* of after a given date (`minDate`).
+  For each of those *Forums*, count the number of *Posts* that were created by the *Person* `otherPerson`.
 parameters:
   - name: personId
     type: ID
@@ -18,7 +18,7 @@ result:
   - name: postCount
     type: 32-bit Integer
     category: aggregated
-    description: Number of *Posts* made in `forum` that were created by `otherPerson`s
+    description: Number of *Posts* made in `forum` that were created by the *Person* `otherPerson`
 sort:
   - name: postCount
     direction: desc
