@@ -355,18 +355,26 @@ For each scale factor, \datagen produces three different artefacts:
 \label{sec:scale-factors}
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
-SFs are computed based on the ASCII size in Gibibytes of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}) and default settings, \ie both the 90\% initial data and the 10\% update streams count towards the total size.%
-\footnote{This way of characterizing the size of the data set is identical to the scaling of TPC-H and TPC-DS.}
-For example, SF1 takes roughly 1~GiB in CSV format, SF3 weighs roughly 3~GiB and so on and so forth.
-It is important to note that for a given scale factor, data sets generated using different serializers contain exaclty the same data, the only difference is in how they are represented.%
-\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
-The proposed SFs are the following: 1, 3, 10, 30, 100, 300, 1000.
+SFs are computed based on the ASCII size \emph{in Gibibytes} of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}).\footnote{This way of characterizing the size of the data set is identical to the scaling of TPC-H and TPC-DS.}
+For both workloads, the SF1 data set is 1~GiB, the SF100 is 100~GiB, and the SF\numprint{10000} data set is \numprint{10000} GiB (not 10 TiB).
+
+However, \textbf{note that the two SNB workloads have different data sets} due with different folder structures.
+
+The data sets sizes are established as follows:
+For both workloads, we use the default settings for the splitting the data into an intial (bulk-loaded) data set and the later update operations (``streams'').
+For Interactive, both the 90\% initial data and the 10\% update streams count towards the total size and the \textsf{csv-singular-merged-fk} serializer is used.
+For BI, the sum of the initial snapshot (97\%) and the refresh operations (daily inserts and deletes) are measured and the default CSV serializers (\textsf{composite-merged-fk}) is used.
+
+It is important to note that for a given workload and scale factor, data sets generated using different serializers contain exactly the same data, the only difference is in how they are represented.%
+%\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
+
+The proposed SFs are the following: 1, 3, 10, 30, 100, 300, \numprint{1000}, \numprint{3000}, \numprint{10000}, \numprint{30000}.
 Additionally, three small SFs, 0.003 (for quick tests of data loader components), 0.1, and 0.3 are provided to help initial validation efforts.
 
 The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
-\autoref{tab:snsize-bi} shows some metrics of SFs 0.1, \ldots, 1000 data sets.
+\autoref{tab:snsize-bi} shows some metrics of SFs 0.1, \ldots, \numprint{1000} data sets.
 
 \input{tables/table-snsize-bi}
 
