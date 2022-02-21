@@ -10,7 +10,7 @@
 
 For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1p-nuHarSOKCldZ9iEz__6_V3sJ5kbGWlzZHusudW_Cc/).
 
-For a guide on how to develop benchmark implementations, please check out the [benchmark workflow](workflow.md) file.
+For a guide on how to develop SNB Interactive implementations, please check out the README of the [Interactive implementations repository](https://github.com/ldbc/ldbc_snb_interactive_implementations).
 
 ## Compatibility
 
