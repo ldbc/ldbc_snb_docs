@@ -10,7 +10,7 @@
 
 For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1p-nuHarSOKCldZ9iEz__6_V3sJ5kbGWlzZHusudW_Cc/).
 
-For a guide on how to develop SNB Interactive implementations, please check out the README of the [Interactive implementations repository](https://github.com/ldbc/ldbc_snb_interactive_implementations).
+For a guide on how to develop SNB Interactive implementations, please check out the README of the [Interactive implementations repository](https://github.com/ldbc/ldbc_snb_interactive_impls).
 
 ## Compatibility
 
@@ -19,7 +19,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
 * Interactive (auditable since v0.3.2):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_driver
-  * Implementations: https://github.com/ldbc/ldbc_snb_interactive_implementations
+  * Implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
 * BI (WIP, will be release in v0.4.0+):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
