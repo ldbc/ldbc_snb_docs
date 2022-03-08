@@ -335,7 +335,9 @@ The scale factor of an SNB dataset is the size of the dataset in GiB of CSV (com
 The size of a dataset is characterized by scale factors: SF10, SF30, SF100 \etc (see \autoref{sec:scale-factors}).
 All datasets contain data for three years of social network activity.
 
-The \emph{validation run} shall be performed on the SF10 dataset (see \autoref{sec:validation-data-set}). Note that the auditor may perform additional validation runs of the benchmark implementation using smaller datasets (\eg SF1).
+The \emph{validation run} shall be performed on the SF10 dataset (see \autoref{sec:validation-data-set}). Note that the auditor may perform additional validation runs of the benchmark implementation using smaller datasets (\eg SF1) and issue queries.\footnote{%
+An example test could be to issue complex reads with parameters such as \texttt{personId} and \texttt{messageId} selected from the \textsf{Person}/\textsf{Message} entities inserted from the update streams and cross-validate these against other systems. (The substitution parameters are taken from the initial snapshot of the graph so these nodes are not targeted by the regular workload executed by the driver.)%
+}
 
 Audited \emph{benchmark runs} shall use SF30 or larger datasets. The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee 2.5~hours of continuous execution (see \autoref{sec:measurement-window}).
 
