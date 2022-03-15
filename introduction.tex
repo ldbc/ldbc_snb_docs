@@ -76,17 +76,19 @@ The technological scope of \ldbcsnb comprises all systems that one might
 conceivably use to perform social network data management tasks:
 
 \begin{itemize}
- \item \textbf{Graph database systems} (\eg Neo4j, InfiniteGraph, Sparksee,
-     Titan/JanusGraph) are novel technologies aimed at storing directed and labeled
-     graphs. They support graph traverals, typically by means of APIs, though
+ \item \textbf{Graph database management systems} (\eg Neo4j, TigerGraph, AWS Neptune)
+     are novel technologies aimed at storing property graphs,
+     \ie graphs with labels and properties (attributes) on nodes and edges.
+     They support graph traverals, typically by means of APIs, though
      some of them also support dedicated graph-oriented query languages (\eg
-     Neo4j's Cypher). These systems' internal structures are typically designed
+     Neo4j's Cypher and TigerGraph's GSQL, as well as the upcoming GQL and SQL/PGQ standards).
+     These systems' internal structures are typically designed
      to store dynamic graphs that change over time.  They offer support for
      transactional queries with some degree of consistency, and value-based
      indices to quickly locate nodes and edges. Finally, their architecture is
      typically single-machine (non-cluster). These systems can
      potentially implement all three workloads, though Interactive and Business Intelligence
-     workloads are where they will presumably be more competitive.\todo{mention property graphs}
+     workloads are where they will presumably be more competitive.
  \item \textbf{Graph processing frameworks} (\eg Giraph, Signal/Collect,
      GraphLab, Green Marl) are designed to perform global graph
      computations, executed in parallel or in a lockstep fashion. These computations are typically
@@ -94,8 +96,8 @@ conceivably use to perform social network data management tasks:
      answers to NP-complete problems. These systems expose an API, sometimes following
      a vertex-centric paradigm, and their architecture targets both single-machine and
      cluster systems. These systems will likely implement the Graph Analytics workload.
- \item \textbf{RDF database systems} (\eg OWLIM, Virtuoso, BigData, Jena TDB,
-     Stardog, AllegroGraph) are systems that implement the SPARQL~1.1 query
+ \item \textbf{RDF database systems} (\eg OWLIM, Virtuoso, Stardog, AWS Neptune)
+      are systems that implement the SPARQL~1.1 query
      language, similar in complexity to \mbox{SQL-92}, which allows for structured
      queries, and simple traversals. RDF database systems often come with
      additional support for simple reasoning (sameAs, subClass), text search, and
@@ -104,8 +106,8 @@ conceivably use to perform social network data management tasks:
      their supposed strength is integrating multiple data sources (\eg
      DBpedia). Their architecture is both single-machine and clustered, and
      they will likely target Interactive and Business Intelligence workloads.
-\item \textbf{Relational database systems} (\eg Postgres, MySQL, Oracle, IBM DB2,
-     Microsoft SQL Server, Virtuoso, MonetDB, Vectorwise, Vertica, but also Hive and
+\item \textbf{Relational database systems} (\eg PostgreSQL, MySQL, Oracle, IBM Db2,
+     Microsoft SQL Server, Virtuoso, MonetDB, Vectorwise, Vertica, DuckDB but also Hive and
      Impala) treat graph data relationally, and queries are formulated in SQL and/or
      PL/SQL. Both single-machine and cluster systems exist. They do not
      normally support recursion or stateful recursive algorithms, which makes     them not at home in the Graph Analytics workloads.
