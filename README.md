@@ -1,7 +1,7 @@
 ![LDBC_LOGO](https://raw.githubusercontent.com/ldbc/ldbc_snb_docs/main/figures/ldbc-logo.png)
 # LDBC SNB Documentation
 
-[![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_docs.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_docs)
+[![Build Status](https://github.com/ldbc/ldbc_snb_docs/actions/workflows/compile-spec.yml/badge.svg)](https://github.com/ldbc/ldbc_snb_docs/actions)
 
 [[latest PDF (0.4.0-SNAPSHOT)]](http://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
 [[stable PDF (0.3.3)]](https://arxiv.org/pdf/2001.02299.pdf)
