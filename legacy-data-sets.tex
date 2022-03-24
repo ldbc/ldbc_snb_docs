@@ -3,8 +3,21 @@
 
 The Interactive workload uses the legacy version of the data sets. These can be generated using the Hadoop-based \datagen hosted on the \textbf{stable} branch of the repositories. This chapter documents these data sets.
 
-\
-\todo{The data sets will be hosted publicly soon.}
+The SNB data sets are available in the SURF/CWI LDBC SNB data repository~\cite{cwi:snb} at \url{https://repository.surfsara.nl/datasets/cwi/snb}.
+
+\begin{itemize}
+  \item Serializers:
+    \texttt{csv\_basic},
+    \texttt{csv\_basic-longdateformatter},
+    \texttt{csv\_composite},
+    \texttt{csv\_composite-longdateformatter},
+    \texttt{csv\_composite\_merge\_foreign},
+    \texttt{csv\_composite\_merge\_foreign-longdateformatter},
+    \texttt{csv\_merge\_foreign},
+    \texttt{csv\_merge\_foreign-longdateformatter},
+    \texttt{ttl}
+  \item Partition numbers: $2^k$ (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024) and $6 \times 2^k$ (24, 48, 96, 192, 384, 768).
+\end{itemize}
 
 The \textbf{key differences from the latest (BI) data sets} are the following:
 
