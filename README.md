@@ -20,7 +20,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_driver
   * Implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
-* BI (WIP, will be release in v0.4.0+):
+* BI (WIP, will be released in v0.4.0+):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
 
