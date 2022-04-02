@@ -3,11 +3,11 @@ operation: read
 number: 6
 title: Most authoritative users on a given topic
 description: |
-  Given a *Tag* (`tag`), find all *Persons* (`person`) that ever created a *Message* with the *Tag*.
-  For each of these *Persons* (`person`) compute their "authority score" as follows\:
+  Given a *Tag* (`tag`), find all *Persons* (`person1`) that ever created a *Message* with the *Tag*.
+  For each of these *Persons* (`person1`) compute their "authority score" as follows\:
 
-  * The "authority score" is the sum of "popularity scores" of the *Persons* (`p2`) that liked any of that *Person*'s *Messages* with the given *Tag* (same criterion as for `message1`).
-  * A *Person*'s (`p2`) "popularity score" is defined as the total number of likes on all of their *Messages* (`message2`).
+  * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* with the given *Tag* (same criterion as for `message1`).
+  * A *Person*'s (`person2`) "popularity score" is defined as the total number of likes (by any *Person* `person3`) on all of their *Messages* (`message2`).
 parameters:
   - name: tag
     type: Long String
@@ -15,7 +15,7 @@ parameters:
       *Tags* with a similar amount of *Messages* are selected.
       To avoid caching, different *Tags* should be used than the ones in Q5 and Q7.
 result:
-  - name: person.id
+  - name: person1.id
     type: ID
   - name: authorityScore
     type: 32-bit Integer
