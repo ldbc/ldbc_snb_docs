@@ -59,6 +59,10 @@ In the default auditor selection, the task force responsible for the benchmark b
 
 
 \subsection{Auditing Process Stages}
+\subsubsection{Getting Ready for a Benchmark Audit}
+A benchmark result can be audited if it is a \emph{complete implementation} of an LDBC benchmark workload. This includes implementing all operations (reads and updates) correctly, using official data sets, using the official LDBC driver (if available), and complying with the auditing rules of the workload (\eg workloads may have different rules regarding query languages, the allowance of materialized views, \etc).
+Workloads may specify further requirements such as ACID-compliance (checked using the LDBC ACID test suite).
+
 \subsubsection{Performing a Benchmark Audit}
 A benchmark result is to be audited by an LDBC appointed auditor or the LDBC task force managing the benchmark. An LDBC audit may be performed by remote login and does not require the auditor's physical presence on site. The test sponsor shall grant the auditor any access necessary for validating the benchmark run. This will typically include administrator access to the SUT hardware.
 
@@ -72,10 +76,9 @@ The auditor produces an attestation letter that verifies authenticity of the pre
 \subsubsection{Publishing the FDR}
 The FDR and any benchmark specific summaries thereof shall be published on the LDBC website.
 
-\subsection{Other Procedures}
+\subsection{Chellenge Procedure}
 
-\subsubsection{Challenges}
-A benchmark result may be challenged for non-compliance with LDBC rules. The benchmark task force responsible for maintenance of the benchmark will rule on matters of compliance. A result found to be non-compliant will be withdrawn from the list of official LDBC benchmark results.
+A benchmark result may be \emph{challenged} for non-compliance with LDBC rules. The benchmark task force responsible for maintenance of the benchmark will rule on matters of compliance. A result found to be non-compliant will be withdrawn from the list of official LDBC benchmark results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,7 +493,8 @@ The scale factor 10 shall be used as validation data set.
 \label{sec:snb-acid}
 
 The Interactive workload requires full ACID support from the SUT.
-See the related section for definitions in \autoref{sec:acid}.
+This is tested using the LDBC ACID test suite.
+For the specification of this test suite, see \autoref{sec:acid} and the related software repository at \url{https://github.com/ldbc/ldbc_acid}.
 
 \paragraph{Expected level of isolation}
 If a transaction reads the database with intent to update, the DBMS must guarantee that repeating the same read within the same transaction will return the same data. This also means that no more and no less data rows must be returned. In other words, this corresponds to snapshot or to serializable isolation. If the database is accessed without transaction context or without intent to update, then the DBMS should provide read committed semantics, \eg repeating the same read may produce different results but these results may never include effects of pending uncommitted transactions.
