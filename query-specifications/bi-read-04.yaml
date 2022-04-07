@@ -4,7 +4,8 @@ number: 4
 title: Top message creators by country
 description: |
   Find the most popular *Forums* by *Country*, where the popularity of a *Forum*
-  is measured by the number of members that *Forum* has from a given *Country*.
+  is measured by the number of members that *Forum* has from a given *Country* and
+  the *Forum* was created after a given `date`.
 
   Calculate the top 100 most popular *Forums*.
   If a *Forum* is popular in multiple countries, it should only be calculated once with its largest membership.
