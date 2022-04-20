@@ -9,22 +9,23 @@ jobs:
     - name: Prepare template
       run: |
         sed -i "s/-SNAPSHOT/-SNAPSHOT (`git rev-parse --short HEAD`)/" ldbc.cls
-    # - name: Build PDFs with the LaTeX engine in Docker
-    #   uses: ldbc/document-builder@main
-    #   with:
-    #     makefile-arguments: texfot compile_query_cards workloads
+    - name: Build PDFs with the LaTeX engine in Docker
+      uses: ldbc/document-builder@main
+      with:
+        makefile-arguments: texfot compile_query_cards workloads
     - name: Create package
       run: |
-          mkdir out/
-          # cp *.pdf out/
-          # cp standalone-query-cards/*.pdf out/
-          # cp figures/schema-comfortable.pdf out/schema.pdf
-          # cp figures/schema-comfortable.png out/schema.png
-          # cp figures/example-graph-with-refreshes.pdf out/example-graph-with-refreshes.pdf
-          # cp figures/example-graph-without-refreshes.pdf out/example-graph-without-refreshes.pdf
-          cp deployment/readme-to-deploy.md out/README.md
+        mkdir out/
+        cp *.pdf out/
+        cp standalone-query-cards/*.pdf out/
+        cp figures/schema-comfortable.pdf out/schema.pdf
+        cp figures/schema-comfortable.png out/schema.png
+        cp figures/example-graph-with-refreshes.pdf out/example-graph-with-refreshes.pdf
+        cp figures/example-graph-without-refreshes.pdf out/example-graph-without-refreshes.pdf
+        cp deployment/readme-to-deploy.md out/README.md
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
       with:
         branch: gh-pages
         folder: out
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
