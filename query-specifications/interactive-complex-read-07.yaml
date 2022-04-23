@@ -3,7 +3,7 @@ operation: complex
 number: 7
 title: Recent likers
 description: |
-  Given a start *Person*, find the most recent`likes` on any of start *Person*'s *Messages*.
+  Given a start *Person*, find the most recent `likes` on any of start *Person*'s *Messages*.
   Find *Persons* that liked (`likes` edge) any of start *Person*'s *Messages*, the *Messages* they liked most recently, the creation date of that like, and the latency in minutes (`minutesLatency`) between creation of *Messages* and like.
   Additionally, for each *Person* found return a flag indicating (`isNew`) whether the liker is a friend of start *Person*.
   In case that a *Person* liked multiple *Messages* at the same time, return the *Message* with lowest identifier.
