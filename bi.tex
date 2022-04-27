@@ -1,9 +1,6 @@
 \chapter{Business Intelligence Workload}
 \label{sec:bi}
 
-The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{SIGMOD 2018}~\cite{DBLP:conf/grades/SzarnyasPAMPKEB18}.
-Version 1.0 of the workload is currently being prepared.
-
 The LDBC SNB BI workload consists of two sets of operations:
 
 \begin{itemize}
@@ -13,6 +10,15 @@ The LDBC SNB BI workload consists of two sets of operations:
 
 \section{Benchmark scenario}
 \label{sec:bi-benchmark-scenario}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=\yedscale]{figures/bi-workflow}
+    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the benchmark driver.}
+    \label{fig:bi-workflow}
+\end{figure}
+
+The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
 
 \section{Parameter selection}
 \label{sec:bi-paramgen}
@@ -33,9 +39,17 @@ For example, if the query looks for \tMessages with a given \tTag:
 \section{Target metric}
 \label{sec:bi-target-metric}
 
-The performance of a system is characterized by two metrics:
-the geometric mean of the read query execution times and
-the geometric mean of the time required to load daily batches.
+The performance of the SUT is characterized by \emph{the number of batches executed per day} ($\mathit{bpd}$).
+During the benchmark's execution, the benchmark should run $b$ batches for a total of $t$ time ($b \geq 2$ and $t > 1\text{ hour}$). Then, the metric is determined as:
+$$
+\mathit{bpd} = \frac{24}{t} \times b
+$$
+
+For example, if the SUT executed the benchmark for $1.15$ hours and completed $7$ batches, its $\mathit{bpd} = 146.09\text{ batches/day}$.
+
+\subsection*{Related Publications}
+
+The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{SIGMOD 2018}~\cite{DBLP:conf/grades/SzarnyasPAMPKEB18}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

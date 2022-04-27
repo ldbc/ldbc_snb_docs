@@ -104,6 +104,7 @@ In certain cases the results may be approximate. This may happen in cases of non
 
 
 \subsubsection{ACID Compliance}
+\label{sec:acid-compliance}
 
 As part of the auditing process, the auditors ascertain that the SUT satisfies ``the ACID properties'', \ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
 This section outlines transactional behaviours of SUTs which are checked in the course of auditing an SUT in a given benchmark.
@@ -490,11 +491,11 @@ For these implementations, the rules in \autoref{sec:snb-domain-specific-query-l
 The scale factor 10 shall be used as validation data set.
 
 \subsubsection{ACID Compliance}
-\label{sec:snb-acid}
+\label{sec:acid-compliance}
 
 The Interactive workload requires full ACID support from the SUT.
 This is tested using the LDBC ACID test suite.
-For the specification of this test suite, see \autoref{sec:acid} and the related software repository at \url{https://github.com/ldbc/ldbc_acid}.
+For the specification of this test suite, see \autoref{sec:acid-test-suite} and the related software repository at \url{https://github.com/ldbc/ldbc_acid}.
 
 \paragraph{Expected level of isolation}
 If a transaction reads the database with intent to update, the DBMS must guarantee that repeating the same read within the same transaction will return the same data. This also means that no more and no less data rows must be returned. In other words, this corresponds to snapshot or to serializable isolation. If the database is accessed without transaction context or without intent to update, then the DBMS should provide read committed semantics, \eg repeating the same read may produce different results but these results may never include effects of pending uncommitted transactions.
@@ -577,6 +578,7 @@ To ensure that the 2.5~hour wall clock period has enough input data, the lower b
 %The test summary tool may be used for reading the logs created by a test driver.
 
 \subsection{Full Disclosure}
+\label{sec:fdr}
 
 Upon successful completion of the audit, an FDR is compiled. In addition to the general requirements, the full disclosure shall cover the following:
 
@@ -587,7 +589,7 @@ Upon successful completion of the audit, an FDR is compiled. In addition to the 
     \item Test driver details: see \autoref{sec:test-driver}
     \item Performance metrics: see \autoref{sec:performance-metrics}
     \item Validation results: see \autoref{sec:validation-data-set}
-    \item ACID compliance: see \autoref{sec:snb-acid}
+    \item ACID compliance: see \autoref{sec:acid-compliance}
     \item List of supplementary materials
 \end{itemize}
 
@@ -628,3 +630,22 @@ The auditor's responsibility is to enforce this requirement, \ie they should ver
 
 Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use multiple variants with different sets of input parameters.
 These should be run in a mix and the SUT should not be informed on which variant it is currently evaluating (\eg 14(A) or 14(B)).
+
+\subsubsection{Execution Rules}
+
+\begin{itemize}
+    \item The benchmark shall implement all operators correctly.
+    \item The benchmark shall run for at least 1 hour and include at least two full batches (writes and reads).
+\end{itemize}
+
+\subsubsection{Implementation Rules}
+
+\begin{itemize}
+    \item Using auxiliary data structures (\eg indexes, materialized views) is allowed if they are kept in an up-to-date state after each write batch.
+    \item The SUT shall pass the ACID test suite (\autoref{sec:acid-test-suite}).
+\end{itemize}
+
+\subsubsection{Full Disclosure Report}
+
+The \emph{full disclosure report} (FDR) and the \emph{supplementary package} shall contain the same information as for SNB Interactive (including the ACID compliance report, \autoref{sec:acid-compliance}).
+For a list of items to be included in the FDR, see \autoref{sec:fdr}.
