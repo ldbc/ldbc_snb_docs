@@ -6,7 +6,8 @@ description: |
   Given a *Company* `company` and a *Person* `person2` (who is not working and has not worked at `company`), find a different *Person* (`person1`) who works or at some point worked in `company` and is reachable from `person2` through people who have studied together.
   On this path, we only consider edges between *Persons* who know each other and attended the same *University* and set the weight of the edge to the absolute difference between the year of enrolment plus 1 (`studyAt.classYear + 1`). If the *Persons* attended multiple universities, we select the smallest (`min`) value.
   
-  If there are multiple *Person* `person1` nodes with the same shortest path, return all of them.
+  If there are multiple *Person* `person1` nodes with the same shortest path length, return all of them.
+  Due to the inaccuracies of floating point number representation, the comparisons to determine same length paths should be performed with a tolerance of 10e-5.
 parameters:
   - name: company
     type: Long String
