@@ -144,7 +144,7 @@
 
 \newcommand{\ldbcsnbdocversion}{0.3.7-SNAPSHOT}
 \newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- v\ldbcsnbdocversion}
-\delName{The LDBC Social Network Benchmark \\ (v\ldbcsnbdocversion)}
+\delName{The LDBC Social Network Benchmark \\ (v\ldbcsnbdocversion) \\ \textcolor{red}{-- working draft --}}
 
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
 \newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}
