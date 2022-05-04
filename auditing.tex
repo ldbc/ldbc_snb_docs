@@ -202,6 +202,7 @@ Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of us
 In the graph processing space, there is currently (as of 2022) no standard query language and the systems are considerably more heterogeneous.
 Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the \mbox{TPC-H} (where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads) and individual SNB workloads specify their policy of either requiring a domain-specific query language or allowing the implementation of the queries in a general-purpose programming language.
 
+TODO: it is allowed to implement queries as a sequence of multiple queries (e.g. create projected graph, run query, drop projected graph).
 
 \subsubsection{Rules for Imperative Implementations Using a General-Purpose Programming Language}
 An implementation where the queries are written in a general-purpose programming language (including imperative and ``API-based'' implementations) may choose between semantically equivalent implementations of an operation based on the query parameters. This simulates the behaviour of a query optimizer in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard-coded threshold values in the implementation.
