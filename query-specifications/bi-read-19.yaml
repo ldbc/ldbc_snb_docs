@@ -3,11 +3,19 @@ operation: read
 number: 19
 title: Interaction path between cities
 description: |
-  Given two *Cities* `city1`, `city2`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them. If there are multiple pairs of people with shortest paths having the same total weight, return all of them.
+  Given two *Cities* `city1`, `city2`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them.
+  If there are multiple pairs of people with shortest paths with the same total weight, return all of them.
 
-  The shortest path is computed using a weight between two *Persons* defined as the reciprocal of the number of interactions (direct reply *Comments* to a *Message* by the other *Person*). Therefore, more interactions imply a smaller weight.
+  The shortest path is computed on the *Person-knows-Person* graph based on the number of interactions,
+  i.e. the number of direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
+  Only *knows* edges with at least one interaction between their endpoint *Persons* are considered.
+  The weight of a *knows* edge is defined as the reciprocal of the number of interactions between its endpoint *Persons*.
+  Therefore, more interactions imply a smaller weight.
 
-  **Note:** Interactions are counted both ways, i.e. if Alice writes 2 reply *Comments* to Bob's *Messages* and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5.
+  **Note:** Interactions are counted both ways, e.g. if Alice *knows* Bob, Alice writes 2 reply *Comments* to Bob's *Messages*
+  and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 0.2.
+  
+  Due to the inaccuracies of floating point number representation, the comparisons to determine same length paths should be performed with a tolerance of 10e-5.
 parameters:
   - name: city1Id
     type: ID
