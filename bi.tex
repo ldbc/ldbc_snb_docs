@@ -36,17 +36,6 @@ For example, if the query looks for \tMessages with a given \tTag:
 (2) for each \tTag, we compute its distance (absolute difference) from a given percentile of the distribution is selected (\eg the \tTag on the 75th percentile),
 (3) we pick the $k$ parameters with the lowest distance.
 
-\section{Target metric}
-\label{sec:bi-target-metric}
-
-The performance of the SUT is characterized by \emph{the number of batches executed per day} ($\mathit{bpd}$).
-During the benchmark's execution, the benchmark should run $b$ batches for a total of $t$ time ($b \geq 2$ and $t > 1\text{ hour}$). Then, the metric is determined as:
-$$
-\mathit{bpd} = \frac{24}{t} \times b
-$$
-
-For example, if the SUT executed the benchmark for $1.15$ hours and completed $7$ batches, its $\mathit{bpd} = 146.09\text{ batches/day}$.
-
 \subsection*{Related Publications}
 
 The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{SIGMOD 2018}~\cite{DBLP:conf/grades/SzarnyasPAMPKEB18}.
