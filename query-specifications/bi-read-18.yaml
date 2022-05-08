@@ -6,7 +6,7 @@ description: |
   For a given *Tag* (`tag`), for each `person1` interested in `tag`, recommend new friends (`person2`) who
 
   * do not yet know `person1`
-  * at least one mutual friend with `person1`
+  * have at least one mutual friend with `person1`
   * are also interested in `tag`.
 
   Rank *Persons* `person2` based on the number of mutual friends with `person1`.
