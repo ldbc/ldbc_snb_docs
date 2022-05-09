@@ -8,7 +8,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Prepare template
       run: |
-        sed -i "s/-SNAPSHOT/-SNAPSHOT (`git rev-parse --short HEAD`)/" ldbc.cls
+        sed -i "s/-SNAPSHOT/-SNAPSHOT, commit `git rev-parse --short HEAD`/" ldbc.cls
     - name: Build PDFs with the LaTeX engine in Docker
       uses: ldbc/document-builder@main
       with:
