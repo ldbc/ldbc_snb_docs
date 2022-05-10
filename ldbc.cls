@@ -142,9 +142,9 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{0.3.7-SNAPSHOT}
-\newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- v\ldbcsnbdocversion}
-\delName{The LDBC Social Network Benchmark \\ (v\ldbcsnbdocversion) \\ \textcolor{red}{-- working draft --}}
+\newcommand{\ldbcsnbdocversion}{2.0.0-SNAPSHOT}
+\newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
+\delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
 \newcommand{\mainmatterheadingr}{\relscale{.92}}
 \newcommand{\mainmatterheadingl}{\relscale{.92}\ldbcsnbdoctitle}

@@ -1,9 +1,6 @@
 \chapter{Business Intelligence Workload}
 \label{sec:bi}
 
-The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{SIGMOD 2018}~\cite{DBLP:conf/grades/SzarnyasPAMPKEB18}.
-Version 1.0 of the workload is currently being prepared.
-
 The LDBC SNB BI workload consists of two sets of operations:
 
 \begin{itemize}
@@ -13,6 +10,15 @@ The LDBC SNB BI workload consists of two sets of operations:
 
 \section{Benchmark scenario}
 \label{sec:bi-benchmark-scenario}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=\yedscale]{figures/bi-workflow}
+    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the benchmark driver. Note the lack of a warmup period.}
+    \label{fig:bi-workflow}
+\end{figure}
+
+The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
 
 \section{Parameter selection}
 \label{sec:bi-paramgen}
@@ -30,12 +36,9 @@ For example, if the query looks for \tMessages with a given \tTag:
 (2) for each \tTag, we compute its distance (absolute difference) from a given percentile of the distribution is selected (\eg the \tTag on the 75th percentile),
 (3) we pick the $k$ parameters with the lowest distance.
 
-\section{Target metric}
-\label{sec:bi-target-metric}
+\subsection*{Related Publications}
 
-The performance of a system is characterized by two metrics:
-the geometric mean of the read query execution times and
-the geometric mean of the time required to load daily batches.
+The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{SIGMOD 2018}~\cite{DBLP:conf/grades/SzarnyasPAMPKEB18}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
