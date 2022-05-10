@@ -624,13 +624,13 @@ To ensure reproducibility of the audited results, a supplementary package is att
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Scaling}
+\subsection{Scaling}
 \label{sec:bi-scaling}
 
 Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger datasets.
 The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee XX~hours of continuous execution (see \autoref{sec:bi-benchmark-workflow}).
 
-\subsubsection{Query Declarativity}
+\subsection{Query Declarativity}
 \label{sec:bi-query-declarativity}
 
 Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
@@ -645,21 +645,21 @@ The auditor's responsibility is to enforce this requirement, \ie they should ver
     \item stored procedures written in a domain-specific language,
 \end{enumerate}
 
-\subsubsection{Query Variants}
+\subsection{Query Variants}
 \label{sec:bi-query-variants}
 
 Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use multiple variants with different sets of input parameters.
 These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14(A) or Q14(B)).
 Moreover, it is not allowed for the query implementations to contain code that aims to detects the query variant used.
 
-\subsubsection{Benchmark Workflow}
+\subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
 
 The \emph{load time} ($t_\textit{load}$) shall include the time to load the data into the SUT and initialize auxiliary data structures (if applicable).
 
 The \emph{measurement window} includes running the W/R batches.
 
-\subsubsection{Target Metric}
+\subsection{Target Metric}
 \label{sec:bi-target-metric}
 
 The performance of the SUT is characterized by the \emph{number of batches executed per day} ($\mathit{bpd}$).
@@ -671,7 +671,7 @@ $$
 
 For example, if the SUT executed the benchmark for $1.15$ hours and completed $7$ batches, its $\mathit{bpd} = 146.09\text{ batches/day}$.
 
-\subsubsection{Execution Rules}
+\subsection{Execution Rules}
 \label{sec:bi-execution-rules}
 
 \begin{itemize}
@@ -680,7 +680,7 @@ For example, if the SUT executed the benchmark for $1.15$ hours and completed $7
     \item No ``warmup'' period is allowed.
 \end{itemize}
 
-\subsubsection{Implementation Rules}
+\subsection{Implementation Rules}
 \label{sec:bi-implementation-rules}
 
 \begin{itemize}
@@ -688,7 +688,7 @@ For example, if the SUT executed the benchmark for $1.15$ hours and completed $7
     \item The SUT shall pass the ACID test suite (\autoref{sec:acid-test-suite}).
 \end{itemize}
 
-\subsubsection{Full Disclosure Report}
+\subsection{Full Disclosure Report}
 \label{sec:bi-fdr}
 
 The \emph{full disclosure report} (FDR) and the \emph{supplementary package} shall contain
