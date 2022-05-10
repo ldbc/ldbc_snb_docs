@@ -202,7 +202,7 @@ Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of us
 In the graph processing space, there is currently (as of 2022) no standard query language and the systems are considerably more heterogeneous.
 Therefore, the LDBC situation regarding declarativity is not as simple as that of for example the \mbox{TPC-H} (where queries should be specified in SQL with the additional constraint of omitting any hints for OLAP workloads) and individual SNB workloads specify their policy of either requiring a domain-specific query language or allowing the implementation of the queries in a general-purpose programming language.
 
-TODO: it is allowed to implement queries as a sequence of multiple queries (e.g. create projected graph, run query, drop projected graph).
+TODO: clarify that it is allowed to implement queries as a sequence of multiple queries (e.g. create projected graph, run query, drop projected graph), however, this should not be done to trick the optimizer into picking a better query plan (by e.g. splitting a complex subgraph query in two).
 
 \subsubsection{Rules for Imperative Implementations Using a General-Purpose Programming Language}
 An implementation where the queries are written in a general-purpose programming language (including imperative and ``API-based'' implementations) may choose between semantically equivalent implementations of an operation based on the query parameters. This simulates the behaviour of a query optimizer in the presence of literal values in the query. If an implementation does this, all the code must be disclosed as part of the FDR and the decision must be based on values extracted from the database, not on hard-coded threshold values in the implementation.
@@ -649,23 +649,24 @@ The auditor's responsibility is to enforce this requirement, \ie they should ver
 \label{sec:bi-query-variants}
 
 Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use multiple variants with different sets of input parameters.
-These should be run in a mix and the SUT should not be informed on which variant it is currently evaluating (\eg 14(A) or 14(B)).
+These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14(A) or Q14(B)).
+Moreover, it is not allowed for the query implementations to contain code that aims to detects the query variant used.
 
 \subsubsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
 
-TODO: load time: load the data set, initialize auxiliary data structures.
+The \emph{load time} ($t_\textit{load}$) shall include the time to load the data into the SUT and initialize auxiliary data structures (if applicable).
 
-TODO: measurement window at least 1 hour of R/W batches.
+The \emph{measurement window} includes running the W/R batches.
 
 \subsubsection{Target Metric}
 \label{sec:bi-target-metric}
 
-The performance of the SUT is characterized by \emph{the number of batches executed per day} ($\mathit{bpd}$).
-During the benchmark's execution, the benchmark should run $b$ batches for a total of $t$ time ($b \geq 2$ and $t > 1\text{ hour}$).
+The performance of the SUT is characterized by the \emph{number of batches executed per day} ($\mathit{bpd}$).
+During the measurement window, the benchmark should run $n_\textit{batches}$ complete W+R batches for a total of $t$ time ($n_\textit{batches} \geq 2$ and $t_\textit{batches} \geq 2\text{ hours}$).
 Then, the metric is determined as:
 $$
-\mathit{bpd} = \frac{24}{t} \times b
+\mathit{bpd} = (24 - t_\textit{load}) \times \frac{n_\textit{batches}}{t_\textit{batches}}
 $$
 
 For example, if the SUT executed the benchmark for $1.15$ hours and completed $7$ batches, its $\mathit{bpd} = 146.09\text{ batches/day}$.
