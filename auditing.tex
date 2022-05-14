@@ -680,7 +680,7 @@ then, they should perform the reads (queries).
 For such systems, passing the \emph{ACID compliance test} is not required.
 
 \emph{Transaction-capable systems} are allowed to run concurrent read and write operations in their \emph{throughput batches} (\autoref{sec:bi-benchmark-workflow}).
-These systems should guarantee at least \texttt{TODO} isolation level and guarantee \emph{ACID compliance} (\autoref{sec:acid-compliance}).
+These systems should guarantee snapshot isolation and pass the \emph{ACID compliance test} (\autoref{sec:acid-compliance}).
 
 \subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
