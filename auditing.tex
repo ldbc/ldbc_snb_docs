@@ -90,10 +90,8 @@ A benchmark result may be \emph{challenged} for non-compliance with LDBC rules. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Validation of Query Results and ACID Properties}
-
-\subsubsection{Correctness of Results}
-
+\subsection{Validation of Query Results}
+\label{sec:validation}
 A benchmark should be published with a deterministically reproducible validation data set. Validation queries applied to the validation data set will deterministically produce a set of correct answers. This is used in the first stage of benchmark run to test for the correctness of an SUT or benchmark implementation. This validation stage is not timed.
 
 \paragraph{Inputs for validation}
@@ -102,11 +100,11 @@ The validation takes the form of a set of data generator parameters, a set of te
 \paragraph{Approximate results and error margin}
 In certain cases the results may be approximate. This may happen in cases of non-unique result ordering keys, imprecise numeric data types, random behaviours in certain graph analytics algorithms etc. Therefore, a validation set shall specify the degree of allowable error: For example, for counts, the value must be exact, for sums, averages and the like, at least 8 significant digits are needed, for statistical measures like graph centralities, the result must be within 1\% of the reference result. Each benchmark shall specify its expectation in an unambiguously verifiable manner.
 
-
-\subsubsection{ACID Compliance}
+\subsection{ACID Compliance}
 \label{sec:acid-compliance}
 
-As part of the auditing process, the auditors ascertain that the SUT satisfies ``the ACID properties'', \ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
+As part of the auditing process for the Interactive workload and for certain systems in the BI workload, the auditors ascertain that the SUT satisfies the ACID properties,
+\ie it provides atomic transactions, complies with its claimed isolation level, and ensures durability in case of failures.
 This section outlines transactional behaviours of SUTs which are checked in the course of auditing an SUT in a given benchmark.
 
 A benchmark specifies transactional semantics that may be required for different parts of the workload. The requirements will typically be different for initial bulk load of data and for the workload itself. Different sections of the workload may further be subject to different transactionality requirements.
@@ -114,7 +112,6 @@ A benchmark specifies transactional semantics that may be required for different
 No finite series of tests can prove that the ACID properties are fully supported. Passing the specified tests is a necessary, but not sufficient, condition for meeting the ACID requirements. However, for fairness of reporting, only the tests specified here are required and must appear in the FDR for a benchmark. (This is taken exactly from the \mbox{TPC-C} specification~\cite{tpcc}.)
 
 The properties for ACID compliance are defined as follows:
-
 
 \paragraph{Atomicity}
 Either all of the effects of the transaction are in effect after the transaction or none of the effects
