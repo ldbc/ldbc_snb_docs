@@ -186,6 +186,13 @@ A benchmark may also state that it allows strict schema-first semantics, \eg SQL
 \paragraph{Disclosure of data schema in the FDR}
 In any case, a benchmark must state its policy concerning presence or absence of schema and enforcement thereof. If implementations declare a schema then any schema must be disclosed in full as part of the FDR.
 
+\subsection{Data Format and Preprocessing}
+\label{sec:auditing-data-format}
+
+When producing the data sets, implementers are allowed to use custom formatting options (\eg use or omission of quotes, separator character, datatime format, \etc).
+It is also allowed to convert the output of the Datagen into a format (\eg Parquet) that is loadable by the test-specific implementation of the data importer.
+Additional preprocessing steps are also allowed, including adjustments to the CSV files (\eg with shell scripts), splitting and concatenating files, compressing and decompressing files, \etc.
+
 \subsection{Data Access Transparency}
 
 A benchmark may specify that an implementation is not allowed the use of explicit access paths. For example, explicitly specifying which EADS or IADS should be used for any given operation may be prohibited. Furthermore, in scale-out systems, explicit references to data location (other than via values of partitioning keys) may be prohibited. In general, references to internal data representation of an entity, \eg row in a table, should be prohibited. Reference should take place via column names in a schema or property URIs in RDF, not via physical offsets or the like.
@@ -542,7 +549,7 @@ A benchmark execution is divided into the following processes (these processes a
 
 \begin{description}
     \item[Generate data] This includes running the data generator, placing the generated files in a staging area, configuring storage, setting up the SUT configuration and preparing any data partitions in the SUT. This may include preallocating database space but may not include loading any data or defining any schema having to do with the benchmark. The \verb|ldbc.snb.interactive.update_interleave| driver parameter must come from the \verb|updateStream.properties| file, which is created by the data generator. That parameter should never be set manually. This parameter signifies the average distance of update operations in the workload.
-    \item[Preprocessing] If needed, the output from the data generator is converted to a format that is loadable by the test-specific implementation of the data importer.
+    \item[Preprocessing] If needed, the output from the data generator is to preprocess the data set (\autoref{sec:auditing-data-format}).
     \item[Create validation data] Using one of the reference implementations of the benchmark, the reference validation data is obtained in .json format.
     \item[Data loading] The test sponsor must provide all the necessary documentation and scripts to load the data set into the database to test.
     This includes defining the database schema, if any, loading the initial database population, making this durably stored and gathering any optimiser statistics.
