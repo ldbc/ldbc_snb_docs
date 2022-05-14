@@ -94,7 +94,7 @@ A benchmark result may be \emph{challenged} for non-compliance with LDBC rules. 
 
 \subsubsection{Correctness of Results}
 
-A benchmark should be published with a deterministically reproducible validation dataset. Validation queries applied to the validation dataset will deterministically produce a set of correct answers. This is used in the first stage of benchmark run to test for the correctness of an SUT or benchmark implementation. This validation stage is not timed.
+A benchmark should be published with a deterministically reproducible validation data set. Validation queries applied to the validation data set will deterministically produce a set of correct answers. This is used in the first stage of benchmark run to test for the correctness of an SUT or benchmark implementation. This validation stage is not timed.
 
 \paragraph{Inputs for validation}
 The validation takes the form of a set of data generator parameters, a set of test queries that at least include one instance of each of the workload query templates and the expected results.
@@ -213,7 +213,7 @@ The auditor must be able to reliably assess the compliance of an implementation 
 \subsubsection{Disclosure of Query Implementations in the FDR}
 Benchmarks allowing imperative expression of workload should require full disclosure of all query implementation code.
 
-\subsection{Materialisation}
+\subsection{Materialization}
 
 The mix of read and update operations in a workload will determine to which degree precomputation of results is beneficial. The auditor must check that materialised results are kept consistent at the end of each transaction.
 
@@ -339,15 +339,15 @@ or on the query language
 
 \subsubsection{Scale Factors}
 
-The scale factor of an SNB dataset is the size of the dataset in GiB of CSV (comma-separated values) files.
-The size of a dataset is characterized by scale factors: SF10, SF30, SF100 \etc (see \autoref{sec:scale-factors}).
-All datasets contain data for three years of social network activity.
+The scale factor of an SNB data set is the size of the data set in GiB of CSV (comma-separated values) files.
+The size of a data set is characterized by scale factors: SF10, SF30, SF100 \etc (see \autoref{sec:scale-factors}).
+All data sets contain data for three years of social network activity.
 
-The \emph{validation run} shall be performed on the SF10 dataset (see \autoref{sec:int-validation-data-set}). Note that the auditor may perform additional validation runs of the benchmark implementation using smaller datasets (\eg SF1) and issue queries.\footnote{%
+The \emph{validation run} shall be performed on the SF10 data set (see \autoref{sec:int-validation-data-set}). Note that the auditor may perform additional validation runs of the benchmark implementation using smaller data sets (\eg SF1) and issue queries.\footnote{%
 An example test could be to issue complex reads with parameters such as \texttt{personId} and \texttt{messageId} selected from the \textsf{Person}/\textsf{Message} entities inserted from the update streams and cross-validate these against other systems. (The substitution parameters are taken from the initial snapshot of the graph so these nodes are not targeted by the regular workload executed by the driver.)%
 }
 
-Audited \emph{benchmark runs} of the Interactive workload shall use SF30 or larger datasets. The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee 2.5~hours of continuous execution (see \autoref{sec:int-measurement-window}).
+Audited \emph{benchmark runs} of the Interactive workload shall use SF30 or larger data sets. The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee 2.5~hours of continuous execution (see \autoref{sec:int-measurement-window}).
 
 % \begin{quote}
 %     \emph{Rationale behind scaling.} The authors are aware that the prevalent practice for online benchmarks is to tie the reported throughput to the scale, \eg max 12.5 tpmC per warehouse in \mbox{TPC-C}. The authors depart from this practice here because with throughput tied to scale, test systems with interesting throughput rapidly become very expensive, raising the entry barrier for publishing a result. It is thought that scaling in buckets lowers the barrier of entry and reduces incentive to use hardware configurations that would be unusual in a production environment.
@@ -357,11 +357,11 @@ Audited \emph{benchmark runs} of the Interactive workload shall use SF30 or larg
 %which is correct but we can ran out of updates due to the 2.5-hr simulation requirement
 %so its (implied) conclusion does not hold fully hold for SNB interactive
 
-\subsubsection{Social Network Datasets}
+\subsubsection{Social Network data sets}
 \label{sec:int-data-sets}
 
-\paragraph{Initial dataset}
-The dataset is divided into a bulk loadable initial database population (90\%) and an update stream (10\%). These are generated by the SNB data generator. The data generator has options for splitting the dataset into any number of files.
+\paragraph{Initial data set}
+The data set is divided into a bulk loadable initial database population (90\%) and an update stream (10\%). These are generated by the SNB data generator. The data generator has options for splitting the data set into any number of files.
 
 \paragraph{Dependencies between messages in the update stream}
 The update stream contains the latest 10\% of the events in the simulated social network. These events form a single serializable sequence in time. Some events will depend on preceding events, for example a message must exist before a reply comment to the message is created. The data generator guarantees that these are separated by at least 10 seconds of simulation time.
@@ -541,10 +541,10 @@ A benchmark execution is divided into the following processes (these processes a
     \item[Generate data] This includes running the data generator, placing the generated files in a staging area, configuring storage, setting up the SUT configuration and preparing any data partitions in the SUT. This may include preallocating database space but may not include loading any data or defining any schema having to do with the benchmark. The \verb|ldbc.snb.interactive.update_interleave| driver parameter must come from the \verb|updateStream.properties| file, which is created by the data generator. That parameter should never be set manually. This parameter signifies the average distance of update operations in the workload.
     \item[Preprocessing] If needed, the output from the data generator is converted to a format that is loadable by the test-specific implementation of the data importer.
     \item[Create validation data] Using one of the reference implementations of the benchmark, the reference validation data is obtained in .json format.
-    \item[Data loading] The test sponsor must provide all the necessary documentation and scripts to load the dataset into the database to test.
+    \item[Data loading] The test sponsor must provide all the necessary documentation and scripts to load the data set into the database to test.
     This includes defining the database schema, if any, loading the initial database population, making this durably stored and gathering any optimiser statistics.
     The system under test must support the different data types needed by the benchmark for each of the attributes at their specified precision. No data can be filtered out, everything must be loaded. The test sponsor must provide a tool to perform arbitrary checks of the data or a shell to issue queries in a declarative language if the system supports it.
-    \item[Run cross-validation] This step uses the data loader to populate the database, but the load is not timed. The validation data set is used to verify the correctness of the SUT. The auditor must load the provided dataset and run the driver in validation mode, which will test that the queries provide the official results.  The benchmarking workflow will not go beyond this point unless results match the expected output.
+    \item[Run cross-validation] This step uses the data loader to populate the database, but the load is not timed. The validation data set is used to verify the correctness of the SUT. The auditor must load the provided data set and run the driver in validation mode, which will test that the queries provide the official results.  The benchmarking workflow will not go beyond this point unless results match the expected output.
     \item[Warm-up] Benchmark runs are preceded by a warm-up which must be performed using the LDBC driver.
     \item[Run benchmark] The bulk load time is reported and is equal to the amount of elapsed wall clock time between starting the schema definition and receiving the confirmation message of the end of statistics gathering. The workflow runs begin after the bulk load is completed. If the run does not directly follow the bulk load, it must start at a point in the update stream that has not previously been played into the database. In other words, a run may only include update events whose timestamp is later than the latest message creation date in the database prior to start of run. The run starts when the first of the test drivers send its first message to the SUT. If the SUT is running in the same process as the driver, the window starts
     when the driver starts. Also, make sure that the \verb|-rl/--results_log| is enabled. Make sure that all operations are enabled and the frequencies are those for the selected scale factor (see the exact specification of the frequencies in the specification appendix B.1. Scale Factor Statistics for the Interactive Workload).
@@ -630,35 +630,46 @@ A key objective of the auditing guidelines for the BI workload is to \emph{allow
 Due to the BI workload's analytical nature, we expect not only DBMSs but also analytical tools which operate on read-only data (stored \eg in HDFS or in an object store).
 Therefore, they do not impose constraints on transactional guarantees.
 
-\subsection{Scaling}
-\label{sec:bi-scaling}
+\subsubsection{Overview}
+\label{sec:bi-audit-overview}
 
-Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger datasets.
-The rationale behind this decision is to ensure that there is a sufficient number of update operations available to guarantee the execution during the duration of the measurement window (see \autoref{sec:bi-benchmark-workflow}).
+Implementing the BI workload requires the following key capabilities:
 
-\subsection{Query Declarativity}
-\label{sec:bi-query-declarativity}
+\begin{itemize}
+    \item Load the initial snapshot of the social network graph
+    \item Evaluate the BI write operations (including inserts and deletes)
+    \item Evaluate the BI read queries
+    \item (optional) Allow concurrent reads and writes (\autoref{sec:bi-target-systems})
+    \item (optional) Ensure ACID compliance (\autoref{sec:bi-target-systems})
+\end{itemize}
 
-Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
-General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
+The write operations and read queries and write operations are run in \emph{daily batches}.
+The benchmark includes two tests which use different workflows in their batches:
 
-Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
-Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed. (These libraries often include features such as weighted shortest path algorithms.)
-Implementations may use \emph{stored procedures written in a domain-specific language}.
+\begin{itemize}
+    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read queries (Q1, Q2, \ldots, Q20).
+    \item The \emph{throughput test} allows concurrent execution of the write operations and read queries required in a given batch.
+    Systems can run an arbitrary mix of operations. \texttt{TODO: this allows first running the reads, then the writes, which may be undesirable.}
+\end{itemize}
 
-The auditor's responsibility is to enforce this requirement, \ie they should verify whether query implementations only use the following implementation techniques:
-\begin{enumerate}
-    \item the domain-specific language of the SUT,
-    \item the SUT's standard stored procedure library or libraries, and
-    \item stored procedures written in a domain-specific language,
-\end{enumerate}
+\subsubsection{Target Systems}
+\label{sec:bi-target-systems}
 
-\subsection{Query Variants}
-\label{sec:bi-query-variants}
+We allow two categories of systems to be used in the benchmark with slightly different implementation rules.
+Results with these systems are reported in the same leaderboard.
 
-Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use (A) and (B) variants with different sets of input parameters.
-These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14(A) or Q14(B)).
-Moreover, it is not allowed for the query implementations to contain code that aims to detect the query variant used.
+\begin{itemize}
+    \item \emph{Purely analytical systems} (\eg graph analytical systems) do not support concurrent reads and writes (or they choose not make use of them in their \snbbi implementation).
+    \item \emph{Transaction-capable systems} (\eg GDBMSs) make use of concurrent reads and writes.
+\end{itemize}
+
+\emph{Purely analytical systems} shall perform their \emph{throughput batches} in two steps:
+first, they should perform the writes (refresh operations),
+then, they should perform the reads (queries).
+For such systems, passing the \emph{ACID compliance test} is not required.
+
+\emph{Transaction-capable systems} are allowed to run concurrent read and write operations in their \emph{throughput batches} (\autoref{sec:bi-benchmark-workflow}).
+These systems should guarantee at least \texttt{TODO} isolation level and guarantee \emph{ACID compliance} (\autoref{sec:acid-compliance}).
 
 \subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
@@ -675,11 +686,13 @@ The BI workflow (\autoref{fig:bi-auditing-workflow}) consists of three parts.
 \begin{itemize}
     \item \textbf{Loading} the data set.
     \item Running the \textbf{power test}, \ie apply one day's write batch and run the reads sequentially.
-    \item Running the \textbf{throughput test}, \ie run batches of (potentially) concucrrent write operations (applying one day's worth of data per batch) and read queries.
+    \item Running the \textbf{throughput test}, \ie run batches of (potentially) concurrent write operations (applying one day's worth of data per batch) and read queries.
     The execution of this test is called the \emph{throughput measurement window}, which should
     run at least for 2 hours and
     include at least one fully completed batch.
 \end{itemize}
+
+During the \emph{throughput test}, systems capable of transactional features (\autoref{sec:bi-target-systems}) are allowed to run read and write operations concurrently.
 
 The runtimes should be reported as follows:
 \begin{itemize}
@@ -689,12 +702,12 @@ The runtimes should be reported as follows:
     \item The \emph{full throughput batches time} ($t_\textit{full\ throughput\ batches}$) denotes the time to evaluate the fully completed batches during the throughput measurement window.
 \end{itemize}
 
-Note that a ``warm-up'' period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
+Note that a warm-up period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
 
-\subsection{Target Metric}
-\label{sec:bi-target-metric}
+\subsection{Primary Metric}
+\label{sec:bi-primary-metric}
 
-The performance of the SUT is characterized by the \emph{number of batches executed per day} ($\mathit{bpd}$).
+The primary metric of the BI worklaod is the \emph{number of batches executed per day} ($\mathit{bpd}$).
 
 During the measurement window, the benchmark runs a sequence of throughput batches for a total of $t_\textit{throughput\ measurement}$ time ($n_\textit{full\ throughput\ batches} \geq 1$ and $t_\textit{throughput\ measurement} \geq 2\text{ hours}$).
 Then, the number of fully completed batches
@@ -707,7 +720,7 @@ $$
 \mathit{bpd} = (24 - t_\textit{load}) \times \frac{n_\textit{full\ throughput\ batches}}{t_\textit{full\ throughput\ batches}}
 $$
 
-For example, if the SUT took $3.5\texttt{ hours}$ to load, executed the fully completed throughput batches for $1.75$ hours and completed $7$ batches:
+For example, if the SUT took $3.5\text{ hours}$ to load, executed the fully completed throughput batches for $1.75$ hours and completed $7$ batches:
 $$
 \mathit{bpd} = (24 - 3.5) \times \frac{7}{1.75} = 82\text{ batches/day}
 $$
@@ -717,31 +730,45 @@ $$
 
 \subsubsection{Correctness}
 \label{sec:bi-correcntess}
+
 The SUT shall evaluate all operators correctly.
 The validation of correctness is performed on the output of the \emph{power test} step.
 The rationale for using this step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantees deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
 
 \subsubsection{Auxiliary Data Structures}
 \label{sec:bi-auxiliary-data-structures}
+
 Using auxiliary data structures (\eg indexes, materialized views) is allowed if they are kept in an up-to-date state after each write operation.
 
-\subsubsection{Transactional Features}
-\label{sec:bi-transactional-features}
-We allow two categories of systems to compete on the benchmark.
-These systems compete on the same leaderboard but have slightly different implementation rules.
+\subsubsection{Query Declarativity}
+\label{sec:bi-query-declarativity}
 
-\begin{itemize}
-    \item \emph{Purely analytical systems} do not support concurrent reads and writes, or they do not make use of them in their \snbbi implementation.
-    \item \emph{Transaction-capable systems} makes use of concurrent reads and writes.
-\end{itemize}
+Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
+General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
 
-\emph{Purely analytical systems} shall perform their \emph{throughput batches} in two steps:
-first, they should perform the writes (refresh operations),
-then, they should perform the reads (queries).
-For such systems, passing the \emph{ACID compliance test} is not required.
+Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
+Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed. (These libraries often include features such as weighted shortest path algorithms.)
+Implementations may use \emph{stored procedures written in a domain-specific language}.
 
-\emph{Transaction-capable systems} are allowed to run concurrent read and write operations in their \emph{throughput batches}.
-These systems should guarantee at least \emph{TODO} isolation level and guarantee \emph{ACID compliance} (\autoref{sec:acid-compliance}).
+The auditor's responsibility is to enforce this requirement, \ie they should verify whether query implementations only use the following implementation techniques:
+\begin{enumerate}
+    \item the domain-specific language of the SUT,
+    \item the SUT's standard stored procedure library or libraries, and
+    \item stored procedures written in a domain-specific language,
+\end{enumerate}
+
+\subsubsection{Query Variants}
+\label{sec:bi-query-variants}
+
+Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use (A) and (B) variants with different sets of input parameters.
+These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14(A) or Q14(B)).
+Moreover, it is not allowed for the query implementations to contain code that aims to detect the query variant used.
+
+\subsection{Scaling}
+\label{sec:bi-scaling}
+
+Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger data sets.
+The rationale behind this decision is to ensure that there is a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{sec:bi-benchmark-workflow}).
 
 \subsection{Full Disclosure Report}
 \label{sec:bi-fdr}
