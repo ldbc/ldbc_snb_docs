@@ -192,6 +192,7 @@ In any case, a benchmark must state its policy concerning presence or absence of
 When producing the data sets, implementers are allowed to use custom formatting options (\eg use or omission of quotes, separator character, datatime format, \etc).
 It is also allowed to convert the output of the Datagen into a format (\eg Parquet) that is loadable by the test-specific implementation of the data importer.
 Additional preprocessing steps are also allowed, including adjustments to the CSV files (\eg with shell scripts), splitting and concatenating files, compressing and decompressing files, \etc.
+However, the preprocessing step shall not include a precomputation of (partial) query results.
 
 \subsection{Data Access Transparency}
 
