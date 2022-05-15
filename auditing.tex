@@ -641,7 +641,7 @@ A key objective of the auditing guidelines for the BI workload is to \emph{allow
 Due to the BI workload's analytical nature, we expect not only DBMSs but also analytical tools which operate on read-only data (stored \eg in HDFS or in an object store).
 Therefore, they do not impose constraints on transactional guarantees.
 
-\subsubsection{Overview}
+\subsection{Overview}
 \label{sec:bi-audit-overview}
 
 Implementing the BI workload requires the following key capabilities:
@@ -663,7 +663,7 @@ The benchmark includes two tests which use different workflows in their batches:
     Systems can run an arbitrary mix of operations. \texttt{TODO: this allows first running the reads, then the writes, which may be undesirable.}
 \end{itemize}
 
-\subsubsection{Target Systems}
+\subsection{Target Systems}
 \label{sec:bi-target-systems}
 
 We allow two categories of systems to be used in the benchmark with slightly different implementation rules.
