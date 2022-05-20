@@ -754,7 +754,7 @@ Using auxiliary data structures (\eg indexes, materialized views) is allowed if 
 \subsubsection{Query Declarativity}
 \label{sec:bi-query-declarativity}
 
-Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation.
+Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation, including the read queries and the refresh operations.
 General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
 
 Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
