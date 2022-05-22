@@ -401,7 +401,7 @@ The SUT has to take care only of the generated Dataset to be bulk loaded. Using 
 \datagen currently only supports CSV-based serializers.
 These produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (for the composite serializers).
 The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
-Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate with ``\texttt{*}'' in the specification.
+Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate this with ``\texttt{part-*}'' in the specification.
 
 The following CSV variants are supported:
     \begin{itemize}
@@ -410,7 +410,7 @@ The following CSV variants are supported:
       Generated files are summarized in \autoref{table:csv-composite-projected-fk}.
 
       \item \textsf{csv-composite-merged-fk:}
-      This serializer is similar to \textsf{csv-singular-projected-fk}, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
+      This serializer is similar to \textsf{csv-composite-projected-fk}, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
       There are 13~such relations in total:
       \begin{itemize}
         \item Comment\_hasCreator\_Person, Comment\_isLocatedIn\_Country, Comment\_replyOf\_Comment, Comment\_replyOf\_Post (merged to Comment);
@@ -425,11 +425,10 @@ The following CSV variants are supported:
       Generated files are summarized in \autoref{table:csv-composite-merged-fk}.
     
       \item \textsf{csv-singular-merged-fk}:
-      Similar to the \textsf{csv-singular-projected-fk} format but each entity, and relations with a cardinality larger than one, are output in a separate file.
-      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
+      Similar to the \textsf{csv-composite-merged-fk} but multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
     
       \item \textsf{csv-singular-projected-fk}:
-      Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
+      Similar to the \textsf{csv-composite-projected-fk} but multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
 
       \item \texttt{raw} mode:
       The file names are the same as in \texttt{composite-merged-fk} but there are two important differences:

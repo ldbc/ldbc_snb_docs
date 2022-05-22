@@ -1,7 +1,7 @@
 \begin{table}[htb]
     \scriptsize
     \centering
-    \begin{tabular}{|c|l|l|}
+    \begin{tabularx}{\linewidth}{|>{\sffamily}c|>{\tt}l|>{\tt}X|}
         \hline
         \tableHeaderFirst{C} & \tableHeader{File}                      & \tableHeader{Content}                                                                                      \\
         \hline\hline
@@ -44,7 +44,8 @@
         E                    & post\_hasTag\_tag\_*.csv                & Post.id | Tag.id                                                                                           \\
         E                    & post\_isLocatedIn\_place.csv            & Post.id | Place.id                                                                                         \\
         \hline
-    \end{tabular}
-    \caption{Files output by the CsvComposite serializer (31 in total). The first part of the table contains the static entites, the second part contains the dynamic ones. Notation -- C: entity category, N: node, E: edge.}
+    \end{tabularx}
+    \caption{Files output by the CsvComposite serializer (31 in total). The first part of the table contains the static entites, the second part contains the dynamic ones.
+        Notation -- \textsf{C}: entity category, \textsf{N}: node, \textsf{E}: edge.}
     \label{table:csv_composite}
 \end{table}
