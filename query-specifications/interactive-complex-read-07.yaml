@@ -7,6 +7,8 @@ description: |
   Find *Persons* that liked (`likes` edge) any of start *Person*'s *Messages*, the *Messages* they liked most recently, the creation date of that like, and the latency in minutes (`minutesLatency`) between creation of *Messages* and like.
   Additionally, for each *Person* found return a flag indicating (`isNew`) whether the liker is a friend of start *Person*.
   In case that a *Person* liked multiple *Messages* at the same time, return the *Message* with lowest identifier.
+
+  **Validation rule:** Depending on whether the system-under-test supports leap seconds or uses UTC-SLS (UTC with Smoothed Leap Seconds), a difference of 1 minute can occur between the `minutesLatency` results of two correct implementations when the time interval includes June 30, 2012, when there was a leap second. Therefore, the `minutesLatency` value is validated using a tolerance of 1 minute.
 parameters:
   - name: personId
     type: ID
@@ -27,7 +29,7 @@ result:
   - name: minutesLatency
     type: 32-bit Integer
     category: calculated
-    description: Duration between the creation of the *Message* and the creation of the like, in minutes
+    description: Duration between the creation of the *Message* and the creation of the like, in minutes.
   - name: isNew
     type: Boolean
     category: calculated
