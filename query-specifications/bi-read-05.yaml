@@ -7,7 +7,7 @@ description: |
 
   * Count its *Messages* (`messageCount`).
   * Count *likes* (`likeCount`) to its *Messages*.
-  * Count *Comments* (`replyCount`) in reply to it *Messages*.
+  * Count *Comments* (`replyCount`) in reply to its *Messages*.
 
   The `score` is calculated according to the following formula: $1 \times \texttt{messageCount} + 2 \times \texttt{replyCount} + 10 \times \texttt{likeCount}$.
 parameters:
