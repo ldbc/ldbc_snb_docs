@@ -41,7 +41,7 @@ Sort-based operators create new orderings, typically the probe-side of a hash jo
 
 \cpSection[1.1]{1.2}{QEXE}{High cardinality group-by performance}
 
-This choke point tests the ability of the execution engine to parallelize group-by's with a large number of groups. Some queries require performing large group-by's.
+This choke point tests the ability of the execution engine to parallelize group-by operations with a large number of groups. Some queries require performing large group-by operations.
 In such a case, if an aggregation produces a significant number of groups, intra-query parallelization can be exploited as each thread may make its own partial aggregation.
 Then, to produce the result, these have to be re-aggregated. In order to avoid this, the tuples entering the aggregation operator may be partitioned by a hash of the grouping key and be sent to the appropriate partition.
 Each partition would have its own thread so that only that thread would write the aggregation, hence avoiding costly critical sections as well. A high cardinality distinct modifier in a query is a special case of this choke point.
