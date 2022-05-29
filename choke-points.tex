@@ -113,7 +113,7 @@ There is a break even point between index and hash based plans, depending on the
 
 \cpSection[2.2]{2.4}{QOPT}{Sparse foreign key joins}
 
-This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indices or implementing Bloom filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
+This choke point tests the performance of join operators when the join is sparse. Sometimes joins involve relations where only a small percentage of rows in one of the tables is required to satisfy a join. When tables are larger, typical join methods can be sub-optimal. Partitioning the sparse table, using Hash Clustered indices or implementing Bloom-filter tests inside the join are techniques to improve the performance in such situations~\cite{DBLP:journals/csur/Graefe93}.
 
 \input{choke-points/cp-2-4}
 
@@ -121,9 +121,18 @@ This choke point tests the performance of join operators when the join is sparse
 
 \cpSection{2.5}{QEXE}{Worst-case optimal joins}
 
-This choke point tests the query engine's ability to use multi-way joins to evaluate cyclic queries which are required to efficiently compute some dense subgraphs such as the triangle, the 4-cycle, and the diamond. The absence of multi-way joins (\eg in traditional RDBMSs which only support binary joins), implies that join performance will be provably suboptimal.
+This choke point tests the query engine's ability to use multi-way, worst-case optimal joins to evaluate cyclic queries which are required to efficiently compute some dense subgraphs such as the triangle, the 4-cycle, and the diamond (4-cycle with a cross-edge).
+The absence of multi-way joins (\eg in systems which only support binary joins), implies that join performance will be provably suboptimal for cyclic queries.
 
 \input{choke-points/cp-2-5}
+
+\cpSection{2.6}{QEXE}{Factorized query execution}
+
+Query results produced by many-to-many joins often have redundancies when represented as tuples.
+Factorization~\cite{DBLP:journals/sigmod/OlteanuS16} provides a more compact (relational) representation by eliminating repetitions,
+while still allowing some operations (\eg aggregation) to be performed without flattening the relation.
+
+\input{choke-points/cp-2-6}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
