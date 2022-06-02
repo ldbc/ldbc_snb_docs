@@ -699,7 +699,7 @@ The BI workflow (\autoref{fig:bi-auditing-workflow}) consists of three parts.
     \item Running the \textbf{power test}, \ie apply one day's write batch and run the reads sequentially.
     \item Running the \textbf{throughput test}, \ie run batches of (potentially) concurrent write operations (applying one day's worth of data per batch) and read queries.
     The execution of this test is called the \emph{throughput measurement window}, which should
-    run at least for 2 hours and
+    run at least for 1 hour and
     include at least one fully completed batch.
 \end{itemize}
 
@@ -715,26 +715,62 @@ The runtimes should be reported as follows:
 
 Note that a warm-up period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
 
-\subsection{Primary Metric}
-\label{sec:bi-primary-metric}
+\subsection{Scoring Metrics}
+\label{sec:bi-scoring-metrics}
 
-The primary metric of the BI worklaod is the \emph{number of batches executed per day} ($\mathit{bpd}$).
+SNBI BI provides four scoring metrics:
+the \emph{power score}, the \emph{throughput score}, and their price-adjusted variants,
+the \emph{per-\$ power score} and the \emph{per-\$ throughput score}.
 
-During the measurement window, the benchmark runs a sequence of throughput batches for a total of $t_\textit{throughput\ measurement}$ time ($n_\textit{full\ throughput\ batches} \geq 1$ and $t_\textit{throughput\ measurement} \geq 2\text{ hours}$).
-Then, the number of fully completed batches
-$n_\textit{full\ throughput\ batches}$
-and the time required to run them
-$t_\textit{full\ throughput\ batches}$
-are determined.
-Using these, the metric is defined as:
+\subsubsection{Price}
+\label{sec:price-metrics}
+
+We follow TPC's specification for reporting prices~\cite{tpc-pricing}.
+The price is established as the \emph{total cost of ownership ($\textit{TCO}$)} for the SUT used in the benchmark,
+reported as a breakdown of
+machine cost,
+software license costs,
+and maintenance costs for 3 years.
+In case of cloud deployments, the cost of running a 3-year reserved instance % I considered adding 'upfront payment' but GCP does not have upfront payments
+should be reported.
+
+\subsubsection{Power score}
+\label{sec:power-score}
+
+The definition of \snbbi's power score follows \tpcH in using a geometric mean, ensuring that there is an incentive to improve all queries, no matter their running time.
+Formally, the power score is based on the execution times during the power batch, measured in seconds:
+% the time to perform the writes
+% and
+% the time spent for executing the each variant with 10~substitution parameters, measured in seconds:
 $$
-\mathit{bpd} = (24 - t_\textit{load}) \times \frac{n_\textit{full\ throughput\ batches}}{t_\textit{full\ throughput\ batches}}
+\textit{power@SF} =
+    \frac{\numprint{3600}}{\sqrt[28]{
+        w \cdot q_{1} \cdot q_{2\variant{a}} \cdot q_{2\variant{b}} \cdot \ldots \cdot q_{20}}
+    }
+    \cdot
+    \textit{SF}
 $$
 
-For example, if the SUT took $3.5\text{ hours}$ to load, executed the fully completed throughput batches for $1.75$ hours and completed $7$ batches:
+To determine the price-adjusted power score, we factor in the $\textit{TCO}$\emph{:}
+$$ \textit{power@SF/\$} = \textit{power@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
+
+\subsubsection{Throughput score}
+\label{sec:throughput-score}
+
+The throughput score is based on $t_\textit{load}$, measured in hours,
+and the cumulative times and number of the throughput batches executed:
+%throughput score is calculated as the number of batches the system could execute in a single day
 $$
-\mathit{bpd} = (24 - 3.5) \times \frac{7}{1.75} = 82\text{ batches/day}
+\textit{throughput@SF} =
+    (24\text{ hours} - t_\textit{load})
+    \cdot
+    \frac{n_\textit{batches}}{t_\textit{batches}}
+    \cdot
+    \textit{SF}
 $$
+The subtraction of $t_\textit{load}$ ensures that the scoring rewards systems with efficient bulk loaders (unlike in \tpcH and \tpcDS which do not include load performance in their metrics).
+The price-adjusted throughput score is determined analogously: % to the price-adjusted power score.
+$$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
 
 \subsection{Implementation Rules}
 \label{sec:bi-implementation-rules}
