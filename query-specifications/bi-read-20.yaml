@@ -19,9 +19,9 @@ parameters:
   - name: person2Id
     type: ID
     description: |
-      `(A)` there is guaranteed to be no path between any `person1` working at `company` and `person2`
+      `(a)` there is guaranteed to be no path between any `person1` working at `company` and `person2`
 
-      `(B)` there is guaranteed to be a 2-hop path between at least one `person1` working at `company` and `person`.
+      `(b)` there is guaranteed to be a 2-hop path between at least one `person1` working at `company` and `person`.
 result:
   - name: person1.id
     type: ID

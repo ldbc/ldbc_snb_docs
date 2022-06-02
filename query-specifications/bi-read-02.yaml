@@ -11,13 +11,13 @@ parameters:
     description: |
       Based on the creation day -- *TagClass* -- number of *Messages* factor table:
 
-      `(A)` A flashmob date
+      `(a)` A flashmob date
 
-      `(B)` A non-flashmob date
+      `(b)` A non-flashmob date
   - name: tagClass
     type: Long String
     description: |
-      For both `(A)` and `(B)`, *TagClasses* with a similar amount of *Messages* are selected
+      For both `(a)` and `(b)`, *TagClasses* with a similar amount of *Messages* are selected
 result:
   - name: tag.name
     type: Long String

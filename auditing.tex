@@ -808,8 +808,8 @@ The auditor's responsibility is to enforce this requirement, \ie they should ver
 \subsubsection{Query Variants}
 \label{sec:bi-query-variants}
 
-Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use (A) and (B) variants with different sets of input parameters.
-These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14(A) or Q14(B)).
+Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use \variantA and \variantB variants with different sets of input parameters.
+These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14\variantA or Q14\variantB).
 Moreover, it is not allowed for the query implementations to contain code that aims to detect the query variant used.
 
 \subsection{Scaling}

@@ -18,9 +18,9 @@ parameters:
   - name: startDate
     type: Date
     description: |
-      `(A)`: A range during which a flashmob event happened (it should yield at least a 5× difference)
+      `(a)`: A range during which a flashmob event happened (it should yield at least a 5× difference)
 
-      `(B)`: A regular range (does not include a flashmob event)
+      `(b)`: A regular range (does not include a flashmob event)
   - name: endDate
     type: Date
 result:

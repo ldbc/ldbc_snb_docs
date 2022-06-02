@@ -12,9 +12,9 @@ parameters:
   - name: personId
     type: ID
     description: |
-      `(A)` *Persons* with an average degree of *knows* edges are selected
+      `(a)` *Persons* with an average degree of *knows* edges are selected
 
-      `(B)` *Persons* who have only one friend and that *Person* has two friends in total (including the original *Person*)
+      `(b)` *Persons* who have only one friend and that *Person* has two friends in total (including the original *Person*)
   - name: country
     type: String
     description: |
