@@ -363,7 +363,7 @@ However, \textbf{note that the two SNB workloads have different data sets} due w
 The data sets sizes are established as follows:
 For both workloads, we use the default settings for the splitting the data into an intial (bulk-loaded) data set and the later update operations (``streams'').
 For Interactive, both the 90\% initial data and the 10\% update streams count towards the total size and the \textsf{csv-singular-merged-fk} serializer is used.
-For BI, the sum of the initial snapshot (97\%) and the refresh operations (daily inserts and deletes) are measured and the default CSV serializers (\textsf{composite-merged-fk}) is used.
+For BI, the sum of the initial snapshot (97\%) and the update operations (daily inserts and deletes) are measured and the default CSV serializers (\textsf{composite-merged-fk}) is used.
 
 It is important to note that for a given workload and scale factor, data sets generated using different serializers contain exactly the same data, the only difference is in how they are represented.%
 %\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
@@ -502,7 +502,7 @@ This section focuses primarily data generation.
 
 The initial step in generating delete operations is to define the semantics of the desired operations.
 To understand common behaviour of deletes we informally surveyed several social networks, the findings of which motivated the design
-of 8 delete operations described in~\autoref{sec:bi-refreshes}.
+of 8 delete operations described in~\autoref{sec:bi-updates}.
 
 The next step was to generate \emph{delete events} within LDBC's synthetic data generator and ensure that they follow a logic order in
 the social network.
@@ -840,7 +840,7 @@ The target proportion of group memberships that are deleted across the simulatio
 Datagen supports 3 modes, each having different output:
 \begin{itemize}
 \item \textbf{Interactive}. Produces the data necessary for the Interactive workload. Includes a set of bulk load csv files and a number of update streams, which contain only insert operations.
-\item \textbf{BI}. Produces the data necessary for the Business Intelligence workload. Includes a set of bulk load csv files and a number of refresh batches, which contain insert and delete operations.
+\item \textbf{BI}. Produces the data necessary for the Business Intelligence workload. Includes a set of bulk load csv files and a number of update batches, which contain insert and delete operations.
 \item \textbf{Raw}. Produces a fully dynamic graph without insert or delete operations. Includes a set of bulk load csv files (covering whole simulation period), with each dynamic entity having creation and deletion date attributes serialized. This mode is not intended for use with any LDBC workload.
 \end{itemize}
 
@@ -851,9 +851,9 @@ The modes BI and raw use the dynamic graph containing creation events and deleti
 Raw mode effectively serializes the graph to a bulk component and has a slightly different schema, with each entity having creation date and deletion date fields.
 This mode was developed for testing, yet may be useful to users that require a dynamic graph data set for purposes other than benchmarking.
 
-For the BI mode the generated data must be converted into a bulk load component and a series of refresh batches (containing insert and delete operations).
+For the BI mode the generated data must be converted into a bulk load component and a series of update batches (containing insert and delete operations).
 \autoref{fig:serialization-conds} displays the possible creation and deletion dates a dynamic entity can have with respect to the bulk load cut off, simulation end, and network collapse, which determines the target file the entity should be serialized to.
-For example, if a \tPost is created after the bulk load and deleted before the simulation end this should result in a insert and a delete operation in the refresh batch data set.
-If an entity is marked for explicit deletion then, if the conditions in \autoref{fig:serialization-conds} are satisfied then a deletion operation is serialized into the refresh batches.
+For example, if a \tPost is created after the bulk load and deleted before the simulation end this should result in a insert and a delete operation in the update batch data set.
+If an entity is marked for explicit deletion then, if the conditions in \autoref{fig:serialization-conds} are satisfied then a deletion operation is serialized into the update batches.
 
 \input{figures/fig-serialization-conds}

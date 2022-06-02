@@ -6,8 +6,8 @@
 ## Schema
 
 * Schema: [[PDF](schema.pdf)] [[PNG](schema.png)]
-* Example graph without refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-without-refreshes.pdf)]
-* Example graph with refresh operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-with-refreshes.pdf)]
+* Example graph without update operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-without-updates.pdf)]
+* Example graph with update operations: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/example-graph-with-updates.pdf)]
 
 ## Workloads
 

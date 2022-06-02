@@ -676,7 +676,7 @@ Results with these systems are reported in the same leaderboard.
 \end{itemize}
 
 \emph{Purely analytical systems} shall perform their \emph{throughput batches} in two steps:
-first, they should perform the writes (refresh operations),
+first, they should perform the writes (update operations),
 then, they should perform the reads (queries).
 For such systems, passing the \emph{ACID compliance test} is not required.
 
@@ -791,7 +791,7 @@ Using auxiliary data structures (\eg indexes, materialized views) is allowed if 
 \subsubsection{Query Declarativity}
 \label{sec:bi-query-declarativity}
 
-Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation, including the read queries and the refresh operations.
+Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation, including the read queries and the update operations.
 General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
 
 Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
