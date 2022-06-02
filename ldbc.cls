@@ -142,7 +142,7 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{2.0.0}
+\newcommand{\ldbcsnbdocversion}{2.0.1-SNAPSHOT}
 \newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
 \delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
@@ -235,7 +235,9 @@
         {
         \begin{center}
         The specification was built on the source code available at \\
-        \url{https://github.com/ldbc/ldbc_snb_docs/releases/tag/v2.0.0}
+            \url{https://github.com/ldbc/ldbc_snb_docs/tree/main}
+            % use the following line for stable versions with a Git tag for \ldbcsnbdocversion:
+            %\url{https://github.com/ldbc/ldbc_snb_docs/releases/tag/v\ldbcsnbdocversion}
         \end{center}
         }
 

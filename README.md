@@ -3,8 +3,8 @@
 
 [![Build Status](https://github.com/ldbc/ldbc_snb_docs/actions/workflows/compile-spec.yml/badge.svg)](https://github.com/ldbc/ldbc_snb_docs/actions)
 
-[[latest PDF (0.4.0-SNAPSHOT)]](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
-[[stable PDF (0.3.6)]](https://arxiv.org/pdf/2001.02299.pdf)
+[[latest PDF (2.0.1-SNAPSHOT)]](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[stable PDF (2.0.0)]](https://arxiv.org/pdf/2001.02299.pdf)
 
 ## Benchmark specification
 
@@ -20,7 +20,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_driver
   * Implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
-* BI (WIP, will be released in v0.4.0+):
+* BI (released in v2.0.0, available for auditing soon):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
 
