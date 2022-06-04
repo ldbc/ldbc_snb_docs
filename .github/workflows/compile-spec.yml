@@ -20,8 +20,8 @@ jobs:
         cp standalone-query-cards/*.pdf out/
         cp figures/schema-comfortable.pdf out/schema.pdf
         cp figures/schema-comfortable.png out/schema.png
-        cp figures/example-graph-with-refreshes.pdf out/example-graph-with-refreshes.pdf
-        cp figures/example-graph-without-refreshes.pdf out/example-graph-without-refreshes.pdf
+        cp figures/example-graph-with-updates.pdf out/example-graph-with-updates.pdf
+        cp figures/example-graph-without-updates.pdf out/example-graph-without-updates.pdf
         cp deployment/readme-to-deploy.md out/README.md
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
