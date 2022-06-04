@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -eu
+set -o pipefail
+
 # prevent "Couldn't read xref table" errors
 cd patterns
 for f in *.pdf; do pdftk $f cat output $f.new && mv $f.new $f; done
@@ -20,13 +23,13 @@ sed -i 's/\\bibliography{.*}/\\bibliography{ms}/' ms.tex
 latexmk -pdf --interaction=batchmode ms
 
 # cleanup 
-rm *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.blg *.fdb_latexmk *.pdf
-rm ms.zip
+rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.blg *.fdb_latexmk *.pdf
+rm -f ms.zip
 # standalone documents
-rm standalone-query-cards/*
-rm workload-*.tex
+rm -f standalone-query-cards/*
+rm -f workload-*.tex
 # binary docs
-rm *.docx
+rm -f *.docx
 
 # create archive
 zip -r ms.zip *
