@@ -12,9 +12,9 @@ description: |
 
   Only consider *Messages* that were created in a *Forum* that was created within the timeframe (interval) `[startDate, endDate]`. Note that for *Comments*, the containing *Forum* is that of the *Post* that the comment (transitively) replies to. Also note that interactions are counted both ways.
 
-  The weight for the shortest path algorithm is determined as 1 / (interaction score + 1).
+  The weight for the shortest path algorithm is determined as $\frac{1}{\textit{interaction score} + 1}$.
 
-  The result of the query is a single number, the cost of the weighted shortest path. If no such path exists, the query should return -1.
+  The result of the query is a single number, the cost of the weighted shortest path. If no such path exists, the query should return $-1$.
 parameters:
   - name: person1Id
     type: ID
