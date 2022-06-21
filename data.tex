@@ -53,7 +53,7 @@ All of them are described in the following sections.
     \item Posts in a forum can be created by a non-member person if and only if that person is the moderator of the Forum.
 \end{itemize}
 
-\subsection{Entities (nodes)}
+\subsection{Entities (Nodes)}
 
 {\flushleft \textbf{City:}} a sub-class of a Place, and represents a
 city of the real world. City entities are used to specify where persons live,
@@ -130,7 +130,7 @@ interested in. \autoref{table:tag} shows the atltributes of the Tag entity.
 {\flushleft \textbf{University:}} a sub-class of Organisation,
 and represents an institution where persons study.
 
-\subsection{Relations (edges)}
+\subsection{Relations (Edges)}
 
 Relations (edges) connect entities of different types. The endpoint entities are defined by their ``id'' attribute.
 Edge instances starting from or ending in a given node are treated as a set, \ie no ordering is defined on the edges.
@@ -287,7 +287,7 @@ distributed along all the simulated time.
 
 Finally, in the last step the data is serialized into the output files.
 
-\subsection{Distributions, Parameters and Quirks}
+\subsection{Distributions, Parameters, and Quirks}
 \label{sec:distr-param}
 
 Interesting quirks:
@@ -452,7 +452,7 @@ The inheritance hierarchies in the schema have two important characteristics
     \emph{Map hierarchy to single table} is used, \ie all Organisation nodes are serialized in a single fiel. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Company''.
 \end{description}
 
-\subsection{Interactive Update Streams (inserts)}
+\subsection{Interactive Update Streams (Inserts)}
 
 The generic schema for the Interactive update streams is given in \autoref{table:update_stream_generic_schema}, while the concrete schemas of each insert operations is given in \autoref{table:update_stream_schemas}.
 The update stream files are generated in the \texttt{social\_network/} directory and are grouped as follows:
