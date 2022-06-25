@@ -13,10 +13,10 @@
 \newboolean{standalone}
 
 \reversemarginpar
-\newcommand{\currentQueryCard}{0}
+\newcommand{\currentQueryCard}{n/a}
 \newcommand{\queryRefCard}[3]{
 	\ifthenelse{
-		\equal{\currentQueryCard}{#3}
+		\equal{\currentQueryCard}{#1}
 	}{%
 		\colorbox{white}{\tt #2 #3}%
 	}{%
