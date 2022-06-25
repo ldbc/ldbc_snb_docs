@@ -58,7 +58,8 @@ for filename in glob.glob("query-specifications/*.yaml"):
         doc = yaml.load(f, Loader=yaml.FullLoader)
 
     number = doc['number']
-    number_string = "%02d" % (number)
+    #number_string = "%02d" % (number)
+    number_string = number
     workload = doc['workload']
     title = doc['title']
     description_markdown = doc['description']

@@ -10,7 +10,7 @@
 \renewcommand{\textbf}[1]{{ '{{' }}\it #1}}
 
 {%- if workload == "Interactive" and operation == "complex" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
@@ -28,12 +28,13 @@
 	\queryRefCard{interactive-complex-read-11}{IC}{11}\\
 	\queryRefCard{interactive-complex-read-12}{IC}{12}\\
 	\queryRefCard{interactive-complex-read-13}{IC}{13}\\
-	\queryRefCard{interactive-complex-read-14}{IC}{14}\\
+	\queryRefCard{interactive-complex-read-14-old}{IC}{14-o}\\
+	\queryRefCard{interactive-complex-read-14-new}{IC}{14-n}\\
 }
 {%- endif %}
 
 {%- if workload == "Interactive" and operation == "short" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
@@ -49,7 +50,7 @@
 {%- endif %}
 
 {%- if workload == "Interactive" and operation == "insert" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
@@ -66,7 +67,7 @@
 {%- endif %}
 
 {% if workload == "BI" and operation == "read" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\vspace{0.22ex}
 	\raggedleft
@@ -95,7 +96,7 @@
 {% endif -%}
 
 {%- if workload == "BI" and operation == "delete" -%}
-\renewcommand{\currentQueryCard}{ {{- number -}} }
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\raggedleft
 	\vspace{0.22ex}
