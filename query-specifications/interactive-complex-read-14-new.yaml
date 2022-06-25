@@ -7,7 +7,7 @@ description: |
 
   Given two *Persons*, find a cheapest path between two *Persons*, in the interaction subgraph.
 
-  The interaction subgraph is based on the Person-knows-Person graph where the Person endpoints have at least one interaction between them.
+  The interaction subgraph is based on the Person-knows-Person graph where the Person endpoints of each knows edge have at least one interaction between them.
   The edge weights are determined as $\max\lfloor 10 - \sqrt{\textit{numInteractions}}, 1 \rfloor$.
   
   An interaction is defined as a direct reply (by one of the *Persons*) to a *Message* (by the other *Person*).
