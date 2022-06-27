@@ -23,11 +23,11 @@ parameters:
   - name: replyToPostId
     type: ID
     category: calculated
-    description: $-1$ if the *Comment* is a reply of a *Comment*
+    description: "**old version:** $-1$ if the *Comment* is a reply of a *Comment*; **new version:** null if the *Comment* is a reply of a *Post*"
   - name: replyToCommentId
     type: ID
     category: calculated
-    description: $-1$ if the *Comment* is a reply of a *Post*
+    description: "**old version:** $-1$ if the *Comment* is a reply of a *Post*; **new version:** null if the *Comment* is a reply of a *Post*"
   - name: tagIds
     type: \{ID\}
 choke_points: [9.1, 9.2]
