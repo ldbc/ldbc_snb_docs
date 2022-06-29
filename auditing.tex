@@ -291,7 +291,8 @@ The configuration of the SUT must be reported so as to include the following:
     \item Any OS configuration parameters if other than default, \eg \verb+vm.swappiness+, \verb+vm.max_map_count+ in Linux.
     \item Complete source code of any server-side logic, \eg stored procedures, triggers.
     \item Complete source code of driver-side benchmark implementation.
-    \item Description of system architecture (including software versions, including OS kernel version, DBMS version, Docker version).
+    \item Description of the benchmark environment, including software versions, OS kernel version, DBMS version as well as versions of other major software components used for running the benchmark (Docker, Java Virtual Machine, Python, etc.).
+    \item The SUT's highest configurable isolation level and the isolation level used for running the benchmark.
     %\item Use of partitioning or replication across multiple machines shall be disclosed if used. The specific partitioning keys or replication criteria, as well as the transactional behaviour of said partitioning or replication shall be described. This shall not be inconsistent with the ACID behaviours specified in the benchmark.
 \end{enumerate}
 
