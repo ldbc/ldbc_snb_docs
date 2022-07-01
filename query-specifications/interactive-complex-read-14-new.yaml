@@ -19,7 +19,7 @@ parameters:
 result:
   - name: personIdsInPath
     type: '[ID]'
-    description: identifiers representing an ordered sequence of the *Persons* in the path
+    description: Identifiers representing an ordered sequence of the *Persons* in the path
     category: calculated
   - name: pathWeight
     type: 64-bit Float
