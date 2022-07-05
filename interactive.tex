@@ -9,7 +9,8 @@ The LDBC SNB Interactive workload consists of three query classes:
 \begin{itemize}
 \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-complex-reads}.
 \item \textbf{Short read-only queries.} See \autoref{sec:interactive-short-reads}.
-\item \textbf{Transactional update queries inserting new entities.} See \autoref{sec:interactive-inserts}.
+\item \textbf{Insert operations.} See \autoref{sec:insert-operations}.
+\item \textbf{(new) Delete operations.} See \autoref{sec:delete-operations}.
 \end{itemize}
 
 \subsection*{Related Publications}
@@ -37,20 +38,6 @@ A detailed description of the workload (covering reads and inserts) is available
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Inserts (Formerly: Updates)}
-\label{sec:interactive-inserts}
-
-Each insert query inserts
-
-\begin{enumerate}
-    \item either a single node of a certain type, along with its edges to other existing nodes
-    \item or a single edge of a certain type between two existing nodes.
-\end{enumerate}
-In versions 0.3.x, these operations were called ``Interactive updates''.
-From 0.4.0 onwards, these are called ``Interactive inserts''.
-
-\input{interactive-inserts}
 
 \section{Workload Definition}
 \label{sec:interactive-workload-definition}

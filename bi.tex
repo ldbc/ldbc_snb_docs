@@ -56,19 +56,14 @@ The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{S
 \section{Updates}
 \label{sec:bi-updates}
 
-\subsection{Inserts}
+\subsection{Insert Operations}
 \label{sec:bi-inserts}
 
-See \emph{Interactive Inserts} (\autoref{sec:interactive-inserts}).
+Insert operations consist of individual inserts for each entity type.
+Implementations typically use the same format as the one for loading the initial snapshot of the data set.
 
-\subsection{Deletes}
+\subsection{Delete Operations}
 \label{sec:bi-deletes}
 
-Each delete query removes
+See \emph{delete operations} (\autoref{sec:delete-operations}).
 
-\begin{enumerate}
-    \item a single edge between two existing nodes
-    \item or a node, all incident edges and, in certain cases, nodes and edges that are transitively reachable on a certain path.
-\end{enumerate}
-
-\input{bi-deletes}

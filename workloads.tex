@@ -204,3 +204,36 @@ Return values are subject to the following rules:
 \begin{itemize}
 	\item \textsf{DateTime} and \textsf{Date} values should use GMT timezone (or they should be converted by the client to GMT).
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Update Operations}
+\label{sec:update-operations}
+
+\subsection{Insert Operations}
+\label{sec:insert-operations}
+
+Each insert operations creates
+
+\begin{enumerate}
+    \item either a single node of a certain type, along with its edges to other existing nodes
+    \item or a single edge of a certain type between two existing nodes.
+\end{enumerate}
+In version up to 0.3.x, these operations were called ``updates''.
+From 0.4.0 onwards, these are called ``inserts''.
+
+\input{inserts}
+
+\subsection{Delete Operations}
+\label{sec:delete-operations}
+
+Each delete operation removes
+
+\begin{enumerate}
+    \item a single edge between two existing nodes
+    \item or a node, all its edges and, in certain cases, nodes and edges that are transitively reachable on a certain path (thus performing a cascading delete).
+\end{enumerate}
+
+\input{deletes}
