@@ -14,11 +14,12 @@
 * [Interactive](workload-interactive.pdf)
     * [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
     * [Interactive / Short Reads](workload-interactive-short-reads.pdf)
-    * [Interactive / Inserts](workload-interactive-inserts.pdf)
     * [SIGMOD 2015 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
 * [BI](workload-bi.pdf)
     * [BI / Reads](workload-bi-reads.pdf)
-    * [BI / Deletes](workload-bi-deletes.pdf)
+* Updates:
+    * [Inserts](workload-inserts.pdf)
+    * [Deletes](workload-deletes.pdf)
 
 ## Individual queries
 
@@ -52,14 +53,14 @@
 
 ### Interactive inserts
 
-* [Interactive Insert 1](interactive-insert-01.pdf)
-* [Interactive Insert 2](interactive-insert-02.pdf)
-* [Interactive Insert 3](interactive-insert-03.pdf)
-* [Interactive Insert 4](interactive-insert-04.pdf)
-* [Interactive Insert 5](interactive-insert-05.pdf)
-* [Interactive Insert 6](interactive-insert-06.pdf)
-* [Interactive Insert 7](interactive-insert-07.pdf)
-* [Interactive Insert 8](interactive-insert-08.pdf)
+* [Interactive Insert 1](insert-01.pdf)
+* [Interactive Insert 2](insert-02.pdf)
+* [Interactive Insert 3](insert-03.pdf)
+* [Interactive Insert 4](insert-04.pdf)
+* [Interactive Insert 5](insert-05.pdf)
+* [Interactive Insert 6](insert-06.pdf)
+* [Interactive Insert 7](insert-07.pdf)
+* [Interactive Insert 8](insert-08.pdf)
 
 ### BI reads
 
@@ -86,11 +87,11 @@
 
 ### BI deletes
 
-* [BI Delete 1](bi-delete-01.pdf)
-* [BI Delete 2](bi-delete-02.pdf)
-* [BI Delete 3](bi-delete-03.pdf)
-* [BI Delete 4](bi-delete-04.pdf)
-* [BI Delete 5](bi-delete-05.pdf)
-* [BI Delete 6](bi-delete-06.pdf)
-* [BI Delete 7](bi-delete-07.pdf)
-* [BI Delete 8](bi-delete-08.pdf)
+* [BI Delete 1](delete-01.pdf)
+* [BI Delete 2](delete-02.pdf)
+* [BI Delete 3](delete-03.pdf)
+* [BI Delete 4](delete-04.pdf)
+* [BI Delete 5](delete-05.pdf)
+* [BI Delete 6](delete-06.pdf)
+* [BI Delete 7](delete-07.pdf)
+* [BI Delete 8](delete-08.pdf)
