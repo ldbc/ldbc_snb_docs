@@ -11,12 +11,14 @@
 
 ## Workloads
 
-* [Interactive](workload-interactive.pdf)
-    * [Interactive / Complex Reads](workload-interactive-complex-reads.pdf)
-    * [Interactive / Short Reads](workload-interactive-short-reads.pdf)
+* Interactive workload:
+    * [Interactive workload (full specification)](workload-interactive.pdf)
+    * [Interactive workload / Complex Reads](workload-interactive-complex-reads.pdf)
+    * [Interactive workload / Short Reads](workload-interactive-short-reads.pdf)
     * [SIGMOD 2015 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
-* [BI](workload-bi.pdf)
-    * [BI / Reads](workload-bi-reads.pdf)
+* BI workload:
+    * [BI workload (full specification)](workload-bi.pdf)
+    * [BI workload / Reads](workload-bi-reads.pdf)
 * Updates:
     * [Inserts](workload-inserts.pdf)
     * [Deletes](workload-deletes.pdf)
