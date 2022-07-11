@@ -15,8 +15,8 @@
 {% endfor %} \\ \hline
 
 {%- for query in queries -%}
-    {#- only list queries that have at least on choke point -#}
-    {%- if query_choke_point[query.0] and query.2 != "insert" and query.2 != "delete" -%}
+    {#- only list queries that have at least one choke point -#}
+    {%- if query_choke_point[query.0] -%}
         {%- if queries[loop.index0 - 1].0[0] != queries[loop.index0].0[0] %}\hline{% endif %}
         \queryRefCard{ {{- query.0 -}} }{
             {%- if query.1 == "Interactive" and query.2 == "complex"%}IC{% else %}

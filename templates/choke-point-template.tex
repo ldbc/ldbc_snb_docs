@@ -4,11 +4,11 @@
     \queryRefCard{ {{- query.0 -}} }{
       {%- if query.1 == "Interactive" and query.2 == "complex" -%}
         IC
-      {%- elif query.1 == "Interactive" and query.2 == "insert" -%}
-        INS
       {%- elif query.1 == "BI" and query.2 == "read" -%}
         BI
-      {%- elif query.1 == "BI" and query.2 == "delete" -%}
+      {%- elif query.2 == "insert" -%}
+      INS
+      {%- elif query.2 == "delete" -%}
         DEL
       {%- endif -%}
     }{ {{- query.3 -}} }
