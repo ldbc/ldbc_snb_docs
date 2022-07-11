@@ -5,7 +5,7 @@ The LDBC SNB BI workload consists of two sets of operations:
 
 \begin{itemize}
 \item \textbf{Read queries.} Complex read queries touching a significant portion of the data. See \autoref{sec:bi-reads}.
-\item \textbf{Microbatches of update operations.} A set of insert and delete operations, batched for a given time period (\eg an hour, a day, \etc). See \autoref{sec:bi-updates}.
+\item \textbf{Microbatches of update operations.} A set of insert and delete operations, batched for a given time period (\eg an hour, a day, \etc). See Sections \ref{sec:bi-insert-operations} and \ref{sec:bi-delete-operations}.
 \end{itemize}
 
 \section{Benchmark Scenario}
@@ -23,7 +23,9 @@ The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
 \section{Parameter Selection}
 \label{sec:bi-paramgen}
 
-During data generation, a sequence of \emph{substitution parameters} (\autoref{sec:substitution-parameters}) is generated.
+During data generation, a sequence of \emph{substitution parameters}
+\iftoggle{StandaloneWorkloadSpecification}{}{(\autoref{sec:substitution-parameters})}
+is generated.
 Similarly to the Interactive workload, the parameter generation of the BI workload uses \emph{parameter curation}~\cite{DBLP:conf/tpctc/GubichevB14} to ensure that the query runtimes are  predictable (to some extent).
 
 Several queries use multiple variants with different sets of input parameters.
@@ -53,16 +55,20 @@ The draft BI workload was published at the \mbox{GRADES-NDA} workshop at \mbox{S
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Updates}
-\label{sec:bi-updates}
-
-\subsection{Insert Operations}
-\label{sec:insert-operations}
+\section{Insert Operations}
+\label{sec:bi-insert-operations}
 
 Insert operations consist of individual inserts for each entity type.
 Implementations typically use the same format as the one for loading the initial snapshot of the data set.
 
-\subsection{Delete Operations}
-\label{sec:deletes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-See \emph{delete operations} (\autoref{sec:delete-operations}).
+\section{Delete Operations}
+\label{sec:bi-delete-operations}
+\iftoggle{StandaloneWorkloadSpecification}{
+    \input{deletes}
+}{
+    See \autoref{sec:delete-operations}.
+}

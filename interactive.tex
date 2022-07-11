@@ -15,7 +15,10 @@ The LDBC SNB Interactive workload consists of three query classes:
 
 \subsection*{Related Publications}
 
-A detailed description of the workload (covering reads and inserts) is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}. The ACID Test Suite was first published at TPCTC 2020~\cite{DBLP:conf/tpctc/WaudbySKMBS20} and is part of this specification in \autoref{sec:acid-test-suite}.
+A detailed description of the workload (covering reads and inserts) is available in the paper published at \mbox{SIGMOD} 2015~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}. The ACID Test Suite was first published at TPCTC 2020~\cite{DBLP:conf/tpctc/WaudbySKMBS20}.
+\iftoggle{StandaloneWorkloadSpecification}{}{
+    It is part of this specification in \autoref{sec:acid-test-suite}.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,6 +37,30 @@ A detailed description of the workload (covering reads and inserts) is available
 \label{sec:interactive-short-reads}
 
 \input{interactive-short-reads}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Insert Operations}
+\label{sec:interactive-insert-operations}
+\iftoggle{StandaloneWorkloadSpecification}{
+    \input{inserts}
+}{
+    See \autoref{sec:insert-operations}.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Delete Operations}
+\label{sec:interactive-delete-operations}
+\iftoggle{StandaloneWorkloadSpecification}{
+    \input{deletes}
+}{
+    See \autoref{sec:delete-operations}.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
