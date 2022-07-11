@@ -49,23 +49,6 @@
 }
 {%- endif %}
 
-{%- if workload == "Interactive" and operation == "insert" -%}
-\renewcommand{\currentQueryCard}{ {{- query_id -}} }
-\marginpar{
-	\raggedleft
-	\vspace{0.22ex}
-
-	\queryRefCard{insert-01}{INS}{1}\\
-	\queryRefCard{insert-02}{INS}{2}\\
-	\queryRefCard{insert-03}{INS}{3}\\
-	\queryRefCard{insert-04}{INS}{4}\\
-	\queryRefCard{insert-05}{INS}{5}\\
-	\queryRefCard{insert-06}{INS}{6}\\
-	\queryRefCard{insert-07}{INS}{7}\\
-	\queryRefCard{insert-08}{INS}{8}\\
-}
-{%- endif %}
-
 {% if workload == "BI" and operation == "read" -%}
 \renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
@@ -95,7 +78,24 @@
 }
 {% endif -%}
 
-{%- if workload == "BI" and operation == "delete" -%}
+{%- if operation == "insert" -%}
+\renewcommand{\currentQueryCard}{ {{- query_id -}} }
+\marginpar{
+	\raggedleft
+	\vspace{0.22ex}
+
+	\queryRefCard{insert-01}{INS}{1}\\
+	\queryRefCard{insert-02}{INS}{2}\\
+	\queryRefCard{insert-03}{INS}{3}\\
+	\queryRefCard{insert-04}{INS}{4}\\
+	\queryRefCard{insert-05}{INS}{5}\\
+	\queryRefCard{insert-06}{INS}{6}\\
+	\queryRefCard{insert-07}{INS}{7}\\
+	\queryRefCard{insert-08}{INS}{8}\\
+}
+{%- endif %}
+
+{%- if operation == "delete" -%}
 \renewcommand{\currentQueryCard}{ {{- query_id -}} }
 \marginpar{
 	\raggedleft
