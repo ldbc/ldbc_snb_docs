@@ -24,7 +24,7 @@
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Arial" fontSize="12" fontStyle="plain" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="442.8962309027779" x="0.0" xml:space="preserve" y="0.0">Find a cheapest path on edges where numInteractions ≥ 1,
-using edge weight = max(floor(10 - sqrt(numInteractions)))</y:NodeLabel>
+using edge weight = max(floor(40 - sqrt(numInteractions)), 1)</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
