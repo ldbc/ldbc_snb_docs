@@ -41,6 +41,5 @@ sort:
 limit: n/a
 choke_points: [3.3, 7.6, 7.7, 8.4, 8.6]
 relevance: |
-  Finding shortest paths between pairs of *Persons* in *Cities* can be implemented in theory with an **all-pairs shortest paths** algorithm. However, this needs to be executed on the whole *Person-knows-Person* graph (with edge weights derived from the number of interactions) so it is expected to be prohibitively expensive. A better approach is using multiple **single-source shortest path algorithms** (e.g. from the *City* with fewer inhibitants).
-
-  Implementations can either pre-compute edge weights or compute them on-the-fly.
+  To find the weighted shortest paths efficiently, the system can use e.g. a bidirectional Dijkstra algorithm.
+  As the edge weights do not depend on any parameter, systems can pre-compute them (if they do not interleave reads and writes).
