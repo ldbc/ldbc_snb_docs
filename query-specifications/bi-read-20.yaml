@@ -4,7 +4,15 @@ number: 20
 title: Recruitment
 description: |
   Consider *knows* edges where the endpoint *Persons* attended the same *University* and set the weight of the edge to the absolute difference between the year of enrolment plus 1. If the *Persons* attended multiple universities, we select the smallest (`min`) value.
-  Formally: `min_{saA, saB} (abs(saA.classYear - saB.classYear)) + 1`.
+  Formally:
+  $$
+  w = \min_{\textsf{studyAt}_\textsf{A}, \textsf{studyAt}_\textsf{B}}
+    \left|
+      \textsf{studyAt}_\textsf{A}.\textsf{classYear} -
+      \textsf{studyAt}_\textsf{B}.\textsf{classYear}
+    \right|
+    + 1
+  $$
 
   Given a *Company* `company` and a *Person* `person2` (who is not working and has not worked at `company`), find a different *Person* (`person1`) who works or at some point worked in `company` and is reachable from `person2` through people who have studied together through the shortest weighted path.
     
