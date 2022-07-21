@@ -3,13 +3,13 @@ DOCUMENT=ldbc-snb-specification.tex
 spec: $(DOCUMENT) choke-points/choke-points-queries.tex $(wildcard query-specifications/*.yaml)
 	latexmk -pdf --interaction=batchmode $(DOCUMENT)
 
-all: choke-points/choke-points-queries.tex compile_query_cards workloads texfot
+all: choke-points/choke-points-queries.tex query_cards workloads texfot
 	ls *.pdf
 
 choke-points/choke-points-queries.tex: $(wildcard query-specifications/*.yaml)
 	./generate-tex.py
 
-compile_query_cards: $(DOCUMENT) choke-points/choke-points-queries.tex
+query_cards: $(DOCUMENT) choke-points/choke-points-queries.tex
 	cd standalone-query-cards && \
 	for card in *.tex; do \
 		echo $$card ; \

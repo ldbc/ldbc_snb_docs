@@ -56,7 +56,7 @@ To build the document locally, run `make` or `make texfot`. The latter requires 
 We also provide a [GitHub Action repository and a Docker container](https://github.com/ldbc/document-builder) and [images on Docker Hub](https://hub.docker.com/r/ldbc/document-builder). To use this locally, run:
 
 ```bash
-docker run --rm --volume=`pwd`:"/github/workspace" ldbc/document-builder:2021 texfot compile_query_cards workloads && sudo chown -R ${USER}:${USER} .
+docker run --rm --volume=`pwd`:"/github/workspace" ldbc/document-builder:2021 texfot query_cards workloads && sudo chown -R ${USER}:${USER} .
 ```
 
 For the GitHub Actions configuration, check out the content of the [`.github/workflows/`](.github/workflows/ directory).

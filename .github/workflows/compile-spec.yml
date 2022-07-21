@@ -12,7 +12,7 @@ jobs:
     - name: Build PDFs with the LaTeX engine in Docker
       uses: ldbc/document-builder@main
       with:
-        makefile-arguments: texfot compile_query_cards workloads
+        makefile-arguments: texfot query_cards workloads
     - name: Create package
       run: |
         mkdir out/
