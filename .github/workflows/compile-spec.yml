@@ -24,7 +24,7 @@ jobs:
         cp figures/example-graph-without-updates.pdf out/example-graph-without-updates.pdf
         cp deployment/readme-to-deploy.md out/README.md
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      uses: JamesIves/github-pages-deploy-action@v4.4.0
       with:
         branch: gh-pages
         folder: out
