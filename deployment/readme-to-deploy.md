@@ -40,8 +40,8 @@
 * [Interactive Complex Read 11](interactive-complex-read-11.pdf)
 * [Interactive Complex Read 12](interactive-complex-read-12.pdf)
 * [Interactive Complex Read 13](interactive-complex-read-13.pdf)
-* [Interactive Complex Read 14](interactive-complex-read-14-new.pdf)
-* [Interactive Complex Read 14](interactive-complex-read-14-old.pdf)
+* [Interactive Complex Read 14 (old)](interactive-complex-read-14-old.pdf)
+* [Interactive Complex Read 14 (new)](interactive-complex-read-14-new.pdf)
 
 ### Interactive short reads
 
