@@ -14,6 +14,7 @@ query_cards: $(DOCUMENT) choke-points/choke-points-queries.tex
 	for card in *.tex; do \
 		echo $$card ; \
 		pdflatex --interaction=batchmode $$card ; \
+		pdflatex --interaction=batchmode $$card ; \
 	done
 
 workloads: $(DOCUMENT) $(wildcard query-specifications/*.yaml)
