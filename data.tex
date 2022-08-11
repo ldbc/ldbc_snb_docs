@@ -502,7 +502,7 @@ This section focuses primarily data generation.
 
 The initial step in generating delete operations is to define the semantics of the desired operations.
 To understand common behaviour of deletes we informally surveyed several social networks, the findings of which motivated the design
-of 8 delete operations described in~\autoref{sec:bi-updates}.
+of 8~delete operations described in~\autoref{sec:bi-delete-operations}.
 
 The next step was to generate \emph{delete events} within LDBC's synthetic data generator and ensure that they follow a logic order in
 the social network.
@@ -812,7 +812,7 @@ Note, this distribution has an average of 2.7\% aligning with \autoref{table:alm
 
 Almuhimedi et al also observe a temporal relationship for when a tweet is deleted - a tweet has a higher chance of being deleted soon
 after it was created.
-They found 50\% of all deleted tweets where removed within 8 minutes of creation.
+They found 50\% of all deleted tweets where removed within 8~minutes of creation.
 We have recreated the temporal distribution in~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} and use it to generate deletion dates from
 the valid lifespan intervals for posts, comments, and likes that are selected for explicit deletion~\autoref{fig:when-activity}.
 
