@@ -9,6 +9,10 @@ parameters:
     type: ID
   - name: countryXName
     type: String
+    description: |
+      `(a)` Correlated *Countries*
+
+      `(b)` Anti-correlated *Countries*
   - name: countryYName
     type: String
   - name: startDate
