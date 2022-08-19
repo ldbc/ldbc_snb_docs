@@ -3,6 +3,8 @@ operation: complex
 number: 14 new
 title: Trusted connection paths (new version)
 description: |
+  **This query is used in the new version of SNB Interactive (v2.0+).**
+
   Find a cheapest path between two given *Persons*, in the interaction subgraph. If there are multiple cheapest paths, return any of them can be returned. Do not return any rows if there is no path between the *Persons*.
 
   The interaction subgraph is based on the *Person*-*knows*-*Person* graph where the *Person* endpoints of each *knows* edge have at least one interaction between them.
