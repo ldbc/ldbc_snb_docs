@@ -564,7 +564,7 @@ A benchmark execution is divided into the following processes (these processes a
 
 \subsubsection{Query Timing During Benchmark Run}
 \label{sec:ontime-requirements}
-A valid benchmark run must last at least 2 hours of wall clock time.
+A valid benchmark run must last at least 2 hours of wall clock time and at most 2 hours and 15 minutes.
 In order to be valid, a benchmark run needs to meet the ``95\% on-time requirement''.
 The \texttt{results\_log.csv} file contains the $\mathsf{actual\_start\_time}$ and the $\mathsf{scheduled\_start\_time}$ of each of the issued queries. In order to have a valid run, 95\% of the queries must meet the following condition:
 \begin{equation*}
@@ -578,7 +578,7 @@ If the execution of the benchmark is valid, the auditor must retrieve all the fi
 \label{sec:int-measurement-window}
 
 Benchmark runs execute the workload on the SUT in two phases (\autoref{fig:measurement-window-selection}).
-First, the SUT must undergo a warm-up period that takes at least 30 minutes. The goal of this is to put the system in a steady state which reflects how it would behave in a normal operating environment. The performance of the operations during warm-up is not considered.
+First, the SUT must undergo a warm-up period that takes at least 30 minutes and at most 35 minutes. The goal of this is to put the system in a steady state which reflects how it would behave in a normal operating environment. The performance of the operations during warm-up is not considered.
 Next, the SUT is benchmarked during a two-hour measurement window. Operation times are recorded and checked to ensure the ``95\% on-time requirement'' is satisfied.
 
 \begin{figure}[h]
