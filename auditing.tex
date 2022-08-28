@@ -747,12 +747,63 @@ Formally, the power score is based on the execution times during the power batch
 % the time spent for executing the each variant with 10~substitution parameters, measured in seconds:
 $$
 \textit{power@SF} =
-    \frac{\numprint{3600}}{\sqrt[28]{
-        w \cdot q_{1} \cdot q_{2\variant{a}} \cdot q_{2\variant{b}} \cdot \ldots \cdot q_{20}}
-    }
+    \frac{\numprint{3600}}{\sqrt[29]{
+        w
+        \cdot q_{1}
+        \cdot q_{2\variant{a}}
+        \cdot q_{2\variant{b}}
+        \cdot \ldots
+        \cdot q_{18}
+        \cdot q_{19\variant{a}}
+        \cdot q_{19\variant{b}}
+        \cdot q_{20\variant{a}}
+        \cdot q_{20\variant{b}}
+    }}
     \cdot
     \textit{SF}
 $$
+
+Including all entries, the formula is:
+{\scriptsize
+$$
+\textit{power@SF} =
+    \frac{\numprint{3600}}{\sqrt[29]{
+        w
+        \! \cdot \! q_{1}
+        \! \cdot \! q_{2\variant{a}}
+        \! \cdot \! q_{2\variant{b}}
+        \! \cdot \! q_{2\variant{a}}
+        \! \cdot \! q_{2\variant{b}}
+        \! \cdot \! q_{3}
+        \! \cdot \! q_{4}
+        \! \cdot \! q_{5}
+        \! \cdot \! q_{6}
+        \! \cdot \! q_{7}
+        \! \cdot \! q_{8\variant{a}}
+        \! \cdot \! q_{8\variant{b}}
+        \! \cdot \! q_{9}
+        \! \cdot \! q_{10\variant{a}}
+        \! \cdot \! q_{10\variant{b}}
+        \! \cdot \! q_{11}
+        \! \cdot \! q_{12}
+        \! \cdot \! q_{13}
+        \! \cdot \! q_{14\variant{a}}
+        \! \cdot \! q_{14\variant{b}}
+        \! \cdot \! q_{15\variant{a}}
+        \! \cdot \! q_{15\variant{b}}
+        \! \cdot \! q_{16\variant{a}}
+        \! \cdot \! q_{16\variant{b}}
+        \! \cdot \! q_{17}
+        \! \cdot \! q_{18}
+        \! \cdot \! q_{19\variant{a}}
+        \! \cdot \! q_{19\variant{b}}
+        \! \cdot \! q_{20\variant{a}}
+        \! \cdot \! q_{20\variant{b}}
+    }}
+    \cdot
+    \textit{SF}
+$$
+}
 
 To determine the price-adjusted power score, we factor in the $\textit{TCO}$\emph{:}
 $$ \textit{power@SF/\$} = \textit{power@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
