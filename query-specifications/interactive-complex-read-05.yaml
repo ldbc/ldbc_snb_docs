@@ -3,9 +3,9 @@ operation: complex
 number: 5
 title: New groups
 description: |
-  Given a start *Person*, denote their friends and friends of friends (excluding the start *Person*) as `otherPerson`.
+  Given a start *Person* with ID `$personId`, denote their friends and friends of friends (excluding the start *Person*) as `otherPerson`.
 
-  Find *Forums* that any *Person* `otherPerson` became a *member* of after a given date (`minDate`).
+  Find *Forums* that any *Person* `otherPerson` became a *member* of after a given date (`$minDate`).
   For each of those *Forums*, count the number of *Posts* that were created by the *Person* `otherPerson`.
 parameters:
   - name: personId

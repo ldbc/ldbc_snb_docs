@@ -3,7 +3,7 @@ operation: complex
 number: 11
 title: Job referral
 description: |
-  Given a start *Person*, find that *Person*'s friends and friends of friends (excluding start *Person*) who started working in some *Company* in a given *Country*, before a given date (`year`).
+  Given a start *Person* with ID `$personId`, find that *Person*'s friends and friends of friends (excluding start *Person*) who started working in some *Company* in a given *Country* with name `$countryName`, before a given date (`$workFromYear`).
 parameters:
   - name: personId
     type: ID

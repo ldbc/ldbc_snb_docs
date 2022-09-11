@@ -3,8 +3,8 @@ operation: complex
 number: 9
 title: Recent messages by friends or friends of friends
 description: |
-  Given a start *Person*, find the most recent *Messages* created by that *Person*'s friends or friends of friends (excluding start *Person*).
-  Only consider *Messages* created before the given `maxDate` (excluding that day).
+  Given a start *Person* with ID `$personId`, find the most recent *Messages* created by that *Person*'s friends or friends of friends (excluding the start *Person*).
+  Only consider *Messages* created before the given `$maxDate` (excluding that day).
 parameters:
   - name: personId
     type: ID

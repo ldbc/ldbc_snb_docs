@@ -3,7 +3,7 @@ operation: complex
 number: 8
 title: Recent replies
 description: |
-  Given a start *Person*, find the most recent *Comments* that are replies to *Messages* of the start *Person*.
+  Given a start *Person* with ID `$personId`, find the most recent *Comments* that are replies to *Messages* of the start *Person*.
   Only consider direct (single-hop) replies, not the transitive (multi-hop) ones.
   Return the reply *Comments*, and the *Person* that created each reply *Comment*.
 parameters:

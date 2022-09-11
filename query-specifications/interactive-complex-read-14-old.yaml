@@ -5,7 +5,7 @@ title: Trusted connection paths (old version)
 description: |
   **This query is used in the old version of SNB Interactive (v0.x and v1.x).**
 
-  Given two *Persons*, find all (unweighted) shortest paths between these two *Persons*, in the subgraph induced by the *knows* relationship.
+  Given two *Persons* with IDs `$person1Id` and `$person2Id`, find all (unweighted) shortest paths between these two *Persons*, in the subgraph induced by the *knows* relationship.
   
   Then, for each path calculate a weight. The nodes in the path are *Persons*, and the weight of a path is the sum of weights between every pair of consecutive *Person* nodes in the path.
 

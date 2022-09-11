@@ -3,7 +3,7 @@ operation: complex
 number: 6
 title: Tag co-occurrence
 description: |
-  Given a start *Person* and some *Tag*, find the other *Tags* that occur together with this *Tag* on *Posts* that were created by start *Person*'s friends and friends of friends (excluding start *Person*). Return top 10 *Tags*, and the count of *Posts* that were created by these *Persons*, which contain both this *Tag* and the given *Tag*.
+  Given a start *Person* with ID `$personId` and a *Tag* with name `$tagName`, find the other *Tags* that occur together with this *Tag* on *Posts* that were created by start *Person*'s friends and friends of friends (excluding start *Person*). Return top 10 *Tags*, and the count of *Posts* that were created by these *Persons*, which contain both this *Tag* and the given *Tag*.
 parameters:
   - name: personId
     type: ID

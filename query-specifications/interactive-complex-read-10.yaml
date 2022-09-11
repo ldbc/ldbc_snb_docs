@@ -3,7 +3,7 @@ operation: complex
 number: 10
 title: Friend recommendation
 description: |
-  Given a start *Person* with id `personId`, find that *Person*'s friends of friends (`foaf`) -- excluding the start *Person* and his/her immediate friends --, who were born on or after the 21st of a given `month` (in any year) and before the 22nd of the following month. Calculate the similarity between each `friend` and the start `person`, where `commonInterestScore` is defined as follows:
+  Given a start *Person* with ID `$personId`, find that *Person*'s friends of friends (`foaf`) -- excluding the start *Person* and his/her immediate friends --, who were born on or after the 21st of a given `$month` (in any year) and before the 22nd of the following month. Calculate the similarity between each `friend` and the start `person`, where `commonInterestScore` is defined as follows:
 
   * `common`   = number of *Posts* created by `friend`, such that the *Post* has a  *Tag* that the start `person` is interested in
   * `uncommon` = number of *Posts* created by `friend`, such that the *Post* has no *Tag* that the start `person` is interested in
@@ -13,7 +13,7 @@ parameters:
     type: ID
   - name: month
     type: 32-bit Integer
-    description: "Between 1 and 12. Implementations may also pass the next month as an additional `nextMonth` parameter"
+    description: "Between 1 and 12. Implementations may also pass the next month as an additional `$nextMonth` parameter"
 result:
   - name: foaf.id
     type: ID

@@ -3,8 +3,8 @@ operation: complex
 number: 2
 title: Recent messages by your friends
 description: |
-  Given a start *Person* (`person`), find the most recent *Messages* from all of that *Person*'s friends (`friend` nodes).
-  Only consider *Messages* created before the given `maxDate` (excluding that day).
+  Given a start *Person* with ID `$personId`, find the most recent *Messages* from all of that *Person*'s friends (`friend` nodes).
+  Only consider *Messages* created before the given `$maxDate` (excluding that day).
 parameters:
   - name: personId
     type: ID
