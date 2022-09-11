@@ -9,13 +9,12 @@ description: |
   The shortest path is computed on the *Person-knows-Person* graph based on the number of interactions,
   i.e. the number of direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
   Only *knows* edges with at least one interaction between their endpoint *Persons* are considered.
-  The weight of a *knows* edge is defined as the reciprocal of the number of interactions between its endpoint *Persons*.
-  Therefore, more interactions imply a smaller weight.
+  The weight of a *knows* edge is defined as $\max\lfloor 40 - \sqrt{\textit{numInteractions}}, 1 \rfloor$.
 
   **Note:** Interactions are counted both ways, e.g. if Alice *knows* Bob, Alice writes 2 reply *Comments* to Bob's *Messages*
   and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 0.2.
   
-  Due to the inaccuracies of floating point number representation, the comparisons to determine same length paths should be performed with a tolerance of 10e-5.
+  Due to the inaccuracies of floating point number representation when performing the square root, the comparisons to determine same length paths should be performed with a tolerance (details TBD).
 parameters:
   - name: city1Id
     type: ID
