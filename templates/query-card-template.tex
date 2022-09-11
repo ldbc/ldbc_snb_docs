@@ -126,7 +126,7 @@
 		params &
 		\innerCardVSpace{\begin{tabularx}{\attributeCardWidth}{|>{\paramNumberCell}C{\attributeNumberWidth}|>{\varNameCell}M|>{\typeCell}m{\typeWidth}|Y|} \hline
 		{% for entry in parameters -%}
-			$\mathsf{ {{- loop.index -}} }$ & {{ entry.name }} & {{ entry.type }} & {{ entry.description }} \\ \hline
+			$\mathsf{ {{- loop.index -}} }$ & \${{ entry.name }} & {{ entry.type }} & {{ entry.description }} \\ \hline
 		{% endfor -%}
 		\end{tabularx}}\innerCardVSpace \\ \hline
 	{% endif %}
