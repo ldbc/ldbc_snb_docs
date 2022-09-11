@@ -3,7 +3,7 @@ operation: short
 number: 4
 title: Content of a message
 description: |
-  Given a *Message*, retrieve its content and creation date.
+  Given a *Message* with ID `$messageId`, retrieve its content and creation date.
 parameters:
   - name: messageId
     type: ID

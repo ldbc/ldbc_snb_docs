@@ -3,7 +3,7 @@ operation: delete
 number: 1
 title: Remove person and its personal forums and message (sub)threads
 description: |
-  Remove a *Person* and its edges (*isLocatedIn*, *studyAt*, *workAt*, *hasInterest*, *likes*, *knows*, *hasMember*, *hasModerator*, *hasCreator*).
+  Remove a *Person* with ID `$personId` and its edges (*isLocatedIn*, *studyAt*, *workAt*, *hasInterest*, *likes*, *knows*, *hasMember*, *hasModerator*, *hasCreator*).
   Additionally, remove the Album and Wall *Forums* whose moderator is the *Person* and remove all *Messages* the *Person* has created in the rest of the *Forums* (Groups).
 parameters:
   - name: personId

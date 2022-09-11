@@ -3,7 +3,7 @@ operation: short
 number: 1
 title: Profile of a person
 description: |
-  Given a start *Person*, retrieve their first name, last name, birthday, IP address, browser, and city of residence.
+  Given a start *Person* with ID `$personId`, retrieve their first name, last name, birthday, IP address, browser, and city of residence.
 parameters:
   - name: personId
     type: ID

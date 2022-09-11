@@ -2,7 +2,7 @@ workload: Interactive
 operation: insert
 number: 6
 title: Add post
-description: Add a *Post* **node** to the social network connected by 4 possible **edge** types (*hasCreator*, *containerOf*, *isLocatedIn*, *hasTag*).
+description: Add a *Post* **node** connected to the network by 4 possible **edge** types (*hasCreator*, *containerOf*, *isLocatedIn*, *hasTag*).
 parameters:
   - name: postId
     type: ID

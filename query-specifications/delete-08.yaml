@@ -3,7 +3,7 @@ operation: delete
 number: 8
 title: Remove friendship
 description:
-  Given two *Person* nodes, remove the *knows* edge between them.
+  Given two *Person* nodes with IDs `$person1Id` and `$person2Id`, remove the *knows* edge between them.
 parameters:
   - name: person1Id
     type: ID

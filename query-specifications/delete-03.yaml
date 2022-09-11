@@ -3,7 +3,7 @@ operation: delete
 number: 3
 title: Remove comment like
 description: |
-  Given a *Person* and a *Comment*, remove the *likes* edge between them.
+  Given a *Person* with ID `$personId` and a *Comment* with ID `$commentId`, remove the *likes* edge between them.
 parameters:
   - name: personId
     type: ID

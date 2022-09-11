@@ -3,7 +3,7 @@ operation: delete
 number: 4
 title: Remove forum and its content
 description: |
-  Remove a *Forum* and its edges (*hasModerator*, *hasMember*, *hasTag*) and all *Posts* in the *Forum* (connected by *containerOf* edges) and their direct and transitive *Comments*.
+  Remove a *Forum* with ID `$forumId` and its edges (*hasModerator*, *hasMember*, *hasTag*) and all *Posts* in the *Forum* (connected by *containerOf* edges) and their direct and transitive *Comments*.
 parameters:
   - name: forumId
     type: ID

@@ -3,7 +3,7 @@ operation: delete
 number: 7
 title: Remove comment subthread
 description: |
-  Remove a *Comment* node and its **edges** (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*).
+  Remove a *Comment* node with ID `$commentId` and its **edges** (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*).
   In addition, remove all replies to the *Comment* connected by *replyOf* and their **edges**.
 parameters:
   - name: commentId

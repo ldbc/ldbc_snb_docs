@@ -3,7 +3,7 @@ operation: short
 number: 7
 title: Replies of a message
 description: |
-  Given a *Message*, retrieve the (1-hop) *Comments* that reply to it.
+  Given a *Message* with ID `$messageId`, retrieve the (1-hop) *Comments* that reply to it.
 
   In addition, return a boolean flag `knows` indicating if the author of the reply (`replyAuthor`) knows the author of the original message (`messageAuthor`).
   If author is same as original author, return `False` for `knows` flag.

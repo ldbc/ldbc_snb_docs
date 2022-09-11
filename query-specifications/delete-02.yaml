@@ -3,7 +3,7 @@ operation: delete
 number: 2
 title: Remove post like
 description: |
-  Given a *Person* and a *Post*, remove the *likes* edge between them.
+  Given a *Person* with ID `$personId` and a *Post* with ID `$postId`, remove the *likes* edge between them.
 parameters:
   - name: personId
     type: ID

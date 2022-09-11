@@ -3,7 +3,7 @@ operation: delete
 number: 6
 title: Remove post thread
 description: |
-  Remove a *Post* node and its edges (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*, *containerOf*).
+  Remove a *Post* node with ID `$postId` and its edges (*isLocatedIn*, *likes*, *hasCreator*, *hasTag*, *containerOf*).
   Remove all replies to the *Post* and the connecting *replyOf* edges.
   In addition, remove all transitive reply *Comments* to the *Post* and their edges.
 parameters:

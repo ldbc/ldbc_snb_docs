@@ -3,7 +3,7 @@ operation: short
 number: 5
 title: Creator of a message
 description: |
-  Given a *Message*, retrieve its author.
+  Given a *Message* with ID `$messageId`, retrieve its author.
 parameters:
   - name: messageId
     type: ID
