@@ -3,12 +3,12 @@ operation: read
 number: 15
 title: Trusted connection paths through forums created in a given timeframe
 description: |
-  Given two *Persons*, calculate the cost of the weighted shortest path between these two *Persons*, in the subgraph induced by the *knows* relationship. The interaction score of a *knows* edge is calculated based on the interactions of its *Person* endpoints:
+  Given two *Persons* with IDs `$person1Id` and `$person2Id`, calculate the cost of the weighted shortest path between these two *Persons*, in the subgraph induced by the *knows* relationship. The interaction score of a *knows* edge is calculated based on the interactions of its *Person* endpoints:
 
   * Every direct reply (by one of the *Persons*) to a *Post* (by the other *Person*) is 1.0 point.
   * Every direct reply (by one of the *Persons*) to a *Comment* (by the other *Person*) is 0.5 points.
 
-  Only consider *Messages* that were created in a *Forum* that was created within the timeframe (interval) `[startDate, endDate]`. Note that for *Comments*, the containing *Forum* is that of the *Post* that the comment (transitively) replies to. Also note that interactions are counted both ways.
+  Only consider *Messages* that were created in a *Forum* that was created within the timeframe (interval) `[$startDate, $endDate]`. Note that for *Comments*, the containing *Forum* is that of the *Post* that the comment (transitively) replies to. Also note that interactions are counted both ways.
 
   The weight for the shortest path algorithm is determined as $\frac{1}{\textit{interaction score} + 1}$.
 

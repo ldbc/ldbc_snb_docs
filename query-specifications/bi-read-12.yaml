@@ -6,9 +6,9 @@ description: |
   For each *Person*, count the number of *Messages* they made (`messageCount`). Only count *Messages* with the following attributes:
 
   * Its `content` is not empty (and consequently, the `imageFile` attribute is empty for *Posts*).
-  * Its `length` is below the `lengthThreshold` (exclusive, equality is not allowed).
-  * Its `creationDate` is after `startDate` (exclusive, equality is not allowed).
-  * It is written in any of the given `languages`.
+  * Its `creationDate` is after `$startDate` (exclusive, equality is not allowed).
+  * Its `length` is below the `$lengthThreshold` (exclusive, equality is not allowed).
+  * It is written in any of the given `$languages`.
 
       * The language of a *Post* is defined by its `language` attribute.
       * The language of a *Comment* is that of the *Post* that initiates the thread where the *Comment* replies to.

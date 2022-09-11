@@ -3,10 +3,10 @@ operation: read
 number: 6
 title: Most authoritative users on a given topic
 description: |
-  Given a *Tag* (`tag`), find all *Persons* (`person1`) that ever created a *Message* with the *Tag*.
+  Given a `$tag`, find all *Persons* (`person1`) that ever created a *Message* with the `$tag`.
   For each of these *Persons* (`person1`) compute their "authority score" as follows\:
 
-  * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* with the given *Tag* (same criterion as for `message1`).
+  * The "authority score" is the sum of "popularity scores" of the *Persons* (`person2`) that liked any of that *Person*'s *Messages* with the given `$tag` (same criterion as for `message1`).
   * A *Person*'s (`person2`) "popularity score" is defined as the total number of likes (by any *Person* `person3`) on any of their *Messages* (`message2`).
 parameters:
   - name: tag

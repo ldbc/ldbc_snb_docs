@@ -3,7 +3,7 @@ operation: read
 number: 19
 title: Interaction path between cities
 description: |
-  Given two *Cities* `city1`, `city2`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them.
+  Given two *Cities* with IDs `$city1Id`, `$city2Id`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them.
   If there are multiple pairs of people with shortest paths with the same total weight, return all of them.
 
   The shortest path is computed on the *Person-knows-Person* graph based on the number of interactions,

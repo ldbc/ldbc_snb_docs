@@ -3,9 +3,9 @@ operation: read
 number: 10
 title: Experts in social circle
 description: |
-  Given a *Person* (`startPerson`), find all other *Persons* (`expertCandidatePerson`) that live in a given *Country* and are connected to given *Person* by a **shortest path** with length in range `[minPathDistance, maxPathDistance]` through the *knows* relation.
+  Given a *Person* `startPerson` with ID `$personID`, find all other *Persons* (`expertCandidatePerson`) that live in a given `$country` and are connected to the `startPerson` on a **shortest path** with length in range `[$minPathDistance, $maxPathDistance]` through the *knows* relation.
 
-  For each of these `expertCandidatePerson` nodes, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given *TagClass* (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
+  For each of these `expertCandidatePerson` nodes, retrieve all of their *Messages* that contain at least one *Tag* belonging to a given `$tagClass` (direct relation not transitive). For each *Message*, retrieve all of its *Tags*.
 
   Group the results by *Persons* and *Tags*, then count the *Messages* by a certain *Person* having a certain *Tag*.
 parameters:

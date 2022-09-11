@@ -3,20 +3,20 @@ operation: read
 number: 16
 title: Fake news detection
 description: |
-  Given two *Tag*/date pairs (`tagA`/`dateA` and `tagB`/`dateB`), for each pair `tagX`/`dateX`:
+  Given two *Tag*/date pairs (`$tagA`/`$dateA` and `$tagB`/`$dateB`), for each pair `$tagX`/`$dateX`:
 
-  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on the day of `dateX` with *Tag* `tagX`.
+  * Create an induced subgraph between *Persons* where for each pair of *Persons* `person1`/`person2`, both have created a *Message* on the day of `$dateX` with *Tag* `$tagX`.
   * In the induced subgraph, only keep pairs of *Persons* who have at most `maxKnowsLimit` friends (in the induced subgraph).
-  * For these *Persons*, count the number of *Messages* created on `dateX` with *Tag* `tagX`.
+  * For these *Persons*, count the number of *Messages* created on `$dateX` with *Tag* `$tagX`.
   
-  Return *Persons* who had at least one *Messages* for both `tagA`/`dateA` and `tagB`/`dateB` ranked by their total number of *Messages* (descending).
+  Return *Persons* who had at least one *Messages* for both `$tagA`/`$dateA` and `$tagB`/`$dateB` ranked by their total number of *Messages* (descending).
 parameters:
   - name: tagA
     type: Long String
     description: |
-      `(a)` `tagA`--`dateA`, `tagB`--`dateB` are both selected to be a flashmob *Tag* -- date combination
+      `(a)` `$tagA`--`$dateA`, `$tagB`--`$dateB` are both selected to be a flashmob *Tag* -- date combination
 
-      `(b)` `tagA`--`dateA`, `tagB`--`dateB` are both selected to be a non-flashmob *Tag* -- date combination
+      `(b)` `$tagA`--`$dateA`, `$tagB`--`$dateB` are both selected to be a non-flashmob *Tag* -- date combination
   - name: dateA
     type: Date
   - name: tagB
@@ -32,11 +32,11 @@ result:
   - name: messageCountA
     type: 32-bit Integer
     category: aggregated
-    description: "Message count for `tagA`/`dateA`"
+    description: "Message count for `$tagA`/`$dateA`"
   - name: messageCountB
     type: 32-bit Integer
     category: aggregated
-    description: "Message count for `tagB`/`dateB`"
+    description: "Message count for `$tagB`/`$dateB`"
 sort:
   - name: messageCountA + \mbox{messageCountB}
     direction: desc

@@ -3,11 +3,10 @@ operation: read
 number: 8
 title: Central person for a tag
 description: |
-  Given a *Tag*, find all *Persons* that are interested in the *Tag* and/or have written a *Message* (*Post* or *Comment*) with a `creationDate` after a given `date` and that has a given *Tag*. For each *Person*, compute the `score` as the sum of the
-  following two aspects\:
+  Given a `$tag`, find all *Persons* that are interested in the `$tag` and/or have written a *Message* (*Post* or *Comment*) with a `creationDate` after a given `$startDate` and that has a given `$tag`. For each *Person*, compute the `score` as the sum of the following two aspects\:
 
-  * 100, if the *Person* has this *Tag* as their interest, or 0 otherwise
-  * number of *Messages* by this *Person* with the given *Tag*
+  * 100, if the *Person* has this `$tag` as their interest, or 0 otherwise
+  * number of *Messages* by this *Person* with the given `$tag`
 
   Also, for each *Person*, compute the sum of the score of the *Person*'s friends (`friendsScore`).
 parameters:
