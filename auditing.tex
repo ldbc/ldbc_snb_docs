@@ -536,7 +536,7 @@ If the SUT hardware was powered down, the recovery period does not include the r
 
 
 \paragraph{Recovery} 
-The SUT is to be restarted after the measurement window and the auditor will verify that the SUT contains the entirety of the last update recorded by the test driver(s) as successfully committed. The driver or the implementation have to make this information available.
+The SUT is to be restarted after the measurement window and the auditor will verify that the SUT contains the entirety of the last update recorded by the test driver(s) as successfully committed. The driver or the implementation have to make this information available. The auditor may also check the \emph{audit log} of the SUT (if available) to confirm that the operations issued by the driver were saved.
 
 Once an official run has been validated, the recovery capabilities of the system must be tested. The system and the driver must be configured in the same way as in during the benchmark execution. After a warm-up period, an execution of the benchmark will be performed under the same terms as in the previous measured run.
 
