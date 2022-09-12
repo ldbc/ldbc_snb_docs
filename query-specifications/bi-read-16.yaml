@@ -14,9 +14,9 @@ parameters:
   - name: tagA
     type: Long String
     description: |
-      `(a)` `$tagA`--`$dateA`, `$tagB`--`$dateB` are both selected to be a flashmob *Tag* -- date combination
+      `(a)` `$tagA`/`$dateA`, `$tagB`/`$dateB` are both selected to be a flashmob *Tag*/date combination
 
-      `(b)` `$tagA`--`$dateA`, `$tagB`--`$dateB` are both selected to be a non-flashmob *Tag* -- date combination
+      `(b)` `$tagA`/`$dateA`, `$tagB`/`$dateB` are both selected to be a non-flashmob *Tag*/date combination
   - name: dateA
     type: Date
   - name: tagB
