@@ -17,9 +17,9 @@ parameters:
   - name: person1Id
     type: ID
     description: |
-      `(a)` `person1Id` -- `person2Id` pair with a distance of 4 hops
+      `(a)` `$person1Id` -- `$person2Id` pair with a distance of 4 hops
 
-      `(b)` `person1Id` -- `person2Id` pair with a distance of 2 hops
+      `(b)` `$person1Id` -- `$person2Id` pair with a distance of 2 hops
   - name: person2Id
     type: ID
   - name: startDate
