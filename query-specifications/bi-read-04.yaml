@@ -9,7 +9,7 @@ description: |
 
   Calculate the top 100 most popular *Forums*.
   If a *Forum* is popular in multiple countries, it should only be calculated once with its largest membership.
-  In case of a tie, the *Forum*(s) with the smaller id value(s) should be selected.
+  In case of a tie, the *Forum* with the smaller id value should be selected.
 
   For each member *Person* of the 100 most popular *Forums*, count the number of *Messages* (`messageCount`) they made in any of those (most popular) *Forums*. Also include those member *Persons* who have not posted any *Messages* (have a `messageCount` of 0).
 parameters:
