@@ -409,6 +409,9 @@ above in the case of conflict.
 
 A single attribute in the reference schema may not be divided into multiple attributes in the target schema.
 
+\paragraph{Database setup}
+The SUT should run the DBMS in a client-server setup. Using an embedded (in-process) DBMS is now allowed.
+
 \paragraph{Database schema}
 A schema on the DBMS is optional. An RDF implementation for example may work without one. An RDF implementation is allowed to load the RDF reference schema and to take advantage of the data type and cardinality statements therein. 
 
@@ -684,6 +687,9 @@ For such systems, passing the \emph{ACID compliance test} is not required.
 
 \emph{Transaction-capable systems} are allowed to run concurrent read and write operations in their \emph{throughput batches} (\autoref{sec:bi-benchmark-workflow}).
 These systems should guarantee snapshot isolation and pass the \emph{ACID compliance test} (\autoref{sec:acid-compliance}).
+
+\paragraph{Database setup}
+The DBMS is allowed to run either as in client-server setup or in embedded (in-process) mode.
 
 \subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
