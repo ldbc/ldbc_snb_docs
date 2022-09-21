@@ -10,7 +10,7 @@ description: |
   i.e. the number of direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
   Only *knows* edges with at least one interaction between their endpoint *Persons* are considered.
   The weight of a *knows* edge is defined as:
-  $$\max(\mathrm{round}( 40 - \sqrt{\textit{numInteractions}} ), 1)$$
+  $\max(\mathrm{round}( 40 - \sqrt{\textit{numInteractions}} ), 1)$
 
   **Note:** Interactions are counted both ways, e.g. if Alice *knows* Bob, Alice writes 2 reply *Comments* to Bob's *Messages*
   and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 0.2.
