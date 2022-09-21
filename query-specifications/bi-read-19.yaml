@@ -9,12 +9,14 @@ description: |
   The shortest path is computed on the *Person-knows-Person* graph based on the number of interactions,
   i.e. the number of direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
   Only *knows* edges with at least one interaction between their endpoint *Persons* are considered.
-  The weight of a *knows* edge is defined as $\max\lfloor 40 - \sqrt{\textit{numInteractions}}, 1 \rfloor$.
+  The weight of a *knows* edge is defined as:
+  $$\max(\mathrm{round}( 40 - \sqrt{\textit{numInteractions}} ), 1)$$
 
   **Note:** Interactions are counted both ways, e.g. if Alice *knows* Bob, Alice writes 2 reply *Comments* to Bob's *Messages*
   and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 0.2.
-  
-  Due to the inaccuracies of floating point number representation when performing the square root, the comparisons to determine same length paths should be performed with a tolerance (details TBD).
+
+  **Remark:** Determinism is ensured by using square root followed by rounding.
+  For all integers between 1 and 100000, the square root's fractional part is more than 10e-5 from 0.5, where the rounding could be non-determinstic based on floating point inaccuracies. As 10e-5 is significantly larger than the machine epsilon of IEEE 754 floats (both 32- and 64-bit), the floating point inaccuracies have no chance to affect the derived integer edge weights.
 parameters:
   - name: city1Id
     type: ID
@@ -42,3 +44,9 @@ choke_points: [3.3, 7.6, 7.7, 8.4, 8.6]
 relevance: |
   To find the weighted shortest paths efficiently, the system can use e.g. a bidirectional Dijkstra algorithm.
   As the edge weights do not depend on any parameter, systems can pre-compute them (if they do not interleave reads and writes).
+# import math
+# for i in range(1, 100000):
+#     sq = math.sqrt(i)
+#     diff = abs(abs(sq - math.floor(sq)) - 0.5)
+#     if diff < 0.00001:
+#         print(f"{i}: {diff:.8f}")
