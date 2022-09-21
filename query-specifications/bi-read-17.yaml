@@ -4,7 +4,7 @@ number: 17
 title: Information propagation analysis
 description: |
   This query aims to identify instances of "information propagation" when a *Person* (`person1`) submits a *Message* (`message1`) with a given `$tag` to a *Forum* (`forum1`).
-  This is read by other members of `forum1`, *Persons* `person2` and `person3`.
+  This is read by other members of `forum1`, *Persons* `person2` and `person3` (who must be different *Persons*).
   Some time later (specified by the `$delta` parameter), these persons have a discussion with the same `$tag` in a different *Forum* (`forum2`) where `person1` is not a member.
   The discussion consists of a *Message* (`message2`) by `person2` and a direct reply *Comment* (`comment`) by `person3`.
 
