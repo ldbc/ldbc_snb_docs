@@ -17,8 +17,6 @@ description: |
   Given a `$company` and a *Person* `person2` with ID `$person2Id` (who is not working and has not worked at `$company`), find a different *Person* (`person1`) who works or at some point worked in `$company` and is reachable from `person2` through people who have studied together through the shortest weighted path.
     
   If there are multiple *Person* `person1` nodes with the same shortest path length, return all of them.
-
-  Due to the inaccuracies of floating point number representation, the comparisons to determine same length paths should be performed with a tolerance of 10e-5.
 parameters:
   - name: company
     type: Long String
