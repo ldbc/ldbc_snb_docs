@@ -3,6 +3,32 @@
 set -eu
 set -o pipefail
 
+# Release process
+# ---------------
+#
+# 1. Edit ldbc.cls
+#    - Set a stable version number for `\ldbcsnbdocversion`
+#    - Under "The specification was built on the source code available at", uncomment the GitHub URL with the tag
+#
+# 2. Edit README.md
+#    - Adjust the version number in the table
+#
+# 3. Commit and push to GitHub
+#
+# 4. On GitHub, create a new release with a tag of the same name, following the pattern `v1.2.3`.
+#
+# 5. Locally, run `./arxiv.sh`
+#
+# 6. Go to arXiv, log in, replace submission, and upload the new ms.zip file.
+#
+# 7. Check the output and submit it.
+#
+# 8. Edit ldbc.cls
+#    - Set a snapshot version number for `\ldbcsnbdocversion`
+#    - Under "The specification was built on the source code available at", uncomment the GitHub URL pointing to the main branch
+#
+# 9. Commit and push to GitHub
+
 # prevent "Couldn't read xref table" errors
 cd patterns
 for f in *.pdf; do pdftk $f cat output $f.new && mv $f.new $f; done
