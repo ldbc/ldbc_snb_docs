@@ -12,7 +12,7 @@ description: |
 
   The weight for the shortest path algorithm is determined as $\frac{1}{\textit{interaction score} + 1}$.
 
-  The result of the query is a single number, the cost of the weighted shortest path. If no such path exists, the query should return $-1$.
+  The result of the query is a single number, the cost of the weighted shortest path. If no such path exists, the query should return $-1.0$.
 parameters:
   - name: person1Id
     type: ID
