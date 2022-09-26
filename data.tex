@@ -368,8 +368,8 @@ For BI, the sum of the initial snapshot (97\%) and the update operations (daily 
 It is important to note that for a given workload and scale factor, data sets generated using different serializers contain exactly the same data, the only difference is in how they are represented.%
 %\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
 
-The proposed SFs are the following: 1, 3, 10, 30, 100, 300, \numprint{1000}, \numprint{3000}, \numprint{10000}, \numprint{30000}.
-Additionally, three small SFs, 0.003 (for quick tests of data loader components), 0.1, and 0.3 are provided to help initial validation efforts.
+The currently available SFs are the following: 1, 3, 10, 30, 100, 300, \numprint{1000}, \numprint{3000}, \numprint{10000}.
+Additionally, three small SFs, 0.003, 0.1, and 0.3 are provided to help initial testing and validation efforts.
 
 The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.

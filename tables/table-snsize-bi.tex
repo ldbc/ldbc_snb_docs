@@ -1,13 +1,39 @@
 \begin{table}[htb]
-    \small
-    \setlength{\tabcolsep}{.5em}
-    \centering
-    \begin{tabular}{|l||r|r|r|r|r|r|r|r|r|r|r|r|r|}
+    \scriptsize
+    \setlength{\tabcolsep}{.3em}
+    \tiny
+    \begin{tabular}{|>{\tt}l||r|r|r|r|r|r|r|r|r|r|r|r|}
         \hline
-        \bf Scale Factor & \bf 0.1 & \bf 0.3 & \bf 1 & \bf 3 & \bf 10 & \bf 30 & \bf 100 & \bf 300 & \bf \numprint{1000} & \bf \numprint{3000} & \bf \numprint{10000} & \bf \numprint{30000} \\ \hline\hline
+        \tableHeaderFirst{File}             & \tableHeader{SF1}  & \tableHeader{SF3}  & \tableHeader{SF10}  & \tableHeader{SF30}   & \tableHeader{SF100}  & \tableHeader{SF300}  & \tableHeader{SF\numprint{1000}} & \tableHeader{SF\numprint{3000}} & \tableHeader{SF\numprint{10000}} \\ \hline
+        \hline\hline
+        static/Organisation                 & \numprint{7955}    & \numprint{7955}    & \numprint{7955}     & \numprint{7955}      & \numprint{7955}      & \numprint{7955}      & \numprint{7955}                 & \numprint{7955}                 & \numprint{7955}                  \\
+        \hline
+        static/Place                        & \numprint{1460}    & \numprint{1460}    & \numprint{1460}     & \numprint{1460}      & \numprint{1460}      & \numprint{1460}      & \numprint{1460}                 & \numprint{1460}                 & \numprint{1460}                  \\
+        \hline
+        static/Tag                          & \numprint{16080}   & \numprint{16080}   & \numprint{16080}    & \numprint{16080}     & \numprint{16080}     & \numprint{16080}     & \numprint{16080}                & \numprint{16080}                & \numprint{16080}                 \\
+        \hline
+        static/TagClass                     & \numprint{71}      & \numprint{71}      & \numprint{71}       & \numprint{71}        & \numprint{71}        & \numprint{71}        & \numprint{71}                   & \numprint{71}                   & \numprint{71}                    \\
+        \hline
+        dynamic/Comment                     & \numprint{2391707} & \numprint{7275929} & \numprint{24318240} & \numprint{71971437}  & \numprint{238859896} & \numprint{698717507} & \numprint{2305141269}           & \numprint{6788314573}           & \numprint{22203530429}           \\
+        dynamic/Comment\_hasTag\_Tag        & \numprint{2903970} & \numprint{8957968} & \numprint{30193298} & \numprint{90186505}  & \numprint{300936421} & \numprint{885843849} & \numprint{2934823389}           & \numprint{8669809939}           & \numprint{28414179030}           \\
+        \hline
+        dynamic/Forum                       & \numprint{106594}  & \numprint{259629}  & \numprint{705629}   & \numprint{1754332}   & \numprint{4876750}   & \numprint{12314071}  & \numprint{35084033}             & \numprint{92411437}             & \numprint{272234669}             \\
+        dynamic/Forum\_hasMember\_Person    & \numprint{3260692} & \numprint{9831062} & \numprint{33637572} & \numprint{100176831} & \numprint{336799532} & \numprint{992219233} & \numprint{3299845513}           & \numprint{9734943439}           & \numprint{31952684743}           \\
+        dynamic/Forum\_hasTag\_Tag          & \numprint{342040}  & \numprint{841153}  & \numprint{2294050}  & \numprint{5682315}   & \numprint{15787515}  & \numprint{39868135}  & \numprint{113622479}            & \numprint{299293084}            & \numprint{881501639}             \\
+        \hline
+        dynamic/Person                      & \numprint{10620}   & \numprint{25870}   & \numprint{70800}    & \numprint{175950}    & \numprint{487700}    & \numprint{1230500}   & \numprint{3505000}              & \numprint{9232000}              & \numprint{27200000}              \\
+        dynamic/Person\_hasInterest\_Tag    & \numprint{246066}  & \numprint{607394}  & \numprint{1659221}  & \numprint{4103933}   & \numprint{11398465}  & \numprint{28784564}  & \numprint{82043446}             & \numprint{216113647}            & \numprint{636466970}             \\
+        dynamic/Person\_knows\_Person       & \numprint{219450}  & \numprint{668431}  & \numprint{2304951}  & \numprint{6880584}   & \numprint{23116805}  & \numprint{68313982}  & \numprint{227125539}            & \numprint{670962543}            & \numprint{2201852957}            \\
+        dynamic/Person\_likes\_Comment      & \numprint{1616891} & \numprint{5469630} & \numprint{20401119} & \numprint{66391084}  & \numprint{243335846} & \numprint{776234551} & \numprint{2796244391}           & \numprint{8801761184}           & \numprint{30518383179}           \\
+        dynamic/Person\_likes\_Post         & \numprint{844544}  & \numprint{2659885} & \numprint{9328362}  & \numprint{29137595}  & \numprint{105650858} & \numprint{335953318} & \numprint{1210202589}           & \numprint{3822741245}           & \numprint{13258168236}           \\
+        dynamic/Person\_studyAt\_University & \numprint{8562}    & \numprint{20755}   & \numprint{56777}    & \numprint{140829}    & \numprint{390266}    & \numprint{984945}    & \numprint{2804285}              & \numprint{7386305}              & \numprint{21760681}              \\
+        dynamic/Person\_workAt\_Company     & \numprint{22766}   & \numprint{55826}   & \numprint{154122}   & \numprint{383107}    & \numprint{1061627}   & \numprint{2678190}   & \numprint{7627121}              & \numprint{20093569}             & \numprint{59188556}              \\
+        \hline
+        dynamic/Post                        & \numprint{1192942} & \numprint{3056157} & \numprint{8781335}  & \numprint{22948816}  & \numprint{67764850}  & \numprint{181024990} & \numprint{548192276}            & \numprint{1516905453}           & \numprint{4693293319}            \\
+        dynamic/Post\_hasTag\_Tag           & \numprint{778511}  & \numprint{2384596} & \numprint{8112750}  & \numprint{24116550}  & \numprint{80572324}  & \numprint{237819624} & \numprint{789063560}            & \numprint{2330311354}           & \numprint{7634983368}            \\
+        \hline
     \end{tabular}
     \centering
-    \caption{Properties of data sets for each scale factor in the BI workload produced by the Spark-based generator. TODO.
-        For detailed statistics, see \autoref{tab:number-of-entries-bi}}
+    \caption{Properties of data sets for each scale factor for the raw data sets produced the Spark-based generator, used as a basis of the data sets of SNB Interactive v2.0 and SNB BI.}
     \label{tab:snsize-bi}
 \end{table}
