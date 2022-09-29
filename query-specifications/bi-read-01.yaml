@@ -32,7 +32,7 @@ result:
     category: calculated
     description: "`0` for short, `1` for one-liner, `2` for tweet, `3` for long"
   - name: messageCount
-    type: 32-bit Integer
+    type: 64-bit Integer
     category: aggregated
     description: Total number of *Messages* in that group
   - name: averageMessageLength
@@ -40,7 +40,7 @@ result:
     category: aggregated
     description: Average length of the *Message* content in that group
   - name: sumMessageLength
-    type: 32-bit Integer
+    type: 64-bit Integer
     category: aggregated
     description: Sum of all *Message* content lengths
   - name: percentageOfMessages
