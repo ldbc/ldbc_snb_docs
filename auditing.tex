@@ -660,7 +660,7 @@ The write operations and read queries and write operations are run in \emph{dail
 The benchmark includes two tests which use different workflows in their batches:
 
 \begin{itemize}
-    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read query variants (Q1, Q2a, Q2b, Q3, \ldots, Q20a, Q20b). Each query variant is executed using 40~different substitution parameters.
+    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read query variants (Q1, Q2a, Q2b, Q3, \ldots, Q20a, Q20b). Each query variant is executed using 30~different substitution parameters.
     \item The \emph{throughput test} performs the same operations, while allowing concurrent execution of the write operations and read queries required in a given batch.
     Systems can run an arbitrary mix of operations.
     %\texttt{TODO: this allows first running the reads, then the writes, which may be undesirable.}
@@ -743,7 +743,7 @@ should be reported.
 The definition of \snbbi's power score follows \tpcH in using a geometric mean, ensuring that there is an incentive to improve all queries, no matter their running time.
 Formally, the power score is based on the time to perform the writes
 and
-the time spent for executing each variant with 40~different substitution parameters, measured in seconds:
+the time spent for executing each variant with 30~different substitution parameters, measured in seconds:
 $$
 \textit{power@SF} =
     \frac{\numprint{3600}}{\sqrt[29]{
