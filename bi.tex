@@ -14,12 +14,12 @@ The LDBC SNB BI workload consists of two sets of operations:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=\yedscale]{figures/bi-workflow}
-    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the benchmark driver. Note the lack of a warmup period.}
+    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the BI benchmark driver. Note that unlike SNB Interactive, the BI workload does not have a warmup period.}
     \label{fig:bi-workflow}
 \end{figure}
 
 The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
-The read query variants (Q1, Q2a, Q2b, \ldots) in the \emph{power} and \emph{throughput} batches are executed with 30~different substitution parameters.
+The read query variants (Q1, Q2a, \ldots) are executed with 30~different substitution parameters in each batch.
 
 \section{Parameter Selection}
 \label{sec:bi-paramgen}
