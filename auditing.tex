@@ -657,13 +657,13 @@ Implementing the BI workload requires the following key capabilities:
 \end{itemize}
 
 The write operations and read queries and write operations are run in \emph{daily batches}.
-The benchmark includes two tests which use different workflows in their batches:
+In each batch, each query variant (Q1, Q2a, Q2b, Q3, \ldots, Q20a, Q20b) is executed using 30~different substitution parameters.
+The benchmark includes two tests which use different workflows in their batches.
 
 \begin{itemize}
-    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read query variants (Q1, Q2a, Q2b, Q3, \ldots, Q20a, Q20b). Each query variant is executed using 30~different substitution parameters.
+    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read query variants.
     \item The \emph{throughput test} performs the same operations, while allowing concurrent execution of the write operations and read queries required in a given batch.
     Systems can run an arbitrary mix of operations.
-    %\texttt{TODO: this allows first running the reads, then the writes, which may be undesirable.}
 \end{itemize}
 
 \subsection{Target Systems}
@@ -688,6 +688,15 @@ These systems should guarantee snapshot isolation and pass the \emph{ACID compli
 \subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=\yedscale]{figures/bi-workflow}
+    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the BI benchmark driver.}
+    \label{fig:bi-workflow}
+\end{figure}
+
+The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=\yedscale]{figures/bi-auditing-workflow.pdf}
@@ -695,28 +704,28 @@ These systems should guarantee snapshot isolation and pass the \emph{ACID compli
     \label{fig:bi-auditing-workflow}
 \end{figure}
 
-The BI workflow (\autoref{fig:bi-auditing-workflow}) consists of three parts.
+The main part of the BI workflow (\autoref{fig:bi-auditing-workflow}) consists of two parts.
 
 \begin{itemize}
-    \item \textbf{Loading} the data set.
-    \item Running the \textbf{power test}, \ie apply one day's write batch and run the reads sequentially.
+    \item Running the \textbf{power test}, \ie apply one day's write batch, then run the reads sequentially.
     \item Running the \textbf{throughput test}, \ie run batches of (potentially) concurrent write operations (applying one day's worth of data per batch) and read queries.
     The execution of this test is called the \emph{throughput measurement window}, which should
-    run at least for 1 hour and
+    run at least for 1~hour and
     include at least one fully completed batch.
 \end{itemize}
 
-During the \emph{throughput test}, systems capable of transactional features (\autoref{sec:bi-target-systems}) are allowed to run read and write operations concurrently.
+During the \emph{throughput test}, systems capable of transactional features (\autoref{sec:bi-target-systems}) can opt to run read and write operations concurrently (\emph{concurrent RW mode}).
 
 The runtimes should be reported as follows:
 \begin{itemize}
-    \item The \emph{load time} ($t_\textit{load}$) denotes the time to load the data into the SUT and initialize auxiliary data structures (if applicable).
+    \item The \emph{load time} ($t_\textit{load}$) denotes the time to load the data into the SUT and initialize auxiliary data structures (if applicable). For audited runs, we require that $t_\textit{load} < 24\textrm{ hours}$.
     \item The \emph{power test time} ($t_\textit{power test}$) denotes the time to perform the power test.
     \item The \emph{throughput measurement window time} ($t_\textit{throughput\ measurement}$) denotes the time to perform the throughput test, including potentially unfinished batches.
     \item The \emph{full throughput batches time} ($t_\textit{full\ throughput\ batches}$) denotes the time to evaluate the fully completed batches during the throughput measurement window.
 \end{itemize}
 
 Note that a warm-up period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
+
 
 \subsection{Scoring Metrics}
 \label{sec:bi-scoring-metrics}
@@ -734,10 +743,10 @@ reported as a breakdown of
 machine cost,
 software license costs,
 and maintenance costs for 3 years.
-In case of cloud deployments, the cost of running a 3-year reserved instance % I considered adding 'upfront payment' but GCP does not have upfront payments
-should be reported.
+In case of cloud deployments, the cost of running a 3-year reserved instance should be reported.
+When establishing the price, the ``upfront payment'' option available at certain cloud providers should not be considered.
 
-\subsubsection{Power score}
+\subsubsection{Power Score}
 \label{sec:power-score}
 
 The definition of \snbbi's power score follows \tpcH in using a geometric mean, ensuring that there is an incentive to improve all queries, no matter their running time.
@@ -762,52 +771,52 @@ $$
     \textit{SF}
 $$
 
-Including all entries, the formula is:
-{\scriptsize
-$$
-\textit{power@SF} =
-    \frac{\numprint{3600}}{\sqrt[29]{
-        w
-        \! \cdot \! q_{1}
-        \! \cdot \! q_{2\variant{a}}
-        \! \cdot \! q_{2\variant{b}}
-        \! \cdot \! q_{2\variant{a}}
-        \! \cdot \! q_{2\variant{b}}
-        \! \cdot \! q_{3}
-        \! \cdot \! q_{4}
-        \! \cdot \! q_{5}
-        \! \cdot \! q_{6}
-        \! \cdot \! q_{7}
-        \! \cdot \! q_{8\variant{a}}
-        \! \cdot \! q_{8\variant{b}}
-        \! \cdot \! q_{9}
-        \! \cdot \! q_{10\variant{a}}
-        \! \cdot \! q_{10\variant{b}}
-        \! \cdot \! q_{11}
-        \! \cdot \! q_{12}
-        \! \cdot \! q_{13}
-        \! \cdot \! q_{14\variant{a}}
-        \! \cdot \! q_{14\variant{b}}
-        \! \cdot \! q_{15\variant{a}}
-        \! \cdot \! q_{15\variant{b}}
-        \! \cdot \! q_{16\variant{a}}
-        \! \cdot \! q_{16\variant{b}}
-        \! \cdot \! q_{17}
-        \! \cdot \! q_{18}
-        \! \cdot \! q_{19\variant{a}}
-        \! \cdot \! q_{19\variant{b}}
-        \! \cdot \! q_{20\variant{a}}
-        \! \cdot \! q_{20\variant{b}}
-    }}
-    \cdot
-    \textit{SF}
-$$
-}
+% Including all entries, the formula is:
+% {\scriptsize
+% $$
+% \textit{power@SF} =
+%     \frac{\numprint{3600}}{\sqrt[29]{
+%         w
+%         \! \cdot \! q_{1}
+%         \! \cdot \! q_{2\variant{a}}
+%         \! \cdot \! q_{2\variant{b}}
+%         \! \cdot \! q_{2\variant{a}}
+%         \! \cdot \! q_{2\variant{b}}
+%         \! \cdot \! q_{3}
+%         \! \cdot \! q_{4}
+%         \! \cdot \! q_{5}
+%         \! \cdot \! q_{6}
+%         \! \cdot \! q_{7}
+%         \! \cdot \! q_{8\variant{a}}
+%         \! \cdot \! q_{8\variant{b}}
+%         \! \cdot \! q_{9}
+%         \! \cdot \! q_{10\variant{a}}
+%         \! \cdot \! q_{10\variant{b}}
+%         \! \cdot \! q_{11}
+%         \! \cdot \! q_{12}
+%         \! \cdot \! q_{13}
+%         \! \cdot \! q_{14\variant{a}}
+%         \! \cdot \! q_{14\variant{b}}
+%         \! \cdot \! q_{15\variant{a}}
+%         \! \cdot \! q_{15\variant{b}}
+%         \! \cdot \! q_{16\variant{a}}
+%         \! \cdot \! q_{16\variant{b}}
+%         \! \cdot \! q_{17}
+%         \! \cdot \! q_{18}
+%         \! \cdot \! q_{19\variant{a}}
+%         \! \cdot \! q_{19\variant{b}}
+%         \! \cdot \! q_{20\variant{a}}
+%         \! \cdot \! q_{20\variant{b}}
+%     }}
+%     \cdot
+%     \textit{SF}
+% $$
+% }
 
 To determine the price-adjusted power score, we factor in the $\textit{TCO}$\emph{:}
 $$ \textit{power@SF/\$} = \textit{power@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
 
-\subsubsection{Throughput score}
+\subsubsection{Throughput Score}
 \label{sec:throughput-score}
 
 The throughput score is based on $t_\textit{load}$, measured in hours,
@@ -821,6 +830,7 @@ $$
     \cdot
     \textit{SF}
 $$
+
 The subtraction of $t_\textit{load}$ ensures that the scoring rewards systems with efficient bulk loaders (unlike in \tpcH and \tpcDS which do not include load performance in their metrics).
 The price-adjusted throughput score is determined analogously: % to the price-adjusted power score.
 $$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
@@ -838,7 +848,7 @@ The rationale for using this step is that during concurrent execution of R/W ope
 \subsubsection{Auxiliary Data Structures}
 \label{sec:bi-auxiliary-data-structures}
 
-Using auxiliary data structures (\eg indexes, materialized views) is allowed if they are kept in an up-to-date state after each write operation.
+Using auxiliary data structures (\eg indexes, materialized views) is allowed if they are kept in an up-to-date state after each write operation. The full disclosure report should enumerate the auxiliary data structures used by the SUT. 
 
 \subsubsection{Query Declarativity}
 \label{sec:bi-query-declarativity}
@@ -849,13 +859,7 @@ General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not
 Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
 Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed. (These libraries often include features such as weighted shortest path algorithms.)
 Implementations may use \emph{stored procedures written in a domain-specific language}.
-
-The auditor's responsibility is to enforce this requirement, \ie they should verify whether query implementations only use the following implementation techniques:
-\begin{enumerate}
-    \item the domain-specific language of the SUT,
-    \item the SUT's standard stored procedure library or libraries, and
-    \item stored procedures written in a domain-specific language,
-\end{enumerate}
+In cases when the exact approach used by the SUT's query implementations is uncertain, it is the auditor's responsibility to decide whether the SUT complies with this rule.
 
 \subsubsection{Query Variants}
 \label{sec:bi-query-variants}
@@ -868,7 +872,7 @@ Moreover, it is not allowed for the query implementations to contain code that a
 \label{sec:bi-scaling}
 
 Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger data sets.
-The rationale behind this decision is to ensure that there is a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{sec:bi-benchmark-workflow}).
+The rationale behind this decision is to ensure that there should be a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{sec:bi-benchmark-workflow}).
 
 \subsection{Full Disclosure Report}
 \label{sec:bi-fdr}

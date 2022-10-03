@@ -32,18 +32,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n1">
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="16.63065599999993" width="87.70069453962526" x="498.81141092074967" y="428.8693440000002"/>
-          <y:Fill hasColor="false" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="29.01953125" x="29.34058164481263" xml:space="preserve" y="-0.7510782500000346">load<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n2" yfiles.foldertype="group">
+    <node id="n1" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -52,7 +41,7 @@
               <y:Geometry height="46.265625" width="106.78805453962525" x="611.2692254603749" y="404.98545325000003"/>
               <y:Fill color="#CCFFCC" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="106.78805453962525" x="0.0" xml:space="preserve" y="0.0">power batch</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="106.78805453962525" x="0.0" xml:space="preserve" y="0.0">Power batch</y:NodeLabel>
               <y:Shape type="rectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
@@ -71,8 +60,8 @@
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n2:">
-        <node id="n2::n0">
+      <graph edgedefault="directed" id="n1:">
+        <node id="n1::n0">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="16.63065599999993" width="24.9834781239897" x="630.1137054603747" y="428.86934400000007"/>
@@ -83,7 +72,7 @@
             </y:ShapeNode>
           </data>
         </node>
-        <node id="n2::n1">
+        <node id="n1::n1">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="16.63065599999993" width="24.9834781239897" x="679.2293218760104" y="428.86934400000007"/>
@@ -96,7 +85,7 @@
         </node>
       </graph>
     </node>
-    <node id="n3">
+    <node id="n2">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="13.559985645418237" width="22.43999999999994" x="858.7809199093922" y="430.73280417729063"/>
@@ -107,7 +96,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n4" yfiles.foldertype="group">
+    <node id="n3" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -116,7 +105,7 @@
               <y:Geometry height="46.265625" width="110.40220454013058" x="886.2117952786538" y="404.98545325000003"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">throughput batch</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">Throughput batch</y:NodeLabel>
               <y:Shape type="rectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
@@ -135,8 +124,8 @@
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n4:">
-        <node id="n4::n0">
+      <graph edgedefault="directed" id="n3:">
+        <node id="n3::n0">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="16.63065599999993" width="59.89979343094592" x="913.6145867562436" y="428.86934400000007"/>
@@ -149,7 +138,7 @@
         </node>
       </graph>
     </node>
-    <node id="n5" yfiles.foldertype="group">
+    <node id="n4" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -158,7 +147,7 @@
               <y:Geometry height="46.265625" width="110.40220454013058" x="734.2128000000001" y="404.98545325000003"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">throughput batch</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">Throughput batch</y:NodeLabel>
               <y:Shape type="rectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
@@ -177,8 +166,8 @@
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n5:">
-        <node id="n5::n0">
+      <graph edgedefault="directed" id="n4:">
+        <node id="n4::n0">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="16.63065599999993" width="63.195203069848276" x="761.1375929663951" y="428.86934400000007"/>
@@ -191,7 +180,7 @@
         </node>
       </graph>
     </node>
-    <node id="n6" yfiles.foldertype="group">
+    <node id="n5" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -200,7 +189,7 @@
               <y:Geometry height="46.265625" width="110.40220454013058" x="1023.1309290987843" y="404.98545325000003"/>
               <y:Fill color="#99CCFF" transparent="false"/>
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">throughput bach</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.40220454013058" x="0.0" xml:space="preserve" y="0.0">Throughput bach</y:NodeLabel>
               <y:Shape type="rectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
@@ -219,8 +208,8 @@
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n6:">
-        <node id="n6::n0">
+      <graph edgedefault="directed" id="n5:">
+        <node id="n5::n0">
           <data key="d6">
             <y:ShapeNode>
               <y:Geometry height="16.63065599999993" width="59.89979343094592" x="1048.4857205763744" y="428.86934400000007"/>
@@ -233,7 +222,7 @@
         </node>
       </graph>
     </node>
-    <node id="n7">
+    <node id="n6">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="11.747903999999949" x="721.0806280404995" y="380.7733051400065"/>
@@ -251,7 +240,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n8">
+    <node id="n7">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="11.747903999999949" x="1074.7779184597075" y="380.7733051400065"/>
@@ -269,7 +258,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n8">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="11.747903999999949" x="997.9561770987842" y="473.1693984480127"/>
@@ -287,7 +276,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n10">
+    <node id="n9">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="11.747903999999949" x="721.0806280404996" y="473.1693984480127"/>
@@ -305,7 +294,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n11">
+    <node id="n10">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="13.559985645418237" width="30.0" x="1057.4780669173624" y="373.690437074569"/>
@@ -323,7 +312,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n12">
+    <node id="n11">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="30.0" x="719.1939767156967" y="477.5650119999999"/>
@@ -341,7 +330,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n12">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="30.0" x="1057.4780669173624" y="451.49717199999986"/>
@@ -359,7 +348,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n13">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="13.559985645418237" width="30.0" x="981.1185052651841" y="373.690437074569"/>
@@ -377,7 +366,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n15">
+    <node id="n14">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="8.916483719987184" width="30.0" x="981.1185052651841" y="477.5650119999999"/>
@@ -395,7 +384,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n16">
+    <node id="n15">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="68.66624000000002" width="269.9726945396253" x="1073.6008565324983" y="391.74741571998703"/>
@@ -409,7 +398,18 @@
         </y:ShapeNode>
       </data>
     </node>
-    <edge id="e0" source="n2::n1" target="n5::n0">
+    <node id="n16">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="16.63065599999993" width="87.70069453962526" x="498.81141092074967" y="428.8693440000002"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.041015625" x="13.32983945731263" xml:space="preserve" y="-0.7510782500000346">Load data<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="n1::n1" target="n4::n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="1.1368683772161603E-13" ty="0.0">
@@ -421,7 +421,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e1" source="n3" target="n4::n0">
+    <edge id="e1" source="n2" target="n3::n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-1.1368683772161603E-13" ty="0.0"/>
@@ -431,7 +431,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n5::n0" target="n3">
+    <edge id="e2" source="n4::n0" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="15.156812717622415" sy="-5.6843418860808015E-14" tx="0.0" ty="0.0"/>
@@ -441,7 +441,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n2::e0" source="n2::n0" target="n2::n1">
+    <edge id="n1::e0" source="n1::n0" target="n1::n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -451,7 +451,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e3" source="n1" target="n2::n0">
+    <edge id="e3" source="n16" target="n1::n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -461,7 +461,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e4" source="n4::n0" target="n6::n0">
+    <edge id="e4" source="n3::n0" target="n5::n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-1.1368683772161603E-13" sy="0.0" tx="4.547473508864641E-13" ty="0.0"/>
@@ -471,7 +471,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n7" target="n8">
+    <edge id="e5" source="n6" target="n7">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -484,7 +484,7 @@ time of running the throughput batches
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n10" target="n9">
+    <edge id="e6" source="n9" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -497,7 +497,7 @@ t_{batches}: total execution time of the fully completed throughput batches
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e7" source="n0" target="n12">
+    <edge id="e7" source="n0" target="n11">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -507,7 +507,7 @@ t_{batches}: total execution time of the fully completed throughput batches
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e8" source="n11" target="n13">
+    <edge id="e8" source="n10" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -517,7 +517,7 @@ t_{batches}: total execution time of the fully completed throughput batches
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n14" target="n15">
+    <edge id="e9" source="n13" target="n14">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

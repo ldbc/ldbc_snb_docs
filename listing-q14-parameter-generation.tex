@@ -1,0 +1,16 @@
+\lstset{language=sql,morekeywords={WITHIN}}
+\begin{lstlisting}[label=lst:q14-parameter-generation,caption=Parameter generation SQL query for Q14\variantA.]
+SELECT country1, country2
+FROM (
+  SELECT
+    country1,
+    country2,
+    abs(frequency - (
+      SELECT percentile_disc(0.98) WITHIN GROUP (ORDER BY frequency) AS anchor FROM countryPairsNumFriends
+    )) AS diff
+  FROM countryPairsNumFriends
+  ORDER BY diff, country1, country2
+)
+ORDER BY md5(concat(country1, country2))
+LIMIT 50
+\end{lstlisting}

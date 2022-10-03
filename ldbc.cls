@@ -142,7 +142,7 @@
 % Header setup
 
 
-\newcommand{\ldbcsnbdocversion}{2.1.5-SNAPSHOT}
+\newcommand{\ldbcsnbdocversion}{2.2.0-SNAPSHOT}
 \newcommand{\ldbcsnbdoctitle}{The LDBC Social Network Benchmark -- version \ldbcsnbdocversion}
 \delName{The LDBC Social Network Benchmark \\ (version \ldbcsnbdocversion)}
 
@@ -432,3 +432,4 @@
 \newcommand{\etc}{etc.\@\xspace}
 \newcommand{\vs}{vs.\@\xspace}
 \newcommand{\viz}{viz.\@\xspace}
+\newcommand{\aka}{a.k.a.\@\xspace}
