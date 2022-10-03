@@ -4,8 +4,26 @@
 The LDBC SNB BI workload consists of two sets of operations:
 
 \begin{itemize}
-\item \textbf{Read queries.} Complex read queries touching a significant portion of the data. See \autoref{sec:bi-reads}.
-\item \textbf{Microbatches of update operations.} A set of insert and delete operations, batched for a given time period (\eg an hour, a day, \etc). See Sections \ref{sec:bi-insert-operations} and \ref{sec:bi-delete-operations}.
+
+\item \textbf{Read queries.}
+The BI workload defines complex read queries that touch a significant portion of the data. See \autoref{sec:bi-reads}.
+For most queries, the amount of data touched by the query is expected to scale \emph{linearly} with the total size of the data set (denoted by the scale factor).
+
+
+\item \textbf{Microbatches of update operations.}
+A set of insert and delete operations are executed, batched per day.
+The available batches are
+2012-11-29,
+2012-11-30,
+2012-12-01, \ldots
+2012-12-31;
+yielind 33 batches in total.
+
+For the specifications of the update operations,
+see
+\autoref{sec:bi-insert-operations} for inserts and
+\autoref{sec:bi-delete-operations} for deletes.
+
 \end{itemize}
 
 \section{Benchmark Scenario}
