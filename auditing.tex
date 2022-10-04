@@ -648,9 +648,9 @@ Implementing the BI workload requires the following key capabilities:
 
 \begin{itemize}
     \item Loading the initial snapshot of the social network graph
-    \item Evaluating the BI read queries (\autoref{sec:bi-reads}
+    \item Evaluating the BI read queries (\autoref{sec:bi-reads})
     \item Evaluating the BI write operations: inserts (\autoref{sec:bi-insert-operations}) and deletes (\autoref{sec:bi-delete-operations})
-    \item Allowing concurrent reads and writes (\autoref{sec:execution-modes}) (optional, only alowed if ACID compliance is guaranteed)
+    \item Performing concurrent reads and writes (\autoref{sec:bi-audit-workflow}) (optional, only allowed if ACID compliance is guaranteed)
 \end{itemize}
 
 \subsection{Workflow}
@@ -659,7 +659,7 @@ Implementing the BI workload requires the following key capabilities:
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=\yedscale]{figures/bi-batches.pdf}
-    \caption{BI benchmark workflow.}
+    \caption{Tests and batches (power and throughput) executed in the BI workload's workflow.}
     \label{fig:bi-batches}
 \end{figure}
 
@@ -681,8 +681,9 @@ while a total of $28 \times 30 = 840$ read queries are executed.
 \subsubsection{Throughput Test}
 \label{sec:throughput-test}
 
-The \emph{throughput test} consists of multiple \emph{throughput batches}. These perform the same operations as the power batch but (optionally) allow concurrent execution of the write operations and read queries in a given batch.
-Each throughput batch runs the same amount of operations as the power batch.
+The \emph{throughput test} consists of multiple \emph{throughput batches}.
+Each throughput batch runs the same type and the same amount of operations as the power batch.
+However, they allow concurrent execution of the write operations and read queries in a given batch.
 
 The execution of the throughput test during audits is the \emph{throughput measurement window}.
 This window must span at least for 1~hour and
@@ -690,20 +691,23 @@ it must include at least one fully completed batch (see \autoref{fig:bi-batches}
 
 The workload defines two execution modes for the \emph{throughput batches}:
 
-\paragraph{Disjoint RW mode}
-In \emph{disjoint RW mode} the system performs the reads and writes separately. It first executes the writes, then evaluates the read queries. Concurrency between the read operations is allowed.\\
-This mode is aimed at \emph{read-optimized data analytical systems} which do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
+\begin{description}
+    \item[Disjoint RW mode]
+    In \emph{disjoint RW mode} the system performs the reads and writes separately. It first executes the writes, then evaluates the read queries. Concurrency between the read operations is allowed.\\
+    This mode is aimed at \emph{read-optimized data analytical systems} which do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
 
-\paragraph{Concurrent RW mode}
-In \emph{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
+    \item[Concurrent RW mode]
+    In \emph{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
+\end{description}
 
 \subsection{Runtimes}
 
 The runtimes should be reported as follows:
+
 \begin{itemize}
     \item The \emph{load time} ($t_\textit{load}$) denotes the time to load the data into the SUT and initialize auxiliary data structures (if applicable). For audited runs, we require that $t_\textit{load} < 24\textrm{ hours}$.
     \item The \emph{power test time} ($t_\textit{power test}$) denotes the time to perform the power test.
-    \item The \emph{throughput measurement window time} ($t_\textit{throughput\ measurement}$) denotes the time to perform the throughput test, including potentially unfinished batches.
+    \item The \emph{throughput measurement window time} ($t_\textit{throughput\ measurement}$) denotes the time to perform the throughput test, including the last (potentially unfinished) batch.
     \item The \emph{full throughput batches time} ($t_\textit{full\ throughput\ batches}$) denotes the time to evaluate the fully completed batches during the throughput measurement window.
 \end{itemize}
 
@@ -825,8 +829,10 @@ $$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000
 \label{sec:bi-correcntess}
 
 The SUT shall evaluate all operators correctly.
+The auditor shall ascertain correctness on the SF10 data set. However, they are allowed to also use data sets of different scale factors, as well as issue custom operations (both reads and writes) to test for the correctness of the implemenation.
+
 The validation of correctness is performed on the output of the \emph{power test} step.
-The rationale for using this only step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantees deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
+The rationale for using this only step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantee deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
 
 \subsubsection{Auxiliary Data Structures}
 \label{sec:bi-auxiliary-data-structures}
@@ -843,7 +849,7 @@ Implementations shall not use \emph{query-specific stored procedures written in 
 Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed.%
 \footnote{These libraries often include features such as weighted shortest path algorithms.}
 Implementations may use \emph{stored procedures written in a domain-specific language}.
-In cases when the exact approach used by the SUT's query implementations is uncertain, it is the auditor's responsibility to decide whether the SUT complies with this rule.
+In cases when the categorization of the approach used by the SUT's query implementations is uncertain, it is the auditor's responsibility to decide whether the SUT complies with this rule.
 
 \subsubsection{Query Variants}
 \label{sec:bi-query-variants}
@@ -856,7 +862,7 @@ Moreover, it is not allowed for the query implementations to contain code that a
 \label{sec:bi-scaling}
 
 Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger data sets.
-The rationale behind this decision is to ensure that there should be a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{sec:bi-benchmark-workflow}).
+The rationale behind this decision is to ensure that there should be a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{fig:bi-batches}).
 
 \subsection{Full Disclosure Report}
 \label{sec:bi-fdr}
