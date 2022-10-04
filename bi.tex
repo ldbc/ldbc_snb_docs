@@ -3,10 +3,10 @@
 
 The Business Intelligence (BI) workload is the SNB's analytical (OLAP) workload.
 As such, it defines complex read queries that touch a significant portion of the data (see \autoref{sec:bi-reads}).
-Additionally, it defines daily batches of updates over a 33-day period (between 2012-11-29 and 2012-12-31).
-See
+Additionally, it defines daily batches of updates over a 33-day period
+(see
 \autoref{sec:bi-insert-operations} for inserts and
-\autoref{sec:bi-delete-operations} for deletes for the specification of the update operations.
+\autoref{sec:bi-delete-operations} for deletes).
 
 % The available batches are
 % 2012-11-29,
@@ -83,9 +83,11 @@ The path finding required by \snbbi not only tests connectivity (as supported in
 \label{sec:example-queries}
 %------------------------------------------------------------------------------
 
-In order to defeat trivializing complex query performance by caching, \snbbi 
-instantiates the parameterized query templates with different substitution (\aka bind) parameters.
+In order to defeat trivializing complex query performance by query caching, benchmarks can use both frequent updates (which require invalidating caches or maintaining cached intermediates) as well as parameterized query templates.
+The BI workload features update batches, so parametrized \emph{read query templates} are necessary to guard against this between the batches.
 In this section, we analyze four read query templates.
+
+\emph{Notation:}
 We denote the query parameters with the \param{}~symbol and discuss their generation in \autoref{sec:paramgen}.
 
 % #############################################################################
@@ -139,9 +141,6 @@ is independent of query parameters, precomputing and maintaining it can be benef
 \label{sec:paramgen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In order to defeat trivializing complex query performance by query caching, benchmarks can use both frequent updates (which require invalidating caches or maintaining cached intermediates) as well as parametrized query templates.
-\snbbi features update batches, so parametrized query templates are needed to guard against this between the batches.
-
 \subsection{The Need for Parameter Curation}
 
 A disadvantage of executing the same read query template with different parameters is that the intermediate results and runtimes can be severely influenced by the parameter values.
@@ -158,7 +157,7 @@ Our parameter curation process is a two-step process:
 we first generate \emph{factors} followed by the \emph{parameters} (\autoref{fig:bi-workflow}).
 These components are executed for each scale factor and are independent of the serialization format/layout of the data set.
 
-\subsubsection*{Factor generator}
+\subsubsection{Factor Generator}
 The factor generator produces 21~\emph{factor tables} containing summary statistics from the temporal graph,
 \eg
 the number of \tPersons per \tCity
@@ -166,13 +165,13 @@ or
 the number of \tMessages per day for each \tTag.
 
 
-\subsubsection*{Parameter Generation}
+\subsubsection{Parameter Generation}
 \label{sec:parameter-generation-query}
 
 To find suitable substitution parameters that (presumably) lead to the same amount of data access and thus similar runtimes,
 we first identify the factor table containing the summary statistics of the query's parameters.
-For example, Q14's template uses the parameters \tCountry \param{c1} and \tCountry \param{c2}.
-Therefore, we use the \texttt{countryPairsNumFriends} factor table which contains \param{c1}, \param{c2} pairs and the number of friendships on \tPerson lives in \param{c1} and the other lives in \param{c2}.
+For example, Q14's template uses the parameters \tCountry \param{country1} and \tCountry \param{country2}.
+Therefore, we use the \texttt{countryPairsNumFriends} factor table which contains \param{country1}, \param{country2} pairs and the number of friendships on \tPerson lives in \param{country1} and the other lives in \param{country2}.
 Using this table, we select the $p$th percentile from the distribution as the \emph{anchor},
 then rank the rest of the distribution based on their absolute difference from the anchor and take the top-$k$ values.
 We shuffle the values using a hash function to avoid introducing artificial locality, where \eg subsequent queries start in nodes from the same ID range.
@@ -222,7 +221,7 @@ Q20\variantA selects endpoints where it is guaranteed that \emph{no path exists}
 \subsubsection{Scalability}
 The \emph{factor generator} is part of the SNB Datagen and runs after the \textit{temporal graph} has been created.
 It is implemented in Spark for distributed execution.
-While its computations use expensive, aggregration-heavy queries, the derived factor tables are \emph{compact}, \eg SF\numprint{10000} has only 20~GiB of factors (in compressed Parquet format), accounting to approximately 100~GiB in CSV format, \ie 1\% of the total data set size.
+While its computations use expensive, aggregration-heavy queries, the derived factor tables are \emph{compact}, \eg SF\numprint{10000} has only 20~GiB of factors (in compressed Parquet format), the equivalent of approximately 100~GiB in CSV format, \ie 1\% of the total data set size.
 The \emph{parameter generator} queries are executed in DuckDB~\cite{DBLP:conf/sigmod/RaasveldtM19},
 which supports vertical scalability and is capable of running the parameter generation for SF\numprint{10000} using less than 512~GiB memory.
 
