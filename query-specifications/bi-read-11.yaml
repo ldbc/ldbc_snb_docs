@@ -5,9 +5,9 @@ title: Friend triangles
 description: |
   For a given `$country`, count all the distinct triples of *Persons* such that:
 
-  * `a` is friend of `b`,
-  * `b` is friend of `c`,
-  * `c` is friend of `a`,
+  * `personA` is friend of `personB`,
+  * `personB` is friend of `personC`,
+  * `personC` is friend of `personA`,
 
   and these friendships were created in the range `[$startDate, $endDate]`.
 

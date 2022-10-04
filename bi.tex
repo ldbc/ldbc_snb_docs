@@ -80,9 +80,9 @@ We denote the query parameters with the \param{}~symbol and discuss their genera
 % #############################################################################
 
 \queryRefCard{bi-read-11}{BI}{11} imposes two key difficulties.
-First, systems should efficiently filter the \tKnows edges based on the location of their endpoint \tPersons (\tCountry \param{c}) and the date range.
+First, systems should efficiently filter the \tKnows edges based on the location of their endpoint \tPersons (\tCountry \param{country}) and the date range.
 Second, given a large number of \tKnows edges even after filtering,
-efficient enumeration of \texttt{p1}--\texttt{p2}--\texttt{p3} triangles (a cyclic subgraph query)
+efficient enumeration of \texttt{personA}--\texttt{personB}--\texttt{personC} triangles (a cyclic subgraph query)
 requires worst-case optimal multi-joins.
 
 % #############################################################################
@@ -105,7 +105,7 @@ precomputing and maintaining it as an attribute on the \tKnows edge can be benef
 \queryRefCard{bi-read-18}{BI}{18} is inspired by Twitter's recommendation algorithm~\cite{DBLP:conf/www/GuptaGLSWZ13}.
 Implementations of this query can exploit factorization:
 systems can count the number of mutual friends without explicitly enumerating all
-$(\texttt{person1}, \texttt{personM}, \texttt{person2})$ tuples.
+\textsf{<}\texttt{person1}, \texttt{personM}, \texttt{person2}\textsf{>} tuples.
 
 % #############################################################################
 \subsubsection{Q20: Recruitment}
@@ -115,7 +115,7 @@ $(\texttt{person1}, \texttt{personM}, \texttt{person2})$ tuples.
 Instead of materializing this graph in the database,
 systems may represent it using a compact in-memory structure such as CSR (Compressed Sparse Row)~\cite{DBLP:books/daglib/0009092}.
 To perform the cheapest path computation, a single-source shortest path algorithm
-(starting from \param{p2}), such as Dijkstra's algorithm, can be used.
+(starting from \param{person2}), such as Dijkstra's algorithm, can be used.
 As the projected graph %(incl. its edge weights)
 is independent of query parameters, precomputing and maintaining it can be beneficial.
 
