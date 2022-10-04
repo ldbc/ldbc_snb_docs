@@ -639,9 +639,7 @@ To ensure reproducibility of the audited results, a supplementary package is att
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A key objective of the auditing guidelines for the BI workload is to \emph{allow a broad range of systems} to implement the benchmark.
-Due to the BI workload's analytical nature, we expect not only DBMSs but also analytical tools which operate on read-only data (stored \eg in HDFS or in an object store).
-Therefore, they do not impose constraints on transactional guarantees.
+The following section describes the auditing rules specific to the Business Intelligence (BI) workload.
 
 \subsection{Overview}
 \label{sec:bi-audit-overview}
@@ -649,67 +647,57 @@ Therefore, they do not impose constraints on transactional guarantees.
 Implementing the BI workload requires the following key capabilities:
 
 \begin{itemize}
-    \item Load the initial snapshot of the social network graph
-    \item Evaluate the BI write operations (including inserts and deletes)
-    \item Evaluate the BI read queries
-    \item (optional) Allow concurrent reads and writes (\autoref{sec:bi-target-systems})
-    \item (optional) Ensure ACID compliance (\autoref{sec:bi-target-systems})
+    \item Loading the initial snapshot of the social network graph
+    \item Evaluating the BI read queries (\autoref{sec:bi-reads}
+    \item Evaluating the BI write operations: inserts (\autoref{sec:bi-insert-operations}) and deletes (\autoref{sec:bi-delete-operations})
+    \item Allowing concurrent reads and writes (\autoref{sec:execution-modes}) (optional, only alowed if ACID compliance is guaranteed)
 \end{itemize}
 
-The write operations and read queries and write operations are run in \emph{daily batches}.
-In each batch, each query variant (Q1, Q2a, Q2b, Q3, \ldots, Q20a, Q20b) is executed using 30~different substitution parameters.
-The benchmark includes two tests which use different workflows in their batches.
-
-\begin{itemize}
-    \item The \emph{power test} first runs the write operations, followed by sequential execution of individual read query variants.
-    \item The \emph{throughput test} performs the same operations, while allowing concurrent execution of the write operations and read queries required in a given batch.
-    Systems can run an arbitrary mix of operations.
-\end{itemize}
-
-\subsection{Execution Modes}
-\label{sec:bi-target-systems}
-
-We define two execution modes, \emph{disjoint RW mode} and \emph{concurrent RW mode} for the workload.
-The execution of the \emph{power batch} is identical for both modes.
-During the excution of the \emph{throughput batch}:
-
-\begin{itemize}
-    \item In \textbf{disjoint RW mode} the system performs the reads and writes separately: first the writes followed by the reads. Concurrency between the read operations is possible. This mode is aimed at \emph{read-optimized data analytical systems} do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
-    \item In \textbf{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
-\end{itemize}
-
-Results with these systems are reported in the same leaderboard on the LDBC website.
-
-\subsection{Benchmark Workflow}
-\label{sec:bi-benchmark-workflow}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=\yedscale]{figures/bi-workflow}
-    \caption{Main software components and data artifacts of the benchmark and their connection to the workflow executed by the BI benchmark driver.}
-    \label{fig:bi-workflow}
-\end{figure}
-
-The workflow of the BI workload is shown in \autoref{fig:bi-workflow}.
+\subsection{Workflow}
+\label{sec:bi-audit-workflow}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=\yedscale]{figures/bi-auditing-workflow.pdf}
-    \caption{BI auditing workflow.}
-    \label{fig:bi-auditing-workflow}
+    \includegraphics[scale=\yedscale]{figures/bi-batches.pdf}
+    \caption{BI benchmark workflow.}
+    \label{fig:bi-batches}
 \end{figure}
 
-The main part of the BI workflow (\autoref{fig:bi-auditing-workflow}) consists of two parts.
+The write operations and read queries are run in \emph{daily batches}.
+In each batch, each query variant
+(Q1, Q2\variantA, Q2\variantB, Q3, \ldots, Q20\variantA, Q20\variantB)
+is executed using 30~different substitution parameters.
+The BI workflow (\autoref{fig:bi-batches}) consists of two key parts:
+the \emph{power test} (\autoref{sec:power-test}) and
+the \emph{throughput test} (\autoref{sec:throughput-test}).
 
-\begin{itemize}
-    \item Running the \textbf{power test}, \ie apply one day's write batch, then run the reads sequentially.
-    \item Running the \textbf{throughput test}, \ie run batches of (potentially) concurrent write operations (applying one day's worth of data per batch) and read queries.
-    The execution of this test is called the \emph{throughput measurement window}, which should
-    run at least for 1~hour and
-    include at least one fully completed batch.
-\end{itemize}
+\subsubsection{Power Test}
+\label{sec:power-test}
 
-During the \emph{throughput test}, systems capable of transactional features (\autoref{sec:bi-target-systems}) can opt to run read and write operations concurrently (\emph{concurrent RW mode}).
+The \emph{power test} runs a single \emph{power batch}. This test first runs the write operations, followed by a sequential execution of individual read query variants.
+The writes perform a day of inserts and deletes in the simulated social network,
+while a total of $28 \times 30 = 840$ read queries are executed.
+
+\subsubsection{Throughput Test}
+\label{sec:throughput-test}
+
+The \emph{throughput test} consists of multiple \emph{throughput batches}. These perform the same operations as the power batch but (optionally) allow concurrent execution of the write operations and read queries in a given batch.
+Each throughput batch runs the same amount of operations as the power batch.
+
+The execution of the throughput test during audits is the \emph{throughput measurement window}.
+This window must span at least for 1~hour and
+it must include at least one fully completed batch (see \autoref{fig:bi-batches}).
+
+The workload defines two execution modes for the \emph{throughput batches}:
+
+\paragraph{Disjoint RW mode}
+In \emph{disjoint RW mode} the system performs the reads and writes separately. It first executes the writes, then evaluates the read queries. Concurrency between the read operations is allowed.\\
+This mode is aimed at \emph{read-optimized data analytical systems} which do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
+
+\paragraph{Concurrent RW mode}
+In \emph{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
+
+\subsection{Runtimes}
 
 The runtimes should be reported as follows:
 \begin{itemize}
@@ -721,13 +709,13 @@ The runtimes should be reported as follows:
 
 Note that a warm-up period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
 
-
 \subsection{Scoring Metrics}
 \label{sec:bi-scoring-metrics}
 
 SNBI BI provides four scoring metrics:
 the \emph{power score}, the \emph{throughput score}, and their price-adjusted variants,
 the \emph{per-\$ power score} and the \emph{per-\$ throughput score}.
+All scores include the scale factor, denoted with ``@SF''.
 
 \subsubsection{Price}
 \label{sec:price-metrics}
@@ -741,7 +729,7 @@ and maintenance costs for 3 years.
 In case of cloud deployments, the cost of running a 3-year reserved instance should be reported.
 When establishing the price, the ``upfront payment'' option available at certain cloud providers should not be considered.
 
-\subsubsection{Power Score}
+\subsubsection{Power Scores}
 \label{sec:power-score}
 
 The definition of \snbbi's power score follows \tpcH in using a geometric mean, ensuring that there is an incentive to improve all queries, no matter their running time.
@@ -811,11 +799,11 @@ $$
 To determine the price-adjusted power score, we factor in the $\textit{TCO}$\emph{:}
 $$ \textit{power@SF/\$} = \textit{power@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
 
-\subsubsection{Throughput Score}
+\subsubsection{Throughput Scores}
 \label{sec:throughput-score}
 
 The throughput score is based on $t_\textit{load}$, measured in hours,
-and the cumulative times and number of the throughput batches executed:
+and the cumulative execution time and number of the throughput batches executed:
 %throughput score is calculated as the number of batches the system could execute in a single day
 $$
 \textit{throughput@SF} =
@@ -838,7 +826,7 @@ $$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000
 
 The SUT shall evaluate all operators correctly.
 The validation of correctness is performed on the output of the \emph{power test} step.
-The rationale for using this step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantees deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
+The rationale for using this only step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantees deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
 
 \subsubsection{Auxiliary Data Structures}
 \label{sec:bi-auxiliary-data-structures}
@@ -852,7 +840,8 @@ Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) 
 General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
 
 Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
-Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed. (These libraries often include features such as weighted shortest path algorithms.)
+Using the stored procedure libraries considered to be the ``standard libraries'' of the SUT is allowed.%
+\footnote{These libraries often include features such as weighted shortest path algorithms.}
 Implementations may use \emph{stored procedures written in a domain-specific language}.
 In cases when the exact approach used by the SUT's query implementations is uncertain, it is the auditor's responsibility to decide whether the SUT complies with this rule.
 
@@ -860,7 +849,7 @@ In cases when the exact approach used by the SUT's query implementations is unce
 \label{sec:bi-query-variants}
 
 Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use \variantA and \variantB variants with different sets of input parameters.
-These should be run in a mix and the SUT should not receive any hints on which variant it is currently evaluating (\eg Q14\variantA or Q14\variantB).
+The SUT should not receive any hints on which variant it is currently evaluating (\eg Q14\variantA or Q14\variantB).
 Moreover, it is not allowed for the query implementations to contain code that aims to detect the query variant used.
 
 \subsection{Scaling}
