@@ -666,24 +666,19 @@ The benchmark includes two tests which use different workflows in their batches.
     Systems can run an arbitrary mix of operations.
 \end{itemize}
 
-\subsection{Target Systems}
+\subsection{Execution Modes}
 \label{sec:bi-target-systems}
 
-We allow two categories of systems to be used in the benchmark with slightly different implementation rules.
-Results with these systems are reported in the same leaderboard.
+We define two execution modes, \emph{disjoint RW mode} and \emph{concurrent RW mode} for the workload.
+The execution of the \emph{power batch} is identical for both modes.
+During the excution of the \emph{throughput batch}:
 
 \begin{itemize}
-    \item \emph{Purely analytical systems} (\eg graph analytical systems) do not support concurrent reads and writes (or they choose not make use of them in their \snbbi implementation).
-    \item \emph{Transaction-capable systems} (\eg GDBMSs) make use of concurrent reads and writes.
+    \item In \textbf{disjoint RW mode} the system performs the reads and writes separately: first the writes followed by the reads. Concurrency between the read operations is possible. This mode is aimed at \emph{read-optimized data analytical systems} do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
+    \item In \textbf{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
 \end{itemize}
 
-\emph{Purely analytical systems} shall perform their \emph{throughput batches} in two steps:
-first, they should perform the writes (update operations),
-then, they should perform the reads (queries).
-For such systems, passing the \emph{ACID compliance test} is not required.
-
-\emph{Transaction-capable systems} are allowed to run concurrent read and write operations in their \emph{throughput batches} (\autoref{sec:bi-benchmark-workflow}).
-These systems should guarantee snapshot isolation and pass the \emph{ACID compliance test} (\autoref{sec:acid-compliance}).
+Results with these systems are reported in the same leaderboard on the LDBC website.
 
 \subsection{Benchmark Workflow}
 \label{sec:bi-benchmark-workflow}

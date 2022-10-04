@@ -144,7 +144,6 @@ We achieve this through \emph{parameter curation}~\cite{DBLP:conf/tpctc/Gubichev
 Our parameter curation process is a two-step process:
 we first generate \emph{factors} followed by the \emph{parameters} (\autoref{fig:bi-workflow}).
 These components are executed for each scale factor and are independent of the serialization format/layout of the data set.
-Their location in the benchmark workflow is shown in \autoref{fig:benchmark-components}.
 
 \subsubsection*{Factor generator}
 The factor generator produces 21~\emph{factor tables} containing summary statistics from the temporal graph,
@@ -181,7 +180,6 @@ For example, for Q14 (\autoref{sec:bi-read-14}),
 we selected
 variant~\variantA to $p=0.98$ (correlated) and
 variant~\variantB to $p=0.03$ (anti-correlated).
-\autoref{fig:paramgen-comparison} and \autoref{tab:results} show the runtimes of these variants.
 
 \subsubsection{Path Queries}
 \label{sec:path-queries}
