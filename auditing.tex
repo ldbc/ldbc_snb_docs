@@ -693,11 +693,11 @@ The workload defines two execution modes for the \emph{throughput batches}:
 
 \begin{description}
     \item[Disjoint RW mode]
-    In \emph{disjoint RW mode} the system performs the reads and writes separately. It first executes the writes, then evaluates the read queries. Concurrency between the read operations is allowed.\\
+    In \emph{disjoint RW (read-write) mode} the system performs the reads and writes separately. It first executes the writes, then evaluates the read queries. Concurrency between the read operations is allowed.\\
     This mode is aimed at \emph{read-optimized data analytical systems} which do not support concurrent reads and writes. Implementations may also opt to use this mode for simplicity. For these implementations, passing the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}) is not required.
 
     \item[Concurrent RW mode]
-    In \emph{concurrent RW mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
+    In \emph{concurrent RW (read-write) mode} the system is allowed to run reads and writes concurrently. This requires the systems to be capable of handling \emph{transactions}. Implementations using this mode are required to pass the \emph{LDBC ACID compliance test} (\autoref{sec:acid-test-suite}).
 \end{description}
 
 \subsection{Runtimes}
