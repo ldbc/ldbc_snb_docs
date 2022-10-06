@@ -14,20 +14,21 @@ For a guide on how to develop SNB Interactive implementations, please check out 
 
 ## Compatibility
 
-The two SNB workloads (Interactive/BI) are stored in different repositories:
+The two SNB workloads are stored in different repositories:
 
-* Interactive (auditable since v0.3.2):
-  * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
+* Interactive:
+  * Data generator (for versions 0.x and 1.x): https://github.com/ldbc/ldbc_snb_datagen_hadoop
+  * Data generator (for version 2.0): https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_driver
-  * Implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
-* BI (released in v2.0.0, available for auditing soon):
+  * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
+* Business Intelligence (BI):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
-  * Driver and implementations: https://github.com/ldbc/ldbc_snb_bi
+  * Driver and reference implementations: https://github.com/ldbc/ldbc_snb_bi
 
 ## How to cite LDBC benchmarks
 
 * **Social Network Benchmark:**
-  * **Detailed specification:** [The LDBC Social Network Benchmark (version 0.3.6)](https://arxiv.org/pdf/2001.02299.pdf) by the LDBC Social Network Benchmark task force, arXiv/CoRR abs/2001.02299, 2020. [[bib](bib/specification.bib)]
+  * **Detailed specification:** [The LDBC Social Network Benchmark](https://arxiv.org/pdf/2001.02299.pdf) by the LDBC Social Network Benchmark task force and contributors, arXiv/CoRR abs/2001.02299, 2020. [[bib](bib/specification.bib)]
   * **BI workload:** [An early look at the LDBC Social Network Benchmark's Business Intelligence workload](https://ldbcouncil.org/sites/default/files/ldbc-bi-grades.pdf), GRADES-NDA at SIGMOD 2018 by G. Szárnyas et al. [[bib](bib/snb-bi.bib)]
   * **Interactive workload:** [The LDBC Social Network Benchmark: Interactive Workload](https://ir.cwi.nl/pub/23380), SIGMOD 2015 by O. Erling et al. [[bib](bib/snb-interactive.bib)]
 * **Related benchmarks:**
@@ -43,7 +44,7 @@ The two SNB workloads (Interactive/BI) are stored in different repositories:
 
 To get consistent formatting, query cards are generated from query specifications defined in [YAML](https://yaml.org/) format. This is a necessary step to compile to the document.
 
-Install Pandoc, Python3, and the required packages:
+Install Pandoc, Python, and the required packages:
 
 ```bash
 scripts/install-dependencies.sh
@@ -51,12 +52,10 @@ scripts/install-dependencies.sh
 
 ### Building the document
 
-To build the document locally, run `make` or `make texfot`. The latter requires Perl but gives you a cleaner output.
+To build the document locally, run `make` or `make texfot`. The latter requires Perl but produces a cleaner output.
 
 We also provide a [GitHub Action repository and a Docker container](https://github.com/ldbc/document-builder) and [images on Docker Hub](https://hub.docker.com/r/ldbc/document-builder). To use this locally, run:
 
 ```bash
 docker run --rm --volume=`pwd`:"/github/workspace" ldbc/document-builder:2021 texfot query_cards workloads && sudo chown -R ${USER}:${USER} .
 ```
-
-For the GitHub Actions configuration, check out the content of the [`.github/workflows/`](.github/workflows/ directory).
