@@ -692,7 +692,7 @@ A \tPerson $\ePerson$ is the avatar a real-world person creates when they join t
     \item $\varc{\ePerson} \in \interval{\xSS}{\xSE}$
     \item $\vard{\ePerson} \in \interval{\varc{\ePerson} + \Delta}{\xNC}$
 \end{itemize}
-%When most users leave a network they do so without deleting their profiles; around 22\% explicitly delete their profiles~\cite{Lorincz2019}. Also, the probability of a given \tPerson leaving the network varies depending on the amount of \emph{social capital} they stand to lose~\cite{Lorincz2019}. Social capital is the utility an individual gains from human interaction, this is captured at a coarse-grain by the number of connections an individual has in the network - \tPersons with higher \tKnows  degrees are less willing leave the network as they have more social capital to lose. These two phenomenon are captured when $\vard{\ePerson}$ is selected from the above interval.
+%When most users leave a network they do so without deleting their profiles; around 22\% explicitly delete their profiles~\cite{Lorincz2019}. Also, the probability of a given \tPerson leaving the network varies depending on the amount of \emph{social capital} they stand to lose~\cite{Lorincz2019}. Social capital is the utility an individual gains from human interaction, this is captured at a coarse-grain by the number of connections an individual has in the network -- \tPersons with higher \tKnows  degrees are less willing leave the network as they have more social capital to lose. These two phenomenon are captured when $\vard{\ePerson}$ is selected from the above interval.
 
 For the edges of \tPerson nodes pointing to a static node
 ($\type{isLocatedIn}$,
@@ -753,7 +753,7 @@ To make informed choices of deletion probabilities and deletion date distributio
 
 \paragraph{Delete Person}
 
-Lorincz et al.~\cite{Lorincz2019} have analyzed iWiW, a now-defunct Hungarian social network, observing that people with more connections are less likely to leave a social network.
+Lorincz \etal.~\cite{Lorincz2019} have analyzed iWiW, a now-defunct Hungarian social network, observing that people with more connections are less likely to leave a social network.
 When a \tPerson is generated they are assigned a \emph{maxKnows} value which indicates the amount of \tKnows connections they
 will make across the lifetime of the network.
 This information is then utilized to determine the probability a person is explicitly deleted using the distribution provided
@@ -787,7 +787,7 @@ A comment generator is then used to produce a tree of comments on each post.
 Posts in albums are referred to as photos, they are produced by a different generator and do not have flashmob events nor do they have comment trees.
 Additionally, all posts and comments have a number of likes generated for it.
 
-Almuhimedi et al.~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week.
+Almuhimedi \etal~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} tracked 292K Twitter users for 1 week.
 They found 2.4\% of 67.2M tweets were deleted across 4 categories: status posts, retweets, replies, and mentions of other users that
 were not replies.
 In order to apply these findings to Datagen and obtain the average percentage of \tMessages and \tLikes deleted across the simulation
@@ -799,7 +799,7 @@ period, tweet categories were mapped to Datagen \tMessage types.
 Additionally, \cite{DBLP:conf/cscw/AlmuhimediWLSA13} identified not all users delete messages, with around 50\% of users doing so.
 Thus, each \tPerson in the network has a 50\% chance of being marked a \emph{messageDeleter}, who subsequently, may or may not, delete post, comments, or likes.
 \cite{DBLP:conf/cscw/AlmuhimediWLSA13} also identify a relationship between the depth of replies to a tweet and the chance the tweet
-is deleted - a tweet with less replies is more likely to be deleted.
+is deleted -- a tweet with less replies is more likely to be deleted.
 We apply this relationship to the number of  \tComments in a \tPosts thread using the distribution in \autoref{fig:if-post}.
 Note, this distribution has an average of 2.7\% aligning with \autoref{table:almuhimedi-mapping}.
 
@@ -810,7 +810,7 @@ Note, this distribution has an average of 2.7\% aligning with \autoref{table:alm
   \label{fig:if-post}
 \end{figure}
 
-Almuhimedi et al also observe a temporal relationship for when a tweet is deleted - a tweet has a higher chance of being deleted soon
+Almuhimedi \etal also observe a temporal relationship for when a tweet is deleted -- a tweet has a higher chance of being deleted soon
 after it was created.
 They found 50\% of all deleted tweets where removed within 8~minutes of creation.
 We have recreated the temporal distribution in~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} and use it to generate deletion dates from
