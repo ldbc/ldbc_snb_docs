@@ -62,5 +62,18 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
             FROM sum_stats
             WHERE regexp_matches(file, '.*_.*')
+        UNION ALL
+            SELECT
+                'total',
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+            FROM sum_stats
         ) TO '{update}-summary.tex' (DELIMITER ' & ');
         """)
