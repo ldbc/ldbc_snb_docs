@@ -29,7 +29,7 @@ result:
   - name: pathWeight
     type: 64-bit Integer
     category: calculated
-choke_points: [3.3, 5.3, 7.2, 7.3, 7.5, 7.7, 8.1, 8.2, 8.3, 8.6] #TODO
+choke_points: [3.3, 5.3, 7.2, 7.3, 7.5, 7.7, 7.8, 8.1, 8.2, 8.3, 8.6] #TODO
 relevance: |
   This query tests the performance of cheapest path (weighted shortest path) computation.
   It uses integer edge weights to prevent inaccuracies introduced by floating-point number representation to cause differences in query results.

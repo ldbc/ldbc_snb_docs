@@ -355,9 +355,12 @@ The \mbox{G-CORE}~\cite{DBLP:conf/sigmod/AnglesABBFGLPPS18} design language tack
 \input{choke-points/cp-7-7}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \cpSection{7.8}{QEXE}{Regular path queries}
-% TODO
-% \input{choke-points/cp-7-8}
+\cpSection{7.8}{QEXE}{Reachability between disconnected components}
+
+For path finding queries, the result is often that the specified path does not exist in the graph.
+For example, for a single-source single-destination search, when one of the endpoints is in a small component (\eg the endpoint is an isolated node), systems using a bidirectional search algorithm can quickly determine that there is no path to be found.
+
+\input{choke-points/cp-7-8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

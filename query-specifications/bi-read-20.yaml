@@ -40,7 +40,7 @@ sort:
   - name: person1.id
     direction: asc
 limit: 20
-choke_points: [3.3, 7.6, 7.7, 8.4, 8.6]
+choke_points: [3.3, 7.6, 7.7, 7.8, 8.4, 8.6]
 relevance: |
   To find the weighted shortest paths efficiently, the system can use e.g. a bidirectional Dijkstra algorithm.
   As the edge weights do not depend on any parameter, systems can pre-compute them (if they do not interleave reads and writes).

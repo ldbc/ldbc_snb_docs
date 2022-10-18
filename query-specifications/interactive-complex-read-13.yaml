@@ -24,6 +24,6 @@ result:
   - name: shortestPathLength
     type: 32-bit Integer
     category: calculated
-choke_points: [3.3, 7.2, 7.3, 7.5, 8.1, 8.6]
+choke_points: [3.3, 7.2, 7.3, 7.5, 7.8, 8.1, 8.6]
 relevance: |
   This query looks for a variable length path, starting at a given *Person* and finishing at an another given *Person*. Proper cardinality estimation and search space pruning, will be crucial. This query also allows for possible parallel implementations.
