@@ -1,7 +1,7 @@
 # LDBC SNB Documentation
 
 * Latest snapshot: [[PDF](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)] [[Source](https://github.com/ldbc/ldbc_snb_docs/tree/main)]
-* Stable version (updated every few months): [[arXiv]](https://arxiv.org/abs/2001.02299)
+* Stable version (updated every few months): [[arXiv](https://arxiv.org/abs/2001.02299)]
 
 ## Schema
 
