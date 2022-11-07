@@ -100,7 +100,7 @@
               <y:BorderStyle color="#808080" type="line" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Arial" fontSize="12" fontStyle="plain" hasLineColor="false" height="44.21875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="456.9461154513891" x="0.0" xml:space="preserve" y="0.0">Find the shortest paths between all pairs of Persons in city1 and city2.
 The weight of a knows edge is based on the number of interactions 
-between its Persons: knows.weight = 1 / count(interactions)</y:NodeLabel>
+between its Persons: knows.weight = max(round(40 - sqrt(numInteractions)), 1)</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
