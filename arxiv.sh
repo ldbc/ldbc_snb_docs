@@ -11,7 +11,7 @@ set -o pipefail
 #    - Under "The specification was built on the source code available at", uncomment the GitHub URL with the tag
 #
 # 2. Edit README.md
-#    - Adjust the version number in the table
+#    - Adjust the version number in the PDF links
 #
 # 3. Commit and push to GitHub
 #
