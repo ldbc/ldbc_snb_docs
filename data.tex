@@ -232,7 +232,7 @@ somehow similar to it, there is a high connectivity probability, whereas for
 most other persons, this probability is quite low. This knowledge is
 exploited by \datagen to reproduce correlations.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[scale=\yedscale]{figures/datagen-workflow}
     \caption{The \datagen generation process.}
@@ -302,14 +302,14 @@ Interesting quirks:
 \item Flashmob events span a 72-hour time window with a specific event time in the middle of the window; there are 36 hours each side of the specific event time. Following the distribution in Figure \ref{fig:flashmob_dist} posts are generated either side of flashmob event time, posts are clustered around the specific event time.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[scale=\yedscale]{figures/comments_power_law}
   \caption{The power-law used to generate comments.}
   \label{fig:comments_dist}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[scale=\yedscale]{figures/flashmob_dist}
   \caption{The distribution used to generate posts during flashmob events.}
@@ -761,7 +761,7 @@ in~\cite{Lorincz2019}, reproduced in~\autoref{fig:if-person}.
 A deletion event date is then selected uniformly from the person's valid lifespan.
 On average 3.5\% of \tPersons are deleted across the simulation period.
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[scale=\yedscale]{figures/fig-if-person}
   \caption{Distribution for determining the probability a \tPerson is deleted given their number of connections.}
@@ -803,7 +803,7 @@ is deleted -- a tweet with less replies is more likely to be deleted.
 We apply this relationship to the number of  \tComments in a \tPosts thread using the distribution in \autoref{fig:if-post}.
 Note, this distribution has an average of 2.7\% aligning with \autoref{table:almuhimedi-mapping}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[scale=\yedscale]{figures/fig-if-post}
   \caption{Probability a post is deleted given the number of comments in its thread.}
@@ -816,7 +816,7 @@ They found 50\% of all deleted tweets where removed within 8~minutes of creation
 We have recreated the temporal distribution in~\cite{DBLP:conf/cscw/AlmuhimediWLSA13} and use it to generate deletion dates from
 the valid lifespan intervals for posts, comments, and likes that are selected for explicit deletion~\autoref{fig:when-activity}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[scale=\yedscale]{figures/fig-when-activity}
   \caption{Cumulative probability density function of when a post, comment, or like is deleted after it is created (x = 0).}
