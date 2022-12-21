@@ -1,0 +1,24 @@
+\begin{table}[htb]
+    \setlength{\tabcolsep}{.3em}
+    \centering
+    \scriptsize
+    \begin{tabular}{|c|l|r|r|r|r|r|r|r|r|r|r|r|r|r|r|}
+        \hline
+        \tableHeaderFirst{INS} & \tableHeader{Operation} & \tableHeader{SF0.1} & \tableHeader{SF0.3} & \tableHeader{SF1}  & \tableHeader{SF3}  & \tableHeader{SF10}  & \tableHeader{SF30}   & \tableHeader{SF100}  & \tableHeader{SF300}  & \tableHeader{SF\numprint{1000}} \\
+        \hline
+        1                      & Add person              & \numprint{172}      & \numprint{386}      & \numprint{1108}    & \numprint{2672}    & \numprint{7355}     & \numprint{18570}     & \numprint{50374}     & \numprint{125931}    & \numprint{360960}               \\
+        2                      & Add like to post        & \numprint{44313}    & \numprint{132041}   & \numprint{494410}  & \numprint{1460471} & \numprint{4875874}  & \numprint{14378128}  & \numprint{45633086}  & \numprint{129721727} & \numprint{410899721}            \\
+        3                      & Add like to comment     & \numprint{30395}    & \numprint{105061}   & \numprint{460487}  & \numprint{1450891} & \numprint{5210730}  & \numprint{16114277}  & \numprint{54990638}  & \numprint{163624084} & \numprint{539128029}            \\
+        4                      & Add forum               & \numprint{3059}     & \numprint{6913}     & \numprint{19757}   & \numprint{49223}   & \numprint{131439}   & \numprint{330288}    & \numprint{898185}    & \numprint{2257347}   & \numprint{6479509}              \\
+        5                      & Add forum membership    & \numprint{126615}   & \numprint{405441}   & \numprint{1566914} & \numprint{4874316} & \numprint{16647977} & \numprint{51095793}  & \numprint{165881862} & \numprint{478826826} & \numprint{1543247540}           \\
+        6                      & Add post                & \numprint{32610}    & \numprint{78164}    & \numprint{229614}  & \numprint{592875}  & \numprint{1655168}  & \numprint{4304447}   & \numprint{12236177}  & \numprint{32109577}  & \numprint{96023955}             \\
+        7                      & Add comment             & \numprint{46969}    & \numprint{144917}   & \numprint{490328}  & \numprint{1372420} & \numprint{4414427}  & \numprint{12588582}  & \numprint{39547415}  & \numprint{112862922} & \numprint{362292612}            \\
+        8                      & Add friendship          & \numprint{3197}     & \numprint{10337}    & \numprint{40124}   & \numprint{122714}  & \numprint{431916}   & \numprint{1304053}   & \numprint{4252839}   & \numprint{12047072}  & \numprint{36762818}             \\
+        \hline
+        \multicolumn{2}{|l|}{\bf Total insert operations}
+                                                         & \numprint{287330}   & \numprint{883260}   & \numprint{3302742} & \numprint{9925582} & \numprint{33374886} & \numprint{100134138} & \numprint{323490576} & \numprint{931575486} & \numprint{2995195144}           \\
+        \hline
+    \end{tabular}
+    \caption{Update stream statistics for SNB Interactive v1.0}
+    \label{table:interactive-v1-update-stream-statistics}
+\end{table}
