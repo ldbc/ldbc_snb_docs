@@ -8,7 +8,7 @@
 
 ## Benchmark specification
 
-For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1p-nuHarSOKCldZ9iEz__6_V3sJ5kbGWlzZHusudW_Cc/) ([PDF](https://ldbcouncil.org/docs/presentations/ldbc-snb-2022-11.pdf)).
+For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1NilxSrKQnFq4WzWMY2-OodZQ2TEksKzKBmgB20C_0Nw/) ([PDF](https://ldbcouncil.org/docs/presentations/ldbc-snb-2022-11.pdf)).
 
 For a guide on how to develop SNB Interactive implementations, please check out the README of the [Interactive implementations repository](https://github.com/ldbc/ldbc_snb_interactive_impls).
 
