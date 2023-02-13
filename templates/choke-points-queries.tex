@@ -16,13 +16,11 @@
 
 {%- for query in queries -%}
     {#- only list queries that have at least one choke point -#}
-    {%- if query_choke_point[query.0] -%}
+    {%- if query_choke_point[query.0] and query.2 != "insert" and query.2 != "delete" -%}
         {%- if queries[loop.index0 - 1].0[0] != queries[loop.index0].0[0] %}\hline{% endif %}
         \queryRefCard{ {{- query.0 -}} }{
             {%- if query.1 == "Interactive" and query.2 == "complex"%}IC{% endif -%}
             {%- if query.1 == "BI" and query.2 == "read"%}BI{% endif -%}
-            {%- if query.2 == "insert"%}INS{% endif -%}
-            {%- if query.2 == "delete"%}DEL{% endif -%}
             }{ {{- query.3 -}} }
         {% for choke_point in choke_points -%}
             {%- if choke_point < "9" -%}
