@@ -33,9 +33,10 @@ a set of short reads which are issued in a row. The issue time assigned to each
 short read in the sequence is determined at run time, and is based on the
 completion time of the complex read it depends on. 
 The substitution parameters for short reads are taken from the results of previously
-executed queries:
+executed queries.
+
 \begin{itemize}
-\item complex reads:
+\item Complex reads:
     \queryRefCard{interactive-complex-read-01}{IC}{1}
     \queryRefCard{interactive-complex-read-02}{IC}{2}
     \queryRefCard{interactive-complex-read-03}{IC}{3}
@@ -47,7 +48,7 @@ executed queries:
     \queryRefCard{interactive-complex-read-12}{IC}{12}
     \queryRefCard{interactive-complex-read-14-old}{IC}{14-o}
     \queryRefCard{interactive-complex-read-14-new}{IC}{14-n}
-\item short reads:
+\item Short reads:
     \queryRefCard{interactive-short-read-02}{IS}{2}
     \queryRefCard{interactive-short-read-03}{IS}{3}
     \queryRefCard{interactive-short-read-05}{IS}{5}
@@ -55,12 +56,15 @@ executed queries:
     \queryRefCard{interactive-short-read-07}{IS}{7}
 \end{itemize}
 
+For the precise connections between short and complex read queries, see \autoref{tab:short-read-after-long-read}.
+
 Once a short read sequence is issued (and provided that sufficient substitution parameters 
 exist), there is a probability that another short read  sequence is issued. 
 This probability decreases for each new sequence issued. 
 Since the same random number generator seed is used across
 executions, the workload is deterministic.
 
+\input{tables/table-short-read-queries}
 
 The specified frequencies, implicitly define the query ratios between queries
 of different types, as well as a default target throughput. However, the Test
