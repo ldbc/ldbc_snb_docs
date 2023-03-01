@@ -248,6 +248,10 @@ The auditor must ascertain from the records of a benchmark execution that a suff
 Benchmarks shall each specify a minimum count of operations and relative frequencies of operations for a qualifying
 execution.
 
+\subsubsection{Post-Processing of Query Results}
+
+The SUT's benchmark client shall not post-process query results in a way that changes their value. For example, it is not allowed to return floating-point values with a precision of 0.5 that are encoded as integers and divided by 2 on the client side.
+
 \subsection{System Configuration and System Pricing}
 \label{sec:system-config}
 
