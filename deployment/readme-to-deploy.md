@@ -19,6 +19,7 @@
 * BI workload:
     * [BI workload (full specification)](workload-bi.pdf)
     * [BI workload / Reads](workload-bi-reads.pdf)
+    * [VLDB 2022 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-bi-vldb-2022.pdf)
 * Updates:
     * [Inserts](workload-inserts.pdf)
     * [Deletes](workload-deletes.pdf)
