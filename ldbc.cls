@@ -242,34 +242,15 @@
         }
 
         \vspace{1cm}%
-        \normalsize%
-%        \noindent\begin{tabular}{|p{4.0cm};{1pt/1pt}p{12.2cm}|}%
-%         & \\[-1.05em]% % this is here to avoid a gap caused by hdashlines
-%        \hline%
-%        Deliverable nature: \T \B & \natureText \\%
-%        \hdashline[1pt/1pt]%
-%        \T \parbox[t]{3.8cm}{Dissemination level:\\\footnotesize (Confidentiality)\B}  & \disseminationLevelText \\%
-%        \hdashline[1pt/1pt]%
-%        \T Contractual delivery date:\B & \dueContractualText \\%
-%        \hdashline[1pt/1pt]%
-%        \T Actual delivery date: \B & \dueActualText \\%
-%        \hdashline[1pt/1pt]%
-%        \T Version: \B & \lastVersionText \\%
-%        \hdashline[1pt/1pt]%
-%        \T Total number of pages: \B & \pageref{LastPage} \\%
-%        \hdashline[1pt/1pt]%
-%        \T Keywords: \B & \keywordsText \\%
-%        \hline%
-%        \end{tabular}%
-%        \newpage%
-%        \newpage%
-%        \normalLayout%
-%        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
-%        \hline%
-%        \emph{\bfseries \T Abstract} \\[2mm]%
-%        \parbox[t]{17.0cm}{\abstractText } \B \\%
-%            \hline%
-%        \end{tabular}%
+        
+        \begin{center}
+            \Large
+            \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[width=4cm]{figures/cc-by.pdf}}
+            \\
+            This work is licensed under a Creative Commons Attribution 4.0 License.
+        \end{center}
+
+        \normalsize
         \newpage%
         \normalLayout%
 %        \noindent\begin{tabular}{@{}c@{}}\\[-10mm]%
