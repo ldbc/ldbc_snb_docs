@@ -5,9 +5,9 @@ cd ..
 
 if [[ ! -z $(which yum) ]]; then
     sudo yum install -y pandoc python3 python3-pip python3-setuptools
-elif [[ ! -z $(which apt) ]]; then
-    sudo apt update
-    sudo apt install -y pandoc python3 python3-pip python3-setuptools
+elif [[ ! -z $(which apt-get) ]]; then
+    sudo apt-get update
+    sudo apt-get install -y pandoc python3 python3-pip python3-setuptools
 fi
 
 pip3 install -r requirements.txt
