@@ -3,14 +3,16 @@ operation: read
 number: 19
 title: Interaction path between cities
 description: |
-  Given two *Cities* with IDs `$city1Id`, `$city2Id`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the shortest **interaction path** between them.
-  If there are multiple pairs of people with shortest paths with the same total weight, return all of them.
+  Given two *Cities* with IDs `$city1Id`, `$city2Id`, find *Persons* `person1`, `person2` living in these *Cities* (respectively) with the **cheapest** interaction path between them.
 
-  The shortest path is computed on the *Person-knows-Person* graph based on the number of interactions,
-  i.e. the number of direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
+  The cheapest path is equivalent to the **weighted shortest** path.
+  It is computed on a subgraph of the *Person-knows-Person* graph with the edge weights based on the number of interactions.
+  An **interaction** is a direct reply *Comments* from one *Person* to *Messages* by the other *Person*.
   Only *knows* edges with at least one interaction between their endpoint *Persons* are considered.
-  The weight of a *knows* edge is defined as:
+  For these, the weight of a *knows* edge is defined as:
   $\max(\mathrm{round}( 40 - \sqrt{\textit{numInteractions}} ), 1)$
+
+  If there are multiple pairs of people with cheapest paths that have the same total weight, return all of them.
 
   **Note:** Interactions are counted both ways, e.g. if Alice *knows* Bob, Alice writes 2 reply *Comments* to Bob's *Messages*
   and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 38.
