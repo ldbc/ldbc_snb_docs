@@ -54,17 +54,6 @@
 * [Interactive Short Read 6](interactive-short-read-06.pdf)
 * [Interactive Short Read 7](interactive-short-read-07.pdf)
 
-### Interactive inserts
-
-* [Interactive Insert 1](insert-01.pdf)
-* [Interactive Insert 2](insert-02.pdf)
-* [Interactive Insert 3](insert-03.pdf)
-* [Interactive Insert 4](insert-04.pdf)
-* [Interactive Insert 5](insert-05.pdf)
-* [Interactive Insert 6](insert-06.pdf)
-* [Interactive Insert 7](insert-07.pdf)
-* [Interactive Insert 8](insert-08.pdf)
-
 ### BI reads
 
 * [BI Read 1](bi-read-01.pdf)
@@ -88,13 +77,24 @@
 * [BI Read 19](bi-read-19.pdf)
 * [BI Read 20](bi-read-20.pdf)
 
-### BI deletes
+### Inserts
 
-* [BI Delete 1](delete-01.pdf)
-* [BI Delete 2](delete-02.pdf)
-* [BI Delete 3](delete-03.pdf)
-* [BI Delete 4](delete-04.pdf)
-* [BI Delete 5](delete-05.pdf)
-* [BI Delete 6](delete-06.pdf)
-* [BI Delete 7](delete-07.pdf)
-* [BI Delete 8](delete-08.pdf)
+* [Insert 1](insert-01.pdf)
+* [Insert 2](insert-02.pdf)
+* [Insert 3](insert-03.pdf)
+* [Insert 4](insert-04.pdf)
+* [Insert 5](insert-05.pdf)
+* [Insert 6](insert-06.pdf)
+* [Insert 7](insert-07.pdf)
+* [Insert 8](insert-08.pdf)
+
+### Deletes
+
+* [Delete 1](delete-01.pdf)
+* [Delete 2](delete-02.pdf)
+* [Delete 3](delete-03.pdf)
+* [Delete 4](delete-04.pdf)
+* [Delete 5](delete-05.pdf)
+* [Delete 6](delete-06.pdf)
+* [Delete 7](delete-07.pdf)
+* [Delete 8](delete-08.pdf)
