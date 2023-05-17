@@ -5,7 +5,7 @@ title: Trusted connection paths (new version)
 description: |
   **This query is used in the new version of SNB Interactive (v2.0+).**
 
-  Find a cheapest path between two given *Persons* with IDs `$person1Id` and `$person2Id` in the interaction subgraph. If there are multiple cheapest paths, return any of them can be returned. Do not return any rows if there is no path between the *Persons*.
+  Find a cheapest path between two given *Persons* with IDs `$person1Id` and `$person2Id` in the interaction subgraph. If there are multiple cheapest paths, any of them can be returned. Do not return any rows if there is no path between the *Persons*.
 
   The interaction subgraph is based on a projection of the *Person*-*knows*-*Person* graph. In this projection, only those *knows* edges are kept whose endpoint *Persons* have at least one interaction between them.
 
