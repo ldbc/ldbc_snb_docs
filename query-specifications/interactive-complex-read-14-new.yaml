@@ -16,7 +16,7 @@ description: |
   and Bob writes 3 reply *Comments* to Alice's *Messages*, their total number of interactions is 5 and the weight of the knows edge is 38.
 
   **Remark:** Determinism is ensured by using square root followed by rounding.
-  For all integers between 1 and $\numprint{100000}$, the square root's fractional part is more than 10e-5 from 0.5, where the rounding could be non-determinstic based on floating point inaccuracies. As 10e-5 is significantly larger than the machine epsilon of IEEE 754 floats (both 32- and 64-bit), the floating point inaccuracies have no chance to affect the derived integer edge weights.
+  For all integers between 1 and $\numprint{100000}$, the square root's fractional part is more than 10e-5 from 0.5, where the rounding could be non-deterministic based on floating point inaccuracies. As 10e-5 is significantly larger than the machine epsilon of IEEE 754 floats (both 32- and 64-bit), the floating point inaccuracies have no chance to affect the derived integer edge weights.
 parameters:
   - name: person1Id
     type: ID
