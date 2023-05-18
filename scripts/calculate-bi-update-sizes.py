@@ -7,7 +7,7 @@ con.execute(f"CREATE OR REPLACE TABLE sum_stats (sf bigint, file varchar, numEnt
 
 for update in ["inserts", "deletes"]:
     con.execute(f"DELETE FROM sum_stats;")
-    for sf in [1, 3, 10, 30, 100, 300, 1000, 3000, 10000]:
+    for sf in [1, 3, 10, 30, 100, 300, 1000, 3000, 10000, 30000]:
         con.execute(f"DELETE FROM stats;")
         con.execute(f"COPY stats FROM '{update}-sf{sf}.csv' (DELIMITER ' ', HEADER false);")
         con.execute(f"""
@@ -27,7 +27,8 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
+                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
             FROM sum_stats
             GROUP BY file
         ) TO '{update}-entities.tex' (DELIMITER ' & ');
@@ -45,7 +46,8 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
+                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
             FROM sum_stats
             WHERE NOT regexp_matches(file, '.*_.*')
         UNION ALL
@@ -59,7 +61,8 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
+                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
             FROM sum_stats
             WHERE regexp_matches(file, '.*_.*')
         UNION ALL
@@ -73,7 +76,8 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
                 printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
+                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
             FROM sum_stats
         ) TO '{update}-summary.tex' (DELIMITER ' & ');
         """)

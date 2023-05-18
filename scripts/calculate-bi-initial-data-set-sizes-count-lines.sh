@@ -5,7 +5,7 @@ set -eu
 export BI_DATA_ROOT_DIR=~/ldbc-bi-2022/
 export STATS_DIR=~
 
-for SF in 10000; do
+for SF in 1 3 10 30 100 300 1000 3000 10000 30000; do
     echo ${SF}
     cd ${BI_DATA_ROOT_DIR}/bi-sf${SF}-composite-projected-fk/graphs/csv/bi/composite-projected-fk/initial_snapshot
 

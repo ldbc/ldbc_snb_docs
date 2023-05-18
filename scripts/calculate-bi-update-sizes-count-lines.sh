@@ -7,11 +7,11 @@ export STATS_DIR=~
 
 cd ${BI_DATA_ROOT_DIR}
 
-for SF in 1 3 10 30 100 300 1000 3000 10000; do
+for SF in 1 3 10 30 100 300 1000 3000 10000 30000; do
     cat bi-sf${SF}-composite-projected-fk.tar.zst* | tar -xv --use-compress-program=unzstd
 done
 
-for SF in 1 3 10 30 100 300 1000 3000 10000; do
+for SF in 1 3 10 30 100 300 1000 3000 10000 30000; do
     echo ${SF}
     cd ${BI_DATA_ROOT_DIR}/bi-sf${SF}-composite-projected-fk/graphs/csv/bi/composite-projected-fk/
 
