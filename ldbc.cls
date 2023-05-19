@@ -399,6 +399,8 @@
     \pagenumbering{arabic}%
     \ldbcdatatitlepage%
     \tableofcontents%
+    \listoffigures
+    \listoftables
 %    \newcounter{pagesinfront}%
 %    \setcounter{pagesinfront}{\value{page}}%
     \mainmatter%
