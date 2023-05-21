@@ -337,9 +337,10 @@ To compute the distance between two given node, systems can use bidirectional se
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cpSection{7.6}{QEXE}{Weighted shortest paths}
+\cpSection{7.6}{QEXE}{Cheapest paths (weighted shortest paths)}
 
-Computing single-source shortest path is a fundamental problem in graph queries. While there are well-known algorithms to compute it, \eg Dijkstra's algorithm or the Bellman-Ford algorithm, system often use na\"ive approaches such as enumerating all paths which makes these queries intractable.
+Computing \emph{cheapest paths} (weighted shortest paths) is a fundamental problem in graph queries.
+While there are well-known algorithms to compute it, \eg Dijkstra's algorithm, Bellman--Ford, and delta-stepping~\cite{DBLP:journals/jal/MeyerS03}, system often use na\"ive approaches such as enumerating all paths which makes these queries unnecessarily complex.
 
 \input{choke-points/cp-7-6}
 
