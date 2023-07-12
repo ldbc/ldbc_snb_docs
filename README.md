@@ -3,8 +3,8 @@
 
 [![Build Status](https://github.com/ldbc/ldbc_snb_docs/actions/workflows/compile-spec.yml/badge.svg)](https://github.com/ldbc/ldbc_snb_docs/actions)
 
-[[latest PDF (2.2.2-SNAPSHOT)]](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
-[[stable PDF (2.2.1)]](https://arxiv.org/pdf/2001.02299.pdf)
+[[latest PDF (2.2.3-SNAPSHOT)]](https://ldbcouncil.org/ldbc_snb_docs/ldbc-snb-specification.pdf)
+[[stable PDF (2.2.2)]](https://arxiv.org/pdf/2001.02299.pdf)
 
 ## Benchmark specification
 
