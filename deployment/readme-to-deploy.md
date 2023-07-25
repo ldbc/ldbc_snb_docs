@@ -15,7 +15,8 @@
     * [Interactive workload (full specification)](workload-interactive.pdf)
     * [Interactive workload / Complex Reads](workload-interactive-complex-reads.pdf)
     * [Interactive workload / Short Reads](workload-interactive-short-reads.pdf)
-    * [SIGMOD 2015 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
+    * [Interactive v1 workload (SIGMOD 2015 paper)](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
+    * [Interactive v2 workload (TPCTC 2023 paper)](https://arxiv.org/pdf/2307.04820.pdf)
 * BI workload:
     * [BI workload (full specification)](workload-bi.pdf)
     * [BI workload / Reads](workload-bi-reads.pdf)
