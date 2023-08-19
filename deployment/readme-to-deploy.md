@@ -12,11 +12,12 @@
 ## Workloads
 
 * Interactive workload:
-    * [Interactive workload (full specification)](workload-interactive.pdf)
-    * [Interactive workload / Complex Reads](workload-interactive-complex-reads.pdf)
-    * [Interactive workload / Short Reads](workload-interactive-short-reads.pdf)
-    * [Interactive v1 workload (SIGMOD 2015 paper)](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
-    * [Interactive v2 workload (TPCTC 2023 paper)](https://arxiv.org/pdf/2307.04820.pdf)
+    * Interactive v1
+      * [Interactive v1 full workload specification](workload-interactive-v1.pdf)
+      * [Interactive v1 workload (SIGMOD 2015 paper)](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
+    * Interactive v2
+      * [Interactive v2 full workload specification](workload-interactive-v2.pdf)
+      * [Interactive v2 workload (TPCTC 2023 paper)](https://arxiv.org/pdf/2307.04820.pdf)
 * BI workload:
     * [BI workload (full specification)](workload-bi.pdf)
     * [BI workload / Reads](workload-bi-reads.pdf)
@@ -42,8 +43,8 @@
 * [Interactive Complex Read 11](interactive-complex-read-11.pdf)
 * [Interactive Complex Read 12](interactive-complex-read-12.pdf)
 * [Interactive Complex Read 13](interactive-complex-read-13.pdf)
-* [Interactive Complex Read 14 (old)](interactive-complex-read-14-old.pdf)
-* [Interactive Complex Read 14 (new)](interactive-complex-read-14-new.pdf)
+* [Interactive Complex Read 14 (v1)](interactive-complex-read-14-old.pdf)
+* [Interactive Complex Read 14 (v2)](interactive-complex-read-14-new.pdf)
 
 ### Interactive short reads
 

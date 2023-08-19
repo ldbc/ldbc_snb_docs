@@ -1,5 +1,5 @@
-\chapter{Interactive Workload}
-\label{sec:interactive}
+\chapter{Interactive v1 Workload}
+\label{sec:interactive-v1}
 
 This workload consists of a set of relatively complex read-only queries, that touch a significant
 amount of data -- often the two-step friendship neighbourhood and associated messages --, but typically in close proximity to a single node. Hence, the query complexity is sublinear to the dataset size.
@@ -10,7 +10,6 @@ The LDBC SNB Interactive workload consists of three query classes:
 \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-complex-reads}.
 \item \textbf{Short read-only queries.} See \autoref{sec:interactive-short-reads}.
 \item \textbf{Insert operations.} See \autoref{sec:interactive-insert-operations}.
-\item \textbf{(new) Delete operations.} See \autoref{sec:interactive-delete-operations}.
 \end{itemize}
 
 \subsection*{Related Publications}
@@ -54,13 +53,7 @@ A detailed description of the workload (covering reads and inserts) is available
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Delete Operations}
-\label{sec:interactive-delete-operations}
-\iftoggle{StandaloneWorkloadSpecification}{
-    \input{deletes}
-}{
-    See \autoref{sec:delete-operations}.
-}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

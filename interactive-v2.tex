@@ -1,0 +1,28 @@
+\chapter{Interactive v2 Workload}
+\label{sec:interactive-v2}
+
+\subsection*{Related Publications}
+
+A description of the workload (covering reads and inserts) is available in the paper published at TPCTC 2023~\cite{DBLP:journals/corr/abs-2307-04820}.
+\iftoggle{StandaloneWorkloadSpecification}{}{
+    It is part of this specification in \autoref{sec:acid-test-suite}.
+}
+
+TODO.
+
+\begin{itemize}
+    \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-complex-reads}.
+    \item \textbf{Short read-only queries.} See \autoref{sec:interactive-short-reads}.
+    \item \textbf{Insert operations.} See \autoref{sec:interactive-insert-operations}.
+    \item \textbf{Delete operations.} See \autoref{sec:interactive-delete-operations}.
+\end{itemize}
+
+
+
+\section{Delete Operations}
+\label{sec:interactive-delete-operations}
+\iftoggle{StandaloneWorkloadSpecification}{
+    \input{deletes}
+}{
+    See \autoref{sec:delete-operations}.
+}
