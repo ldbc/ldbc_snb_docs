@@ -18,9 +18,7 @@ data generator. These are the times where the actual event happened during the
 simulation of the social network. Complex reads' times are expressed in terms
 of update operations. For each complex read query type, a frequency value is
 assigned which specifies the relation between the number of updates performed
-per complex read. \autoref{table:freqs} shows the frequencies for each complex query and SF used in the Interactive workload (\autoref{sec:interactive}).
-
-%\todo{Should we define frequencies for SF0.1 and SF0.3? No, those are for testing, not benchmarking.}
+per complex read. \autoref{table:freqs} shows the frequencies for each complex query and SF used in the \interactivevone workload (\autoref{sec:interactive-v1}).
 
 \input{tables/table-interactive-frequencies}
 
@@ -46,8 +44,8 @@ executed queries.
     \queryRefCard{interactive-complex-read-10}{IC}{10}
     \queryRefCard{interactive-complex-read-11}{IC}{11}
     \queryRefCard{interactive-complex-read-12}{IC}{12}
-    \queryRefCard{interactive-complex-read-14-old}{IC}{14-o}
-    \queryRefCard{interactive-complex-read-14-new}{IC}{14-n}
+    \queryRefCard{interactive-complex-read-14-v1}{IC}{14v1}
+    \queryRefCard{interactive-complex-read-14-v2}{IC}{14v2}
 \item Short reads:
     \queryRefCard{interactive-short-read-02}{IS}{2}
     \queryRefCard{interactive-short-read-03}{IS}{3}

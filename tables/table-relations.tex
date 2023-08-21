@@ -10,22 +10,22 @@
      \hline
      hasMember & Forum[0..*] &  Person[1..*] & D & A Forum and its member (Person)
 
-     In version 0.3.x:
+     In version 1:
 
      \attributeTable{joinDate}{DateTime}{The Date the person joined the Forum}
 
-     In version 0.4.0+:
+     In version 2:
 
      \attributeTable{creationDate}{DateTime}{The Date the person joined the Forum}
 
      \\
      \hline
      hasModerator & Forum[0..*] &
-     \textrm{In version 0.3.x:}
+     \textrm{In version 1:}
      
      Person[1]
      
-     \textrm{In version 0.4.0+:}
+     \textrm{In version 2:}
 
      Person[0..1]
      & D & A Forum and its moderator (Person) \\

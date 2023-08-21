@@ -469,13 +469,13 @@ The update stream files are generated in the \texttt{social\_network/} directory
     \queryRefCard{insert-08}{INS}{8}
 \end{itemize}
 
-Remark: update streams in version 0.3.x only contain inserts. Delete operations are being designed and will be released later.
+Remark: update streams in version 1 only contain inserts, while in version 2, they contain both inserts and deletes.
 
 \subsection{Substitution Parameters}
 
 The substitution parameters are generated in the \texttt{substitution\_parameters/} directory.
 Each parameter file is named \texttt{\{interactive|bi\}\_<id>\_param.txt}, corresponding to an operation of
-Interactive complex reads (\queryRefCard{interactive-complex-read-01}{IC}{1}--\queryRefCard{interactive-complex-read-14-new}{IC}{14-n}) and
+Interactive complex reads (\queryRefCard{interactive-complex-read-01}{IC}{1}--\queryRefCard{interactive-complex-read-14-v2}{IC}{14v2}) and
 BI reads (\queryRefCard{bi-read-01}{BI}{1}--\queryRefCard{bi-read-20}{BI}{20}).
 The schemas of these files are defined by the operator, \eg the schema of \queryRefCard{interactive-complex-read-01}{IC}{1} is ``\texttt{personId|firstName}''.
 

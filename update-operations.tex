@@ -1,7 +1,30 @@
 \chapter{Update operations}
 \label{sec:update-operations}
 
-TODO:
+This chapter contains the specifications of the Insert and Delete operations in the SNB suite. Inserts are used in the Interactive v1 and v2 workloads, while deletes are only used in the \interactivevtwo and BI workloads. Additionally, the BI workload uses batch inserts, where the precise implementation of the insertion is up to the SUT.
 
-add inserts and deletes here
+\section{Insert Operations}
+\label{sec:insert-operations}
 
+Each insert operations creates
+
+\begin{enumerate}
+    \item either a single node of a certain type, along with its edges to other existing nodes
+    \item or a single edge of a certain type between two existing nodes.
+\end{enumerate}
+In \interactivevone, these operations were called ``updates''.
+In \interactivevtwo, they are called ``inserts''.
+
+\input{inserts}
+
+\section{Delete Operations}
+\label{sec:delete-operations}
+
+Each delete operation removes
+
+\begin{enumerate}
+    \item a single edge between two existing nodes
+    \item or a node, all its edges and, in certain cases, nodes and edges that are transitively reachable on a certain path (thus performing a cascading delete).
+\end{enumerate}
+
+\input{deletes}

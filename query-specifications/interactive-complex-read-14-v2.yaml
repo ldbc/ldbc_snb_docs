@@ -1,9 +1,9 @@
 workload: Interactive
 operation: complex
-number: 14 new
-title: Trusted connection paths (new version)
+number: 14v2
+title: Trusted connection paths (v2)
 description: |
-  **This query is used in the new version of SNB Interactive (v2.0+).**
+  **This query is used in SNB Interactive v2.**
 
   Find a cheapest path between two given *Persons* with IDs `$person1Id` and `$person2Id` in the interaction subgraph. If there are multiple cheapest paths, any of them can be returned. Do not return any rows if there is no path between the *Persons*.
 
