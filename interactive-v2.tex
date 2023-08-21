@@ -60,18 +60,24 @@ Second, we introduced a new choke point,
 a key computational kernel and a language opportunity for GQL~\cite{DBLP:conf/sigmod/DeutschFGHLLLMM22}.
 Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shortest paths}.
 
-\input{query-cards/interactive-complex-read-14-v2}
-
-
-\section{Delete Operations}
-\label{sec:interactive-delete-operations}
 \iftoggle{StandaloneWorkloadSpecification}{
-    \input{deletes}
+    \input{interactive-v2-complex-reads}
 }{
-    See \autoref{sec:delete-operations}.
+    \input{query-cards/interactive-complex-read-14-v2}
+}
+
+\iftoggle{StandaloneWorkloadSpecification}{
+    \section{Insert Operations}
+    \label{sec:insert-operations}
+    \input{inserts}
 }
 
 
+\iftoggle{StandaloneWorkloadSpecification}{
+    \section{Delete Operations}
+    \label{sec:delete-operations}
+    \input{deletes}
+}
 
 \section{Parameter curation}
 \label{sec:parameter-curation}

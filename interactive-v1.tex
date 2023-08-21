@@ -26,7 +26,7 @@ A detailed description of the workload (covering reads and inserts) is available
 \section{Complex Reads}
 \label{sec:interactive-complex-reads}
 
-\input{interactive-complex-reads}
+\input{interactive-v1-complex-reads}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,7 +41,11 @@ A detailed description of the workload (covering reads and inserts) is available
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\iftoggle{StandaloneWorkloadSpecification}{
+    \section{Insert Operations}
+    \label{sec:insert-operations}
+    \input{inserts}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,3 +55,4 @@ A detailed description of the workload (covering reads and inserts) is available
 \label{sec:interactive-workload-definition}
 
 \input{interactive-workload-definition}
+
