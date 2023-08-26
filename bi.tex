@@ -7,7 +7,6 @@ Additionally, it defines daily batches of updates over a 33-day period
 (see
 \autoref{sec:bi-insert-operations} for inserts and
 \autoref{sec:bi-delete-operations} for deletes).
-
 % The available batches are
 % 2012-11-29,
 % 2012-11-30,
@@ -15,10 +14,20 @@ Additionally, it defines daily batches of updates over a 33-day period
 % 2012-12-31;
 % yielding 33~batches in total.
 
-
 \subsection*{Related Publications}
 
 The BI workload was published in PVLDB 2022~\cite{DBLP:journals/pvldb/SzarnyasWSSBWZB22}.
+
+\subsection*{Related Software Components}
+
+\begin{itemize}
+    \item Datagen (Spark-based): \url{https://github.com/ldbc/ldbc_snb_datagen_spark}
+    \item Driver and reference implementations: \url{https://github.com/ldbc/ldbc_snb_bi}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Overview}
 \label{sec:bi-benchmark-overview}
