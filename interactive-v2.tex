@@ -6,8 +6,8 @@
 A description of the workload (covering reads and inserts) is available in the paper published at TPCTC 2023~\cite{DBLP:journals/corr/abs-2307-04820}.
 
 \begin{itemize}
-    \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-complex-reads}.
-    \item \textbf{Short read-only queries.} See \autoref{sec:interactive-short-reads}.
+    \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-v2-complex-reads}.
+    \item \textbf{Short read-only queries.} See \autoref{sec:interactive-v2-short-reads}.
     \item \textbf{Insert operations.} See \autoref{sec:insert-operations}.
     \item \textbf{Delete operations.} See \autoref{sec:delete-operations}.
 \end{itemize}
@@ -54,16 +54,28 @@ Second, we introduced a new choke point,
 \textsf{CP-7.6}
 \emph{Cheapest path-finding,}%
 \footnote{
-    The term \emph{shortest paths} refers to the problem of finding \emph{unweighted shortest paths}, which can be solved with the BFS algorithm.
-    We use \emph{cheapest paths} to refer to the \emph{weighted shortest paths} problem which can be solved using \eg Dijkstra's algorithm.
+    The term \emph{shortest paths} refers to the problem of finding \emph{unweighted shortest paths}, which can be computed with BFS.
+    \emph{Cheapest paths} refers to the \emph{weighted shortest paths} problem, which can be solved using \eg Dijkstra's algorithm.
 }
 a key computational kernel and a language opportunity for GQL~\cite{DBLP:conf/sigmod/DeutschFGHLLLMM22}.
 Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shortest paths}.
+
+\section{Complex reads}
+\label{sec:interactive-v2-complex-reads}
 
 \iftoggle{StandaloneWorkloadSpecification}{
     \input{interactive-v2-complex-reads}
 }{
     \input{query-cards/interactive-complex-read-14-v2}
+}
+
+\section{Short reads}
+\label{sec:interactive-v2-short-reads}
+    
+\iftoggle{StandaloneWorkloadSpecification}{
+    \input{interactive-short-reads}
+}{
+    The short reads operations are identical to the ones in \interactivevone, see \autoref{sec:interactive-v1-short-reads}.
 }
 
 \iftoggle{StandaloneWorkloadSpecification}{
