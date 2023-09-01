@@ -10,18 +10,21 @@
 
 For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1NilxSrKQnFq4WzWMY2-OodZQ2TEksKzKBmgB20C_0Nw/) ([PDF](https://ldbcouncil.org/docs/presentations/ldbc-snb-2022-11.pdf)).
 
-For a guide on how to develop SNB Interactive implementations, please check out the README of the [Interactive implementations repository](https://github.com/ldbc/ldbc_snb_interactive_impls).
+For a guide on how to develop SNB Interactive implementations, please check out the READMEs of the reference implementation repositories linked below.
 
-## Compatibility
+## Software components
 
-The two SNB workloads are stored in different repositories:
+The SNB workloads are stored in different repositories:
 
-* Interactive:
-  * Data generator (for versions 0.x and 1.x): https://github.com/ldbc/ldbc_snb_datagen_hadoop
-  * Data generator (for version 2.0): https://github.com/ldbc/ldbc_snb_datagen_spark
-  * Driver: https://github.com/ldbc/ldbc_snb_interactive_driver
-  * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_impls
-* Business Intelligence (BI):
+* SNB Interactive v1:
+  * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
+  * Driver: https://github.com/ldbc/ldbc_snb_interactive_v1_driver
+  * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_v1_impls
+* SNB Interactive v2:
+  * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
+  * Driver: https://github.com/ldbc/ldbc_snb_interactive_v2_driver
+  * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_v2_impls
+* SNB Business Intelligence (BI):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver and reference implementations: https://github.com/ldbc/ldbc_snb_bi
 

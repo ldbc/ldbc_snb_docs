@@ -1,7 +1,7 @@
 \chapter{Interactive v1 Workload}
 \label{sec:interactive-v1}
 
-This workload consists of a set of relatively complex read-only queries, that touch a significant
+The Interactive v1 workload consists of a set of relatively complex read-only queries, that touch a significant
 amount of data -- often the two-step friendship neighbourhood and associated messages --, but typically in close proximity to a single node. Hence, the query complexity is sublinear to the dataset size.
 
 The LDBC SNB Interactive workload consists of three query classes:
@@ -18,6 +18,14 @@ A detailed description of the workload (covering reads and inserts) is available
 \iftoggle{StandaloneWorkloadSpecification}{}{
     It is part of this specification in \autoref{sec:acid-test-suite}.
 }
+
+\subsection*{Related Software Components}
+
+\begin{itemize}
+    \item Datagen (Hadoop-based): \url{https://github.com/ldbc/ldbc_snb_datagen_hadoop}
+    \item Driver: \url{https://github.com/ldbc/ldbc_snb_interactive_v1_driver}
+    \item Reference implementations: \url{https://github.com/ldbc/ldbc_snb_interactive_v1_impls}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

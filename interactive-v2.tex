@@ -12,6 +12,18 @@ A description of the workload (covering reads and inserts) is available in the p
     \item \textbf{Delete operations.} See \autoref{sec:delete-operations}.
 \end{itemize}
 
+\subsection*{Related Software Components}
+
+\begin{itemize}
+    \item Datagen (Spark-based): \url{https://github.com/ldbc/ldbc_snb_datagen_spark}
+    \item Driver: \url{https://github.com/ldbc/ldbc_snb_interactive_v2_driver}
+    \item Reference implementations: \url{https://github.com/ldbc/ldbc_snb_interactive_v2_impls}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Overview}
 
 \begin{figure}[htb]
@@ -83,7 +95,6 @@ Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shor
     \label{sec:insert-operations}
     \input{inserts}
 }
-
 
 \iftoggle{StandaloneWorkloadSpecification}{
     \section{Delete Operations}
