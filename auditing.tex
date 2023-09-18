@@ -639,7 +639,7 @@ To ensure reproducibility of the audited results, a supplementary package is att
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Auditing Rules for the Business Intelligence Workload}
-\label{sec:bi-workload-audit}
+\label{sec:auditing-bi-workload-audit}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -648,19 +648,19 @@ To ensure reproducibility of the audited results, a supplementary package is att
 The following section describes the auditing rules specific to the Business Intelligence (BI) workload.
 
 \subsection{Overview}
-\label{sec:bi-audit-overview}
+\label{sec:auditing-bi-audit-overview}
 
 Implementing the BI workload requires the following key capabilities:
 
 \begin{itemize}
     \item Loading the initial snapshot of the social network graph
-    \item Evaluating the BI read queries (\autoref{sec:bi-reads})
-    \item Evaluating the BI write operations: inserts (\autoref{sec:bi-insert-operations}) and deletes (\autoref{sec:bi-delete-operations})
-    \item Performing concurrent reads and writes (\autoref{sec:bi-audit-workflow}) (optional, only allowed if ACID compliance is guaranteed)
+    \item Evaluating the BI read queries (\autoref{sec:auditing-bi-reads})
+    \item Evaluating the BI write operations: inserts (\autoref{sec:auditing-bi-insert-operations}) and deletes (\autoref{sec:auditing-bi-delete-operations})
+    \item Performing concurrent reads and writes (\autoref{sec:auditing-bi-audit-workflow}) (optional, only allowed if ACID compliance is guaranteed)
 \end{itemize}
 
 \subsection{Workflow}
-\label{sec:bi-audit-workflow}
+\label{sec:auditing-bi-audit-workflow}
 
 \begin{figure}[htbp]
     \centering
@@ -720,7 +720,7 @@ The runtimes should be reported as follows:
 Note that a warm-up period is not allowed (unlike the Interactive workload where such a period is required, see \autoref{sec:int-measurement-window}).
 
 \subsection{Scoring Metrics}
-\label{sec:bi-scoring-metrics}
+\label{sec:auditing-bi-scoring-metrics}
 
 SNBI BI provides four scoring metrics:
 the \emph{power score}, the \emph{throughput score}, and their price-adjusted variants,
@@ -829,10 +829,10 @@ The price-adjusted throughput score is determined analogously: % to the price-ad
 $$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000}}{\textit{TCO}} $$
 
 \subsection{Implementation Rules}
-\label{sec:bi-implementation-rules}
+\label{sec:auditing-bi-implementation-rules}
 
 \subsubsection{Correctness}
-\label{sec:bi-correcntess}
+\label{sec:auditing-bi-correcntess}
 
 The SUT shall evaluate all operators correctly.
 The auditor shall ascertain correctness on the SF10 data set. However, they are allowed to also use data sets of different scale factors, as well as issue custom operations (both reads and writes) to test for the correctness of the implemenation.
@@ -841,12 +841,12 @@ The validation of correctness is performed on the output of the \emph{power test
 The rationale for using this only step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantee deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
 
 \subsubsection{Auxiliary Data Structures}
-\label{sec:bi-auxiliary-data-structures}
+\label{sec:auditing-bi-auxiliary-data-structures}
 
 Using auxiliary data structures (\eg indices, materialized views) is allowed if they are kept in an up-to-date state after each write operation. The full disclosure report should enumerate the auxiliary data structures used by the SUT. 
 
 \subsubsection{Query Declarativity}
-\label{sec:bi-query-declarativity}
+\label{sec:auditing-bi-query-declarativity}
 
 Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation, including the read queries and the update operations.
 General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
@@ -858,21 +858,21 @@ Implementations may use \emph{stored procedures written in a domain-specific lan
 In cases when the categorization of the approach used by the SUT's query implementations is uncertain, it is the auditor's responsibility to decide whether the SUT complies with this rule.
 
 \subsubsection{Query Variants}
-\label{sec:bi-query-variants}
+\label{sec:auditing-bi-query-variants}
 
 Several queries (\eg \queryRefCard{bi-read-14}{BI}{14}) use \variantA and \variantB variants with different sets of input parameters.
 The SUT should not receive any hints on which variant it is currently evaluating (\eg Q14\variantA or Q14\variantB).
 Moreover, it is not allowed for the query implementations to contain code that aims to detect the query variant used.
 
 \subsection{Scaling}
-\label{sec:bi-scaling}
+\label{sec:auditing-bi-scaling}
 
 Audited \emph{benchmark runs} of the BI workload shall use SF30 or larger data sets.
 The rationale behind this decision is to ensure that there should be a sufficient number of write operations available to guarantee the execution during the duration of the measurement window (see \autoref{fig:bi-batches}).
 
 \subsection{Full Disclosure Report}
-\label{sec:bi-fdr}
+\label{sec:auditing-bi-fdr}
 
 The \emph{full disclosure report} (FDR) and the \emph{supplementary package} shall contain
 the same information as for SNB Interactive (\autoref{sec:int-fdr}),
-including, if applicable (\autoref{sec:bi-implementation-rules}), the ACID compliance report (\autoref{sec:acid-compliance}).
+including, if applicable (\autoref{sec:auditing-bi-implementation-rules}), the ACID compliance report (\autoref{sec:acid-compliance}).
