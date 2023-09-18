@@ -7,7 +7,7 @@ con.execute(f"CREATE OR REPLACE TABLE sum_stats (sf bigint, file varchar, numEnt
 
 for sf in [1, 3, 10, 30, 100, 300, 1000, 3000, 10000, 30000]:
     con.execute(f"DELETE FROM stats;")
-    con.execute(f"COPY stats FROM 'stats-sf{sf}.csv' (DELIMITER ' ', HEADER false);")
+    con.execute(f"COPY stats FROM 'initial-snapshot-sf{sf}.csv' (DELIMITER ' ', HEADER false);")
     con.execute(f"""
         INSERT INTO sum_stats
             SELECT {sf} AS sf, file, sum(numEntities) AS numEntities FROM stats GROUP BY file;
