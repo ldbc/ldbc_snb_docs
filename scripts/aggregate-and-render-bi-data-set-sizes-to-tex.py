@@ -20,70 +20,36 @@ for update in ["inserts", "deletes"]:
 
     con.execute(f"""
         COPY (
-            SELECT
-                replace(file, '_', '\_') AS file,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
-            FROM sum_stats
+            PIVOT sum_stats
+            ON sf
+            USING sum(numEntities)
             GROUP BY file
             ORDER BY translate(file, '_', '')
-        ) TO '{update}-entities.tex' (DELIMITER '&');
+        ) TO '{update}-entities.csv' (HEADER, DELIMITER ',');
         """)
 
     con.execute(f"""
         COPY (
             SELECT
-                'vertices',
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
-            FROM sum_stats
-            WHERE NOT regexp_matches(file, '.*_.*')
+                'vertices' AS type, *
+            FROM
+                (PIVOT sum_stats
+                ON sf
+                USING sum(numEntities))
         UNION ALL
-            SELECT
-                'edges',
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
-            FROM sum_stats
+            SELECT 'edges' AS type, *
+            FROM
+                (PIVOT sum_stats
+                ON sf
+                USING sum(numEntities))
             WHERE regexp_matches(file, '.*_.*')
         UNION ALL
-            SELECT
-                'total',
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
-            FROM sum_stats
-        ) TO '{update}-summary.tex' (DELIMITER '&');
+            SELECT 'total' AS type, *
+            FROM
+                (PIVOT sum_stats
+                ON sf
+                USING sum(numEntities))
+        ) TO '{update}-summary.csv' (HEADER, DELIMITER ',');
         """)
 
     # initial snapshot
@@ -98,22 +64,12 @@ for update in ["inserts", "deletes"]:
 
     con.execute(f"""
         COPY (
-            SELECT
-                replace(file, '_', '\_') AS file,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1)) AS sf1_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3)) AS sf3_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10)) AS sf10_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 30)) AS sf30_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 100)) AS sf100_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 300)) AS sf300_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 1000)) AS sf1000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 3000)) AS sf3000_num_entities,
-                printf('\\numprint{{%s}}'     , sum(numEntities) FILTER (WHERE sf = 10000)) AS sf10000_num_entities,
-                printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
-            FROM sum_stats
+            PIVOT sum_stats
+            ON sf
+            USING sum(numEntities)
             GROUP BY file
             ORDER BY translate(file, '_', '')
-        ) TO 'initial_snapshot.tex' (DELIMITER '&');
+        ) TO 'initial_snapshot.csv' (HEADER, DELIMITER ',');
         """)
 
     con.execute(f"""
@@ -147,5 +103,5 @@ for update in ["inserts", "deletes"]:
                 printf('\\numprint{{%s}} \\\\', sum(numEntities) FILTER (WHERE sf = 30000)) AS sf30000_num_entities,
             FROM sum_stats
             WHERE regexp_matches(file, '.*_.*')
-        ) TO 'num_entities.tex' (DELIMITER '&');
+        ) TO 'num_entities.csv' (HEADER, DELIMITER ',');
         """)
