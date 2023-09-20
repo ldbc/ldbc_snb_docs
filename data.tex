@@ -356,7 +356,7 @@ For each scale factor, \datagen produces three different artefacts:
 
 \ldbcsnb defines a set of scale factors (SFs), targeting systems of different sizes and budgets.
 SFs are computed based on the ASCII size \emph{in Gibibytes} of the generated output files using the \textsf{csv-singular-merged-fk} serializer (see \autoref{sec:serializers}).\footnote{This way of characterizing the size of the data set is identical to the scaling of TPC-H and TPC-DS.}
-For both workloads, the SF1 data set is 1~GiB, the SF100 is 100~GiB, and the SF\numprint{10000} data set is \numprint{10000} GiB (not 10 TiB).
+For both workloads, the SF1 data set is 1~GiB, SF100 is 100~GiB, and SF\numprint{10000} is \numprint{10000} GiB (not 10 TiB).
 
 However, \textbf{note that the two SNB workloads have different data sets} due with different folder structures.
 
@@ -368,13 +368,13 @@ For BI, the sum of the initial snapshot (97\%) and the update operations (daily 
 It is important to note that for a given workload and scale factor, data sets generated using different serializers contain exactly the same data, the only difference is in how they are represented.%
 %\footnote{Naturally, there are slight differences in the disk usage of the data sets created with different serializers. For example, for a given scale factor, the disk usage of the data set serialized with the \textsf{csv-singular-projected-fk} serializer is expected to be higher, while with the \textsf{csv-composite-merged-fk}, it is expected to be lower.}
 
-The currently available SFs are the following: 1, 3, 10, 30, 100, 300, \numprint{1000}, \numprint{3000}, \numprint{10000}.
+The currently available SFs are the following: 1, 3, 10, 30, 100, 300, \numprint{1000}, \numprint{3000}, \numprint{10000}, \numprint{30000}.
 Additionally, three small SFs, 0.003, 0.1, and 0.3 are provided to help initial testing and validation efforts.
 
 The Test Sponsor may select the SF that better fits their needs, by properly configuring the \datagen, as described in \autoref{sec:data_generation}.
 The size of the resulting dataset is mainly affected by the following configuration parameters: the number of persons and the number of years simulated.
 By default, all SFs are defined over a period of three years, starting from 2010, and SFs are computed by scaling the number of Persons in the network.
-\autoref{tab:number-of-entities-bi-raw} shows some metrics of SFs 0.1, \ldots, \numprint{1000} data sets.
+\autoref{tab:number-of-entities-bi-raw} shows the number of entities for SFs 1, \ldots, \numprint{30000} data sets.
 
 \input{tables/table-number-of-entities-bi-raw}
 
@@ -407,7 +407,7 @@ The following CSV variants are supported:
     \begin{itemize}
       \item \textsf{csv-composite-projected-fk:}
       Each relation with a cardinality larger than one are output in a separate file.
-      Generated files are summarized in \autoref{table:csv-composite-projected-fk}.
+      Generated files and their schemas as shown in \autoref{table:csv-composite-projected-fk}.
 
       \item \textsf{csv-composite-merged-fk:}
       This serializer is similar to \textsf{csv-composite-projected-fk}, but relations that have a cardinality of 1-to-N are merged in the entity files as a foreign keys.
@@ -422,7 +422,7 @@ The following CSV variants are supported:
         \item Tag\_hasType\_TagClass (merged to Tag);
         \item TagClass\_isSubclassOf\_TagClass (merged to TagClass)
       \end{itemize}
-      Generated files are summarized in \autoref{table:csv-composite-merged-fk}.
+      Generated files and their schemas as shown in \autoref{table:csv-composite-merged-fk}.
     
       \item \textsf{csv-singular-merged-fk}:
       Similar to the \textsf{csv-composite-merged-fk} but multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as separate directories (\texttt{Person\_email\_EmailAddress} and \texttt{Person\_speaks\_Language}, resp.).
@@ -434,7 +434,7 @@ The following CSV variants are supported:
       The file names are the same as in \texttt{composite-merged-fk} but there are two important differences:
       (1)~additional attributes, \eg \texttt{deletionDate}, \texttt{explicitlyDeleted}, and \texttt{weight} (used for weighted graphs in Graphalytics~\cite{DBLP:journals/corr/abs-2011-15028}), are included,
       (2)~all data is included, \ie if a Forum is created and deleted before sampling the initial data set, it is included in this data set.
-      Generated files are summarized in \autoref{table:csv-raw}.
+      Generated files and their schemas as shown in \autoref{table:csv-raw}.
     \end{itemize}
 
 The inheritance hierarchies in the schema have two important characteristics
