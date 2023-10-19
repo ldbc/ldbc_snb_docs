@@ -12,14 +12,13 @@
 ## Workloads
 
 * Interactive v1 workload:
-    * [Interactive v1 full workload specification](workload-interactive-v1.pdf)
-    * [Interactive v1 workload (SIGMOD 2015 paper)](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
+    * [Workload specification](workload-interactive-v1.pdf)
+    * [SIGMOD 2015 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-interactive-sigmod-2015.pdf)
 * Interactive v2 workload:
-    * [Interactive v2 full workload specification](workload-interactive-v2.pdf)
-    * [Interactive v2 workload (TPCTC 2023 paper)](https://arxiv.org/pdf/2307.04820.pdf)
+    * [Workload specification](workload-interactive-v2.pdf)
+    * [TPCTC 2023 paper](https://arxiv.org/pdf/2307.04820.pdf)
 * BI workload:
-    * [BI workload (full specification)](workload-bi.pdf)
-    * [BI workload / Reads](workload-bi-reads.pdf)
+    * [Workload specification](workload-bi.pdf)
     * [VLDB 2023 paper](https://ldbcouncil.org/docs/papers/ldbc-snb-bi-vldb-2023.pdf)
 * Updates:
     * [Inserts](workload-inserts.pdf)
