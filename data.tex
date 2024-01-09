@@ -437,6 +437,8 @@ The following CSV variants are supported:
       Generated files and their schemas as shown in \autoref{table:csv-raw}.
     \end{itemize}
 
+\paragraph{Inheritance}
+    
 The inheritance hierarchies in the schema have two important characteristics
 (1)~all subclasses use the same id space, \eg there cannot be a Comment and a Post with id 1 at the same time,
 (2)~they are serialized to CSVs using either the \emph{map hierarchy to single table} or \emph{map each concrete class to its own table} strategies\footnote{\url{http://www.agiledata.org/essays/mappingObjects.html}}:

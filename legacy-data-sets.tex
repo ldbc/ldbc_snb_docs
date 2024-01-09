@@ -79,8 +79,7 @@ The datasets are generated in the \texttt{social\_network/} directory, split int
 The filenames (without the extension) end in \texttt{\_i\_j} where \texttt{i} is the block id and \texttt{j} is the partition id (set by \texttt{numThreads}).
 The SUT has to take care only of the generated Dataset to be bulk loaded. Using \texttt{NULL} values for storing optional values is allowed.
 
-\datagen currently only supports CSV-based serializers.
-These produce CSV-like text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (for the composite serializers).
+Datagen's CSV (Comma Separated Values) serializers produce text files which use the pipe character ``\texttt{|}'' as the primary field separator and the semicolon character ``\texttt{;}'' as a separator for multi-valued attributes (for the composite serializers).
 The CSV files are stored in two subdirectories: \texttt{static/} and \texttt{dynamic/}.
 Depending on the number of threads used for generating the dataset, the number of files varies, since there is a file generated per thread. We indicate this with ``\texttt{*}'' in the specification.
 
@@ -115,6 +114,10 @@ The following CSV variants are supported:
       Multi-valued attributes (\texttt{Person.email} and \texttt{Person.speaks}) are stored as composite values.
       Generated files are summarized in \autoref{table:csv_composite_merge_foreign}.
     \end{itemize}
+
+Additionally, the Hadoop \datagen can generate files in Turtle format (\texttt{.ttl}).
+
+\paragraph{Inheritance}
 
 The inheritance hierarchies in the schema have two important characteristics
 (1)~all subclasses use the same id space, \eg there cannot be a Comment and a Post with id 1 at the same time,
