@@ -31,7 +31,7 @@ a set of short reads which are issued in a row. The issue time assigned to each
 short read in the sequence is determined at run time, and is based on the
 completion time of the complex read it depends on. 
 The substitution parameters for short reads are taken from the results of previously
-executed queries.
+executed queries, including both complex and short reads:
 
 \begin{itemize}
 \item Complex reads:
@@ -72,3 +72,5 @@ achieved by means of the ``Time Compression Ratio'' that is multiplied by the
 frequencies (see \autoref{table:freqs}).  Therefore, different
 throughputs can be tested while maintaining the relative ratios between the
 different query types.
+
+\emph{\textbf{Warning.} Note that in the current implementation of SNB Interactive v1, short queries are only produced if updates are enabled. In the absence of updates, no short queries will be executed.}
