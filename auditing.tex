@@ -248,9 +248,13 @@ The auditor must ascertain from the records of a benchmark execution that a suff
 Benchmarks shall each specify a minimum count of operations and relative frequencies of operations for a qualifying
 execution.
 
-\subsubsection{Post-Processing of Query Results}
+\subsubsection{Post-Processing of Query Results and Compression During Transmission}
 
-The SUT's benchmark client shall not post-process query results in a way that changes their value. For example, it is not allowed to return floating-point values with a precision of 0.5 that are encoded as integers and divided by 2 on the client side.
+All computing required for a given query needs to happen in the DBMS. The SUT's test driver shall not post-process query results in a way that changes their value. For example, it is not allowed to return floating-point values with a precision of 0.5 that are encoded as integers and divided by 2 on the client side.
+
+Note that \emph{lossless compression} during the communication between the test driver and the DBMS is allowed. For instance, as long as the DBMS uses a data type that conforms with the schema requirements for a given attribute, one can apply compression to send it back to/from the driver and decompress it. For example, for complex query Q14 in the Interactive v1 workload, the implementation should ultimately produce a floating point score.
+
+The same applies for query parameters. At both the client's and the server's endpoint, the correct fully qualified datatype must occur, but during transmission, it is allowed to apply compression.
 
 \subsection{System Configuration and System Pricing}
 \label{sec:system-config}
