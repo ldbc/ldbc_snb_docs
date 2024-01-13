@@ -3,7 +3,7 @@ At the beginning of the execution, the Test Driver creates a query mix by
 assigning to each query instance, a query issue time and a set of parameters
 taken from the generated substitution parameter set described above.  
 
-Query issue times have to be carefully assigned.  Although substitution
+Query issue times have to be carefully assigned. Although substitution
 parameters are chosen in such a way that queries of the same type take similar
 time, not all query types have the same complexity and touch the same amount of
 data, which causes them to scale differently for the different scale factors.
@@ -57,7 +57,7 @@ executed queries.
 For the precise connections between short and complex read queries, see \autoref{tab:short-read-after-long-read}.
 
 Once a short read sequence is issued (and provided that sufficient substitution parameters 
-exist), there is a probability that another short read  sequence is issued. 
+exist), there is a probability that another short read sequence is issued. 
 This probability decreases for each new sequence issued. 
 Since the same random number generator seed is used across
 executions, the workload is deterministic.
