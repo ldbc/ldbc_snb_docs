@@ -57,8 +57,8 @@ executed queries, including both complex and short reads:
 For the precise connections between short and complex read queries, see \autoref{tab:short-read-after-long-read}.
 
 Once a short read sequence is issued (and provided that sufficient substitution parameters 
-exist), there is a probability that another short read sequence is issued. 
-This probability decreases for each new sequence issued. 
+exist), there is a probability that another short read sequence is issued. This probability decreases for each new sequence issued.%
+\footnote{The probability can be adjusted using the \texttt{ldbc.snb.interactive.short\_read\_dissipation} configuration option.}
 Since the same random number generator seed is used across
 executions, the workload is deterministic.
 
@@ -73,4 +73,4 @@ frequencies (see \autoref{table:freqs}).  Therefore, different
 throughputs can be tested while maintaining the relative ratios between the
 different query types.
 
-\emph{\textbf{Warning.} Note that in the current implementation of SNB Interactive v1, short queries are only produced if updates are enabled. In the absence of updates, no short queries will be executed.}
+\textbf{Warning.} Note that in the current implementation of SNB Interactive v1, short queries are only produced if updates are enabled. In the absence of updates, no short queries will be executed.
