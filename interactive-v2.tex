@@ -1,16 +1,14 @@
 \chapter{Interactive v2 Workload}
 \label{sec:interactive-v2}
 
-\subsection*{Related Publications}
+\begin{quote}
+    \textit{This chapter is based on the TPCTC~2023 paper ``The LDBC Social Network Benchmark Interactive Workload v2: A Transactional Graph Query Benchmark with Deep Delete Operations''~\cite{DBLP:journals/corr/abs-2307-04820}, co-authored by several members of the SNB task force.}
+\end{quote}
 
-A description of the workload (covering reads and inserts) is available in the paper published at TPCTC 2023~\cite{DBLP:journals/corr/abs-2307-04820}.
+\subsection*{Work-in-Progress}
 
-\begin{itemize}
-    \item \textbf{Complex read-only queries.} See \autoref{sec:interactive-v2-complex-reads}.
-    \item \textbf{Short read-only queries.} See \autoref{sec:interactive-v2-short-reads}.
-    \item \textbf{Insert operations.} See \autoref{sec:insert-operations}.
-    \item \textbf{Delete operations.} See \autoref{sec:delete-operations}.
-\end{itemize}
+The \interactivevtwo workload is currently work-in-progress.
+As of January 2024, commissioning audits for this workload is not yet possible.
 
 \subsection*{Related Software Components}
 
@@ -41,7 +39,20 @@ A description of the workload (covering reads and inserts) is available in the p
 
 \section{Operations}
 
-The complex reads and the short reads are identical to the ones in \interactivevone, except for query 14, which was replaced to cover the \emph{Cheapest path-finding} choke point.
+The LDBC \snbinteractivevtwo workload uses four types of operations.
+There are 14~complex and 7~short read queries.
+Update operations include
+8~inserts and, newly introduced in the \interactivevtwo workload, 8~deletes.
+The workload mix consists of approximately
+8\% complex read,
+72\% short read,
+20\% insert, and
+0.2\% delete operations.
+The complex reads and the short reads are identical to the ones in \interactivevone, except for query 14, which was replaced to cover the \emph{Cheapest path-finding} choke point.%
+\footnote{
+    The term \emph{shortest paths} refers to the problem of finding \emph{unweighted shortest paths}, which can be computed with BFS.
+    The term \emph{cheapest paths} refers to the \emph{weighted shortest paths} problem, which can be solved using \eg Dijkstra's algorithm.
+}
 
 \paragraph{Cheapest path-finding}
 While we strived to keep the changes to the queries minimal, we replaced Q14 due to two reasons.
@@ -64,15 +75,11 @@ First, we found the original query in \interactivevone to be ill-suited to the w
 % Still, "all shortest paths" is a strange kernel that IMHO isn't very useful and we were right to replace it.  
 Second, we introduced a new choke point,
 \textsf{CP-7.6}
-\emph{Cheapest path-finding,}%
-\footnote{
-    The term \emph{shortest paths} refers to the problem of finding \emph{unweighted shortest paths}, which can be computed with BFS.
-    \emph{Cheapest paths} refers to the \emph{weighted shortest paths} problem, which can be solved using \eg Dijkstra's algorithm.
-}
+\emph{Cheapest path-finding,}
 a key computational kernel and a language opportunity for GQL~\cite{DBLP:conf/sigmod/DeutschFGHLLLMM22}.
 Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shortest paths}.
 
-\section{Complex reads}
+\subsection{Complex Reads}
 \label{sec:interactive-v2-complex-reads}
 
 \iftoggle{StandaloneWorkloadSpecification}{
@@ -81,7 +88,7 @@ Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shor
     \input{query-cards/interactive-complex-read-14-v2}
 }
 
-\section{Short reads}
+\subsection{Short Reads}
 \label{sec:interactive-v2-short-reads}
     
 \iftoggle{StandaloneWorkloadSpecification}{
@@ -90,19 +97,23 @@ Therefore, we changed Q14 to use \emph{cheapest paths} instead of \emph{all shor
     The short reads operations are identical to the ones in \interactivevone, see \autoref{sec:interactive-v1-short-reads}.
 }
 
+\subsection{Insert Operations}
+\label{sec:interactive-v2-insert-operations}
 \iftoggle{StandaloneWorkloadSpecification}{
-    \section{Insert Operations}
-    \label{sec:insert-operations}
     \input{inserts}
+}{
+    See \autoref{sec:insert-operations}.
 }
 
+\subsection{Delete Operations}
+\label{sec:interactive-v2-delete-operations}
 \iftoggle{StandaloneWorkloadSpecification}{
-    \section{Delete Operations}
-    \label{sec:delete-operations}
     \input{deletes}
+}{
+    See \autoref{sec:delete-operations}.
 }
 
-\section{Parameter curation}
+\section{Parameter Curation}
 \label{sec:parameter-curation}
 
 % \subsection{The need for parameter curation}
@@ -117,7 +128,7 @@ leads to unstable runtimes,
 which compromise both the benchmark's understandability and reproducibility.
 To ensure stable runtimes, LDBC invented \emph{parameter curation} techniques, which select parameters that produce query runtimes with a unimodal (preferably Gaussian) distribution~\cite{DBLP:conf/tpctc/GubichevB14,DBLP:journals/pvldb/SzarnyasWSSBWZB22}.
 
-\subsection{Building blocks for parameter curation}
+\subsection{Building Blocks for Parameter Curation}
 
 \paragraph{Temporal bucketing}
 \label{sec:temporal-bucketing}
@@ -137,11 +148,11 @@ The factor generator is executed in a distributed setup using Spark as this comp
 % + temporal information is also required
 % \todo{I'm not 100\% sure where this comes from.}
 
-\subsection{Parameter curation for relational queries}
+\subsection{Parameter Curation for Relational Queries}
 
 For relational queries (without path-finding), we based our parameter generation on two techniques.
 
-\paragraph{(1) Selecting windows}
+\paragraph{(1)~Selecting windows}
 %
 To select the parameters that are expected to yield similar runtimes, we look for windows with the smallest variance for a given value using SQL window functions.
 The parameters are first sorted and grouped together based on their difference in frequency.
@@ -150,7 +161,7 @@ parameters large enough to generate a sufficient amount of parameters.
 From the latter, we select
 the group with the smallest standard deviation.
 
-\paragraph{(2) Selecting distributions}
+\paragraph{(2)~Selecting distributions}
 %
 For queries where we want to select parameters that are correlated or anti-correlated, we use factor tables encoding possible combinations (\eg \texttt{countryPairsNumFriends} for \CR[3]):
 we select values near a high percentile for the correlated and a low percentile for the anti-correlated case.
@@ -172,7 +183,7 @@ The parameter generation step uses these tables to select parameters for each da
 % makes parameter generation more expensive as the parameter generator needs to generate 33~parameter sets (Nov 29 to Dec 31, 2012).
 % This makes the parameter generators performance improvements even more important.
 
-\subsection{Parameter curation for path-finding queries}
+\subsection{Parameter Curation for Path-Finding Queries}
 \label{sec:path-curation}
 
 \paragraph{The effect of deletes}
@@ -229,31 +240,33 @@ The path curation for both the reachable and the unreachable cases is implemente
     \vspace{-4.5ex}
 \end{figure}
 
-\subsection{Query variants}
+\subsection{Query Variants}
 \label{sec:interactive-v2-query-variants}
 
 The new workload introduces variants for three queries:
-\CR[3], \CR[13], and \CR[14].
+\queryRefCard{interactive-complex-read-03}{IC}{3},
+\queryRefCard{interactive-complex-read-13}{IC}{13},
+\queryRefCard{interactive-complex-read-14-v2}{IC}{14v2}.
 
-\paragraph{\CR[3]: Correlated \vs anti-correlated Countries}
+\paragraph{Complex read 3: Correlated \vs anti-correlated Countries}
 \label{sec:cr3-variants}
 %
-We introduce variants for \CR[3]:
+For \queryRefCard{interactive-complex-read-03}{IC}{3},
 variant \CR[3(a)] starts from \Countries that have a high correlation in the friendship network,
 while
 variant \CR[3(b)] starts from \Countries that have a low correlation of friendships between.
 To generate these inputs, we use the \texttt{countryPairsNumFriends} factor table visualized in \autoref{fig:paramgen-frequency-disc-countries} and select values at percentile~1.00 for variant~\texttt{(a)} and percentile~0.01 for variant~\texttt{(b)}.
 
-\paragraph{\CR[13] and \CR[14]: Reachable \vs unreachable Persons}
+\paragraph{Complex reads 13 and 14: Reachable \vs unreachable Persons}
 %
 Path queries are expected to have different runtimes if there is a path \vs when there is no path.
 While the performance characteristics vary highly between systems, in principle, the ``no path'' case should be simpler in the SNB graph, where one of the nodes is always in a small connected component.
-To distinguish between these cases, we have two variants for the two path queries \CR[13] and \CR[14].
+To distinguish between these cases, we have two variants for the two path queries \queryRefCard{interactive-complex-read-13}{IC}{13} and \queryRefCard{interactive-complex-read-14-v2}{IC}{14v2}.
 For variants~\snbOperation{(a)} we select \Person pairs which \emph{do not have a path},
 and for variants~\snbOperation{(b)} we select pairs which \emph{have} a path of length~4.
 % (guaranteed by path curation, see \autoref{sec:path-curation}).
 
-\subsection{Parameter generator implementation}
+\subsection{Parameter Generator Implementation}
 \label{sec:paramgen-implementation}
 
 % \paragraph{DuckDB SQL queries}
@@ -273,4 +286,122 @@ The parameter generator is implemented in Python using NetworKit~\cite{lit:netwo
 Based on our experiments in~\cite[Figure~4.3]{david-puroja-msc}, the new parameter generator is scalable.
 Even with the significant extra work performed for temporal bucketing,
 it outperforms the old parameter generator by more than $100\times$ on SF\numprint{1000},
-and finishes in less than 1.5 hours on SF\numprint{10000}.
+and finishes in less than 1.5~hours on SF\numprint{10000}.
+
+\section{Workload Scheduling and Benchmark Driver}
+\label{sec:workload-and-driver}
+
+In this section, we explain how operations are scheduled in the SNB Interactive workload, how the driver operates, and how the final \emph{throughput} metric is determined.
+In all cases, we assume that the system-under-test has been populated with the \emph{initial snapshot} using a \emph{bulk loader} before the driver runs the operations.
+
+\subsection{Scheduling Operations}
+\label{sec:scheduling}
+
+\paragraph{TCR (total compression ratio)}
+%
+The scheduling follows the \emph{simulation time} of the temporal social network graph.
+The user-provided \emph{total compression ratio} (TCR) value controls the speed at which the simulation is replayed.
+For example, a TCR value of $0.02$ means that the simulation is replayed $50\times$ faster, \ie for every 20~milliseconds in wall clock time, 1~second passes in the simulation time.
+%Conversely, a TCR value of $3$ means that for every 3~seconds wall clock time, one second passes in the simulation.
+%\footnote{The TCR has a minimum value of 0.001 to prevent the system from running out of updates during the 2.5-hour period of the benchmark.}
+
+\paragraph{Update operations}
+%
+The driver replays the update operations starting from the cutoff date (\autoref{def:cutoff-date}), Nov 29, 2012.
+The operations are scheduled according to the distance of their start time from this date, adjusted by the TCR.
+%\footnote{For example, if the TCR value is $0.02$, one hour of wall-clock time will result in replaying 50 hours of simulation time, reaching Dec 1, 2012 02:00.}
+They are then used to set the cadence of the schedule for the complex reads and, in turn, the short read queries, as we will explain momentarily.
+%The \emph{update interleave} value denotes the average (simulation) time that passes between update operations and is used to schedule read queries.
+%$\frac{T_\textit{end} - T_\textit{start}}{\textrm{\#updates}}$.
+
+\paragraph{Complex read queries}
+%
+The \emph{complex read queries} differ significantly in their expected runtimes as they touch on different amounts of data.
+As each query instance contributes equally to the output metric,%
+\footnote{Unlike in \tpcH~\cite{tpch} and \snbbi~\cite{DBLP:journals/pvldb/SzarnyasWSSBWZB22}, which use \emph{geometric mean} in their metrics.}
+we balance them such that each query type is expected to take the same amount of time to execute.
+For example, \CR[14 (new)] is expected to be more difficult than \CR[13], therefore it is scheduled less frequently.
+Frequencies vary based on the SF as the relative difficulties of queries change with the data size
+(\eg three-hop neighbourhood queries grow faster on larger SFs than one-hop ones).
+
+\paragraph{Short read queries}
+%
+Short read queries are triggered by complex read queries and other short read queries, and use their output as their input.
+For example, both \CR[3] and \CR[14] trigger \SR[2], which also triggers itself.
+This mimics the real-life scenario of a user retrieving more information about \Person profiles based on the result of the earlier queries.
+% The amount of short reads executed after a complex read query depends on the result size of that pre read operation.
+% IIRC short reads follow some sort of exponential backoff.
+To see which short read queries are potentially triggered after given short read and complex read queries, see \autoref{tab:short-read-queries-triggered}.
+
+\subsection{Driver}
+\label{sec:driver}
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[scale=\yedscale]{figures/interactive-v2-validation-workflow}
+        \caption{Validation workflow running on a single thread.}
+        \label{fig:interactive-validation-workflow}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[scale=\yedscale]{figures/interactive-v2-benchmark-workflow}
+        \caption{Benchmark workflow using multiple threads.}
+        \label{fig:interactive-benchmark-workflow}
+    \end{subfigure}
+    \caption{
+        Workflow of driver modes in SNB Interactive v2.
+    }
+    \label{fig:interactive-workflows}
+    \vspace{-2.5ex}
+\end{figure}
+
+\paragraph{Driver modes}
+%
+The SNB driver has two key modes of operation.
+In \emph{cross-validation mode} (\autoref{fig:interactive-validation-workflow})m
+the driver tests an implementation against the output of another implementation.
+To ensure deterministic results, operations in this mode are executed sequentially with no overlap between queries and updates.
+In \emph{benchmark mode} (\autoref{fig:interactive-benchmark-workflow}),
+the driver performs a benchmark run where queries and updates are issued concurrently from multiple threads.
+The run starts with a 30-minute warm-up period, followed by a 2-hour \emph{measurement window}.
+This mode does not perform validation as query results may differ (slightly) due to concurrent updates.
+
+\paragraph{Dependency tracking}
+%
+To ensure that updates are executable, concurrent threads must be synchronized so that an operation is only executed when its dependencies exist in the network (\eg two \Persons can only become friends if both of them already exist).
+This is achieved via maintaining a global clock in the driver and performing \emph{dependency tracking} for the updates~\cite{DBLP:conf/sigmod/ErlingALCGPPB15}: each update operation has a timestamp denoting the creation time of the last operation it depends on.
+The data generator calculates these timestamp during generation and ensures that there is a minimum time separation,
+$T_\textit{safe}$,
+between dependent entities to reduce synchronization overhead in the driver when executing operations.
+The driver then only needs to check every $T_\textit{safe}$ time whether a given update operation can be executed.
+By default, $T_\textit{safe}$ is set to 10 seconds in the simulation time.
+
+\paragraph{Latency requirements}
+%
+The workload simulates a highly transactional scenario where operations are subject to (soft) latency requirements.
+To incorporate this in the workload, it prescribes the \emph{95\% on-time requirement}:
+for a benchmark run to be successful, 95\% of the operations must start \emph{on-time}, \ie within 1~second of their scheduled start time.
+Benchmark runs where the system-under-test falls behind too much from the schedule are considered invalid.
+
+\paragraph{Throughput}
+%
+The throughput of a run is the total number of operations
+(\CR, \SR, \INS, \DEL)
+executed per second.
+A lower TCR value implies a higher throughput.
+
+\paragraph{Individual execution times}
+%
+To facilitate deeper analyis, the benchmark driver also collects all individual query execution times.
+Based on these, the benchmark reports must include statics for each operation type (min, max, mean, $P_{50}$, $P_{90}$, $P_{95}$, and $P_{99}$ of the execution times).
+
+\paragraph{Driver implementation in v2}
+The \interactivevtwo is implemented in Java~17.
+It consists of \numprint{26500} lines of code for the core project and an additional \numprint{18000} lines of test code.
+The new version contains several patches including bug fixes, usability improvements, and performance optimizations.
+
+%Among other changes, the driver now uses DuckDB~\cite{DBLP:conf/sigmod/RaasveldtM19} for loading and the query parameters and update streams from Parquet format
+%~\cite{DBLP:reference/bdt/Floratou19}
+%for faster deserialization.
