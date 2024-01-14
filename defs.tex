@@ -15,7 +15,7 @@ This section defines fundamental concepts used in the LDBC benchmark terminology
     The terms workload and benchmark are synonyms in this context. 
 
     \item[Time Compression Ratio (TCR)]
-    This parameter of the Interactive workload compresses (or stretches) durations between operation start times to increase (or decrease) operation rate, thereby allowing systems to reach their maximum throughput for a given workload. The smaller this number is, the higher compression ratio it represents (\eg 2.0 means run benchmark 2x slower, while 0.1 = run benchmark 10x faster). Systems are expected to compete on achieving high $\text{TCR}^{-1}=\frac{1}{\text{TCR}}$.
+    This parameter of the Interactive workload compresses (or stretches) durations between operation start times to increase (or decrease) operation rate, thereby allowing systems to reach their maximum throughput for a given workload. The smaller this number is, the higher compression ratio it represents (\eg 2.0 means run benchmark $2\times$ slower, while 0.1 = run benchmark $10\times$ faster). Systems are expected to compete on achieving the \emph{lowest possible} TCR (\ie the highest $\text{TCR}^{-1}=\frac{1}{\text{TCR}}$).
     
     \item[Query mix] The ratio of read and update queries of a workload, and the frequency at which they are issued.
     

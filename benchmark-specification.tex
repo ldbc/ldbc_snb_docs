@@ -1,8 +1,6 @@
 \chapter{Benchmark Specification}
 \label{sec:benchmark-specification}
 
-\section{Requirements}
-
 \ldbcsnb is designed to be flexible and to have an affordable entry point. From small single node and in memory systems to large distributed multi-node clusters have its own place in \ldbcsnb. Therefore, the requirements to fulfill for executing \ldbcsnb are limited to pure software requirements to be able to run the tools. While the benchmark specification aims to be portable, the software provided by \ldbcsnb have been developed and tested under Linux-based operating systems. The driver and the clients for the reference implementations were implemented in Java. The generator has two versions: the Hadoop-based one was written in Java, while the Spark-based one is written in a mix of Java and Scala.
 
 \ldbcsnb does not impose the usage of any specific type of system, as it targets systems of different nature and characteristics, from graph databases, graph processing frameworks and RDF systems, to traditional relational database management systems. Consequently, any language or API capable of expressing the proposed queries can be used. Similarly, data can be stored in the most convenient manner the test sponsor may decide, as long as it conforms with the execution rules. Finally, in order to have an official benchmark execution, the results will have to be audited and all the required information disclosed.
