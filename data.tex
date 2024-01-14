@@ -38,8 +38,8 @@ graph DBMS.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=\yedscale]{figures/schema-comfortable}
-    \caption{UML class diagram-style depiction of the \ldbcsnb graph schema. Note that the \textsf{knows} edges should be treated as undirected (but are serialized only in a single direction). The cardinality of the \textsf{hasModerator} edge has changed between version 0.3.x (where it was exactly 1) and version 0.4.x (where it is 0..1).}
+    \includegraphics[width=\textwidth]{figures/schema-comfortable}
+    \caption{UML class diagram-style depiction of the \ldbcsnb graph schema. Note that the \textsf{knows} edges should be treated as undirected (but are serialized only in a single direction). The cardinality of the \textsf{hasModerator} edge has changed between version~1 (where it was exactly 1) and version~2 (where it is 0..1).}
     \label{fig:schema}
 \end{figure}
 
@@ -48,7 +48,7 @@ All of them are described in the following sections.
 
 \subsubsection*{Textual Restrictions and Notes}
 \begin{itemize}
-    \item Messageas always have a non-empty \texttt{content} attribute.
+    \item Messages always have a non-empty \texttt{content} attribute.
     \item Posts have either a \texttt{content} or an \texttt{imageFile} attribute (\ie they always have exactly one of them.) The one they do not have is represented with an empty string or with \texttt{NULL}.
     \item Posts in a forum can be created by a non-member person if and only if that person is the moderator of the Forum.
 \end{itemize}
