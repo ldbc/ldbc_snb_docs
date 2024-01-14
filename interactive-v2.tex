@@ -307,7 +307,7 @@ For example, a TCR value of $0.02$ means that the simulation is replayed $50\tim
 
 \paragraph{Update operations}
 %
-The driver replays the update operations starting from the cutoff date (\autoref{def:cutoff-date}), Nov 29, 2012.
+The driver replays the update operations starting from the cutoff date, Nov 29, 2012.
 The operations are scheduled according to the distance of their start time from this date, adjusted by the TCR.
 %\footnote{For example, if the TCR value is $0.02$, one hour of wall-clock time will result in replaying 50 hours of simulation time, reaching Dec 1, 2012 02:00.}
 They are then used to set the cadence of the schedule for the complex reads and, in turn, the short read queries, as we will explain momentarily.
