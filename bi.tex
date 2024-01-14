@@ -82,7 +82,7 @@ Graph pattern matching queries that contain large join patterns will trigger the
 \subsubsection{Expressive path finding}
 \snbbi contains queries that require an efficient implementation of shortest path finding between many pairs.
 Expressing such queries requires a query language which supports either path finding or recursion. The underlying system implementation must then handle this with an optimized execution strategy, as recursing to try all paths will not scale.
-As some of this path finding includes on-the-fly computed edges (joins) between nodes, the queries can benefit from {\em path expressions}, as proposed in Oracle's PGQL language~\cite{DBLP:conf/grades/RestHKMC16} and as part of the upcoming GQL and SQL/PGQ languages~\cite{DBLP:conf/sigmod/DeutschFGHLLLMM22}.
+As some of this path finding includes on-the-fly computed edges (joins) between nodes, the queries can benefit from {\em path expressions}, as proposed in Oracle's PGQL language~\cite{DBLP:conf/grades/RestHKMC16} and as part of the GQL and SQL/PGQ languages~\cite{DBLP:conf/sigmod/DeutschFGHLLLMM22}.
 The path finding required by \snbbi not only tests connectivity (as supported in SPARQL), but also requires returning the {\em cheapest cost} along weighted paths (necessitating SPARQL extensions~\cite{DBLP:conf/bigdataconf/MizellMR14}).
 
 %------------------------------------------------------------------------------
