@@ -158,7 +158,9 @@ reasons:
         scalable benchmark targeting systems of different sizes and budgets.
 \end{itemize}
 
-In \autoref{sec:data}, \ldbcsnb defines the schema of the data used in
+\autoref{sec:benchmark-specification} summarizes LDBC's benchmark design philosophy.
+
+In \autoref{sec:data}, we define the schema of the data used in
 the benchmark. The schema represents a realistic social network, including
 people and their activities in the social network during a period of time.
 Personal information of each person, such as name, birthday, interests
@@ -171,10 +173,10 @@ in a real social network. Furthermore, the data generator is designed to be
 user-friendly. The proposed data schema is shared by all the different proposed
 workloads, those we currently have, and those that will be proposed in the future.
 
-In \autoref{sec:workloads}, the Interactive Workload and the first draft of
-the Business Intelligence workload are proposed. Workloads are designed to mimic
+In \autoref{sec:workloads}, an overview of the workloads is provided.
+All SNB workloads are designed to mimic
 the different usage scenarios found in operating a real social network site, and
-each of them targets one or more types of systems.  Each workload defines a set
+each of them targets one or more types of systems. Each workload defines a set
 of queries and query mixes, designed to stress the SUTs in different choke point
 areas, while being credible and realistic. The Interactive workload reproduces the
 interaction between the users of the social network by including lookups and
@@ -187,7 +189,7 @@ discover new business opportunities. This workload explores moderate to large
 portions of the graph from different entities, and performs more resource-intensive
 operations.
 
-\ldbcsnb provides an execution test driver, which is responsible for executing
+All workloads provide an execution test driver, which is responsible for executing
 the workloads and gathering the results. The driver is designed with simplicity
 and portability in mind to ease the implementation on systems with different
 nature and characteristics at a low implementation cost. Furthermore, it
@@ -195,6 +197,11 @@ automatically handles the validation of the queries by means of a validation
 dataset provided by LDBC.  The overall philosophy of \ldbcsnb is to provide
 the necessary software tools to run the benchmark, and therefore to reduce the
 benchmark's entry point as much as possible.
+
+\autoref{sec:update-operations} defines the update operations used in the SNB workloads. \autoref{sec:interactive-v1}, \autoref{sec:interactive-v2}, and \autoref{sec:bi} define the SNB \interactivevone, \interactivevtwo, and BI workloads, respectively.
+\autoref{sec:auditing} contains the SNB auditing policies.
+\autoref{sec:acid-test-suite} defines the ACID test suite.
+\autoref{sec:related-work} summarized the related work on graph processing benchmarks.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
