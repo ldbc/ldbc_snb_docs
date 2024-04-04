@@ -364,7 +364,7 @@ Consider the result set:
 \texttt{\{($T_\mathrm{1}$, $T_\mathrm{2}$), ($T_\mathrm{2}$, $T_\mathrm{3}$), ($T_\mathrm{3}$, $T_\mathrm{2}$)\}}.
 $T_\mathrm{1}$ reads the version written by $T_\mathrm{2}$ and $T_\mathrm{2}$  reads the version written by $T_\mathrm{3}$.
 Here information flow is unidirectional from $T_\mathrm{1}$ to $T_\mathrm{2}$.
-However, $T_\mathrm{2}$ reads the version written by $T_\mathrm{3}$ and $T_\mathrm{2}$  reads the version written by $T_\mathrm{3}$.
+However, $T_\mathrm{2}$ reads the version written by $T_\mathrm{3}$ and $T_\mathrm{3}$  reads the version written by $T_\mathrm{2}$.
 Here information flow is circular from $T_\mathrm{2}$ to $T_\mathrm{3}$ and $T_\mathrm{3}$ to $T_\mathrm{2}$.
 Thus a \anomaly{G1c} anomaly has been detected.
 
