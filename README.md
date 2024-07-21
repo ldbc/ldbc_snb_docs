@@ -8,9 +8,9 @@
 
 ## Benchmark specification
 
-For a quick overview of LDBC SNB, start with our [presentation](https://docs.google.com/presentation/d/1NilxSrKQnFq4WzWMY2-OodZQ2TEksKzKBmgB20C_0Nw/) ([PDF](https://ldbcouncil.org/docs/presentations/ldbc-snb-2022-11.pdf)).
+For a quick overview of LDBC SNB, start with [The LDBC Benchmark Suite presentation](https://archive.fosdem.org/2023/schedule/event/ldcb_benchmark_suite/attachments/slides/5767/export/events/attachments/ldcb_benchmark_suite/slides/5767/the_ldbc_benchmark_suite_fosdem_hpc_devroom_2023_szarnyas.pdf) [🎥 recording](https://www.youtube.com/watch?v=q26DHnQFw54) by Gábor Szárnyas (FOSDEM 2024).
 
-For a guide on how to develop SNB Interactive implementations, please check out the READMEs of the reference implementation repositories linked below.
+For a guide on how to develop SNB implementations, please check out the READMEs of the reference implementation repositories linked below.
 
 ## Software components
 
@@ -20,7 +20,7 @@ The SNB workloads are stored in different repositories:
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_hadoop
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_v1_driver
   * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_v1_impls
-* SNB Interactive v2:
+* SNB Interactive v2 (work-in-progress):
   * Data generator: https://github.com/ldbc/ldbc_snb_datagen_spark
   * Driver: https://github.com/ldbc/ldbc_snb_interactive_v2_driver
   * Reference implementations: https://github.com/ldbc/ldbc_snb_interactive_v2_impls
