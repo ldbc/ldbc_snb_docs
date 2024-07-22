@@ -496,7 +496,7 @@ The queries and updates may be implemented in a domain-specific query language o
 \subsubsection{Implementations Using a Domain-Specific Query Language}
 \label{sec:snb-domain-specific-query-language}
 
-If a domain-specific query language is used, \eg SPARQL, SQL, Cypher, or Gremlin, then explicit query plans are prohibited in all the read-only queries.%
+If a domain-specific query language is used, \eg GQL, SPARQL, SQL, SQL/PGQ, Cypher, or Gremlin, then explicit query plans are prohibited in all the read-only queries.%
 \footnote{If the queries are not clearly declarative, the auditor must ensure that they do not specify explicit query plans by investigating their source code and experimenting with the query planner of the system (\eg using SQL's \texttt{EXPLAIN} command).}
 The update transactions may still consist of multiple statements, effectively amounting to explicit plans.
 
@@ -859,7 +859,7 @@ Using auxiliary data structures (\eg indices, materialized views) is allowed if 
 \subsubsection{Query Declarativity}
 \label{sec:auditing-bi-query-declarativity}
 
-Systems should use a domain-specific query language (\eg Cypher, Gremlin, GSQL) for the implementation, including the read queries and the update operations.
+Systems should use a domain-specific query language (\eg Cypher, Gremlin, GQL, GSQL SQL/PGQ) for the implementation, including the read queries and the update operations.
 General-purpose programming languages (\eg C, C\texttt{++}, Java, Julia) are not allowed.
 
 Implementations shall not use \emph{query-specific stored procedures written in a general-purpose programming language} (\eg a given procedure which implements BI Q5).
