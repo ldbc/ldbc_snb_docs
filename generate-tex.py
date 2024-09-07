@@ -8,12 +8,13 @@ from subprocess import check_output
 from collections import defaultdict
 
 
+# for Markdown to TeX conversion, we invoke Pandoc as a subprocess
 def convert_markdown_to_tex(markdown):
     return check_output(
         ["pandoc", "--from=markdown", "--to=latex"],
         universal_newlines=True,
         input=markdown
-    ).replace('??', '\+') # if line breaks are needed
+    )
 
 
 def convert_map_values_to_tex(map):
@@ -75,8 +76,6 @@ for filename in glob.glob("query-specifications/*.yaml"):
 
     query_choke_point[query_id] = choke_points
 
-    # currently, there are no off-the-shelf solutions for Markdown to TeX conversion in Python 3,
-    # so we use Pandoc -- it's hands down the best Markdown to Tex converter you can get anyways
     description_tex = convert_markdown_to_tex(description_markdown)
     
     # optional arguments 
