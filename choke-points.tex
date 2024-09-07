@@ -226,7 +226,7 @@ This choke point tests the ability of efficiently evaluating simple expressions 
 
 This choke point tests the ability of the query optimizer to flatten execution plans when there are correlated sub-queries. Many queries have correlated sub-queries and their query plans can be flattened,
 such that the correlated sub-query is handled using an equi-join, outer-join or anti-join.
-In TPC-H Q21, for instance, there is an \lstinline{EXISTS} clause (for orders with more than one supplier) and a \lstinline{NOT EXISTS} clauses (looking for an item that was received too late).
+In TPC-H Q21, for instance, there is an \lstinline{EXISTS} clause (for orders with more than one supplier) and a \lstinline{NOT EXISTS} clause (looking for an item that was received too late).
 To execute this query well, systems need to flatten both sub-queries, the first into an equi-join plan, the second into an anti-join plan.
 Therefore, the execution layer of the database system will benefit from implementing these extended join variants.
 
