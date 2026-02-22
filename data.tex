@@ -362,7 +362,7 @@ For both workloads, the SF1 data set is 1~GiB, SF100 is 100~GiB, and SF\numprint
 However, \textbf{note that the two SNB workloads have different data sets} due with different folder structures.
 
 The data sets sizes are established as follows:
-For both workloads, we use the default settings for the splitting the data into an intial (bulk-loaded) data set and the later update operations (``streams'').
+For both workloads, we use the default settings for the splitting the data into an initial (bulk-loaded) data set and the later update operations (``streams'').
 For Interactive, both the 90\% initial data and the 10\% update streams count towards the total size and the \textsf{csv-singular-merged-fk} serializer is used.
 For BI, the sum of the initial snapshot (97\%) and the update operations (daily inserts and deletes) are measured and the default CSV serializers (\textsf{composite-merged-fk}) is used.
 
@@ -452,7 +452,7 @@ The inheritance hierarchies in the schema have two important characteristics
     \emph{Map hierarchy to single table} is used, \ie all Place node are serialized in a single file. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Country''.
 
     \item[Organisation = Company | University]
-    \emph{Map hierarchy to single table} is used, \ie all Organisation nodes are serialized in a single fiel. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Company''.
+    \emph{Map hierarchy to single table} is used, \ie all Organisation nodes are serialized in a single file. A discriminator attribute ``type'' is used with the value denoting the concrete class, \eg ``Company''.
 \end{description}
 
 \subsection{Interactive Update Streams (Inserts)}
@@ -617,7 +617,7 @@ For an entity $x$, $\varc{x}{}$ denotes its creation date, while $\vard{x}{}$ de
 In most cases, both the creation and the deletion date are selected from an interval, \eg $\varc{x}{} \in \interval{d_1}{d_2}$ means that entity $\variable{x}$ should be created between dates $d_1$ (inclusive) and $d_2$ (exclusive).
 The selected creation and deletion dates together form an interval that represents the lifespan of its entity.
 If any of the intervals for selecting the lifespan attributes of an entity are empty, \ie $d_2 \leq d_1$, the entity should be discarded.
-As illustrated later, this interval is often used to determine the intervals where the creation and deletion dates of dependant entities are selected.
+As illustrated later, this interval is often used to determine the intervals where the creation and deletion dates of dependent entities are selected.
 
 \paragraph{Parameters} % maybe comes later?
 We parameterize the generator as follows.

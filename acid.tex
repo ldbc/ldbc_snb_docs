@@ -29,7 +29,7 @@ A simple solution would be to outsource the responsibility of demonstrating ACID
 However, the safety properties claimed by a system often do not match observable behaviour~\cite{kingsbury}.
 %which could cast doubt on any performance results obtained from SNB Interactive.
 To mitigate this problem, benchmarks such as \mbox{TPC-C}~\cite{tpcc} include a number of ACID tests to be executed as part of the benchmarking auditing process.
-However, we found these tests cannot readily be applied to our context, as they assume lock-based concurrency control and an interactive query API that provides clients with explicit control over a transaction's lifecyle.
+However, we found these tests cannot readily be applied to our context, as they assume lock-based concurrency control and an interactive query API that provides clients with explicit control over a transaction's lifecycle.
 Modern data systems often use optimistic concurrency control mechanisms~\cite{DBLP:journals/sigmod/PavloA16} and offer a restricted query API, such as only executing transactions as stored procedures~\cite{DBLP:conf/vldb/StonebrakerMAHHH07}.
 Further, tests that trigger and test row-level locking phenomena, for instance, do not readily map on graph database systems.
 Lastly, we found these tests are limited in the range of isolation anomalies they cover.
@@ -643,7 +643,7 @@ RETURN
 % Taking motivation from \cite{DBLP:journals/tods/FeketeLOOS05} this tests covers a \anolong{predicate-based write skew} (\anomaly{P-WS}) anomaly.
 % Systems often permit the declaration of edge cardinality constraints, which can be violated under concurrent modification.
 % For example, in the SNB Interactive schema~\cite{Angles2020} a \texttt{Forum} can only have a single \texttt{MODERATOR} edge.
-% % This constraint is not explicitly declared in the system (doing so would require a similar construct to SQL's \texttt{CHECK CONTRAINTS}) but is required to maintain application consistency.
+% % This constraint is not explicitly declared in the system (doing so would require a similar construct to SQL's \texttt{CHECK CONSTRAINTS}) but is required to maintain application consistency.
 
 % \paragraph{Test.}
 % Load a test graph containing \texttt{Forum} and \texttt{Person} nodes.

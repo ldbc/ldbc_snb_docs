@@ -208,7 +208,7 @@ A benchmark may specify that an implementation is not allowed the use of explici
 \subsection{Query Languages}
 \label{sec:query-languages}
 
-In typical RDBMS benchmarks, online transaction processing (OLTP) benchmarks are allowed to be implementated via stored procedures, effectively amounting to explicit query plans.
+In typical RDBMS benchmarks, online transaction processing (OLTP) benchmarks are allowed to be implemented via stored procedures, effectively amounting to explicit query plans.
 Meanwhile, online analytical processing (OLAP) benchmarks prohibit the use of using general-purpose programming languages (\eg C, C\texttt{++}, Java) for query implementations and only allow domain-specific query languages.
 
 In the graph processing space, there is currently (as of 2022) no standard query language and the systems are considerably more heterogeneous.
@@ -848,7 +848,7 @@ $$ \textit{throughput@SF/\$} = \textit{throughput@SF} \cdot \frac{\numprint{1000
 \label{sec:auditing-bi-correcntess}
 
 The SUT shall evaluate all operators correctly.
-The auditor shall ascertain correctness on the SF10 data set. However, they are allowed to also use data sets of different scale factors, as well as issue custom operations (both reads and writes) to test for the correctness of the implemenation.
+The auditor shall ascertain correctness on the SF10 data set. However, they are allowed to also use data sets of different scale factors, as well as issue custom operations (both reads and writes) to test for the correctness of the implementation.
 
 The validation of correctness is performed on the output of the \emph{power test} step.
 The rationale for using this only step is that during concurrent execution of R/W operations in the \emph{throughput test}, it is not possible to guarantee deterministic query results, making validation impossible. Moreover, this step already includes a write batch, therefore the query results indirectly test the correctness of the implementation of write operations.
