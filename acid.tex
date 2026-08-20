@@ -628,7 +628,8 @@ SET p.value = p.value - 100
 \begin{lstlisting}[language=cypher,label=fig:ws2,caption=\tx{WS $T_\mathrm{R}$}.]
 MATCH (p1:Person),
       (p2:Person {id: p1.id+1})
-WHERE p1.value + p2.value <= 0
+WHERE p1.id % 2 = 1
+  AND p1.value + p2.value <= 0
 RETURN
   p1.id AS p1id,
   p1.value AS p1value,
